@@ -1,0 +1,45 @@
+# Minimal Supabase CLI config for LOCAL development.
+# `supabase init` would generate a much longer file; every key omitted here
+# falls back to the CLI default. Only the security-relevant settings are pinned.
+
+project_id = "knowledge-hub"
+
+[api]
+enabled = true
+port = 54321
+# Only these schemas are exposed through PostgREST. The internal "app" schema
+# (policy helpers, trigger functions) must NEVER be added here.
+schemas = ["public", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = 54322
+major_version = 17
+
+[db.seed]
+enabled = true
+# FAKE data, local only. Never seed staging/production.
+sql_paths = ["./seed.sql"]
+
+[studio]
+enabled = true
+port = 54323
+
+[auth]
+enabled = true
+site_url = "http://127.0.0.1:3000"
+# v0.2: readers never log in; exactly one owner account exists.
+# Public sign-ups MUST stay disabled, locally AND in the hosted dashboard
+# (Authentication > Providers / Sign In settings > "Allow new users to sign up" = off).
+enable_signup = false
+enable_anonymous_sign_ins = false
+jwt_expiry = 3600
+enable_refresh_token_rotation = true
+
+[auth.email]
+enable_signup = false
+enable_confirmations = true
+
+[auth.sms]
+enable_signup = false

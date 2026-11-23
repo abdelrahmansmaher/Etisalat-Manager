@@ -1,5 +1,5 @@
 name: knowledge_hub
-description: "A new Flutter project."
+description: "Personal, unofficial counter knowledge guide (offline-first)."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -56,6 +56,8 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  # Generates lib/l10n/app_localizations*.dart from the ARB files (see l10n.yaml).
+  generate: true
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
@@ -73,6 +75,25 @@ flutter:
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/to/asset-from-package
 
+  # TODO(fonts): Bundle IBM Plex Sans Arabic (400/500/600/700) and IBM Plex Mono
+  # (500) as assets (OFL licence; doc 04 section 2.2 says fonts are bundled, never
+  # fetched at runtime). Until the files exist under assets/fonts/, the theme
+  # declares these family names with fallbacks and the system font is used.
+  # fonts:
+  #   - family: IBM Plex Sans Arabic
+  #     fonts:
+  #       - asset: assets/fonts/IBMPlexSansArabic-Regular.ttf
+  #         weight: 400
+  #       - asset: assets/fonts/IBMPlexSansArabic-Medium.ttf
+  #         weight: 500
+  #       - asset: assets/fonts/IBMPlexSansArabic-SemiBold.ttf
+  #         weight: 600
+  #       - asset: assets/fonts/IBMPlexSansArabic-Bold.ttf
+  #         weight: 700
+  #   - family: IBM Plex Mono
+  #     fonts:
+  #       - asset: assets/fonts/IBMPlexMono-Medium.ttf
+  #         weight: 500
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a

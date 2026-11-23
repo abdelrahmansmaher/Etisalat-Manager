@@ -1,0 +1,241 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:knowledge_hub/core/router/app_page_transitions.dart';
+import 'package:knowledge_hub/core/router/app_router.dart';
+import 'package:knowledge_hub/core/router/tab_pager.dart';
+import 'package:knowledge_hub/core/widgets/staggered_fade_in.dart';
+import 'package:knowledge_hub/features/home/home_screen.dart';
+
+import 'helpers/pump_app.dart';
+
+String currentPath(WidgetTester tester) {
+  final container = ProviderScope.containerOf(
+    tester.element(find.byType(TabPager)),
+  );
+  return container
+      .read(routerProvider)
+      .routerDelegate
+      .currentConfiguration
+      .uri
+      .path;
+}
+
+bool navSelected(WidgetTester tester, int i) => tester
+    .getSemantics(find.byKey(ValueKey('nav-$i')))
+    .flagsCollection
+    .isSelected
+    .toBoolOrNull()!;
+
+Future<void> swipe(WidgetTester tester, double dx) async {
+  await tester.fling(find.byType(PageView), Offset(dx, 0), 1500);
+  await tester.pumpAndSettle();
+}
+
+void main() {
+  testWidgets('Arabic: swiping right goes to the next tab (RTL order)', (
+    tester,
+  ) async {
+    await pumpApp(tester);
+    expect(currentPath(tester), '/home');
+
+    // In RTL, Browse sits visually to the LEFT of Home; dragging the
+    // finger rightwards reveals it.
+    await swipe(tester, 300);
+    expect(currentPath(tester), '/browse');
+    expect(navSelected(tester, 1), isTrue);
+    expect(navSelected(tester, 0), isFalse);
+
+    await swipe(tester, -300);
+    expect(currentPath(tester), '/home');
+  });
+
+  testWidgets('English: swiping left goes to the next tab (LTR order)', (
+    tester,
+  ) async {
+    await pumpApp(tester, locale: en);
+    await swipe(tester, -300);
+    expect(currentPath(tester), '/browse');
+    expect(navSelected(tester, 1), isTrue);
+
+    // Swiping "back" past the first tab does nothing.
+    await swipe(tester, 300);
+    await swipe(tester, 300);
+    expect(currentPath(tester), '/home');
+  });
+
+  testWidgets('tapping a tab animates the pager (no hard cut) and keeps '
+      'state alive', (tester) async {
+    await pumpApp(tester);
+    final pager = tester.widget<PageView>(find.byType(PageView));
+
+    await tester.tap(find.byKey(const ValueKey('nav-4')));
+    await tester.pump(); // goBranch
+    await tester.pump(); // post-frame animateToPage starts
+    await tester.pump(const Duration(milliseconds: 120));
+    final mid = pager.controller!.page!;
+    expect(mid, greaterThan(0));
+    expect(mid, lessThan(4), reason: 'still animating mid-way');
+
+    await tester.pumpAndSettle();
+    expect(pager.controller!.page, 4);
+    expect(currentPath(tester), '/me');
+    // Home stayed alive while off-screen.
+    expect(find.byType(HomeScreen, skipOffstage: false), findsOneWidget);
+  });
+
+  testWidgets('nav indicator follows swipe progress', (tester) async {
+    await pumpApp(tester, locale: en);
+    final gesture = await tester.startGesture(const Offset(300, 300));
+    await gesture.moveBy(const Offset(-40, 0)); // past touch slop
+    await gesture.moveBy(const Offset(-100, 0));
+    await tester.pump();
+    final pc = tester.widget<PageView>(find.byType(PageView)).controller!;
+    expect(pc.page, inExclusiveRange(0.1, 0.9));
+    await gesture.up();
+    await tester.pumpAndSettle();
+  });
+
+  testWidgets('TabSwipeOptOut keeps horizontal drags from switching tabs', (
+    tester,
+  ) async {
+    setSurface(tester);
+    Future<double> flingFirstPage(bool optOut) async {
+      final controller = PageController();
+      addTearDown(controller.dispose);
+      const page = ColoredBox(
+        key: ValueKey('page'),
+        color: Colors.white,
+        child: SizedBox.expand(),
+      );
+      await tester.pumpWidget(
+        MaterialApp(
+          home: PageView(
+            key: UniqueKey(),
+            controller: controller,
+            children: [
+              optOut ? const TabSwipeOptOut(child: page) : page,
+              const SizedBox.expand(),
+            ],
+          ),
+        ),
+      );
+      await tester.fling(
+        find.byKey(const ValueKey('page')),
+        const Offset(-300, 0),
+        1500,
+      );
+      await tester.pumpAndSettle();
+      return controller.page!;
+    }
+
+    expect(await flingFirstPage(false), 1, reason: 'control: pager swipes');
+    expect(await flingFirstPage(true), 0, reason: 'opt-out blocks it');
+  });
+
+  group('Home stagger', () {
+    testWidgets('animates on first load within 300ms', (tester) async {
+      await pumpApp(tester); // settles
+      // Re-pump fresh and inspect mid-animation.
+      await tester.pumpWidget(const SizedBox());
+      await pumpAppNoSettle(tester);
+      final fades = tester
+          .widgetList<FadeTransition>(
+            find.descendant(
+              of: find.byType(StaggeredFadeIn),
+              matching: find.byType(FadeTransition),
+            ),
+          )
+          .toList();
+      expect(fades, isNotEmpty);
+      expect(fades.last.opacity.value, lessThan(1));
+      await tester.pump(const Duration(milliseconds: 300));
+      for (final f in fades) {
+        expect(f.opacity.value, 1);
+      }
+    });
+
+    testWidgets('reduce motion disables the stagger', (tester) async {
+      tester.platformDispatcher.accessibilityFeaturesTestValue =
+          const FakeAccessibilityFeatures(disableAnimations: true);
+      addTearDown(
+        tester.platformDispatcher.clearAccessibilityFeaturesTestValue,
+      );
+      await pumpAppNoSettle(tester);
+      expect(find.byType(StaggeredFadeIn), findsWidgets);
+      expect(
+        find.descendant(
+          of: find.byType(StaggeredFadeIn),
+          matching: find.byType(FadeTransition),
+        ),
+        findsNothing,
+      );
+      await tester.pumpAndSettle();
+    });
+  });
+
+  group('AppPageRoute', () {
+    Future<NavigatorState> pumpNav(WidgetTester tester, Locale locale) async {
+      setSurface(tester);
+      final key = GlobalKey<NavigatorState>();
+      await tester.pumpWidget(
+        MaterialApp(
+          navigatorKey: key,
+          builder: (context, child) => Directionality(
+            textDirection: locale == ar ? TextDirection.rtl : TextDirection.ltr,
+            child: child!,
+          ),
+          home: const Scaffold(body: Text('root')),
+        ),
+      );
+      key.currentState!.push(
+        AppPageRoute<void>(
+          builder: (_) => const Scaffold(body: Center(child: Text('detail'))),
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(find.text('detail'), findsOneWidget);
+      return key.currentState!;
+    }
+
+    testWidgets('push transition stays within 300ms', (tester) async {
+      final nav = await pumpNav(tester, en);
+      nav.pop();
+      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 300));
+      expect(find.text('detail'), findsNothing);
+    });
+
+    testWidgets('edge swipe from the left pops (LTR)', (tester) async {
+      await pumpNav(tester, en);
+      final g = await tester.startGesture(const Offset(5, 300));
+      await g.moveBy(const Offset(20, 0));
+      await g.moveBy(const Offset(250, 0));
+      await g.up();
+      await tester.pumpAndSettle();
+      expect(find.text('detail'), findsNothing);
+      expect(find.text('root'), findsOneWidget);
+    });
+
+    testWidgets('edge swipe from the right pops (RTL)', (tester) async {
+      await pumpNav(tester, ar);
+      final g = await tester.startGesture(const Offset(355, 300));
+      await g.moveBy(const Offset(-20, 0));
+      await g.moveBy(const Offset(-250, 0));
+      await g.up();
+      await tester.pumpAndSettle();
+      expect(find.text('detail'), findsNothing);
+    });
+
+    testWidgets('a short edge drag springs back', (tester) async {
+      await pumpNav(tester, en);
+      final g = await tester.startGesture(const Offset(5, 300));
+      await g.moveBy(const Offset(20, 0));
+      await g.moveBy(const Offset(30, 0));
+      await tester.pump(const Duration(seconds: 1)); // kill velocity
+      await g.up();
+      await tester.pumpAndSettle();
+      expect(find.text('detail'), findsOneWidget);
+    });
+  });
+}
