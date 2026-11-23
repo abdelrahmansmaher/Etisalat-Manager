@@ -10,7 +10,10 @@ import '../../core/widgets/staggered_fade_in.dart';
 import '../../core/widgets/trust/unofficial_disclaimer.dart';
 import '../../l10n/app_identity.dart';
 import '../../l10n/app_localizations.dart';
-import '../encyclopedia/encyclopedia_sections.dart';
+import '../../core/content/content.dart';
+import '../../core/widgets/ltr_text.dart';
+import '../../core/widgets/trust/trust_format.dart';
+import '../content/section_ui.dart';
 
 /// Home placeholder (doc 04 §5.1): hero (greeting + search pill) and the
 /// encyclopedia grid. Latest updates / favourites / recents arrive with data.
@@ -44,7 +47,9 @@ class HomeScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: AppSpacing.md),
                 const _SectionGrid(),
+                const _MustKnowStrip(),
                 const SizedBox(height: AppSpacing.xxl),
+                const _AsOfNote(),
                 const UnofficialDisclaimer.compact(),
               ],
             ),
@@ -197,11 +202,12 @@ class _SearchPill extends ConsumerWidget {
 
 /// Two-column grid (four on wide screens) built with Wrap so tiles grow with
 /// text scale instead of overflowing fixed cells.
-class _SectionGrid extends StatelessWidget {
+class _SectionGrid extends ConsumerWidget {
   const _SectionGrid();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final library = ref.watch(contentLibraryProvider);
     return LayoutBuilder(
       builder: (context, constraints) {
         final columns = constraints.maxWidth >= 720 ? 4 : 2;
@@ -212,12 +218,15 @@ class _SectionGrid extends StatelessWidget {
           spacing: gap,
           runSpacing: gap,
           children: [
-            for (final s in EncyclopediaSection.values)
+            for (final s in ContentSection.values)
               SizedBox(
                 width: tileWidth,
                 child: StaggeredFadeIn(
                   index: s.index,
-                  child: SectionCard(section: s),
+                  child: SectionCard(
+                    section: s,
+                    count: library.itemsOf(s).length,
+                  ),
                 ),
               ),
           ],
@@ -227,11 +236,12 @@ class _SectionGrid extends StatelessWidget {
   }
 }
 
-/// Elegant section card: tinted rounded-square icon, title, one-line subtitle.
+/// Section card: tinted icon, title, two-line subtitle, item count.
 class SectionCard extends StatelessWidget {
-  const SectionCard({super.key, required this.section});
+  const SectionCard({super.key, required this.section, this.count = 0});
 
-  final EncyclopediaSection section;
+  final ContentSection section;
+  final int count;
 
   @override
   Widget build(BuildContext context) {
@@ -240,10 +250,12 @@ class SectionCard extends StatelessWidget {
     final c = context.colors;
     final title = section.title(l10n);
     final subtitle = section.subtitle(l10n);
+    final countText = l10n.itemCount(count);
 
     return AppCard(
-      semanticLabel: '$title، $subtitle',
-      onTap: () => context.go(AppRoutes.browse),
+      key: ValueKey('section-card-${section.key}'),
+      semanticLabel: '$title، $subtitle، $countText',
+      onTap: () => context.push(ContentRoutes.section(section.key)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -253,11 +265,114 @@ class SectionCard extends StatelessWidget {
           const SizedBox(height: 2),
           Text(
             subtitle,
-            maxLines: 1,
+            maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: theme.textTheme.bodySmall?.copyWith(color: c.textTertiary),
           ),
+          const SizedBox(height: AppSpacing.xs),
+          Text(
+            countText,
+            style: AppTypography.labelS.copyWith(color: c.primary),
+          ),
         ],
+      ),
+    );
+  }
+}
+
+/// "Numbers to know by heart": top contact items from numbers.json.
+class _MustKnowStrip extends ConsumerWidget {
+  const _MustKnowStrip();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context);
+    final theme = Theme.of(context);
+    final c = context.colors;
+    final contacts = ref
+        .watch(sectionItemsProvider(ContentSection.numbers))
+        .where((i) => i.type == ItemType.contact && i.phones.isNotEmpty)
+        .take(8)
+        .toList();
+    if (contacts.isEmpty) return const SizedBox.shrink();
+
+    return Padding(
+      padding: const EdgeInsetsDirectional.only(top: AppSpacing.xl),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          SectionHeader(l10n.homeMustKnowTitle),
+          const SizedBox(height: AppSpacing.sm),
+          SingleChildScrollView(
+            key: const ValueKey('must-know-strip'),
+            scrollDirection: Axis.horizontal,
+            clipBehavior: Clip.none,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                for (final item in contacts) ...[
+                  ConstrainedBox(
+                    constraints: const BoxConstraints(
+                      minWidth: 140,
+                      maxWidth: 200,
+                    ),
+                    child: AppCard(
+                      key: ValueKey('must-know-${item.id}'),
+                      semanticLabel: '${item.title}، ${item.phones.first}',
+                      onTap: () => context.push(ContentRoutes.item(item.id)),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          LtrText(
+                            item.phones.first,
+                            style: AppTypography.price.copyWith(
+                              color: c.primary,
+                            ),
+                          ),
+                          const SizedBox(height: AppSpacing.xxs),
+                          Text(
+                            item.title,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: theme.textTheme.bodySmall?.copyWith(
+                              color: c.textSecondary,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: AppSpacing.cardGap),
+                ],
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// "Content last updated" from the newest `as_of`.
+class _AsOfNote extends ConsumerWidget {
+  const _AsOfNote();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final asOf = ref.watch(contentLibraryProvider).latestAsOf;
+    if (asOf == null) return const SizedBox.shrink();
+    final l10n = AppLocalizations.of(context);
+    final c = context.colors;
+    return Padding(
+      padding: const EdgeInsetsDirectional.only(bottom: AppSpacing.sm),
+      child: Text(
+        l10n.contentAsOf(
+          TrustFormat.date(asOf, Localizations.localeOf(context)),
+        ),
+        key: const ValueKey('content-as-of'),
+        textAlign: TextAlign.center,
+        style: AppTypography.labelS.copyWith(color: c.textTertiary),
       ),
     );
   }

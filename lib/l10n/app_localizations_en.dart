@@ -297,4 +297,160 @@ class AppLocalizationsEn extends AppLocalizations {
   String priceExpiredNote(String date) {
     return 'Ended on $date — do not quote as current';
   }
+
+  @override
+  String get sectionInternet => 'Internet';
+
+  @override
+  String get sectionInternetDesc => 'Mobile data, home internet and 5G';
+
+  @override
+  String get sectionProcedures => 'Services & procedures';
+
+  @override
+  String get sectionProceduresDesc => 'Branch procedures, cases and roaming';
+
+  @override
+  String get sectionCompany => 'About the company';
+
+  @override
+  String get sectionCompanyDesc => 'Profile, network, app and competitors';
+
+  @override
+  String get sectionPackagesHomeDesc => 'Prepaid, postpaid and add-ons';
+
+  @override
+  String get sectionNumbersHomeDesc => 'Hotlines and every USSD code';
+
+  @override
+  String get sectionWalletHomeDesc => 'Registration, codes, limits and fees';
+
+  @override
+  String get sectionGlossaryHomeDesc => 'Terms and abbreviations';
+
+  @override
+  String itemCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count items',
+      one: '1 item',
+      zero: 'No items',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get homeMustKnowTitle => 'Numbers to know by heart';
+
+  @override
+  String contentAsOf(String date) {
+    return 'Content last updated: $date';
+  }
+
+  @override
+  String get contentEmptySection => 'No content in this section yet';
+
+  @override
+  String get contentEmptySectionBody =>
+      'Content will appear here once it is added.';
+
+  @override
+  String get filterAll => 'All';
+
+  @override
+  String get filterConfirmed => 'Confirmed';
+
+  @override
+  String get filterUnconfirmed => 'Unconfirmed';
+
+  @override
+  String get statusConfirmedGuide => 'Confirmed per guide';
+
+  @override
+  String get statusUnconfirmedReview => 'Unconfirmed — check internally';
+
+  @override
+  String get unconfirmedBannerTitle => 'This information is unconfirmed';
+
+  @override
+  String get unconfirmedBannerBody =>
+      'Check the internal system or your supervisor before telling the customer.';
+
+  @override
+  String get unconfirmedGroupTitle => 'Unconfirmed items';
+
+  @override
+  String get answerCardTitle => 'Quick answer';
+
+  @override
+  String get detailFactsTitle => 'All details';
+
+  @override
+  String get detailStepsTitle => 'Steps';
+
+  @override
+  String get detailSourcesTitle => 'Sources';
+
+  @override
+  String get detailRelatedTitle => 'Related items';
+
+  @override
+  String detailPdfPages(String pages) {
+    return 'Guide page $pages';
+  }
+
+  @override
+  String get detailNotFound => 'Item not found';
+
+  @override
+  String get detailNotFoundBody => 'It may have been removed or renamed.';
+
+  @override
+  String get callPlaceholder =>
+      'Direct calling isn\'t available yet — use the copy button.';
+
+  @override
+  String get searchIdleBody =>
+      'Search all content in colloquial Arabic, by code or by number — offline.';
+
+  @override
+  String get searchEmptyTitle => 'No results';
+
+  @override
+  String get searchEmptyBody =>
+      'Try another word, or type the code or number directly.';
+
+  @override
+  String searchResultsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count results',
+      one: '1 result',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get trainingReviewTitle => 'Review unconfirmed items';
+
+  @override
+  String trainingReviewSubtitle(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count items need internal review',
+      one: '1 item needs internal review',
+      zero: 'Nothing to review',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get reviewScreenTitle => 'Unconfirmed items';
+
+  @override
+  String get reviewScreenSubtitle =>
+      'Every unconfirmed or conflicting item across sections.';
 }

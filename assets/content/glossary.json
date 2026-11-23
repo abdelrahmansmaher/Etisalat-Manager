@@ -1,0 +1,540 @@
+{
+  "section": "glossary",
+  "source_document": "pdf_guide_2026_11",
+  "as_of": "2026-11-22",
+  "items": [
+    {
+      "id": "gl-e-and",
+      "type": "glossary",
+      "category_ar": "مسميات لازم تعرفها",
+      "title_ar": "e& (إي آند)",
+      "title_en": "e&",
+      "summary_ar": "الاسم التجاري الجديد لاتصالات مصر من 2023.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "إي آند",
+        "اي اند",
+        "اتصالات",
+        "etisalat"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        5
+      ]
+    },
+    {
+      "id": "gl-prepaid",
+      "type": "glossary",
+      "category_ar": "مسميات لازم تعرفها",
+      "title_ar": "Prepaid / كارت",
+      "title_en": "Prepaid",
+      "summary_ar": "خط مدفوع مقدمًا بيتشحن بكروت أو أونلاين.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "كارت",
+        "مدفوع مقدما",
+        "شحن",
+        "prepaid"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        5
+      ]
+    },
+    {
+      "id": "gl-postpaid",
+      "type": "glossary",
+      "category_ar": "مسميات لازم تعرفها",
+      "title_ar": "Postpaid / فاتورة",
+      "title_en": "Postpaid",
+      "summary_ar": "خط بيتحاسب آخر الشهر بفاتورة.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "فاتورة",
+        "خط آجل",
+        "postpaid",
+        "بيل"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        5
+      ]
+    },
+    {
+      "id": "gl-control",
+      "type": "glossary",
+      "category_ar": "مسميات لازم تعرفها",
+      "title_ar": "Control / كنترول",
+      "title_en": "Control",
+      "summary_ar": "فاتورة بحد أقصى ثابت، أو نظام وسط بين الكارت والفاتورة.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "كنترول",
+        "control",
+        "حد أقصى"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        5
+      ]
+    },
+    {
+      "id": "gl-ussd",
+      "type": "glossary",
+      "category_ar": "مسميات لازم تعرفها",
+      "title_ar": "USSD",
+      "title_en": "USSD",
+      "summary_ar": "الأكواد اللي بتبدأ بـ * وتنتهي بـ #.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "كود",
+        "نجمة",
+        "شباك",
+        "codes"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        5
+      ]
+    },
+    {
+      "id": "gl-mnp",
+      "type": "glossary",
+      "category_ar": "مسميات لازم تعرفها",
+      "title_ar": "MNP",
+      "title_en": "Mobile Number Portability",
+      "summary_ar": "نقل الرقم من شبكة لشبكة مع الاحتفاظ بنفس الرقم.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "نقل الرقم",
+        "نقل الخط",
+        "number portability"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        5
+      ]
+    },
+    {
+      "id": "gl-esim",
+      "type": "glossary",
+      "category_ar": "مسميات لازم تعرفها",
+      "title_ar": "eSIM",
+      "title_en": "eSIM",
+      "summary_ar": "شريحة إلكترونية مدمجة في الموبايل من غير شريحة بلاستيك.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "شريحة إلكترونية",
+        "اي سيم",
+        "esim"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        5
+      ]
+    },
+    {
+      "id": "gl-vas",
+      "type": "glossary",
+      "category_ar": "مسميات لازم تعرفها",
+      "title_ar": "VAS",
+      "title_en": "Value Added Services",
+      "summary_ar": "الخدمات الإضافية (كول تون، اشتراكات محتوى...).",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "خدمات إضافية",
+        "خدمات القيمة المضافة",
+        "vas"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        5
+      ]
+    },
+    {
+      "id": "gl-ntra",
+      "type": "glossary",
+      "category_ar": "مسميات لازم تعرفها",
+      "title_ar": "NTRA",
+      "title_en": "National Telecom Regulatory Authority",
+      "summary_ar": "الجهاز القومي لتنظيم الاتصالات.",
+      "facts": [],
+      "codes": [],
+      "phones": [
+        "155"
+      ],
+      "tags": [
+        "الجهاز",
+        "الجهاز القومي",
+        "تنظيم الاتصالات",
+        "ntra",
+        "155"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        5
+      ]
+    },
+    {
+      "id": "gl-caller-tune",
+      "type": "glossary",
+      "category_ar": "مصطلحات من قسم الشركة",
+      "title_ar": "كول تون (Caller Tune)",
+      "title_en": "Caller Tune / CRBT",
+      "summary_ar": "نغمة الانتظار — خدمة قيمة مضافة؛ مزوّد المنصة تاريخيًا Comviva لخدمة CRBT.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "نغمة الانتظار",
+        "كول تون",
+        "CRBT",
+        "رنة"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        9
+      ]
+    },
+    {
+      "id": "gl-free-trial",
+      "type": "glossary",
+      "category_ar": "مصطلحات من قسم الشركة",
+      "title_ar": "الفترة المجانية (Free trial)",
+      "title_en": "Free trial",
+      "summary_ar": "الأيام المجانية في خدمة قيمة مضافة؛ لازم الإعلان يقول عددها ويوضح هل الخدمة هتقف لوحدها بعدها ولا هتتجدد بسعر معين.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "فترة مجانية",
+        "تجربة مجانية",
+        "free trial"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        8
+      ]
+    },
+    {
+      "id": "gl-4g-5g",
+      "type": "glossary",
+      "category_ar": "مصطلحات من قسم الشركة",
+      "title_ar": "4G / 5G",
+      "title_en": "4G / 5G",
+      "summary_ar": "أجيال شبكة المحمول؛ 5G اتطلقت رسميًا في مصر في يونيو 2025.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "فورجي",
+        "فايف جي",
+        "4G",
+        "5G",
+        "شبكة"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        7
+      ]
+    },
+    {
+      "id": "gl-nfc",
+      "type": "glossary",
+      "category_ar": "مصطلحات من قسم الشركة",
+      "title_ar": "NFC",
+      "title_en": "NFC",
+      "summary_ar": "تقنية بيستخدمها تطبيق My e& لشحن كارت الكهرباء (من الإصدار 35.0.0).",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "كارت الكهرباء",
+        "nfc"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        7
+      ]
+    },
+    {
+      "id": "gl-m2m",
+      "type": "glossary",
+      "category_ar": "مصطلحات من قسم الشركة",
+      "title_ar": "M2M",
+      "title_en": "Machine to Machine",
+      "summary_ar": "شرائح M2M من خدمات الشركات (Enterprise).",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "شرائح أجهزة",
+        "m2m"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        11
+      ]
+    },
+    {
+      "id": "gl-iot",
+      "type": "glossary",
+      "category_ar": "مصطلحات من قسم الشركة",
+      "title_ar": "IoT / AIoT",
+      "title_en": "Internet of Things",
+      "summary_ar": "إنترنت الأشياء — حلول المدن الذكية والبيوت الذكية.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "إنترنت الأشياء",
+        "iot",
+        "مدن ذكية"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        10
+      ]
+    },
+    {
+      "id": "gl-vdsl",
+      "type": "glossary",
+      "category_ar": "مصطلحات من قسم الشركة",
+      "title_ar": "VDSL",
+      "title_en": "VDSL",
+      "summary_ar": "باقات إنترنت أرضي موجودة عند e&.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "إنترنت أرضي",
+        "vdsl",
+        "adsl"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        11
+      ]
+    },
+    {
+      "id": "gl-emerald",
+      "type": "glossary",
+      "category_ar": "مصطلحات من قسم الشركة",
+      "title_ar": "Emerald (إيميرالد)",
+      "title_en": "Emerald",
+      "summary_ar": "شريحة عملاء e& ذوي القيمة العالية.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "إيميرالد",
+        "emerald",
+        "عملاء مميزين"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        8
+      ]
+    },
+    {
+      "id": "gl-hekaya",
+      "type": "glossary",
+      "category_ar": "مصطلحات من قسم الشركة",
+      "title_ar": "Hekaya (حكاية)",
+      "title_en": "Hekaya",
+      "summary_ar": "شريحة e& للشباب وكثيفي استخدام الموبايل.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "حكاية",
+        "hekaya",
+        "شباب"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        8
+      ]
+    },
+    {
+      "id": "gl-ecoins",
+      "type": "glossary",
+      "category_ar": "مصطلحات من قسم الشركة",
+      "title_ar": "ecoins",
+      "title_en": "ecoins",
+      "summary_ar": "نظام مرن بياخد بيه عملاء Emerald باقة TOD Total.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "إي كوينز",
+        "ecoins",
+        "نقاط"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        8
+      ]
+    },
+    {
+      "id": "gl-prefix",
+      "type": "glossary",
+      "category_ar": "مصطلحات من قسم الشركة",
+      "title_ar": "البادئة",
+      "title_en": "Prefix",
+      "summary_ar": "أول 3 أرقام في رقم الموبايل (e& 011، فودافون 010، أورنج 012، WE 015)؛ بعد نقل الرقم البادئة بتفضل زي ما هي فمبقتش دليل أكيد على الشبكة.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "بادئة",
+        "011",
+        "010",
+        "012",
+        "015",
+        "prefix"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        6,
+        11
+      ]
+    }
+  ]
+}

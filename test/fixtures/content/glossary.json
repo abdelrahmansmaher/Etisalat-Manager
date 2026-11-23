@@ -1,0 +1,3 @@
+{ "section": "glossary", "as_of": "2025-12-01", "items": [
+  {"id": "gl-test-ussd", "type": "glossary", "category_ar": "مصطلحات", "title_ar": "يو إس إس دي", "title_en": "USSD", "summary_ar": "أكواد تبدأ بنجمة وتنتهي بمربع", "status": "confirmed"}
+]}

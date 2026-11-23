@@ -1,0 +1,77 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../core/content/content.dart';
+import '../../core/theme/theme.dart';
+import '../../core/widgets/app_card.dart';
+import '../../core/widgets/page_scaffold.dart';
+import '../../core/widgets/trust/unofficial_disclaimer.dart';
+import '../../l10n/app_localizations.dart';
+import 'content_widgets.dart';
+import 'section_ui.dart';
+
+/// Every unconfirmed / conflicting item across sections.
+class ReviewScreen extends ConsumerWidget {
+  const ReviewScreen({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context);
+    final theme = Theme.of(context);
+    final c = context.colors;
+    final async = ref.watch(contentProvider);
+    final items = async.value?.needsReview ?? const <ContentItem>[];
+    final pad = AppSpacing.screenPaddingFor(MediaQuery.sizeOf(context).width);
+
+    final children = <Widget>[
+      Text(
+        l10n.reviewScreenSubtitle,
+        style: theme.textTheme.bodyLarge?.copyWith(color: c.textTertiary),
+      ),
+      const SizedBox(height: AppSpacing.md),
+    ];
+    if (async.value == null) {
+      children.add(const ContentLoading());
+    } else if (items.isEmpty) {
+      children.add(
+        PlaceholderPanel(
+          icon: Icons.task_alt_rounded,
+          title: l10n.trainingReviewSubtitle(0),
+          body: l10n.reviewScreenSubtitle,
+        ),
+      );
+    }
+    ContentSection? current;
+    for (final i in items) {
+      if (i.section != current) {
+        current = i.section;
+        children.addAll([
+          const SizedBox(height: AppSpacing.sm),
+          SectionHeader(i.section.title(l10n)),
+          const SizedBox(height: AppSpacing.sm),
+        ]);
+      }
+      children.addAll([
+        ContentItemRow(item: i),
+        const SizedBox(height: AppSpacing.cardGap),
+      ]);
+    }
+    children.addAll([
+      const SizedBox(height: AppSpacing.xl),
+      const UnofficialDisclaimer.compact(),
+    ]);
+
+    return Scaffold(
+      appBar: AppBar(title: Text(l10n.reviewScreenTitle)),
+      body: ListView(
+        padding: EdgeInsetsDirectional.fromSTEB(
+          pad,
+          AppSpacing.sm,
+          pad,
+          AppSpacing.xl + MediaQuery.paddingOf(context).bottom,
+        ),
+        children: children,
+      ),
+    );
+  }
+}

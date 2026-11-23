@@ -3,9 +3,12 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:knowledge_hub/app.dart';
+import 'package:knowledge_hub/core/content/content.dart';
 import 'package:knowledge_hub/core/theme/theme.dart';
 import 'package:knowledge_hub/l10n/app_localizations.dart';
 import 'package:knowledge_hub/l10n/locale_provider.dart';
+
+import 'content_fixtures.dart';
 
 const ar = Locale('ar');
 const en = Locale('en');
@@ -30,6 +33,7 @@ Future<void> pumpApp(
   ThemeMode themeMode = ThemeMode.light,
   Size size = const Size(360, 640),
   double textScale = 1.0,
+  ContentSource? content,
 }) async {
   setSurface(tester, size: size, textScale: textScale);
   await tester.pumpWidget(
@@ -37,6 +41,9 @@ Future<void> pumpApp(
       overrides: [
         localeProvider.overrideWith(() => LocaleController(locale)),
         themeModeProvider.overrideWith(() => ThemeModeController(themeMode)),
+        contentSourceProvider.overrideWithValue(
+          content ?? fixtureContentSource(),
+        ),
       ],
       child: const KnowledgeHubApp(),
     ),
@@ -54,6 +61,7 @@ Future<void> pumpAppNoSettle(WidgetTester tester, {Locale locale = ar}) async {
         themeModeProvider.overrideWith(
           () => ThemeModeController(ThemeMode.light),
         ),
+        contentSourceProvider.overrideWithValue(fixtureContentSource()),
       ],
       child: const KnowledgeHubApp(),
     ),

@@ -1,0 +1,19 @@
+{
+  "section": "procedures",
+  "as_of": "2026-03-01",
+  "items": [
+    {
+      "id": "proc-test-replace-sim",
+      "type": "procedure",
+      "category_ar": "إجراءات الخط",
+      "title_ar": "استبدال الشريحة",
+      "summary_ar": "خطوات وهمية لاستبدال الخط",
+      "body_ar": "يتم التحقق من هوية صاحب الخط قبل أي شيء.",
+      "steps_ar": ["اطلب الهوية", "تحقق من البيانات", "سلّم الشريحة الجديدة"],
+      "tags": ["سيم", "بدل فاقد"],
+      "status": "confirmed",
+      "sources": [{"name":"دليل تجريبي","type":"pdf_guide"}],
+      "related": ["num-test-hotline", "missing-id"]
+    }
+  ]
+}

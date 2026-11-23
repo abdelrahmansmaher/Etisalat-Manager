@@ -1,12 +1,10 @@
 {
   "@@locale": "ar",
-
   "navHome": "الرئيسية",
   "navBrowse": "تصفح",
   "navSearch": "بحث",
   "navTraining": "التدريب",
   "navMe": "أنا",
-
   "greetingMorning": "صباح الخير",
   "greetingEvening": "مساء الخير",
   "homeSearchHint": "ابحث عن باقة، كود، رقم…",
@@ -22,24 +20,19 @@
   "searchExampleItem": "باقة تجريبية",
   "searchExampleSource": "الموقع العام (مثال)",
   "homeSectionsTitle": "الموسوعات",
-
   "sectionPackages": "الباقات",
   "sectionServices": "الخدمات",
   "sectionNumbersCodes": "الأرقام والأكواد",
   "sectionWallet": "المحفظة",
   "sectionGlossary": "المصطلحات",
-
   "browseTitle": "تصفح الموسوعات",
   "contentComingSoon": "المحتوى قيد الإعداد",
-
   "searchTitle": "بحث",
   "searchFieldHint": "اكتب كلمة أو كودًا أو رقمًا",
   "searchClear": "مسح البحث",
   "searchPlaceholderBody": "البحث قيد الإنشاء — سيعمل بدون إنترنت وبالعامية.",
-
   "trainingTitle": "التدريب",
   "trainingPlaceholderBody": "مسارات التعلم والمراجعة اليومية — قريبًا.",
-
   "meTitle": "أنا",
   "settingsAppearance": "المظهر",
   "themeSystem": "حسب النظام",
@@ -51,41 +44,52 @@
   "aboutTitle": "عن التطبيق",
   "editorModeTitle": "وضع المحرر (دخول المالك)",
   "editorModeSubtitle": "قريبًا",
-
   "disclaimerShort": "تطبيق مستقل وغير رسمي — تحقق دائمًا من المصادر الرسمية.",
   "disclaimerFull": "تطبيق مستقل وغير رسمي، غير تابع لأي شركة اتصالات ولا معتمد منها. المعلومات للاسترشاد ويجب الرجوع للمصادر الرسمية المعتمدة.",
-
   "copyAction": "نسخ",
   "copyValueSemantics": "نسخ {value}",
   "@copyValueSemantics": {
-    "placeholders": { "value": { "type": "String" } }
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
   },
   "copiedMessage": "تم النسخ",
   "callAction": "اتصال",
   "symbolStar": "نجمة",
   "symbolHash": "مربع",
   "symbolPlus": "زائد",
-
   "statusVerified": "تم التحقق",
   "statusNeedsReview": "يحتاج مراجعة",
   "statusExpired": "منتهي",
   "statusUnverified": "بدون مصدر معتمد",
   "statusConflict": "تعارض",
   "statusPrivate": "خاص",
-
   "lastVerified": "آخر تحقق: {relative}",
   "@lastVerified": {
-    "placeholders": { "relative": { "type": "String" } }
+    "placeholders": {
+      "relative": {
+        "type": "String"
+      }
+    }
   },
   "daysAgo": "{count, plural, =0{اليوم} =1{منذ يوم} =2{منذ يومين} few{منذ {count} أيام} many{منذ {count} يومًا} other{منذ {count} يوم}}",
   "@daysAgo": {
-    "placeholders": { "count": { "type": "int" } }
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
   },
   "verifiedOn": "تم التحقق في {date}",
   "@verifiedOn": {
-    "placeholders": { "date": { "type": "String" } }
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
   },
-
   "sourceOfficialInternal": "مستند رسمي داخلي",
   "sourceOfficialPublic": "مصدر رسمي علني",
   "sourceTraining": "مادة تدريبية معتمدة",
@@ -95,17 +99,18 @@
   "sourceSemantics": "المصدر: {name}، {type}",
   "@sourceSemantics": {
     "placeholders": {
-      "name": { "type": "String" },
-      "type": { "type": "String" }
+      "name": {
+        "type": "String"
+      },
+      "type": {
+        "type": "String"
+      }
     }
   },
-
   "conflictTitle": "يوجد تعارض بين مصدرين حول هذه المعلومة",
   "conflictGuidance": "لا تُبلغ العميل بقيمة نهائية — راجع المصدر الرسمي أو المشرف.",
   "conflictAction": "مراجعة المصادر",
-
   "privateBadge": "ملاحظة خاصة — للمالك فقط",
-
   "currencyEgp": "ج.م",
   "taxInclusiveRecharge": "شامل ضريبة الشحن",
   "taxExclusiveVat": "غير شامل ضريبة القيمة المضافة",
@@ -113,25 +118,120 @@
   "priceValidRange": "ساري من {from} حتى {until}",
   "@priceValidRange": {
     "placeholders": {
-      "from": { "type": "String" },
-      "until": { "type": "String" }
+      "from": {
+        "type": "String"
+      },
+      "until": {
+        "type": "String"
+      }
     }
   },
   "priceValidFrom": "ساري من {from}",
   "@priceValidFrom": {
-    "placeholders": { "from": { "type": "String" } }
+    "placeholders": {
+      "from": {
+        "type": "String"
+      }
+    }
   },
   "priceNoEndDate": "بدون تاريخ انتهاء معلن",
   "priceEndsIn": "{count, plural, =0{ينتهي اليوم} =1{ينتهي غدًا} =2{ينتهي خلال يومين} few{ينتهي خلال {count} أيام} many{ينتهي خلال {count} يومًا} other{ينتهي خلال {count} يوم}}",
   "@priceEndsIn": {
-    "placeholders": { "count": { "type": "int" } }
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
   },
   "priceStartsOn": "يبدأ في {date} — ليس السعر الحالي",
   "@priceStartsOn": {
-    "placeholders": { "date": { "type": "String" } }
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
   },
   "priceExpiredNote": "انتهى في {date} — لا تستخدمه كسعر ساري",
   "@priceExpiredNote": {
-    "placeholders": { "date": { "type": "String" } }
-  }
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "sectionInternet": "الإنترنت",
+  "sectionInternetDesc": "باقات الموبايل والإنترنت المنزلي و5G",
+  "sectionProcedures": "الخدمات والإجراءات",
+  "sectionProceduresDesc": "إجراءات الفرع والحالات والتجوال",
+  "sectionCompany": "عن الشركة",
+  "sectionCompanyDesc": "نبذة، الشبكة، التطبيق والمنافسون",
+  "sectionPackagesHomeDesc": "أنظمة الكارت والفاتورة والإضافات",
+  "sectionNumbersHomeDesc": "أرقام خدمة العملاء وكل الأكواد",
+  "sectionWalletHomeDesc": "التسجيل والأكواد والحدود والرسوم",
+  "sectionGlossaryHomeDesc": "المصطلحات والاختصارات",
+  "itemCount": "{count, plural, =0{لا توجد بنود} =1{بند واحد} =2{بندان} few{{count} بنود} many{{count} بندًا} other{{count} بند}}",
+  "@itemCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "homeMustKnowTitle": "أرقام لازم تكون حافظها",
+  "contentAsOf": "آخر تحديث للمحتوى: {date}",
+  "@contentAsOf": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "contentEmptySection": "لا يوجد محتوى في هذا القسم بعد",
+  "contentEmptySectionBody": "سيظهر المحتوى هنا فور إضافته.",
+  "filterAll": "الكل",
+  "filterConfirmed": "مؤكد",
+  "filterUnconfirmed": "غير مؤكد",
+  "statusConfirmedGuide": "مؤكد حسب الدليل",
+  "statusUnconfirmedReview": "غير مؤكد — راجع داخليًا",
+  "unconfirmedBannerTitle": "هذه المعلومة غير مؤكدة",
+  "unconfirmedBannerBody": "راجع النظام الداخلي أو مشرفك قبل إبلاغ العميل.",
+  "unconfirmedGroupTitle": "بنود غير مؤكدة",
+  "answerCardTitle": "الإجابة السريعة",
+  "detailFactsTitle": "كل التفاصيل",
+  "detailStepsTitle": "الخطوات",
+  "detailSourcesTitle": "المصادر",
+  "detailRelatedTitle": "بنود ذات صلة",
+  "detailPdfPages": "من الدليل صفحة {pages}",
+  "@detailPdfPages": {
+    "placeholders": {
+      "pages": {
+        "type": "String"
+      }
+    }
+  },
+  "detailNotFound": "البند غير موجود",
+  "detailNotFoundBody": "ربما تم حذفه أو تغيير معرّفه.",
+  "callPlaceholder": "الاتصال المباشر غير متاح بعد — الرقم منسوخ؟ استخدم زر النسخ.",
+  "searchIdleBody": "ابحث في كل المحتوى بالعامية أو بالكود أو بالرقم — بدون إنترنت.",
+  "searchEmptyTitle": "لا توجد نتائج",
+  "searchEmptyBody": "جرّب كلمة أخرى، أو اكتب الكود أو الرقم مباشرة.",
+  "searchResultsCount": "{count, plural, =1{نتيجة واحدة} =2{نتيجتان} few{{count} نتائج} many{{count} نتيجة} other{{count} نتيجة}}",
+  "@searchResultsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "trainingReviewTitle": "راجع البنود غير المؤكدة",
+  "trainingReviewSubtitle": "{count, plural, =0{لا توجد بنود تحتاج مراجعة} =1{بند واحد يحتاج مراجعة داخلية} =2{بندان يحتاجان مراجعة داخلية} few{{count} بنود تحتاج مراجعة داخلية} many{{count} بندًا يحتاج مراجعة داخلية} other{{count} بند يحتاج مراجعة داخلية}}",
+  "@trainingReviewSubtitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "reviewScreenTitle": "البنود غير المؤكدة",
+  "reviewScreenSubtitle": "كل البنود غير المؤكدة أو المتعارضة من كل الأقسام."
 }

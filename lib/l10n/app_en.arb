@@ -1,12 +1,10 @@
 {
   "@@locale": "en",
-
   "navHome": "Home",
   "navBrowse": "Browse",
   "navSearch": "Search",
   "navTraining": "Training",
   "navMe": "Me",
-
   "greetingMorning": "Good morning",
   "greetingEvening": "Good evening",
   "homeSearchHint": "Search packages, codes, numbers…",
@@ -22,24 +20,19 @@
   "searchExampleItem": "Sample package",
   "searchExampleSource": "Public website (sample)",
   "homeSectionsTitle": "Encyclopedias",
-
   "sectionPackages": "Packages",
   "sectionServices": "Services",
   "sectionNumbersCodes": "Numbers & Codes",
   "sectionWallet": "Wallet",
   "sectionGlossary": "Glossary",
-
   "browseTitle": "Browse encyclopedias",
   "contentComingSoon": "Content coming soon",
-
   "searchTitle": "Search",
   "searchFieldHint": "Type a word, code or number",
   "searchClear": "Clear search",
   "searchPlaceholderBody": "Search is being built — it will work offline and understand colloquial Arabic.",
-
   "trainingTitle": "Training",
   "trainingPlaceholderBody": "Learning paths and daily review — coming soon.",
-
   "meTitle": "Me",
   "settingsAppearance": "Appearance",
   "themeSystem": "System default",
@@ -51,10 +44,8 @@
   "aboutTitle": "About",
   "editorModeTitle": "Editor mode (owner sign-in)",
   "editorModeSubtitle": "Coming soon",
-
   "disclaimerShort": "Independent, unofficial app — always check official sources.",
   "disclaimerFull": "An independent, unofficial app. Not affiliated with or endorsed by any telecom operator. Information is for guidance only; always refer to the approved official sources.",
-
   "copyAction": "Copy",
   "copyValueSemantics": "Copy {value}",
   "copiedMessage": "Copied",
@@ -62,18 +53,15 @@
   "symbolStar": "star",
   "symbolHash": "hash",
   "symbolPlus": "plus",
-
   "statusVerified": "Verified",
   "statusNeedsReview": "Needs review",
   "statusExpired": "Expired",
   "statusUnverified": "No approved source",
   "statusConflict": "Conflict",
   "statusPrivate": "Private",
-
   "lastVerified": "Last verified: {relative}",
   "daysAgo": "{count, plural, =0{today} =1{1 day ago} other{{count} days ago}}",
   "verifiedOn": "Verified on {date}",
-
   "sourceOfficialInternal": "Official internal document",
   "sourceOfficialPublic": "Official public source",
   "sourceTraining": "Approved training material",
@@ -81,13 +69,10 @@
   "sourceExternal": "General reference",
   "sourceOwnerNote": "Owner's note",
   "sourceSemantics": "Source: {name}, {type}",
-
   "conflictTitle": "Two sources disagree about this information",
   "conflictGuidance": "Don't give the customer a final value — check the official source or a supervisor.",
   "conflictAction": "Review sources",
-
   "privateBadge": "Private note — owner only",
-
   "currencyEgp": "EGP",
   "taxInclusiveRecharge": "Incl. recharge tax",
   "taxExclusiveVat": "Excl. VAT",
@@ -97,5 +82,45 @@
   "priceNoEndDate": "No announced end date",
   "priceEndsIn": "{count, plural, =0{Ends today} =1{Ends tomorrow} other{Ends in {count} days}}",
   "priceStartsOn": "Starts on {date} — not the current price",
-  "priceExpiredNote": "Ended on {date} — do not quote as current"
+  "priceExpiredNote": "Ended on {date} — do not quote as current",
+  "sectionInternet": "Internet",
+  "sectionInternetDesc": "Mobile data, home internet and 5G",
+  "sectionProcedures": "Services & procedures",
+  "sectionProceduresDesc": "Branch procedures, cases and roaming",
+  "sectionCompany": "About the company",
+  "sectionCompanyDesc": "Profile, network, app and competitors",
+  "sectionPackagesHomeDesc": "Prepaid, postpaid and add-ons",
+  "sectionNumbersHomeDesc": "Hotlines and every USSD code",
+  "sectionWalletHomeDesc": "Registration, codes, limits and fees",
+  "sectionGlossaryHomeDesc": "Terms and abbreviations",
+  "itemCount": "{count, plural, =0{No items} =1{1 item} other{{count} items}}",
+  "homeMustKnowTitle": "Numbers to know by heart",
+  "contentAsOf": "Content last updated: {date}",
+  "contentEmptySection": "No content in this section yet",
+  "contentEmptySectionBody": "Content will appear here once it is added.",
+  "filterAll": "All",
+  "filterConfirmed": "Confirmed",
+  "filterUnconfirmed": "Unconfirmed",
+  "statusConfirmedGuide": "Confirmed per guide",
+  "statusUnconfirmedReview": "Unconfirmed — check internally",
+  "unconfirmedBannerTitle": "This information is unconfirmed",
+  "unconfirmedBannerBody": "Check the internal system or your supervisor before telling the customer.",
+  "unconfirmedGroupTitle": "Unconfirmed items",
+  "answerCardTitle": "Quick answer",
+  "detailFactsTitle": "All details",
+  "detailStepsTitle": "Steps",
+  "detailSourcesTitle": "Sources",
+  "detailRelatedTitle": "Related items",
+  "detailPdfPages": "Guide page {pages}",
+  "detailNotFound": "Item not found",
+  "detailNotFoundBody": "It may have been removed or renamed.",
+  "callPlaceholder": "Direct calling isn't available yet — use the copy button.",
+  "searchIdleBody": "Search all content in colloquial Arabic, by code or by number — offline.",
+  "searchEmptyTitle": "No results",
+  "searchEmptyBody": "Try another word, or type the code or number directly.",
+  "searchResultsCount": "{count, plural, =1{1 result} other{{count} results}}",
+  "trainingReviewTitle": "Review unconfirmed items",
+  "trainingReviewSubtitle": "{count, plural, =0{Nothing to review} =1{1 item needs internal review} other{{count} items need internal review}}",
+  "reviewScreenTitle": "Unconfirmed items",
+  "reviewScreenSubtitle": "Every unconfirmed or conflicting item across sections."
 }

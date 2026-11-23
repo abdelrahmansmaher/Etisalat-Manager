@@ -1,0 +1,41 @@
+{
+  "section": "numbers",
+  "as_of": "2026-02-15",
+  "items": [
+    {
+      "id": "num-test-hotline",
+      "type": "contact",
+      "category_ar": "أرقام خدمة العملاء",
+      "title_ar": "خدمة العملاء التجريبية",
+      "summary_ar": "رقم وهمي لخدمة العملاء",
+      "facts": [{"label_ar": "الرقم", "value": "7777", "kind": "phone"}],
+      "phones": ["7777"],
+      "tags": ["كول سنتر", "شكوى"],
+      "status": "confirmed",
+      "sources": [{"name":"دليل تجريبي","type":"pdf_guide"}]
+    },
+    {
+      "id": "num-test-mobile",
+      "type": "contact",
+      "category_ar": "أرقام خدمة العملاء",
+      "title_ar": "خط الدعم الوهمي",
+      "summary_ar": "رقم موبايل وهمي",
+      "facts": [{"label_ar": "الرقم", "value": "01000000000", "kind": "phone"}],
+      "phones": ["01000000000"],
+      "status": "confirmed",
+      "sources": [{"name":"دليل تجريبي","type":"pdf_guide"}]
+    },
+    {
+      "id": "code-test-balance",
+      "type": "code",
+      "category_ar": "أكواد الرصيد",
+      "title_ar": "معرفة الرصيد التجريبي",
+      "summary_ar": "كود وهمي للاستعلام عن الرصيد",
+      "facts": [{"label_ar": "الكود", "value": "*555#", "kind": "code"}],
+      "codes": ["*555#"],
+      "tags": ["رصيد", "فلوس"],
+      "status": "confirmed",
+      "sources": [{"name":"دليل تجريبي","type":"pdf_guide"}]
+    }
+  ]
+}

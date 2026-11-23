@@ -64,6 +64,10 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
+  # Bundled offline content, one JSON file per section (see SCHEMA.md).
+  assets:
+    - assets/content/
+
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

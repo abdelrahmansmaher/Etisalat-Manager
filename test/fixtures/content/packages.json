@@ -1,0 +1,80 @@
+{
+  "section": "packages",
+  "source_document": "fake_fixture",
+  "as_of": "2026-01-10",
+  "items": [
+    {
+      "id": "pkg-test-alpha",
+      "type": "package",
+      "category_ar": "باقات تجريبية",
+      "title_ar": "باقة ألفا التجريبية",
+      "title_en": "Alpha Test Bundle",
+      "summary_ar": "باقة شهرية وهمية فيها 999 وحدة للاختبار فقط",
+      "body_ar": "فقرة أولى عن الباقة.\n\nفقرة ثانية.\n- نقطة أولى\n- نقطة ثانية",
+      "facts": [
+        {"label_ar": "السعر", "value": "11.11", "unit": "ج", "kind": "price"},
+        {"label_ar": "الوحدات", "value": "999", "kind": "quantity"},
+        {"label_ar": "كود الاشتراك", "value": "*999#", "kind": "code"},
+        {"label_ar": "المدة", "value": "30", "unit": "يوم", "kind": "duration"},
+        {"label_ar": "ملاحظة", "value": "قيمة وهمية", "kind": "text"}
+      ],
+      "codes": ["*999#"],
+      "phones": [],
+      "tags": ["ميكس", "كارت", "alpha"],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد (مصدر وهمي)",
+      "sources": [{"name":"دليل تجريبي","type":"pdf_guide"}, {"name":"موقع وهمي","url":"https://example.com/alpha","type":"official_site"}],
+      "pdf_pages": [7],
+      "related": ["pkg-test-beta"]
+    },
+    {
+      "id": "pkg-test-beta",
+      "type": "package",
+      "category_ar": "باقات تجريبية",
+      "title_ar": "باقة بيتا",
+      "summary_ar": "عرض وهمي يذكر ألفا في الملخص",
+      "facts": [{"label_ar": "السعر", "value": "22.22", "unit": "ج", "kind": "price"}],
+      "codes": ["*888*1#"],
+      "tags": ["عرض"],
+      "status": "unconfirmed",
+      "status_note_ar": "غير مؤكد في الدليل الوهمي",
+      "sources": [{"name":"دليل تجريبي","type":"pdf_guide"}],
+      "pdf_pages": [8]
+    },
+    {
+      "id": "pkg-test-gamma",
+      "type": "package",
+      "category_ar": "باقات أخرى",
+      "title_ar": "باقة جاما",
+      "summary_ar": "سعرها مختلف بين مصدرين",
+      "facts": [
+        {"label_ar": "السعر حسب المصدر الأول", "value": "33", "unit": "ج", "kind": "price"},
+        {"label_ar": "السعر حسب المصدر الثاني", "value": "34", "unit": "ج", "kind": "price"}
+      ],
+      "status": "conflict",
+      "status_note_ar": "الدليل الوهمي يذكر قيمتين",
+      "sources": [{"name":"دليل تجريبي","type":"pdf_guide"}]
+    },
+    {
+      "id": "pkg-test-unverified",
+      "type": "unverified",
+      "category_ar": "بنود غير مؤكدة",
+      "title_ar": "بند للمراجعة",
+      "summary_ar": "معلومة وهمية تحتاج مراجعة داخلية",
+      "status": "unconfirmed",
+      "sources": [{"name":"دليل تجريبي","type":"pdf_guide"}]
+    },
+    {"type": "package", "title_ar": "عنصر بدون معرف"},
+    "not an object",
+    {
+      "id": "pkg-test-weird",
+      "type": "spaceship",
+      "category_ar": "باقات أخرى",
+      "title_ar": "قيم غير معروفة",
+      "summary_ar": "نوع وحالة غير معروفين",
+      "facts": [{"label_ar": "شيء", "value": "1", "kind": "banana"}],
+      "status": "maybe",
+      "sources": [{"name": "مصدر", "type": "alien"}]
+    }
+  ]
+}

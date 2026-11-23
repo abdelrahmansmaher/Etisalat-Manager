@@ -1,0 +1,5020 @@
+{
+  "section": "wallet",
+  "source_document": "pdf_guide_2026_11",
+  "as_of": "2026-11-22",
+  "items": [
+    {
+      "id": "wal-rule-unconfirmed",
+      "type": "rule",
+      "category_ar": "اسم الخدمة وتاريخها",
+      "title_ar": "قاعدة: لا تعطي رقمًا غير مؤكد للعميل",
+      "summary_ar": "أي رقم أو كود عليه علامة (غير مؤكد) لا يُعطى للعميل كمعلومة نهائية؛ يُراجَع أولًا على النظام الداخلي أو على 778.",
+      "body_ar": "لم يكن ممكنًا الوصول إلى صفحات الموقع الرسمي (etisalat.eg / eand.com.eg) أثناء البحث، فالمعلومات مأخوذة من متجر التطبيقات والصحف الاقتصادية المصرية. راجِع أي رقم حساس على النظام الداخلي أو الكتيب.",
+      "facts": [
+        {
+          "label_ar": "رقم",
+          "value": "778",
+          "kind": "phone"
+        }
+      ],
+      "codes": [],
+      "phones": [
+        "778"
+      ],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "تأكد"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        41
+      ]
+    },
+    {
+      "id": "wal-name-etisalat-cash",
+      "type": "article",
+      "category_ar": "اسم الخدمة وتاريخها",
+      "title_ar": "اسم المحفظة: اتصالات كاش (Etisalat Cash)",
+      "summary_ar": "قبل 2022 تقريبًا: الاسم الأقدم وأكثرها انتشارًا بين العملاء.",
+      "facts": [
+        {
+          "label_ar": "الفترة",
+          "value": "قبل 2022 تقريبًا",
+          "kind": "date"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "اسم",
+        "اتصالات ماني",
+        "etisalat money"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        41
+      ]
+    },
+    {
+      "id": "wal-name-e-cash",
+      "type": "article",
+      "category_ar": "اسم الخدمة وتاريخها",
+      "title_ar": "اسم المحفظة: e& cash (إي آند كاش)",
+      "summary_ar": "2022 – أغسطس 2025: بعد تغيير هوية المجموعة إلى e&.",
+      "facts": [
+        {
+          "label_ar": "الفترة",
+          "value": "2022 – أغسطس 2025",
+          "kind": "date"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "اسم",
+        "اتصالات ماني",
+        "etisalat money"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        41
+      ]
+    },
+    {
+      "id": "wal-name-e-money",
+      "type": "article",
+      "category_ar": "اسم الخدمة وتاريخها",
+      "title_ar": "اسم المحفظة: e& money (إي آند ماني)",
+      "summary_ar": "من 19 أغسطس 2025: الشركة أعلنت تغيير اسم خدماتها المالية من e& cash إلى e& money وقدمتها كمنصة مالية متكاملة.",
+      "facts": [
+        {
+          "label_ar": "الفترة",
+          "value": "من 19 أغسطس 2025",
+          "kind": "date"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "اسم",
+        "اتصالات ماني",
+        "etisalat money"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "bankygate — تغيير الاسم إلى e& money ورسوم 5 ج للسحب و1 ج للتحويل (19 أغسطس 2025)",
+          "url": "https://www.bankygate.com/63744",
+          "type": "press"
+        },
+        {
+          "name": "بانكر نيوز — اسم etisalat Money وخدماتها (9 نوفمبر 2026)",
+          "url": "https://www.banker.news/159685",
+          "type": "press"
+        },
+        {
+          "name": "The National — عودة المجموعة لاسم Etisalat (أكتوبر 2026)",
+          "url": "https://www.thenationalnews.com/business/2026/10/06/uaes-e-revives-original-etisalat-branding-as-it-focuses-on-ai-growth/",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        41
+      ]
+    },
+    {
+      "id": "wal-name-etisalat-money",
+      "type": "article",
+      "category_ar": "اسم الخدمة وتاريخها",
+      "title_ar": "اسم المحفظة: etisalat money",
+      "summary_ar": "أواخر 2026: في أكتوبر 2026 أعلنت المجموعة الأم العودة لاسم Etisalat. التطبيق في المتجر اسمه الآن \"etisalat money - EG\"، وخبر نُشر في 9 نوفمبر 2026 استخدم اسم \"etisalat Money\". لم يوجد إعلان رسمي من الشركة في مصر عن تغيير اسم المحفظة.",
+      "facts": [
+        {
+          "label_ar": "الفترة",
+          "value": "أواخر 2026",
+          "kind": "date"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "اسم",
+        "اتصالات ماني",
+        "etisalat money"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد): لا يوجد إعلان رسمي من الشركة في مصر عن تغيير اسم المحفظة.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "bankygate — تغيير الاسم إلى e& money ورسوم 5 ج للسحب و1 ج للتحويل (19 أغسطس 2025)",
+          "url": "https://www.bankygate.com/63744",
+          "type": "press"
+        },
+        {
+          "name": "بانكر نيوز — اسم etisalat Money وخدماتها (9 نوفمبر 2026)",
+          "url": "https://www.banker.news/159685",
+          "type": "press"
+        },
+        {
+          "name": "The National — عودة المجموعة لاسم Etisalat (أكتوبر 2026)",
+          "url": "https://www.thenationalnews.com/business/2026/10/06/uaes-e-revives-original-etisalat-branding-as-it-focuses-on-ai-growth/",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        41
+      ]
+    },
+    {
+      "id": "wal-app",
+      "type": "service",
+      "category_ar": "اسم الخدمة وتاريخها",
+      "title_ar": "تطبيق المحفظة",
+      "summary_ar": "على iOS اسمه \"etisalat money - EG\" (المعرّف id1123428821)، وعلى أندرويد com.etisalat.flous؛ مجاني للعملاء المسجلين في الخدمة فقط.",
+      "facts": [
+        {
+          "label_ar": "اسم التطبيق (iOS)",
+          "value": "etisalat money - EG",
+          "kind": "text"
+        },
+        {
+          "label_ar": "معرّف iOS",
+          "value": "id1123428821",
+          "kind": "text"
+        },
+        {
+          "label_ar": "حزمة أندرويد",
+          "value": "com.etisalat.flous",
+          "kind": "text"
+        },
+        {
+          "label_ar": "الناشر",
+          "value": "Etisalat Egypt / e& Egypt",
+          "kind": "text"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "تطبيق",
+        "app",
+        "ابلكيشن"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "App Store — etisalat money - EG وسجل الإصدارات",
+          "url": "https://apps.apple.com/app/id1123428821",
+          "type": "app_store"
+        },
+        {
+          "name": "AppGoblin — بيانات تطبيق أندرويد (com.etisalat.flous)",
+          "url": "https://appgoblin.info/apps/com.etisalat.flous",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        41
+      ]
+    },
+    {
+      "id": "wal-main-code",
+      "type": "code",
+      "category_ar": "اسم الخدمة وتاريخها",
+      "title_ar": "الكود الرئيسي للمحفظة *777#",
+      "summary_ar": "كود USSD الرئيسي للمحفظة: *777# (مؤكد من أكثر من مصدر).",
+      "facts": [
+        {
+          "label_ar": "الكود الرئيسي",
+          "value": "*777#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*777#"
+      ],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "كود",
+        "777"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد من أكثر من مصدر",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        41,
+        43
+      ]
+    },
+    {
+      "id": "wal-size",
+      "type": "article",
+      "category_ar": "اسم الخدمة وتاريخها",
+      "title_ar": "حجم الخدمة",
+      "summary_ar": "حوالي 13.1 مليون محفظة مسجلة في نهاية النصف الأول من 2026، أي نحو 23% من المحافظ المسجلة في السوق.",
+      "facts": [
+        {
+          "label_ar": "عدد المحافظ",
+          "value": "13.1 مليون",
+          "kind": "quantity"
+        },
+        {
+          "label_ar": "الحصة السوقية",
+          "value": "23%",
+          "kind": "percent"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "حصة سوقية"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "جريدة المال — عدد المحافظ وهيكل الرسوم الثابتة (4 أكتوبر 2026)",
+          "url": "https://almalnews.com/2139237",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        41
+      ]
+    },
+    {
+      "id": "wal-elig-national-id",
+      "type": "rule",
+      "category_ar": "فتح المحفظة (التسجيل)",
+      "title_ar": "شرط فتح محفظة: مواطن مصري معه بطاقة رقم قومي سارية",
+      "summary_ar": "المستند الأساسي في كل طرق التسجيل.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "فتح محفظة",
+        "تسجيل",
+        "شروط"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        41,
+        42
+      ]
+    },
+    {
+      "id": "wal-elig-line-owner",
+      "type": "rule",
+      "category_ar": "فتح المحفظة (التسجيل)",
+      "title_ar": "شرط فتح محفظة: الخط مسجل باسم العميل نفسه",
+      "summary_ar": "شرط عام للمحافظ في مصر.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "فتح محفظة",
+        "تسجيل",
+        "شروط"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد كقاعدة عامة",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        41,
+        42
+      ]
+    },
+    {
+      "id": "wal-elig-one-per-line",
+      "type": "rule",
+      "category_ar": "فتح المحفظة (التسجيل)",
+      "title_ar": "شرط فتح محفظة: محفظة واحدة فقط على كل رقم موبايل",
+      "summary_ar": "قاعدة عامة لكل المحافظ.",
+      "facts": [
+        {
+          "label_ar": "الرقم",
+          "value": "1",
+          "kind": "quantity"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "فتح محفظة",
+        "تسجيل",
+        "شروط"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد (خبر 2024)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "أموال الغد — محفظة لكل رقم و3 محافظ لكل رقم قومي (مايو 2024)",
+          "url": "https://amwalalghad.com/z8af",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        41,
+        42
+      ]
+    },
+    {
+      "id": "wal-elig-three-per-id",
+      "type": "rule",
+      "category_ar": "فتح المحفظة (التسجيل)",
+      "title_ar": "شرط فتح محفظة: بحد أقصى 3 محافظ على الرقم القومي الواحد",
+      "summary_ar": "قاعدة عامة على مستوى السوق.",
+      "facts": [
+        {
+          "label_ar": "الحد الأقصى",
+          "value": "3",
+          "kind": "quantity"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "فتح محفظة",
+        "تسجيل",
+        "شروط"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد (خبر 2024)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "أموال الغد — محفظة لكل رقم و3 محافظ لكل رقم قومي (مايو 2024)",
+          "url": "https://amwalalghad.com/z8af",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        41,
+        42
+      ]
+    },
+    {
+      "id": "wal-elig-min-age",
+      "type": "rule",
+      "category_ar": "فتح المحفظة (التسجيل)",
+      "title_ar": "شرط فتح محفظة: السن الأدنى",
+      "summary_ar": "الشائع في السوق 16 سنة لبعض المحافظ و21 لغيرها. لم نجد السن الأدنى لمحفظة اتصالات تحديدًا.",
+      "facts": [
+        {
+          "label_ar": "الشائع في السوق",
+          "value": "16 أو 21 سنة",
+          "kind": "duration"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "فتح محفظة",
+        "تسجيل",
+        "شروط"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "bankygate — شروط السن في المحافظ البنكية (2020، للمقارنة)",
+          "url": "https://www.bankygate.com/7958",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        41,
+        42
+      ]
+    },
+    {
+      "id": "wal-elig-foreigners",
+      "type": "rule",
+      "category_ar": "فتح المحفظة (التسجيل)",
+      "title_ar": "شرط فتح محفظة: الأجانب",
+      "summary_ar": "لم نجد قاعدة منشورة. غالبًا يلزم جواز سفر وإقامة سارية.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "فتح محفظة",
+        "تسجيل",
+        "شروط"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        41,
+        42
+      ]
+    },
+    {
+      "id": "wal-elig-open-fee",
+      "type": "rule",
+      "category_ar": "فتح المحفظة (التسجيل)",
+      "title_ar": "شرط فتح محفظة: رسوم فتح المحفظة",
+      "summary_ar": "الاشتراك في محافظ المحمول مجاني بوجه عام.",
+      "facts": [
+        {
+          "label_ar": "الرسوم",
+          "value": "مجاني",
+          "kind": "text"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "فتح محفظة",
+        "تسجيل",
+        "شروط"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد كقاعدة عامة",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        41,
+        42
+      ]
+    },
+    {
+      "id": "wal-register-branch",
+      "type": "procedure",
+      "category_ar": "فتح المحفظة (التسجيل)",
+      "title_ar": "التسجيل في الفرع",
+      "summary_ar": "العميل يقدّم بطاقة الرقم القومي الأصلية، يتم التحقق من ملكية الخط وتفعيل المحفظة، ويختار رقمًا سريًا (PIN).",
+      "facts": [],
+      "steps_ar": [
+        "العميل يقدّم بطاقة الرقم القومي الأصلية.",
+        "التحقق من ملكية الخط والبيانات وتفعيل المحفظة.",
+        "العميل يختار رقمًا سريًا (PIN) خاصًا به."
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "تسجيل",
+        "فتح محفظة",
+        "فرع"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "الطريقة المضمونة لكبار السن ومن لا يملك هاتفًا ذكيًا.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        42
+      ]
+    },
+    {
+      "id": "wal-register-app",
+      "type": "procedure",
+      "category_ar": "فتح المحفظة (التسجيل)",
+      "title_ar": "التسجيل من التطبيق",
+      "summary_ar": "تحميل التطبيق ← التسجيل برقم الموبايل ← تصوير بطاقة الرقم القومي ← التحقق، دون زيارة فرع.",
+      "facts": [],
+      "steps_ar": [
+        "تحميل التطبيق.",
+        "التسجيل برقم الموبايل.",
+        "تصوير بطاقة الرقم القومي.",
+        "التحقق."
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "تسجيل",
+        "تطبيق",
+        "اونلاين"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "الشركة تقول إن التسجيل والدخول يحتاجان رقم الموبايل فقط، دون زيارة فرع.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        42
+      ]
+    },
+    {
+      "id": "wal-register-ussd",
+      "type": "procedure",
+      "category_ar": "فتح المحفظة (التسجيل)",
+      "title_ar": "التسجيل بكود USSD",
+      "summary_ar": "الاتصال بـ *777# ← إدخال الرقم القومي لمطابقته ← تأكيد الشركة ← اختيار PIN.",
+      "facts": [
+        {
+          "label_ar": "كود",
+          "value": "*777#",
+          "kind": "code"
+        }
+      ],
+      "steps_ar": [
+        "الاتصال بـ *777#.",
+        "إدخال الرقم القومي لمطابقته.",
+        "تأكيد الشركة (قد تتصل بالعميل لتأكيد الاشتراك).",
+        "اختيار رقم سري PIN."
+      ],
+      "codes": [
+        "*777#"
+      ],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "تسجيل",
+        "777",
+        "ussd"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        42
+      ]
+    },
+    {
+      "id": "wal-register-remote-2020",
+      "type": "article",
+      "category_ar": "فتح المحفظة (التسجيل)",
+      "title_ar": "معلومة تاريخية: التسجيل عن بُعد (أبريل 2020)",
+      "summary_ar": "في أبريل 2020 كان التسجيل عن بُعد مسموحًا مع استكمال التحقق في أي فرع خلال 90 يومًا بحد أقصى. مهلة الـ 90 يومًا الآن (غير مؤكد).",
+      "facts": [
+        {
+          "label_ar": "المهلة",
+          "value": "90",
+          "kind": "duration",
+          "unit": "يومًا"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "تسجيل",
+        "90 يوم"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "مهلة الـ 90 يومًا الآن (غير مؤكد).",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "جريدة المال — التسجيل عن بُعد ومهلة 90 يومًا ورسوم وحدود 2020",
+          "url": "https://almalnews.com/730841/",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        42
+      ]
+    },
+    {
+      "id": "wal-kyc-levels",
+      "type": "article",
+      "category_ar": "فتح المحفظة (التسجيل)",
+      "title_ar": "مستويات التحقق (KYC) وأنواع المحفظة",
+      "summary_ar": "لم نجد مستويات منشورة لمحفظة اتصالات (غير مؤكد)؛ في الواقع يكفي الرقم القومي ورقم الخط، وحدود المحفظة الموحدة في قسم الحدود.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "kyc",
+        "مستويات",
+        "tiers"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        42
+      ],
+      "related": [
+        "wal-limit-daily"
+      ]
+    },
+    {
+      "id": "wal-mashreq-neo",
+      "type": "service",
+      "category_ar": "فتح المحفظة (التسجيل)",
+      "title_ar": "خدمات مصرفية مرتبطة (بنك المشرق)",
+      "summary_ar": "منذ أغسطس 2025 بالشراكة مع بنك المشرق: حساب \"e& Mashreq Neo\" بعائد ادخار يصل إلى 20% حسب الإعلان، مع بطاقة ائتمان وحساب بالدولار؛ خدمات بنكية منفصلة عن المحفظة.",
+      "facts": [
+        {
+          "label_ar": "العائد (حسب الإعلان)",
+          "value": "يصل إلى 20%",
+          "kind": "percent"
+        },
+        {
+          "label_ar": "منذ",
+          "value": "أغسطس 2025",
+          "kind": "date"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "مشرق",
+        "mashreq",
+        "neo",
+        "بنك"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "أسعار العائد قد تكون تغيرت (غير مؤكد).",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        42
+      ]
+    },
+    {
+      "id": "wal-code-777-1",
+      "type": "code",
+      "category_ar": "أكواد USSD (*777#)",
+      "title_ar": "*777*1# — تحويل أموال",
+      "summary_ar": "*777*1#: تحويل أموال (لمحفظة اتصالات أو لأي محفظة على شبكة أخرى).",
+      "facts": [
+        {
+          "label_ar": "الكود المباشر",
+          "value": "*777*1#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "الخدمة",
+          "value": "تحويل أموال (لمحفظة اتصالات أو لأي محفظة على شبكة أخرى)",
+          "kind": "text"
+        }
+      ],
+      "codes": [
+        "*777*1#"
+      ],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "كود",
+        "777",
+        "ussd"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "التأكيد في الدليل: مصدر واحد. المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "البنك نوت — قائمة أكواد *777*X# وأرقام التواصل",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        43
+      ]
+    },
+    {
+      "id": "wal-code-777-2",
+      "type": "code",
+      "category_ar": "أكواد USSD (*777#)",
+      "title_ar": "*777*2# — شحن رصيد",
+      "summary_ar": "*777*2#: شحن رصيد.",
+      "facts": [
+        {
+          "label_ar": "الكود المباشر",
+          "value": "*777*2#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "الخدمة",
+          "value": "شحن رصيد",
+          "kind": "text"
+        }
+      ],
+      "codes": [
+        "*777*2#"
+      ],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "كود",
+        "777",
+        "ussd"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "التأكيد في الدليل: مصدر واحد. المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "البنك نوت — قائمة أكواد *777*X# وأرقام التواصل",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        43
+      ]
+    },
+    {
+      "id": "wal-code-777-3",
+      "type": "code",
+      "category_ar": "أكواد USSD (*777#)",
+      "title_ar": "*777*3# — سحب من ماكينة ATM بدون كارت",
+      "summary_ar": "*777*3#: سحب من ماكينة ATM بدون كارت.",
+      "facts": [
+        {
+          "label_ar": "الكود المباشر",
+          "value": "*777*3#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "الخدمة",
+          "value": "سحب من ماكينة ATM بدون كارت",
+          "kind": "text"
+        }
+      ],
+      "codes": [
+        "*777*3#"
+      ],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "كود",
+        "777",
+        "ussd"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "التأكيد في الدليل: مؤكد (مصراوي 2025). المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "البنك نوت — قائمة أكواد *777*X# وأرقام التواصل",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        },
+        {
+          "name": "مصراوي — خطوات السحب بدون كارت *777*3# (يوليو 2025)",
+          "url": "https://www.masrawy.com/news/news_economy/details/2025/7/3/2814821/",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        43
+      ]
+    },
+    {
+      "id": "wal-code-777-4",
+      "type": "code",
+      "category_ar": "أكواد USSD (*777#)",
+      "title_ar": "*777*4# — الاستعلام عن الرصيد",
+      "summary_ar": "*777*4#: الاستعلام عن الرصيد.",
+      "facts": [
+        {
+          "label_ar": "الكود المباشر",
+          "value": "*777*4#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "الخدمة",
+          "value": "الاستعلام عن الرصيد",
+          "kind": "text"
+        }
+      ],
+      "codes": [
+        "*777*4#"
+      ],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "كود",
+        "777",
+        "ussd"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "التأكيد في الدليل: مصدر واحد. المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "البنك نوت — قائمة أكواد *777*X# وأرقام التواصل",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        43
+      ]
+    },
+    {
+      "id": "wal-code-777-5",
+      "type": "code",
+      "category_ar": "أكواد USSD (*777#)",
+      "title_ar": "*777*5# — معاملات فوري",
+      "summary_ar": "*777*5#: معاملات فوري.",
+      "facts": [
+        {
+          "label_ar": "الكود المباشر",
+          "value": "*777*5#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "الخدمة",
+          "value": "معاملات فوري",
+          "kind": "text"
+        }
+      ],
+      "codes": [
+        "*777*5#"
+      ],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "كود",
+        "777",
+        "ussd"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "التأكيد في الدليل: مصدر واحد. المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "البنك نوت — قائمة أكواد *777*X# وأرقام التواصل",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        43
+      ]
+    },
+    {
+      "id": "wal-code-777-6",
+      "type": "code",
+      "category_ar": "أكواد USSD (*777#)",
+      "title_ar": "*777*6# — كارت الشراء أونلاين",
+      "summary_ar": "*777*6#: كارت الشراء أونلاين (الكارت الافتراضي VCN).",
+      "facts": [
+        {
+          "label_ar": "الكود المباشر",
+          "value": "*777*6#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "الخدمة",
+          "value": "كارت الشراء أونلاين (الكارت الافتراضي VCN)",
+          "kind": "text"
+        }
+      ],
+      "codes": [
+        "*777*6#"
+      ],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "كود",
+        "777",
+        "ussd"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "التأكيد في الدليل: مصدر واحد. المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "البنك نوت — قائمة أكواد *777*X# وأرقام التواصل",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        43
+      ]
+    },
+    {
+      "id": "wal-code-777-7",
+      "type": "code",
+      "category_ar": "أكواد USSD (*777#)",
+      "title_ar": "*777*7# — دفع فواتير المرافق",
+      "summary_ar": "*777*7#: دفع فواتير المرافق.",
+      "facts": [
+        {
+          "label_ar": "الكود المباشر",
+          "value": "*777*7#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "الخدمة",
+          "value": "دفع فواتير المرافق",
+          "kind": "text"
+        }
+      ],
+      "codes": [
+        "*777*7#"
+      ],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "كود",
+        "777",
+        "ussd"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "التأكيد في الدليل: مصدر واحد. المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "البنك نوت — قائمة أكواد *777*X# وأرقام التواصل",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        43
+      ]
+    },
+    {
+      "id": "wal-code-777-8",
+      "type": "code",
+      "category_ar": "أكواد USSD (*777#)",
+      "title_ar": "*777*8# — خدمات الرقم السري",
+      "summary_ar": "*777*8#: خدمات الرقم السري (PIN).",
+      "facts": [
+        {
+          "label_ar": "الكود المباشر",
+          "value": "*777*8#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "الخدمة",
+          "value": "خدمات الرقم السري (PIN)",
+          "kind": "text"
+        }
+      ],
+      "codes": [
+        "*777*8#"
+      ],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "كود",
+        "777",
+        "ussd"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "التأكيد في الدليل: مصدران. المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "البنك نوت — قائمة أكواد *777*X# وأرقام التواصل",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        43
+      ]
+    },
+    {
+      "id": "wal-code-777-9",
+      "type": "code",
+      "category_ar": "أكواد USSD (*777#)",
+      "title_ar": "*777*9# — دفع فاتورة الموبايل",
+      "summary_ar": "*777*9#: دفع فاتورة الموبايل.",
+      "facts": [
+        {
+          "label_ar": "الكود المباشر",
+          "value": "*777*9#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "الخدمة",
+          "value": "دفع فاتورة الموبايل",
+          "kind": "text"
+        }
+      ],
+      "codes": [
+        "*777*9#"
+      ],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "كود",
+        "777",
+        "ussd"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "التأكيد في الدليل: مصدر واحد. المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "البنك نوت — قائمة أكواد *777*X# وأرقام التواصل",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        43
+      ]
+    },
+    {
+      "id": "wal-code-777-10",
+      "type": "code",
+      "category_ar": "أكواد USSD (*777#)",
+      "title_ar": "*777*10# — التبرعات",
+      "summary_ar": "*777*10#: التبرعات.",
+      "facts": [
+        {
+          "label_ar": "الكود المباشر",
+          "value": "*777*10#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "الخدمة",
+          "value": "التبرعات",
+          "kind": "text"
+        }
+      ],
+      "codes": [
+        "*777*10#"
+      ],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "كود",
+        "777",
+        "ussd"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "التأكيد في الدليل: مصدر واحد. المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "البنك نوت — قائمة أكواد *777*X# وأرقام التواصل",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        43
+      ]
+    },
+    {
+      "id": "wal-code-777-11",
+      "type": "code",
+      "category_ar": "أكواد USSD (*777#)",
+      "title_ar": "*777*11# — السحب من الفرع",
+      "summary_ar": "*777*11#: السحب من الفرع.",
+      "facts": [
+        {
+          "label_ar": "الكود المباشر",
+          "value": "*777*11#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "الخدمة",
+          "value": "السحب من الفرع",
+          "kind": "text"
+        }
+      ],
+      "codes": [
+        "*777*11#"
+      ],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "كود",
+        "777",
+        "ussd"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "التأكيد في الدليل: مصدر واحد. المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "البنك نوت — قائمة أكواد *777*X# وأرقام التواصل",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        43
+      ]
+    },
+    {
+      "id": "wal-code-777-12",
+      "type": "code",
+      "category_ar": "أكواد USSD (*777#)",
+      "title_ar": "*777*12# — سجل المعاملات السابقة",
+      "summary_ar": "*777*12#: سجل المعاملات السابقة.",
+      "facts": [
+        {
+          "label_ar": "الكود المباشر",
+          "value": "*777*12#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "الخدمة",
+          "value": "سجل المعاملات السابقة",
+          "kind": "text"
+        }
+      ],
+      "codes": [
+        "*777*12#"
+      ],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "كود",
+        "777",
+        "ussd"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "التأكيد في الدليل: مصدر واحد. المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "البنك نوت — قائمة أكواد *777*X# وأرقام التواصل",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        43
+      ]
+    },
+    {
+      "id": "wal-code-777-13",
+      "type": "code",
+      "category_ar": "أكواد USSD (*777#)",
+      "title_ar": "*777*13# — الإعدادات",
+      "summary_ar": "*777*13#: الإعدادات.",
+      "facts": [
+        {
+          "label_ar": "الكود المباشر",
+          "value": "*777*13#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "الخدمة",
+          "value": "الإعدادات",
+          "kind": "text"
+        }
+      ],
+      "codes": [
+        "*777*13#"
+      ],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "كود",
+        "777",
+        "ussd"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "التأكيد في الدليل: مصدر واحد. المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "البنك نوت — قائمة أكواد *777*X# وأرقام التواصل",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        43
+      ]
+    },
+    {
+      "id": "wal-code-777-15",
+      "type": "code",
+      "category_ar": "أكواد USSD (*777#)",
+      "title_ar": "*777*15# — إغلاق المحفظة",
+      "summary_ar": "*777*15#: إغلاق المحفظة.",
+      "facts": [
+        {
+          "label_ar": "الكود المباشر",
+          "value": "*777*15#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "الخدمة",
+          "value": "إغلاق المحفظة",
+          "kind": "text"
+        }
+      ],
+      "codes": [
+        "*777*15#"
+      ],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "كود",
+        "777",
+        "ussd"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "التأكيد في الدليل: مصدر واحد (غير مؤكد). المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "البنك نوت — قائمة أكواد *777*X# وأرقام التواصل",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        43
+      ]
+    },
+    {
+      "id": "wal-fawry-withdraw",
+      "type": "procedure",
+      "category_ar": "أكواد USSD (*777#)",
+      "title_ar": "السحب عن طريق ماكينة فوري",
+      "summary_ar": "من ماكينة فوري: أيقونة الإنترنت ← \"اتصالات\" ← كود الخدمة 4432 ← رقم الموبايل ← المبلغ ← تأكيد.",
+      "facts": [
+        {
+          "label_ar": "كود خدمة فوري",
+          "value": "4432",
+          "kind": "code"
+        }
+      ],
+      "steps_ar": [
+        "العميل يختار أيقونة الإنترنت.",
+        "يختار \"اتصالات\".",
+        "كود الخدمة 4432.",
+        "رقم الموبايل.",
+        "المبلغ.",
+        "تأكيد."
+      ],
+      "codes": [
+        "4432"
+      ],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "فوري",
+        "fawry",
+        "سحب",
+        "4432"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد، مصدر واحد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        43
+      ]
+    },
+    {
+      "id": "wal-svc-cash-in",
+      "type": "service",
+      "category_ar": "الخدمات",
+      "title_ar": "الإيداع (Cash-in)",
+      "summary_ar": "إيداع نقدي في المحفظة من فروع اتصالات والوكلاء المعتمدين. إيداع ATM ومكان كل وكيل (غير مؤكد).",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "ايداع",
+        "cash in"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "إيداع ATM ومكان كل وكيل (غير مؤكد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        43,
+        44
+      ]
+    },
+    {
+      "id": "wal-svc-cash-out",
+      "type": "service",
+      "category_ar": "الخدمات",
+      "title_ar": "السحب (Cash-out)",
+      "summary_ar": "السحب من فروع اتصالات أو ماكينات ATM المرتبطة بالخدمة أو التجار: الفرع *777*11#، والماكينة *777*3#، وفوري.",
+      "facts": [
+        {
+          "label_ar": "كود",
+          "value": "*777*11#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "كود",
+          "value": "*777*3#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*777*11#",
+        "*777*3#"
+      ],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "سحب",
+        "cash out"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        43,
+        44
+      ]
+    },
+    {
+      "id": "wal-svc-transfer-etisalat",
+      "type": "service",
+      "category_ar": "الخدمات",
+      "title_ar": "التحويل لمحفظة اتصالات",
+      "summary_ar": "العميل يُدخل رقم المستلم والمبلغ والـ PIN عبر USSD أو التطبيق. منذ نوفمبر 2025 يعرض التطبيق اسم المستلم قبل تأكيد التحويل.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "تحويل"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        43,
+        44
+      ]
+    },
+    {
+      "id": "wal-svc-transfer-other",
+      "type": "service",
+      "category_ar": "الخدمات",
+      "title_ar": "التحويل لمحافظ الشبكات الأخرى",
+      "summary_ar": "مثل فودافون كاش وأورنج كاش وWE Pay، من خيار \"تحويل أموال\" في *777# أو التطبيق.",
+      "facts": [
+        {
+          "label_ar": "كود",
+          "value": "*777#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*777#"
+      ],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "تحويل",
+        "فودافون كاش",
+        "اورنج كاش",
+        "we pay"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        43,
+        44
+      ]
+    },
+    {
+      "id": "wal-svc-instapay-receive",
+      "type": "service",
+      "category_ar": "الخدمات",
+      "title_ar": "الاستلام من إنستاباي",
+      "summary_ar": "محفظة e& cash من المحافظ المدعومة كمستلم في إنستاباي: المرسل يختار \"تحويل لمحفظة\" ويكتب رقم الموبايل.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "انستاباي",
+        "instapay",
+        "استلام"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "بانكر نيوز — e& cash كمستلم في إنستاباي ورسوم إنستاباي (يوليو 2025)",
+          "url": "https://www.banker.news/107267",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        43,
+        44
+      ]
+    },
+    {
+      "id": "wal-svc-to-bank",
+      "type": "service",
+      "category_ar": "الخدمات",
+      "title_ar": "التحويل من المحفظة لحساب بنكي أو لإنستاباي",
+      "summary_ar": "لم نجد مصدرًا يؤكد آلية التحويل من المحفظة لحساب بنكي ولا رسومها (غير مؤكد). حساب \"مشرق نيو\" يتيح تحويلات فورية بالجنيه لأصحابه.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "بنك",
+        "انستاباي",
+        "تحويل"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        43,
+        44
+      ]
+    },
+    {
+      "id": "wal-svc-intl-receive",
+      "type": "service",
+      "category_ar": "الخدمات",
+      "title_ar": "استقبال التحويلات الدولية",
+      "summary_ar": "منذ 6 أبريل 2025: استقبال فوري على المحفظة من الإمارات والسعودية بالشراكة مع بنك القاهرة، عبر التطبيق. الرسوم والحدود غير منشورة (غير مؤكد).",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "تحويل من الخارج",
+        "دولي",
+        "بنك القاهرة"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "الرسوم والحدود غير منشورة (غير مؤكد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "Daily News Egypt — التحويلات الدولية الفورية مع بنك القاهرة (أبريل 2025)",
+          "url": "https://www.dailynewsegypt.com/?p=830312",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        43,
+        44
+      ]
+    },
+    {
+      "id": "wal-svc-bills",
+      "type": "service",
+      "category_ar": "الخدمات",
+      "title_ar": "دفع الفواتير",
+      "summary_ar": "فواتير المرافق *777*7#، وفاتورة الموبايل *777*9#، ومعاملات فوري *777*5#، عبر USSD أو التطبيق.",
+      "facts": [
+        {
+          "label_ar": "كود",
+          "value": "*777*7#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "كود",
+          "value": "*777*9#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "كود",
+          "value": "*777*5#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*777*7#",
+        "*777*9#",
+        "*777*5#"
+      ],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "فواتير",
+        "فوري"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        43,
+        44
+      ]
+    },
+    {
+      "id": "wal-svc-recharge",
+      "type": "service",
+      "category_ar": "الخدمات",
+      "title_ar": "شحن الرصيد والباقات",
+      "summary_ar": "شحن رصيد للعميل نفسه أو لغيره *777*2#. من نوفمبر 2025 يمكن شحن \"كارت أكوا\" من المحفظة.",
+      "facts": [
+        {
+          "label_ar": "كود",
+          "value": "*777*2#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*777*2#"
+      ],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "شحن",
+        "رصيد",
+        "اكوا"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        43,
+        44
+      ]
+    },
+    {
+      "id": "wal-svc-donations",
+      "type": "service",
+      "category_ar": "الخدمات",
+      "title_ar": "التبرعات",
+      "summary_ar": "*777*10#، والتطبيق يتيح التبرع لجمعية خيرية يختارها العميل.",
+      "facts": [
+        {
+          "label_ar": "كود",
+          "value": "*777*10#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*777*10#"
+      ],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "تبرع"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        43,
+        44
+      ]
+    },
+    {
+      "id": "wal-svc-merchants",
+      "type": "service",
+      "category_ar": "الخدمات",
+      "title_ar": "الشراء من التجار",
+      "summary_ar": "الدفع لدى التجار المرتبطين بالخدمة عبر التطبيق. الدفع بـ QR (غير مؤكد، لم يُذكر في وصف التطبيق).",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "شراء",
+        "تجار",
+        "qr"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "الدفع بـ QR (غير مؤكد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        43,
+        44
+      ]
+    },
+    {
+      "id": "wal-svc-vcn",
+      "type": "service",
+      "category_ar": "الخدمات",
+      "title_ar": "الكارت الافتراضي للشراء أونلاين (VCN)",
+      "summary_ar": "إنشاء كارت أونلاين للمشتريات من *777*6# أو التطبيق. رسوم الكارت (10 جنيه) أُلغيت في أبريل 2020؛ الرسوم الحالية وهل الكارت ميزة أم ماستركارد (غير مؤكد). في 2023 أُعلنت شراكة بين اتصالات مصر وماستركارد.",
+      "facts": [
+        {
+          "label_ar": "كود",
+          "value": "*777*6#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*777*6#"
+      ],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "كارت اونلاين",
+        "vcn",
+        "فيزا",
+        "ماستركارد"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "الرسوم الحالية ونوع الكارت (غير مؤكد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "Mastercard — شراكة اتصالات مصر وماستركارد (2023)",
+          "url": "https://www.mastercard.com/news/eemea/en/newsroom/press-releases/en/2023/march/etisalat-by-e-egypt-and-mastercard-partnership-will-redefine-digital-experience-and-commerce-for-millions-in-egypt",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        43,
+        44
+      ]
+    },
+    {
+      "id": "wal-svc-extras",
+      "type": "service",
+      "category_ar": "الخدمات",
+      "title_ar": "خدمات إضافية (2025–2026)",
+      "summary_ar": "كارت خصومات طبية مع HealthTag، وتقسيط مع كونتكت (يشمل تقسيط معاملات سابقة)، وخصومات وفرها، وعروض Play & Win — عبر التطبيق.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "خصومات",
+        "تقسيط",
+        "كونتكت"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        43,
+        44
+      ]
+    },
+    {
+      "id": "wal-atm-cardless",
+      "type": "procedure",
+      "category_ar": "الخدمات",
+      "title_ar": "السحب من ATM بدون كارت",
+      "summary_ar": "اتصل بـ *777*3#، أدخل PIN والمبلغ، استلم SMS برقم سري متغير (OTP)، ثم من ماكينة بنك مشارك: \"خدمات بدون بطاقة\" ← \"سحب نقدي\".",
+      "facts": [
+        {
+          "label_ar": "البنوك المشاركة (قائمة يونيو 2025)",
+          "value": "بنك القاهرة، الأهلي، مصر، الإسكندرية، CIB، QNB، قناة السويس، المتحد، عودة، التعمير والإسكان، الأهلي المتحد",
+          "kind": "text"
+        },
+        {
+          "label_ar": "صلاحية الـ OTP",
+          "value": "غير مؤكد",
+          "kind": "text"
+        },
+        {
+          "label_ar": "كود",
+          "value": "*777*3#",
+          "kind": "code"
+        }
+      ],
+      "steps_ar": [
+        "العميل يتصل بـ *777*3#.",
+        "يدخل الرقم السري والمبلغ.",
+        "تصله رسالة SMS بها رقم سري متغير (OTP).",
+        "يذهب لأقرب ماكينة تدعم الخدمة.",
+        "يختار \"خدمات بدون بطاقة\" ثم \"سحب نقدي\".",
+        "يدخل الرقم السري الذي وصله في الرسالة ثم المبلغ ورقم الموبايل."
+      ],
+      "codes": [
+        "*777*3#"
+      ],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "سحب",
+        "atm",
+        "ماكينة",
+        "بدون كارت",
+        "otp"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "مدة صلاحية الـ OTP (غير مؤكد). الخطوات مؤكدة (مصراوي 2025).",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "مصراوي — خطوات السحب بدون كارت *777*3# (يوليو 2025)",
+          "url": "https://www.masrawy.com/news/news_economy/details/2025/7/3/2814821/",
+          "type": "press"
+        },
+        {
+          "name": "مصراوي — البنوك المشاركة في السحب من ATM (يونيو 2025)",
+          "url": "https://www.masrawy.com/news/news-banking/details/2025/6/26/2810911/",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        43
+      ]
+    },
+    {
+      "id": "wal-limits-intro",
+      "type": "rule",
+      "category_ar": "الحدود (Limits)",
+      "title_ar": "من يحدد حدود المحافظ؟",
+      "summary_ar": "حدود المحافظ يحددها البنك المركزي المصري؛ هذه آخر أرقام منشورة لمحفظة اتصالات تحديدًا، ولم نجد تعديلًا منشورًا بعدها.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "حدود",
+        "البنك المركزي",
+        "limit"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        44
+      ]
+    },
+    {
+      "id": "wal-limit-daily",
+      "type": "limit",
+      "category_ar": "الحدود (Limits)",
+      "title_ar": "الحد اليومي للمعاملات",
+      "summary_ar": "الحد اليومي للمعاملات: 60,000 جنيه.",
+      "facts": [
+        {
+          "label_ar": "الحد اليومي للمعاملات",
+          "value": "60,000",
+          "kind": "price",
+          "unit": "جنيه"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "حدود",
+        "حد",
+        "limit"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "Egypt Telegraph، فبراير 2025 (نفس الرقم لمحافظ المحمول الأربع)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "Egypt Telegraph — الحدود 60 ألف و200 ألف و200 ألف رصيد (21 فبراير 2025)",
+          "url": "https://www.egypttelegraph.com/121906",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        44
+      ]
+    },
+    {
+      "id": "wal-limit-monthly",
+      "type": "limit",
+      "category_ar": "الحدود (Limits)",
+      "title_ar": "الحد الشهري للمعاملات",
+      "summary_ar": "الحد الشهري للمعاملات: 200,000 جنيه.",
+      "facts": [
+        {
+          "label_ar": "الحد الشهري للمعاملات",
+          "value": "200,000",
+          "kind": "price",
+          "unit": "جنيه"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "حدود",
+        "حد",
+        "limit"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "Egypt Telegraph، فبراير 2025",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "Egypt Telegraph — الحدود 60 ألف و200 ألف و200 ألف رصيد (21 فبراير 2025)",
+          "url": "https://www.egypttelegraph.com/121906",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        44
+      ]
+    },
+    {
+      "id": "wal-limit-balance",
+      "type": "limit",
+      "category_ar": "الحدود (Limits)",
+      "title_ar": "الحد الأقصى لرصيد المحفظة",
+      "summary_ar": "الحد الأقصى لرصيد المحفظة: 200,000 جنيه.",
+      "facts": [
+        {
+          "label_ar": "الحد الأقصى لرصيد المحفظة",
+          "value": "200,000",
+          "kind": "price",
+          "unit": "جنيه"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "حدود",
+        "حد",
+        "limit"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "Egypt Telegraph، فبراير 2025 (مقابل 100,000 لفودافون كاش)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "Egypt Telegraph — الحدود 60 ألف و200 ألف و200 ألف رصيد (21 فبراير 2025)",
+          "url": "https://www.egypttelegraph.com/121906",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        44
+      ]
+    },
+    {
+      "id": "wal-limit-5000-monthly",
+      "type": "limit",
+      "category_ar": "الحدود (Limits)",
+      "title_ar": "حد الـ 5,000 جنيه شهريًا",
+      "summary_ar": "ذُكر في إعلان أغسطس 2025 مع رسوم السحب الثابتة (5 جنيه)، ولم يتضح هل هو حد للسحب أم سقف لتطبيق الرسم الثابت.",
+      "facts": [
+        {
+          "label_ar": "الحد",
+          "value": "5,000",
+          "kind": "price",
+          "unit": "جنيه شهريًا"
+        },
+        {
+          "label_ar": "رسم السحب الثابت",
+          "value": "5",
+          "kind": "price",
+          "unit": "جنيه"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "حدود",
+        "سحب",
+        "5000"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "بنوك 24 — الإعلان وتفاصيل حد الـ 5,000 ج (19 أغسطس 2025)",
+          "url": "https://www.bnok24.com/?p=223892",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        45
+      ]
+    },
+    {
+      "id": "wal-limit-instapay",
+      "type": "limit",
+      "category_ar": "الحدود (Limits)",
+      "title_ar": "حد إنستاباي (عند تحويل العميل من البنك للمحفظة)",
+      "summary_ar": "70,000 للمعاملة، و120,000 يوميًا، و400,000 شهريًا لكل بنك.",
+      "facts": [
+        {
+          "label_ar": "للمعاملة",
+          "value": "70,000",
+          "kind": "price",
+          "unit": "جنيه"
+        },
+        {
+          "label_ar": "يوميًا",
+          "value": "120,000",
+          "kind": "price",
+          "unit": "جنيه"
+        },
+        {
+          "label_ar": "شهريًا لكل بنك",
+          "value": "400,000",
+          "kind": "price",
+          "unit": "جنيه"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "انستاباي",
+        "instapay",
+        "حدود"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "banker.news، نوفمبر 2026",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "بانكر نيوز — حدود ورسوم إنستاباي الحالية (10 نوفمبر 2026)",
+          "url": "https://www.banker.news/160011",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        45
+      ]
+    },
+    {
+      "id": "wal-limit-wallet-count",
+      "type": "limit",
+      "category_ar": "الحدود (Limits)",
+      "title_ar": "عدد المحافظ",
+      "summary_ar": "محفظة واحدة لكل رقم، و3 محافظ بحد أقصى لكل رقم قومي.",
+      "facts": [
+        {
+          "label_ar": "لكل رقم موبايل",
+          "value": "1",
+          "kind": "quantity"
+        },
+        {
+          "label_ar": "لكل رقم قومي",
+          "value": "3",
+          "kind": "quantity"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "عدد المحافظ"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "أموال الغد، 2024",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "أموال الغد — محفظة لكل رقم و3 محافظ لكل رقم قومي (مايو 2024)",
+          "url": "https://amwalalghad.com/z8af",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        45
+      ]
+    },
+    {
+      "id": "wal-limits-history",
+      "type": "article",
+      "category_ar": "الحدود (Limits)",
+      "title_ar": "تاريخ الحدود (للمقارنة)",
+      "summary_ar": "في أبريل 2020 كان الحد اليومي 30,000 والشهري 100,000. وفي نوفمبر 2023 ضاعف البنك المركزي حدود المعاملات حتى وصلت 60,000 و200,000.",
+      "facts": [
+        {
+          "label_ar": "اليومي (أبريل 2020)",
+          "value": "30,000",
+          "kind": "price",
+          "unit": "جنيه"
+        },
+        {
+          "label_ar": "الشهري (أبريل 2020)",
+          "value": "100,000",
+          "kind": "price",
+          "unit": "جنيه"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "حدود",
+        "تاريخ"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "جريدة المال — التسجيل عن بُعد ومهلة 90 يومًا ورسوم وحدود 2020",
+          "url": "https://almalnews.com/730841/",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        45
+      ]
+    },
+    {
+      "id": "wal-fees-notice",
+      "type": "rule",
+      "category_ar": "جدول الرسوم",
+      "title_ar": "تنبيه عن الرسوم",
+      "summary_ar": "في 2025 تغيّرت الرسوم من نسبة مئوية إلى رسوم ثابتة. وفي أكتوبر 2026 أكدت الشركة أنها تطبق \"هيكل رسوم ثابت وموحد لبعض الخدمات\" دون نشر أرقام جديدة. راجِع الأرقام على النظام الداخلي قبل إعطائها للعميل.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "رسوم",
+        "عمولة"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "جريدة المال — عدد المحافظ وهيكل الرسوم الثابتة (4 أكتوبر 2026)",
+          "url": "https://almalnews.com/2139237",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        45
+      ]
+    },
+    {
+      "id": "wal-fee-transfer",
+      "type": "fee",
+      "category_ar": "جدول الرسوم",
+      "title_ar": "رسوم التحويل لأي محفظة",
+      "summary_ar": "1 جنيه ثابت (منذ أغسطس 2025)؛ كانت 0.5% من قيمة التحويل. لم يتضح هل يختلف الرسم داخل الشبكة وإلى الشبكات الأخرى (غير مؤكد).",
+      "facts": [
+        {
+          "label_ar": "الرسوم الحالية (منذ أغسطس 2025)",
+          "value": "1",
+          "kind": "price",
+          "unit": "جنيه ثابت"
+        },
+        {
+          "label_ar": "الرسوم السابقة",
+          "value": "0.5% من قيمة التحويل",
+          "kind": "percent"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "رسوم",
+        "تحويل",
+        "عمولة التحويل"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "مؤكد من 3 مصادر صحفية لإعلان الشركة، لكن لم يتضح هل يختلف الرسم بين التحويل داخل الشبكة وإلى الشبكات الأخرى (غير مؤكد).",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "bankygate — تغيير الاسم إلى e& money ورسوم 5 ج للسحب و1 ج للتحويل (19 أغسطس 2025)",
+          "url": "https://www.bankygate.com/63744",
+          "type": "press"
+        },
+        {
+          "name": "أموال الغد — نفس الإعلان (19 أغسطس 2025)",
+          "url": "https://amwalalghad.com/jvab",
+          "type": "press"
+        },
+        {
+          "name": "بنوك 24 — الإعلان وتفاصيل حد الـ 5,000 ج (19 أغسطس 2025)",
+          "url": "https://www.bnok24.com/?p=223892",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        45
+      ]
+    },
+    {
+      "id": "wal-fee-withdraw",
+      "type": "fee",
+      "category_ar": "جدول الرسوم",
+      "title_ar": "رسوم السحب النقدي (فرع أو ATM أو وكيل)",
+      "summary_ar": "5 جنيه ثابت (منذ أغسطس 2025)، مع ذكر \"حتى حد أقصى 5,000 جنيه شهريًا\"؛ كانت 1% بحد أدنى 1 جنيه (مايو ويونيو 2025). الرسم على السحب فوق 5,000 جنيه شهريًا (غير مؤكد).",
+      "facts": [
+        {
+          "label_ar": "الرسوم الحالية (منذ أغسطس 2025)",
+          "value": "5",
+          "kind": "price",
+          "unit": "جنيه ثابت"
+        },
+        {
+          "label_ar": "ذكر مع الرسوم",
+          "value": "حتى حد أقصى 5,000 جنيه شهريًا",
+          "kind": "text"
+        },
+        {
+          "label_ar": "الرسوم السابقة (مايو ويونيو 2025)",
+          "value": "1% بحد أدنى 1 جنيه",
+          "kind": "percent"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "رسوم",
+        "سحب",
+        "عمولة السحب",
+        "atm"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "مؤكد من 3 مصادر. الرسم على السحب فوق 5,000 جنيه شهريًا (غير مؤكد).",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "bankygate — تغيير الاسم إلى e& money ورسوم 5 ج للسحب و1 ج للتحويل (19 أغسطس 2025)",
+          "url": "https://www.bankygate.com/63744",
+          "type": "press"
+        },
+        {
+          "name": "أموال الغد — نفس الإعلان (19 أغسطس 2025)",
+          "url": "https://amwalalghad.com/jvab",
+          "type": "press"
+        },
+        {
+          "name": "بنوك 24 — الإعلان وتفاصيل حد الـ 5,000 ج (19 أغسطس 2025)",
+          "url": "https://www.bnok24.com/?p=223892",
+          "type": "press"
+        },
+        {
+          "name": "مصراوي — عمولة السحب 1% بحد أدنى 1 ج (مايو 2025)",
+          "url": "https://www.masrawy.com/news/news_economy/details/2025/5/22/2791863/",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        45
+      ]
+    },
+    {
+      "id": "wal-fee-cash-in",
+      "type": "fee",
+      "category_ar": "جدول الرسوم",
+      "title_ar": "رسوم الإيداع (Cash-in) في الفرع",
+      "summary_ar": "لم يُنشر رقم (غير مؤكد). المتعارف عليه أنه مجاني في الفروع.",
+      "facts": [
+        {
+          "label_ar": "الرسوم",
+          "value": "لم يُنشر رقم (غير مؤكد)",
+          "kind": "text"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "رسوم",
+        "ايداع"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "غير مؤكد",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        45
+      ]
+    },
+    {
+      "id": "wal-fee-open",
+      "type": "fee",
+      "category_ar": "جدول الرسوم",
+      "title_ar": "رسوم فتح المحفظة",
+      "summary_ar": "مجاني.",
+      "facts": [
+        {
+          "label_ar": "الرسوم",
+          "value": "مجاني",
+          "kind": "text"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "رسوم",
+        "فتح محفظة"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد كقاعدة عامة",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        45
+      ]
+    },
+    {
+      "id": "wal-fee-balance-inquiry",
+      "type": "fee",
+      "category_ar": "جدول الرسوم",
+      "title_ar": "رسوم الاستعلام عن الرصيد",
+      "summary_ar": "(غير مؤكد).",
+      "facts": [
+        {
+          "label_ar": "الرسوم",
+          "value": "(غير مؤكد)",
+          "kind": "text"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "رسوم",
+        "استعلام",
+        "رصيد"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "غير مؤكد",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        45
+      ]
+    },
+    {
+      "id": "wal-fee-bills-recharge",
+      "type": "fee",
+      "category_ar": "جدول الرسوم",
+      "title_ar": "رسوم دفع الفواتير وشحن الرصيد",
+      "summary_ar": "(غير مؤكد).",
+      "facts": [
+        {
+          "label_ar": "الرسوم",
+          "value": "(غير مؤكد)",
+          "kind": "text"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "رسوم",
+        "فواتير",
+        "شحن"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "غير مؤكد",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        45
+      ]
+    },
+    {
+      "id": "wal-fee-vcn",
+      "type": "fee",
+      "category_ar": "جدول الرسوم",
+      "title_ar": "رسوم الكارت الافتراضي (VCN)",
+      "summary_ar": "رسوم الـ 10 جنيه أُلغيت في 2020. الوضع الحالي (غير مؤكد).",
+      "facts": [
+        {
+          "label_ar": "الرسوم السابقة",
+          "value": "10",
+          "kind": "price",
+          "unit": "جنيه"
+        },
+        {
+          "label_ar": "الوضع الحالي",
+          "value": "(غير مؤكد)",
+          "kind": "text"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "رسوم",
+        "vcn",
+        "كارت اونلاين"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "جزئي",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        45
+      ]
+    },
+    {
+      "id": "wal-fee-instapay-bank",
+      "type": "fee",
+      "category_ar": "جدول الرسوم",
+      "title_ar": "رسوم التحويل من بنك للمحفظة عبر إنستاباي",
+      "summary_ar": "0.1% بحد أدنى 0.50 جنيه وأقصى 20 جنيه، ويدفعها المرسل لبنكه.",
+      "facts": [
+        {
+          "label_ar": "النسبة",
+          "value": "0.1%",
+          "kind": "percent"
+        },
+        {
+          "label_ar": "الحد الأدنى",
+          "value": "0.50",
+          "kind": "price",
+          "unit": "جنيه"
+        },
+        {
+          "label_ar": "الحد الأقصى",
+          "value": "20",
+          "kind": "price",
+          "unit": "جنيه"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "رسوم",
+        "انستاباي",
+        "instapay",
+        "بنك"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد (banker.news، نوفمبر 2026)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "بانكر نيوز — حدود ورسوم إنستاباي الحالية (10 نوفمبر 2026)",
+          "url": "https://www.banker.news/160011",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        45
+      ]
+    },
+    {
+      "id": "wal-fee-intl-receive",
+      "type": "fee",
+      "category_ar": "جدول الرسوم",
+      "title_ar": "رسوم استقبال تحويل دولي",
+      "summary_ar": "(غير مؤكد).",
+      "facts": [
+        {
+          "label_ar": "الرسوم",
+          "value": "(غير مؤكد)",
+          "kind": "text"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "رسوم",
+        "تحويل دولي"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "غير مؤكد",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        45
+      ]
+    },
+    {
+      "id": "wal-fees-history-2020",
+      "type": "article",
+      "category_ar": "جدول الرسوم",
+      "title_ar": "تاريخ الرسوم (2020)",
+      "summary_ar": "في 2020 أُلغيت رسوم التحويل الشهرية لكل المحافظ ورسوم السحب من ATM، وانخفضت عمولة السحب من الفرع من 2% إلى 1%. هذا للسياق فقط؛ الأرقام الحالية في الجدول.",
+      "facts": [
+        {
+          "label_ar": "عمولة السحب من الفرع قبل",
+          "value": "2%",
+          "kind": "percent"
+        },
+        {
+          "label_ar": "عمولة السحب من الفرع بعد",
+          "value": "1%",
+          "kind": "percent"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "رسوم",
+        "تاريخ"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "جريدة المال — التسجيل عن بُعد ومهلة 90 يومًا ورسوم وحدود 2020",
+          "url": "https://almalnews.com/730841/",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        46
+      ]
+    },
+    {
+      "id": "wal-pin-change",
+      "type": "procedure",
+      "category_ar": "الرقم السري (PIN) والأمان",
+      "title_ar": "تغيير الـ PIN (العميل يعرفه)",
+      "summary_ar": "*777*8# ← خدمات الرقم السري ← تغيير، أو من التطبيق إن كان الخيار متاحًا.",
+      "facts": [
+        {
+          "label_ar": "كود",
+          "value": "*777*8#",
+          "kind": "code"
+        }
+      ],
+      "steps_ar": [
+        "*777*8#",
+        "خدمات الرقم السري",
+        "تغيير"
+      ],
+      "codes": [
+        "*777*8#"
+      ],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "pin",
+        "باسورد",
+        "رقم سري",
+        "تغيير"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        46
+      ]
+    },
+    {
+      "id": "wal-pin-forgot",
+      "type": "procedure",
+      "category_ar": "الرقم السري (PIN) والأمان",
+      "title_ar": "نسي الـ PIN",
+      "summary_ar": "العميل يحاول أولًا من *777*8# أو التطبيق؛ إن لم ينجح يتصل بـ 778 أو يحضر للفرع ببطاقة الرقم القومي للتحقق ثم يُعاد تعيين الرقم السري.",
+      "facts": [
+        {
+          "label_ar": "كود",
+          "value": "*777*8#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "رقم",
+          "value": "778",
+          "kind": "phone"
+        }
+      ],
+      "steps_ar": [
+        "يحاول أولًا من *777*8# أو التطبيق.",
+        "إن لم ينجح: يتصل بـ 778 أو يحضر للفرع ببطاقة الرقم القومي للتحقق من هويته.",
+        "يُعاد تعيين الرقم السري."
+      ],
+      "codes": [
+        "*777*8#"
+      ],
+      "phones": [
+        "778"
+      ],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "نسيت الباسورد",
+        "pin",
+        "رقم سري"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "خطوات النظام الداخلي ليست منشورة (غير مؤكد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        46
+      ]
+    },
+    {
+      "id": "wal-pin-locked",
+      "type": "procedure",
+      "category_ar": "الرقم السري (PIN) والأمان",
+      "title_ar": "المحفظة موقوفة (إدخال PIN خطأ عدة مرات)",
+      "summary_ar": "التحقق من الهوية بالبطاقة الأصلية في الفرع، أو الاتصال بـ 778.",
+      "facts": [
+        {
+          "label_ar": "رقم",
+          "value": "778",
+          "kind": "phone"
+        }
+      ],
+      "codes": [],
+      "phones": [
+        "778"
+      ],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "موقوفة",
+        "مقفولة",
+        "pin",
+        "بلوك"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "عدد المحاولات المسموح بها ومدة الإيقاف (غير مؤكد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        46
+      ]
+    },
+    {
+      "id": "wal-security-warning",
+      "type": "rule",
+      "category_ar": "الرقم السري (PIN) والأمان",
+      "title_ar": "تحذير للعميل",
+      "summary_ar": "لا يشارك الـ PIN ولا كود التحقق مع أي شخص، حتى لو قال إنه من خدمة العملاء.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "نصب",
+        "احتيال",
+        "امان",
+        "pin",
+        "otp"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        46
+      ]
+    },
+    {
+      "id": "wal-lost-line",
+      "type": "procedure",
+      "category_ar": "فقدان الخط أو الهاتف",
+      "title_ar": "فقدان الخط أو الهاتف وعليه محفظة",
+      "summary_ar": "فورًا يتصل العميل بخدمة العملاء (778 للمحفظة أو 333 من خط اتصالات) لإيقاف الخط والمحفظة مؤقتًا، ثم بدل فاقد من الفرع، ثم إعادة تفعيل المحفظة وتغيير الـ PIN.",
+      "facts": [
+        {
+          "label_ar": "رقم",
+          "value": "778",
+          "kind": "phone"
+        },
+        {
+          "label_ar": "رقم",
+          "value": "333",
+          "kind": "phone"
+        }
+      ],
+      "steps_ar": [
+        "فورًا: يتصل العميل من أي هاتف آخر بخدمة العملاء (778 للمحفظة أو 333 من خط اتصالات) ويطلب إيقاف الخط والمحفظة مؤقتًا لحماية الرصيد.",
+        "في الفرع: يحضر صاحب الخط شخصيًا ببطاقة الرقم القومي الأصلية ← التحقق من الملكية ← استخراج بدل فاقد للشريحة على نفس الرقم.",
+        "بعد تفعيل الشريحة الجديدة: يُعاد تفعيل المحفظة على نفس الرقم مع تغيير الـ PIN فورًا.",
+        "الرصيد يبقى مرتبطًا برقم الموبايل والرقم القومي ولا يضيع بضياع الشريحة."
+      ],
+      "codes": [],
+      "phones": [
+        "778",
+        "333"
+      ],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "ضاع الخط",
+        "فقد",
+        "سرقة",
+        "بدل فاقد",
+        "موبايل اتسرق"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "هل إعادة تفعيل المحفظة تتطلب خطوة منفصلة أم تتم تلقائيًا (غير مؤكد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        46
+      ]
+    },
+    {
+      "id": "wal-close-code",
+      "type": "code",
+      "category_ar": "إغلاق المحفظة",
+      "title_ar": "كود إغلاق المحفظة",
+      "summary_ar": "*777*15# (غير مؤكد، مصدر واحد).",
+      "facts": [
+        {
+          "label_ar": "كود الإغلاق",
+          "value": "*777*15#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*777*15#"
+      ],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "اغلاق",
+        "قفل المحفظة",
+        "الغاء"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "غير مؤكد، مصدر واحد",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "almaal.org — أرقام 778 وPIN والإغلاق *777*15# وفقد الخط والشكاوى و155",
+          "url": "https://almaal.org",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        46
+      ]
+    },
+    {
+      "id": "wal-close-branch",
+      "type": "procedure",
+      "category_ar": "إغلاق المحفظة",
+      "title_ar": "إغلاق المحفظة في الفرع",
+      "summary_ar": "حضور صاحب المحفظة بالبطاقة، وسحب الرصيد أو تحويله قبل الإغلاق.",
+      "facts": [],
+      "steps_ar": [
+        "حضور صاحب المحفظة بالبطاقة.",
+        "سحب الرصيد أو تحويله.",
+        "الإغلاق."
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "اغلاق",
+        "قفل المحفظة"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "الإجراء الرسمي (غير مؤكد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        46
+      ]
+    },
+    {
+      "id": "wal-meeza-deregister",
+      "type": "service",
+      "category_ar": "إغلاق المحفظة",
+      "title_ar": "إلغاء تسجيل محفظة على الرقم عبر \"ميزة\"",
+      "summary_ar": "موقع لإدارة المحافظ من ميزة يتيح معرفة المحافظ المسجلة على الرقم وخدمة مجانية لإلغاء تسجيل محفظة، مرة واحدة شهريًا لكل رقم، ولا يمكن التراجع عن نتيجتها.",
+      "body_ar": "مفيدة عندما يريد العميل نقل محفظته أو يكتشف محفظة على رقمه لا يعرفها.",
+      "facts": [
+        {
+          "label_ar": "الرسوم",
+          "value": "مجانية",
+          "kind": "text"
+        },
+        {
+          "label_ar": "التكرار",
+          "value": "مرة واحدة شهريًا لكل رقم",
+          "kind": "text"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "ميزة",
+        "meeza",
+        "الغاء تسجيل"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "بنوك 24 — إنستاباي للمحافظ وإلغاء تسجيل المحفظة من ميزة (مايو 2025)",
+          "url": "https://www.bnok24.com/?p=211125",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        46
+      ]
+    },
+    {
+      "id": "wal-wrong-transfer-no-wallet",
+      "type": "procedure",
+      "category_ar": "التحويل الخاطئ (استرداد الأموال)",
+      "title_ar": "تحويل خاطئ: الرقم المحوَّل إليه ليس عليه محفظة مفعّلة",
+      "summary_ar": "المبلغ يعود تلقائيًا لحساب المرسل خلال \"عدة أيام\".",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "تحويل غلط",
+        "رقم غلط",
+        "استرداد",
+        "رجوع الفلوس"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "بانكر نيوز — إجراءات استرداد التحويل الخاطئ (يونيو 2026)",
+          "url": "https://banker.news/141621",
+          "type": "press"
+        },
+        {
+          "name": "صدى البلد — استرداد تحويل المحافظ الخاطئ ومباحث الإنترنت (أبريل 2025)",
+          "url": "https://www.elbalad.news/6536964",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        47
+      ]
+    },
+    {
+      "id": "wal-wrong-transfer-has-wallet",
+      "type": "procedure",
+      "category_ar": "التحويل الخاطئ (استرداد الأموال)",
+      "title_ar": "تحويل خاطئ: الرقم عليه محفظة مفعّلة",
+      "summary_ar": "الشركة لا تلغي التحويل المكتمل من تلقاء نفسها. المرسل يتصل بـ 778 ويقدّم رقم العملية والمبلغ والتاريخ والوقت والرقم الخطأ فيُسجَّل شكوى؛ يمكن للشركة التواصل مع المستلم وقد يرد المبلغ برضاه.",
+      "facts": [
+        {
+          "label_ar": "رقم",
+          "value": "778",
+          "kind": "phone"
+        }
+      ],
+      "codes": [],
+      "phones": [
+        "778"
+      ],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "تحويل غلط",
+        "رقم غلط",
+        "استرداد",
+        "رجوع الفلوس"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "بانكر نيوز — إجراءات استرداد التحويل الخاطئ (يونيو 2026)",
+          "url": "https://banker.news/141621",
+          "type": "press"
+        },
+        {
+          "name": "صدى البلد — استرداد تحويل المحافظ الخاطئ ومباحث الإنترنت (أبريل 2025)",
+          "url": "https://www.elbalad.news/6536964",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        47
+      ]
+    },
+    {
+      "id": "wal-wrong-transfer-refuses",
+      "type": "procedure",
+      "category_ar": "التحويل الخاطئ (استرداد الأموال)",
+      "title_ar": "تحويل خاطئ: المستلم يرفض الرد",
+      "summary_ar": "المرسل يحرر محضرًا في مباحث الإنترنت ومعه إثبات التحويل، وإثبات عدم وجود علاقة بالمستلم، وإثبات رفض المستلم، ووجه الشبه بين الرقم الصحيح والرقم الخطأ.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "تحويل غلط",
+        "رقم غلط",
+        "استرداد",
+        "رجوع الفلوس"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "بانكر نيوز — إجراءات استرداد التحويل الخاطئ (يونيو 2026)",
+          "url": "https://banker.news/141621",
+          "type": "press"
+        },
+        {
+          "name": "صدى البلد — استرداد تحويل المحافظ الخاطئ ومباحث الإنترنت (أبريل 2025)",
+          "url": "https://www.elbalad.news/6536964",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        47
+      ]
+    },
+    {
+      "id": "wal-wrong-transfer-prevention",
+      "type": "procedure",
+      "category_ar": "التحويل الخاطئ (استرداد الأموال)",
+      "title_ar": "تحويل خاطئ: وقاية",
+      "summary_ar": "منذ إصدار 10.10.0 (نوفمبر 2025) يعرض التطبيق اسم المستلم قبل التحويل، فيُنصح العميل بمراجعته دائمًا.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "تحويل غلط",
+        "رقم غلط",
+        "استرداد",
+        "رجوع الفلوس"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "بانكر نيوز — إجراءات استرداد التحويل الخاطئ (يونيو 2026)",
+          "url": "https://banker.news/141621",
+          "type": "press"
+        },
+        {
+          "name": "صدى البلد — استرداد تحويل المحافظ الخاطئ ومباحث الإنترنت (أبريل 2025)",
+          "url": "https://www.elbalad.news/6536964",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        47
+      ]
+    },
+    {
+      "id": "wal-wrong-transfer-duration",
+      "type": "unverified",
+      "category_ar": "بنود غير مؤكدة",
+      "title_ar": "مدة الاسترداد الرسمية للتحويل الخاطئ",
+      "summary_ar": "مدة الاسترداد الرسمية (غير مؤكد).",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "تحويل غلط",
+        "مدة"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "غير مؤكد",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        47
+      ]
+    },
+    {
+      "id": "wal-contact-778",
+      "type": "contact",
+      "category_ar": "الشكاوى وأرقام التواصل",
+      "title_ar": "خدمة عملاء المحفظة من خط اتصالات: 778",
+      "summary_ar": "778 للمحفظة والمعاملات المالية من خط اتصالات.",
+      "facts": [
+        {
+          "label_ar": "رقم",
+          "value": "778",
+          "kind": "phone"
+        }
+      ],
+      "codes": [],
+      "phones": [
+        "778"
+      ],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "خدمة العملاء",
+        "778",
+        "كول سنتر"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "غير مؤكد، مصدر واحد غير رسمي",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "almaal.org — أرقام 778 وPIN والإغلاق *777*15# وفقد الخط والشكاوى و155",
+          "url": "https://almaal.org",
+          "type": "other"
+        },
+        {
+          "name": "البنك نوت — قائمة أكواد *777*X# وأرقام التواصل",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        47
+      ]
+    },
+    {
+      "id": "wal-contact-abroad",
+      "type": "contact",
+      "category_ar": "الشكاوى وأرقام التواصل",
+      "title_ar": "خدمة المحفظة من خارج مصر",
+      "summary_ar": "+201111234778",
+      "facts": [
+        {
+          "label_ar": "رقم",
+          "value": "+201111234778",
+          "kind": "phone"
+        }
+      ],
+      "codes": [],
+      "phones": [
+        "+201111234778"
+      ],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "من الخارج",
+        "خدمة العملاء"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "غير مؤكد، مصدر واحد",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        47
+      ]
+    },
+    {
+      "id": "wal-contact-333",
+      "type": "contact",
+      "category_ar": "الشكاوى وأرقام التواصل",
+      "title_ar": "خدمة عملاء اتصالات العامة: 333",
+      "summary_ar": "333 من خط اتصالات.",
+      "facts": [
+        {
+          "label_ar": "رقم",
+          "value": "333",
+          "kind": "phone"
+        }
+      ],
+      "codes": [],
+      "phones": [
+        "333"
+      ],
+      "tags": [
+        "خدمة العملاء",
+        "333"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        47
+      ]
+    },
+    {
+      "id": "wal-contact-landline",
+      "type": "contact",
+      "category_ar": "الشكاوى وأرقام التواصل",
+      "title_ar": "خدمة العملاء من خط أرضي",
+      "summary_ar": "02-35346333",
+      "facts": [
+        {
+          "label_ar": "رقم",
+          "value": "02-35346333",
+          "kind": "phone"
+        }
+      ],
+      "codes": [],
+      "phones": [
+        "02-35346333"
+      ],
+      "tags": [
+        "خدمة العملاء",
+        "ارضي"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        47
+      ]
+    },
+    {
+      "id": "wal-contact-mobile-abroad",
+      "type": "contact",
+      "category_ar": "الشكاوى وأرقام التواصل",
+      "title_ar": "خدمة العملاء من موبايل أو من الخارج",
+      "summary_ar": "+20 111 123 4333 (المصدران كتبا رقمًا ناقص رقمًا: 0111123433، فتحقق من الرقم قبل نشره).",
+      "facts": [
+        {
+          "label_ar": "رقم",
+          "value": "+20 111 123 4333",
+          "kind": "phone"
+        },
+        {
+          "label_ar": "رقم",
+          "value": "0111123433",
+          "kind": "phone"
+        }
+      ],
+      "codes": [],
+      "phones": [
+        "+20 111 123 4333",
+        "0111123433"
+      ],
+      "tags": [
+        "خدمة العملاء",
+        "من الخارج"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "المصدران كتبا رقمًا ناقص رقمًا (0111123433)، فتحقق من الرقم قبل نشره.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        47
+      ]
+    },
+    {
+      "id": "wal-contact-ntra-155",
+      "type": "contact",
+      "category_ar": "الشكاوى وأرقام التواصل",
+      "title_ar": "التصعيد للجهاز القومي لتنظيم الاتصالات: 155",
+      "summary_ar": "بعد تقديم شكوى للشركة والاحتفاظ برقمها.",
+      "facts": [
+        {
+          "label_ar": "رقم",
+          "value": "155",
+          "kind": "phone"
+        }
+      ],
+      "codes": [],
+      "phones": [
+        "155"
+      ],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "شكوى",
+        "تصعيد",
+        "ntra",
+        "جهاز تنظيم الاتصالات"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        47
+      ]
+    },
+    {
+      "id": "wal-contact-cbe",
+      "type": "contact",
+      "category_ar": "الشكاوى وأرقام التواصل",
+      "title_ar": "شكاوى البنك المركزي للخدمات المالية",
+      "summary_ar": "المحافظ خاضعة لرقابة البنك المركزي، ولم يتم التحقق من قناة الشكوى عنده (غير مؤكد).",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "البنك المركزي",
+        "شكوى"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "غير مؤكد",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        47
+      ]
+    },
+    {
+      "id": "wal-complaint-steps",
+      "type": "procedure",
+      "category_ar": "الشكاوى وأرقام التواصل",
+      "title_ar": "خطوات الشكوى المعتمدة للعميل",
+      "summary_ar": "يجهّز البيانات، يتصل بـ 778 أو يشتكي في الفرع، يطلب رقم شكوى، يتابع به، ويصعّد إلى 155 إذا لم تُحل.",
+      "facts": [
+        {
+          "label_ar": "رقم",
+          "value": "778",
+          "kind": "phone"
+        },
+        {
+          "label_ar": "رقم",
+          "value": "155",
+          "kind": "phone"
+        }
+      ],
+      "steps_ar": [
+        "العميل يجهّز رقم المحفظة ووقت المعاملة ومبلغها ورقم العملية.",
+        "يتصل بـ 778، أو يتقدم بالشكوى في الفرع.",
+        "يطلب رقم شكوى رسميًا ويحتفظ به مع رسائل المعاملة.",
+        "يتابع بنفس رقم الشكوى.",
+        "إذا لم تُحل يصعّد إلى 155 (الجهاز القومي لتنظيم الاتصالات)."
+      ],
+      "codes": [],
+      "phones": [
+        "778",
+        "155"
+      ],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "شكوى",
+        "complaint"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        47
+      ]
+    },
+    {
+      "id": "wal-case-open",
+      "type": "procedure",
+      "category_ar": "حالات شائعة في الفرع",
+      "title_ar": "عميل يريد فتح محفظة",
+      "summary_ar": "تأكد من بطاقة الرقم القومي الأصلية السارية، ومن أن الخط باسمه، ومن عدم وجود محفظة أخرى على الرقم (يمكن الكشف على موقع ميزة)، ومن أن معه أقل من 3 محافظ على رقمه القومي. سجّل بياناته ودعه يختار PIN بنفسه.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "حالة",
+        "فرع",
+        "كاونتر"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        48
+      ]
+    },
+    {
+      "id": "wal-case-not-owner",
+      "type": "procedure",
+      "category_ar": "حالات شائعة في الفرع",
+      "title_ar": "عميل يحاول فتح محفظة على خط ليس باسمه",
+      "summary_ar": "لا تفتح المحفظة. انقل ملكية الخط أولًا أو اطلب حضور صاحب الخط.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "حالة",
+        "فرع",
+        "كاونتر"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        48
+      ]
+    },
+    {
+      "id": "wal-case-forgot-pin",
+      "type": "procedure",
+      "category_ar": "حالات شائعة في الفرع",
+      "title_ar": "عميل نسي الـ PIN",
+      "summary_ar": "تحقق من هويته بالبطاقة الأصلية ثم أعد تعيين الـ PIN، أو وجّهه إلى *777*8#.",
+      "facts": [
+        {
+          "label_ar": "كود",
+          "value": "*777*8#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*777*8#"
+      ],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "حالة",
+        "فرع",
+        "كاونتر"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        48
+      ]
+    },
+    {
+      "id": "wal-case-locked",
+      "type": "procedure",
+      "category_ar": "حالات شائعة في الفرع",
+      "title_ar": "المحفظة موقوفة",
+      "summary_ar": "تحقق من الهوية ثم ارفع الإيقاف حسب النظام، أو اتصل بـ 778.",
+      "facts": [
+        {
+          "label_ar": "رقم",
+          "value": "778",
+          "kind": "phone"
+        }
+      ],
+      "codes": [],
+      "phones": [
+        "778"
+      ],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "حالة",
+        "فرع",
+        "كاونتر"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        48
+      ]
+    },
+    {
+      "id": "wal-case-withdraw-branch",
+      "type": "procedure",
+      "category_ar": "حالات شائعة في الفرع",
+      "title_ar": "عميل يريد سحب نقدية من الفرع",
+      "summary_ar": "اطلب منه بدء عملية السحب من هاتفه (*777*11#) أو حسب إجراء النظام. الرسم 5 جنيه ثابت حسب آخر إعلان، راجِعه على النظام.",
+      "facts": [
+        {
+          "label_ar": "كود",
+          "value": "*777*11#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*777*11#"
+      ],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "حالة",
+        "فرع",
+        "كاونتر"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        48
+      ]
+    },
+    {
+      "id": "wal-case-deposit",
+      "type": "procedure",
+      "category_ar": "حالات شائعة في الفرع",
+      "title_ar": "عميل يريد إيداع نقدية",
+      "summary_ar": "الإيداع على رقم المحفظة، مع التأكد من عدم تجاوز حد الرصيد (200,000) والحد اليومي (60,000).",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "حالة",
+        "فرع",
+        "كاونتر"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        48
+      ]
+    },
+    {
+      "id": "wal-case-wrong-number",
+      "type": "procedure",
+      "category_ar": "حالات شائعة في الفرع",
+      "title_ar": "عميل حوّل لرقم خطأ",
+      "summary_ar": "اسأل أولًا: هل الرقم عليه محفظة؟ إن لم يكن، فالمبلغ يرجع خلال أيام. إن كان، سجّل شكوى برقم العملية ووجّهه إلى 778 ثم لمباحث الإنترنت إن رفض المستلم الرد. لا تَعِد العميل بإلغاء التحويل.",
+      "facts": [
+        {
+          "label_ar": "رقم",
+          "value": "778",
+          "kind": "phone"
+        }
+      ],
+      "codes": [],
+      "phones": [
+        "778"
+      ],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "حالة",
+        "فرع",
+        "كاونتر"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        48
+      ]
+    },
+    {
+      "id": "wal-case-lost-line",
+      "type": "procedure",
+      "category_ar": "حالات شائعة في الفرع",
+      "title_ar": "عميل فقد الخط",
+      "summary_ar": "أوقف الخط والمحفظة مؤقتًا، ثم استخرج بدل فاقد بعد التحقق من الملكية بالبطاقة الأصلية، ثم غيّر الـ PIN.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "حالة",
+        "فرع",
+        "كاونتر"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        48
+      ]
+    },
+    {
+      "id": "wal-case-stuck-tx",
+      "type": "procedure",
+      "category_ar": "حالات شائعة في الفرع",
+      "title_ar": "عميل يقول إن معاملة \"علّقت\" أو المبلغ اتخصم ولم يصل",
+      "summary_ar": "سجّل شكوى برقم العملية وأعطه رقم الشكوى. مدة الحل (غير مؤكد).",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "حالة",
+        "فرع",
+        "كاونتر"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "مدة الحل (غير مؤكد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        48
+      ]
+    },
+    {
+      "id": "wal-case-intl-receive",
+      "type": "procedure",
+      "category_ar": "حالات شائعة في الفرع",
+      "title_ar": "عميل يسأل عن استقبال فلوس من الخارج",
+      "summary_ar": "الخدمة متاحة على المحفظة من الإمارات والسعودية (بنك القاهرة شريك)، والاستقبال فوري من التطبيق.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "حالة",
+        "فرع",
+        "كاونتر"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        48
+      ]
+    },
+    {
+      "id": "wal-case-atm",
+      "type": "procedure",
+      "category_ar": "حالات شائعة في الفرع",
+      "title_ar": "عميل يريد سحب كاش من ATM",
+      "summary_ar": "اشرح له خطوات *777*3# والبنوك المشاركة.",
+      "facts": [
+        {
+          "label_ar": "كود",
+          "value": "*777*3#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*777*3#"
+      ],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "حالة",
+        "فرع",
+        "كاونتر"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        48
+      ]
+    },
+    {
+      "id": "wal-case-scam-call",
+      "type": "procedure",
+      "category_ar": "حالات شائعة في الفرع",
+      "title_ar": "عميل تلقى اتصالًا يطلب منه الـ PIN أو الكود",
+      "summary_ar": "نبّهه أن الشركة لا تطلب الـ PIN أبدًا، واقترح عليه تغيير الـ PIN فورًا.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "حالة",
+        "فرع",
+        "كاونتر"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        48
+      ]
+    },
+    {
+      "id": "wal-case-new-name",
+      "type": "procedure",
+      "category_ar": "حالات شائعة في الفرع",
+      "title_ar": "عميل يسأل عن الاسم الجديد (e& money أو etisalat money)",
+      "summary_ar": "نفس المحفظة ونفس الرقم ونفس الرصيد، والذي تغيّر هو اسم العلامة فقط.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "حالة",
+        "فرع",
+        "كاونتر"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        48
+      ]
+    },
+    {
+      "id": "wal-case-close",
+      "type": "procedure",
+      "category_ar": "حالات شائعة في الفرع",
+      "title_ar": "عميل يريد إغلاق المحفظة",
+      "summary_ar": "اطلب منه سحب الرصيد أو تحويله أولًا، ثم أغلقها حسب إجراء النظام. الكود *777*15# (غير مؤكد).",
+      "facts": [
+        {
+          "label_ar": "كود",
+          "value": "*777*15#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*777*15#"
+      ],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "حالة",
+        "فرع",
+        "كاونتر"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "الكود *777*15# (غير مؤكد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        48
+      ]
+    },
+    {
+      "id": "wal-unverified-min-age-foreigners",
+      "type": "unverified",
+      "category_ar": "بنود غير مؤكدة",
+      "title_ar": "بند غير مؤكد 1",
+      "summary_ar": "السن الأدنى لفتح المحفظة، وقواعد فتح محفظة للأجانب.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "غير مؤكد"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "من قائمة البنود غير المؤكدة (للمراجعة مع الإدارة)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        48,
+        49
+      ]
+    },
+    {
+      "id": "wal-unverified-kyc-tiers",
+      "type": "unverified",
+      "category_ar": "بنود غير مؤكدة",
+      "title_ar": "بند غير مؤكد 2",
+      "summary_ar": "مستويات المحفظة (tiers) وهل لكل مستوى KYC حدود مختلفة.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "غير مؤكد"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "من قائمة البنود غير المؤكدة (للمراجعة مع الإدارة)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        48,
+        49
+      ]
+    },
+    {
+      "id": "wal-unverified-5000-meaning",
+      "type": "unverified",
+      "category_ar": "بنود غير مؤكدة",
+      "title_ar": "بند غير مؤكد 3",
+      "summary_ar": "معنى \"حتى 5,000 جنيه شهريًا\" مع رسم السحب الثابت (5 جنيه)، والرسم على ما يزيد عنه.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "غير مؤكد"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "من قائمة البنود غير المؤكدة (للمراجعة مع الإدارة)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        48,
+        49
+      ]
+    },
+    {
+      "id": "wal-unverified-transfer-fee-scope",
+      "type": "unverified",
+      "category_ar": "بنود غير مؤكدة",
+      "title_ar": "بند غير مؤكد 4",
+      "summary_ar": "هل رسم التحويل (1 جنيه) واحد داخل الشبكة وإلى الشبكات الأخرى.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "غير مؤكد"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "من قائمة البنود غير المؤكدة (للمراجعة مع الإدارة)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        48,
+        49
+      ]
+    },
+    {
+      "id": "wal-unverified-other-fees",
+      "type": "unverified",
+      "category_ar": "بنود غير مؤكدة",
+      "title_ar": "بند غير مؤكد 5",
+      "summary_ar": "رسوم الإيداع والاستعلام والفواتير والشحن والكارت الافتراضي والتحويل الدولي.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "غير مؤكد"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "من قائمة البنود غير المؤكدة (للمراجعة مع الإدارة)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        48,
+        49
+      ]
+    },
+    {
+      "id": "wal-unverified-wallet-to-bank",
+      "type": "unverified",
+      "category_ar": "بنود غير مؤكدة",
+      "title_ar": "بند غير مؤكد 6",
+      "summary_ar": "آلية التحويل من المحفظة لحساب بنكي ورسومها.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "غير مؤكد"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "من قائمة البنود غير المؤكدة (للمراجعة مع الإدارة)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        48,
+        49
+      ]
+    },
+    {
+      "id": "wal-unverified-qr-vcn-meeza",
+      "type": "unverified",
+      "category_ar": "بنود غير مؤكدة",
+      "title_ar": "بند غير مؤكد 7",
+      "summary_ar": "الدفع بـ QR، وهل الكارت الافتراضي يعمل على شبكة ميزة.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "غير مؤكد"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "من قائمة البنود غير المؤكدة (للمراجعة مع الإدارة)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        48,
+        49
+      ]
+    },
+    {
+      "id": "wal-unverified-codes-numbers",
+      "type": "unverified",
+      "category_ar": "بنود غير مؤكدة",
+      "title_ar": "بند غير مؤكد 8",
+      "summary_ar": "كود الإغلاق *777*15#، وكود فوري 4432، والأرقام 778 و+201111234778 (كلها من مصادر غير رسمية).",
+      "facts": [
+        {
+          "label_ar": "كود فوري",
+          "value": "4432",
+          "kind": "code"
+        },
+        {
+          "label_ar": "كود",
+          "value": "*777*15#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "رقم",
+          "value": "778",
+          "kind": "phone"
+        },
+        {
+          "label_ar": "رقم",
+          "value": "+201111234778",
+          "kind": "phone"
+        }
+      ],
+      "codes": [
+        "4432",
+        "*777*15#"
+      ],
+      "phones": [
+        "778",
+        "+201111234778"
+      ],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "غير مؤكد"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "من قائمة البنود غير المؤكدة (للمراجعة مع الإدارة)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        48,
+        49
+      ]
+    },
+    {
+      "id": "wal-unverified-rename",
+      "type": "unverified",
+      "category_ar": "بنود غير مؤكدة",
+      "title_ar": "بند غير مؤكد 9",
+      "summary_ar": "تغيير اسم المحفظة إلى etisalat money في مصر (مذكور في المتجر وخبر صحفي، دون إعلان رسمي).",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "غير مؤكد"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "من قائمة البنود غير المؤكدة (للمراجعة مع الإدارة)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        48,
+        49
+      ]
+    },
+    {
+      "id": "wal-unverified-limits-updated",
+      "type": "unverified",
+      "category_ar": "بنود غير مؤكدة",
+      "title_ar": "بند غير مؤكد 10",
+      "summary_ar": "هل عُدّلت الحدود (60 ألف يوميًا و200 ألف شهريًا و200 ألف رصيد) بعد فبراير 2025.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "غير مؤكد"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "من قائمة البنود غير المؤكدة (للمراجعة مع الإدارة)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        48,
+        49
+      ]
+    },
+    {
+      "id": "wal-sources",
+      "type": "article",
+      "category_ar": "المصادر",
+      "title_ar": "مصادر قسم محفظة e& cash",
+      "summary_ar": "قائمة المصادر التي استند إليها الدليل في قسم المحفظة.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "مصادر",
+        "sources"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "bankygate — تغيير الاسم إلى e& money ورسوم 5 ج للسحب و1 ج للتحويل (19 أغسطس 2025)",
+          "url": "https://www.bankygate.com/63744",
+          "type": "press"
+        },
+        {
+          "name": "أموال الغد — نفس الإعلان (19 أغسطس 2025)",
+          "url": "https://amwalalghad.com/jvab",
+          "type": "press"
+        },
+        {
+          "name": "بنوك 24 — الإعلان وتفاصيل حد الـ 5,000 ج (19 أغسطس 2025)",
+          "url": "https://www.bnok24.com/?p=223892",
+          "type": "press"
+        },
+        {
+          "name": "جريدة المال — عدد المحافظ وهيكل الرسوم الثابتة (4 أكتوبر 2026)",
+          "url": "https://almalnews.com/2139237",
+          "type": "press"
+        },
+        {
+          "name": "بانكر نيوز — اسم etisalat Money وخدماتها (9 نوفمبر 2026)",
+          "url": "https://www.banker.news/159685",
+          "type": "press"
+        },
+        {
+          "name": "The National — عودة المجموعة لاسم Etisalat (أكتوبر 2026)",
+          "url": "https://www.thenationalnews.com/business/2026/10/06/uaes-e-revives-original-etisalat-branding-as-it-focuses-on-ai-growth/",
+          "type": "press"
+        },
+        {
+          "name": "App Store — etisalat money - EG وسجل الإصدارات",
+          "url": "https://apps.apple.com/app/id1123428821",
+          "type": "app_store"
+        },
+        {
+          "name": "App Store — سجل إصدارات التطبيق",
+          "url": "https://apps.apple.com/in/app/id1123428821",
+          "type": "app_store"
+        },
+        {
+          "name": "AppGoblin — بيانات تطبيق أندرويد (com.etisalat.flous)",
+          "url": "https://appgoblin.info/apps/com.etisalat.flous",
+          "type": "other"
+        },
+        {
+          "name": "Egypt Telegraph — الحدود 60 ألف و200 ألف و200 ألف رصيد (21 فبراير 2025)",
+          "url": "https://www.egypttelegraph.com/121906",
+          "type": "press"
+        },
+        {
+          "name": "أموال الغد — محفظة لكل رقم و3 محافظ لكل رقم قومي (مايو 2024)",
+          "url": "https://amwalalghad.com/z8af",
+          "type": "press"
+        },
+        {
+          "name": "مصراوي — عمولة السحب 1% بحد أدنى 1 ج (مايو 2025)",
+          "url": "https://www.masrawy.com/news/news_economy/details/2025/5/22/2791863/",
+          "type": "press"
+        },
+        {
+          "name": "مصراوي — البنوك المشاركة في السحب من ATM (يونيو 2025)",
+          "url": "https://www.masrawy.com/news/news-banking/details/2025/6/26/2810911/",
+          "type": "press"
+        },
+        {
+          "name": "مصراوي — خطوات السحب بدون كارت *777*3# (يوليو 2025)",
+          "url": "https://www.masrawy.com/news/news_economy/details/2025/7/3/2814821/",
+          "type": "press"
+        },
+        {
+          "name": "البنك نوت — قائمة أكواد *777*X# وأرقام التواصل",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        },
+        {
+          "name": "almaal.org — أرقام 778 وPIN والإغلاق *777*15# وفقد الخط والشكاوى و155",
+          "url": "https://almaal.org",
+          "type": "other"
+        },
+        {
+          "name": "جريدة المال — التسجيل عن بُعد ومهلة 90 يومًا ورسوم وحدود 2020",
+          "url": "https://almalnews.com/730841/",
+          "type": "press"
+        },
+        {
+          "name": "Daily News Egypt — التحويلات الدولية الفورية مع بنك القاهرة (أبريل 2025)",
+          "url": "https://www.dailynewsegypt.com/?p=830312",
+          "type": "press"
+        },
+        {
+          "name": "بانكر نيوز — e& cash كمستلم في إنستاباي ورسوم إنستاباي (يوليو 2025)",
+          "url": "https://www.banker.news/107267",
+          "type": "press"
+        },
+        {
+          "name": "بنوك 24 — إنستاباي للمحافظ وإلغاء تسجيل المحفظة من ميزة (مايو 2025)",
+          "url": "https://www.bnok24.com/?p=211125",
+          "type": "press"
+        },
+        {
+          "name": "بانكر نيوز — حدود ورسوم إنستاباي الحالية (10 نوفمبر 2026)",
+          "url": "https://www.banker.news/160011",
+          "type": "press"
+        },
+        {
+          "name": "بانكر نيوز — إجراءات استرداد التحويل الخاطئ (يونيو 2026)",
+          "url": "https://banker.news/141621",
+          "type": "press"
+        },
+        {
+          "name": "صدى البلد — استرداد تحويل المحافظ الخاطئ ومباحث الإنترنت (أبريل 2025)",
+          "url": "https://www.elbalad.news/6536964",
+          "type": "press"
+        },
+        {
+          "name": "bankygate — شروط السن في المحافظ البنكية (2020، للمقارنة)",
+          "url": "https://www.bankygate.com/7958",
+          "type": "press"
+        },
+        {
+          "name": "Mastercard — شراكة اتصالات مصر وماستركارد (2023)",
+          "url": "https://www.mastercard.com/news/eemea/en/newsroom/press-releases/en/2023/march/etisalat-by-e-egypt-and-mastercard-partnership-will-redefine-digital-experience-and-commerce-for-millions-in-egypt",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        49
+      ]
+    }
+  ]
+}

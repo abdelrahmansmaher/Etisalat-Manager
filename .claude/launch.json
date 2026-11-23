@@ -4,8 +4,26 @@
     {
       "name": "web-release",
       "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "8765", "--directory", "build/web"],
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8765",
+        "--directory",
+        "build/web"
+      ],
       "port": 8765
+    },
+    {
+      "name": "web-release-b",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8766",
+        "--directory",
+        "build/web"
+      ],
+      "port": 8766
     }
   ]
 }

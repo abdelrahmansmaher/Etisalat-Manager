@@ -595,6 +595,246 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'انتهى في {date} — لا تستخدمه كسعر ساري'**
   String priceExpiredNote(String date);
+
+  /// No description provided for @sectionInternet.
+  ///
+  /// In ar, this message translates to:
+  /// **'الإنترنت'**
+  String get sectionInternet;
+
+  /// No description provided for @sectionInternetDesc.
+  ///
+  /// In ar, this message translates to:
+  /// **'باقات الموبايل والإنترنت المنزلي و5G'**
+  String get sectionInternetDesc;
+
+  /// No description provided for @sectionProcedures.
+  ///
+  /// In ar, this message translates to:
+  /// **'الخدمات والإجراءات'**
+  String get sectionProcedures;
+
+  /// No description provided for @sectionProceduresDesc.
+  ///
+  /// In ar, this message translates to:
+  /// **'إجراءات الفرع والحالات والتجوال'**
+  String get sectionProceduresDesc;
+
+  /// No description provided for @sectionCompany.
+  ///
+  /// In ar, this message translates to:
+  /// **'عن الشركة'**
+  String get sectionCompany;
+
+  /// No description provided for @sectionCompanyDesc.
+  ///
+  /// In ar, this message translates to:
+  /// **'نبذة، الشبكة، التطبيق والمنافسون'**
+  String get sectionCompanyDesc;
+
+  /// No description provided for @sectionPackagesHomeDesc.
+  ///
+  /// In ar, this message translates to:
+  /// **'أنظمة الكارت والفاتورة والإضافات'**
+  String get sectionPackagesHomeDesc;
+
+  /// No description provided for @sectionNumbersHomeDesc.
+  ///
+  /// In ar, this message translates to:
+  /// **'أرقام خدمة العملاء وكل الأكواد'**
+  String get sectionNumbersHomeDesc;
+
+  /// No description provided for @sectionWalletHomeDesc.
+  ///
+  /// In ar, this message translates to:
+  /// **'التسجيل والأكواد والحدود والرسوم'**
+  String get sectionWalletHomeDesc;
+
+  /// No description provided for @sectionGlossaryHomeDesc.
+  ///
+  /// In ar, this message translates to:
+  /// **'المصطلحات والاختصارات'**
+  String get sectionGlossaryHomeDesc;
+
+  /// No description provided for @itemCount.
+  ///
+  /// In ar, this message translates to:
+  /// **'{count, plural, =0{لا توجد بنود} =1{بند واحد} =2{بندان} few{{count} بنود} many{{count} بندًا} other{{count} بند}}'**
+  String itemCount(int count);
+
+  /// No description provided for @homeMustKnowTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'أرقام لازم تكون حافظها'**
+  String get homeMustKnowTitle;
+
+  /// No description provided for @contentAsOf.
+  ///
+  /// In ar, this message translates to:
+  /// **'آخر تحديث للمحتوى: {date}'**
+  String contentAsOf(String date);
+
+  /// No description provided for @contentEmptySection.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا يوجد محتوى في هذا القسم بعد'**
+  String get contentEmptySection;
+
+  /// No description provided for @contentEmptySectionBody.
+  ///
+  /// In ar, this message translates to:
+  /// **'سيظهر المحتوى هنا فور إضافته.'**
+  String get contentEmptySectionBody;
+
+  /// No description provided for @filterAll.
+  ///
+  /// In ar, this message translates to:
+  /// **'الكل'**
+  String get filterAll;
+
+  /// No description provided for @filterConfirmed.
+  ///
+  /// In ar, this message translates to:
+  /// **'مؤكد'**
+  String get filterConfirmed;
+
+  /// No description provided for @filterUnconfirmed.
+  ///
+  /// In ar, this message translates to:
+  /// **'غير مؤكد'**
+  String get filterUnconfirmed;
+
+  /// No description provided for @statusConfirmedGuide.
+  ///
+  /// In ar, this message translates to:
+  /// **'مؤكد حسب الدليل'**
+  String get statusConfirmedGuide;
+
+  /// No description provided for @statusUnconfirmedReview.
+  ///
+  /// In ar, this message translates to:
+  /// **'غير مؤكد — راجع داخليًا'**
+  String get statusUnconfirmedReview;
+
+  /// No description provided for @unconfirmedBannerTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'هذه المعلومة غير مؤكدة'**
+  String get unconfirmedBannerTitle;
+
+  /// No description provided for @unconfirmedBannerBody.
+  ///
+  /// In ar, this message translates to:
+  /// **'راجع النظام الداخلي أو مشرفك قبل إبلاغ العميل.'**
+  String get unconfirmedBannerBody;
+
+  /// No description provided for @unconfirmedGroupTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'بنود غير مؤكدة'**
+  String get unconfirmedGroupTitle;
+
+  /// No description provided for @answerCardTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'الإجابة السريعة'**
+  String get answerCardTitle;
+
+  /// No description provided for @detailFactsTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'كل التفاصيل'**
+  String get detailFactsTitle;
+
+  /// No description provided for @detailStepsTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'الخطوات'**
+  String get detailStepsTitle;
+
+  /// No description provided for @detailSourcesTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'المصادر'**
+  String get detailSourcesTitle;
+
+  /// No description provided for @detailRelatedTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'بنود ذات صلة'**
+  String get detailRelatedTitle;
+
+  /// No description provided for @detailPdfPages.
+  ///
+  /// In ar, this message translates to:
+  /// **'من الدليل صفحة {pages}'**
+  String detailPdfPages(String pages);
+
+  /// No description provided for @detailNotFound.
+  ///
+  /// In ar, this message translates to:
+  /// **'البند غير موجود'**
+  String get detailNotFound;
+
+  /// No description provided for @detailNotFoundBody.
+  ///
+  /// In ar, this message translates to:
+  /// **'ربما تم حذفه أو تغيير معرّفه.'**
+  String get detailNotFoundBody;
+
+  /// No description provided for @callPlaceholder.
+  ///
+  /// In ar, this message translates to:
+  /// **'الاتصال المباشر غير متاح بعد — الرقم منسوخ؟ استخدم زر النسخ.'**
+  String get callPlaceholder;
+
+  /// No description provided for @searchIdleBody.
+  ///
+  /// In ar, this message translates to:
+  /// **'ابحث في كل المحتوى بالعامية أو بالكود أو بالرقم — بدون إنترنت.'**
+  String get searchIdleBody;
+
+  /// No description provided for @searchEmptyTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا توجد نتائج'**
+  String get searchEmptyTitle;
+
+  /// No description provided for @searchEmptyBody.
+  ///
+  /// In ar, this message translates to:
+  /// **'جرّب كلمة أخرى، أو اكتب الكود أو الرقم مباشرة.'**
+  String get searchEmptyBody;
+
+  /// No description provided for @searchResultsCount.
+  ///
+  /// In ar, this message translates to:
+  /// **'{count, plural, =1{نتيجة واحدة} =2{نتيجتان} few{{count} نتائج} many{{count} نتيجة} other{{count} نتيجة}}'**
+  String searchResultsCount(int count);
+
+  /// No description provided for @trainingReviewTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'راجع البنود غير المؤكدة'**
+  String get trainingReviewTitle;
+
+  /// No description provided for @trainingReviewSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'{count, plural, =0{لا توجد بنود تحتاج مراجعة} =1{بند واحد يحتاج مراجعة داخلية} =2{بندان يحتاجان مراجعة داخلية} few{{count} بنود تحتاج مراجعة داخلية} many{{count} بندًا يحتاج مراجعة داخلية} other{{count} بند يحتاج مراجعة داخلية}}'**
+  String trainingReviewSubtitle(int count);
+
+  /// No description provided for @reviewScreenTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'البنود غير المؤكدة'**
+  String get reviewScreenTitle;
+
+  /// No description provided for @reviewScreenSubtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'كل البنود غير المؤكدة أو المتعارضة من كل الأقسام.'**
+  String get reviewScreenSubtitle;
 }
 
 class _AppLocalizationsDelegate

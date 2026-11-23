@@ -1,0 +1,4572 @@
+{
+  "section": "numbers",
+  "source_document": "pdf_guide_2026_11",
+  "as_of": "2026-11-22",
+  "items": [
+    {
+      "id": "num-source-note",
+      "type": "article",
+      "category_ar": "عن هذا القسم",
+      "title_ar": "ملاحظة عن مصادر الأكواد ومفتاح الرموز",
+      "summary_ar": "موقع etisalat.eg ماكانش متاح وقت التجميع؛ التحقق اعتمد على NTRA وApple وصحف ومواقع تقنية. جرّب أي كود مش متأكد منه قبل ما تديه للعميل.",
+      "body_ar": "تاريخ التجميع: 22 نوفمبر 2026. موقع الشركة الرسمي ماكانش متاح للقراءة الآلية، فاعتمد التحقق على مصادر حكومية (NTRA)، وصفحات Apple الرسمية، وصحف مصرية (الوطن، المال، مصراوي)، ومواقع تقنية. كل كود ما اتطابقش في مصدرين على الأقل عليه علامة (غير مؤكد).\n\nالقاعدة الذهبية للموظف: قبل ما تدي كود للعميل وانت مش متأكد منه، جرّبه على خط تجريبي في الفرع أو راجعه على تطبيق My etisalat أو النظام الداخلي. الأكواد الترويجية (هدايا، عروض) بتتغير كتير.\n\nمفتاح الرموز:\n- مؤكد: ظهر في مصدرين مستقلين أو أكتر، أو في مصدر رسمي.\n- (غير مؤكد): ظهر في مصدر واحد ضعيف، أو المصادر بتختلف عليه.\n- (تعارض): المصادر بتدي قيم مختلفة، والقيم كلها مذكورة.",
+      "facts": [
+        {
+          "label_ar": "تاريخ التجميع",
+          "value": "22 نوفمبر 2026",
+          "kind": "date"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "مصادر",
+        "مؤكد",
+        "غير مؤكد",
+        "تعارض",
+        "sources"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        50
+      ]
+    },
+    {
+      "id": "num-brand-name-oct-2026",
+      "type": "article",
+      "category_ar": "تنبيه اسم العلامة التجارية",
+      "title_ar": "تنبيه مهم عن اسم العلامة التجارية (أكتوبر 2026)",
+      "summary_ar": "مجموعة e& أعلنت يوم 6 أكتوبر 2026 الرجوع لاسم Etisalat؛ استخدم الاسمين \"اتصالات\" و\"e&\".",
+      "body_ar": "يوم 6 أكتوبر 2026 أعلنت مجموعة e& الإماراتية الرجوع لاسمها الأصلي Etisalat، وده بيلغي إعادة التسمية بتاعة 2022 (المصدر: The National).\n\nأثره على مصر: الخبر نفسه ماذكرش مصر صراحةً، لكن صفحة التطبيق الرسمية على App Store بقت بتظهر باسم My etisalat (الإصدار 37.4.0)، وتطبيق المحفظة باسم etisalat money - EG، يعني غالبًا الفرع المصري بقى يستخدم اسم \"اتصالات\" تاني.\n\nالتوصية للموظف: استخدم الاسمين \"اتصالات\" و\"e&\". العملاء ممكن يقولوا My e& أو My etisalat، وممكن يقولوا e& money أو اتصالات كاش أو etisalat money، وكلهم نفس الخدمة.",
+      "facts": [
+        {
+          "label_ar": "تاريخ الإعلان",
+          "value": "6 أكتوبر 2026",
+          "kind": "date"
+        },
+        {
+          "label_ar": "إصدار تطبيق My etisalat",
+          "value": "37.4.0",
+          "kind": "text"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "اتصالات",
+        "e&",
+        "etisalat",
+        "اسم",
+        "brand",
+        "rebrand",
+        "اي اند"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "The National",
+          "url": "https://www.thenationalnews.com/business/2026/10/06/uaes-e-revives-original-etisalat-branding-as-it-focuses-on-ai-growth",
+          "type": "press"
+        },
+        {
+          "name": "App Store: My etisalat",
+          "url": "https://apps.apple.com/us/app/my-e-eg/id558287646",
+          "type": "app_store"
+        },
+        {
+          "name": "App Store: etisalat money - EG",
+          "url": "https://apps.apple.com/us/app/-/id1123428821",
+          "type": "app_store"
+        }
+      ],
+      "pdf_pages": [
+        50
+      ]
+    },
+    {
+      "id": "num-cs-333",
+      "type": "contact",
+      "category_ar": "أرقام خدمة العملاء",
+      "title_ar": "خدمة العملاء من خط اتصالات",
+      "summary_ar": "333 من خط اتصالات (كارت وفاتورة) — نفس رقم الشكاوى العامة.",
+      "facts": [
+        {
+          "label_ar": "الرقم",
+          "value": "333",
+          "kind": "phone"
+        },
+        {
+          "label_ar": "لمين",
+          "value": "مسبق الدفع وفاتورة، من خط اتصالات",
+          "kind": "text"
+        },
+        {
+          "label_ar": "ملاحظة",
+          "value": "نفس الرقم للشكاوى العامة؛ مالقيناش رقم منفصل للفاتورة",
+          "kind": "text"
+        },
+        {
+          "label_ar": "القيمة في الملحق",
+          "value": "333 (مؤكد ضمنيًا)",
+          "kind": "text"
+        },
+        {
+          "label_ar": "القيمة في قسم الإجراءات (الحالة 11)",
+          "value": "333: غير مؤكد — معروف بين الناس بس مالقيناش مصدر رسمي",
+          "kind": "text"
+        }
+      ],
+      "codes": [],
+      "phones": [
+        "333"
+      ],
+      "tags": [
+        "خدمة العملاء",
+        "كول سنتر",
+        "customer service",
+        "شكاوى",
+        "333"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد من الموقع الرسمي (صفحة العقود بالعربي والإنجليزي ونافذة Call Us) — تحققنا منه بأنفسنا في 22 نوفمبر 2026. الدليل كان ذاكره كغير مؤكد في قسم الإجراءات.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "الموقع الرسمي — صفحة العقود ونافذة Call Us (تم التحقق 2026-11-22)",
+          "url": "https://www.eand.com.eg/portal/contracts",
+          "type": "official_site"
+        }
+      ],
+      "pdf_pages": [
+        50,
+        67,
+        68,
+        69,
+        70
+      ]
+    },
+    {
+      "id": "num-cs-any-network",
+      "type": "contact",
+      "category_ar": "أرقام خدمة العملاء",
+      "title_ar": "خدمة العملاء من أي شبكة محمول تانية",
+      "summary_ar": "01111234333 من أي شبكة تانية.",
+      "body_ar": "بعض الصفحات كاتباه \"0111123433\" ودي غلطة مطبعية، لأن الرقم الصحيح 11 خانة.",
+      "facts": [
+        {
+          "label_ar": "الرقم",
+          "value": "01111234333",
+          "kind": "phone"
+        },
+        {
+          "label_ar": "من فين",
+          "value": "أي شبكة محمول تانية",
+          "kind": "text"
+        },
+        {
+          "label_ar": "رقم غلط منتشر",
+          "value": "0111123433 (غلطة مطبعية — الصحيح 11 خانة)",
+          "kind": "text"
+        }
+      ],
+      "codes": [],
+      "phones": [
+        "01111234333",
+        "0111123433"
+      ],
+      "tags": [
+        "خدمة العملاء",
+        "من فودافون",
+        "من اورنج",
+        "من وي",
+        "customer service"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد (tablet-egy، المال، البنك نوت)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "tablet-egy",
+          "type": "other"
+        },
+        {
+          "name": "صناع المال (almaal.org)",
+          "type": "other"
+        },
+        {
+          "name": "البنك نوت",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        50,
+        70
+      ]
+    },
+    {
+      "id": "num-cs-landline",
+      "type": "contact",
+      "category_ar": "أرقام خدمة العملاء",
+      "title_ar": "خدمة العملاء من التليفون الأرضي",
+      "summary_ar": "0235346333 (02-35346333) من الأرضي.",
+      "facts": [
+        {
+          "label_ar": "الرقم",
+          "value": "0235346333",
+          "kind": "phone"
+        },
+        {
+          "label_ar": "بصيغة أخرى",
+          "value": "02-35346333",
+          "kind": "phone"
+        },
+        {
+          "label_ar": "من فين",
+          "value": "التليفون الأرضي",
+          "kind": "text"
+        }
+      ],
+      "codes": [],
+      "phones": [
+        "0235346333",
+        "02-35346333"
+      ],
+      "tags": [
+        "أرضي",
+        "خدمة العملاء",
+        "landline"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد (الوطن، tablet-egy، المال، البنك نوت)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "الوطن",
+          "type": "press"
+        },
+        {
+          "name": "tablet-egy",
+          "type": "other"
+        },
+        {
+          "name": "صناع المال (almaal.org)",
+          "type": "other"
+        },
+        {
+          "name": "البنك نوت",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        50,
+        70
+      ]
+    },
+    {
+      "id": "num-cs-abroad",
+      "type": "contact",
+      "category_ar": "أرقام خدمة العملاء",
+      "title_ar": "خدمة العملاء من خارج مصر",
+      "summary_ar": "+201111234333 من خارج مصر.",
+      "body_ar": "دليل NTRA بيقول إن التواصل مع شركتك المحلية أثناء التجوال مجاني، لكن ما حددش الطريقة.",
+      "facts": [
+        {
+          "label_ar": "الرقم",
+          "value": "+201111234333",
+          "kind": "phone"
+        },
+        {
+          "label_ar": "من فين",
+          "value": "خارج مصر",
+          "kind": "text"
+        }
+      ],
+      "codes": [],
+      "phones": [
+        "+201111234333"
+      ],
+      "tags": [
+        "من بره",
+        "تجوال",
+        "roaming",
+        "abroad",
+        "خدمة العملاء"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد (Monisnap، البنك نوت، المال)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "Monisnap",
+          "type": "other"
+        },
+        {
+          "name": "البنك نوت",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        },
+        {
+          "name": "صناع المال (almaal.org)",
+          "type": "other"
+        },
+        {
+          "name": "الجهاز القومي لتنظيم الاتصالات (NTRA)",
+          "url": "https://www.tra.gov.eg",
+          "type": "regulator"
+        }
+      ],
+      "pdf_pages": [
+        51,
+        70
+      ]
+    },
+    {
+      "id": "num-cs-wallet-778",
+      "type": "contact",
+      "category_ar": "أرقام خدمة العملاء",
+      "title_ar": "خدمة عملاء محفظة اتصالات كاش / e& money",
+      "summary_ar": "778 من خط اتصالات لدعم المحفظة؛ 333 للخط نفسه مش للمحفظة.",
+      "facts": [
+        {
+          "label_ar": "الرقم",
+          "value": "778",
+          "kind": "phone"
+        },
+        {
+          "label_ar": "من فين",
+          "value": "خط اتصالات",
+          "kind": "text"
+        },
+        {
+          "label_ar": "ملاحظة",
+          "value": "الرقم 333 للخط نفسه، مش للمحفظة",
+          "kind": "text"
+        }
+      ],
+      "codes": [],
+      "phones": [
+        "778",
+        "333"
+      ],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "دعم"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد بشكل متوسط (المال وtablet-egy)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "صناع المال (almaal.org)",
+          "type": "other"
+        },
+        {
+          "name": "tablet-egy",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        51,
+        54,
+        70
+      ]
+    },
+    {
+      "id": "num-cs-wallet-abroad",
+      "type": "contact",
+      "category_ar": "أرقام خدمة العملاء",
+      "title_ar": "محفظة e& money من خارج مصر",
+      "summary_ar": "+201111234778 من خارج مصر (غير مؤكد).",
+      "facts": [
+        {
+          "label_ar": "الرقم",
+          "value": "+201111234778",
+          "kind": "phone"
+        }
+      ],
+      "codes": [],
+      "phones": [
+        "+201111234778"
+      ],
+      "tags": [
+        "محفظة",
+        "من بره",
+        "wallet",
+        "abroad"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد): ظهر في موقع واحد بس (المال).",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "صناع المال (almaal.org)",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        51
+      ]
+    },
+    {
+      "id": "num-cs-ehome",
+      "type": "contact",
+      "category_ar": "أرقام خدمة العملاء",
+      "title_ar": "الإنترنت المنزلي (eHome / ADSL / DSL)",
+      "summary_ar": "16511 للإنترنت المنزلي، ومصدر قال 7333 من خط اتصالات — جرّب 16511 الأول.",
+      "facts": [
+        {
+          "label_ar": "الرقم (مصدران)",
+          "value": "16511",
+          "kind": "phone"
+        },
+        {
+          "label_ar": "رقم تاني (صفحة من المال، من خط اتصالات)",
+          "value": "7333",
+          "kind": "phone"
+        }
+      ],
+      "codes": [],
+      "phones": [
+        "16511",
+        "7333"
+      ],
+      "tags": [
+        "نت أرضي",
+        "ADSL",
+        "eHome",
+        "راوتر",
+        "home internet",
+        "DSL"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "الرقمين مؤكدين من الموقع الرسمي (تحققنا 22 نوفمبر 2026) ولأغراض مختلفة: 16511 للاشتراك في eHome DSL (صفحة eHome DSL)، و7333 خدمة عملاء Smart ADSL من خط اتصالات (نافذة Call Us). مش تعارض.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "الموقع الرسمي — eHome DSL (تم التحقق 2026-11-22)",
+          "url": "https://www.eand.com.eg/portal/eHome/eHome-DSL",
+          "type": "official_site"
+        },
+        {
+          "name": "الموقع الرسمي — نافذة Call Us (تم التحقق 2026-11-22)",
+          "url": "https://www.eand.com.eg/portal/home",
+          "type": "official_site"
+        },
+        {
+          "name": "tablet-egy",
+          "type": "other"
+        },
+        {
+          "name": "صناع المال (almaal.org)",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        51,
+        70
+      ]
+    },
+    {
+      "id": "num-cs-emerald",
+      "type": "contact",
+      "category_ar": "أرقام خدمة العملاء",
+      "title_ar": "عملاء Emerald (الفئة المميزة للفاتورة)",
+      "summary_ar": "800 من خط Emerald (غير مؤكد).",
+      "body_ar": "فيه رقم 7070 بس ده للاشتراك في عرض PoshSaver مع Visa، مش رقم دعم.",
+      "facts": [
+        {
+          "label_ar": "الرقم",
+          "value": "800",
+          "kind": "phone"
+        },
+        {
+          "label_ar": "من فين",
+          "value": "خط Emerald",
+          "kind": "text"
+        },
+        {
+          "label_ar": "رقم 7070",
+          "value": "للاشتراك في عرض PoshSaver مع Visa، مش رقم دعم",
+          "kind": "text"
+        }
+      ],
+      "codes": [],
+      "phones": [
+        "800",
+        "7070"
+      ],
+      "tags": [
+        "Emerald",
+        "فاتورة",
+        "VIP",
+        "PoshSaver"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد): مصدر واحد.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        51
+      ]
+    },
+    {
+      "id": "num-cs-business",
+      "type": "contact",
+      "category_ar": "أرقام خدمة العملاء",
+      "title_ar": "خدمة عملاء الشركات (Business/Enterprise)",
+      "summary_ar": "مالقيناش رقم موثق — ارجع لمدير الحسابات أو النظام الداخلي.",
+      "facts": [
+        {
+          "label_ar": "الرقم",
+          "value": "غير متوفر",
+          "kind": "text"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "شركات",
+        "business",
+        "enterprise",
+        "corporate"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "مالقيتش رقم موثق.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        51
+      ]
+    },
+    {
+      "id": "num-cs-whatsapp",
+      "type": "contact",
+      "category_ar": "أرقام خدمة العملاء",
+      "title_ar": "واتساب رسمي",
+      "summary_ar": "مالقيناش رقم واتساب رسمي موثق؛ حذّر العملاء من الأرقام اللي بتنتحل صفة الشركة.",
+      "facts": [
+        {
+          "label_ar": "الرقم",
+          "value": "غير متوفر",
+          "kind": "text"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "واتساب",
+        "whatsapp",
+        "نصب",
+        "احتيال"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "مالقيتش رقم واتساب رسمي موثق لاتصالات مصر.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        51
+      ]
+    },
+    {
+      "id": "num-cs-email",
+      "type": "contact",
+      "category_ar": "أرقام خدمة العملاء",
+      "title_ar": "البريد الإلكتروني الرسمي",
+      "summary_ar": "مالقيناش بريد موثق؛ فيه عنوان بريدي للشكاوى (غير مؤكد).",
+      "facts": [
+        {
+          "label_ar": "البريد الإلكتروني",
+          "value": "غير متوفر",
+          "kind": "text"
+        },
+        {
+          "label_ar": "عنوان بريدي للشكاوى (غير مؤكد)",
+          "value": "مبنى 11، S4، شارع التسعين، التجمع الخامس، القاهرة الجديدة",
+          "kind": "text"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "إيميل",
+        "email",
+        "عنوان",
+        "شكاوى"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "مالقيتش بريد موثق؛ العنوان البريدي من البنك نوت، غير مؤكد.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "البنك نوت",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        51
+      ]
+    },
+    {
+      "id": "num-branch-hours",
+      "type": "contact",
+      "category_ar": "أرقام خدمة العملاء",
+      "title_ar": "مواعيد عمل الفروع",
+      "summary_ar": "السبت للأربعاء 9ص–10م، الخميس 9ص–11م، الجمعة 1:30م–11م (غير مؤكد).",
+      "facts": [
+        {
+          "label_ar": "السبت للأربعاء",
+          "value": "9ص–10م",
+          "kind": "duration"
+        },
+        {
+          "label_ar": "الخميس",
+          "value": "9ص–11م",
+          "kind": "duration"
+        },
+        {
+          "label_ar": "الجمعة",
+          "value": "1:30م–11م",
+          "kind": "duration"
+        },
+        {
+          "label_ar": "فروع المولات",
+          "value": "بتمشي على مواعيد المول",
+          "kind": "text"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "مواعيد",
+        "الفرع بيفتح امتى",
+        "branch hours",
+        "working hours"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد): مصدر واحد (mobilemasr). قسم الإجراءات (الحالة 11): المواعيد بتختلف من فرع للتاني (غير مؤكد).",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "mobilemasr",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        51,
+        67
+      ]
+    },
+    {
+      "id": "num-nearest-branch",
+      "type": "code",
+      "category_ar": "أرقام خدمة العملاء",
+      "title_ar": "أقرب فرع",
+      "summary_ar": "كود *404#: مصدر قال للفروع ومقال قديم قال لدفع الفاتورة.",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*404#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "حسب mobilemasr",
+          "value": "أقرب فرع",
+          "kind": "text"
+        },
+        {
+          "label_ar": "حسب مقال قديم (2020)",
+          "value": "دفع الفاتورة",
+          "kind": "text"
+        }
+      ],
+      "codes": [
+        "*404#"
+      ],
+      "phones": [],
+      "tags": [
+        "أقرب فرع",
+        "فرع",
+        "nearest branch",
+        "دفع الفاتورة"
+      ],
+      "status": "conflict",
+      "status_note_ar": "(تعارض): mobilemasr قال إنه للفروع، ومقال قديم (2020) قال إنه لدفع الفاتورة.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "mobilemasr",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        51
+      ]
+    },
+    {
+      "id": "num-cs-333-cost",
+      "type": "contact",
+      "category_ar": "أرقام خدمة العملاء",
+      "title_ar": "تكلفة المكالمة لـ 333",
+      "summary_ar": "مالقيناش تعريفة موثقة.",
+      "facts": [
+        {
+          "label_ar": "التكلفة",
+          "value": "غير متوفر",
+          "kind": "text"
+        },
+        {
+          "label_ar": "الرقم",
+          "value": "333",
+          "kind": "phone"
+        }
+      ],
+      "codes": [],
+      "phones": [
+        "333"
+      ],
+      "tags": [
+        "تكلفة",
+        "سعر المكالمة",
+        "333"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "مالقيتش تعريفة موثقة.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        51
+      ]
+    },
+    {
+      "id": "num-ntra-155",
+      "type": "contact",
+      "category_ar": "جهات تنظيمية (للتصعيد)",
+      "title_ar": "الخط الساخن لشكاوى الجهاز القومي لتنظيم الاتصالات (NTRA)",
+      "summary_ar": "155 — مؤكد رسميًا؛ 84% من الشكاوى المصعّدة جت عن طريقه.",
+      "body_ar": "تقرير NTRA لأول نص من 2025 بيقول إن 84% من الشكاوى المصعّدة جت عن طريق 155. القنوات التانية: الموقع، تطبيق My NTRA، الإيميل، الواتساب.\n\nمواعيد 155 (من قسم الإجراءات، الحالة 9): من 8 الصبح لـ 10 بالليل، والجمعة والسبت من 10 الصبح لـ 10 بالليل.",
+      "facts": [
+        {
+          "label_ar": "الرقم",
+          "value": "155",
+          "kind": "phone"
+        },
+        {
+          "label_ar": "نسبة الشكاوى المصعّدة عن طريقه (أول نص 2025)",
+          "value": "84%",
+          "kind": "percent"
+        },
+        {
+          "label_ar": "المواعيد",
+          "value": "من 8 الصبح لـ 10 بالليل",
+          "kind": "text"
+        },
+        {
+          "label_ar": "الجمعة والسبت",
+          "value": "من 10 الصبح لـ 10 بالليل",
+          "kind": "text"
+        }
+      ],
+      "codes": [],
+      "phones": [
+        "155"
+      ],
+      "tags": [
+        "NTRA",
+        "الجهاز القومي",
+        "شكوى",
+        "تصعيد",
+        "complaint",
+        "escalation"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد رسميًا (tra.gov.eg)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "الجهاز القومي لتنظيم الاتصالات (NTRA)",
+          "url": "https://www.tra.gov.eg",
+          "type": "regulator"
+        }
+      ],
+      "pdf_pages": [
+        51,
+        56,
+        66,
+        70
+      ],
+      "related": [
+        "proc-case-9-complaints"
+      ]
+    },
+    {
+      "id": "num-ntra-email",
+      "type": "contact",
+      "category_ar": "جهات تنظيمية (للتصعيد)",
+      "title_ar": "بريد شكاوى NTRA",
+      "summary_ar": "complaints@tra.gov.eg (غير مؤكد — مصدر واحد).",
+      "facts": [
+        {
+          "label_ar": "الإيميل",
+          "value": "complaints@tra.gov.eg",
+          "kind": "text"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "NTRA",
+        "إيميل",
+        "email",
+        "شكوى"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد): مصدر واحد (مصراوي، أغسطس 2026)، وهو موقع إخباري موثوق.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "مصراوي",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        51
+      ]
+    },
+    {
+      "id": "num-my-ntra-app",
+      "type": "service",
+      "category_ar": "جهات تنظيمية (للتصعيد)",
+      "title_ar": "تطبيق My NTRA",
+      "summary_ar": "تطبيق رسمي: \"أرقامي\" (الخطوط على رقمك القومي)، خريطة الفروع، جودة الشبكات، إلغاء الخدمات الترفيهية.",
+      "facts": [
+        {
+          "label_ar": "متاح على",
+          "value": "App Store وGoogle Play",
+          "kind": "text"
+        },
+        {
+          "label_ar": "خدمة أرقامي",
+          "value": "الخطوط المسجلة على رقمك القومي",
+          "kind": "text"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "My NTRA",
+        "أرقامي",
+        "app",
+        "تطبيق"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "رسمي",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "الجهاز القومي لتنظيم الاتصالات (NTRA)",
+          "url": "https://www.tra.gov.eg",
+          "type": "regulator"
+        }
+      ],
+      "pdf_pages": [
+        51
+      ]
+    },
+    {
+      "id": "num-telephony-imei",
+      "type": "contact",
+      "category_ar": "جهات تنظيمية (للتصعيد)",
+      "title_ar": "تسجيل الموبايلات المستوردة (IMEI) — تطبيق تليفوني",
+      "summary_ar": "تطبيق \"تليفوني\" (Telephony)، الرقم 15380، والإيميل contactus@telephony.gov.eg؛ مهلة 90 يوم.",
+      "body_ar": "فيه مهلة 90 يوم من تفعيل الشريحة المصرية، وبعدها الموبايل بيظهر \"لا توجد خدمة\".",
+      "facts": [
+        {
+          "label_ar": "الرقم",
+          "value": "15380",
+          "kind": "phone"
+        },
+        {
+          "label_ar": "الإيميل",
+          "value": "contactus@telephony.gov.eg",
+          "kind": "text"
+        },
+        {
+          "label_ar": "التطبيق",
+          "value": "تليفوني (Telephony)",
+          "kind": "text"
+        },
+        {
+          "label_ar": "المهلة",
+          "value": "90 يوم",
+          "kind": "duration"
+        }
+      ],
+      "codes": [],
+      "phones": [
+        "15380"
+      ],
+      "tags": [
+        "تليفوني",
+        "IMEI",
+        "موبايل من بره",
+        "جمارك",
+        "Telephony"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "المصدر صفحة دعم Apple الرسمية.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "Apple Support",
+          "url": "https://support.apple.com/ar-ae/124645",
+          "type": "official_site"
+        }
+      ],
+      "pdf_pages": [
+        51,
+        66,
+        70
+      ],
+      "related": [
+        "proc-case-8-imported-phones"
+      ]
+    },
+    {
+      "id": "num-balance-888",
+      "type": "code",
+      "category_ar": "أكواد الرصيد والشحن والتحويل",
+      "title_ar": "استعلام عن الرصيد (سريع)",
+      "summary_ar": "*888# — تكلفته حوالي 5 قروش.",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*888#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "التكلفة (aboutmsr)",
+          "value": "حوالي 5 قروش",
+          "kind": "price"
+        }
+      ],
+      "codes": [
+        "*888#"
+      ],
+      "phones": [],
+      "tags": [
+        "رصيدي كام",
+        "رصيد",
+        "balance"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد (الوطن، المال، aboutmsr)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "الوطن",
+          "type": "press"
+        },
+        {
+          "name": "صناع المال (almaal.org)",
+          "type": "other"
+        },
+        {
+          "name": "aboutmsr",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        52,
+        56,
+        70
+      ]
+    },
+    {
+      "id": "num-balance-555",
+      "type": "code",
+      "category_ar": "أكواد الرصيد والشحن والتحويل",
+      "title_ar": "استعلام عن الرصيد (بديل)",
+      "summary_ar": "*555# — الوطن قال لمشتركي الباقات.",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*555#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "التكلفة (aboutmsr)",
+          "value": "19 قرش",
+          "kind": "price"
+        }
+      ],
+      "codes": [
+        "*555#"
+      ],
+      "phones": [],
+      "tags": [
+        "رصيدي كام",
+        "رصيد",
+        "balance"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد. الوطن قال إنه لمشتركي الباقات، وaboutmsr قال تكلفته 19 قرش.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "الوطن",
+          "type": "press"
+        },
+        {
+          "name": "aboutmsr",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        52,
+        56,
+        70
+      ]
+    },
+    {
+      "id": "num-usage-838",
+      "type": "code",
+      "category_ar": "أكواد الرصيد والشحن والتحويل",
+      "title_ar": "رصيد الاستهلاك / الوحدات المتبقية",
+      "summary_ar": "*838#",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*838#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*838#"
+      ],
+      "phones": [],
+      "tags": [
+        "استهلاكي",
+        "وحدات",
+        "ميكسات",
+        "usage"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد (الوطن، المال، mobilemasr)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "الوطن",
+          "type": "press"
+        },
+        {
+          "name": "صناع المال (almaal.org)",
+          "type": "other"
+        },
+        {
+          "name": "mobilemasr",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        52,
+        56,
+        70
+      ]
+    },
+    {
+      "id": "num-recharge-556",
+      "type": "code",
+      "category_ar": "أكواد الرصيد والشحن والتحويل",
+      "title_ar": "شحن كارت الرصيد (الكارت الخدش)",
+      "summary_ar": "*556*رقم الكارت#",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*556*رقم الكارت#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*556*رقم الكارت#"
+      ],
+      "phones": [],
+      "tags": [
+        "أشحن كارت",
+        "شحن",
+        "كارت خدش",
+        "recharge"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد في مصادر كثيرة.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        52,
+        56,
+        70
+      ]
+    },
+    {
+      "id": "num-recharge-hakamini",
+      "type": "code",
+      "category_ar": "أكواد الرصيد والشحن والتحويل",
+      "title_ar": "شحن كروت \"هكا ميني\"",
+      "summary_ar": "*556*9*رقم الكارت# (غير مؤكد).",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*556*9*رقم الكارت#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*556*9*رقم الكارت#"
+      ],
+      "phones": [],
+      "tags": [
+        "هكا ميني",
+        "شحن",
+        "recharge"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد): مصدر واحد.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        52
+      ]
+    },
+    {
+      "id": "num-recharge-mixat",
+      "type": "code",
+      "category_ar": "أكواد الرصيد والشحن والتحويل",
+      "title_ar": "شحن الكارت مع عرض الميكسات",
+      "summary_ar": "*556*1*رقم الكارت# (غير مؤكد).",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*556*1*رقم الكارت#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*556*1*رقم الكارت#"
+      ],
+      "phones": [],
+      "tags": [
+        "ميكسات",
+        "شحن"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد): مصدر واحد (mobilemasr).",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "mobilemasr",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        52
+      ]
+    },
+    {
+      "id": "num-transfer-557",
+      "type": "code",
+      "category_ar": "أكواد الرصيد والشحن والتحويل",
+      "title_ar": "تحويل رصيد",
+      "summary_ar": "*557*رقم المستلم*المبلغ# — الرقم الأول وبعده المبلغ.",
+      "body_ar": "ملحوظة: الملحق كاتب الصيغة \"*557*المبلغ*المستلم رقم#\" (ترتيب الكلمات في الجدول)، والقسم الرئيسي بيقول إن الأغلبية: الرقم الأول وبعده المبلغ.",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*557*رقم المستلم*المبلغ#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "صيغة الملخص",
+          "value": "*557*الرقم*المبلغ#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "صيغة الملحق",
+          "value": "*557*المبلغ*المستلم رقم#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*557*رقم المستلم*المبلغ#",
+        "*557*الرقم*المبلغ#",
+        "*557*المبلغ*المستلم رقم#"
+      ],
+      "phones": [],
+      "tags": [
+        "أحول رصيد",
+        "تحويل",
+        "balance transfer"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد (mobilemasr، tablet-egy، aboutmsr 2025، الوطن). مقال قديم واحد (المال 2020) عكس الترتيب، والأغلبية بتقول الرقم الأول وبعده المبلغ.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "mobilemasr",
+          "type": "other"
+        },
+        {
+          "name": "tablet-egy",
+          "type": "other"
+        },
+        {
+          "name": "aboutmsr",
+          "type": "other"
+        },
+        {
+          "name": "الوطن",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        52,
+        56,
+        70
+      ]
+    },
+    {
+      "id": "num-transfer-menu-770",
+      "type": "code",
+      "category_ar": "أكواد الرصيد والشحن والتحويل",
+      "title_ar": "قائمة تحويل الرصيد",
+      "summary_ar": "*770# ثم اختيار 1 (غير مؤكد).",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*770#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "بعد الكود",
+          "value": "اختيار 1",
+          "kind": "text"
+        }
+      ],
+      "codes": [
+        "*770#"
+      ],
+      "phones": [],
+      "tags": [
+        "تحويل رصيد",
+        "قائمة"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد): aboutmsr بس. مقال قديم (2020) قال إنه \"تحويل الرصيد لنظام الفاتورة\".",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "aboutmsr",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        52
+      ]
+    },
+    {
+      "id": "num-salefny-911",
+      "type": "code",
+      "category_ar": "أكواد الرصيد والشحن والتحويل",
+      "title_ar": "سلفني / رصيد الطوارئ",
+      "summary_ar": "*911# (\"سلفني شكرًا\" أو \"سلفني على النوتة\").",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*911#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*911#"
+      ],
+      "phones": [],
+      "tags": [
+        "سلفني",
+        "سلفة",
+        "رصيد طوارئ",
+        "loan",
+        "emergency credit"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد بشكل متوسط (pricesworld، aboutmsr، mobilemasr)، وكلها مواقع تقنية.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "pricesworld",
+          "type": "other"
+        },
+        {
+          "name": "aboutmsr",
+          "type": "other"
+        },
+        {
+          "name": "mobilemasr",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        52,
+        56,
+        70
+      ]
+    },
+    {
+      "id": "num-salefny-balance",
+      "type": "code",
+      "category_ar": "أكواد الرصيد والشحن والتحويل",
+      "title_ar": "استعلام عن رصيد السلفة",
+      "summary_ar": "*888*2# — التكلفة 5 قروش (غير مؤكد).",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*888*2#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "التكلفة",
+          "value": "5 قروش",
+          "kind": "price"
+        }
+      ],
+      "codes": [
+        "*888*2#"
+      ],
+      "phones": [],
+      "tags": [
+        "سلفة",
+        "رصيد السلفة"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد): pricesworld بس (2024).",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "pricesworld",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        52
+      ]
+    },
+    {
+      "id": "num-kallemny-111",
+      "type": "code",
+      "category_ar": "أكواد الرصيد والشحن والتحويل",
+      "title_ar": "كلمني شكرًا",
+      "summary_ar": "*111*رقم الموبايل#",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*111*رقم الموبايل#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*111*رقم الموبايل#"
+      ],
+      "phones": [],
+      "tags": [
+        "كلمني",
+        "call me",
+        "شكرا"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد بشكل متوسط (pricesworld وaboutmsr)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "pricesworld",
+          "type": "other"
+        },
+        {
+          "name": "aboutmsr",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        52,
+        56,
+        70
+      ]
+    },
+    {
+      "id": "num-kallemny-menu",
+      "type": "code",
+      "category_ar": "أكواد الرصيد والشحن والتحويل",
+      "title_ar": "كلمني شكرًا (قائمة)",
+      "summary_ar": "*100# ثم 1 ثم الرقم (غير مؤكد).",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*100#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "الخطوات",
+          "value": "ثم 1 ثم الرقم",
+          "kind": "text"
+        }
+      ],
+      "codes": [
+        "*100#"
+      ],
+      "phones": [],
+      "tags": [
+        "كلمني",
+        "قائمة"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد): pricesworld بس.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "pricesworld",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        52
+      ]
+    },
+    {
+      "id": "num-system-check-555",
+      "type": "code",
+      "category_ar": "أكواد الرصيد والشحن والتحويل",
+      "title_ar": "معرفة النظام الحالي / الشحن بالمكالمة",
+      "summary_ar": "الاتصال بـ 555 (غير مؤكد).",
+      "facts": [
+        {
+          "label_ar": "الاتصال بـ",
+          "value": "555",
+          "kind": "phone"
+        }
+      ],
+      "codes": [],
+      "phones": [
+        "555"
+      ],
+      "tags": [
+        "نظامي ايه",
+        "النظام",
+        "system"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد): aboutmsr بس.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "aboutmsr",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        52
+      ]
+    },
+    {
+      "id": "num-system-change-525",
+      "type": "code",
+      "category_ar": "أكواد الرصيد والشحن والتحويل",
+      "title_ar": "تغيير النظام",
+      "summary_ar": "الاتصال بـ 525.",
+      "facts": [
+        {
+          "label_ar": "الاتصال بـ",
+          "value": "525",
+          "kind": "phone"
+        }
+      ],
+      "codes": [],
+      "phones": [
+        "525"
+      ],
+      "tags": [
+        "تغيير النظام",
+        "change plan",
+        "نظام"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد (المال 2020 وaboutmsr 2025)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "صناع المال (almaal.org)",
+          "type": "other"
+        },
+        {
+          "name": "aboutmsr",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        52,
+        70
+      ]
+    },
+    {
+      "id": "num-hekaya-3333",
+      "type": "code",
+      "category_ar": "أكواد الرصيد والشحن والتحويل",
+      "title_ar": "قائمة خدمات \"هكاية\": الرصيد، تفاصيل الباقة، التجديد، العروض",
+      "summary_ar": "*3333# (غير مؤكد).",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*3333#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*3333#"
+      ],
+      "phones": [],
+      "tags": [
+        "حكاية",
+        "هكاية",
+        "باقة"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد): موقع واحد (tablet-egy، صفحتين). والملحق كمان بيقول (غير مؤكد).",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "tablet-egy",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        52,
+        70
+      ]
+    },
+    {
+      "id": "num-renew-807",
+      "type": "code",
+      "category_ar": "أكواد الرصيد والشحن والتحويل",
+      "title_ar": "تجديد الباقة قبل ميعادها",
+      "summary_ar": "*807#",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*807#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*807#"
+      ],
+      "phones": [],
+      "tags": [
+        "تجديد",
+        "renew",
+        "باقة"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد (المال 2020 وaboutmsr 2025)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "صناع المال (almaal.org)",
+          "type": "other"
+        },
+        {
+          "name": "aboutmsr",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        52,
+        70
+      ]
+    },
+    {
+      "id": "num-extra-626",
+      "type": "code",
+      "category_ar": "أكواد الرصيد والشحن والتحويل",
+      "title_ar": "باقات إضافية لما الباقة تخلص",
+      "summary_ar": "*626# (غير مؤكد).",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*626#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*626#"
+      ],
+      "phones": [],
+      "tags": [
+        "باقة إضافية",
+        "الباقة خلصت",
+        "add-on"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد): tablet-egy وmobilemasr، وهما مواقع ضعيفة.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "tablet-egy",
+          "type": "other"
+        },
+        {
+          "name": "mobilemasr",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        52
+      ]
+    },
+    {
+      "id": "num-aqwa-card-811",
+      "type": "code",
+      "category_ar": "أكواد الرصيد والشحن والتحويل",
+      "title_ar": "\"أقوى كارت\"",
+      "summary_ar": "*811# (غير مؤكد).",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*811#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*811#"
+      ],
+      "phones": [],
+      "tags": [
+        "أقوى كارت",
+        "كارت"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد): مصدر واحد.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        52
+      ]
+    },
+    {
+      "id": "num-hekaya-menu-319",
+      "type": "code",
+      "category_ar": "أكواد الرصيد والشحن والتحويل",
+      "title_ar": "قائمة حكاية (اشتراك / تغيير الفئة / العائلة)",
+      "summary_ar": "*319# — من الملحق.",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*319#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*319#"
+      ],
+      "phones": [],
+      "tags": [
+        "حكاية",
+        "اشتراك",
+        "عيلة",
+        "hekaya"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "من الملحق: كل الأكواد هناك اتأكدت من أكتر من مصدر إلا اللي جنبه (غير مؤكد). مش موجود في جداول القسم 6.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        70
+      ]
+    },
+    {
+      "id": "num-net-566",
+      "type": "code",
+      "category_ar": "أكواد الإنترنت",
+      "title_ar": "باقات الإنترنت والاشتراك فيها",
+      "summary_ar": "*566#",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*566#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*566#"
+      ],
+      "phones": [],
+      "tags": [
+        "باقات النت",
+        "نت",
+        "internet",
+        "data"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد في مصادر كثيرة.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        52,
+        56,
+        70
+      ]
+    },
+    {
+      "id": "num-net-cancel",
+      "type": "code",
+      "category_ar": "أكواد الإنترنت",
+      "title_ar": "إلغاء باقة الإنترنت",
+      "summary_ar": "*566*2375# (والملحق بيقول فيه مصادر بتقول *566*2357#، غير مؤكد).",
+      "facts": [
+        {
+          "label_ar": "الكود (القسم 6 والملحق)",
+          "value": "*566*2375#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "قيمة تانية (الملحق، غير مؤكد)",
+          "value": "*566*2357#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*566*2375#",
+        "*566*2357#"
+      ],
+      "phones": [],
+      "tags": [
+        "إلغاء النت",
+        "cancel internet"
+      ],
+      "status": "conflict",
+      "status_note_ar": "القسم 6: مؤكد بشكل متوسط (مقال 2020 وaboutmsr 2025). الملحق: فيه مصادر بتقول *566*2357#، غير مؤكد.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "aboutmsr",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        52,
+        71
+      ]
+    },
+    {
+      "id": "num-net-renew",
+      "type": "code",
+      "category_ar": "أكواد الإنترنت",
+      "title_ar": "تجديد باقة الإنترنت",
+      "summary_ar": "*556*121#",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*556*121#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*556*121#"
+      ],
+      "phones": [],
+      "tags": [
+        "تجديد النت",
+        "renew data"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد بشكل متوسط (مقال 2020 وaboutmsr 2025)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "aboutmsr",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        52
+      ]
+    },
+    {
+      "id": "num-net-usage",
+      "type": "code",
+      "category_ar": "أكواد الإنترنت",
+      "title_ar": "استعلام عن استهلاك الإنترنت",
+      "summary_ar": "*558*5# أو *808# — تعارض.",
+      "facts": [
+        {
+          "label_ar": "الكود (مقال 2020 وmobilemasr)",
+          "value": "*558*5#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "الكود (tablet-egy)",
+          "value": "*808#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*558*5#",
+        "*808#"
+      ],
+      "phones": [],
+      "tags": [
+        "استهلاك النت",
+        "فاضل كام ميجا",
+        "data usage"
+      ],
+      "status": "conflict",
+      "status_note_ar": "(تعارض): مقال 2020 وmobilemasr قالوا *558*5#، وtablet-egy قال *808#.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "mobilemasr",
+          "type": "other"
+        },
+        {
+          "name": "tablet-egy",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        53
+      ]
+    },
+    {
+      "id": "num-net-settings-250",
+      "type": "code",
+      "category_ar": "أكواد الإنترنت",
+      "title_ar": "رسالة إعدادات الإنترنت",
+      "summary_ar": "إرسال رسالة على 250 (غير مؤكد).",
+      "body_ar": "الموبايلات الحديثة بتضبط الإعدادات لوحدها، ولو فيه مشكلة اضبط الـ APN يدوي من الفرع.",
+      "facts": [
+        {
+          "label_ar": "إرسال رسالة على",
+          "value": "250",
+          "kind": "phone"
+        }
+      ],
+      "codes": [],
+      "phones": [
+        "250"
+      ],
+      "tags": [
+        "إعدادات النت",
+        "APN",
+        "settings"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد): مقال قديم (2020).",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        53
+      ]
+    },
+    {
+      "id": "num-vas-155",
+      "type": "code",
+      "category_ar": "إلغاء الخدمات (VAS / الترفيهية / الكول تون)",
+      "title_ar": "الكود الموحد من NTRA للاستعلام عن كل الخدمات الترفيهية وإلغائها (لكل الشبكات)",
+      "summary_ar": "*155# — مجاني؛ 1 لاختيار الخدمة ثم 2 للإلغاء.",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*155#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "التكلفة",
+          "value": "مجاني",
+          "kind": "text"
+        },
+        {
+          "label_ar": "الخطوات (aboutmsr)",
+          "value": "اطلب الكود ثم 1 لاختيار الخدمة ثم 2 للإلغاء",
+          "kind": "text"
+        }
+      ],
+      "codes": [
+        "*155#"
+      ],
+      "phones": [],
+      "tags": [
+        "إلغاء خدمات",
+        "خدمات بتسحب رصيد",
+        "VAS",
+        "NTRA",
+        "unsubscribe"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد رسميًا (بيان NTRA بتاريخ 31 ديسمبر 2020).",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "الجهاز القومي لتنظيم الاتصالات (NTRA)",
+          "url": "https://www.tra.gov.eg",
+          "type": "regulator"
+        },
+        {
+          "name": "aboutmsr",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        53,
+        56,
+        71
+      ]
+    },
+    {
+      "id": "num-vas-166",
+      "type": "code",
+      "category_ar": "إلغاء الخدمات (VAS / الترفيهية / الكول تون)",
+      "title_ar": "إلغاء الخدمات الترفيهية على اتصالات",
+      "summary_ar": "*166#",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*166#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*166#"
+      ],
+      "phones": [],
+      "tags": [
+        "إلغاء خدمات",
+        "VAS",
+        "رصيد بيتسحب"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد (الوطن، mobilemasr، aboutmsr)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "الوطن",
+          "type": "press"
+        },
+        {
+          "name": "mobilemasr",
+          "type": "other"
+        },
+        {
+          "name": "aboutmsr",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        53,
+        56,
+        71
+      ]
+    },
+    {
+      "id": "num-vas-551",
+      "type": "code",
+      "category_ar": "إلغاء الخدمات (VAS / الترفيهية / الكول تون)",
+      "title_ar": "إلغاء الاشتراكات المخفية (بديل)",
+      "summary_ar": "*551# (غير مؤكد).",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*551#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*551#"
+      ],
+      "phones": [],
+      "tags": [
+        "اشتراكات مخفية",
+        "VAS"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد): mobilemasr بس.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "mobilemasr",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        53
+      ]
+    },
+    {
+      "id": "num-calltone-subscribe",
+      "type": "code",
+      "category_ar": "إلغاء الخدمات (VAS / الترفيهية / الكول تون)",
+      "title_ar": "الاشتراك في الكول تون",
+      "summary_ar": "*15# أو الاتصال بـ 1500 — تعارض.",
+      "facts": [
+        {
+          "label_ar": "الكود (الوطن)",
+          "value": "*15#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "الاتصال بـ (aboutmsr)",
+          "value": "1500",
+          "kind": "phone"
+        }
+      ],
+      "codes": [
+        "*15#"
+      ],
+      "phones": [
+        "1500"
+      ],
+      "tags": [
+        "كول تون",
+        "call tone",
+        "رنة"
+      ],
+      "status": "conflict",
+      "status_note_ar": "(تعارض): الوطن قال *15#، وaboutmsr قال 1500. وكمان *15# متذكور كعرض يومي (غير مؤكد) في جدول العروض.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "الوطن",
+          "type": "press"
+        },
+        {
+          "name": "aboutmsr",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        53,
+        54
+      ],
+      "related": [
+        "num-promo-daily-15"
+      ]
+    },
+    {
+      "id": "num-calltone-cancel",
+      "type": "code",
+      "category_ar": "إلغاء الخدمات (VAS / الترفيهية / الكول تون)",
+      "title_ar": "إلغاء الكول تون",
+      "summary_ar": "*15*5#",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*15*5#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*15*5#"
+      ],
+      "phones": [],
+      "tags": [
+        "إلغاء الكول تون",
+        "call tone",
+        "رنة"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد (الوطن، المال، aboutmsr)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "الوطن",
+          "type": "press"
+        },
+        {
+          "name": "صناع المال (almaal.org)",
+          "type": "other"
+        },
+        {
+          "name": "aboutmsr",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        53,
+        56,
+        71
+      ]
+    },
+    {
+      "id": "num-vas-2020-stop-note",
+      "type": "article",
+      "category_ar": "إلغاء الخدمات (VAS / الترفيهية / الكول تون)",
+      "title_ar": "ملاحظة: كود \"2020\" وكود \"STOP\"",
+      "summary_ar": "مالقيناش أي مصدر لكود \"2020\" أو \"STOP\" لاتصالات؛ استخدم *155# أو *166#.",
+      "facts": [
+        {
+          "label_ar": "بديل 1",
+          "value": "*155#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "بديل 2",
+          "value": "*166#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*155#",
+        "*166#"
+      ],
+      "phones": [],
+      "tags": [
+        "2020",
+        "STOP",
+        "إلغاء"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "ما لقيتلوش أي مصدر.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        53
+      ]
+    },
+    {
+      "id": "num-phone-off-787",
+      "type": "code",
+      "category_ar": "خدمات المكالمات الخاصة باتصالات",
+      "title_ar": "خاصية \"التليفون مغلق\" (المتصل بيسمع إن الخط مقفول)",
+      "summary_ar": "*21*787# — تحويل مكالمات لرقم خدمة؛ الإلغاء ##21#.",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*21*787#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "الإلغاء (الكود العام)",
+          "value": "##21#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*21*787#",
+        "##21#"
+      ],
+      "phones": [],
+      "tags": [
+        "التليفون مغلق",
+        "مقفول",
+        "phone off"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد بشكل متوسط (mobilemasr وaboutmsr).",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "mobilemasr",
+          "type": "other"
+        },
+        {
+          "name": "aboutmsr",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        53
+      ]
+    },
+    {
+      "id": "num-missed-calls-787",
+      "type": "code",
+      "category_ar": "خدمات المكالمات الخاصة باتصالات",
+      "title_ar": "إشعار المكالمات الفائتة",
+      "summary_ar": "*787# (غير مؤكد).",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*787#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*787#"
+      ],
+      "phones": [],
+      "tags": [
+        "مكالمات فائتة",
+        "missed calls"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد): mobilemasr بس.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "mobilemasr",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        53
+      ]
+    },
+    {
+      "id": "num-call-keeper-789",
+      "type": "code",
+      "category_ar": "خدمات المكالمات الخاصة باتصالات",
+      "title_ar": "Call Keeper (رسالة فيها أرقام اللي اتصلوا)",
+      "summary_ar": "*789# (غير مؤكد).",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*789#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*789#"
+      ],
+      "phones": [],
+      "tags": [
+        "Call Keeper",
+        "مين اتصل"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد): mobilemasr بس.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "mobilemasr",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        53
+      ]
+    },
+    {
+      "id": "num-wallet-777",
+      "type": "code",
+      "category_ar": "أكواد محفظة اتصالات كاش / e& money",
+      "title_ar": "القائمة الرئيسية للمحفظة",
+      "summary_ar": "*777# — الأضمن تطلبه وتختار من القائمة.",
+      "body_ar": "ترتيب القوائم الفرعية ممكن يتغير، فالأضمن إنك تطلب *777# وتختار من القائمة. التطبيق الرسمي بقى اسمه etisalat money - EG (الإصدار 12.0.6، 14 نوفمبر) وبيستخدمه بس المسجلين في الخدمة.",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*777#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "إصدار تطبيق etisalat money - EG",
+          "value": "12.0.6",
+          "kind": "text"
+        },
+        {
+          "label_ar": "دعم المحفظة",
+          "value": "778",
+          "kind": "phone"
+        }
+      ],
+      "codes": [
+        "*777#"
+      ],
+      "phones": [
+        "778"
+      ],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "e& money",
+        "wallet",
+        "اتصالات كاش"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد (الوطن، tablet-egy، البنك نوت، المال)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "الوطن",
+          "type": "press"
+        },
+        {
+          "name": "tablet-egy",
+          "type": "other"
+        },
+        {
+          "name": "البنك نوت",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        },
+        {
+          "name": "صناع المال (almaal.org)",
+          "type": "other"
+        },
+        {
+          "name": "App Store: etisalat money - EG",
+          "url": "https://apps.apple.com/us/app/-/id1123428821",
+          "type": "app_store"
+        }
+      ],
+      "pdf_pages": [
+        53,
+        54,
+        56,
+        71
+      ]
+    },
+    {
+      "id": "num-wallet-777-1",
+      "type": "code",
+      "category_ar": "أكواد محفظة اتصالات كاش / e& money",
+      "title_ar": "تحويل فلوس",
+      "summary_ar": "*777*1#",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*777*1#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*777*1#"
+      ],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "wallet",
+        "تحويل فلوس"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد بشكل متوسط (البنك نوت والمال)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "البنك نوت",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        },
+        {
+          "name": "صناع المال (almaal.org)",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        53
+      ]
+    },
+    {
+      "id": "num-wallet-777-2",
+      "type": "code",
+      "category_ar": "أكواد محفظة اتصالات كاش / e& money",
+      "title_ar": "شحن رصيد من المحفظة",
+      "summary_ar": "*777*2#",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*777*2#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*777*2#"
+      ],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "wallet",
+        "شحن رصيد من المحفظة"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد بشكل متوسط (البنك نوت، المال، tablet-egy)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "البنك نوت",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        },
+        {
+          "name": "صناع المال (almaal.org)",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        53
+      ]
+    },
+    {
+      "id": "num-wallet-777-3",
+      "type": "code",
+      "category_ar": "أكواد محفظة اتصالات كاش / e& money",
+      "title_ar": "سحب من ATM",
+      "summary_ar": "*777*3#",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*777*3#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*777*3#"
+      ],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "wallet",
+        "سحب من ATM"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد بشكل متوسط (البنك نوت والمال)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "البنك نوت",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        },
+        {
+          "name": "صناع المال (almaal.org)",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        53
+      ]
+    },
+    {
+      "id": "num-wallet-777-4",
+      "type": "code",
+      "category_ar": "أكواد محفظة اتصالات كاش / e& money",
+      "title_ar": "رصيد المحفظة",
+      "summary_ar": "*777*4#",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*777*4#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*777*4#"
+      ],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "wallet",
+        "رصيد المحفظة"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد بشكل متوسط (البنك نوت والمال)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "البنك نوت",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        },
+        {
+          "name": "صناع المال (almaal.org)",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        54
+      ]
+    },
+    {
+      "id": "num-wallet-777-6",
+      "type": "code",
+      "category_ar": "أكواد محفظة اتصالات كاش / e& money",
+      "title_ar": "كارت شراء أونلاين",
+      "summary_ar": "*777*6#",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*777*6#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*777*6#"
+      ],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "wallet",
+        "كارت شراء أونلاين"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد بشكل متوسط.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "البنك نوت",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        },
+        {
+          "name": "صناع المال (almaal.org)",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        54
+      ]
+    },
+    {
+      "id": "num-wallet-777-8",
+      "type": "code",
+      "category_ar": "أكواد محفظة اتصالات كاش / e& money",
+      "title_ar": "خدمات الرقم السري",
+      "summary_ar": "*777*8#",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*777*8#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*777*8#"
+      ],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "wallet",
+        "خدمات الرقم السري"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد بشكل متوسط.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "البنك نوت",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        },
+        {
+          "name": "صناع المال (almaal.org)",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        54
+      ]
+    },
+    {
+      "id": "num-wallet-777-11",
+      "type": "code",
+      "category_ar": "أكواد محفظة اتصالات كاش / e& money",
+      "title_ar": "سحب كاش من الفرع",
+      "summary_ar": "*777*11#",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*777*11#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*777*11#"
+      ],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "wallet",
+        "سحب كاش من الفرع"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد بشكل متوسط.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "البنك نوت",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        },
+        {
+          "name": "صناع المال (almaal.org)",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        54
+      ]
+    },
+    {
+      "id": "num-wallet-777-12",
+      "type": "code",
+      "category_ar": "أكواد محفظة اتصالات كاش / e& money",
+      "title_ar": "سجل العمليات",
+      "summary_ar": "*777*12#",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*777*12#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*777*12#"
+      ],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "wallet",
+        "سجل العمليات"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد بشكل متوسط.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "البنك نوت",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        },
+        {
+          "name": "صناع المال (almaal.org)",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        54
+      ]
+    },
+    {
+      "id": "num-wallet-777-15",
+      "type": "code",
+      "category_ar": "أكواد محفظة اتصالات كاش / e& money",
+      "title_ar": "إغلاق المحفظة",
+      "summary_ar": "*777*15# (غير مؤكد).",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*777*15#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*777*15#"
+      ],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "wallet",
+        "إغلاق المحفظة"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد): المال بس.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "البنك نوت",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        },
+        {
+          "name": "صناع المال (almaal.org)",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        54
+      ]
+    },
+    {
+      "id": "num-wallet-777-5",
+      "type": "code",
+      "category_ar": "أكواد محفظة اتصالات كاش / e& money",
+      "title_ar": "معاملات فوري / التجار",
+      "summary_ar": "*777*5# — البنك نوت قال \"فوري\" والمال قال \"التجار\".",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*777*5#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "حسب البنك نوت",
+          "value": "فوري",
+          "kind": "text"
+        },
+        {
+          "label_ar": "حسب المال",
+          "value": "التجار",
+          "kind": "text"
+        }
+      ],
+      "codes": [
+        "*777*5#"
+      ],
+      "phones": [],
+      "tags": [
+        "فوري",
+        "تجار",
+        "محفظة",
+        "fawry"
+      ],
+      "status": "conflict",
+      "status_note_ar": "المصدرين بيسمّوا الخدمة مختلف: البنك نوت قال \"فوري\"، والمال قال \"التجار\".",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "البنك نوت",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        },
+        {
+          "name": "صناع المال (almaal.org)",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        54
+      ]
+    },
+    {
+      "id": "num-promo-daily-15",
+      "type": "code",
+      "category_ar": "عروض وهدايا (أكواد ترويجية)",
+      "title_ar": "عرض يومي (ميجات سوشيال أو دقايق)",
+      "summary_ar": "*15# (غير مؤكد) — بيتعارض مع كود الكول تون.",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*15#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*15#"
+      ],
+      "phones": [],
+      "tags": [
+        "عرض يومي",
+        "سوشيال",
+        "هدايا",
+        "promo"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد): mobilemasr، وكمان بيتعارض مع كود الكول تون فوق.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "mobilemasr",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        54
+      ]
+    },
+    {
+      "id": "num-promo-recharge-gift",
+      "type": "code",
+      "category_ar": "عروض وهدايا (أكواد ترويجية)",
+      "title_ar": "هدية بعد الشحن (بـ 15 جنيه أو أكتر)",
+      "summary_ar": "*011# أو *550# (غير مؤكد).",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*011#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "أو",
+          "value": "*550#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "الشرط",
+          "value": "شحن بـ 15 جنيه أو أكتر",
+          "kind": "price"
+        }
+      ],
+      "codes": [
+        "*011#",
+        "*550#"
+      ],
+      "phones": [],
+      "tags": [
+        "هدية",
+        "بعد الشحن",
+        "gift"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد): mobilemasr بس.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "mobilemasr",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        54
+      ]
+    },
+    {
+      "id": "num-promo-gifts-misc",
+      "type": "code",
+      "category_ar": "عروض وهدايا (أكواد ترويجية)",
+      "title_ar": "هدايا ميجات أو دقايق مختلفة",
+      "summary_ar": "*4441#، *4442#، *2344#، *2508#، *705# (غير مؤكد) — ماتقولهاش للعميل غير لما تتأكد.",
+      "facts": [
+        {
+          "label_ar": "كود",
+          "value": "*4441#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "كود",
+          "value": "*4442#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "كود",
+          "value": "*2344#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "كود",
+          "value": "*2508#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "كود",
+          "value": "*705#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*4441#",
+        "*4442#",
+        "*2344#",
+        "*2508#",
+        "*705#"
+      ],
+      "phones": [],
+      "tags": [
+        "هدايا",
+        "ميجات ببلاش",
+        "دقايق",
+        "gifts"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد): mobilemasr بس. ممكن تكون عروض قديمة. ماتقولهاش للعميل غير لما تتأكد منها.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "mobilemasr",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        54
+      ]
+    },
+    {
+      "id": "num-loyalty-points",
+      "type": "service",
+      "category_ar": "عروض وهدايا (أكواد ترويجية)",
+      "title_ar": "برنامج النقاط / الولاء",
+      "summary_ar": "مالقيناش كود موثق؛ الهدايا والعروض والمزايا من تطبيق My etisalat.",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "غير متوفر",
+          "kind": "text"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "نقاط",
+        "ولاء",
+        "loyalty",
+        "points"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "مالقيتش كود موثق لنقاط اتصالات مصر (حسب وصف App Store المزايا من التطبيق).",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "App Store: My etisalat",
+          "url": "https://apps.apple.com/us/app/my-e-eg/id558287646",
+          "type": "app_store"
+        }
+      ],
+      "pdf_pages": [
+        54
+      ]
+    },
+    {
+      "id": "num-app-my-etisalat",
+      "type": "service",
+      "category_ar": "تطبيق My etisalat",
+      "title_ar": "تطبيق My etisalat (كان اسمه My e& - EG)",
+      "title_en": "My etisalat app",
+      "summary_ar": "الاسم الحالي على App Store: My etisalat، المطوّر Etisalat Egypt، آخر إصدار 37.4.0 (9 نوفمبر).",
+      "body_ar": "المزايا: الاستعلام عن الرصيد، الشحن، دفع الفواتير، استبدال العروض والهدايا والمزايا، التسوق والخدمات البنكية أونلاين، شحن كارت الكهرباء بالـ NFC (من الإصدار 35.0.0)، الرقابة الأبوية Parental Control (من الإصدار 35.1.0). التحديث وصفه بإنه \"كل الخدمات في مكان واحد\".",
+      "facts": [
+        {
+          "label_ar": "الاسم على App Store",
+          "value": "My etisalat",
+          "kind": "text"
+        },
+        {
+          "label_ar": "المطوّر",
+          "value": "Etisalat Egypt",
+          "kind": "text"
+        },
+        {
+          "label_ar": "حقوق النشر",
+          "value": "e& Egypt",
+          "kind": "text"
+        },
+        {
+          "label_ar": "آخر إصدار",
+          "value": "37.4.0 (9 نوفمبر)",
+          "kind": "text"
+        },
+        {
+          "label_ar": "شحن كارت الكهرباء بالـ NFC",
+          "value": "من الإصدار 35.0.0",
+          "kind": "text"
+        },
+        {
+          "label_ar": "الرقابة الأبوية",
+          "value": "من الإصدار 35.1.0",
+          "kind": "text"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "ماي اتصالات",
+        "My e&",
+        "تطبيق",
+        "app",
+        "My etisalat"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "App Store: My etisalat",
+          "url": "https://apps.apple.com/us/app/my-e-eg/id558287646",
+          "type": "app_store"
+        }
+      ],
+      "pdf_pages": [
+        54
+      ]
+    },
+    {
+      "id": "num-app-promo-words",
+      "type": "code",
+      "category_ar": "تطبيق My etisalat",
+      "title_ar": "أكواد ترويجية داخل التطبيق",
+      "summary_ar": "كلمات زي EGYPT وMISTAR في بعض العروض (غير مؤكد).",
+      "facts": [
+        {
+          "label_ar": "أمثلة",
+          "value": "EGYPT",
+          "kind": "text"
+        },
+        {
+          "label_ar": "أمثلة",
+          "value": "MISTAR",
+          "kind": "text"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "برومو كود",
+        "promo code",
+        "تطبيق"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(mobilemasr، غير مؤكد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "mobilemasr",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        54
+      ]
+    },
+    {
+      "id": "num-my-number-947",
+      "type": "code",
+      "category_ar": "معرفة الرقم والخطوط المسجلة باسمك",
+      "title_ar": "اعرف رقمك",
+      "summary_ar": "*947#",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*947#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*947#"
+      ],
+      "phones": [],
+      "tags": [
+        "رقمي ايه",
+        "my number",
+        "اعرف رقمك"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد بشكل متوسط (المال 2020 وaboutmsr 2025)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "صناع المال (almaal.org)",
+          "type": "other"
+        },
+        {
+          "name": "aboutmsr",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        55,
+        56,
+        70
+      ]
+    },
+    {
+      "id": "num-lines-on-id",
+      "type": "service",
+      "category_ar": "معرفة الرقم والخطوط المسجلة باسمك",
+      "title_ar": "الخطوط المسجلة على رقمك القومي",
+      "summary_ar": "تطبيق My NTRA ← \"خدمات الأفراد\" ← \"أرقامي\" واكتب الرقم القومي.",
+      "body_ar": "النتيجة بتوضح عدد الخطوط عند كل شركة. مالقيناش كود USSD موثق للخدمة دي.",
+      "facts": [],
+      "steps_ar": [
+        "افتح تطبيق My NTRA",
+        "من \"خدمات الأفراد\" اختار \"أرقامي\"",
+        "اكتب الرقم القومي"
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "أرقامي",
+        "خطوط باسمي",
+        "My NTRA",
+        "رقم قومي"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "رسمي (بيان NTRA ومصراوي 2026).",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "الجهاز القومي لتنظيم الاتصالات (NTRA)",
+          "url": "https://www.tra.gov.eg",
+          "type": "regulator"
+        },
+        {
+          "name": "مصراوي",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        55
+      ],
+      "related": [
+        "proc-case-6-data-update"
+      ]
+    },
+    {
+      "id": "num-unknown-line-form",
+      "type": "procedure",
+      "category_ar": "معرفة الرقم والخطوط المسجلة باسمك",
+      "title_ar": "خط مسجل باسمك وانت ماتعرفوش",
+      "summary_ar": "روح فرع الشركة بالبطاقة الأصلية واملأ \"استمارة عدم حيازة الخط\".",
+      "facts": [],
+      "steps_ar": [
+        "روح فرع الشركة بالبطاقة الأصلية",
+        "املأ \"استمارة عدم حيازة الخط\" (بتوقعها انت والموظف وتتختم)"
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "خط مش بتاعي",
+        "عدم حيازة",
+        "استمارة"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مصراوي (أغسطس 2026). ده إجراء مهم لموظف الفرع.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "مصراوي",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        55
+      ],
+      "related": [
+        "proc-case-6-data-update"
+      ]
+    },
+    {
+      "id": "num-puk",
+      "type": "code",
+      "category_ar": "خدمات بدون كود موثق",
+      "title_ar": "كود PUK",
+      "summary_ar": "مالقيناش كود USSD — العميل يكلم 333 أو ييجي الفرع بالبطاقة أو يشوف كارت الشريحة الأصلي.",
+      "body_ar": "بعد ما ياخد الـ PUK بيكتب الكود العام **05*PUK*PIN جديد*PIN جديد#.",
+      "facts": [
+        {
+          "label_ar": "الحالة",
+          "value": "مالقيتش كود USSD",
+          "kind": "text"
+        },
+        {
+          "label_ar": "الكود العام بعد أخذ الـ PUK",
+          "value": "**05*PUK*PIN جديد*PIN جديد#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "رقم خدمة العملاء",
+          "value": "333",
+          "kind": "phone"
+        }
+      ],
+      "codes": [
+        "**05*PUK*PIN جديد*PIN جديد#"
+      ],
+      "phones": [
+        "333"
+      ],
+      "tags": [
+        "PUK",
+        "الشريحة مقفولة",
+        "بن كود"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "مالقيتش كود USSD موثق (ارجع للنظام الداخلي).",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        55
+      ]
+    },
+    {
+      "id": "num-esim-no-code",
+      "type": "service",
+      "category_ar": "خدمات بدون كود موثق",
+      "title_ar": "eSIM",
+      "summary_ar": "مالقيناش كود — التفعيل من الفرع (QR) بعد التحقق من الهوية.",
+      "facts": [
+        {
+          "label_ar": "الحالة",
+          "value": "مالقيتش كود",
+          "kind": "text"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "eSIM",
+        "شريحة إلكترونية"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "مالقيتش كود.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        55
+      ],
+      "related": [
+        "proc-case-2b-esim"
+      ]
+    },
+    {
+      "id": "num-roaming-no-code",
+      "type": "service",
+      "category_ar": "خدمات بدون كود موثق",
+      "title_ar": "تفعيل التجوال الدولي",
+      "summary_ar": "مالقيناش كود موثق — من 333 أو الفرع أو التطبيق.",
+      "body_ar": "دليل NTRA بيقول: اسأل عن الأسعار قبل السفر، ولما توصل هتجيلك رسالة مجانية بالأسعار، واقفل Data Roaming قبل ما تركب الطيارة.",
+      "facts": [
+        {
+          "label_ar": "الحالة",
+          "value": "مالقيتش كود موثق",
+          "kind": "text"
+        },
+        {
+          "label_ar": "القناة",
+          "value": "333",
+          "kind": "phone"
+        }
+      ],
+      "codes": [],
+      "phones": [
+        "333"
+      ],
+      "tags": [
+        "تجوال",
+        "roaming",
+        "سفر"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "مالقيتش كود موثق.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "الجهاز القومي لتنظيم الاتصالات (NTRA)",
+          "url": "https://www.tra.gov.eg",
+          "type": "regulator"
+        }
+      ],
+      "pdf_pages": [
+        55
+      ],
+      "related": [
+        "proc-case-12-roaming-rights"
+      ]
+    },
+    {
+      "id": "num-mnp-no-code",
+      "type": "service",
+      "category_ar": "خدمات بدون كود موثق",
+      "title_ar": "نقل الرقم (MNP)",
+      "summary_ar": "مالقيناش كود — الطلب من فرع الشركة اللي العميل رايحلها.",
+      "facts": [
+        {
+          "label_ar": "الحالة",
+          "value": "مالقيتش كود",
+          "kind": "text"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "نقل رقم",
+        "MNP",
+        "porting"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "مالقيتش كود.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        55
+      ],
+      "related": [
+        "proc-case-4-mnp"
+      ]
+    },
+    {
+      "id": "num-voicemail-no-code",
+      "type": "service",
+      "category_ar": "خدمات بدون كود موثق",
+      "title_ar": "البريد الصوتي",
+      "summary_ar": "مالقيناش كود — ارجع للنظام الداخلي.",
+      "facts": [
+        {
+          "label_ar": "الحالة",
+          "value": "مالقيتش كود",
+          "kind": "text"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "بريد صوتي",
+        "voicemail"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "مالقيتش كود.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        55
+      ]
+    },
+    {
+      "id": "num-gsm-cf-21",
+      "type": "code",
+      "category_ar": "أكواد GSM العامة (MMI)",
+      "title_ar": "تحويل كل المكالمات (غير مشروط)",
+      "summary_ar": "تفعيل **21*الرقم#، إلغاء ##21#، استعلام *#21#.",
+      "facts": [
+        {
+          "label_ar": "التفعيل",
+          "value": "**21*الرقم#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "الإلغاء",
+          "value": "##21#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "الاستعلام",
+          "value": "*#21#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "**21*الرقم#",
+        "##21#",
+        "*#21#"
+      ],
+      "phones": [],
+      "tags": [
+        "تحويل مكالمات",
+        "call forwarding",
+        "unconditional"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "المرجع: معيار 3GPP TS 22.030 و22.082، ومدونة Microsoft. ممكن تختلف شوية حسب الشبكة أو الموبايل.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "Microsoft Learn (أرشيف) / 3GPP TS 22.030",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        55
+      ]
+    },
+    {
+      "id": "num-gsm-cf-67",
+      "type": "code",
+      "category_ar": "أكواد GSM العامة (MMI)",
+      "title_ar": "تحويل لو الخط مشغول",
+      "summary_ar": "تفعيل **67*الرقم#، إلغاء ##67#، استعلام *#67#.",
+      "facts": [
+        {
+          "label_ar": "التفعيل",
+          "value": "**67*الرقم#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "الإلغاء",
+          "value": "##67#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "الاستعلام",
+          "value": "*#67#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "**67*الرقم#",
+        "##67#",
+        "*#67#"
+      ],
+      "phones": [],
+      "tags": [
+        "تحويل مكالمات",
+        "call forwarding",
+        "busy"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "المرجع: معيار 3GPP TS 22.030 و22.082، ومدونة Microsoft. ممكن تختلف شوية حسب الشبكة أو الموبايل.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "Microsoft Learn (أرشيف) / 3GPP TS 22.030",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        55
+      ]
+    },
+    {
+      "id": "num-gsm-cf-61",
+      "type": "code",
+      "category_ar": "أكواد GSM العامة (MMI)",
+      "title_ar": "تحويل لو مفيش رد",
+      "summary_ar": "تفعيل **61*الرقم#، إلغاء ##61#، استعلام *#61#.",
+      "facts": [
+        {
+          "label_ar": "التفعيل",
+          "value": "**61*الرقم#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "الإلغاء",
+          "value": "##61#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "الاستعلام",
+          "value": "*#61#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "**61*الرقم#",
+        "##61#",
+        "*#61#"
+      ],
+      "phones": [],
+      "tags": [
+        "تحويل مكالمات",
+        "call forwarding",
+        "no answer"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "المرجع: معيار 3GPP TS 22.030 و22.082، ومدونة Microsoft. ممكن تختلف شوية حسب الشبكة أو الموبايل.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "Microsoft Learn (أرشيف) / 3GPP TS 22.030",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        55
+      ]
+    },
+    {
+      "id": "num-gsm-cf-62",
+      "type": "code",
+      "category_ar": "أكواد GSM العامة (MMI)",
+      "title_ar": "تحويل لو الموبايل مقفول أو خارج التغطية",
+      "summary_ar": "تفعيل **62*الرقم#، إلغاء ##62#، استعلام *#62#.",
+      "facts": [
+        {
+          "label_ar": "التفعيل",
+          "value": "**62*الرقم#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "الإلغاء",
+          "value": "##62#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "الاستعلام",
+          "value": "*#62#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "**62*الرقم#",
+        "##62#",
+        "*#62#"
+      ],
+      "phones": [],
+      "tags": [
+        "تحويل مكالمات",
+        "call forwarding",
+        "unreachable"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "المرجع: معيار 3GPP TS 22.030 و22.082، ومدونة Microsoft. ممكن تختلف شوية حسب الشبكة أو الموبايل.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "Microsoft Learn (أرشيف) / 3GPP TS 22.030",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        55
+      ]
+    },
+    {
+      "id": "num-gsm-cf-cancel-all",
+      "type": "code",
+      "category_ar": "أكواد GSM العامة (MMI)",
+      "title_ar": "إلغاء كل أنواع التحويل",
+      "summary_ar": "##002#",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "##002#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "##002#"
+      ],
+      "phones": [],
+      "tags": [
+        "إلغاء التحويل",
+        "call forwarding"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "المرجع: معيار 3GPP TS 22.030 و22.082، ومدونة Microsoft. ممكن تختلف شوية حسب الشبكة أو الموبايل.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "Microsoft Learn (أرشيف) / 3GPP TS 22.030",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        55,
+        71
+      ]
+    },
+    {
+      "id": "num-gsm-imei",
+      "type": "code",
+      "category_ar": "أكواد GSM العامة (MMI)",
+      "title_ar": "رقم IMEI للموبايل",
+      "summary_ar": "*#06# — مهم لتسجيل الموبايل في \"تليفوني\" ولبلاغات السرقة.",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*#06#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*#06#"
+      ],
+      "phones": [],
+      "tags": [
+        "IMEI",
+        "سرقة",
+        "تليفوني"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "المرجع: معيار 3GPP TS 22.030 و22.082، ومدونة Microsoft. ممكن تختلف شوية حسب الشبكة أو الموبايل.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "Microsoft Learn (أرشيف) / 3GPP TS 22.030",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        56,
+        71
+      ]
+    },
+    {
+      "id": "num-gsm-call-waiting",
+      "type": "code",
+      "category_ar": "أكواد GSM العامة (MMI)",
+      "title_ar": "تفعيل انتظار المكالمات",
+      "summary_ar": "تفعيل *43#، إلغاء #43#، استعلام *#43#.",
+      "facts": [
+        {
+          "label_ar": "التفعيل",
+          "value": "*43#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "الإلغاء",
+          "value": "#43#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "الاستعلام",
+          "value": "*#43#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*43#",
+        "#43#",
+        "*#43#"
+      ],
+      "phones": [],
+      "tags": [
+        "انتظار المكالمات",
+        "call waiting"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "المرجع: معيار 3GPP TS 22.030 و22.082، ومدونة Microsoft. ممكن تختلف شوية حسب الشبكة أو الموبايل.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "Microsoft Learn (أرشيف) / 3GPP TS 22.030",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        56
+      ]
+    },
+    {
+      "id": "num-gsm-hide-id",
+      "type": "code",
+      "category_ar": "أكواد GSM العامة (MMI)",
+      "title_ar": "إخفاء الرقم في مكالمة واحدة",
+      "summary_ar": "#31#الرقم للإخفاء، *31#الرقم للإظهار في مكالمة واحدة، *#31# لمعرفة الحالة.",
+      "facts": [
+        {
+          "label_ar": "الإخفاء",
+          "value": "#31#الرقم",
+          "kind": "code"
+        },
+        {
+          "label_ar": "الإظهار في مكالمة واحدة",
+          "value": "*31#الرقم",
+          "kind": "code"
+        },
+        {
+          "label_ar": "معرفة الحالة",
+          "value": "*#31#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "#31#الرقم",
+        "*31#الرقم",
+        "*#31#"
+      ],
+      "phones": [],
+      "tags": [
+        "إخفاء الرقم",
+        "private number",
+        "hide caller id"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "المرجع: معيار 3GPP TS 22.030 و22.082، ومدونة Microsoft. ممكن تختلف شوية حسب الشبكة أو الموبايل.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "Microsoft Learn (أرشيف) / 3GPP TS 22.030",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        56
+      ]
+    },
+    {
+      "id": "num-gsm-clip",
+      "type": "code",
+      "category_ar": "أكواد GSM العامة (MMI)",
+      "title_ar": "معرفة حالة إظهار رقم المتصل (CLIP)",
+      "summary_ar": "*#30#",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*#30#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "*#30#"
+      ],
+      "phones": [],
+      "tags": [
+        "CLIP",
+        "إظهار الرقم"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "المرجع: معيار 3GPP TS 22.030 و22.082، ومدونة Microsoft. ممكن تختلف شوية حسب الشبكة أو الموبايل.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "Microsoft Learn (أرشيف) / 3GPP TS 22.030",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        56
+      ]
+    },
+    {
+      "id": "num-gsm-barring",
+      "type": "code",
+      "category_ar": "أكواد GSM العامة (MMI)",
+      "title_ar": "منع المكالمات (Call Barring)",
+      "summary_ar": "*33*كلمة السر# للتفعيل، #33*كلمة السر# للإلغاء؛ 330 لكل الصادر و35 للدولي.",
+      "facts": [
+        {
+          "label_ar": "التفعيل",
+          "value": "*33*كلمة السر#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "الإلغاء",
+          "value": "#33*كلمة السر#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "لكل الصادر",
+          "value": "330",
+          "kind": "text"
+        },
+        {
+          "label_ar": "للدولي",
+          "value": "35",
+          "kind": "text"
+        }
+      ],
+      "codes": [
+        "*33*كلمة السر#",
+        "#33*كلمة السر#"
+      ],
+      "phones": [],
+      "tags": [
+        "منع المكالمات",
+        "call barring"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "المرجع: معيار 3GPP TS 22.030 و22.082، ومدونة Microsoft. ممكن تختلف شوية حسب الشبكة أو الموبايل. الصيغة بتختلف حسب الشبكة.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "Microsoft Learn (أرشيف) / 3GPP TS 22.030",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        56
+      ]
+    },
+    {
+      "id": "num-gsm-pin-change",
+      "type": "code",
+      "category_ar": "أكواد GSM العامة (MMI)",
+      "title_ar": "تغيير الـ PIN",
+      "summary_ar": "**04*PIN قديم*PIN جديد*PIN جديد#",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "**04*PIN قديم*PIN جديد*PIN جديد#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "**04*PIN قديم*PIN جديد*PIN جديد#"
+      ],
+      "phones": [],
+      "tags": [
+        "PIN",
+        "تغيير الرقم السري للشريحة"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "المرجع: معيار 3GPP TS 22.030 و22.082، ومدونة Microsoft. ممكن تختلف شوية حسب الشبكة أو الموبايل.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "Microsoft Learn (أرشيف) / 3GPP TS 22.030",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        56
+      ]
+    },
+    {
+      "id": "num-gsm-puk-unlock",
+      "type": "code",
+      "category_ar": "أكواد GSM العامة (MMI)",
+      "title_ar": "فك قفل الشريحة بالـ PUK",
+      "summary_ar": "**05*PUK*PIN جديد*PIN جديد#",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "**05*PUK*PIN جديد*PIN جديد#",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "**05*PUK*PIN جديد*PIN جديد#"
+      ],
+      "phones": [],
+      "tags": [
+        "PUK",
+        "الشريحة مقفولة"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "المرجع: معيار 3GPP TS 22.030 و22.082، ومدونة Microsoft. ممكن تختلف شوية حسب الشبكة أو الموبايل.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "Microsoft Learn (أرشيف) / 3GPP TS 22.030",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        55,
+        56
+      ]
+    },
+    {
+      "id": "num-most-used-summary",
+      "type": "article",
+      "category_ar": "ملخص سريع",
+      "title_ar": "ملخص سريع للأكواد الأكثر استخدامًا في الفرع",
+      "summary_ar": "أهم الأكواد والأرقام اللي العملاء بيسألوا عليها في الفرع.",
+      "body_ar": "- خدمة العملاء: 333 (أو 01111234333 أو 0235346333)\n- رصيدي كام؟ *888# أو *555#\n- استهلاكي: *838#\n- أشحن كارت: *556*رقم الكارت#\n- أحوّل رصيد: *557*الرقم*المبلغ#\n- رقمي إيه؟ *947#\n- سلفني: *911#\n- كلمني: *111*الرقم#\n- باقات النت: *566#\n- ألغي الخدمات اللي بتسحب رصيد: *155# (موحد) أو *166#\n- ألغي الكول تون: *15*5#\n- المحفظة: *777# (والدعم 778)\n- IMEI: *#06#\n- شكوى ما اتحلتش: NTRA على 155",
+      "facts": [
+        {
+          "label_ar": "خدمة العملاء",
+          "value": "333",
+          "kind": "phone"
+        },
+        {
+          "label_ar": "خدمة العملاء من شبكة تانية",
+          "value": "01111234333",
+          "kind": "phone"
+        },
+        {
+          "label_ar": "خدمة العملاء من الأرضي",
+          "value": "0235346333",
+          "kind": "phone"
+        },
+        {
+          "label_ar": "رصيدي كام؟",
+          "value": "*888#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "رصيدي كام؟ (بديل)",
+          "value": "*555#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "استهلاكي",
+          "value": "*838#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "أشحن كارت",
+          "value": "*556*رقم الكارت#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "أحوّل رصيد",
+          "value": "*557*الرقم*المبلغ#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "رقمي إيه؟",
+          "value": "*947#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "سلفني",
+          "value": "*911#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "كلمني",
+          "value": "*111*الرقم#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "باقات النت",
+          "value": "*566#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "ألغي الخدمات (موحد)",
+          "value": "*155#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "ألغي الخدمات",
+          "value": "*166#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "ألغي الكول تون",
+          "value": "*15*5#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "المحفظة",
+          "value": "*777#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "دعم المحفظة",
+          "value": "778",
+          "kind": "phone"
+        },
+        {
+          "label_ar": "IMEI",
+          "value": "*#06#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "شكوى ما اتحلتش (NTRA)",
+          "value": "155",
+          "kind": "phone"
+        }
+      ],
+      "codes": [
+        "*888#",
+        "*555#",
+        "*838#",
+        "*556*رقم الكارت#",
+        "*557*الرقم*المبلغ#",
+        "*947#",
+        "*911#",
+        "*111*الرقم#",
+        "*566#",
+        "*155#",
+        "*166#",
+        "*15*5#",
+        "*777#",
+        "*#06#"
+      ],
+      "phones": [
+        "333",
+        "01111234333",
+        "0235346333",
+        "778",
+        "155"
+      ],
+      "tags": [
+        "ملخص",
+        "أهم الأكواد",
+        "cheat sheet",
+        "أكواد"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        56
+      ]
+    },
+    {
+      "id": "num-network-prefixes",
+      "type": "article",
+      "category_ar": "بادئات الشبكات",
+      "title_ar": "بادئات الشبكات (لأسئلة نقل الرقم)",
+      "summary_ar": "اتصالات 011 (333)، فودافون 010 (888)، أورنج 012 (110)، WE 015 (111).",
+      "facts": [
+        {
+          "label_ar": "اتصالات (e&) — البادئة",
+          "value": "011",
+          "kind": "text"
+        },
+        {
+          "label_ar": "اتصالات — خدمة العملاء",
+          "value": "333",
+          "kind": "phone"
+        },
+        {
+          "label_ar": "فودافون — البادئة",
+          "value": "010",
+          "kind": "text"
+        },
+        {
+          "label_ar": "فودافون — خدمة العملاء",
+          "value": "888",
+          "kind": "phone"
+        },
+        {
+          "label_ar": "أورنج — البادئة",
+          "value": "012",
+          "kind": "text"
+        },
+        {
+          "label_ar": "أورنج — خدمة العملاء",
+          "value": "110",
+          "kind": "phone"
+        },
+        {
+          "label_ar": "WE — البادئة",
+          "value": "015",
+          "kind": "text"
+        },
+        {
+          "label_ar": "WE — خدمة العملاء",
+          "value": "111",
+          "kind": "phone"
+        }
+      ],
+      "codes": [],
+      "phones": [
+        "333",
+        "888",
+        "110",
+        "111"
+      ],
+      "tags": [
+        "بادئة",
+        "011",
+        "010",
+        "012",
+        "015",
+        "فودافون",
+        "اورنج",
+        "وي",
+        "prefix",
+        "نقل رقم"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        72
+      ],
+      "related": [
+        "proc-case-4-mnp"
+      ]
+    },
+    {
+      "id": "num-appx-hekaya-prices",
+      "type": "article",
+      "category_ar": "ملحق: مرجع سريع",
+      "title_ar": "أسعار حكاية ميكسات (بعد زيادة مايو 2026) — من الملحق",
+      "summary_ar": "حكاية 52 / 69 / 92 / 120 / 180 / 270 — الخصم من الرصيد والشحن التقريبي والميكسات.",
+      "body_ar": "مصدر الأسعار مواقع غير رسمية (موقعين متفقين). اتأكد منها على النظام قبل ما تأكدها للعميل.\n\n- حكاية 52: تتخصم 52 ج، تحتاج تشحن تقريبًا 74.29 ج، 1,900 ميكس\n- حكاية 69: 69 ج، 98.58 ج، 2,800 ميكس\n- حكاية 92: 92 ج، 131.44 ج، 3,750 ميكس\n- حكاية 120: 120 ج، 171.44 ج، 5,375 ميكس\n- حكاية 180: 180 ج، 257.15 ج، 9,350 ميكس\n- حكاية 270: 270 ج، 385.72 ج، 15,400 ميكس",
+      "facts": [
+        {
+          "label_ar": "حكاية 52 — تتخصم من الرصيد",
+          "value": "52",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "حكاية 52 — تحتاج تشحن تقريبًا",
+          "value": "74.29",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "حكاية 52 — الميكسات",
+          "value": "1,900",
+          "kind": "quantity"
+        },
+        {
+          "label_ar": "حكاية 69 — تتخصم من الرصيد",
+          "value": "69",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "حكاية 69 — تحتاج تشحن تقريبًا",
+          "value": "98.58",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "حكاية 69 — الميكسات",
+          "value": "2,800",
+          "kind": "quantity"
+        },
+        {
+          "label_ar": "حكاية 92 — تتخصم من الرصيد",
+          "value": "92",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "حكاية 92 — تحتاج تشحن تقريبًا",
+          "value": "131.44",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "حكاية 92 — الميكسات",
+          "value": "3,750",
+          "kind": "quantity"
+        },
+        {
+          "label_ar": "حكاية 120 — تتخصم من الرصيد",
+          "value": "120",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "حكاية 120 — تحتاج تشحن تقريبًا",
+          "value": "171.44",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "حكاية 120 — الميكسات",
+          "value": "5,375",
+          "kind": "quantity"
+        },
+        {
+          "label_ar": "حكاية 180 — تتخصم من الرصيد",
+          "value": "180",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "حكاية 180 — تحتاج تشحن تقريبًا",
+          "value": "257.15",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "حكاية 180 — الميكسات",
+          "value": "9,350",
+          "kind": "quantity"
+        },
+        {
+          "label_ar": "حكاية 270 — تتخصم من الرصيد",
+          "value": "270",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "حكاية 270 — تحتاج تشحن تقريبًا",
+          "value": "385.72",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "حكاية 270 — الميكسات",
+          "value": "15,400",
+          "kind": "quantity"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "حكاية",
+        "ميكسات",
+        "أسعار",
+        "hekaya",
+        "prices"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مصدر الأسعار مواقع غير رسمية (موقعين متفقين). اتأكد منها على النظام قبل ما تأكدها للعميل.",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        71,
+        72
+      ]
+    },
+    {
+      "id": "num-sources-section6",
+      "type": "article",
+      "category_ar": "المصادر",
+      "title_ar": "مصادر قسم الأكواد وأرقام خدمة العملاء",
+      "summary_ar": "المصادر الرسمية والصحف والمواقع التقنية اللي القسم اعتمد عليها.",
+      "body_ar": "رسمية: NTRA (الكود الموحد *155# — 31 ديسمبر 2020؛ مزايا My NTRA والخط الساخن 155 — يناير 2022؛ تقرير شكاوى أول نص 2025؛ دليل التجوال الدولي 2025)، Apple Support (تنبيه IMEI غير المسجل)، App Store (My etisalat وetisalat money - EG).\n\nصحف: The National (6 أكتوبر 2026)، الوطن (2020)، المال نيوز (2020)، مصراوي (أغسطس 2026)، القاهرة 24 (2020).\n\nمواقع تقنية (أضعف، للمقارنة): aboutmsr، pricesworld، mobilemasr، صناع المال، tablet-egy، البنك نوت، Monisnap، Microsoft Learn.\n\nمصادر ما اتقريتش: صفحات etisalat.eg الرسمية، مقال telecoms.com عن تغيير الاسم، ومقالين في الوطن (8332387 و8305488).",
+      "facts": [],
+      "codes": [
+        "*155#"
+      ],
+      "phones": [
+        "155"
+      ],
+      "tags": [
+        "مصادر",
+        "sources"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "الجهاز القومي لتنظيم الاتصالات (NTRA)",
+          "url": "https://www.tra.gov.eg",
+          "type": "regulator"
+        },
+        {
+          "name": "Apple Support",
+          "url": "https://support.apple.com/ar-ae/124645",
+          "type": "official_site"
+        },
+        {
+          "name": "App Store: My etisalat",
+          "url": "https://apps.apple.com/us/app/my-e-eg/id558287646",
+          "type": "app_store"
+        },
+        {
+          "name": "App Store: etisalat money - EG",
+          "url": "https://apps.apple.com/us/app/-/id1123428821",
+          "type": "app_store"
+        },
+        {
+          "name": "The National",
+          "url": "https://www.thenationalnews.com/business/2026/10/06/uaes-e-revives-original-etisalat-branding-as-it-focuses-on-ai-growth",
+          "type": "press"
+        },
+        {
+          "name": "الوطن",
+          "type": "press"
+        },
+        {
+          "name": "المال نيوز",
+          "type": "press"
+        },
+        {
+          "name": "مصراوي",
+          "type": "press"
+        },
+        {
+          "name": "aboutmsr",
+          "type": "other"
+        },
+        {
+          "name": "pricesworld",
+          "type": "other"
+        },
+        {
+          "name": "mobilemasr",
+          "type": "other"
+        },
+        {
+          "name": "صناع المال (almaal.org)",
+          "type": "other"
+        },
+        {
+          "name": "tablet-egy",
+          "type": "other"
+        },
+        {
+          "name": "البنك نوت",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        },
+        {
+          "name": "Monisnap",
+          "type": "other"
+        },
+        {
+          "name": "Microsoft Learn (أرشيف) / 3GPP TS 22.030",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        57,
+        58
+      ]
+    }
+  ]
+}

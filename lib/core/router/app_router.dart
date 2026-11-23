@@ -2,11 +2,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/browse/browse_screen.dart';
+import '../../features/content/item_detail_screen.dart';
+import '../../features/content/review_screen.dart';
+import '../../features/content/section_screen.dart';
 import '../../features/home/home_screen.dart';
 import '../../features/me/me_screen.dart';
 import '../../features/search/search_screen.dart';
 import '../../features/training/training_screen.dart';
 import 'app_routes.dart';
+import 'app_page_transitions.dart';
 import 'app_shell.dart';
 import 'tab_pager.dart';
 
@@ -68,6 +72,26 @@ final routerProvider = Provider<GoRouter>((ref) {
             ],
           ),
         ],
+      ),
+      // Pushed above the shell (root navigator) with swipe-back.
+      GoRoute(
+        path: ContentRoutes.sectionPattern,
+        pageBuilder: (context, state) => AppPage<void>(
+          key: state.pageKey,
+          child: SectionScreen(sectionKey: state.pathParameters['key']!),
+        ),
+      ),
+      GoRoute(
+        path: ContentRoutes.itemPattern,
+        pageBuilder: (context, state) => AppPage<void>(
+          key: state.pageKey,
+          child: ItemDetailScreen(itemId: state.pathParameters['id']!),
+        ),
+      ),
+      GoRoute(
+        path: ContentRoutes.review,
+        pageBuilder: (context, state) =>
+            AppPage<void>(key: state.pageKey, child: const ReviewScreen()),
       ),
     ],
   );
