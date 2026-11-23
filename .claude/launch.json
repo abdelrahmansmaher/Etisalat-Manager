@@ -24,6 +24,18 @@
         "build/web"
       ],
       "port": 8766
+    },
+    {
+      "name": "web-v3",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8767",
+        "--directory",
+        "build/web"
+      ],
+      "port": 8767
     }
   ]
 }

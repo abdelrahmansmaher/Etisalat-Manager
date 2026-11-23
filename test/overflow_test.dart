@@ -57,19 +57,32 @@ void main() {
     }
   }
 
-  for (final scale in scales) {
-    testWidgets('Search, Browse, Training have no overflow (ar x$scale)', (
-      tester,
-    ) async {
-      await pumpApp(tester, textScale: scale);
-      for (final tab in [2, 1, 3]) {
-        await tester.tap(find.byKey(ValueKey('nav-$tab')));
-        await tester.pumpAndSettle();
-        expect(tester.takeException(), isNull, reason: 'tab $tab');
-        await tester.drag(find.byType(Scrollable).last, const Offset(0, -2000));
-        await tester.pumpAndSettle();
-        expect(tester.takeException(), isNull, reason: 'tab $tab scrolled');
+  for (final locale in [ar, en]) {
+    for (final mode in [ThemeMode.light, ThemeMode.dark]) {
+      for (final scale in scales) {
+        final tag = '${locale.languageCode}/${mode.name}/x$scale';
+        testWidgets('Search, Browse, Training have no overflow ($tag)', (
+          tester,
+        ) async {
+          await pumpApp(
+            tester,
+            locale: locale,
+            themeMode: mode,
+            textScale: scale,
+          );
+          for (final tab in [2, 1, 3]) {
+            await tester.tap(find.byKey(ValueKey('nav-$tab')));
+            await tester.pumpAndSettle();
+            expect(tester.takeException(), isNull, reason: 'tab $tab');
+            await tester.drag(
+              find.byType(Scrollable).last,
+              const Offset(0, -2000),
+            );
+            await tester.pumpAndSettle();
+            expect(tester.takeException(), isNull, reason: 'tab $tab scrolled');
+          }
+        });
       }
-    });
+    }
   }
 }

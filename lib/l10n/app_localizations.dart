@@ -710,6 +710,12 @@ abstract class AppLocalizations {
   /// **'مؤكد حسب الدليل'**
   String get statusConfirmedGuide;
 
+  /// No description provided for @statusConfirmedOfficial.
+  ///
+  /// In ar, this message translates to:
+  /// **'مؤكد من الموقع الرسمي'**
+  String get statusConfirmedOfficial;
+
   /// No description provided for @statusUnconfirmedReview.
   ///
   /// In ar, this message translates to:
@@ -835,6 +841,114 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'كل البنود غير المؤكدة أو المتعارضة من كل الأقسام.'**
   String get reviewScreenSubtitle;
+
+  /// No description provided for @languageSystem.
+  ///
+  /// In ar, this message translates to:
+  /// **'حسب لغة الجهاز'**
+  String get languageSystem;
+
+  /// No description provided for @homeQuickAccess.
+  ///
+  /// In ar, this message translates to:
+  /// **'وصول سريع'**
+  String get homeQuickAccess;
+
+  /// No description provided for @homeRecentTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'فتحتها مؤخرًا'**
+  String get homeRecentTitle;
+
+  /// No description provided for @homeGreetingNight.
+  ///
+  /// In ar, this message translates to:
+  /// **'مساء النور'**
+  String get homeGreetingNight;
+
+  /// No description provided for @searchRecentTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'عمليات بحث سابقة'**
+  String get searchRecentTitle;
+
+  /// No description provided for @searchRecentClear.
+  ///
+  /// In ar, this message translates to:
+  /// **'مسح السجل'**
+  String get searchRecentClear;
+
+  /// No description provided for @searchSuggestionsTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'جرّب البحث عن'**
+  String get searchSuggestionsTitle;
+
+  /// No description provided for @packagePriceLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'السعر'**
+  String get packagePriceLabel;
+
+  /// No description provided for @packageCodeTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'كود الاشتراك'**
+  String get packageCodeTitle;
+
+  /// No description provided for @packageDetailsTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'التفاصيل'**
+  String get packageDetailsTitle;
+
+  /// No description provided for @packageNotesTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'الشروط والملاحظات'**
+  String get packageNotesTitle;
+
+  /// No description provided for @packageNoPrice.
+  ///
+  /// In ar, this message translates to:
+  /// **'السعر غير مذكور في الدليل'**
+  String get packageNoPrice;
+
+  /// No description provided for @packageConflictPrice.
+  ///
+  /// In ar, this message translates to:
+  /// **'السعر عليه تعارض — راجع القيمتين'**
+  String get packageConflictPrice;
+
+  /// No description provided for @packageCurrencyNote.
+  ///
+  /// In ar, this message translates to:
+  /// **'بالجنيه المصري'**
+  String get packageCurrencyNote;
+
+  /// No description provided for @sectionJumpTo.
+  ///
+  /// In ar, this message translates to:
+  /// **'انتقل إلى {name}'**
+  String sectionJumpTo(String name);
+
+  /// No description provided for @detailOverviewTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'الشرح'**
+  String get detailOverviewTitle;
+
+  /// No description provided for @detailStatusTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'حالة المعلومة'**
+  String get detailStatusTitle;
+
+  /// No description provided for @settingsAppearanceHint.
+  ///
+  /// In ar, this message translates to:
+  /// **'يُحفظ اختيارك تلقائيًا'**
+  String get settingsAppearanceHint;
 }
 
 class _AppLocalizationsDelegate

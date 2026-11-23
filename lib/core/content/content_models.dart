@@ -148,6 +148,16 @@ class Fact {
 
   /// Value with its unit, e.g. `52 ج`.
   String get display => unit == null ? value : '$value $unit';
+
+  /// Lay the value out left-to-right: an LTR kind whose value is a pure
+  /// number/code (no Arabic words such as `28 يوم (شهرية)`, which must stay
+  /// in the paragraph's RTL flow).
+  bool get rendersLtr => kind.isLtr && !_arabicLetters.hasMatch(value);
+
+  /// Value carries no information (`–`, `-`, empty).
+  bool get isBlank => value.replaceAll(RegExp(r'[\s\-–—]'), '').isEmpty;
+
+  static final RegExp _arabicLetters = RegExp('[\u0600-\u06FF]');
 }
 
 class Source {
@@ -238,6 +248,11 @@ class ContentItem {
   final String category;
   final String title;
   final String? titleEn;
+
+  /// True when at least one source is the official company website.
+  bool get officiallyVerified =>
+      sources.any((s) => s.type == ContentSourceType.officialSite);
+
   final String summary;
   final String? body;
   final List<Fact> facts;
@@ -338,10 +353,8 @@ final RegExp _codeInProse = RegExp(r'[*#]+[0-9][0-9*#]*#?');
 final String _lri = String.fromCharCode(0x200E);
 final String _pdi = String.fromCharCode(0x200E);
 
-String isolateCodes(String text) => text.replaceAllMapped(
-      _codeInProse,
-      (m) => '$_lri${m[0]}$_pdi',
-    );
+String isolateCodes(String text) =>
+    text.replaceAllMapped(_codeInProse, (m) => '$_lri${m[0]}$_pdi');
 
 String? _optIsolated(Object? v) {
   final s = _optStr(v);

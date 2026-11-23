@@ -1,7 +1,7 @@
 {
   "section": "procedures",
   "source_document": "pdf_guide_2026_11",
-  "as_of": "2026-11-22",
+  "as_of": "2026-11-23",
   "items": [
     {
       "id": "proc-staff-notice",
@@ -355,77 +355,6 @@
       ]
     },
     {
-      "id": "proc-rule-price-increase-may-2026",
-      "type": "rule",
-      "category_ar": "أهم القواعد الجديدة في 2026",
-      "title_ar": "زيادة الأسعار مايو 2026",
-      "summary_ar": "9–15% على الباقات وكروت الفكة، وسعر الدقيقة وكروت الشحن العادية متغيرتش.",
-      "facts": [
-        {
-          "label_ar": "نسبة الزيادة",
-          "value": "9–15%",
-          "kind": "percent"
-        }
-      ],
-      "codes": [],
-      "phones": [],
-      "tags": [
-        "زيادة الأسعار",
-        "price increase",
-        "كروت فكة"
-      ],
-      "status": "confirmed",
-      "status_note_ar": "من الملحق (قواعد 2026 المهمة).",
-      "sources": [
-        {
-          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
-          "type": "pdf_guide"
-        }
-      ],
-      "pdf_pages": [
-        71
-      ]
-    },
-    {
-      "id": "proc-rule-recharge-tax",
-      "type": "rule",
-      "category_ar": "أهم القواعد الجديدة في 2026",
-      "title_ar": "ضريبة الشحن",
-      "summary_ar": "كارت بـ 100 جنيه = حوالي 70 جنيه رصيد.",
-      "facts": [
-        {
-          "label_ar": "كارت بـ",
-          "value": "100",
-          "kind": "price",
-          "unit": "جنيه"
-        },
-        {
-          "label_ar": "الرصيد تقريبًا",
-          "value": "70",
-          "kind": "price",
-          "unit": "جنيه"
-        }
-      ],
-      "codes": [],
-      "phones": [],
-      "tags": [
-        "ضريبة",
-        "شحن",
-        "كارت 100"
-      ],
-      "status": "confirmed",
-      "status_note_ar": "من الملحق.",
-      "sources": [
-        {
-          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
-          "type": "pdf_guide"
-        }
-      ],
-      "pdf_pages": [
-        71
-      ]
-    },
-    {
       "id": "proc-rule-home-internet-2026",
       "type": "rule",
       "category_ar": "أهم القواعد الجديدة في 2026",
@@ -461,51 +390,6 @@
         "نت أرضي",
         "ADSL",
         "home internet"
-      ],
-      "status": "confirmed",
-      "status_note_ar": "من الملحق.",
-      "sources": [
-        {
-          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
-          "type": "pdf_guide"
-        }
-      ],
-      "pdf_pages": [
-        71
-      ]
-    },
-    {
-      "id": "proc-rule-emoney-fees",
-      "type": "rule",
-      "category_ar": "أهم القواعد الجديدة في 2026",
-      "title_ar": "محفظة e& money (رسوم)",
-      "summary_ar": "السحب 5 جنيه ثابت، والتحويل لمحفظة 1 جنيه ثابت (من أغسطس 2025).",
-      "facts": [
-        {
-          "label_ar": "السحب",
-          "value": "5",
-          "kind": "price",
-          "unit": "جنيه ثابت"
-        },
-        {
-          "label_ar": "التحويل لمحفظة",
-          "value": "1",
-          "kind": "price",
-          "unit": "جنيه ثابت"
-        },
-        {
-          "label_ar": "من",
-          "value": "أغسطس 2025",
-          "kind": "date"
-        }
-      ],
-      "codes": [],
-      "phones": [],
-      "tags": [
-        "محفظة",
-        "رسوم سحب",
-        "e& money",
-        "wallet fees"
       ],
       "status": "confirmed",
       "status_note_ar": "من الملحق.",
@@ -591,7 +475,7 @@
       "type": "fee",
       "category_ar": "الحالة 1: بيع خط جديد",
       "title_ar": "رسوم الخط الجديد",
-      "summary_ar": "خط كارت حوالي 85 ج أساسي وحوالي 115 ج في الفرع شاملة باقة أولى حوالي 30 ج؛ فاتورة حوالي 200 ج مقدم؛ الأرقام المميزة 1,000 لأكتر من 15,000 ج — كله غير مؤكد.",
+      "summary_ar": "الشريحة ≈ 35.5 ج + 50 ج رسوم دولة على الخطوط الجديدة + ضريبة، الإجمالي ≈ 85 ج، وغالبًا في الفرع يُضاف باقة بدء؛ الحد الأقصى 10 خطوط للرقم القومي (غير مؤكد).",
       "facts": [
         {
           "label_ar": "سعر الشريحة (خط كارت) — أساسي",
@@ -620,6 +504,29 @@
           "label_ar": "الأرقام المميزة (فضي / ذهبي / بلاتيني)",
           "value": "من 1,000 جنيه لأكتر من 15,000 جنيه",
           "kind": "price"
+        },
+        {
+          "label_ar": "الشريحة (تقريبًا)",
+          "value": "35.5",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "رسوم دولة على الخطوط الجديدة",
+          "value": "50",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "الإجمالي (تقريبًا)",
+          "value": "85",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "الحد الأقصى للخطوط",
+          "value": "10 خطوط للرقم القومي",
+          "kind": "quantity"
         }
       ],
       "codes": [],
@@ -628,10 +535,14 @@
         "سعر الخط",
         "سعر الشريحة",
         "رقم مميز",
-        "sim price"
+        "sim price",
+        "خط جديد",
+        "شريحة",
+        "سيم",
+        "new line"
       ],
       "status": "unconfirmed",
-      "status_note_ar": "(غير مؤكد): سعر الشريحة مصدره موقع غير رسمي (مايو 2026)؛ خط الفاتورة والأرقام المميزة (غير مؤكد).",
+      "status_note_ar": "(غير مؤكد): سعر الشريحة مصدره موقع غير رسمي (مايو 2026)؛ خط الفاتورة والأرقام المميزة (غير مؤكد). (من البند المدمج pkg-new-line-price: غير مؤكد (مصدر منخفض الموثوقية – mobilemasr يونيو 2026). راجع قائمة أسعار الفرع)",
       "sources": [
         {
           "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
@@ -640,9 +551,15 @@
         {
           "name": "SmartShowTV (غير رسمي)",
           "type": "other"
+        },
+        {
+          "name": "mobilemasr (منخفض الموثوقية – للاستئناس فقط)",
+          "url": "https://mobilemasr.com/en/blogs/etisalat-egypt-sim-card-price-2026",
+          "type": "other"
         }
       ],
       "pdf_pages": [
+        26,
         60
       ]
     },
@@ -1610,7 +1527,7 @@
       "type": "rule",
       "category_ar": "الحالة 7: التحويل بين الكارت والفاتورة، وفواتير خطوط الفاتورة",
       "title_ar": "حقوق عميل الفاتورة",
-      "summary_ar": "حد ائتماني يحدده العميل، فاتورة تفصيلية إلكترونية مجانية، إخطار وتذكير، وأسبوع على الأقل قبل الإيقاف.",
+      "summary_ar": "نوعان: فاتورة مفتوحة أو حد ائتماني؛ فاتورة تفصيلية إلكترونية مجانًا؛ تذكير قبل الموعد؛ أسبوع إخطار قبل قطع الخدمة عند التأخير؛ فاتورة بالعربي بوضوح.",
       "body_ar": "- الحد الائتماني: العميل يقدر يحدد حد شهري والخدمة تقف تلقائيًا لما يوصله.\n- الفاتورة التفصيلية: من حقه ياخدها نسخة إلكترونية مجانية، أو ورقية برسوم تحددها الشركة.\n- الإخطار: يتبلّغ بقيمة الفاتورة وآخر ميعاد للسداد، وتوصله رسالة تذكير قبل الميعاد.\n- التأخير في السداد: الشركة لازم تبلّغه يسدد خلال أسبوع، ولو مادفعش ممكن توقف الخدمة حسب العقد. قواعد NTRA بتقول إن الإخطار لازم يكون قبل الإيقاف بأسبوع على الأقل (المال).\n- وضوح الفاتورة: بالعربي وبشكل واضح وفيها الضرائب والرسوم، ومن حقه يطلب نسخة إنجليزي.",
       "facts": [
         {
@@ -1622,6 +1539,31 @@
           "label_ar": "الإخطار قبل الإيقاف",
           "value": "أسبوع على الأقل",
           "kind": "duration"
+        },
+        {
+          "label_ar": "نوعا الفاتورة",
+          "value": "فاتورة مفتوحة (بدون سقف – تُحاسب على الاستهلاك الفعلي شهريًا)، أو حد ائتماني (Credit Limit) يحدده العميل وتتوقف الخدمة تلقائيًا عند الوصول إليه",
+          "kind": "text"
+        },
+        {
+          "label_ar": "الفاتورة التفصيلية",
+          "value": "إلكترونية مجانًا، أو ورقية برسوم تحددها الشركة",
+          "kind": "text"
+        },
+        {
+          "label_ar": "التذكير",
+          "value": "لازم يُبلَّغ بقيمة الفاتورة وموعد السداد عند صدورها، وتذكير قبل الموعد",
+          "kind": "text"
+        },
+        {
+          "label_ar": "مهلة الإخطار عند التأخير",
+          "value": "أسبوع من الإخطار، وبعدها يحق لها قطع الخدمة وفقًا للعقد",
+          "kind": "duration"
+        },
+        {
+          "label_ar": "لغة الفاتورة",
+          "value": "بالعربي بوضوح (الضرائب، الرسوم الإدارية، أي رسوم إضافية)، ونسخة إنجليزي عند الطلب",
+          "kind": "text"
         }
       ],
       "codes": [],
@@ -1631,10 +1573,12 @@
         "حقوق العميل",
         "حد ائتماني",
         "postpaid rights",
-        "credit limit"
+        "credit limit",
+        "قطع الخدمة",
+        "postpaid"
       ],
       "status": "confirmed",
-      "status_note_ar": "NTRA، عن مصراوي يوليو 2025؛ والمال.",
+      "status_note_ar": "NTRA، عن مصراوي يوليو 2025؛ والمال. (من البند المدمج pkg-postpaid-rights: حسب ضوابط حماية المستخدم – مصراوي يوليو 2025)",
       "sources": [
         {
           "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
@@ -1652,9 +1596,15 @@
         {
           "name": "المال نيوز",
           "type": "press"
+        },
+        {
+          "name": "مصراوي – الكارت والفاتورة: اعرف حقوقك",
+          "url": "https://www.masrawy.com/news/news_economy/details/2025/7/1/2813628/",
+          "type": "press"
         }
       ],
       "pdf_pages": [
+        25,
         65
       ]
     },
@@ -2172,7 +2122,7 @@
         "roaming"
       ],
       "status": "unconfirmed",
-      "status_note_ar": "أسعار قديمة (يونيو 2023) للاسترشاد بس؛ الأسعار والأكواد الحالية (2026) (غير مؤكد).",
+      "status_note_ar": "أسعار قديمة (يونيو 2023) للاسترشاد بس؛ الأسعار والأكواد الحالية (2026) (غير مؤكد). مش ظاهر على الموقع الرسمي وقت المراجعة (23 نوفمبر 2026) — باقات التجوال الحالية على الموقع: Mega Voice And Data وVoice Bundle Worldwide وElite",
       "sources": [
         {
           "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
@@ -2236,6 +2186,552 @@
       ],
       "pdf_pages": [
         68
+      ]
+    },
+    {
+      "id": "proc-roaming-mega-weekly",
+      "type": "package",
+      "category_ar": "الحالة 12: التجوال الدولي والمكالمات الدولية",
+      "title_ar": "ميجا صوت وداتا — أسبوعي",
+      "title_en": "Mega Voice And Data Weekly",
+      "summary_ar": "2 جيجا + 60 دقيقة صادرة + 10 دقيقة واردة … لمدة أسبوع بـ 800 ج — الكود 4070",
+      "facts": [
+        {
+          "label_ar": "السعر (قبل الضريبة)",
+          "value": "800",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "الحصة (إنترنت)",
+          "value": "2 جيجا",
+          "kind": "quantity"
+        },
+        {
+          "label_ar": "الحصة (دقائق صادرة)",
+          "value": "60",
+          "kind": "quantity"
+        },
+        {
+          "label_ar": "الحصة (دقائق واردة)",
+          "value": "10",
+          "kind": "quantity"
+        },
+        {
+          "label_ar": "الحصة (رسائل)",
+          "value": "5",
+          "kind": "quantity"
+        },
+        {
+          "label_ar": "الصلاحية",
+          "value": "أسبوع",
+          "kind": "duration"
+        },
+        {
+          "label_ar": "كود الاشتراك",
+          "value": "4070",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "4070"
+      ],
+      "phones": [],
+      "tags": [
+        "تجوال",
+        "roaming",
+        "سفر",
+        "باقة تجوال"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "من الموقع الرسمي (23 نوفمبر 2026) — مش موجودة في الدليل. كل الأسعار غير شاملة الضريبة؛ الكود رقم مختصر للاشتراك (رسالة). متاحة في 60 دولة.",
+      "sources": [
+        {
+          "name": "الموقع الرسمي — International Roaming (تم التحقق 2026-11-23)",
+          "url": "https://www.eand.com.eg/portal/Mobile/international-roaming",
+          "type": "official_site"
+        }
+      ]
+    },
+    {
+      "id": "proc-roaming-mega-monthly",
+      "type": "package",
+      "category_ar": "الحالة 12: التجوال الدولي والمكالمات الدولية",
+      "title_ar": "ميجا صوت وداتا — شهري",
+      "title_en": "Mega Voice And Data Monthly",
+      "summary_ar": "5 جيجا + 120 دقيقة صادرة + 15 دقيقة واردة … لمدة شهر بـ 1,200 ج — الكود 4080",
+      "facts": [
+        {
+          "label_ar": "السعر (قبل الضريبة)",
+          "value": "1,200",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "الحصة (إنترنت)",
+          "value": "5 جيجا",
+          "kind": "quantity"
+        },
+        {
+          "label_ar": "الحصة (دقائق صادرة)",
+          "value": "120",
+          "kind": "quantity"
+        },
+        {
+          "label_ar": "الحصة (دقائق واردة)",
+          "value": "15",
+          "kind": "quantity"
+        },
+        {
+          "label_ar": "الحصة (رسائل)",
+          "value": "10",
+          "kind": "quantity"
+        },
+        {
+          "label_ar": "الصلاحية",
+          "value": "شهر",
+          "kind": "duration"
+        },
+        {
+          "label_ar": "كود الاشتراك",
+          "value": "4080",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "4080"
+      ],
+      "phones": [],
+      "tags": [
+        "تجوال",
+        "roaming",
+        "سفر",
+        "باقة تجوال"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "من الموقع الرسمي (23 نوفمبر 2026) — مش موجودة في الدليل. كل الأسعار غير شاملة الضريبة؛ الكود رقم مختصر للاشتراك (رسالة). متاحة في 60 دولة.",
+      "sources": [
+        {
+          "name": "الموقع الرسمي — International Roaming (تم التحقق 2026-11-23)",
+          "url": "https://www.eand.com.eg/portal/Mobile/international-roaming",
+          "type": "official_site"
+        }
+      ]
+    },
+    {
+      "id": "proc-roaming-voice-weekly",
+      "type": "package",
+      "category_ar": "الحالة 12: التجوال الدولي والمكالمات الدولية",
+      "title_ar": "باقة مكالمات حول العالم — أسبوعي",
+      "title_en": "Voice Bundle Worldwide Weekly",
+      "summary_ar": "30 دقيقة صادرة + 10 دقيقة واردة + 10 رسالة لمدة أسبوع بـ 400 ج — الكود 3052",
+      "facts": [
+        {
+          "label_ar": "السعر (قبل الضريبة)",
+          "value": "400",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "الحصة (دقائق صادرة)",
+          "value": "30",
+          "kind": "quantity"
+        },
+        {
+          "label_ar": "الحصة (دقائق واردة)",
+          "value": "10",
+          "kind": "quantity"
+        },
+        {
+          "label_ar": "الحصة (رسائل)",
+          "value": "10",
+          "kind": "quantity"
+        },
+        {
+          "label_ar": "الصلاحية",
+          "value": "أسبوع",
+          "kind": "duration"
+        },
+        {
+          "label_ar": "كود الاشتراك",
+          "value": "3052",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "3052"
+      ],
+      "phones": [],
+      "tags": [
+        "تجوال",
+        "roaming",
+        "سفر",
+        "باقة تجوال"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "من الموقع الرسمي (23 نوفمبر 2026) — مش موجودة في الدليل. كل الأسعار غير شاملة الضريبة؛ الكود رقم مختصر للاشتراك (رسالة). ",
+      "sources": [
+        {
+          "name": "الموقع الرسمي — International Roaming (تم التحقق 2026-11-23)",
+          "url": "https://www.eand.com.eg/portal/Mobile/international-roaming",
+          "type": "official_site"
+        }
+      ]
+    },
+    {
+      "id": "proc-roaming-elite-1",
+      "type": "package",
+      "category_ar": "الحالة 12: التجوال الدولي والمكالمات الدولية",
+      "title_ar": "إيليت 1 (تجوال)",
+      "title_en": "Elite Bundle 1",
+      "summary_ar": "5 جيجا لمدة أسبوع بـ 600 ج — الكود 9040",
+      "facts": [
+        {
+          "label_ar": "السعر (قبل الضريبة)",
+          "value": "600",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "الحصة (إنترنت)",
+          "value": "5 جيجا",
+          "kind": "quantity"
+        },
+        {
+          "label_ar": "الصلاحية",
+          "value": "أسبوع",
+          "kind": "duration"
+        },
+        {
+          "label_ar": "كود الاشتراك",
+          "value": "9040",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "9040"
+      ],
+      "phones": [],
+      "tags": [
+        "تجوال",
+        "roaming",
+        "سفر",
+        "باقة تجوال"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "من الموقع الرسمي (23 نوفمبر 2026) — مش موجودة في الدليل. كل الأسعار غير شاملة الضريبة؛ الكود رقم مختصر للاشتراك (رسالة). ",
+      "sources": [
+        {
+          "name": "الموقع الرسمي — International Roaming (تم التحقق 2026-11-23)",
+          "url": "https://www.eand.com.eg/portal/Mobile/international-roaming",
+          "type": "official_site"
+        }
+      ]
+    },
+    {
+      "id": "proc-roaming-elite-2",
+      "type": "package",
+      "category_ar": "الحالة 12: التجوال الدولي والمكالمات الدولية",
+      "title_ar": "إيليت 2 (تجوال)",
+      "title_en": "Elite Bundle 2",
+      "summary_ar": "15 جيجا لمدة شهر بـ 1,000 ج — الكود 9041",
+      "facts": [
+        {
+          "label_ar": "السعر (قبل الضريبة)",
+          "value": "1,000",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "الحصة (إنترنت)",
+          "value": "15 جيجا",
+          "kind": "quantity"
+        },
+        {
+          "label_ar": "الصلاحية",
+          "value": "شهر",
+          "kind": "duration"
+        },
+        {
+          "label_ar": "كود الاشتراك",
+          "value": "9041",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "9041"
+      ],
+      "phones": [],
+      "tags": [
+        "تجوال",
+        "roaming",
+        "سفر",
+        "باقة تجوال"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "من الموقع الرسمي (23 نوفمبر 2026) — مش موجودة في الدليل. كل الأسعار غير شاملة الضريبة؛ الكود رقم مختصر للاشتراك (رسالة). ",
+      "sources": [
+        {
+          "name": "الموقع الرسمي — International Roaming (تم التحقق 2026-11-23)",
+          "url": "https://www.eand.com.eg/portal/Mobile/international-roaming",
+          "type": "official_site"
+        }
+      ]
+    },
+    {
+      "id": "proc-travel-200",
+      "type": "package",
+      "category_ar": "الحالة 12: التجوال الدولي والمكالمات الدولية",
+      "title_ar": "ترافلر 200 (زوار مصر)",
+      "title_en": "Travel 200",
+      "summary_ar": "7 جيجا + 100 دقيقة محلية + 5 دقيقة دولية بـ 200 ج — اشترك *620#",
+      "facts": [
+        {
+          "label_ar": "السعر المطلوب شحنه / شامل الضريبة",
+          "value": "200",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "الحصة (إنترنت)",
+          "value": "7",
+          "kind": "quantity",
+          "unit": "جيجا"
+        },
+        {
+          "label_ar": "الحصة (دقائق محلية)",
+          "value": "100",
+          "kind": "quantity",
+          "unit": "دقيقة"
+        },
+        {
+          "label_ar": "الحصة (مكالمات دولية)",
+          "value": "5",
+          "kind": "quantity",
+          "unit": "دقيقة"
+        },
+        {
+          "label_ar": "كود الاشتراك",
+          "value": "*620#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "التجديد",
+          "value": "غير متجددة — *620#",
+          "kind": "text"
+        }
+      ],
+      "codes": [
+        "*620#"
+      ],
+      "phones": [],
+      "tags": [
+        "سياح",
+        "tourist",
+        "travel",
+        "زوار",
+        "ترافلر"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "من الموقع الرسمي (23 نوفمبر 2026) — مش موجودة في الدليل. للسياح الزائرين لمصر؛ الأسعار شاملة الضريبة ورسوم التنمية؛ التجديد *620#.",
+      "sources": [
+        {
+          "name": "الموقع الرسمي — Travel To Egypt (تم التحقق 2026-11-23)",
+          "url": "https://www.eand.com.eg/portal/Mobile/traveling-to-egypt",
+          "type": "official_site"
+        }
+      ]
+    },
+    {
+      "id": "proc-travel-300",
+      "type": "package",
+      "category_ar": "الحالة 12: التجوال الدولي والمكالمات الدولية",
+      "title_ar": "ترافلر 300 (زوار مصر)",
+      "title_en": "Travel 300",
+      "summary_ar": "12 جيجا + 250 دقيقة محلية + 10 دقيقة دولية بـ 300 ج — اشترك *620#",
+      "facts": [
+        {
+          "label_ar": "السعر المطلوب شحنه / شامل الضريبة",
+          "value": "300",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "الحصة (إنترنت)",
+          "value": "12",
+          "kind": "quantity",
+          "unit": "جيجا"
+        },
+        {
+          "label_ar": "الحصة (دقائق محلية)",
+          "value": "250",
+          "kind": "quantity",
+          "unit": "دقيقة"
+        },
+        {
+          "label_ar": "الحصة (مكالمات دولية)",
+          "value": "10",
+          "kind": "quantity",
+          "unit": "دقيقة"
+        },
+        {
+          "label_ar": "كود الاشتراك",
+          "value": "*620#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "التجديد",
+          "value": "غير متجددة — *620#",
+          "kind": "text"
+        }
+      ],
+      "codes": [
+        "*620#"
+      ],
+      "phones": [],
+      "tags": [
+        "سياح",
+        "tourist",
+        "travel",
+        "زوار",
+        "ترافلر"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "من الموقع الرسمي (23 نوفمبر 2026) — مش موجودة في الدليل. للسياح الزائرين لمصر؛ الأسعار شاملة الضريبة ورسوم التنمية؛ التجديد *620#.",
+      "sources": [
+        {
+          "name": "الموقع الرسمي — Travel To Egypt (تم التحقق 2026-11-23)",
+          "url": "https://www.eand.com.eg/portal/Mobile/traveling-to-egypt",
+          "type": "official_site"
+        }
+      ]
+    },
+    {
+      "id": "proc-travel-450",
+      "type": "package",
+      "category_ar": "الحالة 12: التجوال الدولي والمكالمات الدولية",
+      "title_ar": "ترافلر 450 (زوار مصر)",
+      "title_en": "Travel 450",
+      "summary_ar": "25 جيجا + 250 دقيقة محلية + 20 دقيقة دولية بـ 450 ج — اشترك *620#",
+      "facts": [
+        {
+          "label_ar": "السعر المطلوب شحنه / شامل الضريبة",
+          "value": "450",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "الحصة (إنترنت)",
+          "value": "25",
+          "kind": "quantity",
+          "unit": "جيجا"
+        },
+        {
+          "label_ar": "الحصة (دقائق محلية)",
+          "value": "250",
+          "kind": "quantity",
+          "unit": "دقيقة"
+        },
+        {
+          "label_ar": "الحصة (مكالمات دولية)",
+          "value": "20",
+          "kind": "quantity",
+          "unit": "دقيقة"
+        },
+        {
+          "label_ar": "كود الاشتراك",
+          "value": "*620#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "التجديد",
+          "value": "متجددة 3 مرات بس — *620#",
+          "kind": "text"
+        }
+      ],
+      "codes": [
+        "*620#"
+      ],
+      "phones": [],
+      "tags": [
+        "سياح",
+        "tourist",
+        "travel",
+        "زوار",
+        "ترافلر"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "من الموقع الرسمي (23 نوفمبر 2026) — مش موجودة في الدليل. للسياح الزائرين لمصر؛ الأسعار شاملة الضريبة ورسوم التنمية؛ التجديد *620#.",
+      "sources": [
+        {
+          "name": "الموقع الرسمي — Travel To Egypt (تم التحقق 2026-11-23)",
+          "url": "https://www.eand.com.eg/portal/Mobile/traveling-to-egypt",
+          "type": "official_site"
+        }
+      ]
+    },
+    {
+      "id": "proc-travel-600",
+      "type": "package",
+      "category_ar": "الحالة 12: التجوال الدولي والمكالمات الدولية",
+      "title_ar": "ترافلر 600 (زوار مصر)",
+      "title_en": "Travel 600",
+      "summary_ar": "40 جيجا + 400 دقيقة محلية + 30 دقيقة دولية بـ 600 ج — اشترك *620#",
+      "facts": [
+        {
+          "label_ar": "السعر المطلوب شحنه / شامل الضريبة",
+          "value": "600",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "الحصة (إنترنت)",
+          "value": "40",
+          "kind": "quantity",
+          "unit": "جيجا"
+        },
+        {
+          "label_ar": "الحصة (دقائق محلية)",
+          "value": "400",
+          "kind": "quantity",
+          "unit": "دقيقة"
+        },
+        {
+          "label_ar": "الحصة (مكالمات دولية)",
+          "value": "30",
+          "kind": "quantity",
+          "unit": "دقيقة"
+        },
+        {
+          "label_ar": "كود الاشتراك",
+          "value": "*620#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "التجديد",
+          "value": "متجددة 3 مرات بس — *620#",
+          "kind": "text"
+        }
+      ],
+      "codes": [
+        "*620#"
+      ],
+      "phones": [],
+      "tags": [
+        "سياح",
+        "tourist",
+        "travel",
+        "زوار",
+        "ترافلر"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "من الموقع الرسمي (23 نوفمبر 2026) — مش موجودة في الدليل. للسياح الزائرين لمصر؛ الأسعار شاملة الضريبة ورسوم التنمية؛ التجديد *620#. الصفحة الإنجليزي بتعرضها باسم «Travel 450 / 450 EGP» والبيانات العربي «ترافلر 600 / 600 جنيه» — اتأكد على النظام.",
+      "sources": [
+        {
+          "name": "الموقع الرسمي — Travel To Egypt (تم التحقق 2026-11-23)",
+          "url": "https://www.eand.com.eg/portal/Mobile/traveling-to-egypt",
+          "type": "official_site"
+        }
       ]
     },
     {

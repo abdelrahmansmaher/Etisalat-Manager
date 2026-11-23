@@ -375,6 +375,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get statusConfirmedGuide => 'مؤكد حسب الدليل';
 
   @override
+  String get statusConfirmedOfficial => 'مؤكد من الموقع الرسمي';
+
+  @override
   String get statusUnconfirmedReview => 'غير مؤكد — راجع داخليًا';
 
   @override
@@ -466,4 +469,60 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get reviewScreenSubtitle =>
       'كل البنود غير المؤكدة أو المتعارضة من كل الأقسام.';
+
+  @override
+  String get languageSystem => 'حسب لغة الجهاز';
+
+  @override
+  String get homeQuickAccess => 'وصول سريع';
+
+  @override
+  String get homeRecentTitle => 'فتحتها مؤخرًا';
+
+  @override
+  String get homeGreetingNight => 'مساء النور';
+
+  @override
+  String get searchRecentTitle => 'عمليات بحث سابقة';
+
+  @override
+  String get searchRecentClear => 'مسح السجل';
+
+  @override
+  String get searchSuggestionsTitle => 'جرّب البحث عن';
+
+  @override
+  String get packagePriceLabel => 'السعر';
+
+  @override
+  String get packageCodeTitle => 'كود الاشتراك';
+
+  @override
+  String get packageDetailsTitle => 'التفاصيل';
+
+  @override
+  String get packageNotesTitle => 'الشروط والملاحظات';
+
+  @override
+  String get packageNoPrice => 'السعر غير مذكور في الدليل';
+
+  @override
+  String get packageConflictPrice => 'السعر عليه تعارض — راجع القيمتين';
+
+  @override
+  String get packageCurrencyNote => 'بالجنيه المصري';
+
+  @override
+  String sectionJumpTo(String name) {
+    return 'انتقل إلى $name';
+  }
+
+  @override
+  String get detailOverviewTitle => 'الشرح';
+
+  @override
+  String get detailStatusTitle => 'حالة المعلومة';
+
+  @override
+  String get settingsAppearanceHint => 'يُحفظ اختيارك تلقائيًا';
 }

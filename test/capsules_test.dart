@@ -1,0 +1,309 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:knowledge_hub/app.dart';
+import 'package:knowledge_hub/core/content/content.dart';
+import 'package:knowledge_hub/core/router/app_router.dart';
+import 'package:knowledge_hub/core/router/tab_pager.dart';
+import 'package:knowledge_hub/core/settings/preferences.dart';
+import 'package:knowledge_hub/core/widgets/capsules.dart';
+import 'package:knowledge_hub/features/content/section_screen.dart';
+import 'package:knowledge_hub/features/home/home_screen.dart';
+import 'package:knowledge_hub/features/me/me_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'helpers/content_fixtures.dart';
+import 'helpers/pump_app.dart';
+
+String currentPath(WidgetTester tester) {
+  final container = ProviderScope.containerOf(
+    tester.element(find.byType(TabPager)),
+  );
+  return container
+      .read(routerProvider)
+      .routerDelegate
+      .currentConfiguration
+      .uri
+      .path;
+}
+
+Rect rectOf(WidgetTester tester, String key) =>
+    tester.getRect(find.byKey(ValueKey(key)));
+
+Finder get mainScroll => find
+    .byWidgetPredicate(
+      (w) => w is Scrollable && w.axisDirection == AxisDirection.down,
+    )
+    .hitTestable()
+    .first;
+
+void main() {
+  group('Capsule bottom navigation', () {
+    testWidgets('selected tab is a wide capsule; indicator moves (RTL)', (
+      tester,
+    ) async {
+      await pumpApp(tester);
+      final ind0 = rectOf(tester, 'nav-indicator');
+      final home = rectOf(tester, 'nav-0');
+      expect(ind0.center.dx, closeTo(home.center.dx, 1));
+      // The selected capsule is wider (icon + label), others icon-only.
+      expect(home.width, greaterThan(rectOf(tester, 'nav-1').width + 40));
+      // RTL: the indicator starts at the right edge.
+      expect(ind0.center.dx, greaterThan(rectOf(tester, 'nav-4').center.dx));
+
+      await tester.tap(find.byKey(const ValueKey('nav-3')));
+      await tester.pumpAndSettle();
+      final ind3 = rectOf(tester, 'nav-indicator');
+      expect(ind3.center.dx, closeTo(rectOf(tester, 'nav-3').center.dx, 1));
+      expect(ind3.center.dx, lessThan(ind0.center.dx));
+      expect(
+        rectOf(tester, 'nav-3').width,
+        greaterThan(rectOf(tester, 'nav-0').width + 40),
+      );
+    });
+
+    testWidgets('indicator is mid-way while swiping (LTR)', (tester) async {
+      await pumpApp(tester, locale: en);
+      final start = rectOf(tester, 'nav-indicator');
+      expect(start.center.dx, closeTo(rectOf(tester, 'nav-0').center.dx, 1));
+      final gesture = await tester.startGesture(const Offset(300, 300));
+      await gesture.moveBy(const Offset(-40, 0));
+      await gesture.moveBy(const Offset(-180, 0));
+      await tester.pump();
+      final mid = rectOf(tester, 'nav-indicator');
+      expect(mid.center.dx, greaterThan(start.center.dx + 5));
+      await gesture.up();
+      await tester.pumpAndSettle();
+      expect(currentPath(tester), '/browse');
+      final end = rectOf(tester, 'nav-indicator');
+      expect(end.center.dx, closeTo(rectOf(tester, 'nav-1').center.dx, 1));
+    });
+  });
+
+  group('Capsule rows and filters', () {
+    testWidgets('horizontal capsule row does not switch tabs', (tester) async {
+      await pumpApp(tester);
+      final row = find.byKey(const ValueKey('quick-sections'));
+      expect(row, findsOneWidget);
+      await tester.fling(row, const Offset(300, 0), 1500);
+      await tester.pumpAndSettle();
+      await tester.fling(row, const Offset(-300, 0), 1500);
+      await tester.pumpAndSettle();
+      expect(currentPath(tester), '/home');
+    });
+
+    testWidgets('quick-access capsule opens its section', (tester) async {
+      await pumpApp(tester);
+      await tester.tap(find.byKey(const ValueKey('quick-section-packages')));
+      await tester.pumpAndSettle();
+      expect(find.byType(SectionScreen), findsOneWidget);
+    });
+
+    testWidgets('segmented status filter moves its thumb', (tester) async {
+      await pumpApp(tester);
+      await tester.tap(find.byKey(const ValueKey('quick-section-packages')));
+      await tester.pumpAndSettle();
+      final seg = find.byType(SegmentedCapsule<StatusFilter>);
+      expect(
+        tester.widget<SegmentedCapsule<StatusFilter>>(seg).selected,
+        StatusFilter.all,
+      );
+      Alignment thumb() =>
+          (tester
+                      .widget<AnimatedAlign>(
+                        find.descendant(
+                          of: seg,
+                          matching: find.byType(AnimatedAlign),
+                        ),
+                      )
+                      .alignment
+                  as AlignmentDirectional)
+              .resolve(TextDirection.ltr);
+      final before = thumb();
+      await tester.tap(find.byKey(const ValueKey('filter-unconfirmed')));
+      await tester.pumpAndSettle();
+      expect(
+        tester.widget<SegmentedCapsule<StatusFilter>>(seg).selected,
+        StatusFilter.unconfirmed,
+      );
+      expect(thumb(), isNot(before));
+      expect(
+        tester
+            .getSemantics(find.byKey(const ValueKey('filter-unconfirmed')))
+            .flagsCollection
+            .isSelected
+            .toBoolOrNull(),
+        isTrue,
+      );
+    });
+
+    testWidgets('jump-to-category capsule scrolls to that header', (
+      tester,
+    ) async {
+      await pumpApp(tester);
+      await tester.tap(find.byKey(const ValueKey('quick-section-packages')));
+      await tester.pumpAndSettle();
+      const group = 'بنود غير مؤكدة';
+      final capsule = find.byKey(const ValueKey('jump-$group'));
+      await tester.ensureVisible(capsule);
+      await tester.pumpAndSettle();
+      await tester.tap(capsule);
+      await tester.pumpAndSettle();
+      final header = find.byKey(const ValueKey('group-$group'));
+      expect(header, findsOneWidget);
+      // Scrolled as far as needed: header at the top, or the list hit its
+      // end with the header fully on screen.
+      final pos = tester.state<ScrollableState>(mainScroll).position;
+      final y = tester.getTopLeft(header).dy;
+      expect(pos.pixels, greaterThan(0));
+      expect(
+        y < 200 || pos.pixels == pos.maxScrollExtent,
+        isTrue,
+        reason: 'y=$y offset=${pos.pixels}/${pos.maxScrollExtent}',
+      );
+      expect(tester.getBottomLeft(header).dy, lessThan(640));
+      // The capsule row stays pinned above the group headers.
+      final row = find.byKey(const ValueKey('category-capsules'));
+      expect(row, findsOneWidget);
+      expect(
+        tester.getTopLeft(header).dy,
+        greaterThanOrEqualTo(tester.getBottomLeft(row).dy - 1),
+      );
+      expect(
+        tester
+            .widget<Capsule>(find.byKey(const ValueKey('jump-$group')))
+            .selected,
+        isTrue,
+      );
+    });
+
+    testWidgets('search section capsules filter results', (tester) async {
+      await pumpApp(tester);
+      await tester.tap(find.byKey(const ValueKey('nav-2')));
+      await tester.pumpAndSettle();
+      await tester.enterText(
+        find.byKey(const ValueKey('search-field')),
+        'رصيد',
+      );
+      await tester.pump(const Duration(milliseconds: 150));
+      await tester.pumpAndSettle();
+      Capsule cap(String k) =>
+          tester.widget<Capsule>(find.byKey(ValueKey('search-filter-$k')));
+      expect(cap('all').selected, isTrue);
+      await tester.ensureVisible(
+        find.byKey(const ValueKey('search-filter-numbers')),
+      );
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(const ValueKey('search-filter-numbers')));
+      await tester.pumpAndSettle();
+      expect(cap('numbers').selected, isTrue);
+      expect(cap('all').selected, isFalse);
+      expect(
+        find.byKey(const ValueKey('item-row-code-test-balance')),
+        findsOneWidget,
+      );
+      await tester.pump(const Duration(seconds: 2)); // let timers finish
+    });
+  });
+
+  group('History', () {
+    testWidgets('recently opened items appear on Home', (tester) async {
+      await pumpApp(tester);
+      expect(find.byKey(const ValueKey('recent-strip')), findsNothing);
+      final tile = find.byKey(const ValueKey('must-know-num-test-hotline'));
+      await tester.tap(tile);
+      await tester.pumpAndSettle();
+      await tester.tap(find.byType(BackButton));
+      await tester.pumpAndSettle();
+      await tester.scrollUntilVisible(
+        find.byKey(const ValueKey('recent-num-test-hotline')),
+        200,
+        scrollable: mainScroll,
+      );
+      expect(
+        find.byKey(const ValueKey('recent-num-test-hotline')),
+        findsOneWidget,
+      );
+    });
+
+    testWidgets('recent searches become capsules', (tester) async {
+      await pumpApp(tester);
+      await tester.tap(find.byKey(const ValueKey('nav-2')));
+      await tester.pumpAndSettle();
+      final field = find.byKey(const ValueKey('search-field'));
+      await tester.enterText(field, 'رصيد');
+      await tester.pump(const Duration(milliseconds: 1600));
+      await tester.pumpAndSettle();
+      await tester.enterText(field, '');
+      await tester.pumpAndSettle();
+      expect(find.byKey(const ValueKey('recent-search-رصيد')), findsOneWidget);
+      await tester.tap(find.byKey(const ValueKey('recent-search-رصيد')));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const ValueKey('search-count')), findsOneWidget);
+    });
+  });
+
+  group('Persistence', () {
+    Future<SharedPreferences> pumpWithPrefs(
+      WidgetTester tester,
+      Map<String, Object> initial,
+    ) async {
+      SharedPreferences.setMockInitialValues(initial);
+      final prefs = await SharedPreferences.getInstance();
+      setSurface(tester);
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: [
+            preferencesProvider.overrideWithValue(prefs),
+            contentSourceProvider.overrideWithValue(fixtureContentSource()),
+          ],
+          child: const KnowledgeHubApp(),
+        ),
+      );
+      await tester.pumpAndSettle();
+      return prefs;
+    }
+
+    testWidgets('saved theme and language are restored', (tester) async {
+      await pumpWithPrefs(tester, {
+        PrefKeys.themeMode: 'dark',
+        PrefKeys.locale: 'en',
+      });
+      final home = find.byType(HomeScreen);
+      expect(Theme.of(tester.element(home)).brightness, Brightness.dark);
+      expect(Directionality.of(tester.element(home)), TextDirection.ltr);
+    });
+
+    testWidgets('theme follows the system, language defaults to Arabic; choices are saved', (
+      tester,
+    ) async {
+      tester.platformDispatcher.platformBrightnessTestValue = Brightness.dark;
+      addTearDown(tester.platformDispatcher.clearPlatformBrightnessTestValue);
+      final prefs = await pumpWithPrefs(tester, {});
+      final home = find.byType(HomeScreen);
+      expect(Theme.of(tester.element(home)).brightness, Brightness.dark);
+
+      await tester.tap(find.byKey(const ValueKey('nav-4')));
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(const ValueKey('theme-light')));
+      await tester.pumpAndSettle();
+      expect(prefs.getString(PrefKeys.themeMode), 'light');
+      expect(
+        Theme.of(tester.element(find.byType(MeScreen))).brightness,
+        Brightness.light,
+      );
+
+      await tester.scrollUntilVisible(
+        find.byKey(const ValueKey('lang-ar')),
+        200,
+        scrollable: mainScroll,
+      );
+      await tester.tap(find.byKey(const ValueKey('lang-ar')));
+      await tester.pumpAndSettle();
+      expect(prefs.getString(PrefKeys.locale), 'ar');
+      await tester.tap(find.byKey(const ValueKey('lang-system')));
+      await tester.pumpAndSettle();
+      expect(prefs.getString(PrefKeys.locale), 'system');
+    });
+  });
+}

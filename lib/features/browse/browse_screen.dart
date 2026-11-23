@@ -9,6 +9,7 @@ import '../../core/widgets/app_card.dart';
 import '../../core/widgets/page_scaffold.dart';
 import '../../core/widgets/trust/unofficial_disclaimer.dart';
 import '../../l10n/app_localizations.dart';
+import '../content/content_widgets.dart';
 import '../content/section_ui.dart';
 
 /// Browse: every content section with its item count.
@@ -34,27 +35,42 @@ class BrowseScreen extends ConsumerWidget {
             onTap: () => context.push(ContentRoutes.section(s.key)),
             child: Row(
               children: [
-                TintedIcon(s.icon),
+                SectionIconTile(s, size: 48),
                 const SizedBox(width: AppSpacing.md),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(s.title(l10n), style: theme.textTheme.titleMedium),
+                      Text(
+                        s.title(l10n),
+                        style: theme.textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
                       Text(
                         s.subtitle(l10n),
                         style: theme.textTheme.bodyMedium?.copyWith(
                           color: c.textTertiary,
                         ),
                       ),
+                      const SizedBox(height: AppSpacing.xxs),
                       Text(
                         l10n.itemCount(library.itemsOf(s).length),
-                        style: AppTypography.labelS.copyWith(color: c.primary),
+                        style: AppTypography.labelS.copyWith(
+                          color: s.tone(context).foreground,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ],
                   ),
                 ),
-                Icon(Icons.chevron_right, color: c.textTertiary),
+                const SizedBox(width: AppSpacing.xs),
+                Icon(
+                  Directionality.of(context) == TextDirection.rtl
+                      ? Icons.chevron_left_rounded
+                      : Icons.chevron_right_rounded,
+                  color: c.textTertiary,
+                ),
               ],
             ),
           ),

@@ -67,7 +67,8 @@ void main() {
       await tester.tap(tile);
       await tester.pumpAndSettle();
       expect(find.byType(ItemDetailScreen), findsOneWidget);
-      expect(find.text('خدمة العملاء التجريبية'), findsOneWidget);
+      // Large title + the (hidden until scrolled) app-bar title.
+      expect(find.text('خدمة العملاء التجريبية'), findsWidgets);
     });
   });
 
@@ -78,13 +79,28 @@ void main() {
       await pumpApp(tester);
       await openSection(tester, 'packages');
       expect(find.byType(SectionScreen), findsOneWidget);
-      expect(find.text('باقات تجريبية'), findsOneWidget);
+      expect(find.byKey(const ValueKey('group-باقات تجريبية')), findsOneWidget);
+      // Jump-to-category capsules, one per group.
+      expect(find.byKey(const ValueKey('category-capsules')), findsOneWidget);
+      expect(find.byKey(const ValueKey('jump-باقات أخرى')), findsOneWidget);
       expect(find.byKey(const ValueKey('status-confirmed')), findsWidgets);
-      expect(find.text('مؤكد حسب الدليل'), findsWidgets);
+      expect(
+        find.byWidgetPredicate(
+          (w) =>
+              w is Text &&
+              (w.data == 'مؤكد حسب الدليل' ||
+                  w.data == 'مؤكد من الموقع الرسمي'),
+        ),
+        findsWidgets,
+      );
       expect(find.text('غير مؤكد — راجع داخليًا'), findsWidgets);
 
       // Unverified group header is after the others.
-      await reveal(tester, find.text('بنود غير مؤكدة'), delta: 200);
+      await reveal(
+        tester,
+        find.byKey(const ValueKey('group-بنود غير مؤكدة')),
+        delta: 200,
+      );
       final unverifiedY = tester.getTopLeft(find.text('بند للمراجعة')).dy;
       await reveal(tester, find.text('باقة جاما'), delta: -200);
       expect(
@@ -142,12 +158,16 @@ void main() {
       await openSection(tester, 'packages');
       await openItem(tester, 'pkg-test-alpha');
       expect(find.byType(ItemDetailScreen), findsOneWidget);
-      expect(find.byKey(const ValueKey('answer-card')), findsOneWidget);
-      expect(find.byType(CodeText), findsWidgets);
+      // type == package → dedicated package layout.
+      expect(find.byKey(const ValueKey('package-hero')), findsOneWidget);
+      expect(find.byKey(const ValueKey('answer-card')), findsNothing);
+      expect(find.byKey(const ValueKey('package-metrics')), findsOneWidget);
+      expect(find.byKey(const ValueKey('package-code')), findsOneWidget);
       expect(find.byKey(const ValueKey('conflict-banner')), findsNothing);
       expect(find.byKey(const ValueKey('unconfirmed-banner')), findsNothing);
       for (final k in ['facts-table', 'item-body', 'pdf-pages']) {
         await reveal(tester, find.byKey(ValueKey(k)), delta: 200);
+        if (k == 'facts-table') expect(find.byType(CodeText), findsWidgets);
       }
       expect(find.text('من الدليل صفحة 7'), findsOneWidget);
       expect(find.byType(SourceBadge), findsNWidgets(2));
@@ -185,6 +205,9 @@ void main() {
       await pumpApp(tester);
       await openSection(tester, 'procedures');
       await openItem(tester, 'proc-test-replace-sim');
+      // Non-package items keep the generic Answer Card layout.
+      expect(find.byKey(const ValueKey('answer-card')), findsOneWidget);
+      expect(find.byKey(const ValueKey('package-hero')), findsNothing);
       final step = find.byKey(const ValueKey('step-0'));
       await reveal(tester, step, delta: 200);
       await tester.tap(step);

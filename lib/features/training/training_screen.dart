@@ -23,7 +23,7 @@ class TrainingScreen extends ConsumerWidget {
       title: l10n.trainingTitle,
       children: [
         PlaceholderPanel(
-          icon: Icons.school_outlined,
+          icon: Icons.school_rounded,
           title: l10n.contentComingSoon,
           body: l10n.trainingPlaceholderBody,
         ),
@@ -36,7 +36,7 @@ class TrainingScreen extends ConsumerWidget {
           child: Row(
             children: [
               TintedIcon(
-                Icons.fact_check_outlined,
+                Icons.fact_check_rounded,
                 background: c.warningContainer,
                 color: c.onWarningContainer,
               ),
@@ -58,7 +58,12 @@ class TrainingScreen extends ConsumerWidget {
                   ],
                 ),
               ),
-              Icon(Icons.chevron_right, color: c.textTertiary),
+              Icon(
+                Directionality.of(context) == TextDirection.rtl
+                    ? Icons.chevron_left_rounded
+                    : Icons.chevron_right_rounded,
+                color: c.textTertiary,
+              ),
             ],
           ),
         ),

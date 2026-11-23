@@ -1,7 +1,7 @@
 {
   "section": "wallet",
   "source_document": "pdf_guide_2026_11",
-  "as_of": "2026-11-22",
+  "as_of": "2026-11-23",
   "items": [
     {
       "id": "wal-rule-unconfirmed",
@@ -299,12 +299,29 @@
           "label_ar": "الكود الرئيسي",
           "value": "*777#",
           "kind": "code"
+        },
+        {
+          "label_ar": "الكود",
+          "value": "*777#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "إصدار تطبيق etisalat money - EG",
+          "value": "12.0.6",
+          "kind": "text"
+        },
+        {
+          "label_ar": "دعم المحفظة",
+          "value": "778",
+          "kind": "phone"
         }
       ],
       "codes": [
         "*777#"
       ],
-      "phones": [],
+      "phones": [
+        "778"
+      ],
       "tags": [
         "محفظة",
         "كاش",
@@ -317,17 +334,44 @@
         "777"
       ],
       "status": "confirmed",
-      "status_note_ar": "مؤكد من أكثر من مصدر",
+      "status_note_ar": "مؤكد من أكثر من مصدر. (من البند المدمج num-wallet-777: مؤكد (الوطن، tablet-egy، البنك نوت، المال))",
       "sources": [
         {
           "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
           "type": "pdf_guide"
+        },
+        {
+          "name": "الوطن",
+          "type": "press"
+        },
+        {
+          "name": "tablet-egy",
+          "type": "other"
+        },
+        {
+          "name": "البنك نوت",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        },
+        {
+          "name": "صناع المال (almaal.org)",
+          "type": "other"
+        },
+        {
+          "name": "App Store: etisalat money - EG",
+          "url": "https://apps.apple.com/us/app/-/id1123428821",
+          "type": "app_store"
         }
       ],
       "pdf_pages": [
         41,
-        43
-      ]
+        43,
+        53,
+        54,
+        56,
+        71
+      ],
+      "body_ar": "ترتيب القوائم الفرعية ممكن يتغير، فالأضمن إنك تطلب *777# وتختار من القائمة. التطبيق الرسمي بقى اسمه etisalat money - EG (الإصدار 12.0.6، 14 نوفمبر) وبيستخدمه بس المسجلين في الخدمة."
     },
     {
       "id": "wal-size",
@@ -916,6 +960,11 @@
           "label_ar": "الخدمة",
           "value": "تحويل أموال (لمحفظة اتصالات أو لأي محفظة على شبكة أخرى)",
           "kind": "text"
+        },
+        {
+          "label_ar": "الكود",
+          "value": "*777*1#",
+          "kind": "code"
         }
       ],
       "codes": [
@@ -932,23 +981,39 @@
         "wallet",
         "كود",
         "777",
-        "ussd"
+        "ussd",
+        "تحويل فلوس"
       ],
       "status": "confirmed",
-      "status_note_ar": "التأكيد في الدليل: مصدر واحد. المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي.",
+      "status_note_ar": "التأكيد في الدليل: مصدر واحد. المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي. (من البند المدمج num-wallet-777-1: مؤكد بشكل متوسط (البنك نوت والمال)). الكود ظاهر على الموقع الرسمي (23 نوفمبر 2026) باسم «Money Transfer».",
       "sources": [
         {
           "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
           "type": "pdf_guide"
         },
         {
+          "name": "الموقع الرسمي — etisalat money (تم التحقق 2026-11-23)",
+          "url": "https://www.eand.com.eg/portal/etisalat_money/etisalat_money",
+          "type": "official_site"
+        },
+        {
           "name": "البنك نوت — قائمة أكواد *777*X# وأرقام التواصل",
           "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        },
+        {
+          "name": "البنك نوت",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        },
+        {
+          "name": "صناع المال (almaal.org)",
           "type": "other"
         }
       ],
       "pdf_pages": [
-        43
+        43,
+        53
       ]
     },
     {
@@ -967,6 +1032,11 @@
           "label_ar": "الخدمة",
           "value": "شحن رصيد",
           "kind": "text"
+        },
+        {
+          "label_ar": "الكود",
+          "value": "*777*2#",
+          "kind": "code"
         }
       ],
       "codes": [
@@ -983,23 +1053,39 @@
         "wallet",
         "كود",
         "777",
-        "ussd"
+        "ussd",
+        "شحن رصيد من المحفظة"
       ],
       "status": "confirmed",
-      "status_note_ar": "التأكيد في الدليل: مصدر واحد. المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي.",
+      "status_note_ar": "التأكيد في الدليل: مصدر واحد. المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي. (من البند المدمج num-wallet-777-2: مؤكد بشكل متوسط (البنك نوت، المال، tablet-egy)). الكود ظاهر على الموقع الرسمي (23 نوفمبر 2026) باسم «Balance Recharge».",
       "sources": [
         {
           "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
           "type": "pdf_guide"
         },
         {
+          "name": "الموقع الرسمي — etisalat money (تم التحقق 2026-11-23)",
+          "url": "https://www.eand.com.eg/portal/etisalat_money/etisalat_money",
+          "type": "official_site"
+        },
+        {
           "name": "البنك نوت — قائمة أكواد *777*X# وأرقام التواصل",
           "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        },
+        {
+          "name": "البنك نوت",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        },
+        {
+          "name": "صناع المال (almaal.org)",
           "type": "other"
         }
       ],
       "pdf_pages": [
-        43
+        43,
+        53
       ]
     },
     {
@@ -1018,6 +1104,11 @@
           "label_ar": "الخدمة",
           "value": "سحب من ماكينة ATM بدون كارت",
           "kind": "text"
+        },
+        {
+          "label_ar": "الكود",
+          "value": "*777*3#",
+          "kind": "code"
         }
       ],
       "codes": [
@@ -1034,14 +1125,20 @@
         "wallet",
         "كود",
         "777",
-        "ussd"
+        "ussd",
+        "سحب من ATM"
       ],
       "status": "confirmed",
-      "status_note_ar": "التأكيد في الدليل: مؤكد (مصراوي 2025). المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي.",
+      "status_note_ar": "التأكيد في الدليل: مؤكد (مصراوي 2025). المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي. (من البند المدمج num-wallet-777-3: مؤكد بشكل متوسط (البنك نوت والمال)). الكود ظاهر على الموقع الرسمي (23 نوفمبر 2026) باسم «ATM Withdrawal».",
       "sources": [
         {
           "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
           "type": "pdf_guide"
+        },
+        {
+          "name": "الموقع الرسمي — etisalat money (تم التحقق 2026-11-23)",
+          "url": "https://www.eand.com.eg/portal/etisalat_money/etisalat_money",
+          "type": "official_site"
         },
         {
           "name": "البنك نوت — قائمة أكواد *777*X# وأرقام التواصل",
@@ -1052,10 +1149,20 @@
           "name": "مصراوي — خطوات السحب بدون كارت *777*3# (يوليو 2025)",
           "url": "https://www.masrawy.com/news/news_economy/details/2025/7/3/2814821/",
           "type": "press"
+        },
+        {
+          "name": "البنك نوت",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        },
+        {
+          "name": "صناع المال (almaal.org)",
+          "type": "other"
         }
       ],
       "pdf_pages": [
-        43
+        43,
+        53
       ]
     },
     {
@@ -1074,6 +1181,11 @@
           "label_ar": "الخدمة",
           "value": "الاستعلام عن الرصيد",
           "kind": "text"
+        },
+        {
+          "label_ar": "الكود",
+          "value": "*777*4#",
+          "kind": "code"
         }
       ],
       "codes": [
@@ -1090,23 +1202,39 @@
         "wallet",
         "كود",
         "777",
-        "ussd"
+        "ussd",
+        "رصيد المحفظة"
       ],
       "status": "confirmed",
-      "status_note_ar": "التأكيد في الدليل: مصدر واحد. المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي.",
+      "status_note_ar": "التأكيد في الدليل: مصدر واحد. المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي. (من البند المدمج num-wallet-777-4: مؤكد بشكل متوسط (البنك نوت والمال)). الكود ظاهر على الموقع الرسمي (23 نوفمبر 2026) باسم «Wallet Balance Inquiry».",
       "sources": [
         {
           "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
           "type": "pdf_guide"
         },
         {
+          "name": "الموقع الرسمي — etisalat money (تم التحقق 2026-11-23)",
+          "url": "https://www.eand.com.eg/portal/etisalat_money/etisalat_money",
+          "type": "official_site"
+        },
+        {
           "name": "البنك نوت — قائمة أكواد *777*X# وأرقام التواصل",
           "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        },
+        {
+          "name": "البنك نوت",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        },
+        {
+          "name": "صناع المال (almaal.org)",
           "type": "other"
         }
       ],
       "pdf_pages": [
-        43
+        43,
+        54
       ]
     },
     {
@@ -1114,7 +1242,7 @@
       "type": "code",
       "category_ar": "أكواد USSD (*777#)",
       "title_ar": "*777*5# — معاملات فوري",
-      "summary_ar": "*777*5#: معاملات فوري.",
+      "summary_ar": "*777*5# — البنك نوت قال \"فوري\" والمال قال \"التجار\".",
       "facts": [
         {
           "label_ar": "الكود المباشر",
@@ -1124,6 +1252,21 @@
         {
           "label_ar": "الخدمة",
           "value": "معاملات فوري",
+          "kind": "text"
+        },
+        {
+          "label_ar": "الكود",
+          "value": "*777*5#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "حسب البنك نوت",
+          "value": "فوري",
+          "kind": "text"
+        },
+        {
+          "label_ar": "حسب المال",
+          "value": "التجار",
           "kind": "text"
         }
       ],
@@ -1141,23 +1284,41 @@
         "wallet",
         "كود",
         "777",
-        "ussd"
+        "ussd",
+        "فوري",
+        "تجار",
+        "fawry"
       ],
-      "status": "confirmed",
-      "status_note_ar": "التأكيد في الدليل: مصدر واحد. المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي.",
+      "status": "conflict",
+      "status_note_ar": "التأكيد في الدليل: مصدر واحد. المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي. (من البند المدمج num-wallet-777-5: المصدرين بيسمّوا الخدمة مختلف: البنك نوت قال \"فوري\"، والمال قال \"التجار\"). الكود ظاهر على الموقع الرسمي (23 نوفمبر 2026) باسم «Merchant Requests».",
       "sources": [
         {
           "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
           "type": "pdf_guide"
         },
         {
+          "name": "الموقع الرسمي — etisalat money (تم التحقق 2026-11-23)",
+          "url": "https://www.eand.com.eg/portal/etisalat_money/etisalat_money",
+          "type": "official_site"
+        },
+        {
           "name": "البنك نوت — قائمة أكواد *777*X# وأرقام التواصل",
           "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        },
+        {
+          "name": "البنك نوت",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        },
+        {
+          "name": "صناع المال (almaal.org)",
           "type": "other"
         }
       ],
       "pdf_pages": [
-        43
+        43,
+        54
       ]
     },
     {
@@ -1176,6 +1337,11 @@
           "label_ar": "الخدمة",
           "value": "كارت الشراء أونلاين (الكارت الافتراضي VCN)",
           "kind": "text"
+        },
+        {
+          "label_ar": "الكود",
+          "value": "*777*6#",
+          "kind": "code"
         }
       ],
       "codes": [
@@ -1192,23 +1358,39 @@
         "wallet",
         "كود",
         "777",
-        "ussd"
+        "ussd",
+        "كارت شراء أونلاين"
       ],
       "status": "confirmed",
-      "status_note_ar": "التأكيد في الدليل: مصدر واحد. المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي.",
+      "status_note_ar": "التأكيد في الدليل: مصدر واحد. المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي. (من البند المدمج num-wallet-777-6: مؤكد بشكل متوسط). الكود ظاهر على الموقع الرسمي (23 نوفمبر 2026) باسم «Online Shopping Card».",
       "sources": [
         {
           "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
           "type": "pdf_guide"
         },
         {
+          "name": "الموقع الرسمي — etisalat money (تم التحقق 2026-11-23)",
+          "url": "https://www.eand.com.eg/portal/etisalat_money/etisalat_money",
+          "type": "official_site"
+        },
+        {
           "name": "البنك نوت — قائمة أكواد *777*X# وأرقام التواصل",
           "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        },
+        {
+          "name": "البنك نوت",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        },
+        {
+          "name": "صناع المال (almaal.org)",
           "type": "other"
         }
       ],
       "pdf_pages": [
-        43
+        43,
+        54
       ]
     },
     {
@@ -1246,11 +1428,16 @@
         "ussd"
       ],
       "status": "confirmed",
-      "status_note_ar": "التأكيد في الدليل: مصدر واحد. المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي.",
+      "status_note_ar": "التأكيد في الدليل: مصدر واحد. المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي. الكود ظاهر على الموقع الرسمي (23 نوفمبر 2026) باسم «Pay Utilities Bills».",
       "sources": [
         {
           "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
           "type": "pdf_guide"
+        },
+        {
+          "name": "الموقع الرسمي — etisalat money (تم التحقق 2026-11-23)",
+          "url": "https://www.eand.com.eg/portal/etisalat_money/etisalat_money",
+          "type": "official_site"
         },
         {
           "name": "البنك نوت — قائمة أكواد *777*X# وأرقام التواصل",
@@ -1278,6 +1465,11 @@
           "label_ar": "الخدمة",
           "value": "خدمات الرقم السري (PIN)",
           "kind": "text"
+        },
+        {
+          "label_ar": "الكود",
+          "value": "*777*8#",
+          "kind": "code"
         }
       ],
       "codes": [
@@ -1294,23 +1486,39 @@
         "wallet",
         "كود",
         "777",
-        "ussd"
+        "ussd",
+        "خدمات الرقم السري"
       ],
       "status": "confirmed",
-      "status_note_ar": "التأكيد في الدليل: مصدران. المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي.",
+      "status_note_ar": "التأكيد في الدليل: مصدران. المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي. (من البند المدمج num-wallet-777-8: مؤكد بشكل متوسط). الكود ظاهر على الموقع الرسمي (23 نوفمبر 2026) باسم «Password Services».",
       "sources": [
         {
           "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
           "type": "pdf_guide"
         },
         {
+          "name": "الموقع الرسمي — etisalat money (تم التحقق 2026-11-23)",
+          "url": "https://www.eand.com.eg/portal/etisalat_money/etisalat_money",
+          "type": "official_site"
+        },
+        {
           "name": "البنك نوت — قائمة أكواد *777*X# وأرقام التواصل",
           "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        },
+        {
+          "name": "البنك نوت",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        },
+        {
+          "name": "صناع المال (almaal.org)",
           "type": "other"
         }
       ],
       "pdf_pages": [
-        43
+        43,
+        54
       ]
     },
     {
@@ -1348,11 +1556,16 @@
         "ussd"
       ],
       "status": "confirmed",
-      "status_note_ar": "التأكيد في الدليل: مصدر واحد. المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي.",
+      "status_note_ar": "التأكيد في الدليل: مصدر واحد. المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي. الكود ظاهر على الموقع الرسمي (23 نوفمبر 2026) باسم «Pay Utility Bill». (الدليل: دفع فاتورة الموبايل)",
       "sources": [
         {
           "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
           "type": "pdf_guide"
+        },
+        {
+          "name": "الموقع الرسمي — etisalat money (تم التحقق 2026-11-23)",
+          "url": "https://www.eand.com.eg/portal/etisalat_money/etisalat_money",
+          "type": "official_site"
         },
         {
           "name": "البنك نوت — قائمة أكواد *777*X# وأرقام التواصل",
@@ -1399,11 +1612,16 @@
         "ussd"
       ],
       "status": "confirmed",
-      "status_note_ar": "التأكيد في الدليل: مصدر واحد. المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي.",
+      "status_note_ar": "التأكيد في الدليل: مصدر واحد. المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي. الكود ظاهر على الموقع الرسمي (23 نوفمبر 2026) باسم «Donations».",
       "sources": [
         {
           "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
           "type": "pdf_guide"
+        },
+        {
+          "name": "الموقع الرسمي — etisalat money (تم التحقق 2026-11-23)",
+          "url": "https://www.eand.com.eg/portal/etisalat_money/etisalat_money",
+          "type": "official_site"
         },
         {
           "name": "البنك نوت — قائمة أكواد *777*X# وأرقام التواصل",
@@ -1431,6 +1649,11 @@
           "label_ar": "الخدمة",
           "value": "السحب من الفرع",
           "kind": "text"
+        },
+        {
+          "label_ar": "الكود",
+          "value": "*777*11#",
+          "kind": "code"
         }
       ],
       "codes": [
@@ -1447,23 +1670,39 @@
         "wallet",
         "كود",
         "777",
-        "ussd"
+        "ussd",
+        "سحب كاش من الفرع"
       ],
       "status": "confirmed",
-      "status_note_ar": "التأكيد في الدليل: مصدر واحد. المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي.",
+      "status_note_ar": "التأكيد في الدليل: مصدر واحد. المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي. (من البند المدمج num-wallet-777-11: مؤكد بشكل متوسط). الكود ظاهر على الموقع الرسمي (23 نوفمبر 2026) باسم «Cash Out at etisalat Store».",
       "sources": [
         {
           "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
           "type": "pdf_guide"
         },
         {
+          "name": "الموقع الرسمي — etisalat money (تم التحقق 2026-11-23)",
+          "url": "https://www.eand.com.eg/portal/etisalat_money/etisalat_money",
+          "type": "official_site"
+        },
+        {
           "name": "البنك نوت — قائمة أكواد *777*X# وأرقام التواصل",
           "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        },
+        {
+          "name": "البنك نوت",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        },
+        {
+          "name": "صناع المال (almaal.org)",
           "type": "other"
         }
       ],
       "pdf_pages": [
-        43
+        43,
+        54
       ]
     },
     {
@@ -1482,6 +1721,11 @@
           "label_ar": "الخدمة",
           "value": "سجل المعاملات السابقة",
           "kind": "text"
+        },
+        {
+          "label_ar": "الكود",
+          "value": "*777*12#",
+          "kind": "code"
         }
       ],
       "codes": [
@@ -1498,23 +1742,39 @@
         "wallet",
         "كود",
         "777",
-        "ussd"
+        "ussd",
+        "سجل العمليات"
       ],
       "status": "confirmed",
-      "status_note_ar": "التأكيد في الدليل: مصدر واحد. المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي.",
+      "status_note_ar": "التأكيد في الدليل: مصدر واحد. المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي. (من البند المدمج num-wallet-777-12: مؤكد بشكل متوسط). الكود ظاهر على الموقع الرسمي (23 نوفمبر 2026) باسم «Old Store Transactions».",
       "sources": [
         {
           "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
           "type": "pdf_guide"
         },
         {
+          "name": "الموقع الرسمي — etisalat money (تم التحقق 2026-11-23)",
+          "url": "https://www.eand.com.eg/portal/etisalat_money/etisalat_money",
+          "type": "official_site"
+        },
+        {
           "name": "البنك نوت — قائمة أكواد *777*X# وأرقام التواصل",
           "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        },
+        {
+          "name": "البنك نوت",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        },
+        {
+          "name": "صناع المال (almaal.org)",
           "type": "other"
         }
       ],
       "pdf_pages": [
-        43
+        43,
+        54
       ]
     },
     {
@@ -1552,11 +1812,16 @@
         "ussd"
       ],
       "status": "confirmed",
-      "status_note_ar": "التأكيد في الدليل: مصدر واحد. المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي.",
+      "status_note_ar": "التأكيد في الدليل: مصدر واحد. المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي. الكود ظاهر على الموقع الرسمي (23 نوفمبر 2026) باسم «Settings».",
       "sources": [
         {
           "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
           "type": "pdf_guide"
+        },
+        {
+          "name": "الموقع الرسمي — etisalat money (تم التحقق 2026-11-23)",
+          "url": "https://www.eand.com.eg/portal/etisalat_money/etisalat_money",
+          "type": "official_site"
         },
         {
           "name": "البنك نوت — قائمة أكواد *777*X# وأرقام التواصل",
@@ -1573,7 +1838,7 @@
       "type": "code",
       "category_ar": "أكواد USSD (*777#)",
       "title_ar": "*777*15# — إغلاق المحفظة",
-      "summary_ar": "*777*15#: إغلاق المحفظة.",
+      "summary_ar": "*777*15# (غير مؤكد، مصدر واحد).",
       "facts": [
         {
           "label_ar": "الكود المباشر",
@@ -1584,6 +1849,16 @@
           "label_ar": "الخدمة",
           "value": "إغلاق المحفظة",
           "kind": "text"
+        },
+        {
+          "label_ar": "الكود",
+          "value": "*777*15#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "كود الإغلاق",
+          "value": "*777*15#",
+          "kind": "code"
         }
       ],
       "codes": [
@@ -1600,23 +1875,48 @@
         "wallet",
         "كود",
         "777",
-        "ussd"
+        "ussd",
+        "إغلاق المحفظة",
+        "اغلاق",
+        "قفل المحفظة",
+        "الغاء"
       ],
       "status": "unconfirmed",
-      "status_note_ar": "التأكيد في الدليل: مصدر واحد (غير مؤكد). المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي.",
+      "status_note_ar": "التأكيد في الدليل: مصدر واحد (غير مؤكد). المصدر موقع تجميعي محدّث لعام 2026؛ ترتيب القائمة قد يتغير فراجعه على هاتف تجريبي. (من البند المدمج num-wallet-777-15: (غير مؤكد): المال بس). (من البند المدمج wal-close-code: غير مؤكد، مصدر واحد). الكود ظاهر على الموقع الرسمي (23 نوفمبر 2026) باسم «Wallet deactivation».",
       "sources": [
         {
           "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
           "type": "pdf_guide"
         },
         {
+          "name": "الموقع الرسمي — etisalat money (تم التحقق 2026-11-23)",
+          "url": "https://www.eand.com.eg/portal/etisalat_money/etisalat_money",
+          "type": "official_site"
+        },
+        {
           "name": "البنك نوت — قائمة أكواد *777*X# وأرقام التواصل",
           "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        },
+        {
+          "name": "البنك نوت",
+          "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
+          "type": "other"
+        },
+        {
+          "name": "صناع المال (almaal.org)",
+          "type": "other"
+        },
+        {
+          "name": "almaal.org — أرقام 778 وPIN والإغلاق *777*15# وفقد الخط والشكاوى و155",
+          "url": "https://almaal.org",
           "type": "other"
         }
       ],
       "pdf_pages": [
-        43
+        43,
+        46,
+        54
       ]
     },
     {
@@ -2662,7 +2962,7 @@
       "type": "fee",
       "category_ar": "جدول الرسوم",
       "title_ar": "رسوم التحويل لأي محفظة",
-      "summary_ar": "1 جنيه ثابت (منذ أغسطس 2025)؛ كانت 0.5% من قيمة التحويل. لم يتضح هل يختلف الرسم داخل الشبكة وإلى الشبكات الأخرى (غير مؤكد).",
+      "summary_ar": "1 ج للتحويل لمحفظة اتصالات؛ الموقع الرسمي بيذكر كمان 0.5% بحد أقصى 15 ج للمحافظ التانية (وفي مكان تاني «1 ج لأي محفظة») — اتأكد على النظام.",
       "facts": [
         {
           "label_ar": "الرسوم الحالية (منذ أغسطس 2025)",
@@ -2674,6 +2974,22 @@
           "label_ar": "الرسوم السابقة",
           "value": "0.5% من قيمة التحويل",
           "kind": "percent"
+        },
+        {
+          "label_ar": "التحويل لمحفظة",
+          "value": "1",
+          "kind": "price",
+          "unit": "جنيه ثابت"
+        },
+        {
+          "label_ar": "رسوم التحويل (الموقع الرسمي — المزايا)",
+          "value": "1 ج لأي محفظة في مصر",
+          "kind": "price"
+        },
+        {
+          "label_ar": "رسوم التحويل (الموقع الرسمي — تفاصيل الرسوم)",
+          "value": "1 ج لمحفظة اتصالات؛ 0.5% بحد أقصى 15 ج لأي محفظة تانية؛ أول عملية في الشهر مجانًا لو ≤ 2,000 ج",
+          "kind": "text"
         }
       ],
       "codes": [],
@@ -2688,14 +3004,21 @@
         "wallet",
         "رسوم",
         "تحويل",
-        "عمولة التحويل"
+        "عمولة التحويل",
+        "رسوم سحب",
+        "wallet fees"
       ],
-      "status": "unconfirmed",
-      "status_note_ar": "مؤكد من 3 مصادر صحفية لإعلان الشركة، لكن لم يتضح هل يختلف الرسم بين التحويل داخل الشبكة وإلى الشبكات الأخرى (غير مؤكد).",
+      "status": "conflict",
+      "status_note_ar": "مؤكد من 3 مصادر صحفية لإعلان الشركة، لكن لم يتضح هل يختلف الرسم بين التحويل داخل الشبكة وإلى الشبكات الأخرى (غير مؤكد). الموقع الرسمي (23 نوفمبر 2026) فيه صيغتين: «1 ج للتحويل لأي محفظة» و«1 ج لمحفظة اتصالات و0.5% بحد أقصى 15 ج لأي محفظة تانية» — اتأكد على النظام.",
       "sources": [
         {
           "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
           "type": "pdf_guide"
+        },
+        {
+          "name": "الموقع الرسمي — etisalat money (تم التحقق 2026-11-23)",
+          "url": "https://www.eand.com.eg/portal/etisalat_money/etisalat_money",
+          "type": "official_site"
         },
         {
           "name": "bankygate — تغيير الاسم إلى e& money ورسوم 5 ج للسحب و1 ج للتحويل (19 أغسطس 2025)",
@@ -2714,7 +3037,8 @@
         }
       ],
       "pdf_pages": [
-        45
+        45,
+        71
       ]
     },
     {
@@ -2722,7 +3046,7 @@
       "type": "fee",
       "category_ar": "جدول الرسوم",
       "title_ar": "رسوم السحب النقدي (فرع أو ATM أو وكيل)",
-      "summary_ar": "5 جنيه ثابت (منذ أغسطس 2025)، مع ذكر \"حتى حد أقصى 5,000 جنيه شهريًا\"؛ كانت 1% بحد أدنى 1 جنيه (مايو ويونيو 2025). الرسم على السحب فوق 5,000 جنيه شهريًا (غير مؤكد).",
+      "summary_ar": "5 ج ثابت للسحب لحد 5,000 ج في الشهر، وبعدها 1% من العملية (الموقع الرسمي)؛ كانت 1% بحد أدنى 1 ج (مايو ويونيو 2025).",
       "facts": [
         {
           "label_ar": "الرسوم الحالية (منذ أغسطس 2025)",
@@ -2739,6 +3063,22 @@
           "label_ar": "الرسوم السابقة (مايو ويونيو 2025)",
           "value": "1% بحد أدنى 1 جنيه",
           "kind": "percent"
+        },
+        {
+          "label_ar": "السحب",
+          "value": "5",
+          "kind": "price",
+          "unit": "جنيه ثابت"
+        },
+        {
+          "label_ar": "من",
+          "value": "أغسطس 2025",
+          "kind": "date"
+        },
+        {
+          "label_ar": "فوق 5,000 ج في الشهر (الموقع الرسمي)",
+          "value": "1% من قيمة العملية",
+          "kind": "percent"
         }
       ],
       "codes": [],
@@ -2754,14 +3094,21 @@
         "رسوم",
         "سحب",
         "عمولة السحب",
-        "atm"
+        "atm",
+        "رسوم سحب",
+        "wallet fees"
       ],
-      "status": "unconfirmed",
-      "status_note_ar": "مؤكد من 3 مصادر. الرسم على السحب فوق 5,000 جنيه شهريًا (غير مؤكد).",
+      "status": "confirmed",
+      "status_note_ar": "مؤكد من 3 مصادر. الرسم على السحب فوق 5,000 جنيه شهريًا (غير مؤكد). (من البند المدمج proc-rule-emoney-fees: من الملحق). مطابق للموقع الرسمي (23 نوفمبر 2026) — الموقع: السحب 5 ج ثابت حتى 5,000 ج شهريًا، وبعدها أو لعملية أكبر من 5,000 ج الرسم 1%",
       "sources": [
         {
           "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
           "type": "pdf_guide"
+        },
+        {
+          "name": "الموقع الرسمي — etisalat money (تم التحقق 2026-11-23)",
+          "url": "https://www.eand.com.eg/portal/etisalat_money/etisalat_money",
+          "type": "official_site"
         },
         {
           "name": "bankygate — تغيير الاسم إلى e& money ورسوم 5 ج للسحب و1 ج للتحويل (19 أغسطس 2025)",
@@ -2785,7 +3132,8 @@
         }
       ],
       "pdf_pages": [
-        45
+        45,
+        71
       ]
     },
     {
@@ -3360,52 +3708,6 @@
       ]
     },
     {
-      "id": "wal-close-code",
-      "type": "code",
-      "category_ar": "إغلاق المحفظة",
-      "title_ar": "كود إغلاق المحفظة",
-      "summary_ar": "*777*15# (غير مؤكد، مصدر واحد).",
-      "facts": [
-        {
-          "label_ar": "كود الإغلاق",
-          "value": "*777*15#",
-          "kind": "code"
-        }
-      ],
-      "codes": [
-        "*777*15#"
-      ],
-      "phones": [],
-      "tags": [
-        "محفظة",
-        "كاش",
-        "اتصالات كاش",
-        "e& cash",
-        "e& money",
-        "etisalat cash",
-        "wallet",
-        "اغلاق",
-        "قفل المحفظة",
-        "الغاء"
-      ],
-      "status": "unconfirmed",
-      "status_note_ar": "غير مؤكد، مصدر واحد",
-      "sources": [
-        {
-          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
-          "type": "pdf_guide"
-        },
-        {
-          "name": "almaal.org — أرقام 778 وPIN والإغلاق *777*15# وفقد الخط والشكاوى و155",
-          "url": "https://almaal.org",
-          "type": "other"
-        }
-      ],
-      "pdf_pages": [
-        46
-      ]
-    },
-    {
       "id": "wal-close-branch",
       "type": "procedure",
       "category_ar": "إغلاق المحفظة",
@@ -3708,17 +4010,33 @@
       "type": "contact",
       "category_ar": "الشكاوى وأرقام التواصل",
       "title_ar": "خدمة عملاء المحفظة من خط اتصالات: 778",
-      "summary_ar": "778 للمحفظة والمعاملات المالية من خط اتصالات.",
+      "summary_ar": "778 من خط اتصالات لدعم المحفظة؛ 333 للخط نفسه مش للمحفظة.",
       "facts": [
         {
           "label_ar": "رقم",
           "value": "778",
           "kind": "phone"
+        },
+        {
+          "label_ar": "الرقم",
+          "value": "778",
+          "kind": "phone"
+        },
+        {
+          "label_ar": "من فين",
+          "value": "خط اتصالات",
+          "kind": "text"
+        },
+        {
+          "label_ar": "ملاحظة",
+          "value": "الرقم 333 للخط نفسه، مش للمحفظة",
+          "kind": "text"
         }
       ],
       "codes": [],
       "phones": [
-        "778"
+        "778",
+        "333"
       ],
       "tags": [
         "محفظة",
@@ -3730,10 +4048,11 @@
         "wallet",
         "خدمة العملاء",
         "778",
-        "كول سنتر"
+        "كول سنتر",
+        "دعم"
       ],
       "status": "unconfirmed",
-      "status_note_ar": "غير مؤكد، مصدر واحد غير رسمي",
+      "status_note_ar": "غير مؤكد، مصدر واحد غير رسمي. (من البند المدمج num-cs-wallet-778: مؤكد بشكل متوسط (المال وtablet-egy))",
       "sources": [
         {
           "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
@@ -3748,10 +4067,21 @@
           "name": "البنك نوت — قائمة أكواد *777*X# وأرقام التواصل",
           "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
           "type": "other"
+        },
+        {
+          "name": "صناع المال (almaal.org)",
+          "type": "other"
+        },
+        {
+          "name": "tablet-egy",
+          "type": "other"
         }
       ],
       "pdf_pages": [
-        47
+        47,
+        51,
+        54,
+        70
       ]
     },
     {
@@ -3759,10 +4089,15 @@
       "type": "contact",
       "category_ar": "الشكاوى وأرقام التواصل",
       "title_ar": "خدمة المحفظة من خارج مصر",
-      "summary_ar": "+201111234778",
+      "summary_ar": "+201111234778 من خارج مصر (غير مؤكد).",
       "facts": [
         {
           "label_ar": "رقم",
+          "value": "+201111234778",
+          "kind": "phone"
+        },
+        {
+          "label_ar": "الرقم",
           "value": "+201111234778",
           "kind": "phone"
         }
@@ -3780,162 +4115,25 @@
         "etisalat cash",
         "wallet",
         "من الخارج",
-        "خدمة العملاء"
+        "خدمة العملاء",
+        "من بره",
+        "abroad"
       ],
       "status": "unconfirmed",
-      "status_note_ar": "غير مؤكد، مصدر واحد",
+      "status_note_ar": "غير مؤكد، مصدر واحد. (من البند المدمج num-cs-wallet-abroad: (غير مؤكد): ظهر في موقع واحد بس (المال))",
       "sources": [
         {
           "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
           "type": "pdf_guide"
-        }
-      ],
-      "pdf_pages": [
-        47
-      ]
-    },
-    {
-      "id": "wal-contact-333",
-      "type": "contact",
-      "category_ar": "الشكاوى وأرقام التواصل",
-      "title_ar": "خدمة عملاء اتصالات العامة: 333",
-      "summary_ar": "333 من خط اتصالات.",
-      "facts": [
-        {
-          "label_ar": "رقم",
-          "value": "333",
-          "kind": "phone"
-        }
-      ],
-      "codes": [],
-      "phones": [
-        "333"
-      ],
-      "tags": [
-        "خدمة العملاء",
-        "333"
-      ],
-      "status": "confirmed",
-      "sources": [
-        {
-          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
-          "type": "pdf_guide"
-        }
-      ],
-      "pdf_pages": [
-        47
-      ]
-    },
-    {
-      "id": "wal-contact-landline",
-      "type": "contact",
-      "category_ar": "الشكاوى وأرقام التواصل",
-      "title_ar": "خدمة العملاء من خط أرضي",
-      "summary_ar": "02-35346333",
-      "facts": [
-        {
-          "label_ar": "رقم",
-          "value": "02-35346333",
-          "kind": "phone"
-        }
-      ],
-      "codes": [],
-      "phones": [
-        "02-35346333"
-      ],
-      "tags": [
-        "خدمة العملاء",
-        "ارضي"
-      ],
-      "status": "confirmed",
-      "sources": [
-        {
-          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
-          "type": "pdf_guide"
-        }
-      ],
-      "pdf_pages": [
-        47
-      ]
-    },
-    {
-      "id": "wal-contact-mobile-abroad",
-      "type": "contact",
-      "category_ar": "الشكاوى وأرقام التواصل",
-      "title_ar": "خدمة العملاء من موبايل أو من الخارج",
-      "summary_ar": "+20 111 123 4333 (المصدران كتبا رقمًا ناقص رقمًا: 0111123433، فتحقق من الرقم قبل نشره).",
-      "facts": [
-        {
-          "label_ar": "رقم",
-          "value": "+20 111 123 4333",
-          "kind": "phone"
         },
         {
-          "label_ar": "رقم",
-          "value": "0111123433",
-          "kind": "phone"
-        }
-      ],
-      "codes": [],
-      "phones": [
-        "+20 111 123 4333",
-        "0111123433"
-      ],
-      "tags": [
-        "خدمة العملاء",
-        "من الخارج"
-      ],
-      "status": "unconfirmed",
-      "status_note_ar": "المصدران كتبا رقمًا ناقص رقمًا (0111123433)، فتحقق من الرقم قبل نشره.",
-      "sources": [
-        {
-          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
-          "type": "pdf_guide"
+          "name": "صناع المال (almaal.org)",
+          "type": "other"
         }
       ],
       "pdf_pages": [
-        47
-      ]
-    },
-    {
-      "id": "wal-contact-ntra-155",
-      "type": "contact",
-      "category_ar": "الشكاوى وأرقام التواصل",
-      "title_ar": "التصعيد للجهاز القومي لتنظيم الاتصالات: 155",
-      "summary_ar": "بعد تقديم شكوى للشركة والاحتفاظ برقمها.",
-      "facts": [
-        {
-          "label_ar": "رقم",
-          "value": "155",
-          "kind": "phone"
-        }
-      ],
-      "codes": [],
-      "phones": [
-        "155"
-      ],
-      "tags": [
-        "محفظة",
-        "كاش",
-        "اتصالات كاش",
-        "e& cash",
-        "e& money",
-        "etisalat cash",
-        "wallet",
-        "شكوى",
-        "تصعيد",
-        "ntra",
-        "جهاز تنظيم الاتصالات"
-      ],
-      "status": "confirmed",
-      "sources": [
-        {
-          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
-          "type": "pdf_guide"
-        }
-      ],
-      "pdf_pages": [
-        47
+        47,
+        51
       ]
     },
     {

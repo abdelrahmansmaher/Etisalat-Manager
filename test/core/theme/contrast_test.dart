@@ -3,7 +3,9 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:knowledge_hub/core/theme/theme.dart';
+import 'package:knowledge_hub/core/content/content_models.dart';
 import 'package:knowledge_hub/core/widgets/glass_surface.dart';
+import 'package:knowledge_hub/features/content/section_ui.dart';
 
 /// WCAG 2.x relative luminance.
 double luminance(Color c) {
@@ -115,6 +117,101 @@ List<Pair> pairs(AppColors c) {
     ),
     ('borderStrong/surface (UI)', c.borderStrong, c.surface, ui),
     ('primaryUi/surface (graphics)', c.primaryUi, c.surface, ui),
+    // v2 tokens
+    ('textPrimary/surfaceVariant', c.textPrimary, c.surfaceVariant, text),
+    ('textSecondary/surfaceElevated', c.textSecondary, c.surfaceElevated, text),
+    ('textSecondary/surfaceVariant', c.textSecondary, c.surfaceVariant, text),
+    ('textTertiary/surfaceElevated', c.textTertiary, c.surfaceElevated, text),
+    ('textTertiary/heroStart', c.textTertiary, c.heroGradientStart, text),
+    ('textPrimary/heroStart', c.textPrimary, c.heroGradientStart, text),
+    ('primary/heroStart', c.primary, c.heroGradientStart, text),
+    ('primary/surfaceElevated', c.primary, c.surfaceElevated, text),
+    ('primary/surfaceVariant (search icon)', c.primary, c.surfaceVariant, ui),
+    ('accentText/surfaceElevated', c.accentText, c.surfaceElevated, text),
+    ('accentText/heroStart', c.accentText, c.heroGradientStart, text),
+    (
+      'onAccentContainer/accentContainer (price pill)',
+      c.onAccentContainer,
+      c.accentContainer,
+      text,
+    ),
+    ('accent/surface (graphics)', c.accent, c.surface, ui),
+    (
+      'onCapsuleSelected/capsuleSelected',
+      c.onCapsuleSelected,
+      c.capsuleSelected,
+      text,
+    ),
+    ('capsuleSelected/background (UI)', c.capsuleSelected, c.background, ui),
+    ('textPrimary/capsuleSurface', c.textPrimary, c.capsuleSurface, text),
+    ('textSecondary/segment track', c.textSecondary, c.surfaceVariant, text),
+    ('primary/capsuleSurface (icon)', c.primary, c.capsuleSurface, ui),
+    (
+      'onPrimaryContainer/primaryContainer (hotline icon)',
+      c.onPrimaryContainer,
+      c.primaryContainer,
+      ui,
+    ),
+    (
+      'nav icon (textSecondary) / glass on worst backdrop',
+      c.textSecondary,
+      over(GlassSurface.surfaceColor(c, opacity: 0.94), worstBackdrop),
+      ui,
+    ),
+    (
+      'status dot verified/surfaceElevated',
+      trust.verified.foreground,
+      c.surfaceElevated,
+      text,
+    ),
+    (
+      'status dot needsReview/surfaceElevated',
+      trust.needsReview.foreground,
+      c.surfaceElevated,
+      text,
+    ),
+    (
+      'status dot conflict/surfaceElevated',
+      trust.conflict.foreground,
+      c.surfaceElevated,
+      text,
+    ),
+    for (final s in ContentSection.values) ...[
+      () {
+        final t = SectionTone.of(s, c.brightness);
+        return (
+          'section ${s.key} label/container',
+          t.foreground,
+          t.container,
+          text,
+        );
+      }(),
+      () {
+        final t = SectionTone.of(s, c.brightness);
+        return ('section ${s.key} icon/glow', t.foreground, t.glow, ui);
+      }(),
+      () {
+        final t = SectionTone.of(s, c.brightness);
+        return (
+          'section ${s.key} label/surfaceElevated',
+          t.foreground,
+          c.surfaceElevated,
+          text,
+        );
+      }(),
+      () {
+        final t = SectionTone.of(s, c.brightness);
+        return (
+          'textTertiary on section ${s.key} wash',
+          c.textTertiary,
+          over(
+            t.container.withValues(alpha: c.isDark ? 0.55 : 0.6),
+            c.surfaceElevated,
+          ),
+          text,
+        );
+      }(),
+    ],
   ];
 }
 
@@ -136,6 +233,17 @@ void main() {
       }
     });
   }
+
+  test('both modes keep three distinct elevation steps', () {
+    for (final c in [AppColors.light, AppColors.dark]) {
+      if (c.isDark) {
+        expect(luminance(c.surface), greaterThan(luminance(c.background)));
+        expect(luminance(c.surfaceElevated), greaterThan(luminance(c.surface)));
+      } else {
+        expect(luminance(c.background), lessThan(luminance(c.surface)));
+      }
+    }
+  });
 
   test('doc 04 reference value: primary on white = 5.48:1', () {
     expect(

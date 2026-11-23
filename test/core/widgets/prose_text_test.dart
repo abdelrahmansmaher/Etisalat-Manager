@@ -12,19 +12,31 @@ void main() {
     expect(ProseText.segments('السعر 74 ج').single, ('السعر 74 ج', false));
   });
 
-  testWidgets('code inside RTL prose keeps * before # visually',
-      (tester) async {
-    await tester.pumpWidget(const MaterialApp(
-      home: Directionality(
-        textDirection: TextDirection.rtl,
-        child: Center(child: ProseText('اشترك بـ *999#.')),
+  testWidgets('code inside RTL prose keeps * before # visually', (
+    tester,
+  ) async {
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: Directionality(
+          textDirection: TextDirection.rtl,
+          child: Center(child: ProseText('اشترك بـ *999#.')),
+        ),
       ),
-    ));
-    final code = find.text('*999#');
-    expect(code, findsOneWidget);
-    final dir = tester.widget<Directionality>(find
-        .ancestor(of: code, matching: find.byType(Directionality))
-        .first);
-    expect(dir.textDirection, TextDirection.ltr);
+    );
+    // The code is a left-to-right row of runs: '*', '999', '#'.
+    final row = find.byKey(const ValueKey('code-runs-*999#'));
+    expect(row, findsOneWidget);
+    final star = tester.getCenter(
+      find.descendant(of: row, matching: find.text('*')),
+    );
+    final digits = tester.getCenter(
+      find.descendant(of: row, matching: find.text('999')),
+    );
+    final hash = tester.getCenter(
+      find.descendant(of: row, matching: find.text('#')),
+    );
+    expect(star.dx, lessThan(digits.dx));
+    expect(digits.dx, lessThan(hash.dx));
+    expect(tester.getSemantics(row).label, contains('*999#'));
   });
 }

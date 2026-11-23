@@ -22,12 +22,14 @@ class AppNavDestination {
   final String label;
 }
 
-/// Floating faux-glass bottom bar with an emphasised, raised circular center
-/// action (Search). No blur (doc 04 §2.6: the bar sits above scrolling lists).
+/// Floating capsule navigation bar.
 ///
-/// When [pageController] is given, each item's selection amount is derived
-/// from the live page position, so the indicator pill morphs (fades + widens)
-/// in sync with the user's swipe. Only this small row rebuilds per frame.
+/// A fully rounded, faux-glass pill (no blur — it floats above scrolling
+/// lists, doc 04 §2.6). The selected tab is a filled emerald capsule with
+/// icon + label; the others are icon-only. The capsule **slides and
+/// stretches** between tabs and follows the live swipe position of
+/// [pageController], so it tracks the user's finger. The center item
+/// (Search) is highlighted with a tinted circle while unselected.
 ///
 /// Labels are clamped to 1.3× text scale so five tabs always fit at 360dp;
 /// content screens honour the full 2.0× scale.
@@ -47,29 +49,87 @@ class AppBottomNav extends StatelessWidget {
   final int centerIndex;
   final PageController? pageController;
 
+  /// Height of the capsule items (the bar adds [_inset] around them).
+  static const double itemHeight = 52;
+  static const double _inset = 6;
+
   double _page() {
     final pc = pageController;
     if (pc != null && pc.hasClients && pc.position.haveDimensions) {
-      return pc.page ?? currentIndex.toDouble();
+      return (pc.page ?? currentIndex.toDouble()).clamp(
+        0.0,
+        destinations.length - 1.0,
+      );
     }
     return currentIndex.toDouble();
   }
 
-  Widget _row() {
+  /// Widths of each item for the given selection amounts: every item gets a
+  /// base width, the selected one additionally gets the "label" share.
+  static List<double> itemWidths(double total, List<double> amounts) {
+    final n = amounts.length;
+    const minBase = 44.0;
+    final extra = (total - n * minBase).clamp(0.0, 120.0);
+    final base = (total - extra) / n;
+    return [for (final a in amounts) base + extra * a];
+  }
+
+  Widget _bar(BuildContext context, double width) {
+    final c = context.colors;
     final page = _page();
-    return Row(
-      children: [
-        for (var i = 0; i < destinations.length; i++)
-          Expanded(
-            child: _NavItem(
-              key: ValueKey('nav-$i'),
-              destination: destinations[i],
-              amount: (1 - (page - i).abs()).clamp(0.0, 1.0),
-              emphasized: i == centerIndex,
-              onTap: () => onSelected(i),
+    final n = destinations.length;
+    final amounts = [
+      for (var i = 0; i < n; i++) (1 - (page - i).abs()).clamp(0.0, 1.0),
+    ];
+    final widths = itemWidths(width, amounts);
+    final starts = <double>[];
+    var acc = 0.0;
+    for (final w in widths) {
+      starts.add(acc);
+      acc += w;
+    }
+    var indicatorStart = 0.0;
+    var indicatorWidth = 0.0;
+    for (var i = 0; i < n; i++) {
+      indicatorStart += amounts[i] * starts[i];
+      indicatorWidth += amounts[i] * widths[i];
+    }
+
+    return SizedBox(
+      height: itemHeight,
+      child: Stack(
+        children: [
+          PositionedDirectional(
+            key: const ValueKey('nav-indicator'),
+            start: indicatorStart,
+            width: indicatorWidth,
+            top: 0,
+            bottom: 0,
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                color: c.capsuleSelected,
+                borderRadius: AppRadius.fullAll,
+                boxShadow: AppShadows.primaryGlow(c),
+              ),
             ),
           ),
-      ],
+          Row(
+            children: [
+              for (var i = 0; i < n; i++)
+                SizedBox(
+                  width: widths[i],
+                  child: _NavItem(
+                    key: ValueKey('nav-$i'),
+                    destination: destinations[i],
+                    amount: amounts[i],
+                    emphasized: i == centerIndex,
+                    onTap: () => onSelected(i),
+                  ),
+                ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 
@@ -88,24 +148,26 @@ class AppBottomNav extends StatelessWidget {
           ),
           child: DecoratedBox(
             decoration: BoxDecoration(
-              borderRadius: AppRadius.lgAll,
+              borderRadius: AppRadius.fullAll,
               boxShadow: AppShadows.raised(c),
             ),
             child: GlassSurface(
-              opacity: 0.92,
-              borderRadius: AppRadius.lgAll,
+              opacity: 0.94,
+              borderRadius: AppRadius.fullAll,
               borderColor: c.hairline,
               child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  vertical: AppSpacing.xs,
-                  horizontal: AppSpacing.xxs,
+                padding: const EdgeInsets.all(_inset),
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    final w = constraints.maxWidth;
+                    return pc == null
+                        ? _bar(context, w)
+                        : AnimatedBuilder(
+                            animation: pc,
+                            builder: (context, _) => _bar(context, w),
+                          );
+                  },
                 ),
-                child: pc == null
-                    ? _row()
-                    : AnimatedBuilder(
-                        animation: pc,
-                        builder: (context, _) => _row(),
-                      ),
               ),
             ),
           ),
@@ -136,49 +198,29 @@ class _NavItem extends StatelessWidget {
     final c = context.colors;
     final selected = amount > 0.5;
     final t = AppMotion.enter.transform(amount);
+    final iconColor = Color.lerp(
+      emphasized ? c.primary : c.textSecondary,
+      c.onCapsuleSelected,
+      t,
+    )!;
 
-    final Widget icon;
+    Widget icon = Icon(
+      selected ? destination.selectedIcon : destination.icon,
+      size: 24,
+      color: iconColor,
+    );
     if (emphasized) {
-      icon = PressableScale(
-        pressedScale: 0.9,
-        child: Transform.scale(
-          scale: 0.92 + 0.08 * t,
-          child: Container(
-            width: 48,
-            height: 48,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              gradient: LinearGradient(
-                begin: AlignmentDirectional.topStart,
-                end: AlignmentDirectional.bottomEnd,
-                colors: [c.primary, c.primaryPressed],
-              ),
-              boxShadow: AppShadows.primaryGlow(c),
-            ),
-            child: Icon(Icons.search_rounded, color: c.onPrimary, size: 26),
-          ),
+      // Search stands out while unselected: a tinted circle that fades into
+      // the sliding capsule as it arrives.
+      icon = Container(
+        width: 38,
+        height: 38,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: c.primaryContainer.withValues(alpha: 1 - t),
         ),
-      );
-    } else {
-      icon = SizedBox(
-        width: 56,
-        height: 32,
-        child: Center(
-          child: Container(
-            // Indicator morph: widens 32 → 56 and fades in with selection.
-            width: 32 + 24 * t,
-            height: 32,
-            decoration: BoxDecoration(
-              color: c.primaryContainer.withValues(alpha: t),
-              borderRadius: AppRadius.fullAll,
-            ),
-            child: Icon(
-              selected ? destination.selectedIcon : destination.icon,
-              size: 24,
-              color: Color.lerp(c.textSecondary, c.onPrimaryContainer, t),
-            ),
-          ),
-        ),
+        child: icon,
       );
     }
 
@@ -187,29 +229,51 @@ class _NavItem extends StatelessWidget {
       button: true,
       label: destination.label,
       excludeSemantics: true,
-      child: InkResponse(
-        onTap: onTap,
-        radius: 36,
-        highlightShape: BoxShape.circle,
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(minHeight: 56),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              icon,
-              const SizedBox(height: AppSpacing.xxs),
-              Text(
-                destination.label,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.center,
-                style: AppTypography.labelS.copyWith(
-                  color: Color.lerp(c.textSecondary, c.textPrimary, t),
-                  fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
+      child: PressableScale(
+        pressedScale: 0.92,
+        child: Material(
+          type: MaterialType.transparency,
+          shape: const StadiumBorder(),
+          clipBehavior: Clip.antiAlias,
+          child: InkWell(
+            onTap: onTap,
+            customBorder: const StadiumBorder(),
+            child: Center(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: AppSpacing.sm * t),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    icon,
+                    // The label is always in the tree; it is revealed by the
+                    // capsule's growth (width factor = selection amount).
+                    Flexible(
+                      child: ClipRect(
+                        child: Align(
+                          alignment: AlignmentDirectional.centerStart,
+                          widthFactor: t,
+                          child: Padding(
+                            padding: const EdgeInsetsDirectional.only(
+                              start: AppSpacing.xs - 2,
+                            ),
+                            child: Text(
+                              destination.label,
+                              maxLines: 1,
+                              softWrap: false,
+                              overflow: TextOverflow.ellipsis,
+                              style: AppTypography.labelL.copyWith(
+                                color: c.onCapsuleSelected.withValues(alpha: t),
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ],
+            ),
           ),
         ),
       ),

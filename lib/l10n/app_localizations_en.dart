@@ -368,6 +368,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get statusConfirmedGuide => 'Confirmed per guide';
 
   @override
+  String get statusConfirmedOfficial => 'Confirmed on official site';
+
+  @override
   String get statusUnconfirmedReview => 'Unconfirmed — check internally';
 
   @override
@@ -453,4 +456,60 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get reviewScreenSubtitle =>
       'Every unconfirmed or conflicting item across sections.';
+
+  @override
+  String get languageSystem => 'Device language';
+
+  @override
+  String get homeQuickAccess => 'Quick access';
+
+  @override
+  String get homeRecentTitle => 'Recently opened';
+
+  @override
+  String get homeGreetingNight => 'Good evening';
+
+  @override
+  String get searchRecentTitle => 'Recent searches';
+
+  @override
+  String get searchRecentClear => 'Clear history';
+
+  @override
+  String get searchSuggestionsTitle => 'Try searching for';
+
+  @override
+  String get packagePriceLabel => 'Price';
+
+  @override
+  String get packageCodeTitle => 'Subscription code';
+
+  @override
+  String get packageDetailsTitle => 'Details';
+
+  @override
+  String get packageNotesTitle => 'Conditions & notes';
+
+  @override
+  String get packageNoPrice => 'Price not stated in the guide';
+
+  @override
+  String get packageConflictPrice => 'Conflicting price — check both values';
+
+  @override
+  String get packageCurrencyNote => 'In Egyptian pounds';
+
+  @override
+  String sectionJumpTo(String name) {
+    return 'Jump to $name';
+  }
+
+  @override
+  String get detailOverviewTitle => 'Overview';
+
+  @override
+  String get detailStatusTitle => 'Information status';
+
+  @override
+  String get settingsAppearanceHint => 'Your choice is saved automatically';
 }

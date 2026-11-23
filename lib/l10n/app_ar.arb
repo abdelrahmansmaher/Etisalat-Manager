@@ -192,6 +192,7 @@
   "filterConfirmed": "مؤكد",
   "filterUnconfirmed": "غير مؤكد",
   "statusConfirmedGuide": "مؤكد حسب الدليل",
+  "statusConfirmedOfficial": "مؤكد من الموقع الرسمي",
   "statusUnconfirmedReview": "غير مؤكد — راجع داخليًا",
   "unconfirmedBannerTitle": "هذه المعلومة غير مؤكدة",
   "unconfirmedBannerBody": "راجع النظام الداخلي أو مشرفك قبل إبلاغ العميل.",
@@ -233,5 +234,30 @@
     }
   },
   "reviewScreenTitle": "البنود غير المؤكدة",
-  "reviewScreenSubtitle": "كل البنود غير المؤكدة أو المتعارضة من كل الأقسام."
+  "reviewScreenSubtitle": "كل البنود غير المؤكدة أو المتعارضة من كل الأقسام.",
+  "languageSystem": "حسب لغة الجهاز",
+  "homeQuickAccess": "وصول سريع",
+  "homeRecentTitle": "فتحتها مؤخرًا",
+  "homeGreetingNight": "مساء النور",
+  "searchRecentTitle": "عمليات بحث سابقة",
+  "searchRecentClear": "مسح السجل",
+  "searchSuggestionsTitle": "جرّب البحث عن",
+  "packagePriceLabel": "السعر",
+  "packageCodeTitle": "كود الاشتراك",
+  "packageDetailsTitle": "التفاصيل",
+  "packageNotesTitle": "الشروط والملاحظات",
+  "packageNoPrice": "السعر غير مذكور في الدليل",
+  "packageConflictPrice": "السعر عليه تعارض — راجع القيمتين",
+  "packageCurrencyNote": "بالجنيه المصري",
+  "sectionJumpTo": "انتقل إلى {name}",
+  "@sectionJumpTo": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "detailOverviewTitle": "الشرح",
+  "detailStatusTitle": "حالة المعلومة",
+  "settingsAppearanceHint": "يُحفظ اختيارك تلقائيًا"
 }

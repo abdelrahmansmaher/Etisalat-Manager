@@ -59,34 +59,46 @@ class AppCard extends StatelessWidget {
     this.onTap,
     this.padding = const EdgeInsetsDirectional.all(AppSpacing.cardPadding),
     this.color,
+    this.gradient,
+    this.borderColor,
     this.semanticLabel,
+    this.radius = AppRadius.mdAll,
   });
 
   final Widget child;
   final VoidCallback? onTap;
   final EdgeInsetsGeometry padding;
   final Color? color;
+
+  /// Optional soft gradient painted under the content (hero cards).
+  final Gradient? gradient;
+  final Color? borderColor;
   final String? semanticLabel;
+  final BorderRadius radius;
 
   @override
   Widget build(BuildContext context) {
     final c = context.colors;
+    Widget content = Padding(padding: padding, child: child);
+    if (gradient != null) {
+      content = DecoratedBox(
+        decoration: BoxDecoration(gradient: gradient),
+        child: content,
+      );
+    }
     Widget card = DecoratedBox(
       decoration: BoxDecoration(
-        borderRadius: AppRadius.mdAll,
+        borderRadius: radius,
         boxShadow: AppShadows.card(c),
       ),
       child: Material(
         color: color ?? c.surfaceElevated,
         shape: RoundedRectangleBorder(
-          borderRadius: AppRadius.mdAll,
-          side: BorderSide(color: c.hairline),
+          borderRadius: radius,
+          side: BorderSide(color: borderColor ?? c.hairline),
         ),
         clipBehavior: Clip.antiAlias,
-        child: InkWell(
-          onTap: onTap,
-          child: Padding(padding: padding, child: child),
-        ),
+        child: onTap == null ? content : InkWell(onTap: onTap, child: content),
       ),
     );
     if (onTap != null) {
@@ -112,12 +124,14 @@ class TintedIcon extends StatelessWidget {
     this.size = 44,
     this.color,
     this.background,
+    this.gradient,
   });
 
   final IconData icon;
   final double size;
   final Color? color;
   final Color? background;
+  final Gradient? gradient;
 
   @override
   Widget build(BuildContext context) {
@@ -127,8 +141,9 @@ class TintedIcon extends StatelessWidget {
       height: size,
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        color: background ?? c.primaryContainer,
-        borderRadius: AppRadius.smAll,
+        color: gradient == null ? (background ?? c.primaryContainer) : null,
+        gradient: gradient,
+        borderRadius: BorderRadius.circular(size * 0.32),
       ),
       child: Icon(
         icon,
@@ -160,7 +175,12 @@ class SectionHeader extends StatelessWidget {
             children: [
               Semantics(
                 header: true,
-                child: Text(title, style: theme.textTheme.titleLarge),
+                child: Text(
+                  title,
+                  style: theme.textTheme.titleLarge?.copyWith(
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
               ),
               if (subtitle != null)
                 Text(

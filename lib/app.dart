@@ -24,6 +24,8 @@ class KnowledgeHubApp extends ConsumerWidget {
       routerConfig: router,
       locale: locale,
       supportedLocales: kSupportedLocales,
+      // No override chosen: follow the device language, Arabic fallback.
+      localeListResolutionCallback: (device, _) => resolveAppLocale(device),
       localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,

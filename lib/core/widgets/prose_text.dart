@@ -43,14 +43,25 @@ class ProseText extends StatelessWidget {
     return out;
   }
 
+  static final RegExp _arabic = RegExp('[\u0600-\u06FF]');
+
   @override
   Widget build(BuildContext context) {
     final parts = segments(text);
+    // Arabic content keeps a right-to-left paragraph even in the English UI
+    // (otherwise "28 يوم (شهرية)" or a trailing code reorders), aligned to
+    // the outer start edge.
+    final outer = Directionality.maybeOf(context) ?? TextDirection.ltr;
+    final arabicInLtr = outer == TextDirection.ltr && _arabic.hasMatch(text);
+    final direction = arabicInLtr ? TextDirection.rtl : null;
+    final align = arabicInLtr ? TextAlign.left : null;
     if (parts.every((p) => !p.$2)) {
       return Text(
         parts.map((p) => p.$1).join(),
         style: style,
         maxLines: maxLines,
+        textDirection: direction,
+        textAlign: align,
         overflow: overflow ?? (maxLines == null ? null : TextOverflow.ellipsis),
       );
     }
@@ -63,10 +74,7 @@ class ProseText extends StatelessWidget {
               WidgetSpan(
                 alignment: PlaceholderAlignment.baseline,
                 baseline: TextBaseline.alphabetic,
-                child: Directionality(
-                  textDirection: TextDirection.ltr,
-                  child: Text(s, style: effective),
-                ),
+                child: CodeRuns(s, style: effective),
               )
             else
               TextSpan(text: s),
@@ -74,7 +82,53 @@ class ProseText extends StatelessWidget {
       ),
       style: style,
       maxLines: maxLines,
+      textDirection: direction,
+      textAlign: align,
       overflow: overflow ?? (maxLines == null ? null : TextOverflow.ellipsis),
+    );
+  }
+}
+
+/// A USSD/MMI code laid out strictly left-to-right as a row of runs (digit
+/// groups and single `*` / `#` / `+` symbols).
+///
+/// The order comes from widget layout, not from the text engine's bidi
+/// algorithm, so it is identical on every renderer — the web renderer was
+/// seen to reorder a lone code like `*319*52#` into `#52*319*` when it wraps
+/// onto its own line inside right-to-left prose. Screen readers get the
+/// whole code as one label.
+class CodeRuns extends StatelessWidget {
+  const CodeRuns(this.code, {super.key, this.style});
+
+  final String code;
+  final TextStyle? style;
+
+  static final RegExp _runs = RegExp(r'[0-9]+|[^0-9]');
+
+  @override
+  Widget build(BuildContext context) {
+    final runs = [for (final m in _runs.allMatches(code)) m[0]!];
+    return Semantics(
+      label: code,
+      excludeSemantics: true,
+      child: Directionality(
+        textDirection: TextDirection.ltr,
+        // Never wider than the line: shrinks instead of overflowing at
+        // large text scales.
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Row(
+            key: ValueKey('code-runs-$code'),
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.baseline,
+            textBaseline: TextBaseline.alphabetic,
+            children: [
+              for (final r in runs)
+                Text(r, style: style, textDirection: TextDirection.ltr),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

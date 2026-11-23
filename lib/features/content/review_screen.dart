@@ -17,19 +17,10 @@ class ReviewScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context);
-    final theme = Theme.of(context);
-    final c = context.colors;
     final async = ref.watch(contentProvider);
     final items = async.value?.needsReview ?? const <ContentItem>[];
-    final pad = AppSpacing.screenPaddingFor(MediaQuery.sizeOf(context).width);
 
-    final children = <Widget>[
-      Text(
-        l10n.reviewScreenSubtitle,
-        style: theme.textTheme.bodyLarge?.copyWith(color: c.textTertiary),
-      ),
-      const SizedBox(height: AppSpacing.md),
-    ];
+    final children = <Widget>[];
     if (async.value == null) {
       children.add(const ContentLoading());
     } else if (items.isEmpty) {
@@ -61,17 +52,10 @@ class ReviewScreen extends ConsumerWidget {
       const UnofficialDisclaimer.compact(),
     ]);
 
-    return Scaffold(
-      appBar: AppBar(title: Text(l10n.reviewScreenTitle)),
-      body: ListView(
-        padding: EdgeInsetsDirectional.fromSTEB(
-          pad,
-          AppSpacing.sm,
-          pad,
-          AppSpacing.xl + MediaQuery.paddingOf(context).bottom,
-        ),
-        children: children,
-      ),
+    return PageScaffold(
+      title: l10n.reviewScreenTitle,
+      subtitle: l10n.reviewScreenSubtitle,
+      children: children,
     );
   }
 }

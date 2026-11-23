@@ -1,22 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:intl/intl.dart' show DateFormat;
 
+import '../../core/content/content.dart';
 import '../../core/router/app_routes.dart';
 import '../../core/router/search_focus.dart';
+import '../../core/settings/history.dart';
 import '../../core/theme/theme.dart';
 import '../../core/widgets/app_card.dart';
+import '../../core/widgets/capsules.dart';
+import '../../core/widgets/ltr_text.dart';
+import '../../core/widgets/prose_text.dart';
 import '../../core/widgets/staggered_fade_in.dart';
+import '../../core/widgets/trust/trust_format.dart';
 import '../../core/widgets/trust/unofficial_disclaimer.dart';
 import '../../l10n/app_identity.dart';
 import '../../l10n/app_localizations.dart';
-import '../../core/content/content.dart';
-import '../../core/widgets/ltr_text.dart';
-import '../../core/widgets/trust/trust_format.dart';
+import '../content/content_widgets.dart';
 import '../content/section_ui.dart';
 
-/// Home placeholder (doc 04 §5.1): hero (greeting + search pill) and the
-/// encyclopedia grid. Latest updates / favourites / recents arrive with data.
+/// Home (doc 04 §5.1): hero (greeting, date, big search), quick-access
+/// capsules (sections, hotlines & codes), recently opened, section grid.
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key, this.now});
 
@@ -28,6 +33,7 @@ class HomeScreen extends StatelessWidget {
     final l10n = AppLocalizations.of(context);
     final width = MediaQuery.sizeOf(context).width;
     final pad = AppSpacing.screenPaddingFor(width);
+    final hPad = EdgeInsetsDirectional.symmetric(horizontal: pad);
 
     return Scaffold(
       body: ListView(
@@ -36,6 +42,10 @@ class HomeScreen extends StatelessWidget {
         ),
         children: [
           _Hero(now: now),
+          const SizedBox(height: AppSpacing.lg),
+          _QuickAccess(padding: hPad),
+          const _MustKnowStrip(),
+          const _RecentStrip(),
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(pad, AppSpacing.xl, pad, 0),
             child: Column(
@@ -47,7 +57,6 @@ class HomeScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: AppSpacing.md),
                 const _SectionGrid(),
-                const _MustKnowStrip(),
                 const SizedBox(height: AppSpacing.xxl),
                 const _AsOfNote(),
                 const UnofficialDisclaimer.compact(),
@@ -70,13 +79,19 @@ class _Hero extends StatelessWidget {
     final l10n = AppLocalizations.of(context);
     final theme = Theme.of(context);
     final c = context.colors;
-    final hour = (now ?? DateTime.now()).hour;
-    final greeting = hour < 12 ? l10n.greetingMorning : l10n.greetingEvening;
-    final width = MediaQuery.sizeOf(context).width;
-    final pad = AppSpacing.screenPaddingFor(width);
+    final date = now ?? DateTime.now();
+    final greeting = date.hour < 12
+        ? l10n.greetingMorning
+        : l10n.greetingEvening;
+    final lang = Localizations.localeOf(context).languageCode;
+    final dateText = (DateFormat(
+      lang == 'ar' ? 'EEEE، d MMMM y' : 'EEEE, d MMMM y',
+      lang,
+    )..useNativeDigits = false).format(date);
+    final pad = AppSpacing.screenPaddingFor(MediaQuery.sizeOf(context).width);
 
     // Static gradient: painted once, no animation, no blur (cheap).
-    return DecoratedBox(
+    return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topCenter,
@@ -89,34 +104,52 @@ class _Hero extends StatelessWidget {
         child: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(
             pad,
-            AppSpacing.xl,
-            pad,
             AppSpacing.md,
+            pad,
+            AppSpacing.xs,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 children: [
-                  TintedIcon(
-                    Icons.auto_stories_rounded,
-                    size: 36,
-                    background: c.surfaceElevated,
-                    color: c.primary,
+                  Container(
+                    width: 36,
+                    height: 36,
+                    decoration: BoxDecoration(
+                      borderRadius: AppRadius.smAll,
+                      gradient: LinearGradient(
+                        begin: AlignmentDirectional.topStart,
+                        end: AlignmentDirectional.bottomEnd,
+                        colors: [c.capsuleSelected, c.primaryPressed],
+                      ),
+                      boxShadow: AppShadows.primaryGlow(c),
+                    ),
+                    child: Icon(
+                      Icons.auto_stories_rounded,
+                      size: 20,
+                      color: c.onCapsuleSelected,
+                    ),
                   ),
-                  const SizedBox(width: AppSpacing.xs),
+                  const SizedBox(width: AppSpacing.sm),
                   Expanded(
                     child: Text(
                       AppIdentity.of(context),
                       style: theme.textTheme.titleMedium?.copyWith(
-                        color: c.textSecondary,
+                        fontWeight: FontWeight.w700,
                       ),
                     ),
                   ),
                 ],
               ),
               const SizedBox(height: AppSpacing.xl),
-              Text(greeting, style: theme.textTheme.displayMedium),
+              Text(
+                dateText,
+                key: const ValueKey('home-date'),
+                style: AppTypography.labelL.copyWith(color: c.primary),
+              ),
+              const SizedBox(height: AppSpacing.xxs),
+              Text(greeting, style: theme.textTheme.displayLarge),
               const SizedBox(height: AppSpacing.xxs),
               Text(
                 l10n.homeHeroSubtitle,
@@ -124,7 +157,7 @@ class _Hero extends StatelessWidget {
                   color: c.textSecondary,
                 ),
               ),
-              const SizedBox(height: AppSpacing.xl),
+              const SizedBox(height: AppSpacing.lg),
               const _SearchPill(),
             ],
           ),
@@ -168,17 +201,29 @@ class _SearchPill extends ConsumerWidget {
                 context.go(AppRoutes.search);
               },
               child: ConstrainedBox(
-                constraints: const BoxConstraints(minHeight: 56),
+                constraints: const BoxConstraints(minHeight: 60),
                 child: Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(
-                    AppSpacing.md,
-                    AppSpacing.sm,
                     AppSpacing.xs,
-                    AppSpacing.sm,
+                    AppSpacing.xs,
+                    AppSpacing.md,
+                    AppSpacing.xs,
                   ),
                   child: Row(
                     children: [
-                      Icon(Icons.search_rounded, color: c.primary),
+                      Container(
+                        width: 44,
+                        height: 44,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: c.capsuleSelected,
+                          boxShadow: AppShadows.primaryGlow(c),
+                        ),
+                        child: Icon(
+                          Icons.search_rounded,
+                          color: c.onCapsuleSelected,
+                        ),
+                      ),
                       const SizedBox(width: AppSpacing.sm),
                       Expanded(
                         child: Text(
@@ -195,6 +240,244 @@ class _SearchPill extends ConsumerWidget {
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+/// Quick access: one capsule per section (horizontal, swipe-safe).
+class _QuickAccess extends ConsumerWidget {
+  const _QuickAccess({required this.padding});
+
+  final EdgeInsetsGeometry padding;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context);
+    final library = ref.watch(contentLibraryProvider);
+    final sections = [
+      for (final s in ContentSection.values)
+        if (library.isEmpty || library.itemsOf(s).isNotEmpty) s,
+    ];
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Padding(padding: padding, child: SectionHeader(l10n.homeQuickAccess)),
+        const SizedBox(height: AppSpacing.sm),
+        CapsuleRow(
+          key: const ValueKey('quick-sections'),
+          padding: padding,
+          children: [
+            for (final s in sections)
+              Capsule(
+                key: ValueKey('quick-section-${s.key}'),
+                icon: s.icon,
+                label: s.title(l10n),
+                onTap: () => context.push(ContentRoutes.section(s.key)),
+              ),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+/// "Numbers to know by heart": hotlines and the most-used codes from
+/// numbers.json, as compact two-line capsules.
+class _MustKnowStrip extends ConsumerWidget {
+  const _MustKnowStrip();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context);
+    final items = ref.watch(sectionItemsProvider(ContentSection.numbers));
+    final contacts = items
+        .where(
+          (i) =>
+              i.type == ItemType.contact &&
+              i.phones.isNotEmpty &&
+              i.status == ItemStatus.confirmed,
+        )
+        .take(6);
+    final codes = items
+        .where(
+          (i) =>
+              i.type == ItemType.code &&
+              i.codes.isNotEmpty &&
+              i.status == ItemStatus.confirmed,
+        )
+        .take(6);
+    final entries = [
+      for (final i in contacts) (i, i.phones.first, true),
+      for (final i in codes) (i, i.codes.first, false),
+    ];
+    if (entries.isEmpty) return const SizedBox.shrink();
+    final pad = AppSpacing.screenPaddingFor(MediaQuery.sizeOf(context).width);
+    final hPad = EdgeInsetsDirectional.symmetric(horizontal: pad);
+
+    return Padding(
+      padding: const EdgeInsetsDirectional.only(top: AppSpacing.lg),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Padding(padding: hPad, child: SectionHeader(l10n.homeMustKnowTitle)),
+          const SizedBox(height: AppSpacing.sm),
+          CapsuleRow(
+            key: const ValueKey('must-know-strip'),
+            padding: hPad,
+            children: [
+              for (final (item, value, isPhone) in entries)
+                _ValueCapsule(
+                  key: ValueKey('must-know-${item.id}'),
+                  item: item,
+                  value: value,
+                  icon: isPhone ? Icons.call_rounded : Icons.dialpad_rounded,
+                ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _ValueCapsule extends StatelessWidget {
+  const _ValueCapsule({
+    super.key,
+    required this.item,
+    required this.value,
+    required this.icon,
+  });
+
+  final ContentItem item;
+  final String value;
+  final IconData icon;
+
+  @override
+  Widget build(BuildContext context) {
+    final c = context.colors;
+    return Semantics(
+      button: true,
+      label: '${item.title}، $value',
+      excludeSemantics: true,
+      child: PressableScale(
+        pressedScale: 0.96,
+        child: Material(
+          color: c.surfaceElevated,
+          shape: StadiumBorder(side: BorderSide(color: c.hairline)),
+          clipBehavior: Clip.antiAlias,
+          child: InkWell(
+            onTap: () => context.push(ContentRoutes.item(item.id)),
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 220, minHeight: 52),
+              child: Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(
+                  AppSpacing.xs,
+                  AppSpacing.xs,
+                  AppSpacing.md,
+                  AppSpacing.xs,
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      width: 36,
+                      height: 36,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: c.primaryContainer,
+                      ),
+                      child: Icon(icon, size: 18, color: c.onPrimaryContainer),
+                    ),
+                    const SizedBox(width: AppSpacing.xs),
+                    Flexible(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          LtrText(
+                            value,
+                            maxLines: 1,
+                            style: AppTypography.code.copyWith(
+                              color: c.textPrimary,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          ProseText(
+                            item.title,
+                            maxLines: 1,
+                            style: AppTypography.labelS.copyWith(
+                              color: c.textTertiary,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Recently opened items (persisted locally when available).
+class _RecentStrip extends ConsumerWidget {
+  const _RecentStrip();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context);
+    final library = ref.watch(contentLibraryProvider);
+    final items = [
+      for (final id in ref.watch(recentItemsProvider)) ?library.byId(id),
+    ];
+    if (items.isEmpty) return const SizedBox.shrink();
+    final pad = AppSpacing.screenPaddingFor(MediaQuery.sizeOf(context).width);
+    final hPad = EdgeInsetsDirectional.symmetric(horizontal: pad);
+    return Padding(
+      padding: const EdgeInsetsDirectional.only(top: AppSpacing.lg),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Padding(padding: hPad, child: SectionHeader(l10n.homeRecentTitle)),
+          const SizedBox(height: AppSpacing.sm),
+          CapsuleRow(
+            key: const ValueKey('recent-strip'),
+            padding: hPad,
+            spacing: AppSpacing.cardGap,
+            children: [
+              for (final i in items)
+                SizedBox(
+                  width: 200,
+                  child: AppCard(
+                    key: ValueKey('recent-${i.id}'),
+                    semanticLabel: i.title,
+                    padding: const EdgeInsetsDirectional.all(AppSpacing.sm),
+                    onTap: () => context.push(ContentRoutes.item(i.id)),
+                    child: Row(
+                      children: [
+                        SectionIconTile(i.section, size: 36),
+                        const SizedBox(width: AppSpacing.xs),
+                        Expanded(
+                          child: ProseText(
+                            i.title,
+                            maxLines: 2,
+                            style: AppTypography.labelL.copyWith(
+                              color: context.colors.textPrimary,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+            ],
+          ),
+        ],
       ),
     );
   }
@@ -236,7 +519,8 @@ class _SectionGrid extends ConsumerWidget {
   }
 }
 
-/// Section card: tinted icon, title, two-line subtitle, item count.
+/// Section card: accent icon tile, title, two-line subtitle, item count
+/// capsule, with a faint wash of the section's hue.
 class SectionCard extends StatelessWidget {
   const SectionCard({super.key, required this.section, this.count = 0});
 
@@ -248,6 +532,7 @@ class SectionCard extends StatelessWidget {
     final l10n = AppLocalizations.of(context);
     final theme = Theme.of(context);
     final c = context.colors;
+    final tone = section.tone(context);
     final title = section.title(l10n);
     final subtitle = section.subtitle(l10n);
     final countText = l10n.itemCount(count);
@@ -256,12 +541,39 @@ class SectionCard extends StatelessWidget {
       key: ValueKey('section-card-${section.key}'),
       semanticLabel: '$title، $subtitle، $countText',
       onTap: () => context.push(ContentRoutes.section(section.key)),
+      gradient: LinearGradient(
+        begin: AlignmentDirectional.topStart,
+        end: AlignmentDirectional.bottomEnd,
+        stops: const [0, 0.6],
+        colors: [
+          tone.container.withValues(alpha: c.isDark ? 0.55 : 0.6),
+          c.surfaceElevated.withValues(alpha: 0),
+        ],
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          TintedIcon(section.icon),
-          const SizedBox(height: AppSpacing.sm),
-          Text(title, style: theme.textTheme.titleMedium),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SectionIconTile(section, size: 44),
+              const Spacer(),
+              Icon(
+                Directionality.of(context) == TextDirection.rtl
+                    ? Icons.arrow_back_rounded
+                    : Icons.arrow_forward_rounded,
+                size: 18,
+                color: c.textTertiary,
+              ),
+            ],
+          ),
+          const SizedBox(height: AppSpacing.md),
+          Text(
+            title,
+            style: theme.textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.w700,
+            ),
+          ),
           const SizedBox(height: 2),
           Text(
             subtitle,
@@ -269,83 +581,22 @@ class SectionCard extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
             style: theme.textTheme.bodySmall?.copyWith(color: c.textTertiary),
           ),
-          const SizedBox(height: AppSpacing.xs),
-          Text(
-            countText,
-            style: AppTypography.labelS.copyWith(color: c.primary),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-/// "Numbers to know by heart": top contact items from numbers.json.
-class _MustKnowStrip extends ConsumerWidget {
-  const _MustKnowStrip();
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final l10n = AppLocalizations.of(context);
-    final theme = Theme.of(context);
-    final c = context.colors;
-    final contacts = ref
-        .watch(sectionItemsProvider(ContentSection.numbers))
-        .where((i) => i.type == ItemType.contact && i.phones.isNotEmpty)
-        .take(8)
-        .toList();
-    if (contacts.isEmpty) return const SizedBox.shrink();
-
-    return Padding(
-      padding: const EdgeInsetsDirectional.only(top: AppSpacing.xl),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          SectionHeader(l10n.homeMustKnowTitle),
           const SizedBox(height: AppSpacing.sm),
-          SingleChildScrollView(
-            key: const ValueKey('must-know-strip'),
-            scrollDirection: Axis.horizontal,
-            clipBehavior: Clip.none,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                for (final item in contacts) ...[
-                  ConstrainedBox(
-                    constraints: const BoxConstraints(
-                      minWidth: 140,
-                      maxWidth: 200,
-                    ),
-                    child: AppCard(
-                      key: ValueKey('must-know-${item.id}'),
-                      semanticLabel: '${item.title}، ${item.phones.first}',
-                      onTap: () => context.push(ContentRoutes.item(item.id)),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          LtrText(
-                            item.phones.first,
-                            style: AppTypography.price.copyWith(
-                              color: c.primary,
-                            ),
-                          ),
-                          const SizedBox(height: AppSpacing.xxs),
-                          Text(
-                            item.title,
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            style: theme.textTheme.bodySmall?.copyWith(
-                              color: c.textSecondary,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: AppSpacing.cardGap),
-                ],
-              ],
+          Container(
+            padding: const EdgeInsetsDirectional.symmetric(
+              horizontal: AppSpacing.xs,
+              vertical: 2,
+            ),
+            decoration: BoxDecoration(
+              color: tone.container,
+              borderRadius: AppRadius.fullAll,
+            ),
+            child: Text(
+              countText,
+              style: AppTypography.labelS.copyWith(
+                color: tone.foreground,
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ),
         ],
