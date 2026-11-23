@@ -108,7 +108,6 @@ class _ItemDetailScreenState extends ConsumerState<ItemDetailScreen> {
         ],
       ],
       const SizedBox(height: AppSpacing.xl),
-      const UnofficialDisclaimer.compact(),
     ];
 
     return PageScaffold(

@@ -136,21 +136,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get languageEnglish => 'English';
 
   @override
-  String get aboutTitle => 'About';
-
-  @override
   String get editorModeTitle => 'Editor mode (owner sign-in)';
 
   @override
   String get editorModeSubtitle => 'Coming soon';
-
-  @override
-  String get disclaimerShort =>
-      'Independent, unofficial app — always check official sources.';
-
-  @override
-  String get disclaimerFull =>
-      'An independent, unofficial app. Not affiliated with or endorsed by any telecom operator. Information is for guidance only; always refer to the approved official sources.';
 
   @override
   String get copyAction => 'Copy';

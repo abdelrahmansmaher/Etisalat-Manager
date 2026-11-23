@@ -5,7 +5,6 @@ import '../../core/content/content.dart';
 import '../../core/theme/theme.dart';
 import '../../core/widgets/capsules.dart';
 import '../../core/widgets/page_scaffold.dart';
-import '../../core/widgets/trust/unofficial_disclaimer.dart';
 import '../../l10n/app_localizations.dart';
 import 'content_widgets.dart';
 import 'section_ui.dart';
@@ -313,12 +312,7 @@ class _SectionScreenState extends ConsumerState<SectionScreen> {
               ),
             ],
           ),
-        SliverPadding(
-          padding: EdgeInsetsDirectional.fromSTEB(pad, AppSpacing.xl, pad, 0),
-          sliver: const SliverToBoxAdapter(
-            child: UnofficialDisclaimer.compact(),
-          ),
-        ),
+        const SliverToBoxAdapter(child: SizedBox(height: AppSpacing.xl)),
       ],
     );
   }

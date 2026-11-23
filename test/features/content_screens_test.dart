@@ -183,7 +183,6 @@ void main() {
         find.byKey(const ValueKey('item-row-pkg-test-beta')),
         delta: 200,
       );
-      expect(find.byType(UnofficialDisclaimer), findsOneWidget);
     });
 
     testWidgets('unconfirmed item shows amber banner with note', (

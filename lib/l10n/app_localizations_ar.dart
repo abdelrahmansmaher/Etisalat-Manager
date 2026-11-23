@@ -135,21 +135,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get languageEnglish => 'English';
 
   @override
-  String get aboutTitle => 'عن التطبيق';
-
-  @override
   String get editorModeTitle => 'وضع المحرر (دخول المالك)';
 
   @override
   String get editorModeSubtitle => 'قريبًا';
-
-  @override
-  String get disclaimerShort =>
-      'تطبيق مستقل وغير رسمي — تحقق دائمًا من المصادر الرسمية.';
-
-  @override
-  String get disclaimerFull =>
-      'تطبيق مستقل وغير رسمي، غير تابع لأي شركة اتصالات ولا معتمد منها. المعلومات للاسترشاد ويجب الرجوع للمصادر الرسمية المعتمدة.';
 
   @override
   String get copyAction => 'نسخ';

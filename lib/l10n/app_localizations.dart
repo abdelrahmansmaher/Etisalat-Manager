@@ -344,12 +344,6 @@ abstract class AppLocalizations {
   /// **'English'**
   String get languageEnglish;
 
-  /// No description provided for @aboutTitle.
-  ///
-  /// In ar, this message translates to:
-  /// **'عن التطبيق'**
-  String get aboutTitle;
-
   /// No description provided for @editorModeTitle.
   ///
   /// In ar, this message translates to:
@@ -361,18 +355,6 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'قريبًا'**
   String get editorModeSubtitle;
-
-  /// No description provided for @disclaimerShort.
-  ///
-  /// In ar, this message translates to:
-  /// **'تطبيق مستقل وغير رسمي — تحقق دائمًا من المصادر الرسمية.'**
-  String get disclaimerShort;
-
-  /// No description provided for @disclaimerFull.
-  ///
-  /// In ar, this message translates to:
-  /// **'تطبيق مستقل وغير رسمي، غير تابع لأي شركة اتصالات ولا معتمد منها. المعلومات للاسترشاد ويجب الرجوع للمصادر الرسمية المعتمدة.'**
-  String get disclaimerFull;
 
   /// No description provided for @copyAction.
   ///

@@ -10,7 +10,6 @@ import '../../core/theme/theme.dart';
 import '../../core/widgets/app_card.dart';
 import '../../core/widgets/capsules.dart';
 import '../../core/widgets/page_scaffold.dart';
-import '../../core/widgets/trust/unofficial_disclaimer.dart';
 import '../../l10n/app_localizations.dart';
 import '../content/content_widgets.dart';
 import '../content/section_ui.dart';
@@ -307,7 +306,6 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
         ),
       ],
       const SliverToBoxAdapter(child: SizedBox(height: AppSpacing.lg)),
-      box(const UnofficialDisclaimer.compact()),
     ];
   }
 }

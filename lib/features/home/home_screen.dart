@@ -14,7 +14,6 @@ import '../../core/widgets/ltr_text.dart';
 import '../../core/widgets/prose_text.dart';
 import '../../core/widgets/staggered_fade_in.dart';
 import '../../core/widgets/trust/trust_format.dart';
-import '../../core/widgets/trust/unofficial_disclaimer.dart';
 import '../../l10n/app_identity.dart';
 import '../../l10n/app_localizations.dart';
 import '../content/content_widgets.dart';
@@ -59,7 +58,6 @@ class HomeScreen extends StatelessWidget {
                 const _SectionGrid(),
                 const SizedBox(height: AppSpacing.xxl),
                 const _AsOfNote(),
-                const UnofficialDisclaimer.compact(),
               ],
             ),
           ),

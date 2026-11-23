@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:knowledge_hub/core/widgets/trust/unofficial_disclaimer.dart';
 import 'package:knowledge_hub/features/home/home_screen.dart';
 import 'package:knowledge_hub/features/me/me_screen.dart';
 
@@ -13,13 +12,11 @@ void main() {
 
   Future<void> scrollToEnd(WidgetTester tester, Type screen) async {
     final scope = find.byType(screen);
-    await tester.scrollUntilVisible(
-      find.descendant(of: scope, matching: find.byType(UnofficialDisclaimer)),
-      250,
-      scrollable: find
-          .descendant(of: scope, matching: find.byType(Scrollable))
-          .first,
-    );
+    final scrollable = find
+        .descendant(of: scope, matching: find.byType(Scrollable))
+        .first;
+    final state = tester.state<ScrollableState>(scrollable);
+    state.position.jumpTo(state.position.maxScrollExtent);
     await tester.pumpAndSettle();
   }
 

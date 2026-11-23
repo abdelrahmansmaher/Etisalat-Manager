@@ -190,17 +190,6 @@ void main() {
     expect(find.byIcon(AppIcons.conflict), findsOneWidget);
   });
 
-  testWidgets('UnofficialDisclaimer compact + full', (tester) async {
-    await pumpLocalized(
-      tester,
-      const Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [UnofficialDisclaimer.compact(), UnofficialDisclaimer.full()],
-      ),
-    );
-    expect(find.textContaining('غير رسمي'), findsNWidgets(2));
-  });
-
   group('PriceView', () {
     testWidgets('active: amount, currency, tax basis, validity range', (
       tester,

@@ -41,11 +41,8 @@
   "settingsLanguage": "اللغة",
   "languageArabic": "العربية",
   "languageEnglish": "English",
-  "aboutTitle": "عن التطبيق",
   "editorModeTitle": "وضع المحرر (دخول المالك)",
   "editorModeSubtitle": "قريبًا",
-  "disclaimerShort": "تطبيق مستقل وغير رسمي — تحقق دائمًا من المصادر الرسمية.",
-  "disclaimerFull": "تطبيق مستقل وغير رسمي، غير تابع لأي شركة اتصالات ولا معتمد منها. المعلومات للاسترشاد ويجب الرجوع للمصادر الرسمية المعتمدة.",
   "copyAction": "نسخ",
   "copyValueSemantics": "نسخ {value}",
   "@copyValueSemantics": {

@@ -9,5 +9,4 @@ export 'source_badge.dart';
 export 'trust_format.dart';
 export 'trust_models.dart';
 export 'trust_pill.dart';
-export 'unofficial_disclaimer.dart';
 export 'verification_status_badge.dart';

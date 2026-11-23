@@ -5,7 +5,6 @@ import '../../core/content/content.dart';
 import '../../core/theme/theme.dart';
 import '../../core/widgets/app_card.dart';
 import '../../core/widgets/page_scaffold.dart';
-import '../../core/widgets/trust/unofficial_disclaimer.dart';
 import '../../l10n/app_localizations.dart';
 import 'content_widgets.dart';
 import 'section_ui.dart';
@@ -47,10 +46,7 @@ class ReviewScreen extends ConsumerWidget {
         const SizedBox(height: AppSpacing.cardGap),
       ]);
     }
-    children.addAll([
-      const SizedBox(height: AppSpacing.xl),
-      const UnofficialDisclaimer.compact(),
-    ]);
+    children.addAll([const SizedBox(height: AppSpacing.xl)]);
 
     return PageScaffold(
       title: l10n.reviewScreenTitle,
