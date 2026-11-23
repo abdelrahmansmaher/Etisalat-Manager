@@ -27,7 +27,7 @@ class MeScreen extends ConsumerWidget {
       subtitle: AppIdentity.of(context),
       children: [
         _SettingGroup(
-          icon: Icons.palette_rounded,
+          icon: AppIcons.appearance,
           title: l10n.settingsAppearance,
           hint: l10n.settingsAppearanceHint,
           child: SegmentedCapsule<ThemeMode>(
@@ -38,19 +38,19 @@ class MeScreen extends ConsumerWidget {
               CapsuleSegment(
                 key: const ValueKey('theme-system'),
                 value: ThemeMode.system,
-                icon: Icons.brightness_auto_rounded,
+                icon: AppIcons.themeSystem,
                 label: l10n.themeSystem,
               ),
               CapsuleSegment(
                 key: const ValueKey('theme-light'),
                 value: ThemeMode.light,
-                icon: Icons.light_mode_rounded,
+                icon: AppIcons.themeLight,
                 label: l10n.themeLight,
               ),
               CapsuleSegment(
                 key: const ValueKey('theme-dark'),
                 value: ThemeMode.dark,
-                icon: Icons.dark_mode_rounded,
+                icon: AppIcons.themeDark,
                 label: l10n.themeDark,
               ),
             ],
@@ -58,7 +58,7 @@ class MeScreen extends ConsumerWidget {
         ),
         const SizedBox(height: AppSpacing.md),
         _SettingGroup(
-          icon: Icons.translate_rounded,
+          icon: AppIcons.language,
           title: l10n.settingsLanguage,
           child: SegmentedCapsule<String>(
             key: const ValueKey('lang-segments'),
@@ -87,16 +87,17 @@ class MeScreen extends ConsumerWidget {
         ),
         const SizedBox(height: AppSpacing.md),
         AppCard(
+          role: CardRole.flat,
           padding: const EdgeInsetsDirectional.symmetric(
             vertical: AppSpacing.xxs,
           ),
           child: ListTile(
             key: const ValueKey('editor-mode'),
             enabled: false,
-            leading: Icon(Icons.edit_note_rounded, color: c.textTertiary),
+            leading: Icon(AppIcons.edit, color: c.textTertiary),
             title: Text(l10n.editorModeTitle),
             subtitle: Text(l10n.editorModeSubtitle),
-            trailing: Icon(Icons.lock_rounded, color: c.textTertiary),
+            trailing: Icon(AppIcons.lock, color: c.textTertiary),
           ),
         ),
         const SizedBox(height: AppSpacing.xl),
@@ -126,12 +127,13 @@ class _SettingGroup extends StatelessWidget {
     final theme = Theme.of(context);
     final c = context.colors;
     return AppCard(
+      role: CardRole.flat,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Row(
             children: [
-              TintedIcon(icon, size: 36),
+              TintedIcon(icon, tile: IconTile.sm),
               const SizedBox(width: AppSpacing.sm),
               Expanded(
                 child: Column(

@@ -79,7 +79,20 @@ class TrustColors extends ThemeExtension<TrustColors> {
   @override
   TrustColors lerp(covariant TrustColors? other, double t) {
     if (other == null) return this;
-    return t < 0.5 ? this : other;
+    StatusColors s(StatusColors a, StatusColors b) => StatusColors(
+      foreground: Color.lerp(a.foreground, b.foreground, t)!,
+      container: Color.lerp(a.container, b.container, t)!,
+    );
+    return TrustColors(
+      verified: s(verified, other.verified),
+      needsReview: s(needsReview, other.needsReview),
+      expired: s(expired, other.expired),
+      unverified: s(unverified, other.unverified),
+      conflict: s(conflict, other.conflict),
+      private: s(private, other.private),
+      freshText: Color.lerp(freshText, other.freshText, t)!,
+      agingText: Color.lerp(agingText, other.agingText, t)!,
+    );
   }
 }
 

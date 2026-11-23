@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../l10n/app_localizations.dart';
 import '../../theme/trust_colors.dart';
+import '../../theme/app_icons.dart';
 
 /// Verification status (doc 04 §3.3; "restricted" = owner-only private in
 /// v0.2). Declared in display-priority order, highest first.
@@ -24,12 +25,12 @@ enum VerificationStatus {
   }
 
   IconData get icon => switch (this) {
-    verified => Icons.verified_outlined,
-    needsReview => Icons.history,
-    expired => Icons.event_busy,
-    unverified => Icons.help_outline,
-    conflict => Icons.report_outlined,
-    private => Icons.lock_outline,
+    verified => AppIcons.confirmed,
+    needsReview => AppIcons.needsReview,
+    expired => AppIcons.expired,
+    unverified => AppIcons.unconfirmed,
+    conflict => AppIcons.conflict,
+    private => AppIcons.privateNote,
   };
 
   String label(AppLocalizations l10n) => switch (this) {
@@ -61,8 +62,8 @@ enum SourceType {
   ownerNote;
 
   IconData get icon => switch (this) {
-    officialPublic => Icons.link,
-    _ => Icons.description_outlined,
+    officialPublic => AppIcons.link,
+    _ => AppIcons.document,
   };
 
   String label(AppLocalizations l10n) => switch (this) {

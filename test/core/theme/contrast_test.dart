@@ -117,6 +117,26 @@ List<Pair> pairs(AppColors c) {
     ),
     ('borderStrong/surface (UI)', c.borderStrong, c.surface, ui),
     ('primaryUi/surface (graphics)', c.primaryUi, c.surface, ui),
+    // v3 tokens
+    ('textPrimary/heroMid', c.textPrimary, c.heroGradientMid, text),
+    ('textSecondary/heroMid', c.textSecondary, c.heroGradientMid, text),
+    ('textPrimary/cardTop', c.textPrimary, c.cardTop, text),
+    ('textSecondary/cardTop', c.textSecondary, c.cardTop, text),
+    ('textTertiary/cardTop', c.textTertiary, c.cardTop, text),
+    ('primary/cardTop', c.primary, c.cardTop, text),
+    (
+      'primaryUi/surfaceElevated (fact icons)',
+      c.primaryUi,
+      c.surfaceElevated,
+      ui,
+    ),
+    ('primaryUi/cardTop (fact icons)', c.primaryUi, c.cardTop, ui),
+    (
+      'textTertiary/surfaceElevated (chevrons)',
+      c.textTertiary,
+      c.surfaceElevated,
+      ui,
+    ),
     // v2 tokens
     ('textPrimary/surfaceVariant', c.textPrimary, c.surfaceVariant, text),
     ('textSecondary/surfaceElevated', c.textSecondary, c.surfaceElevated, text),

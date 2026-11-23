@@ -96,7 +96,8 @@ class _Hero extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
-          colors: [c.heroGradientStart, c.heroGradientEnd],
+          stops: const [0, 0.55, 1],
+          colors: [c.heroGradientStart, c.heroGradientMid, c.heroGradientEnd],
         ),
       ),
       child: SafeArea(
@@ -126,8 +127,8 @@ class _Hero extends StatelessWidget {
                       boxShadow: AppShadows.primaryGlow(c),
                     ),
                     child: Icon(
-                      Icons.auto_stories_rounded,
-                      size: 20,
+                      AppIcons.brand,
+                      size: AppIconSize.action,
                       color: c.onCapsuleSelected,
                     ),
                   ),
@@ -220,7 +221,7 @@ class _SearchPill extends ConsumerWidget {
                           boxShadow: AppShadows.primaryGlow(c),
                         ),
                         child: Icon(
-                          Icons.search_rounded,
+                          AppIcons.search,
                           color: c.onCapsuleSelected,
                         ),
                       ),
@@ -298,7 +299,8 @@ class _MustKnowStrip extends ConsumerWidget {
               i.phones.isNotEmpty &&
               i.status == ItemStatus.confirmed,
         )
-        .take(6);
+        .take(4)
+        .toList();
     final codes = items
         .where(
           (i) =>
@@ -306,59 +308,140 @@ class _MustKnowStrip extends ConsumerWidget {
               i.codes.isNotEmpty &&
               i.status == ItemStatus.confirmed,
         )
-        .take(6);
-    final entries = [
-      for (final i in contacts) (i, i.phones.first, true),
-      for (final i in codes) (i, i.codes.first, false),
-    ];
-    if (entries.isEmpty) return const SizedBox.shrink();
+        .take(4)
+        .toList();
+    if (contacts.isEmpty && codes.isEmpty) return const SizedBox.shrink();
     final pad = AppSpacing.screenPaddingFor(MediaQuery.sizeOf(context).width);
-    final hPad = EdgeInsetsDirectional.symmetric(horizontal: pad);
+    final c = context.colors;
 
+    // A vertical list, not a scrolling strip: a phone number or code is
+    // never cut at the screen edge (a truncated number at the counter is a
+    // wrong number).
     return Padding(
-      padding: const EdgeInsetsDirectional.only(top: AppSpacing.lg),
+      key: const ValueKey('must-know-strip'),
+      padding: EdgeInsetsDirectional.fromSTEB(pad, AppSpacing.lg, pad, 0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Padding(padding: hPad, child: SectionHeader(l10n.homeMustKnowTitle)),
+          SectionHeader(l10n.homeMustKnowTitle),
           const SizedBox(height: AppSpacing.sm),
-          CapsuleRow(
-            key: const ValueKey('must-know-strip'),
-            padding: hPad,
-            children: [
-              for (final (item, value, isPhone) in entries)
-                _ValueCapsule(
-                  key: ValueKey('must-know-${item.id}'),
-                  item: item,
-                  value: value,
-                  icon: isPhone ? Icons.call_rounded : Icons.dialpad_rounded,
-                ),
-            ],
-          ),
+          if (contacts.isNotEmpty)
+            AppCard(
+              role: CardRole.flat,
+              padding: EdgeInsetsDirectional.zero,
+              child: Column(
+                children: [
+                  for (final (i, item) in contacts.indexed) ...[
+                    if (i > 0) Divider(color: c.hairline, height: 1),
+                    _HotlineRow(
+                      key: ValueKey('must-know-${item.id}'),
+                      item: item,
+                      number: item.phones.first,
+                    ),
+                  ],
+                ],
+              ),
+            ),
+          if (codes.isNotEmpty) ...[
+            const SizedBox(height: AppSpacing.sm),
+            Wrap(
+              spacing: AppSpacing.xs,
+              runSpacing: AppSpacing.xs,
+              children: [
+                for (final item in codes)
+                  _CodeCapsule(
+                    key: ValueKey('must-know-${item.id}'),
+                    item: item,
+                    code: item.codes.first,
+                  ),
+              ],
+            ),
+          ],
         ],
       ),
     );
   }
 }
 
-class _ValueCapsule extends StatelessWidget {
-  const _ValueCapsule({
-    super.key,
-    required this.item,
-    required this.value,
-    required this.icon,
-  });
+/// Hotline row: the number in full (scaled down if needed, never cut), its
+/// name (which may shorten), and a copy action.
+class _HotlineRow extends StatelessWidget {
+  const _HotlineRow({super.key, required this.item, required this.number});
 
   final ContentItem item;
-  final String value;
-  final IconData icon;
+  final String number;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final c = context.colors;
+    return InkWell(
+      onTap: () => context.push(ContentRoutes.item(item.id)),
+      child: Padding(
+        padding: const EdgeInsetsDirectional.fromSTEB(
+          AppSpacing.sm,
+          AppSpacing.xs,
+          AppSpacing.xxs,
+          AppSpacing.xs,
+        ),
+        child: Row(
+          children: [
+            const TintedIcon(AppIcons.call, tile: IconTile.sm),
+            const SizedBox(width: AppSpacing.sm),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  FittedBox(
+                    fit: BoxFit.scaleDown,
+                    alignment: AlignmentDirectional.centerStart,
+                    child: LtrText(
+                      number,
+                      key: const ValueKey('must-know-number'),
+                      style: AppTypography.code.copyWith(
+                        fontSize: 17,
+                        fontWeight: FontWeight.w600,
+                        color: c.textPrimary,
+                      ),
+                      semanticsLabel: CodeText.spell(number, l10n),
+                    ),
+                  ),
+                  ProseText(
+                    item.title,
+                    maxLines: 1,
+                    style: AppTypography.labelS.copyWith(color: c.textTertiary),
+                  ),
+                ],
+              ),
+            ),
+            IconButton(
+              key: ValueKey('must-know-copy-${item.id}'),
+              tooltip: l10n.copyValueSemantics(number),
+              icon: const Icon(AppIcons.copy, size: AppIconSize.action),
+              color: c.textSecondary,
+              onPressed: () => CodeText.copyToClipboard(context, number),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// Code capsule: the whole code is always shown (no width cap, no
+/// ellipsis); capsules wrap onto new lines instead of scrolling off-screen.
+class _CodeCapsule extends StatelessWidget {
+  const _CodeCapsule({super.key, required this.item, required this.code});
+
+  final ContentItem item;
+  final String code;
 
   @override
   Widget build(BuildContext context) {
     final c = context.colors;
     return Semantics(
       button: true,
-      label: '${item.title}، $value',
+      label: '${item.title}، $code',
       excludeSemantics: true,
       child: PressableScale(
         pressedScale: 0.96,
@@ -368,53 +451,26 @@ class _ValueCapsule extends StatelessWidget {
           clipBehavior: Clip.antiAlias,
           child: InkWell(
             onTap: () => context.push(ContentRoutes.item(item.id)),
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 220, minHeight: 52),
-              child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(
-                  AppSpacing.xs,
-                  AppSpacing.xs,
-                  AppSpacing.md,
-                  AppSpacing.xs,
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Container(
-                      width: 36,
-                      height: 36,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: c.primaryContainer,
-                      ),
-                      child: Icon(icon, size: 18, color: c.onPrimaryContainer),
+            child: Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(
+                AppSpacing.sm,
+                AppSpacing.xs,
+                AppSpacing.md,
+                AppSpacing.xs,
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(AppIcons.code, size: AppIconSize.chip, color: c.primary),
+                  const SizedBox(width: AppSpacing.xs - 2),
+                  LtrText(
+                    code,
+                    style: AppTypography.code.copyWith(
+                      color: c.textPrimary,
+                      fontWeight: FontWeight.w600,
                     ),
-                    const SizedBox(width: AppSpacing.xs),
-                    Flexible(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          LtrText(
-                            value,
-                            maxLines: 1,
-                            style: AppTypography.code.copyWith(
-                              color: c.textPrimary,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          ProseText(
-                            item.title,
-                            maxLines: 1,
-                            style: AppTypography.labelS.copyWith(
-                              color: c.textTertiary,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),
@@ -454,13 +510,18 @@ class _RecentStrip extends ConsumerWidget {
                 SizedBox(
                   width: 200,
                   child: AppCard(
+                    role: CardRole.flat,
                     key: ValueKey('recent-${i.id}'),
                     semanticLabel: i.title,
                     padding: const EdgeInsetsDirectional.all(AppSpacing.sm),
                     onTap: () => context.push(ContentRoutes.item(i.id)),
                     child: Row(
                       children: [
-                        SectionIconTile(i.section, size: 36),
+                        SectionIconTile(
+                          i.section,
+                          icon: i.icon,
+                          tile: IconTile.sm,
+                        ),
                         const SizedBox(width: AppSpacing.xs),
                         Expanded(
                           child: ProseText(
@@ -508,7 +569,8 @@ class _SectionGrid extends ConsumerWidget {
                   index: s.index,
                   child: SectionCard(
                     section: s,
-                    count: library.itemsOf(s).length,
+                    // null while loading: no misleading "no items".
+                    count: library.isEmpty ? null : library.itemsOf(s).length,
                   ),
                 ),
               ),
@@ -519,13 +581,14 @@ class _SectionGrid extends ConsumerWidget {
   }
 }
 
-/// Section card: accent icon tile, title, two-line subtitle, item count
-/// capsule, with a faint wash of the section's hue.
+/// Section card: tone icon tile, title, two-line subtitle, item count.
 class SectionCard extends StatelessWidget {
-  const SectionCard({super.key, required this.section, this.count = 0});
+  const SectionCard({super.key, required this.section, this.count});
 
   final ContentSection section;
-  final int count;
+
+  /// Item count; null while content is loading (count line hidden).
+  final int? count;
 
   @override
   Widget build(BuildContext context) {
@@ -535,38 +598,16 @@ class SectionCard extends StatelessWidget {
     final tone = section.tone(context);
     final title = section.title(l10n);
     final subtitle = section.subtitle(l10n);
-    final countText = l10n.itemCount(count);
+    final countText = count == null ? null : l10n.itemCount(count!);
 
     return AppCard(
       key: ValueKey('section-card-${section.key}'),
-      semanticLabel: '$title، $subtitle، $countText',
+      semanticLabel: [title, subtitle, ?countText].join('، '),
       onTap: () => context.push(ContentRoutes.section(section.key)),
-      gradient: LinearGradient(
-        begin: AlignmentDirectional.topStart,
-        end: AlignmentDirectional.bottomEnd,
-        stops: const [0, 0.6],
-        colors: [
-          tone.container.withValues(alpha: c.isDark ? 0.55 : 0.6),
-          c.surfaceElevated.withValues(alpha: 0),
-        ],
-      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SectionIconTile(section, size: 44),
-              const Spacer(),
-              Icon(
-                Directionality.of(context) == TextDirection.rtl
-                    ? Icons.arrow_back_rounded
-                    : Icons.arrow_forward_rounded,
-                size: 18,
-                color: c.textTertiary,
-              ),
-            ],
-          ),
+          SectionIconTile(section, tile: IconTile.lg),
           const SizedBox(height: AppSpacing.md),
           Text(
             title,
@@ -581,24 +622,17 @@ class SectionCard extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
             style: theme.textTheme.bodySmall?.copyWith(color: c.textTertiary),
           ),
-          const SizedBox(height: AppSpacing.sm),
-          Container(
-            padding: const EdgeInsetsDirectional.symmetric(
-              horizontal: AppSpacing.xs,
-              vertical: 2,
-            ),
-            decoration: BoxDecoration(
-              color: tone.container,
-              borderRadius: AppRadius.fullAll,
-            ),
-            child: Text(
+          if (countText != null) ...[
+            const SizedBox(height: AppSpacing.sm),
+            Text(
               countText,
               style: AppTypography.labelS.copyWith(
                 color: tone.foreground,
                 fontWeight: FontWeight.w600,
+                fontFeatures: AppTypography.tabular,
               ),
             ),
-          ),
+          ],
         ],
       ),
     );

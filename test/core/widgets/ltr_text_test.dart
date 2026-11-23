@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:knowledge_hub/core/theme/app_icons.dart';
 import 'package:knowledge_hub/core/widgets/ltr_text.dart';
 import 'package:knowledge_hub/l10n/app_localizations_ar.dart';
 
@@ -115,19 +116,19 @@ void main() {
       ),
     );
 
-    await tester.tap(find.byIcon(Icons.copy_rounded));
+    await tester.tap(find.byIcon(AppIcons.copy));
     await tester.pump();
     expect(clipboard, '01000000000');
     expect(copied, '01000000000');
     expect(find.text('تم النسخ'), findsOneWidget);
 
-    await tester.tap(find.byIcon(Icons.call_outlined));
+    await tester.tap(find.byIcon(AppIcons.call));
     expect(called, '01000000000');
   });
 
   testWidgets('no call button without onCall', (tester) async {
     await pumpLocalized(tester, const CodeText('*999#'));
-    expect(find.byIcon(Icons.call_outlined), findsNothing);
-    expect(find.byIcon(Icons.copy_rounded), findsOneWidget);
+    expect(find.byIcon(AppIcons.call), findsNothing);
+    expect(find.byIcon(AppIcons.copy), findsOneWidget);
   });
 }

@@ -29,13 +29,14 @@ class BrowseScreen extends ConsumerWidget {
       children: [
         for (final s in ContentSection.values) ...[
           AppCard(
+            role: CardRole.flat,
             key: ValueKey('browse-${s.key}'),
             semanticLabel:
                 '${s.title(l10n)}، ${l10n.itemCount(library.itemsOf(s).length)}',
             onTap: () => context.push(ContentRoutes.section(s.key)),
             child: Row(
               children: [
-                SectionIconTile(s, size: 48),
+                SectionIconTile(s, tile: IconTile.lg),
                 const SizedBox(width: AppSpacing.md),
                 Expanded(
                   child: Column(
@@ -53,22 +54,23 @@ class BrowseScreen extends ConsumerWidget {
                           color: c.textTertiary,
                         ),
                       ),
-                      const SizedBox(height: AppSpacing.xxs),
-                      Text(
-                        l10n.itemCount(library.itemsOf(s).length),
-                        style: AppTypography.labelS.copyWith(
-                          color: s.tone(context).foreground,
-                          fontWeight: FontWeight.w600,
+                      if (!library.isEmpty) ...[
+                        const SizedBox(height: AppSpacing.xxs),
+                        Text(
+                          l10n.itemCount(library.itemsOf(s).length),
+                          style: AppTypography.labelS.copyWith(
+                            color: s.tone(context).foreground,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
-                      ),
+                      ],
                     ],
                   ),
                 ),
                 const SizedBox(width: AppSpacing.xs),
                 Icon(
-                  Directionality.of(context) == TextDirection.rtl
-                      ? Icons.chevron_left_rounded
-                      : Icons.chevron_right_rounded,
+                  AppIcons.chevron, // mirrors in RTL
+                  size: AppIconSize.action,
                   color: c.textTertiary,
                 ),
               ],

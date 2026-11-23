@@ -26,7 +26,7 @@ class ReviewScreen extends ConsumerWidget {
     } else if (items.isEmpty) {
       children.add(
         PlaceholderPanel(
-          icon: Icons.task_alt_rounded,
+          icon: AppIcons.allReviewed,
           title: l10n.trainingReviewSubtitle(0),
           body: l10n.reviewScreenSubtitle,
         ),

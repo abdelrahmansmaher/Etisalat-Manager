@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:knowledge_hub/core/content/content.dart';
+import 'package:knowledge_hub/core/theme/app_icons.dart';
 import 'package:knowledge_hub/core/widgets/trust/trust.dart';
 import 'package:knowledge_hub/features/content/package_facts.dart';
 import 'package:knowledge_hub/features/home/home_screen.dart';
@@ -217,8 +218,26 @@ void main() {
     );
     expect(afterY.dy, greaterThan(quotaY.dy));
     // Details table + notes.
-    expect(find.byKey(const ValueKey('facts-table')), findsOneWidget);
-    expect(find.byKey(const ValueKey('item-body')), findsOneWidget);
+    for (final k in ['facts-table', 'item-body']) {
+      await tester.scrollUntilVisible(
+        find.byKey(ValueKey(k)),
+        300,
+        scrollable: find
+            .byWidgetPredicate(
+              (w) => w is Scrollable && w.axisDirection == AxisDirection.down,
+            )
+            .last,
+      );
+      expect(find.byKey(ValueKey(k)), findsOneWidget);
+    }
+    // Every details row leads with an icon chosen by the fact's meaning.
+    expect(
+      find.descendant(
+        of: find.byKey(const ValueKey('facts-table')),
+        matching: find.byIcon(AppIcons.recharge),
+      ),
+      findsOneWidget,
+    );
     expect(tester.takeException(), isNull);
   });
 
@@ -242,6 +261,13 @@ void main() {
 
     await _open(tester, 'pkg-full');
     expect(_inside('package-code', find.text('*319*52#')), findsOneWidget);
+    // The code row lives inside the price hero (price + code together) and
+    // is not repeated further down.
+    expect(find.byKey(const ValueKey('package-code')), findsOneWidget);
+    expect(
+      _inside('package-hero', find.byKey(const ValueKey('package-code'))),
+      findsOneWidget,
+    );
     expect(_inside('package-code', find.text('كود الاشتراك')), findsOneWidget);
 
     await tester.tap(find.byKey(const ValueKey('package-code-copy')));

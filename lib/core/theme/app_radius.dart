@@ -11,7 +11,10 @@ abstract final class AppRadius {
   /// Chips, inputs, small tiles, icon containers.
   static const double s = 14;
 
-  /// Cards.
+  /// List rows, tables (flat cards).
+  static const double row = 16;
+
+  /// Raised cards.
   static const double m = 20;
 
   /// Bottom sheets, dialogs, floating nav bar.
@@ -22,6 +25,7 @@ abstract final class AppRadius {
 
   static const BorderRadius xsAll = BorderRadius.all(Radius.circular(xs));
   static const BorderRadius smAll = BorderRadius.all(Radius.circular(s));
+  static const BorderRadius rowAll = BorderRadius.all(Radius.circular(row));
   static const BorderRadius mdAll = BorderRadius.all(Radius.circular(m));
   static const BorderRadius lgAll = BorderRadius.all(Radius.circular(l));
   static const BorderRadius fullAll = BorderRadius.all(Radius.circular(full));

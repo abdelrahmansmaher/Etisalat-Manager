@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:knowledge_hub/core/theme/app_icons.dart';
 import 'package:knowledge_hub/core/content/content.dart';
 import 'package:knowledge_hub/core/widgets/ltr_text.dart';
 import 'package:knowledge_hub/core/widgets/trust/trust.dart';
@@ -46,12 +47,17 @@ void main() {
   group('Home', () {
     testWidgets('section cards show counts, strip and as-of', (tester) async {
       await pumpApp(tester);
-      expect(find.text('5 بنود'), findsOneWidget); // packages
       expect(find.byKey(const ValueKey('must-know-strip')), findsOneWidget);
       expect(
         find.byKey(const ValueKey('must-know-num-test-hotline')),
         findsOneWidget,
       );
+      await reveal(
+        tester,
+        find.byKey(const ValueKey('section-card-packages')),
+        delta: 200,
+      );
+      expect(find.text('5 بنود'), findsOneWidget); // packages
       await reveal(
         tester,
         find.byKey(const ValueKey('content-as-of')),
@@ -146,7 +152,7 @@ void main() {
       await pumpApp(tester);
       await openSection(tester, 'numbers');
       expect(find.byType(CodeText), findsWidgets);
-      expect(find.byIcon(Icons.copy_rounded), findsWidgets);
+      expect(find.byIcon(AppIcons.copy), findsWidgets);
     });
   });
 

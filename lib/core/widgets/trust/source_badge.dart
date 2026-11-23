@@ -4,6 +4,7 @@ import '../../../l10n/app_localizations.dart';
 import '../../theme/app_colors.dart';
 import 'trust_models.dart';
 import 'trust_pill.dart';
+import '../../theme/app_icons.dart';
 
 /// "Where did this come from?" (doc 04 §3.1): source-type icon + short
 /// source name; a chevron appears when [onTap] opens the details sheet.
@@ -30,7 +31,7 @@ class SourceBadge extends StatelessWidget {
       foreground: c.textSecondary,
       background: c.surfaceVariant,
       // chevron_right mirrors automatically in RTL (matchTextDirection).
-      trailing: onTap != null ? Icons.chevron_right : null,
+      trailing: onTap != null ? AppIcons.chevron : null,
       onTap: onTap,
       semanticsLabel: l10n.sourceSemantics(sourceName, type.label(l10n)),
     );

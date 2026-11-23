@@ -7,6 +7,7 @@ import '../../theme/trust_colors.dart';
 import 'trust_format.dart';
 import 'trust_models.dart';
 import 'trust_pill.dart';
+import '../../theme/app_icons.dart';
 
 /// "Is it still right?" (doc 04 §3.2).
 ///
@@ -56,7 +57,7 @@ class LastVerifiedChip extends StatelessWidget {
       child = Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(Icons.schedule, size: 16, color: color),
+          Icon(AppIcons.lastVerified, size: AppIconSize.inline, color: color),
           const SizedBox(width: AppSpacing.xxs),
           Flexible(
             child: Text(

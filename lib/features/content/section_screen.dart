@@ -12,6 +12,54 @@ import 'section_ui.dart';
 
 enum StatusFilter { all, confirmed, unconfirmed }
 
+/// Usefulness rank of an item type at the counter (lower = earlier).
+int usefulnessRank(ItemType t) => switch (t) {
+  ItemType.package => 0,
+  ItemType.service ||
+  ItemType.code ||
+  ItemType.contact ||
+  ItemType.fee ||
+  ItemType.limit ||
+  ItemType.procedure => 1,
+  ItemType.article || ItemType.faq || ItemType.rule || ItemType.glossary => 2,
+  ItemType.unverified => 3,
+};
+
+/// Groups [items] by [nameOf] (first-seen order) and orders the groups by
+/// the usefulness of their dominant item type: packages first, then
+/// services / codes / fees / limits / procedures, then articles / FAQ /
+/// rules, and unconfirmed-item groups last. Ties keep the original order.
+Map<String, List<ContentItem>> groupByUsefulness(
+  List<ContentItem> items,
+  String Function(ContentItem) nameOf,
+) {
+  final groups = <String, List<ContentItem>>{};
+  for (final i in items) {
+    groups.putIfAbsent(nameOf(i), () => []).add(i);
+  }
+  int rankOf(List<ContentItem> g) {
+    final counts = <int, int>{};
+    for (final i in g) {
+      final r = usefulnessRank(i.type);
+      counts[r] = (counts[r] ?? 0) + 1;
+    }
+    final best = counts.values.reduce((a, b) => a > b ? a : b);
+    return counts.entries
+        .where((e) => e.value == best)
+        .map((e) => e.key)
+        .reduce((a, b) => a < b ? a : b);
+  }
+
+  final keys = groups.keys.toList();
+  final ranks = {for (final k in keys) k: rankOf(groups[k]!)};
+  final order = [...keys.indexed]
+    ..sort((a, b) {
+      final r = ranks[a.$2]!.compareTo(ranks[b.$2]!);
+      return r != 0 ? r : a.$1.compareTo(b.$1);
+    });
+  return {for (final (_, k) in order) k: groups[k]!};
+}
+
 /// Items of one section grouped by `category_ar` under sticky headers, a
 /// segmented capsule status filter (الكل / مؤكد / غير مؤكد) and a row of
 /// jump-to-category capsules. Unconfirmed groups come last.
@@ -81,7 +129,7 @@ class _SectionScreenState extends ConsumerState<SectionScreen> {
         title: l10n.detailNotFound,
         children: [
           PlaceholderPanel(
-            icon: Icons.search_off_rounded,
+            icon: AppIcons.emptySearch,
             title: l10n.detailNotFound,
             body: l10n.detailNotFoundBody,
           ),
@@ -101,18 +149,14 @@ class _SectionScreenState extends ConsumerState<SectionScreen> {
     ];
 
     // Group by category, keeping first-seen order; unverified groups last.
-    final groups = <String, List<ContentItem>>{};
-    final late = <String, List<ContentItem>>{};
-    for (final i in items) {
-      final unverified = i.type == ItemType.unverified;
-      final name = i.category.isNotEmpty
+    final groups = groupByUsefulness(
+      items,
+      (i) => i.category.isNotEmpty
           ? i.category
-          : (unverified ? l10n.unconfirmedGroupTitle : section.title(l10n));
-      (unverified ? late : groups).putIfAbsent(name, () => []).add(i);
-    }
-    for (final e in late.entries) {
-      groups.putIfAbsent(e.key, () => []).addAll(e.value);
-    }
+          : (i.type == ItemType.unverified
+                ? l10n.unconfirmedGroupTitle
+                : section.title(l10n)),
+    );
 
     final hPad = EdgeInsetsDirectional.symmetric(horizontal: pad);
     final tone = section.tone(context);
@@ -143,7 +187,11 @@ class _SectionScreenState extends ConsumerState<SectionScreen> {
         const SizedBox(height: AppSpacing.sm),
         Row(
           children: [
-            Icon(Icons.layers_rounded, size: 16, color: tone.foreground),
+            Icon(
+              AppIcons.layers,
+              size: AppIconSize.inline,
+              color: tone.foreground,
+            ),
             const SizedBox(width: AppSpacing.xxs + 2),
             Expanded(
               child: Text(
@@ -178,6 +226,7 @@ class _SectionScreenState extends ConsumerState<SectionScreen> {
                   for (final g in groups.keys)
                     Capsule(
                       key: ValueKey('jump-$g'),
+                      icon: CategoryIcons.of(section, g),
                       label: g,
                       dense: true,
                       selected: _activeGroup == g,
@@ -198,7 +247,7 @@ class _SectionScreenState extends ConsumerState<SectionScreen> {
             padding: EdgeInsets.all(pad),
             sliver: SliverToBoxAdapter(
               child: PlaceholderPanel(
-                icon: Icons.inbox_rounded,
+                icon: AppIcons.emptySection,
                 title: l10n.contentEmptySection,
                 body: l10n.contentEmptySectionBody,
               ),
@@ -222,16 +271,15 @@ class _SectionScreenState extends ConsumerState<SectionScreen> {
                     header: true,
                     child: Row(
                       children: [
-                        Container(
-                          width: 4,
-                          height: 16,
-                          decoration: BoxDecoration(
-                            color: tone.foreground,
-                            borderRadius: AppRadius.fullAll,
-                          ),
+                        SectionIconTile(
+                          section,
+                          icon: CategoryIcons.of(section, g.key),
+                          tile: IconTile.xs,
                         ),
                         const SizedBox(width: AppSpacing.xs),
-                        Expanded(
+                        // Count sits right after the title so it reads as
+                        // "this group has N items".
+                        Flexible(
                           child: Text(
                             g.key,
                             key: ValueKey('group-${g.key}'),
@@ -240,9 +288,11 @@ class _SectionScreenState extends ConsumerState<SectionScreen> {
                             ),
                           ),
                         ),
+                        const SizedBox(width: AppSpacing.xs),
                         Text(
                           '${g.value.length}',
-                          style: AppTypography.labelS.copyWith(
+                          key: ValueKey('group-count-${g.key}'),
+                          style: AppTypography.labelL.copyWith(
                             color: c.textTertiary,
                             fontFeatures: AppTypography.tabular,
                           ),

@@ -6,6 +6,7 @@ import 'package:knowledge_hub/core/content/content.dart';
 import 'package:knowledge_hub/core/router/app_router.dart';
 import 'package:knowledge_hub/core/router/tab_pager.dart';
 import 'package:knowledge_hub/core/settings/preferences.dart';
+import 'package:knowledge_hub/core/widgets/app_bottom_nav.dart';
 import 'package:knowledge_hub/core/widgets/capsules.dart';
 import 'package:knowledge_hub/features/content/section_screen.dart';
 import 'package:knowledge_hub/features/home/home_screen.dart';
@@ -61,6 +62,36 @@ void main() {
         greaterThan(rectOf(tester, 'nav-0').width + 40),
       );
     });
+
+    for (final locale in [ar, en]) {
+      for (final scale in [1.0, 1.3]) {
+        testWidgets('selected capsule stays compact (<= 30% of the bar) '
+            '(${locale.languageCode} x$scale)', (tester) async {
+          await pumpApp(tester, locale: locale, textScale: scale);
+          final indicator = find.byKey(const ValueKey('nav-indicator'));
+          final bar = tester.getSize(
+            find.ancestor(of: indicator, matching: find.byType(Stack)).first,
+          );
+          for (final tab in [0, 1, 2, 3, 4]) {
+            await tester.tap(find.byKey(ValueKey('nav-$tab')));
+            await tester.pumpAndSettle();
+            final w = tester.getSize(indicator).width;
+            expect(
+              w,
+              lessThanOrEqualTo(bar.width * AppBottomNav.maxSelectedShare + 1),
+              reason: 'tab $tab',
+            );
+            expect(w, greaterThanOrEqualTo(AppBottomNav.baseWidth));
+          }
+          // Unselected items keep equal widths (evenly spaced icons).
+          final widths = {
+            for (final i in [0, 1, 2, 3])
+              tester.getSize(find.byKey(ValueKey('nav-$i'))).width,
+          };
+          expect(widths.length, 1);
+        });
+      }
+    }
 
     testWidgets('indicator is mid-way while swiping (LTR)', (tester) async {
       await pumpApp(tester, locale: en);
@@ -274,36 +305,37 @@ void main() {
       expect(Directionality.of(tester.element(home)), TextDirection.ltr);
     });
 
-    testWidgets('theme follows the system, language defaults to Arabic; choices are saved', (
-      tester,
-    ) async {
-      tester.platformDispatcher.platformBrightnessTestValue = Brightness.dark;
-      addTearDown(tester.platformDispatcher.clearPlatformBrightnessTestValue);
-      final prefs = await pumpWithPrefs(tester, {});
-      final home = find.byType(HomeScreen);
-      expect(Theme.of(tester.element(home)).brightness, Brightness.dark);
+    testWidgets(
+      'theme follows the system, language defaults to Arabic; choices are saved',
+      (tester) async {
+        tester.platformDispatcher.platformBrightnessTestValue = Brightness.dark;
+        addTearDown(tester.platformDispatcher.clearPlatformBrightnessTestValue);
+        final prefs = await pumpWithPrefs(tester, {});
+        final home = find.byType(HomeScreen);
+        expect(Theme.of(tester.element(home)).brightness, Brightness.dark);
 
-      await tester.tap(find.byKey(const ValueKey('nav-4')));
-      await tester.pumpAndSettle();
-      await tester.tap(find.byKey(const ValueKey('theme-light')));
-      await tester.pumpAndSettle();
-      expect(prefs.getString(PrefKeys.themeMode), 'light');
-      expect(
-        Theme.of(tester.element(find.byType(MeScreen))).brightness,
-        Brightness.light,
-      );
+        await tester.tap(find.byKey(const ValueKey('nav-4')));
+        await tester.pumpAndSettle();
+        await tester.tap(find.byKey(const ValueKey('theme-light')));
+        await tester.pumpAndSettle();
+        expect(prefs.getString(PrefKeys.themeMode), 'light');
+        expect(
+          Theme.of(tester.element(find.byType(MeScreen))).brightness,
+          Brightness.light,
+        );
 
-      await tester.scrollUntilVisible(
-        find.byKey(const ValueKey('lang-ar')),
-        200,
-        scrollable: mainScroll,
-      );
-      await tester.tap(find.byKey(const ValueKey('lang-ar')));
-      await tester.pumpAndSettle();
-      expect(prefs.getString(PrefKeys.locale), 'ar');
-      await tester.tap(find.byKey(const ValueKey('lang-system')));
-      await tester.pumpAndSettle();
-      expect(prefs.getString(PrefKeys.locale), 'system');
-    });
+        await tester.scrollUntilVisible(
+          find.byKey(const ValueKey('lang-ar')),
+          200,
+          scrollable: mainScroll,
+        );
+        await tester.tap(find.byKey(const ValueKey('lang-ar')));
+        await tester.pumpAndSettle();
+        expect(prefs.getString(PrefKeys.locale), 'ar');
+        await tester.tap(find.byKey(const ValueKey('lang-system')));
+        await tester.pumpAndSettle();
+        expect(prefs.getString(PrefKeys.locale), 'system');
+      },
+    );
   });
 }

@@ -5,6 +5,7 @@ import '../../theme/app_colors.dart';
 import '../../theme/app_radius.dart';
 import '../../theme/app_spacing.dart';
 import '../../theme/app_typography.dart';
+import '../../theme/app_icons.dart';
 
 /// "Unofficial app" disclaimer (doc 04 §3.5).
 ///
@@ -28,7 +29,11 @@ class UnofficialDisclaimer extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsetsDirectional.only(top: 1),
-            child: Icon(Icons.info_outline, size: 14, color: c.textTertiary),
+            child: Icon(
+              AppIcons.info,
+              size: AppIconSize.inline,
+              color: c.textTertiary,
+            ),
           ),
           const SizedBox(width: AppSpacing.xxs + 2),
           Flexible(
@@ -52,7 +57,7 @@ class UnofficialDisclaimer extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(Icons.info_outline, size: 20, color: c.textSecondary),
+          Icon(AppIcons.info, size: AppIconSize.action, color: c.textSecondary),
           const SizedBox(width: AppSpacing.sm),
           Expanded(
             child: Text(

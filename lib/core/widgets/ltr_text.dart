@@ -7,6 +7,7 @@ import '../theme/app_motion.dart';
 import '../theme/app_radius.dart';
 import '../theme/app_spacing.dart';
 import '../theme/app_typography.dart';
+import '../theme/app_icons.dart';
 
 /// Unicode bidi isolation helpers (doc 04 §2.9).
 abstract final class Bidi {
@@ -113,8 +114,17 @@ class CodeText extends StatelessWidget {
   }
 
   Future<void> _copy(BuildContext context, AppLocalizations l10n) async {
-    await Clipboard.setData(ClipboardData(text: value));
     onCopied?.call(value);
+    await copyToClipboard(context, value);
+  }
+
+  /// Copies [value] exactly and confirms with a short snackbar (<= 1.5 s).
+  static Future<void> copyToClipboard(
+    BuildContext context,
+    String value,
+  ) async {
+    final l10n = AppLocalizations.of(context);
+    await Clipboard.setData(ClipboardData(text: value));
     if (!context.mounted) return;
     ScaffoldMessenger.maybeOf(context)
       ?..hideCurrentSnackBar()
@@ -162,14 +172,14 @@ class CodeText extends StatelessWidget {
         ),
         if (copyable)
           IconButton(
-            icon: const Icon(Icons.copy_rounded),
+            icon: const Icon(AppIcons.copy, size: AppIconSize.action),
             tooltip: l10n.copyValueSemantics(value),
             onPressed: () => _copy(context, l10n),
           ),
         if (onCall != null) ...[
           const SizedBox(width: AppSpacing.xs),
           IconButton(
-            icon: const Icon(Icons.call_outlined),
+            icon: const Icon(AppIcons.call, size: AppIconSize.action),
             tooltip: l10n.callAction,
             onPressed: () => onCall!(value),
           ),

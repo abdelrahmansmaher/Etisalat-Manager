@@ -23,19 +23,19 @@ import 'section_ui.dart';
   final t = context.trustColors;
   return switch (status) {
     ItemStatus.confirmed => (
-      icon: Icons.verified_rounded,
+      icon: AppIcons.confirmed,
       label: official
           ? l10n.statusConfirmedOfficial
           : l10n.statusConfirmedGuide,
       colors: t.verified,
     ),
     ItemStatus.unconfirmed => (
-      icon: Icons.help_rounded,
+      icon: AppIcons.unconfirmed,
       label: l10n.statusUnconfirmedReview,
       colors: t.needsReview,
     ),
     ItemStatus.conflict => (
-      icon: Icons.report_rounded,
+      icon: AppIcons.conflict,
       label: l10n.statusConflict,
       colors: t.conflict,
     ),
@@ -190,7 +190,7 @@ class StatusBanner extends StatelessWidget {
                 color: fg.withValues(alpha: 0.14),
                 shape: BoxShape.circle,
               ),
-              child: Icon(icon, color: fg, size: 18),
+              child: Icon(icon, color: fg, size: AppIconSize.chip),
             ),
             const SizedBox(width: AppSpacing.sm),
             Expanded(
@@ -226,7 +226,7 @@ class UnconfirmedBanner extends StatelessWidget {
     final l10n = AppLocalizations.of(context);
     return StatusBanner(
       key: const ValueKey('unconfirmed-banner'),
-      icon: Icons.help_rounded,
+      icon: AppIcons.unconfirmed,
       title: l10n.unconfirmedBannerTitle,
       colors: context.trustColors.needsReview,
       lines: [?note, l10n.unconfirmedBannerBody],
@@ -234,25 +234,29 @@ class UnconfirmedBanner extends StatelessWidget {
   }
 }
 
-/// Square icon tile tinted with the section's accent (soft gradient).
+/// Icon tile tinted with the section's tone. Shows [icon] (e.g. the item's
+/// category icon) or the section icon.
 class SectionIconTile extends StatelessWidget {
-  const SectionIconTile(this.section, {super.key, this.size = 44});
+  const SectionIconTile(
+    this.section, {
+    super.key,
+    this.icon,
+    this.tile = IconTile.md,
+  });
 
   final ContentSection section;
-  final double size;
+  final IconData? icon;
+  final IconTile tile;
 
   @override
   Widget build(BuildContext context) {
     final tone = section.tone(context);
     return TintedIcon(
-      section.icon,
-      size: size,
+      icon ?? section.icon,
+      tile: tile,
       color: tone.foreground,
-      gradient: LinearGradient(
-        begin: AlignmentDirectional.topStart,
-        end: AlignmentDirectional.bottomEnd,
-        colors: [tone.container, tone.glow],
-      ),
+      background: tone.container,
+      glow: tone.glow,
     );
   }
 }
@@ -302,17 +306,20 @@ class ValuePill extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
+          // Values are never cut: shrink to fit instead of clipping.
           Flexible(
-            child: LtrText(
-              value,
-              maxLines: 1,
-              style:
-                  (isPrice
-                          ? AppTypography.titleS.copyWith(
-                              fontFeatures: AppTypography.tabular,
-                            )
-                          : AppTypography.code.copyWith(fontSize: 13))
-                      .copyWith(color: fg),
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: LtrText(
+                value,
+                style:
+                    (isPrice
+                            ? AppTypography.titleS.copyWith(
+                                fontFeatures: AppTypography.tabular,
+                              )
+                            : AppTypography.code.copyWith(fontSize: 13))
+                        .copyWith(color: fg),
+              ),
             ),
           ),
           if (unit != null) ...[
@@ -377,6 +384,7 @@ class ContentItemRow extends StatelessWidget {
     }
 
     return AppCard(
+      role: CardRole.flat,
       key: ValueKey('item-row-${item.id}'),
       padding: const EdgeInsetsDirectional.fromSTEB(
         AppSpacing.md - 2,
@@ -388,7 +396,7 @@ class ContentItemRow extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SectionIconTile(item.section, size: 40),
+          SectionIconTile(item.section, icon: item.icon),
           const SizedBox(width: AppSpacing.sm),
           Expanded(
             child: Column(
@@ -430,6 +438,15 @@ class ContentItemRow extends StatelessWidget {
                   ],
                 ),
               ],
+            ),
+          ),
+          const SizedBox(width: AppSpacing.xxs),
+          Padding(
+            padding: const EdgeInsetsDirectional.only(top: AppSpacing.sm),
+            child: Icon(
+              AppIcons.chevron, // mirrors in RTL
+              size: AppIconSize.action,
+              color: c.textTertiary,
             ),
           ),
         ],

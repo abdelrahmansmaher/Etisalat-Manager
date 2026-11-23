@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/content/content.dart';
@@ -58,7 +57,7 @@ class _ItemDetailScreenState extends ConsumerState<ItemDetailScreen> {
             const ContentLoading()
           else
             PlaceholderPanel(
-              icon: Icons.search_off_rounded,
+              icon: AppIcons.emptySearch,
               title: l10n.detailNotFound,
               body: l10n.detailNotFoundBody,
             ),
@@ -156,17 +155,16 @@ class _ItemDetailScreenState extends ConsumerState<ItemDetailScreen> {
         pf.code?.value ?? (item.codes.isNotEmpty ? item.codes.first : null);
     return [
       if (item.status == ItemStatus.conflict) ..._conflict(context, item),
-      PackagePriceHero(item: item, facts: pf),
+      // Price + subscription code together: the two things quoted first.
+      PackagePriceHero(
+        item: item,
+        facts: pf,
+        code: code,
+        codeLabel: pf.code?.label ?? l10n.packageCodeTitle,
+      ),
       if (metrics.isNotEmpty) ...[
         const SizedBox(height: AppSpacing.sm),
         PackageMetrics(metrics: metrics),
-      ],
-      if (code != null) ...[
-        const SizedBox(height: AppSpacing.sm),
-        SubscriptionCodeCard(
-          code: code,
-          label: pf.code?.label ?? l10n.packageCodeTitle,
-        ),
       ],
       if (item.facts.length > 1) ...[
         const SizedBox(height: AppSpacing.xl),
@@ -178,7 +176,10 @@ class _ItemDetailScreenState extends ConsumerState<ItemDetailScreen> {
         const SizedBox(height: AppSpacing.xl),
         SectionHeader(l10n.packageNotesTitle),
         const SizedBox(height: AppSpacing.sm),
-        AppCard(child: _Body(text: item.body!)),
+        AppCard(
+          role: CardRole.flat,
+          child: _Body(text: item.body!),
+        ),
       ],
       if (item.steps.isNotEmpty) ...[
         const SizedBox(height: AppSpacing.xl),
@@ -253,7 +254,11 @@ class _SectionTag extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(section.icon, size: 16, color: tone.foreground),
+          Icon(
+            CategoryIcons.of(section, category),
+            size: AppIconSize.inline,
+            color: tone.foreground,
+          ),
           const SizedBox(width: AppSpacing.xxs + 2),
           Flexible(
             child: Text(
@@ -275,10 +280,20 @@ class _SectionTag extends StatelessWidget {
 /// unit, the label it came with, and the tax-basis / recharge line under it.
 /// For a conflicting price no single value is shown (doc 04 §5.4).
 class PackagePriceHero extends StatelessWidget {
-  const PackagePriceHero({super.key, required this.item, required this.facts});
+  const PackagePriceHero({
+    super.key,
+    required this.item,
+    required this.facts,
+    this.code,
+    this.codeLabel,
+  });
 
   final ContentItem item;
   final PackageFacts facts;
+
+  /// Subscription code shown inside the hero (with copy), if any.
+  final String? code;
+  final String? codeLabel;
 
   @override
   Widget build(BuildContext context) {
@@ -339,7 +354,7 @@ class PackagePriceHero extends StatelessWidget {
     return AppCard(
       key: const ValueKey('package-hero'),
       padding: const EdgeInsetsDirectional.all(AppSpacing.lg),
-      radius: AppRadius.lgAll,
+      role: CardRole.hero,
       borderColor: c.primary.withValues(alpha: 0.18),
       gradient: LinearGradient(
         begin: AlignmentDirectional.topStart,
@@ -351,12 +366,12 @@ class PackagePriceHero extends StatelessWidget {
         children: [
           Row(
             children: [
-              Icon(Icons.sell_rounded, size: 18, color: c.primary),
+              Icon(AppIcons.price, size: AppIconSize.chip, color: c.primary),
               const SizedBox(width: AppSpacing.xs - 2),
               Expanded(
                 child: Text(
                   price?.label ?? l10n.packagePriceLabel,
-                  style: AppTypography.overline.copyWith(color: c.primary),
+                  style: AppTypography.labelL.copyWith(color: c.textSecondary),
                 ),
               ),
             ],
@@ -366,6 +381,13 @@ class PackagePriceHero extends StatelessWidget {
           if (recharge != null && !conflict) ...[
             const SizedBox(height: AppSpacing.sm),
             _TaxLine(fact: recharge),
+          ],
+          if (code != null) ...[
+            const SizedBox(height: AppSpacing.sm),
+            SubscriptionCodeRow(
+              code: code!,
+              label: codeLabel ?? l10n.packageCodeTitle,
+            ),
           ],
           if (item.summary.isNotEmpty) ...[
             const SizedBox(height: AppSpacing.md),
@@ -407,8 +429,8 @@ class _TaxLine extends StatelessWidget {
           Padding(
             padding: const EdgeInsetsDirectional.only(top: 2),
             child: Icon(
-              Icons.receipt_long_rounded,
-              size: 16,
+              AppIcons.recharge,
+              size: AppIconSize.inline,
               color: c.textTertiary,
             ),
           ),
@@ -474,21 +496,8 @@ class PackageMetrics extends StatelessWidget {
 
   final List<(PackageFactRole, Fact)> metrics;
 
-  static IconData iconFor(PackageFactRole role, Fact f) {
-    final l = PackageFacts.normalizeLabel('${f.label} ${f.unit ?? ''}');
-    return switch (role) {
-      PackageFactRole.validity => Icons.event_available_rounded,
-      PackageFactRole.renewal => Icons.autorenew_rounded,
-      PackageFactRole.afterBundle => Icons.more_time_rounded,
-      _ when l.contains('ميجا') || l.contains('جيجا') || l.contains('انترنت') =>
-        Icons.wifi_rounded,
-      _ when l.contains('دقائق') || l.contains('دقيقه') => Icons.call_rounded,
-      _ when l.contains('رسائل') => Icons.sms_rounded,
-      _ when l.contains('ميكس') => Icons.all_inclusive_rounded,
-      _ when l.contains('خطوط') || l.contains('عائله') => Icons.group_rounded,
-      _ => Icons.data_usage_rounded,
-    };
-  }
+  static IconData iconFor(PackageFactRole role, Fact f) =>
+      FactIcons.of(f, role);
 
   @override
   Widget build(BuildContext context) {
@@ -530,12 +539,13 @@ class _MetricTile extends StatelessWidget {
     final c = context.colors;
     final icon = PackageMetrics.iconFor(role, fact);
     return AppCard(
+      role: CardRole.sunken,
       key: ValueKey('metric-${role.name}'),
       padding: const EdgeInsetsDirectional.all(AppSpacing.md - 2),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          TintedIcon(icon, size: 32),
+          TintedIcon(icon, tile: IconTile.sm),
           const SizedBox(height: AppSpacing.sm),
           if (fact.rendersLtr)
             Wrap(
@@ -571,10 +581,10 @@ class _MetricTile extends StatelessWidget {
   }
 }
 
-/// Prominent subscription-code row: big monospace LTR code + filled copy
-/// button (one tap, ≤ 1.5 s confirmation — doc 04 P6).
-class SubscriptionCodeCard extends StatelessWidget {
-  const SubscriptionCodeCard({
+/// Subscription-code row inside the price hero: big monospace LTR code +
+/// filled copy button (one tap, ≤ 1.5 s confirmation — doc 04 P6).
+class SubscriptionCodeRow extends StatelessWidget {
+  const SubscriptionCodeRow({
     super.key,
     required this.code,
     required this.label,
@@ -583,44 +593,36 @@ class SubscriptionCodeCard extends StatelessWidget {
   final String code;
   final String label;
 
-  Future<void> _copy(BuildContext context) async {
-    final l10n = AppLocalizations.of(context);
-    await Clipboard.setData(ClipboardData(text: code));
-    if (!context.mounted) return;
-    ScaffoldMessenger.maybeOf(context)
-      ?..hideCurrentSnackBar()
-      ..showSnackBar(
-        SnackBar(
-          content: Text(l10n.copiedMessage),
-          duration: AppMotion.copyConfirmation,
-        ),
-      );
-  }
-
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final c = context.colors;
-    return AppCard(
+    return Container(
       key: const ValueKey('package-code'),
       padding: const EdgeInsetsDirectional.fromSTEB(
-        AppSpacing.md,
         AppSpacing.sm,
-        AppSpacing.sm,
-        AppSpacing.sm,
+        AppSpacing.xs,
+        AppSpacing.xs,
+        AppSpacing.xs,
+      ),
+      decoration: BoxDecoration(
+        color: c.surface.withValues(alpha: c.isDark ? 0.5 : 0.75),
+        borderRadius: AppRadius.smAll,
+        border: Border.all(color: c.hairline),
       ),
       child: Row(
         children: [
-          TintedIcon(Icons.dialpad_rounded, size: 40),
-          const SizedBox(width: AppSpacing.sm),
+          Icon(AppIcons.code, size: AppIconSize.action, color: c.primaryUi),
+          const SizedBox(width: AppSpacing.xs),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   label,
-                  style: AppTypography.overline.copyWith(color: c.textTertiary),
+                  style: AppTypography.labelS.copyWith(color: c.textSecondary),
                 ),
+                // Whole code, always: scales down rather than clipping.
                 FittedBox(
                   fit: BoxFit.scaleDown,
                   alignment: AlignmentDirectional.centerStart,
@@ -642,8 +644,8 @@ class SubscriptionCodeCard extends StatelessWidget {
               foregroundColor: c.onCapsuleSelected,
               minimumSize: const Size(48, 48),
             ),
-            icon: const Icon(Icons.copy_rounded),
-            onPressed: () => _copy(context),
+            icon: const Icon(AppIcons.copy, size: AppIconSize.action),
+            onPressed: () => CodeText.copyToClipboard(context, code),
           ),
         ],
       ),
@@ -662,7 +664,6 @@ class _AnswerCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context);
     final theme = Theme.of(context);
     final c = context.colors;
     final facts = item.facts.take(4).toList();
@@ -670,39 +671,34 @@ class _AnswerCard extends StatelessWidget {
     return AppCard(
       key: const ValueKey('answer-card'),
       padding: const EdgeInsetsDirectional.all(AppSpacing.lg),
-      radius: AppRadius.lgAll,
-      borderColor: c.primary.withValues(alpha: 0.16),
-      gradient: LinearGradient(
-        begin: AlignmentDirectional.topStart,
-        end: AlignmentDirectional.bottomEnd,
-        colors: [c.heroGradientStart, c.surfaceElevated],
-      ),
+      role: CardRole.hero,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              Icon(Icons.bolt_rounded, size: 18, color: c.primary),
-              const SizedBox(width: AppSpacing.xs - 2),
-              Expanded(
-                child: Text(
-                  l10n.answerCardTitle,
-                  style: AppTypography.overline.copyWith(color: c.primary),
-                ),
-              ),
-            ],
-          ),
-          if (item.summary.isNotEmpty) ...[
-            const SizedBox(height: AppSpacing.sm),
+          if (item.summary.isNotEmpty)
             ProseText(item.summary, style: theme.textTheme.bodyLarge),
-          ],
-          for (final f in facts) ...[
-            const SizedBox(height: AppSpacing.sm),
-            Divider(color: c.hairline, height: 1),
-            const SizedBox(height: AppSpacing.sm),
-            Text(
-              f.label,
-              style: AppTypography.labelS.copyWith(color: c.textTertiary),
+          for (final (i, f) in facts.indexed) ...[
+            // Hairlines separate answers; none above the first one.
+            if (i > 0 || item.summary.isNotEmpty) ...[
+              const SizedBox(height: AppSpacing.sm),
+              Divider(color: c.hairline, height: 1),
+              const SizedBox(height: AppSpacing.sm),
+            ],
+            Row(
+              children: [
+                Icon(
+                  FactIcons.of(f),
+                  size: AppIconSize.inline,
+                  color: c.primaryUi,
+                ),
+                const SizedBox(width: AppSpacing.xs - 2),
+                Expanded(
+                  child: Text(
+                    f.label,
+                    style: AppTypography.labelS.copyWith(color: c.textTertiary),
+                  ),
+                ),
+              ],
             ),
             const SizedBox(height: AppSpacing.xxs),
             _FactValue(fact: f, large: true),
@@ -783,6 +779,7 @@ class _FactsTable extends StatelessWidget {
   Widget build(BuildContext context) {
     final c = context.colors;
     return AppCard(
+      role: CardRole.flat,
       key: const ValueKey('facts-table'),
       padding: EdgeInsetsDirectional.zero,
       child: Column(
@@ -801,6 +798,13 @@ class _FactsTable extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  // Leading icon by fact kind / meaning.
+                  Icon(
+                    FactIcons.of(facts[i]),
+                    size: AppIconSize.action,
+                    color: c.primaryUi,
+                  ),
+                  const SizedBox(width: AppSpacing.sm),
                   Expanded(
                     flex: 5,
                     child: Text(
@@ -905,6 +909,7 @@ class _StepsChecklistState extends State<_StepsChecklist> {
     final theme = Theme.of(context);
     final c = context.colors;
     return AppCard(
+      role: CardRole.flat,
       padding: const EdgeInsetsDirectional.symmetric(vertical: AppSpacing.xs),
       child: Column(
         children: [
@@ -941,6 +946,7 @@ class _Sources extends StatelessWidget {
     final l10n = AppLocalizations.of(context);
     final c = context.colors;
     return AppCard(
+      role: CardRole.flat,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -966,8 +972,8 @@ class _Sources extends StatelessWidget {
             Row(
               children: [
                 Icon(
-                  Icons.picture_as_pdf_rounded,
-                  size: 16,
+                  AppIcons.pdf,
+                  size: AppIconSize.inline,
                   color: c.textTertiary,
                 ),
                 const SizedBox(width: AppSpacing.xs),

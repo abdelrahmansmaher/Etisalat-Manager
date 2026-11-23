@@ -11,6 +11,7 @@ import '../ltr_text.dart';
 import 'trust_format.dart';
 import 'trust_models.dart';
 import 'trust_pill.dart';
+import '../../theme/app_icons.dart';
 
 /// Traceable price (doc 04 §3.6): LTR-isolated amount + currency (follows UI
 /// language, never inside the isolated number) + tax-basis label + validity.
@@ -130,7 +131,7 @@ class PriceView extends StatelessWidget {
               ),
             if (isCurrent)
               IconButton(
-                icon: const Icon(Icons.copy_rounded, size: 20),
+                icon: const Icon(AppIcons.copy, size: AppIconSize.action),
                 tooltip: l10n.copyValueSemantics(value),
                 onPressed: () => _copy(context, value),
               ),

@@ -8,6 +8,7 @@ import '../theme/app_spacing.dart';
 import '../theme/app_typography.dart';
 import 'app_card.dart';
 import 'glass_surface.dart';
+import '../theme/app_icons.dart';
 
 @immutable
 class AppNavDestination {
@@ -64,35 +65,67 @@ class AppBottomNav extends StatelessWidget {
     return currentIndex.toDouble();
   }
 
-  /// Widths of each item for the given selection amounts: every item gets a
-  /// base width, the selected one additionally gets the "label" share.
-  static List<double> itemWidths(double total, List<double> amounts) {
-    final n = amounts.length;
-    const minBase = 44.0;
-    final extra = (total - n * minBase).clamp(0.0, 120.0);
-    final base = (total - extra) / n;
-    return [for (final a in amounts) base + extra * a];
+  /// Icon-only width of an unselected item (≥ 44dp touch width).
+  static const double baseWidth = 44;
+
+  /// The selected capsule never takes more than this share of the bar, so
+  /// it stays a compact pill instead of competing with page content.
+  static const double maxSelectedShare = 0.3;
+
+  /// Horizontal padding inside the selected capsule, per side.
+  static const double capsulePadding = 12;
+
+  static TextStyle labelStyle(AppColors c) => AppTypography.labelL.copyWith(
+    color: c.onCapsuleSelected,
+    fontWeight: FontWeight.w600,
+  );
+
+  /// Width the selected capsule needs for icon + label (hugging content),
+  /// capped at [maxSelectedShare] of [total].
+  static double selectedWidth(
+    String label,
+    TextStyle style,
+    TextScaler scaler,
+    double total,
+  ) {
+    final tp = TextPainter(
+      text: TextSpan(text: label, style: style),
+      textDirection: TextDirection.ltr,
+      textScaler: scaler,
+      maxLines: 1,
+    )..layout();
+    final w = tp.width + AppIconSize.nav + 6 + capsulePadding * 2;
+    tp.dispose();
+    return w.clamp(baseWidth, total * maxSelectedShare);
   }
 
-  Widget _bar(BuildContext context, double width) {
+  Widget _bar(BuildContext context, double total) {
     final c = context.colors;
     final page = _page();
     final n = destinations.length;
+    final style = labelStyle(c);
+    final scaler = MediaQuery.textScalerOf(context);
     final amounts = [
       for (var i = 0; i < n; i++) (1 - (page - i).abs()).clamp(0.0, 1.0),
     ];
-    final widths = itemWidths(width, amounts);
-    final starts = <double>[];
-    var acc = 0.0;
-    for (final w in widths) {
-      starts.add(acc);
-      acc += w;
-    }
+    // Each item: icon-only base, growing toward its own content width as it
+    // becomes selected; the free space is spread evenly around the items.
+    final widths = [
+      for (var i = 0; i < n; i++)
+        baseWidth +
+            (selectedWidth(destinations[i].label, style, scaler, total) -
+                    baseWidth) *
+                amounts[i],
+    ];
+    final used = widths.fold(0.0, (a, b) => a + b);
+    final gap = ((total - used) / n).clamp(0.0, double.infinity);
     var indicatorStart = 0.0;
     var indicatorWidth = 0.0;
+    var acc = 0.0;
     for (var i = 0; i < n; i++) {
-      indicatorStart += amounts[i] * starts[i];
+      indicatorStart += amounts[i] * (acc + gap / 2);
       indicatorWidth += amounts[i] * widths[i];
+      acc += widths[i] + gap;
     }
 
     return SizedBox(
@@ -117,13 +150,18 @@ class AppBottomNav extends StatelessWidget {
             children: [
               for (var i = 0; i < n; i++)
                 SizedBox(
-                  width: widths[i],
-                  child: _NavItem(
-                    key: ValueKey('nav-$i'),
-                    destination: destinations[i],
-                    amount: amounts[i],
-                    emphasized: i == centerIndex,
-                    onTap: () => onSelected(i),
+                  width: widths[i] + gap,
+                  child: Center(
+                    child: SizedBox(
+                      width: widths[i],
+                      child: _NavItem(
+                        key: ValueKey('nav-$i'),
+                        destination: destinations[i],
+                        amount: amounts[i],
+                        emphasized: i == centerIndex,
+                        onTap: () => onSelected(i),
+                      ),
+                    ),
                   ),
                 ),
             ],
@@ -206,15 +244,17 @@ class _NavItem extends StatelessWidget {
 
     Widget icon = Icon(
       selected ? destination.selectedIcon : destination.icon,
-      size: 24,
+      size: AppIconSize.nav,
       color: iconColor,
     );
     if (emphasized) {
       // Search stands out while unselected: a tinted circle that fades into
-      // the sliding capsule as it arrives.
+      // the sliding capsule as it arrives (and shrinks to the plain icon
+      // size so the selected capsule stays as compact as the others).
+      final d = 38 - (38 - AppIconSize.nav) * t;
       icon = Container(
-        width: 38,
-        height: 38,
+        width: d,
+        height: d,
         alignment: Alignment.center,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
@@ -240,7 +280,9 @@ class _NavItem extends StatelessWidget {
             customBorder: const StadiumBorder(),
             child: Center(
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: AppSpacing.sm * t),
+                padding: EdgeInsets.symmetric(
+                  horizontal: AppBottomNav.capsulePadding * t,
+                ),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [

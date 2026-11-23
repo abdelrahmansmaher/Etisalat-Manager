@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:knowledge_hub/core/theme/app_icons.dart';
 import 'package:knowledge_hub/core/widgets/trust/trust.dart';
 
 import '../../helpers/pump_app.dart';
@@ -130,7 +131,7 @@ void main() {
     );
     expect(find.textContaining('Needs review'), findsOneWidget);
     expect(find.textContaining('45 days ago'), findsOneWidget);
-    expect(find.byIcon(Icons.history), findsOneWidget);
+    expect(find.byIcon(AppIcons.needsReview), findsOneWidget);
   });
 
   testWidgets('SourceBadge shows name, chevron only when tappable', (
@@ -155,7 +156,7 @@ void main() {
       ),
     );
     expect(find.text('[Public website]'), findsOneWidget);
-    expect(find.byIcon(Icons.chevron_right), findsOneWidget);
+    expect(find.byIcon(AppIcons.chevron), findsOneWidget);
     await tester.tap(find.text('[Guide v3]'));
     expect(tapped, isTrue);
   });
@@ -163,7 +164,7 @@ void main() {
   testWidgets('PrivateBadge text', (tester) async {
     await pumpLocalized(tester, const PrivateBadge());
     expect(find.text('ملاحظة خاصة — للمالك فقط'), findsOneWidget);
-    expect(find.byIcon(Icons.lock_outline), findsOneWidget);
+    expect(find.byIcon(AppIcons.privateNote), findsOneWidget);
   });
 
   testWidgets('ConflictBanner shows both values with sources', (tester) async {
@@ -186,7 +187,7 @@ void main() {
     expect(find.text('120'), findsOneWidget);
     expect(find.text('A · 1 نوفمبر 2026'), findsOneWidget);
     expect(find.text('مراجعة المصادر'), findsOneWidget);
-    expect(find.byIcon(Icons.report_outlined), findsOneWidget);
+    expect(find.byIcon(AppIcons.conflict), findsOneWidget);
   });
 
   testWidgets('UnofficialDisclaimer compact + full', (tester) async {
@@ -221,7 +222,7 @@ void main() {
         find.text('ساري من 1 نوفمبر 2026 حتى 31 ديسمبر 2026'),
         findsOneWidget,
       );
-      expect(find.byIcon(Icons.copy_rounded), findsOneWidget);
+      expect(find.byIcon(AppIcons.copy), findsOneWidget);
     });
 
     testWidgets('expired: struck through, Expired pill, no copy', (
@@ -239,7 +240,7 @@ void main() {
       );
       expect(find.text('Expired'), findsOneWidget);
       expect(find.text('Excl. VAT'), findsOneWidget);
-      expect(find.byIcon(Icons.copy_rounded), findsNothing);
+      expect(find.byIcon(AppIcons.copy), findsNothing);
       final text = tester.widget<Text>(find.text('100'));
       expect(text.style?.decoration, TextDecoration.lineThrough);
     });

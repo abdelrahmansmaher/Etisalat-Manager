@@ -1,3 +1,6 @@
+import 'package:flutter/widgets.dart';
+
+import '../../core/theme/app_icons.dart';
 import '../../core/content/content_models.dart';
 
 /// What a fact means inside a package page.
@@ -213,5 +216,54 @@ class PackageFacts {
       });
     }
     return b.toString();
+  }
+}
+
+/// Leading icon for any fact: by package role when given, else by kind,
+/// refined by label keywords (data vs minutes vs SMS, fees, limits…).
+abstract final class FactIcons {
+  static IconData of(Fact f, [PackageFactRole? role]) {
+    final l = PackageFacts.normalizeLabel('${f.label} ${f.unit ?? ''}');
+    bool has(List<String> w) => w.any(l.contains);
+    switch (role ?? PackageFacts.roleOf(f)) {
+      case PackageFactRole.validity:
+        return AppIcons.validity;
+      case PackageFactRole.renewal:
+        return AppIcons.renewal;
+      case PackageFactRole.afterBundle:
+        return AppIcons.afterBundle;
+      case PackageFactRole.rechargePrice:
+        return AppIcons.recharge;
+      case PackageFactRole.code:
+        return AppIcons.code;
+      case PackageFactRole.price:
+        return AppIcons.price;
+      case PackageFactRole.quota:
+        if (has(['ميجا', 'جيجا', 'انترنت', 'السعه', 'داتا'])) {
+          return AppIcons.quotaData;
+        }
+        if (has(['دقائق', 'دقيقه', 'مكالمات'])) return AppIcons.quotaMinutes;
+        if (has(['رسائل'])) return AppIcons.quotaSms;
+        if (has(['ميكس'])) return AppIcons.quotaMixes;
+        if (has(['خطوط', 'عائله', 'ارقام'])) return AppIcons.quotaLines;
+        if (has(['تطبيق'])) return AppIcons.quotaApps;
+        return AppIcons.quota;
+      case PackageFactRole.other:
+        break;
+    }
+    if (has(['تجوال', 'دولي'])) return AppIcons.roaming;
+    if (has(['رسوم', 'عموله'])) return AppIcons.fee;
+    if (has(['حد ', 'الحد', 'اقصي', 'limit'])) return AppIcons.limit;
+    if (has(['سرعه'])) return AppIcons.speed;
+    return switch (f.kind) {
+      FactKind.price => AppIcons.price,
+      FactKind.code => AppIcons.code,
+      FactKind.phone => AppIcons.phone,
+      FactKind.quantity => AppIcons.quota,
+      FactKind.duration => AppIcons.validity,
+      FactKind.percent => AppIcons.percent,
+      FactKind.date => AppIcons.date,
+      FactKind.text => AppIcons.note,
+    };
   }
 }

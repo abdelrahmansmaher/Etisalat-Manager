@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../router/app_page_transitions.dart';
 import 'app_colors.dart';
+import 'app_icons.dart';
 import 'app_radius.dart';
 import 'app_spacing.dart';
 import 'app_typography.dart';
@@ -83,7 +84,11 @@ abstract final class AppTheme {
         titleTextStyle: text.titleLarge,
         iconTheme: IconThemeData(color: c.textPrimary),
       ),
-      iconTheme: IconThemeData(color: c.textSecondary, size: 24),
+      iconTheme: IconThemeData(color: c.textSecondary, size: AppIconSize.nav),
+      // Rounded, auto-mirrored back arrow everywhere (BackButton).
+      actionIconTheme: ActionIconThemeData(
+        backButtonIconBuilder: (_) => const Icon(AppIcons.back),
+      ),
       chipTheme: ChipThemeData(
         backgroundColor: c.capsuleSurface,
         selectedColor: c.capsuleSelected,

@@ -7,6 +7,7 @@ import '../../theme/app_typography.dart';
 import '../../theme/trust_colors.dart';
 import '../ltr_text.dart';
 import 'trust_format.dart';
+import '../../theme/app_icons.dart';
 
 /// One side of a conflict: the value as a source states it.
 @immutable
@@ -55,7 +56,7 @@ class ConflictBanner extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Icon(Icons.report_outlined, color: fg),
+                Icon(AppIcons.conflict, color: fg),
                 const SizedBox(width: AppSpacing.xs),
                 Expanded(
                   child: Text(

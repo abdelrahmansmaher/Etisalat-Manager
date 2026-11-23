@@ -35,7 +35,16 @@ class KnowledgeHubApp extends ConsumerWidget {
       theme: AppTheme.light(),
       darkTheme: AppTheme.dark(),
       themeMode: themeMode,
-      themeAnimationDuration: AppMotion.normal,
+      // Smooth 300ms cross-fade of every token; instant when the OS asks to
+      // remove animations.
+      themeAnimationDuration:
+          WidgetsBinding
+              .instance
+              .platformDispatcher
+              .accessibilityFeatures
+              .disableAnimations
+          ? Duration.zero
+          : AppMotion.max,
       themeAnimationCurve: AppMotion.enter,
     );
   }

@@ -8,6 +8,7 @@ import '../widgets/app_bottom_nav.dart';
 import 'app_routes.dart';
 import 'tab_pager.dart';
 import 'search_focus.dart';
+import '../theme/app_icons.dart';
 
 /// App chrome: floating bottom nav on phones (< 600dp), NavigationRail on the
 /// start side for tablet/web (doc 04 §4.5).
@@ -18,28 +19,28 @@ class AppShell extends ConsumerStatefulWidget {
 
   static List<AppNavDestination> destinations(AppLocalizations l10n) => [
     AppNavDestination(
-      icon: Icons.home_outlined,
-      selectedIcon: Icons.home_rounded,
+      icon: AppIcons.navHome,
+      selectedIcon: AppIcons.navHomeActive,
       label: l10n.navHome,
     ),
     AppNavDestination(
-      icon: Icons.grid_view_outlined,
-      selectedIcon: Icons.grid_view_rounded,
+      icon: AppIcons.navBrowse,
+      selectedIcon: AppIcons.navBrowseActive,
       label: l10n.navBrowse,
     ),
     AppNavDestination(
-      icon: Icons.search_rounded,
-      selectedIcon: Icons.search_rounded,
+      icon: AppIcons.search,
+      selectedIcon: AppIcons.search,
       label: l10n.navSearch,
     ),
     AppNavDestination(
-      icon: Icons.school_outlined,
-      selectedIcon: Icons.school_rounded,
+      icon: AppIcons.navTraining,
+      selectedIcon: AppIcons.comingSoon,
       label: l10n.navTraining,
     ),
     AppNavDestination(
-      icon: Icons.person_outline_rounded,
-      selectedIcon: Icons.person_rounded,
+      icon: AppIcons.navMe,
+      selectedIcon: AppIcons.navMeActive,
       label: l10n.navMe,
     ),
   ];

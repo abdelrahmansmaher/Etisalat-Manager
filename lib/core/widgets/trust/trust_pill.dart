@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../theme/app_radius.dart';
 import '../../theme/app_spacing.dart';
 import '../../theme/app_typography.dart';
+import '../../theme/app_icons.dart';
 
 /// Refined pill chip: icon + text on a soft tinted background, hairline
 /// border in the same hue. Base for every trust badge — colour is never the
@@ -39,7 +40,7 @@ class TrustPill extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, size: 16, color: foreground),
+          Icon(icon, size: AppIconSize.inline, color: foreground),
           const SizedBox(width: AppSpacing.xxs + 2),
           Flexible(
             child: Text(
@@ -49,7 +50,7 @@ class TrustPill extends StatelessWidget {
           ),
           if (trailing != null) ...[
             const SizedBox(width: AppSpacing.xxs),
-            Icon(trailing, size: 16, color: foreground),
+            Icon(trailing, size: AppIconSize.inline, color: foreground),
           ],
         ],
       ),

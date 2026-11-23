@@ -8,6 +8,7 @@ import '../theme/app_shadows.dart';
 import '../theme/app_spacing.dart';
 import '../theme/app_typography.dart';
 import 'app_card.dart';
+import '../theme/app_icons.dart';
 
 /// Capsule (pill) chip — the one navigation/filter shape used everywhere.
 ///
@@ -102,7 +103,7 @@ class Capsule extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     if (icon != null) ...[
-                      Icon(icon, size: 18, color: iconColor),
+                      Icon(icon, size: AppIconSize.chip, color: iconColor),
                       const SizedBox(width: AppSpacing.xs - 2),
                     ],
                     Flexible(child: text),
@@ -294,7 +295,7 @@ class _Segment<T> extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 if (segment.icon != null) ...[
-                  Icon(segment.icon, size: 18, color: fg),
+                  Icon(segment.icon, size: AppIconSize.chip, color: fg),
                   const SizedBox(width: AppSpacing.xxs),
                 ],
                 Flexible(

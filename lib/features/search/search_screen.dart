@@ -132,7 +132,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
               start: AppSpacing.md,
               end: AppSpacing.xs,
             ),
-            child: Icon(Icons.search_rounded, color: c.primary),
+            child: Icon(AppIcons.search, color: c.primary),
           ),
           prefixIconConstraints: const BoxConstraints(minWidth: 48),
           suffixIcon: ListenableBuilder(
@@ -141,7 +141,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                 ? const SizedBox.shrink()
                 : IconButton(
                     tooltip: l10n.searchClear,
-                    icon: const Icon(Icons.cancel_rounded),
+                    icon: const Icon(AppIcons.clear, size: AppIconSize.action),
                     color: c.textTertiary,
                     onPressed: _controller.clear,
                   ),
@@ -240,7 +240,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                 for (final q in recent)
                   Capsule(
                     key: ValueKey('recent-search-$q'),
-                    icon: Icons.history_rounded,
+                    icon: AppIcons.history,
                     label: q,
                     dense: true,
                     onTap: () => _useQuery(q),
@@ -254,7 +254,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Icon(Icons.offline_bolt_rounded, size: 18, color: c.primary),
+              Icon(AppIcons.offline, size: AppIconSize.chip, color: c.primary),
               const SizedBox(width: AppSpacing.xs),
               Expanded(
                 child: Text(
@@ -277,7 +277,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
         box(
           PlaceholderPanel(
             key: const ValueKey('search-empty'),
-            icon: Icons.search_off_rounded,
+            icon: AppIcons.emptySearch,
             title: l10n.searchEmptyTitle,
             body: l10n.searchEmptyBody,
           ),

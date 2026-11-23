@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../theme/app_colors.dart';
+import '../theme/app_icons.dart';
 import '../theme/app_motion.dart';
 import '../theme/app_radius.dart';
 import '../theme/app_spacing.dart';
@@ -192,13 +193,14 @@ class PlaceholderPanel extends StatelessWidget {
     final theme = Theme.of(context);
     final c = context.colors;
     return AppCard(
+      role: CardRole.flat,
       padding: const EdgeInsetsDirectional.symmetric(
         horizontal: AppSpacing.xl,
         vertical: AppSpacing.xxl,
       ),
       child: Column(
         children: [
-          TintedIcon(icon, size: 60),
+          TintedIcon(icon, tile: IconTile.xl),
           const SizedBox(height: AppSpacing.md),
           Text(
             title,
@@ -249,6 +251,7 @@ class SkeletonList extends StatelessWidget {
         children: [
           for (var i = 0; i < count; i++) ...[
             AppCard(
+              role: CardRole.flat,
               child: Row(
                 children: [
                   Container(
