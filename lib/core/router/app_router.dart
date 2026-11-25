@@ -1,14 +1,15 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../features/browse/browse_screen.dart';
+import '../../features/codes/codes_screen.dart';
 import '../../features/content/item_detail_screen.dart';
-import '../../features/content/review_screen.dart';
+import '../../features/content/package_family.dart';
 import '../../features/content/section_screen.dart';
 import '../../features/home/home_screen.dart';
-import '../../features/me/me_screen.dart';
+import '../../features/more/more_screen.dart';
+import '../../features/packages/packages_screen.dart';
 import '../../features/search/search_screen.dart';
-import '../../features/training/training_screen.dart';
+import '../../features/tools/tool_routes.dart';
 import 'app_routes.dart';
 import 'app_page_transitions.dart';
 import 'app_shell.dart';
@@ -39,8 +40,12 @@ final routerProvider = Provider<GoRouter>((ref) {
             preload: true,
             routes: [
               GoRoute(
-                path: AppRoutes.browse,
-                builder: (context, state) => const BrowseScreen(),
+                path: AppRoutes.packages,
+                builder: (context, state) => PackagesScreen(
+                  segment: PackageSegment.fromKey(
+                    state.uri.queryParameters['s'],
+                  ),
+                ),
               ),
             ],
           ),
@@ -48,8 +53,8 @@ final routerProvider = Provider<GoRouter>((ref) {
             preload: true,
             routes: [
               GoRoute(
-                path: AppRoutes.search,
-                builder: (context, state) => const SearchScreen(),
+                path: AppRoutes.codes,
+                builder: (context, state) => const CodesScreen(),
               ),
             ],
           ),
@@ -57,17 +62,8 @@ final routerProvider = Provider<GoRouter>((ref) {
             preload: true,
             routes: [
               GoRoute(
-                path: AppRoutes.training,
-                builder: (context, state) => const TrainingScreen(),
-              ),
-            ],
-          ),
-          StatefulShellBranch(
-            preload: true,
-            routes: [
-              GoRoute(
-                path: AppRoutes.me,
-                builder: (context, state) => const MeScreen(),
+                path: AppRoutes.more,
+                builder: (context, state) => const MoreScreen(),
               ),
             ],
           ),
@@ -89,10 +85,11 @@ final routerProvider = Provider<GoRouter>((ref) {
         ),
       ),
       GoRoute(
-        path: ContentRoutes.review,
+        path: AppRoutes.search,
         pageBuilder: (context, state) =>
-            AppPage<void>(key: state.pageKey, child: const ReviewScreen()),
+            AppPage<void>(key: state.pageKey, child: const SearchScreen()),
       ),
+      ...toolRoutes,
     ],
   );
   ref.onDispose(router.dispose);

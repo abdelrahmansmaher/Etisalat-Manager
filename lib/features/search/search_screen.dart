@@ -2,24 +2,23 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../core/content/content.dart';
-import '../../core/router/search_focus.dart';
+import '../../core/router/app_routes.dart';
 import '../../core/settings/history.dart';
 import '../../core/theme/theme.dart';
-import '../../core/widgets/app_card.dart';
 import '../../core/widgets/capsules.dart';
+import '../../core/widgets/list_surface.dart';
+import '../../core/widgets/masthead.dart';
 import '../../core/widgets/page_scaffold.dart';
 import '../../l10n/app_localizations.dart';
 import '../content/content_widgets.dart';
 import '../content/section_ui.dart';
 
-/// Search: the field is focused (keyboard opens) whenever the user enters
-/// via the Search tab or the Home pill (doc 04 §4.1) — driven by
-/// [searchFocusRequestProvider], not `autofocus`, because the branch is
-/// preloaded for swiping and must not pop the keyboard at app start.
-/// Idle: recent searches as capsules. Typing: instant (debounced) results
-/// with section capsule filters.
+/// Full search, pushed from the pill of any tab with the keyboard up.
+/// Idle: recent searches. Typing: instant (debounced) results with section
+/// capsules.
 class SearchScreen extends ConsumerStatefulWidget {
   const SearchScreen({super.key});
 
@@ -71,22 +70,18 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     ref.read(recentSearchesProvider.notifier).add(q);
   }
 
+  void _back() {
+    if (context.canPop()) {
+      context.pop();
+    } else {
+      context.go(AppRoutes.home);
+    }
+  }
+
   @override
   void initState() {
     super.initState();
     _controller.addListener(_onChanged);
-    // A request made before this page was first built (lazy PageView page).
-    if (ref.read(searchFocusRequestProvider).pending) _handleRequest(false);
-  }
-
-  void _handleRequest(bool clear) {
-    if (clear) _controller.clear();
-    // After goBranch has made this branch visible.
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (!mounted) return;
-      _focusNode.requestFocus();
-      ref.read(searchFocusRequestProvider.notifier).consume();
-    });
   }
 
   @override
@@ -100,71 +95,85 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    ref.listen<SearchFocusRequest>(searchFocusRequestProvider, (prev, next) {
-      if (next.pending && next.tick != prev?.tick) _handleRequest(next.clear);
-    });
-
     final l10n = AppLocalizations.of(context);
     final c = context.colors;
+    final border = OutlineInputBorder(
+      borderRadius: AppRadius.fullAll,
+      borderSide: BorderSide(color: c.mastheadField),
+    );
 
-    final field = DecoratedBox(
-      decoration: BoxDecoration(
-        borderRadius: AppRadius.fullAll,
-        boxShadow: AppShadows.raised(c),
-      ),
-      child: TextField(
-        key: const ValueKey('search-field'),
-        controller: _controller,
-        focusNode: _focusNode,
-        textInputAction: TextInputAction.search,
-        onSubmitted: (_) => _commit(),
-        style: AppTypography.bodyL.copyWith(color: c.textPrimary),
-        decoration: InputDecoration(
-          hintText: l10n.searchFieldHint,
-          fillColor: c.surfaceElevated,
-          contentPadding: const EdgeInsetsDirectional.symmetric(
-            horizontal: AppSpacing.md,
-            vertical: AppSpacing.md + 2,
-          ),
-          prefixIcon: Padding(
-            padding: const EdgeInsetsDirectional.only(
-              start: AppSpacing.md,
-              end: AppSpacing.xs,
-            ),
-            child: Icon(AppIcons.search, color: c.primary),
-          ),
-          prefixIconConstraints: const BoxConstraints(minWidth: 48),
-          suffixIcon: ListenableBuilder(
-            listenable: _controller,
-            builder: (context, _) => _controller.text.isEmpty
-                ? const SizedBox.shrink()
-                : IconButton(
-                    tooltip: l10n.searchClear,
-                    icon: const Icon(AppIcons.clear, size: AppIconSize.action),
-                    color: c.textTertiary,
-                    onPressed: _controller.clear,
-                  ),
-          ),
-          border: OutlineInputBorder(
-            borderRadius: AppRadius.fullAll,
-            borderSide: BorderSide(color: c.hairline),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: AppRadius.fullAll,
-            borderSide: BorderSide(color: c.borderStrong),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: AppRadius.fullAll,
-            borderSide: BorderSide(color: c.primary, width: 2),
-          ),
+    final field = TextField(
+      key: const ValueKey('search-field'),
+      controller: _controller,
+      focusNode: _focusNode,
+      autofocus: true,
+      textInputAction: TextInputAction.search,
+      onSubmitted: (_) => _commit(),
+      style: AppTypography.bodyL.copyWith(color: c.textPrimary),
+      decoration: InputDecoration(
+        hintText: l10n.searchFieldHint,
+        hintMaxLines: 2,
+        hintStyle: AppTypography.bodyL.copyWith(
+          color: c.isDark ? c.onMastheadMuted : c.textTertiary,
+        ),
+        fillColor: c.mastheadField,
+        isDense: true,
+        contentPadding: const EdgeInsetsDirectional.fromSTEB(
+          AppSpacing.md,
+          AppSpacing.sm,
+          AppSpacing.md,
+          AppSpacing.sm,
+        ),
+        suffixIcon: ListenableBuilder(
+          listenable: _controller,
+          builder: (context, _) => _controller.text.isEmpty
+              ? Icon(
+                  AppIcons.search,
+                  color: c.isDark ? c.onMasthead : c.primary,
+                )
+              : IconButton(
+                  tooltip: l10n.searchClear,
+                  icon: const Icon(AppIcons.clear, size: AppIconSize.action),
+                  color: c.isDark ? c.onMastheadMuted : c.textTertiary,
+                  onPressed: _controller.clear,
+                ),
+        ),
+        border: border,
+        enabledBorder: border,
+        focusedBorder: border.copyWith(
+          borderSide: BorderSide(color: c.primaryUi, width: 2),
         ),
       ),
     );
 
-    return PageScaffold(
-      title: l10n.searchTitle,
-      header: field,
-      slivers: _results(context, l10n),
+    return Scaffold(
+      body: Column(
+        children: [
+          Masthead(
+            field: Row(
+              children: [
+                BackButton(onPressed: _back, color: c.onMasthead),
+                const SizedBox(width: AppSpacing.xxs),
+                Expanded(child: field),
+              ],
+            ),
+          ),
+          Expanded(
+            child: CustomScrollView(
+              key: const ValueKey('search-scroll'),
+              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+              slivers: [
+                ..._results(context, l10n),
+                SliverPadding(
+                  padding: EdgeInsets.only(
+                    bottom: AppSpacing.md + MediaQuery.paddingOf(context).bottom,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -184,43 +193,12 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
       sliver: SliverToBoxAdapter(child: child),
     );
 
-    final filters = sections.length < 2
-        ? const <Widget>[]
-        : [
-            SliverToBoxAdapter(
-              child: CapsuleRow(
-                key: const ValueKey('search-filters'),
-                padding: hPad,
-                children: [
-                  Capsule(
-                    key: const ValueKey('search-filter-all'),
-                    label: l10n.filterAll,
-                    dense: true,
-                    selected: _section == null,
-                    onTap: () => setState(() => _section = null),
-                  ),
-                  for (final s in sections)
-                    Capsule(
-                      key: ValueKey('search-filter-${s.key}'),
-                      icon: s.icon,
-                      label: s.title(l10n),
-                      dense: true,
-                      selected: _section == s,
-                      onTap: () =>
-                          setState(() => _section = _section == s ? null : s),
-                    ),
-                ],
-              ),
-            ),
-            const SliverToBoxAdapter(child: SizedBox(height: AppSpacing.md)),
-          ];
-
     if (_query.trim().isEmpty) {
       final recent = ref.watch(recentSearchesProvider);
       return [
         if (recent.isNotEmpty) ...[
           box(
-            SectionHeader(
+            GroupHeader(
               l10n.searchRecentTitle,
               trailing: TextButton(
                 key: const ValueKey('search-recent-clear'),
@@ -230,11 +208,11 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
               ),
             ),
           ),
-          const SliverToBoxAdapter(child: SizedBox(height: AppSpacing.xs)),
-          SliverToBoxAdapter(
-            child: CapsuleRow(
+          box(
+            Wrap(
               key: const ValueKey('search-recent'),
-              padding: hPad,
+              spacing: AppSpacing.xs,
+              runSpacing: AppSpacing.xs,
               children: [
                 for (final q in recent)
                   Capsule(
@@ -247,55 +225,68 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
               ],
             ),
           ),
-          const SliverToBoxAdapter(child: SizedBox(height: AppSpacing.lg)),
         ],
         box(
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Icon(AppIcons.offline, size: AppIconSize.chip, color: c.primary),
-              const SizedBox(width: AppSpacing.xs),
-              Expanded(
-                child: Text(
-                  l10n.searchIdleBody,
-                  style: AppTypography.bodyM.copyWith(color: c.textTertiary),
-                ),
-              ),
-            ],
+          Padding(
+            padding: const EdgeInsets.only(top: AppSpacing.md),
+            child: Text(
+              l10n.searchIdleBody,
+              style: AppTypography.bodyM.copyWith(color: c.textSecondary),
+            ),
           ),
         ),
-        const SliverToBoxAdapter(child: SizedBox(height: AppSpacing.md)),
-        ...filters,
       ];
     }
 
     final results = index.search(_query, section: _section, limit: 60);
     return [
-      ...filters,
+      if (sections.length > 1)
+        PinnedHeaderSliver(
+          child: Container(
+            color: Theme.of(context).scaffoldBackgroundColor,
+            padding: const EdgeInsets.symmetric(vertical: AppSpacing.xxs),
+            child: CapsuleRow(
+              key: const ValueKey('search-filters'),
+              padding: hPad,
+              children: [
+                Capsule(
+                  key: const ValueKey('search-filter-all'),
+                  label: l10n.filterAll,
+                  dense: true,
+                  selected: _section == null,
+                  onTap: () => setState(() => _section = null),
+                ),
+                for (final s in sections)
+                  Capsule(
+                    key: ValueKey('search-filter-${s.key}'),
+                    label: s.title(l10n),
+                    dense: true,
+                    selected: _section == s,
+                    onTap: () =>
+                        setState(() => _section = _section == s ? null : s),
+                  ),
+              ],
+            ),
+          ),
+        ),
       if (results.isEmpty)
         box(
-          PlaceholderPanel(
-            key: const ValueKey('search-empty'),
-            icon: AppIcons.emptySearch,
-            title: l10n.searchEmptyTitle,
-            body: l10n.searchEmptyBody,
+          Padding(
+            padding: const EdgeInsets.only(top: AppSpacing.sm),
+            child: PlaceholderPanel(
+              key: const ValueKey('search-empty'),
+              icon: AppIcons.emptySearch,
+              title: l10n.searchEmptyTitle,
+              body: l10n.searchEmptyBody,
+            ),
           ),
         )
       else ...[
-        box(
-          Text(
-            l10n.searchResultsCount(results.length),
-            key: const ValueKey('search-count'),
-            style: AppTypography.labelS.copyWith(color: c.textTertiary),
-          ),
-        ),
-        const SliverToBoxAdapter(child: SizedBox(height: AppSpacing.xs)),
         SliverPadding(
           padding: hPad,
-          sliver: SliverList.separated(
+          sliver: SliverListSurface(
+            key: const ValueKey('search-results'),
             itemCount: results.length,
-            separatorBuilder: (_, _) =>
-                const SizedBox(height: AppSpacing.cardGap),
             itemBuilder: (_, i) => ContentItemRow(
               item: results[i].item,
               showSection: true,
@@ -304,8 +295,18 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
             ),
           ),
         ),
+        box(
+          Padding(
+            padding: const EdgeInsets.only(top: AppSpacing.sm),
+            child: Text(
+              l10n.searchResultsCount(results.length),
+              key: const ValueKey('search-count'),
+              textAlign: TextAlign.center,
+              style: AppTypography.labelS.copyWith(color: c.textTertiary),
+            ),
+          ),
+        ),
       ],
-      const SliverToBoxAdapter(child: SizedBox(height: AppSpacing.lg)),
     ];
   }
 }

@@ -2,8 +2,10 @@
 ///
 /// Built once from all items with the shared search core (normalizer,
 /// tokenizer, light stemmer, synonyms, query classifier). Ranking:
-/// exact code/phone > title > tags/category > summary/facts > body;
-/// confirmed before unconfirmed on ties.
+/// exact code/phone > title > tags/category > summary/facts > body. What the
+/// counter quotes (packages, codes, hotlines, procedures) comes before
+/// articles on equal matches, and confirmed before unconfirmed. A word that
+/// matches nothing at all is retried with a small spelling tolerance.
 ///
 /// Pure Dart (no Flutter imports).
 library;
@@ -45,7 +47,25 @@ const _fieldWeight = {
 };
 
 const double _exactCodeScore = 10000;
+
+/// Digits typed without the symbols: `777` for `*777#`.
+const double _bareCodeScore = 9000;
 const double _prefixCodeScore = 5000;
+
+/// Added to a code match when the code is the item's own (its first one),
+/// not one it merely mentions.
+const double _ownCodeBonus = 400;
+
+/// Tie-breaker between equal text matches; far below one field step.
+double _typePrior(ItemType t) => switch (t) {
+  ItemType.package => 12,
+  ItemType.procedure => 8,
+  ItemType.contact || ItemType.code => 9,
+  ItemType.service || ItemType.fee || ItemType.limit => 4,
+  _ => 0,
+};
+
+const double _unconfirmedPenalty = 13;
 const double _stemQuality = 0.85;
 const double _lastPrefixQuality = 0.75;
 const double _prefixQuality = 0.6;
@@ -55,7 +75,13 @@ class _Field {
   _Field(String raw) {
     final it = buildIndexText(raw);
     normalized = it.normalized;
-    tokens = it.tokens.toSet();
+    tokens = {
+      for (final t in it.tokens) ...[
+        t,
+        // The definite article never changes what a word means here.
+        if (t.length > 4 && t.startsWith('ال')) t.substring(2),
+      ],
+    };
     stems = {for (final t in tokens) lightStem(t)};
   }
 
@@ -88,7 +114,9 @@ class _Doc {
   _Doc(this.item)
     : fields = {
         _FieldKind.title: _Field('${item.title} ${item.titleEn ?? ''}'),
-        _FieldKind.tags: _Field('${item.category} ${item.tags.join(' ')}'),
+        _FieldKind.tags: _Field(
+          '${item.category} ${item.family ?? ''} ${item.tags.join(' ')}',
+        ),
         _FieldKind.summary: _Field(
           [
             item.summary,
@@ -98,12 +126,35 @@ class _Doc {
         _FieldKind.body: _Field([item.body ?? '', ...item.steps].join(' \n ')),
       },
       normalizedTitle = ArabicNormalizer.normalize(item.title),
-      codeKeys = _codeKeys(item);
+      codeKeys = _codeKeys(item),
+      bareKeys = {
+        for (final c in item.codes)
+          if (_singleCode.hasMatch(c)) c.replaceAll(_symbols, ''),
+      },
+      ownKeys = {
+        for (final v in [
+          if (item.type == ItemType.contact) ...item.phones.take(1),
+          ...item.codes.take(1),
+          if (item.codes.isEmpty) ...item.phones.take(1),
+        ]) ...[
+          ArabicNormalizer.normalize(v).replaceAll(' ', ''),
+          v.replaceAll(_symbols, ''),
+        ],
+      };
 
   final ContentItem item;
   final Map<_FieldKind, _Field> fields;
   final String normalizedTitle;
   final Set<String> codeKeys;
+
+  /// Digits of one-part codes (`*777#` → `777`).
+  final Set<String> bareKeys;
+
+  /// Keys of the item's own code or number.
+  final Set<String> ownKeys;
+
+  static final RegExp _singleCode = RegExp(r'^[*#]+[0-9]+#?$');
+  static final RegExp _symbols = RegExp('[*#+ -]');
 
   static Set<String> _codeKeys(ContentItem item) {
     final out = <String>{};
@@ -140,6 +191,13 @@ class ContentSearchIndex {
     : _docs = [for (final i in items) _Doc(i)],
       _synonyms = synonyms ?? SynonymExpander.seed();
 
+  /// Every indexed word of titles and tags, for spelling tolerance.
+  late final Set<String> _vocabulary = {
+    for (final d in _docs)
+      for (final k in const [_FieldKind.title, _FieldKind.tags])
+        ...d.fields[k]!.tokens,
+  };
+
   final List<_Doc> _docs;
   final SynonymExpander _synonyms;
 
@@ -151,7 +209,7 @@ class ContentSearchIndex {
     ContentSection? section,
     int limit = 100,
   }) {
-    final q = buildSearchQuery(raw, synonyms: _synonyms);
+    var q = buildSearchQuery(raw, synonyms: _synonyms);
     if (q.classification.kind == QueryKind.empty || q.groups.isEmpty) {
       return const [];
     }
@@ -172,12 +230,14 @@ class ContentSearchIndex {
         (cls.kind == QueryKind.ussd || cls.kind == QueryKind.phone) &&
         !cls.isComplete;
 
-    final groupStems = [
-      for (final g in q.groups)
-        [for (final a in g.alternatives) lightStem(a.text)],
-    ];
+    final digits = _digitsOnly.hasMatch(cls.normalized) ? cls.normalized : null;
+    final ownQuery = {...codeKeys, ?digits};
 
-    List<_Scored> run({required bool requireAll}) {
+    List<_Scored> run(SearchQuery q, {required bool requireAll}) {
+      final groupStems = [
+        for (final g in q.groups)
+          [for (final a in g.alternatives) lightStem(a.text)],
+      ];
       final out = <_Scored>[];
       for (final d in docs) {
         var code = 0.0;
@@ -187,6 +247,10 @@ class ContentSearchIndex {
             break;
           }
         }
+        if (code == 0 && digits != null && d.bareKeys.contains(digits)) {
+          code = _bareCodeScore;
+        }
+        if (code > 0 && d.ownKeys.any(ownQuery.contains)) code += _ownCodeBonus;
         if (code == 0 && codePrefix) {
           outer:
           for (final k in codeKeys) {
@@ -238,26 +302,96 @@ class ContentSearchIndex {
         if (requireAll && matched < q.groups.length) text = 0;
         if (!requireAll) text *= 0.5;
         if (text > 0 && d.normalizedTitle == cls.normalized) text += 50;
-        final score = code + text;
-        if (score > 0) out.add(_Scored(d, score, best, code > 0));
+        var score = code + text;
+        if (score <= 0) continue;
+        score += code > 0
+            ? (d.item.type == ItemType.code || d.item.type == ItemType.contact
+                  ? 300
+                  : 0)
+            : _typePrior(d.item.type);
+        if (d.item.status != ItemStatus.confirmed && !d.item.userEdited) {
+          score -= _unconfirmedPenalty;
+        }
+        out.add(_Scored(d, score, best, code > 0));
       }
       return out;
     }
 
-    var scored = run(requireAll: true);
-    if (scored.isEmpty && q.groups.length > 1) scored = run(requireAll: false);
+    var scored = run(q, requireAll: true);
+    if (scored.isEmpty) {
+      final corrected = _corrected(q);
+      if (corrected != null) {
+        scored = run(corrected, requireAll: true);
+        if (scored.isNotEmpty) q = corrected;
+      }
+    }
+    if (scored.isEmpty && q.groups.length > 1) {
+      scored = run(q, requireAll: false);
+    }
 
-    scored.sort((a, b) {
-      final c = b.score.compareTo(a.score);
-      if (c != 0) return c;
-      final sa = a.doc.item.status == ItemStatus.confirmed ? 0 : 1;
-      final sb = b.doc.item.status == ItemStatus.confirmed ? 0 : 1;
-      if (sa != sb) return sa - sb;
-      return a.doc.item.title.compareTo(b.doc.item.title);
-    });
+    // Equal scores keep the content's own order (it is curated).
+    final ranked = [...scored.indexed]
+      ..sort((a, b) {
+        final c = b.$2.score.compareTo(a.$2.score);
+        return c != 0 ? c : a.$1.compareTo(b.$1);
+      });
+    scored = [for (final (_, r) in ranked) r];
 
     final hl = _Highlighter(q, codeKeys);
     return [for (final s in scored.take(limit)) _result(s, hl)];
+  }
+
+  static final RegExp _digitsOnly = RegExp(r'^[0-9]+$');
+
+  /// [q] with every unknown word replaced by its closest indexed words, or
+  /// `null` when nothing is close enough.
+  SearchQuery? _corrected(SearchQuery q) {
+    if (q.classification.kind != QueryKind.text) return null;
+    var changed = false;
+    final groups = <ExpandedGroup>[];
+    for (final g in q.groups) {
+      final word = g.original;
+      final known =
+          word.contains(' ') ||
+          word.length < 5 ||
+          _vocabulary.contains(word) ||
+          _vocabulary.any((t) => t.startsWith(word));
+      if (known) {
+        groups.add(g);
+        continue;
+      }
+      final max = word.length >= 8 ? 2 : 1;
+      var best = max + 1;
+      final close = <String>[];
+      for (final t in _vocabulary) {
+        final d = editDistance(word, t, max: max);
+        if (d > max || d > best) continue;
+        if (d < best) {
+          best = d;
+          close.clear();
+        }
+        close.add(t);
+      }
+      if (close.isEmpty) {
+        groups.add(g);
+        continue;
+      }
+      changed = true;
+      groups.add(
+        ExpandedGroup(word, [
+          ...g.alternatives,
+          for (final t in close) WeightedTerm(t, 0.7),
+        ]),
+      );
+    }
+    return changed
+        ? SearchQuery(
+            classification: q.classification,
+            tokens: q.tokens,
+            groups: groups,
+            lastTokenIsPrefix: q.lastTokenIsPrefix,
+          )
+        : null;
   }
 
   ContentSearchResult _result(_Scored s, _Highlighter hl) {
@@ -294,8 +428,17 @@ class ContentSearchIndex {
     if (text.length > _snippetMax) {
       final first = h.isEmpty ? 0 : h.first.start;
       var start = first > 40 ? first - 40 : 0;
-      final end = (start + _snippetMax).clamp(0, text.length);
+      var end = (start + _snippetMax).clamp(0, text.length);
       if (end - start < _snippetMax) start = (end - _snippetMax).clamp(0, end);
+      // Whole words only: a number is kept in full or left out.
+      if (start > 0) {
+        final space = text.indexOf(' ', start);
+        if (space >= 0 && space < end) start = space + 1;
+      }
+      if (end < text.length) {
+        final space = text.lastIndexOf(' ', end);
+        if (space > start) end = space;
+      }
       final prefix = start > 0 ? '…' : '';
       final suffix = end < text.length ? '…' : '';
       final shift = prefix.length - start;
@@ -365,4 +508,38 @@ class _Highlighter {
     }
     return out;
   }
+}
+
+/// Edit distance between [a] and [b] counting a swap of two neighbouring
+/// letters as one edit; returns `max + 1` as soon as it exceeds [max].
+int editDistance(String a, String b, {required int max}) {
+  if ((a.length - b.length).abs() > max) return max + 1;
+  var before = List<int>.filled(b.length + 1, 0);
+  var previous = List<int>.generate(b.length + 1, (i) => i);
+  var current = List<int>.filled(b.length + 1, 0);
+  for (var i = 1; i <= a.length; i++) {
+    current[0] = i;
+    var rowMin = i;
+    for (var j = 1; j <= b.length; j++) {
+      final same = a.codeUnitAt(i - 1) == b.codeUnitAt(j - 1);
+      var v = previous[j - 1] + (same ? 0 : 1);
+      if (previous[j] + 1 < v) v = previous[j] + 1;
+      if (current[j - 1] + 1 < v) v = current[j - 1] + 1;
+      if (i > 1 &&
+          j > 1 &&
+          a.codeUnitAt(i - 1) == b.codeUnitAt(j - 2) &&
+          a.codeUnitAt(i - 2) == b.codeUnitAt(j - 1) &&
+          before[j - 2] + 1 < v) {
+        v = before[j - 2] + 1;
+      }
+      current[j] = v;
+      if (v < rowMin) rowMin = v;
+    }
+    if (rowMin > max) return max + 1;
+    final spare = before;
+    before = previous;
+    previous = current;
+    current = spare;
+  }
+  return previous[b.length];
 }

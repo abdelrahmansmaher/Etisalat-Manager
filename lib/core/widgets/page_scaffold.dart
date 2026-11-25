@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
+import '../router/app_routes.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_icons.dart';
 import '../theme/app_motion.dart';
@@ -7,16 +9,19 @@ import '../theme/app_radius.dart';
 import '../theme/app_spacing.dart';
 import '../theme/app_typography.dart';
 import 'app_card.dart';
+import 'list_surface.dart';
 import 'prose_text.dart';
 
-/// Standard page: compact app bar + a large title that scrolls away; once it
-/// is gone the app bar fades in a small title and a hairline (iOS-style
-/// collapsing header that stays robust at 2.0× text scale, because nothing
-/// is squeezed into a fixed-height sliver).
+/// Standard pushed page: back button, title and actions share the first
+/// line (no empty band above the title). The full title scrolls away; a
+/// small one fades into the pinned bar.
+///
+/// The back button is always there: with nothing to go back to (deep link)
+/// it goes home.
 ///
 /// Content is given either as [children] (a lazily built list) or as
-/// [slivers]. Bottom padding clears the floating nav bar (Scaffold.extendBody
-/// adds its height to MediaQuery padding) and the system inset.
+/// [slivers]; with slivers the title line stays fixed above the scroll view,
+/// so pinned headers sit right under it. Bottom padding clears the system inset.
 class PageScaffold extends StatefulWidget {
   const PageScaffold({
     super.key,
@@ -40,7 +45,7 @@ class PageScaffold extends StatefulWidget {
   /// Used instead of [children] when given.
   final List<Widget>? slivers;
 
-  /// Extra widget right under the large title (chips, meta line…).
+  /// Extra widget right under the title (chips, meta line…).
   final Widget? header;
   final List<Widget>? actions;
   final Key? scrollKey;
@@ -49,11 +54,14 @@ class PageScaffold extends StatefulWidget {
   final bool titleIsProse;
   final ScrollController? controller;
 
-  /// Large-title style (default: displayMedium).
+  /// Title style (default: headlineM).
   final TextStyle? titleStyle;
 
-  /// Small title shown in the app bar once collapsed (default: [title]).
+  /// Small title shown in the bar once scrolled (default: [title]).
   final String? appBarTitle;
+
+  /// Height of the pinned bar (without the system inset).
+  static const double barHeight = 52;
 
   @override
   State<PageScaffold> createState() => _PageScaffoldState();
@@ -62,14 +70,19 @@ class PageScaffold extends StatefulWidget {
 class _PageScaffoldState extends State<PageScaffold> {
   final ValueNotifier<bool> _collapsed = ValueNotifier(false);
 
-  /// Scroll offset after which the large title counts as gone.
-  static const double _threshold = 44;
-
   bool _onScroll(ScrollNotification n) {
     if (n.depth == 0 && n.metrics.axis == Axis.vertical) {
-      _collapsed.value = n.metrics.pixels > _threshold;
+      _collapsed.value = n.metrics.pixels > 6;
     }
     return false;
+  }
+
+  void _back() {
+    if (Navigator.of(context).canPop()) {
+      Navigator.of(context).maybePop();
+    } else {
+      GoRouter.maybeOf(context)?.go(AppRoutes.home);
+    }
   }
 
   @override
@@ -80,94 +93,217 @@ class _PageScaffoldState extends State<PageScaffold> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     final c = context.colors;
     final pad = AppSpacing.screenPaddingFor(MediaQuery.sizeOf(context).width);
-    final bottom = AppSpacing.xl + MediaQuery.paddingOf(context).bottom;
+    final insets = MediaQuery.paddingOf(context);
+    final bottom = AppSpacing.xl + insets.bottom;
+    final actions = widget.actions ?? const <Widget>[];
 
-    final titleStyle = widget.titleStyle ?? theme.textTheme.displayMedium;
-    final largeTitle = Semantics(
+    final style =
+        widget.titleStyle ??
+        AppTypography.headlineM.copyWith(color: c.textPrimary);
+    final title = Semantics(
       header: true,
       child: widget.titleIsProse
-          ? ProseText(widget.title, style: titleStyle)
-          : Text(widget.title, style: titleStyle),
+          ? ProseText(widget.title, style: style)
+          : Text(widget.title, style: style),
     );
 
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(kToolbarHeight),
-        child: ValueListenableBuilder<bool>(
-          valueListenable: _collapsed,
-          builder: (context, collapsed, _) {
-            final d = AppMotion.resolve(context, AppMotion.normal);
-            return AppBar(
-              backgroundColor: collapsed ? c.surface : c.background,
-              shape: Border(
-                bottom: BorderSide(
-                  color: collapsed ? c.hairline : Colors.transparent,
-                ),
-              ),
-              actions: widget.actions,
-              title: AnimatedOpacity(
-                opacity: collapsed ? 1 : 0,
-                duration: d,
-                curve: AppMotion.enter,
-                child: Text(
-                  widget.appBarTitle ?? widget.title,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: AppTypography.titleL.copyWith(color: c.textPrimary),
-                ),
-              ),
-            );
-          },
-        ),
-      ),
-      body: NotificationListener<ScrollNotification>(
-        onNotification: _onScroll,
-        child: CustomScrollView(
-          key: widget.scrollKey,
-          controller: widget.controller,
-          slivers: [
-            SliverPadding(
-              padding: EdgeInsetsDirectional.fromSTEB(
-                pad,
-                AppSpacing.xxs,
-                pad,
-                AppSpacing.lg,
-              ),
-              sliver: SliverToBoxAdapter(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    largeTitle,
-                    if (widget.subtitle != null) ...[
-                      const SizedBox(height: AppSpacing.xxs),
-                      Text(
-                        widget.subtitle!,
-                        style: theme.textTheme.bodyLarge?.copyWith(
-                          color: c.textTertiary,
+    final bar = ValueListenableBuilder<bool>(
+      valueListenable: _collapsed,
+      builder: (context, collapsed, _) {
+        final d = AppMotion.resolve(context, AppMotion.normal);
+        return DecoratedBox(
+          decoration: BoxDecoration(
+            color: collapsed ? c.surface : null,
+            border: collapsed
+                ? Border(bottom: BorderSide(color: c.border))
+                : null,
+          ),
+          child: SafeArea(
+            bottom: false,
+            child: SizedBox(
+              height: PageScaffold.barHeight,
+              child: Row(
+                children: [
+                  const SizedBox(width: AppSpacing.xxs),
+                  BackButton(onPressed: _back, color: c.textPrimary),
+                  Expanded(
+                    child: ExcludeSemantics(
+                      child: AnimatedOpacity(
+                        opacity: collapsed ? 1 : 0,
+                        duration: d,
+                        curve: AppMotion.enter,
+                        child: Text(
+                          widget.appBarTitle ?? widget.title,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          textScaler: MediaQuery.textScalerOf(
+                            context,
+                          ).clamp(maxScaleFactor: 1.5),
+                          style: AppTypography.titleM.copyWith(
+                            color: c.textPrimary,
+                          ),
                         ),
                       ),
-                    ],
-                    if (widget.header != null) ...[
-                      const SizedBox(height: AppSpacing.md),
-                      widget.header!,
-                    ],
-                  ],
-                ),
+                    ),
+                  ),
+                  ...actions,
+                  const SizedBox(width: AppSpacing.xxs),
+                ],
               ),
             ),
-            if (widget.slivers != null)
-              ...widget.slivers!
-            else
-              SliverPadding(
-                padding: EdgeInsetsDirectional.symmetric(horizontal: pad),
-                sliver: SliverList.list(children: widget.children),
+          ),
+        );
+      },
+    );
+
+    if (widget.slivers != null) {
+      return Scaffold(
+        body: Column(
+          children: [
+            SafeArea(
+              bottom: false,
+              child: Row(
+                children: [
+                  const SizedBox(width: AppSpacing.xxs),
+                  BackButton(onPressed: _back, color: c.textPrimary),
+                  Expanded(
+                    child: ConstrainedBox(
+                      constraints: const BoxConstraints(
+                        minHeight: PageScaffold.barHeight,
+                      ),
+                      child: Align(
+                        alignment: AlignmentDirectional.centerStart,
+                        heightFactor: 1,
+                        child: title,
+                      ),
+                    ),
+                  ),
+                  ...actions,
+                  const SizedBox(width: AppSpacing.xs),
+                ],
               ),
-            SliverPadding(padding: EdgeInsets.only(bottom: bottom)),
+            ),
+            Expanded(
+              child: CustomScrollView(
+                key: widget.scrollKey,
+                controller: widget.controller,
+                slivers: [
+                  if (widget.subtitle != null || widget.header != null)
+                    SliverPadding(
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                        pad,
+                        0,
+                        pad,
+                        AppSpacing.xs,
+                      ),
+                      sliver: SliverToBoxAdapter(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            if (widget.subtitle != null)
+                              Text(
+                                widget.subtitle!,
+                                style: AppTypography.bodyM.copyWith(
+                                  color: c.textTertiary,
+                                ),
+                              ),
+                            ?widget.header,
+                          ],
+                        ),
+                      ),
+                    ),
+                  ...widget.slivers!,
+                  SliverPadding(padding: EdgeInsets.only(bottom: bottom)),
+                ],
+              ),
+            ),
           ],
         ),
+      );
+    }
+
+    return Scaffold(
+      body: Stack(
+        children: [
+          NotificationListener<ScrollNotification>(
+            onNotification: _onScroll,
+            child: CustomScrollView(
+              key: widget.scrollKey,
+              controller: widget.controller,
+              slivers: [
+                SliverToBoxAdapter(
+                  child: Padding(
+                    padding: EdgeInsets.only(top: insets.top),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Padding(
+                          // Clears the back button and the actions, so the
+                          // title sits on their line.
+                          padding: EdgeInsetsDirectional.only(
+                            start: AppSpacing.minTouchTarget + AppSpacing.xs,
+                            end:
+                                AppSpacing.xs +
+                                (actions.isEmpty
+                                    ? AppSpacing.xs
+                                    : AppSpacing.minTouchTarget *
+                                          actions.length),
+                          ),
+                          child: ConstrainedBox(
+                            constraints: const BoxConstraints(
+                              minHeight: PageScaffold.barHeight,
+                            ),
+                            child: Align(
+                              alignment: AlignmentDirectional.centerStart,
+                              heightFactor: 1,
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 10,
+                                ),
+                                child: title,
+                              ),
+                            ),
+                          ),
+                        ),
+                        if (widget.subtitle != null)
+                          Padding(
+                            padding: EdgeInsetsDirectional.symmetric(
+                              horizontal: pad,
+                            ),
+                            child: Text(
+                              widget.subtitle!,
+                              style: AppTypography.bodyM.copyWith(
+                                color: c.textTertiary,
+                              ),
+                            ),
+                          ),
+                        if (widget.header != null)
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                              pad,
+                              widget.subtitle == null ? 0 : AppSpacing.xs,
+                              pad,
+                              0,
+                            ),
+                            child: widget.header!,
+                          ),
+                        const SizedBox(height: AppSpacing.sm),
+                      ],
+                    ),
+                  ),
+                ),
+                SliverPadding(
+                  padding: EdgeInsetsDirectional.symmetric(horizontal: pad),
+                  sliver: SliverList.list(children: widget.children),
+                ),
+                SliverPadding(padding: EdgeInsets.only(bottom: bottom)),
+              ],
+            ),
+          ),
+          Positioned(top: 0, left: 0, right: 0, child: bar),
+        ],
       ),
     );
   }
@@ -223,63 +359,56 @@ class PlaceholderPanel extends StatelessWidget {
   }
 }
 
-/// Static skeleton rows shown while content loads (no shimmer animation —
-/// cheap, and keeps tests' pumpAndSettle deterministic).
+/// Static skeleton rows shown while content loads (no shimmer animation:
+/// cheap, and it keeps tests' pumpAndSettle deterministic).
 class SkeletonList extends StatelessWidget {
-  const SkeletonList({super.key, this.count = 4});
+  const SkeletonList({super.key, this.count = 6});
 
   final int count;
 
   @override
   Widget build(BuildContext context) {
     final c = context.colors;
-    Widget bar(double widthFactor, double h) => FractionallySizedBox(
-      alignment: AlignmentDirectional.centerStart,
-      widthFactor: widthFactor,
-      child: Container(
-        height: h,
-        decoration: BoxDecoration(
-          color: c.surfaceVariant,
-          borderRadius: AppRadius.xsAll,
-        ),
+    Widget bar(double width, double h) => Container(
+      width: width,
+      height: h,
+      decoration: BoxDecoration(
+        color: c.surfaceVariant,
+        borderRadius: AppRadius.xsAll,
       ),
     );
     return Semantics(
       label: MaterialLocalizations.of(context).refreshIndicatorSemanticLabel,
-      child: Column(
+      child: ListSurface(
         key: const ValueKey('skeleton'),
         children: [
-          for (var i = 0; i < count; i++) ...[
-            AppCard(
-              role: CardRole.flat,
+          for (var i = 0; i < count; i++)
+            Padding(
+              padding: const EdgeInsets.all(AppSpacing.sm),
               child: Row(
                 children: [
                   Container(
-                    width: 44,
-                    height: 44,
+                    width: 32,
+                    height: 38,
                     decoration: BoxDecoration(
                       color: c.surfaceVariant,
-                      borderRadius: AppRadius.smAll,
+                      borderRadius: AppRadius.xsAll,
                     ),
                   ),
-                  const SizedBox(width: AppSpacing.md),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        bar(0.6, 14),
-                        const SizedBox(height: AppSpacing.xs),
-                        bar(0.9, 10),
-                        const SizedBox(height: AppSpacing.xs),
-                        bar(0.35, 10),
-                      ],
-                    ),
+                  const SizedBox(width: AppSpacing.sm),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      bar(120, 14),
+                      const SizedBox(height: AppSpacing.xs),
+                      bar(80, 10),
+                    ],
                   ),
+                  const Spacer(),
+                  bar(48, 18),
                 ],
               ),
             ),
-            const SizedBox(height: AppSpacing.cardGap),
-          ],
         ],
       ),
     );

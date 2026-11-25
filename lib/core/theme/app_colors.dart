@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 
-/// Colour system v2 (emerald-led, true neutrals, warm-gold accent).
+/// Colour system v4, taken from the SIM card: a deep navy body with gold
+/// contacts.
 ///
-/// Light: airy off-white background, white cards, quiet hairlines.
-/// Dark: deep green-black layers with three clear elevation steps
-/// (background → surface → surfaceElevated) and emerald that glows slightly.
+/// * **Navy** carries structure, actions and selection (masthead, buttons,
+///   selected capsules, links).
+/// * **Gold** means a price and nothing else.
+/// * **Green** means "confirmed" and nothing else.
+///
+/// Light: a cool slate page, pure white surfaces, near-black navy text.
+/// Dark: midnight, with three clear elevation steps (background, surface,
+/// surfaceElevated).
 ///
 /// Every text/background pair is asserted ≥ 4.5:1 (UI graphics ≥ 3:1) in
 /// `test/core/theme/contrast_test.dart`, in both modes.
@@ -42,18 +48,15 @@ class AppColors extends ThemeExtension<AppColors> {
     required this.info,
     required this.verified,
     required this.verifiedContainer,
-    required this.restricted,
-    required this.restrictedContainer,
-    required this.unverified,
-    required this.unverifiedContainer,
     required this.capsuleSelected,
     required this.onCapsuleSelected,
     required this.capsuleSurface,
     required this.glassHighlight,
-    required this.heroGradientStart,
-    required this.heroGradientEnd,
-    required this.heroGradientMid,
-    required this.cardTop,
+    required this.masthead,
+    required this.onMasthead,
+    required this.onMastheadMuted,
+    required this.mastheadField,
+    required this.mastheadPrice,
     required this.shadow,
   });
 
@@ -117,16 +120,8 @@ class AppColors extends ThemeExtension<AppColors> {
   final Color verified;
   final Color verifiedContainer;
 
-  /// Owner-only private notes.
-  final Color restricted;
-  final Color restrictedContainer;
-
-  /// Neutral grey on purpose.
-  final Color unverified;
-  final Color unverifiedContainer;
-
   /// Selected capsule fill (nav indicator, chips, segmented thumb) and its
-  /// label colour — white on emerald in both modes.
+  /// label colour — white on navy in both modes.
   final Color capsuleSelected;
   final Color onCapsuleSelected;
 
@@ -136,16 +131,16 @@ class AppColors extends ThemeExtension<AppColors> {
   /// 1dp top hairline on faux-glass surfaces.
   final Color glassHighlight;
 
-  /// Static hero gradient (painted once, no animation).
-  final Color heroGradientStart;
-  final Color heroGradientEnd;
+  /// The SIM body: tab masthead and the package price panel.
+  final Color masthead;
+  final Color onMasthead;
+  final Color onMastheadMuted;
 
-  /// Middle stop of the Home hero gradient (softens the falloff).
-  final Color heroGradientMid;
+  /// Search pill and code row sitting on [masthead].
+  final Color mastheadField;
 
-  /// Top stop of raised cards: equals [surfaceElevated] in light; a touch
-  /// lighter in dark so cards read as lit from above (layered, not flat).
-  final Color cardTop;
+  /// Gold price on [masthead] (the SIM contacts).
+  final Color mastheadPrice;
 
   /// Base colour for soft, low-opacity shadows (see AppShadows).
   final Color shadow;
@@ -154,26 +149,26 @@ class AppColors extends ThemeExtension<AppColors> {
 
   static const AppColors light = AppColors(
     brightness: Brightness.light,
-    primary: Color(0xFF047857),
+    primary: Color(0xFF1D3180),
     onPrimary: Color(0xFFFFFFFF),
-    primaryPressed: Color(0xFF065F46),
-    primaryUi: Color(0xFF059669),
-    primaryContainer: Color(0xFFDCF3E8),
-    onPrimaryContainer: Color(0xFF064E3B),
-    accent: Color(0xFFB7811A),
-    accentText: Color(0xFF8A5A00),
-    accentContainer: Color(0xFFFBF1DC),
-    onAccentContainer: Color(0xFF6B4500),
-    background: Color(0xFFF6F8F7),
+    primaryPressed: Color(0xFF131F56),
+    primaryUi: Color(0xFF3D57BD),
+    primaryContainer: Color(0xFFE1E7FA),
+    onPrimaryContainer: Color(0xFF16265F),
+    accent: Color(0xFFB27A12),
+    accentText: Color(0xFF875700),
+    accentContainer: Color(0xFFFBF0D6),
+    onAccentContainer: Color(0xFF664100),
+    background: Color(0xFFE9EDF5),
     surface: Color(0xFFFFFFFF),
-    surfaceVariant: Color(0xFFEEF3F0),
+    surfaceVariant: Color(0xFFEFF2F9),
     surfaceElevated: Color(0xFFFFFFFF),
-    textPrimary: Color(0xFF0B1512),
-    textSecondary: Color(0xFF3F4C47),
-    textTertiary: Color(0xFF57645F),
-    border: Color(0xFFDCE3E0),
-    borderStrong: Color(0xFF7A8782),
-    hairline: Color(0x140D1714), // textPrimary @ 9%
+    textPrimary: Color(0xFF0A1230),
+    textSecondary: Color(0xFF354060),
+    textTertiary: Color(0xFF525C7B),
+    border: Color(0xFFC8D0E2),
+    borderStrong: Color(0xFF6F7A99),
+    hairline: Color(0x1F0A1230),
     warning: Color(0xFFB45309),
     warningContainer: Color(0xFFFDF3E1),
     onWarningContainer: Color(0xFF7A3A06),
@@ -182,45 +177,42 @@ class AppColors extends ThemeExtension<AppColors> {
     errorContainer: Color(0xFFFDECEA),
     onErrorContainer: Color(0xFF8A1C12),
     info: Color(0xFF1D4ED8),
-    verified: Color(0xFF046C4E),
-    verifiedContainer: Color(0xFFE2F5EB),
-    restricted: Color(0xFF6B21A8),
-    restrictedContainer: Color(0xFFF3E8FF),
-    unverified: Color(0xFF4B5563),
-    unverifiedContainer: Color(0xFFF1F3F4),
-    capsuleSelected: Color(0xFF047857),
+    verified: Color(0xFF0B6B45),
+    verifiedContainer: Color(0xFFE0F4E9),
+    capsuleSelected: Color(0xFF1A2C70),
     onCapsuleSelected: Color(0xFFFFFFFF),
     capsuleSurface: Color(0xFFFFFFFF),
     glassHighlight: Color(0xFFFFFFFF),
-    heroGradientStart: Color(0xFFD2F0E2),
-    heroGradientEnd: Color(0xFFF6F8F7), // = background
-    heroGradientMid: Color(0xFFE7F6EE),
-    cardTop: Color(0xFFFFFFFF),
-    shadow: Color(0xFF0B2B22),
+    masthead: Color(0xFF142258),
+    onMasthead: Color(0xFFFFFFFF),
+    onMastheadMuted: Color(0xFFB9C5EE),
+    mastheadField: Color(0xFFFFFFFF),
+    mastheadPrice: Color(0xFFF5CB6E),
+    shadow: Color(0xFF0A1437),
   );
 
   static const AppColors dark = AppColors(
     brightness: Brightness.dark,
-    primary: Color(0xFF3DDBA4),
-    onPrimary: Color(0xFF022C22),
-    primaryPressed: Color(0xFF7BEBC0),
-    primaryUi: Color(0xFF1FBF89),
-    primaryContainer: Color(0xFF0F3A2D),
-    onPrimaryContainer: Color(0xFFA9F3D3),
-    accent: Color(0xFFE7B95A),
-    accentText: Color(0xFFF2C978),
-    accentContainer: Color(0xFF2E2511),
+    primary: Color(0xFFA3B6FF),
+    onPrimary: Color(0xFF0B1440),
+    primaryPressed: Color(0xFFC5D0FF),
+    primaryUi: Color(0xFF7389F0),
+    primaryContainer: Color(0xFF1C2B63),
+    onPrimaryContainer: Color(0xFFD0D9FF),
+    accent: Color(0xFFE3B04B),
+    accentText: Color(0xFFF0C56B),
+    accentContainer: Color(0xFF2C2410),
     onAccentContainer: Color(0xFFF7DA98),
-    background: Color(0xFF070C0A),
-    surface: Color(0xFF0D1613),
-    surfaceVariant: Color(0xFF13201B),
-    surfaceElevated: Color(0xFF172520),
-    textPrimary: Color(0xFFEEF5F2),
-    textSecondary: Color(0xFFB7C6C0),
-    textTertiary: Color(0xFF93A29C),
-    border: Color(0xFF24332D),
-    borderStrong: Color(0xFF5F736A),
-    hairline: Color(0x24A7F3D0), // textPrimary @ 11%
+    background: Color(0xFF060A18),
+    surface: Color(0xFF0C1226),
+    surfaceVariant: Color(0xFF1C2648),
+    surfaceElevated: Color(0xFF121A34),
+    textPrimary: Color(0xFFF0F3FC),
+    textSecondary: Color(0xFFBFC8E3),
+    textTertiary: Color(0xFF98A3C5),
+    border: Color(0xFF2A3559),
+    borderStrong: Color(0xFF6B78A3),
+    hairline: Color(0x24AEBDFF),
     warning: Color(0xFFFBBF24),
     warningContainer: Color(0xFF30240A),
     onWarningContainer: Color(0xFFFCD34D),
@@ -229,20 +221,17 @@ class AppColors extends ThemeExtension<AppColors> {
     errorContainer: Color(0xFF381517),
     onErrorContainer: Color(0xFFFCA5A5),
     info: Color(0xFF7CB4FB),
-    verified: Color(0xFF6EE7B7),
-    verifiedContainer: Color(0xFF0F3A2D),
-    restricted: Color(0xFFC99BFC),
-    restrictedContainer: Color(0xFF2B1A42),
-    unverified: Color(0xFFB8C2BE),
-    unverifiedContainer: Color(0xFF1D2925),
-    capsuleSelected: Color(0xFF047857),
+    verified: Color(0xFF6BDDAA),
+    verifiedContainer: Color(0xFF0E3729),
+    capsuleSelected: Color(0xFF3450BF),
     onCapsuleSelected: Color(0xFFFFFFFF),
-    capsuleSurface: Color(0xFF13201B),
-    glassHighlight: Color(0xFF2A3C34),
-    heroGradientStart: Color(0xFF0F3D2E),
-    heroGradientEnd: Color(0xFF070C0A), // = background
-    heroGradientMid: Color(0xFF0A2219),
-    cardTop: Color(0xFF1C2E27),
+    capsuleSurface: Color(0xFF121A34),
+    glassHighlight: Color(0xFF2A3661),
+    masthead: Color(0xFF0E1735),
+    onMasthead: Color(0xFFF5F7FF),
+    onMastheadMuted: Color(0xFFA7B4DE),
+    mastheadField: Color(0xFF1E2A57),
+    mastheadPrice: Color(0xFFF5CB6E),
     shadow: Color(0xFF000000),
   );
 
@@ -280,18 +269,15 @@ class AppColors extends ThemeExtension<AppColors> {
       info: info,
       verified: verified,
       verifiedContainer: verifiedContainer,
-      restricted: restricted,
-      restrictedContainer: restrictedContainer,
-      unverified: unverified,
-      unverifiedContainer: unverifiedContainer,
       capsuleSelected: capsuleSelected,
       onCapsuleSelected: onCapsuleSelected,
       capsuleSurface: capsuleSurface,
       glassHighlight: glassHighlight,
-      heroGradientStart: heroGradientStart,
-      heroGradientEnd: heroGradientEnd,
-      heroGradientMid: heroGradientMid,
-      cardTop: cardTop,
+      masthead: masthead,
+      onMasthead: onMasthead,
+      onMastheadMuted: onMastheadMuted,
+      mastheadField: mastheadField,
+      mastheadPrice: mastheadPrice,
       shadow: shadow,
     );
   }
@@ -334,18 +320,15 @@ class AppColors extends ThemeExtension<AppColors> {
       info: l(info, other.info),
       verified: l(verified, other.verified),
       verifiedContainer: l(verifiedContainer, other.verifiedContainer),
-      restricted: l(restricted, other.restricted),
-      restrictedContainer: l(restrictedContainer, other.restrictedContainer),
-      unverified: l(unverified, other.unverified),
-      unverifiedContainer: l(unverifiedContainer, other.unverifiedContainer),
       capsuleSelected: l(capsuleSelected, other.capsuleSelected),
       onCapsuleSelected: l(onCapsuleSelected, other.onCapsuleSelected),
       capsuleSurface: l(capsuleSurface, other.capsuleSurface),
       glassHighlight: l(glassHighlight, other.glassHighlight),
-      heroGradientStart: l(heroGradientStart, other.heroGradientStart),
-      heroGradientEnd: l(heroGradientEnd, other.heroGradientEnd),
-      heroGradientMid: l(heroGradientMid, other.heroGradientMid),
-      cardTop: l(cardTop, other.cardTop),
+      masthead: l(masthead, other.masthead),
+      onMasthead: l(onMasthead, other.onMasthead),
+      onMastheadMuted: l(onMastheadMuted, other.onMastheadMuted),
+      mastheadField: l(mastheadField, other.mastheadField),
+      mastheadPrice: l(mastheadPrice, other.mastheadPrice),
       shadow: l(shadow, other.shadow),
     );
   }

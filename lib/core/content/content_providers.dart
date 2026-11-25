@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../user/content_overlay.dart';
 import 'content_loader.dart';
 import 'content_models.dart';
 import 'content_search.dart';
@@ -9,9 +10,9 @@ final contentSourceProvider = Provider<ContentSource>(
   (ref) => const AssetContentSource(),
 );
 
-/// All bundled content, loaded once.
+/// All content (the bundle plus edits made on the device); reloads after an edit.
 final contentProvider = FutureProvider<ContentLibrary>(
-  (ref) => ContentLoader.load(ref.watch(contentSourceProvider)),
+  (ref) => ContentLoader.load(ref.watch(effectiveContentSourceProvider)),
 );
 
 /// Synchronous view: empty library while loading or on error.

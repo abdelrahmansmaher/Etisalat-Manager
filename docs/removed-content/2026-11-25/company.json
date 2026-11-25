@@ -1,0 +1,2824 @@
+{
+  "section": "company",
+  "source_document": "pdf_guide_2026_11",
+  "as_of": "2026-11-23",
+  "items": [
+    {
+      "id": "co-guide-how-to-use",
+      "type": "article",
+      "category_ar": "عن الدليل",
+      "title_ar": "إزاي تستخدم الدليل",
+      "summary_ar": "الدليل مقسم لأقسام حسب القطاع، وفي آخره ملحق مرجع سريع، وكل قسم في آخره قائمة مصادره.",
+      "body_ar": "- الأقسام: الشركة والخدمات الإضافية، باقات الكارت والفاتورة، الإنترنت، محفظة e& cash، الأكواد وأرقام خدمة العملاء، وإجراءات الفرع والحالات والتجوال.\n- في الآخر ملحق مرجع سريع بأهم الأكواد والأرقام في صفحة واحدة تقريبًا تقدر تطبعه.\n- كل قسم في آخره قائمة المصادر اللي اتجمعت منها المعلومات.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "دليل",
+        "استخدام",
+        "guide",
+        "how to"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        5
+      ],
+      "removed_reason": "طريقة استخدام / مقدمة"
+    },
+    {
+      "id": "co-guide-warnings",
+      "type": "rule",
+      "category_ar": "عن الدليل",
+      "title_ar": "تنبيهات مهمة عن الدليل",
+      "summary_ar": "الأسعار والأكواد بتتغير كتير؛ راجع النظام الداخلي أو الموقع الرسمي أو تطبيق My e& قبل ما تأكد أي سعر أو كود.",
+      "body_ar": "- شركات المحمول في مصر رفعت الأسعار أكتر من مرة من 2024، والباقات بتتعدل وبتتلغي وبيتضاف غيرها.\n- أي معلومة مكتوب جنبها (غير مؤكد) معناها لقيناها في مصدر واحد أو مصدر غير رسمي ومحتاجة تتأكد.\n- الدليل مش مستند رسمي من الشركة؛ هو تجميع من المصادر العامة (الموقع الرسمي، الجهاز القومي لتنظيم الاتصالات، والأخبار الموثوقة) بتاريخ نوفمبر 2026.\n- السياسات الداخلية (صلاحيات الموظف، الـ Systems، نماذج الطلبات) بتختلف من فرع شركة لفرع فرانشايز؛ لو فيه تعارض، تعليمات الشركة الداخلية هي اللي تمشي.\n- معلومات قسم الشركة جُمعت من مصادر عامة حتى 22 نوفمبر 2026، والمرجع النهائي هو أنظمة الفرع والنشرات الداخلية.",
+      "facts": [
+        {
+          "label_ar": "تاريخ الدليل",
+          "value": "نوفمبر 2026",
+          "kind": "date"
+        },
+        {
+          "label_ar": "تاريخ جمع معلومات قسم الشركة",
+          "value": "22 نوفمبر 2026",
+          "kind": "date"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "تنبيه",
+        "غير مؤكد",
+        "فرانشايز",
+        "franchise",
+        "تحذير"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        5,
+        6
+      ],
+      "removed_reason": "طريقة استخدام / مقدمة"
+    },
+    {
+      "id": "co-profile-name",
+      "type": "article",
+      "category_ar": "بطاقة تعريف الشركة",
+      "title_ar": "الاسم التجاري الحالي",
+      "title_en": "Trade name",
+      "summary_ar": "e& مصر (إي آند مصر / e& Egypt)، والاسم القانوني القديم \"اتصالات مصر\" (Etisalat Misr).",
+      "facts": [
+        {
+          "label_ar": "الاسم التجاري",
+          "value": "e& مصر (إي آند مصر / e& Egypt)",
+          "kind": "text"
+        },
+        {
+          "label_ar": "الاسم القانوني القديم",
+          "value": "اتصالات مصر (Etisalat Misr)",
+          "kind": "text"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "اسم الشركة",
+        "إي آند",
+        "اتصالات",
+        "etisalat",
+        "e& egypt"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "Wikipedia: Etisalat Misr / e& Egypt",
+          "type": "wikipedia"
+        }
+      ],
+      "pdf_pages": [
+        6
+      ],
+      "removed_reason": "معلومة عن الشركة مش لازمة على الكاونتر"
+    },
+    {
+      "id": "co-profile-launch",
+      "type": "article",
+      "category_ar": "بطاقة تعريف الشركة",
+      "title_ar": "بدء التشغيل",
+      "summary_ar": "بدأت التشغيل سنة 2007، وجمعت مليون مشترك في أول 50 يوم.",
+      "facts": [
+        {
+          "label_ar": "سنة بدء التشغيل",
+          "value": "2007",
+          "kind": "date"
+        },
+        {
+          "label_ar": "المشتركين في أول 50 يوم",
+          "value": "مليون",
+          "kind": "quantity"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "تأسيس",
+        "إمتى بدأت",
+        "launch"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد (ويكيبيديا)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "Wikipedia: Etisalat Misr / e& Egypt",
+          "type": "wikipedia"
+        }
+      ],
+      "pdf_pages": [
+        6
+      ],
+      "removed_reason": "معلومة عن الشركة مش لازمة على الكاونتر"
+    },
+    {
+      "id": "co-profile-license",
+      "type": "article",
+      "category_ar": "بطاقة تعريف الشركة",
+      "title_ar": "الرخصة",
+      "summary_ar": "رخصة المحمول الثالثة في مصر سنة 2006.",
+      "facts": [
+        {
+          "label_ar": "الرخصة",
+          "value": "رخصة المحمول الثالثة في مصر",
+          "kind": "text"
+        },
+        {
+          "label_ar": "سنة الرخصة",
+          "value": "2006",
+          "kind": "date"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "رخصة",
+        "license"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "Wikipedia: Etisalat Misr / e& Egypt",
+          "type": "wikipedia"
+        }
+      ],
+      "pdf_pages": [
+        6
+      ],
+      "removed_reason": "معلومة عن الشركة مش لازمة على الكاونتر"
+    },
+    {
+      "id": "co-profile-prefix",
+      "type": "article",
+      "category_ar": "بطاقة تعريف الشركة",
+      "title_ar": "بادئة الأرقام",
+      "summary_ar": "بادئة أرقام e& مصر هي 011.",
+      "facts": [
+        {
+          "label_ar": "البادئة",
+          "value": "011",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "011"
+      ],
+      "phones": [],
+      "tags": [
+        "011",
+        "بادئة",
+        "prefix",
+        "رقم اتصالات"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "Wikipedia: Telephone numbers in Egypt",
+          "type": "wikipedia"
+        }
+      ],
+      "pdf_pages": [
+        6
+      ],
+      "removed_reason": "مكرر: البادئة في num-network-prefixes"
+    },
+    {
+      "id": "co-profile-ownership",
+      "type": "article",
+      "category_ar": "بطاقة تعريف الشركة",
+      "title_ar": "المجموعة الأم ونسب الملكية",
+      "summary_ar": "مجموعة e& الإماراتية (مجموعة اتصالات سابقًا) تملك حوالي 66%، والهيئة القومية للبريد حوالي 20%، والباقي لمساهمين آخرين.",
+      "facts": [
+        {
+          "label_ar": "مجموعة e& الإماراتية",
+          "value": "66",
+          "kind": "percent",
+          "unit": "% تقريبًا"
+        },
+        {
+          "label_ar": "الهيئة القومية للبريد (من خلال \"البريد للاستثمار\")",
+          "value": "20",
+          "kind": "percent",
+          "unit": "% تقريبًا"
+        },
+        {
+          "label_ar": "الباقي",
+          "value": "مساهمين آخرين",
+          "kind": "text"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "ملكية",
+        "مساهمين",
+        "البريد",
+        "الإمارات",
+        "ownership"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "النسب من ويكيبيديا وممكن تكون قديمة (غير مؤكد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "Wikipedia: Etisalat Misr / e& Egypt",
+          "type": "wikipedia"
+        }
+      ],
+      "pdf_pages": [
+        6
+      ],
+      "removed_reason": "معلومة عن الشركة مش لازمة على الكاونتر"
+    },
+    {
+      "id": "co-profile-ceo",
+      "type": "article",
+      "category_ar": "بطاقة تعريف الشركة",
+      "title_ar": "الرئيس التنفيذي",
+      "summary_ar": "م. حازم متولي (Hazem Metwally)، مذكور كرئيس تنفيذي في يونيو 2025 وفبراير 2026.",
+      "facts": [
+        {
+          "label_ar": "الرئيس التنفيذي",
+          "value": "م. حازم متولي (Hazem Metwally)",
+          "kind": "text"
+        },
+        {
+          "label_ar": "مذكور في",
+          "value": "يونيو 2025 وفبراير 2026",
+          "kind": "date"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "CEO",
+        "رئيس الشركة",
+        "حازم متولي"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد حتى فبراير 2026",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "اليوم السابع: رئيس إي آند والترددات الجديدة (7 فبراير 2026)",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        6
+      ],
+      "removed_reason": "معلومة عن الشركة مش لازمة على الكاونتر"
+    },
+    {
+      "id": "co-profile-executives",
+      "type": "article",
+      "category_ar": "بطاقة تعريف الشركة",
+      "title_ar": "مسؤولين آخرين في الأخبار",
+      "summary_ar": "سامر مراد (Chief Consumer Officer)، وأحمد يحيى (الرئيس التنفيذي لقطاع التكنولوجيا المالية والتطبيقات الرقمية، e& money).",
+      "facts": [
+        {
+          "label_ar": "Chief Consumer Officer",
+          "value": "سامر مراد",
+          "kind": "text"
+        },
+        {
+          "label_ar": "الرئيس التنفيذي لقطاع التكنولوجيا المالية والتطبيقات الرقمية (e& money)",
+          "value": "أحمد يحيى",
+          "kind": "text"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "مديرين",
+        "إدارة",
+        "executives"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد (أخبار 2025-2026)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        6
+      ],
+      "removed_reason": "معلومة عن الشركة مش لازمة على الكاونتر"
+    },
+    {
+      "id": "co-profile-subscribers",
+      "type": "article",
+      "category_ar": "بطاقة تعريف الشركة",
+      "title_ar": "عدد المشتركين",
+      "summary_ar": "43.4 مليون مشترك (الربع الأول 2026)، بزيادة 11.2% عن السنة اللي قبلها، و4.4 مليون مشترك جديد في 12 شهر.",
+      "facts": [
+        {
+          "label_ar": "عدد المشتركين (الربع الأول 2026)",
+          "value": "43.4",
+          "kind": "quantity",
+          "unit": "مليون"
+        },
+        {
+          "label_ar": "الزيادة السنوية",
+          "value": "11.2",
+          "kind": "percent",
+          "unit": "%"
+        },
+        {
+          "label_ar": "مشتركين جدد في 12 شهر",
+          "value": "4.4",
+          "kind": "quantity",
+          "unit": "مليون"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "مشتركين",
+        "subscribers",
+        "عملاء"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد (تقرير نتائج مجموعة e&)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "e& Group: Earnings Release Q1 2026 (بيانات e& مصر)",
+          "type": "official_site"
+        }
+      ],
+      "pdf_pages": [
+        6
+      ],
+      "removed_reason": "مشتركين / إيرادات / حصة سوقية"
+    },
+    {
+      "id": "co-profile-revenue",
+      "type": "article",
+      "category_ar": "بطاقة تعريف الشركة",
+      "title_ar": "إيرادات الربع الأول 2026",
+      "summary_ar": "1,267 مليون درهم إماراتي (+24.2%).",
+      "facts": [
+        {
+          "label_ar": "الإيرادات",
+          "value": "1,267",
+          "kind": "price",
+          "unit": "مليون درهم إماراتي"
+        },
+        {
+          "label_ar": "النمو",
+          "value": "+24.2",
+          "kind": "percent",
+          "unit": "%"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "إيرادات",
+        "revenue",
+        "أرباح"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "e& Group: Earnings Release Q1 2026 (بيانات e& مصر)",
+          "type": "official_site"
+        }
+      ],
+      "pdf_pages": [
+        6
+      ],
+      "removed_reason": "مشتركين / إيرادات / حصة سوقية"
+    },
+    {
+      "id": "co-market-size",
+      "type": "article",
+      "category_ar": "بطاقة تعريف الشركة",
+      "title_ar": "حجم سوق المحمول في مصر",
+      "summary_ar": "حوالي 125 مليون اشتراك (الربع الأول 2026)، وحوالي 126.9 مليون (مايو 2026).",
+      "facts": [
+        {
+          "label_ar": "الربع الأول 2026",
+          "value": "125",
+          "kind": "quantity",
+          "unit": "مليون اشتراك تقريبًا"
+        },
+        {
+          "label_ar": "مايو 2026",
+          "value": "126.9",
+          "kind": "quantity",
+          "unit": "مليون اشتراك تقريبًا"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "سوق",
+        "اشتراكات",
+        "market"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "Ahram Online: Mobile subscriptions in Egypt Q1 2026 ومايو 2026",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        6
+      ],
+      "removed_reason": "مشتركين / إيرادات / حصة سوقية"
+    },
+    {
+      "id": "co-brand-history",
+      "type": "article",
+      "category_ar": "تاريخ العلامة التجارية",
+      "title_ar": "تاريخ العلامة التجارية (اسمكم اتغير ليه؟)",
+      "summary_ar": "من \"اتصالات مصر\" 2007 إلى \"e& مصر\"، وإعلان المجموعة الأم في الإمارات الرجوع لاسم etisalat في 6 أكتوبر 2026 من غير أي تغيير للشركة في مصر.",
+      "body_ar": "- 2007: انطلاق \"اتصالات مصر\" على بادئة 011.\n- فبراير 2022: مجموعة اتصالات الأم في الإمارات غيرت اسمها لـ e&.\n- يونيو 2022: اتصالات مصر بقت \"اتصالات من e&\" (e& Etisalat by)، والهوية الجديدة اتعممت على الفروع في الأيام اللي بعدها. مصر تاني أكبر سوق للمجموعة بعد الإمارات.\n- 2023 تقريبًا: الاسم التجاري المستخدم بقى \"e& مصر\" — التاريخ بالظبط (غير مؤكد).\n- 6 أكتوبر 2026: المجموعة الأم في الإمارات أعلنت الرجوع لاسم \"etisalat\" بمناسبة مرور 50 سنة على تأسيسها. مفيش أي تغيير اسم اتعلن للشركة في مصر وقت النشر، وهي لسه شغالة باسم e& مصر، ومفيش أي تغيير في الباقات أو الأرقام أو العقود أو الفواتير.",
+      "facts": [
+        {
+          "label_ar": "انطلاق اتصالات مصر",
+          "value": "2007",
+          "kind": "date"
+        },
+        {
+          "label_ar": "المجموعة الأم تغير اسمها لـ e&",
+          "value": "فبراير 2022",
+          "kind": "date"
+        },
+        {
+          "label_ar": "اتصالات من e&",
+          "value": "يونيو 2022",
+          "kind": "date"
+        },
+        {
+          "label_ar": "e& مصر",
+          "value": "2023 تقريبًا (غير مؤكد)",
+          "kind": "date"
+        },
+        {
+          "label_ar": "المجموعة الأم ترجع لاسم etisalat",
+          "value": "6 أكتوبر 2026",
+          "kind": "date"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "اسمكم اتغير",
+        "إي آند",
+        "etisalat",
+        "اتصالات من إي آند",
+        "rebrand",
+        "الاسم الجديد"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "كل الأحداث مؤكدة ما عدا تاريخ التحول لاسم \"e& مصر\" (2023 تقريبًا) — التاريخ بالظبط (غير مؤكد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "Business Today Egypt: Etisalat Egypt rebrands to \"e& Etisalat by\" (يونيو 2022)",
+          "type": "press"
+        },
+        {
+          "name": "The National: e& revives original Etisalat branding (6 أكتوبر 2026)",
+          "type": "press"
+        },
+        {
+          "name": "Khaleej Times: UAE's Etisalat marks 50 years, returns to founding brand name",
+          "type": "press"
+        },
+        {
+          "name": "tbreak: e& changes name back to Etisalat (مفيش تغيير للشركة في مصر)",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        6,
+        7
+      ],
+      "removed_reason": "تاريخ"
+    },
+    {
+      "id": "co-brand-reply",
+      "type": "faq",
+      "category_ar": "تاريخ العلامة التجارية",
+      "title_ar": "رد مقترح: العميل بيسأل عن تغيير الاسم",
+      "summary_ar": "\"الشركة هي نفسها والرقم 011 زي ما هو. اللي اتغير هو الاسم التجاري بس عشان يتماشى مع المجموعة الأم...\"",
+      "body_ar": "رد مقترح على العميل: الشركة هي نفسها والرقم 011 زي ما هو. اللي اتغير هو الاسم التجاري بس عشان يتماشى مع المجموعة الأم، وأي خبر عن رجوع اسم اتصالات يخص الشركة الأم في الإمارات ومش مأثر على خطك أو باقتك.",
+      "facts": [
+        {
+          "label_ar": "البادئة",
+          "value": "011",
+          "kind": "code"
+        }
+      ],
+      "codes": [
+        "011"
+      ],
+      "phones": [],
+      "tags": [
+        "رد على العميل",
+        "اسمكم اتغير ليه",
+        "الاسم رجع اتصالات"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        7
+      ],
+      "related": [
+        "co-brand-history"
+      ],
+      "removed_reason": "البند فضل في التطبيق بعد التنضيف. اتشالت جملة رجوع اسم اتصالات (ص 7 وص 50 مختلفين)"
+    },
+    {
+      "id": "co-network-4g",
+      "type": "article",
+      "category_ar": "الشبكة 4G / 5G",
+      "title_ar": "شبكة 4G",
+      "summary_ar": "e& كانت أول شركة تقدم 3.5G و4G من غير ما العميل يغير الشريحة (حسب ويكيبيديا)، وسنة إطلاق 4G في مصر هي 2017 (غير مؤكد).",
+      "facts": [
+        {
+          "label_ar": "سنة إطلاق 4G في مصر",
+          "value": "2017",
+          "kind": "date"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "4G",
+        "فورجي",
+        "LTE",
+        "شبكة"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "Wikipedia: Etisalat Misr / e& Egypt",
+          "type": "wikipedia"
+        }
+      ],
+      "pdf_pages": [
+        7
+      ],
+      "removed_reason": "معلومة شبكة / منافسين مش لازمة على الكاونتر"
+    },
+    {
+      "id": "co-network-5g-license",
+      "type": "article",
+      "category_ar": "الشبكة 4G / 5G",
+      "title_ar": "رخصة 5G",
+      "summary_ar": "WE أخدت أول رخصة 5G في يناير 2024 بـ 150 مليون دولار، وفودافون وأورنج وe& وقعوا اتفاقيات الرخص في أكتوبر 2024.",
+      "body_ar": "إجمالي حصيلة الحكومة من رخص 5G للأربع شركات حوالي 675 مليون دولار. قيمة رخصة e& لوحدها (غير مؤكد).",
+      "facts": [
+        {
+          "label_ar": "أول رخصة 5G (WE)",
+          "value": "يناير 2024",
+          "kind": "date"
+        },
+        {
+          "label_ar": "قيمة رخصة WE",
+          "value": "150",
+          "kind": "price",
+          "unit": "مليون دولار"
+        },
+        {
+          "label_ar": "توقيع فودافون وأورنج وe&",
+          "value": "أكتوبر 2024",
+          "kind": "date"
+        },
+        {
+          "label_ar": "إجمالي حصيلة رخص 5G",
+          "value": "675",
+          "kind": "price",
+          "unit": "مليون دولار تقريبًا"
+        },
+        {
+          "label_ar": "قيمة رخصة e& لوحدها",
+          "value": "(غير مؤكد)",
+          "kind": "text"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "5G",
+        "فايف جي",
+        "رخصة",
+        "license"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "قيمة رخصة e& لوحدها (غير مؤكد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "Techpoint Africa: Egypt's Vodafone, Orange and e& 5G licences (أكتوبر 2024)",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        7
+      ],
+      "removed_reason": "معلومة شبكة / منافسين مش لازمة على الكاونتر"
+    },
+    {
+      "id": "co-network-spectrum-2026",
+      "type": "article",
+      "category_ar": "الشبكة 4G / 5G",
+      "title_ar": "ترددات إضافية 2026",
+      "summary_ar": "في فبراير 2026 وقعت e& خطة الترددات الجديدة الممتدة لحد 2039، وفي 2026 اتفق الجهاز مع الشركات على تخصيص 410 ميجاهرتز إضافية قيمتها حوالي 3.4 مليار دولار.",
+      "facts": [
+        {
+          "label_ar": "توقيع خطة الترددات",
+          "value": "فبراير 2026",
+          "kind": "date"
+        },
+        {
+          "label_ar": "الخطة ممتدة لحد",
+          "value": "2039",
+          "kind": "date"
+        },
+        {
+          "label_ar": "ترددات إضافية",
+          "value": "410",
+          "kind": "quantity",
+          "unit": "ميجاهرتز"
+        },
+        {
+          "label_ar": "القيمة",
+          "value": "3.4",
+          "kind": "price",
+          "unit": "مليار دولار تقريبًا"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "ترددات",
+        "spectrum",
+        "الجهاز القومي"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "اليوم السابع: رئيس إي آند والترددات الجديدة (7 فبراير 2026)",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        7
+      ],
+      "removed_reason": "معلومة شبكة / منافسين مش لازمة على الكاونتر"
+    },
+    {
+      "id": "co-network-quality",
+      "type": "article",
+      "category_ar": "الشبكة 4G / 5G",
+      "title_ar": "جودة الشبكة (Opensignal)",
+      "summary_ar": "في الربع التاني 2026 كانت e& الأولى على كل مؤشرات تجربة 5G الخمسة، بس نسبة إتاحة 5G عندها 31.4% مقابل 46% لفودافون.",
+      "facts": [
+        {
+          "label_ar": "الفترة",
+          "value": "الربع التاني 2026",
+          "kind": "date"
+        },
+        {
+          "label_ar": "نسبة إتاحة 5G عند e&",
+          "value": "31.4",
+          "kind": "percent",
+          "unit": "%"
+        },
+        {
+          "label_ar": "نسبة إتاحة 5G عند فودافون",
+          "value": "46",
+          "kind": "percent",
+          "unit": "%"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "جودة",
+        "Opensignal",
+        "5G",
+        "تغطية"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "Opensignal: Egypt at the convergence crossroads (سبتمبر 2026)",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        7
+      ],
+      "removed_reason": "معلومة شبكة / منافسين مش لازمة على الكاونتر"
+    },
+    {
+      "id": "co-network-coverage",
+      "type": "article",
+      "category_ar": "الشبكة 4G / 5G",
+      "title_ar": "التغطية الجغرافية",
+      "summary_ar": "خريطة التغطية التفصيلية (غير مؤكد)، راجع خريطة التغطية الداخلية.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "تغطية",
+        "شبكة ضعيفة",
+        "coverage",
+        "خريطة"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        7
+      ],
+      "removed_reason": "معلومة شبكة / منافسين مش لازمة على الكاونتر"
+    },
+    {
+      "id": "co-app-my-e",
+      "type": "service",
+      "category_ar": "تطبيق My e&",
+      "title_ar": "تطبيق My e& (ماي إي آند)",
+      "title_en": "My e& app",
+      "summary_ar": "اسمه في المتجر \"EG - e& My\" (كان اسمه قبل كده \"My Etisalat\")، الناشر Etisalat Egypt، وآخر إصدار لقيناه 37.4.0 (9 نوفمبر).",
+      "body_ar": "الخدمات حسب وصف المتجر:\n- متابعة الرصيد والاستهلاك — مؤكد\n- الشحن ودفع الفواتير — مؤكد\n- استبدال العروض والهدايا والمزايا — مؤكد\n- التسوق أونلاين والخدمات البنكية — مؤكد\n- شحن كارت الكهرباء بالـ NFC — من الإصدار 35.0.0\n- الرقابة الأبوية (حجب المواقع غير المناسبة) — من الإصدار 35.1.0\n- الاشتراك في الباقات وإدارتها — من الطبيعي إنها موجودة، بس الخطوات بالتفصيل (غير مؤكد)\n\nالمزايا: الاستعلام عن الرصيد، الشحن، دفع الفواتير، استبدال العروض والهدايا والمزايا، التسوق والخدمات البنكية أونلاين، شحن كارت الكهرباء بالـ NFC (من الإصدار 35.0.0)، الرقابة الأبوية Parental Control (من الإصدار 35.1.0). التحديث وصفه بإنه \"كل الخدمات في مكان واحد\".",
+      "facts": [
+        {
+          "label_ar": "الاسم في المتجر",
+          "value": "EG - e& My",
+          "kind": "text"
+        },
+        {
+          "label_ar": "الاسم القديم",
+          "value": "My Etisalat",
+          "kind": "text"
+        },
+        {
+          "label_ar": "الناشر",
+          "value": "Etisalat Egypt",
+          "kind": "text"
+        },
+        {
+          "label_ar": "آخر إصدار",
+          "value": "37.4.0 (9 نوفمبر)",
+          "kind": "text"
+        },
+        {
+          "label_ar": "شحن كارت الكهرباء بالـ NFC",
+          "value": "من الإصدار 35.0.0",
+          "kind": "text"
+        },
+        {
+          "label_ar": "الرقابة الأبوية",
+          "value": "من الإصدار 35.1.0",
+          "kind": "text"
+        },
+        {
+          "label_ar": "خطوات الاشتراك في الباقات من التطبيق",
+          "value": "(غير مؤكد)",
+          "kind": "text"
+        },
+        {
+          "label_ar": "الاسم على App Store",
+          "value": "My etisalat",
+          "kind": "text"
+        },
+        {
+          "label_ar": "المطوّر",
+          "value": "Etisalat Egypt",
+          "kind": "text"
+        },
+        {
+          "label_ar": "حقوق النشر",
+          "value": "e& Egypt",
+          "kind": "text"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "ماي اتصالات",
+        "my etisalat",
+        "أبلكيشن",
+        "app",
+        "تطبيق",
+        "NFC",
+        "كارت الكهرباء",
+        "رقابة أبوية",
+        "My e&",
+        "My etisalat"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "خدمات التطبيق مؤكدة من المتجر، ما عدا خطوات الاشتراك في الباقات وإدارتها بالتفصيل (غير مؤكد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "App Store: My e& - EG",
+          "type": "app_store"
+        },
+        {
+          "name": "App Store: My etisalat",
+          "url": "https://apps.apple.com/us/app/my-e-eg/id558287646",
+          "type": "app_store"
+        }
+      ],
+      "pdf_pages": [
+        7,
+        8,
+        54
+      ],
+      "removed_reason": "البند فضل في التطبيق بعد التنضيف. اتشال: خطوات الاشتراك في الباقات (غير مؤكد ص 8)، واسم المتجر (ص 7 وص 54 مختلفين) ورقم الإصدار"
+    },
+    {
+      "id": "co-wallet-overview",
+      "type": "service",
+      "category_ar": "تطبيق My e&",
+      "title_ar": "المحفظة الإلكترونية e& money",
+      "title_en": "e& money",
+      "summary_ar": "اسمها الحالي e& money (كان اسمها \"اتصالات كاش\" ثم \"e& cash\")، وليها تطبيق منفصل اسمه \"EG - e& money\".",
+      "body_ar": "- حوالي 13.1 مليون محفظة مسجلة في النصف الأول 2026، وده حوالي 23% من محافظ السوق.\n- حصتها حوالي 20% من عدد المعاملات وحوالي 14% من قيمتها.\n- اعتمدت رسوم ثابتة موحدة لبعض الخدمات بدل النسبة المئوية.\n- فيها تحويل دولي فوري.\n- كود المحفظة ورسوم التحويل الحالية (غير مؤكد)، راجع النشرة الداخلية.",
+      "facts": [
+        {
+          "label_ar": "المحافظ المسجلة (النصف الأول 2026)",
+          "value": "13.1",
+          "kind": "quantity",
+          "unit": "مليون تقريبًا"
+        },
+        {
+          "label_ar": "الحصة من محافظ السوق",
+          "value": "23",
+          "kind": "percent",
+          "unit": "% تقريبًا"
+        },
+        {
+          "label_ar": "الحصة من عدد المعاملات",
+          "value": "20",
+          "kind": "percent",
+          "unit": "% تقريبًا"
+        },
+        {
+          "label_ar": "الحصة من قيمة المعاملات",
+          "value": "14",
+          "kind": "percent",
+          "unit": "% تقريبًا"
+        },
+        {
+          "label_ar": "كود المحفظة ورسوم التحويل",
+          "value": "(غير مؤكد)",
+          "kind": "text"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "اتصالات كاش",
+        "e& cash",
+        "إي آند موني",
+        "wallet",
+        "تحويل دولي"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "الأرقام مؤكدة، لكن كود المحفظة ورسوم التحويل الحالية (غير مؤكد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "المال: إي آند مصر 13.1 مليون محفظة e& money (أكتوبر 2026)",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        8
+      ],
+      "removed_reason": "مشتركين / إيرادات / حصة سوقية"
+    },
+    {
+      "id": "co-loyalty-segments",
+      "type": "article",
+      "category_ar": "برنامج الولاء والنقاط",
+      "title_ar": "شرائح العملاء المميزة",
+      "summary_ar": "Emerald (إيميرالد) للعملاء ذوي القيمة العالية، وHekaya (حكاية) للشباب وكثيفي استخدام الموبايل، وفيه كمان أنظمة \"Demagh Tanya\" (دماغ تانية) و\"Akwa Coins\".",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "إيميرالد",
+        "emerald",
+        "حكاية",
+        "hekaya",
+        "دماغ تانية",
+        "أقوى كوينز",
+        "akwa coins"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد (بيانات شراكات Shahid وTOD)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "Zawya: e& Egypt and MBC Group Shahid partnership",
+          "type": "press"
+        },
+        {
+          "name": "MEA Tech Watch: e& Egypt and TOD partnership (نوفمبر 2025)",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        8
+      ],
+      "removed_reason": "معلومة عن الشركة مش لازمة على الكاونتر"
+    },
+    {
+      "id": "co-loyalty-points-code",
+      "type": "unverified",
+      "category_ar": "برنامج الولاء والنقاط",
+      "title_ar": "كود الاستعلام عن النقاط أو استبدالها بـ USSD",
+      "summary_ar": "(غير مؤكد)، لم نجد كود رسمي حديث.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "نقاط",
+        "كود النقاط",
+        "points"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد)، لم نجد كود رسمي حديث",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        8
+      ],
+      "removed_reason": "غير مؤكد في الدليل"
+    },
+    {
+      "id": "co-loyalty-earn-rate",
+      "type": "unverified",
+      "category_ar": "برنامج الولاء والنقاط",
+      "title_ar": "معدل كسب النقاط",
+      "summary_ar": "معدل كسب النقاط (كل كام جنيه = كام نقطة) (غير مؤكد).",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "نقاط",
+        "كسب النقاط",
+        "points"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        8
+      ],
+      "removed_reason": "غير مؤكد في الدليل"
+    },
+    {
+      "id": "co-callertune-ivr-cancel",
+      "type": "code",
+      "category_ar": "كول تون (Caller Tune)",
+      "title_ar": "إلغاء كول تون من خلال الرد الآلي",
+      "summary_ar": "الاتصال بـ 1500 ثم اختيار اللغة وبعدها إدارة الاشتراكات.",
+      "facts": [
+        {
+          "label_ar": "رقم الرد الآلي",
+          "value": "1500",
+          "kind": "phone"
+        }
+      ],
+      "codes": [],
+      "phones": [
+        "1500"
+      ],
+      "tags": [
+        "كول تون",
+        "1500",
+        "رد آلي"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "مصدر غير رسمي (غير مؤكد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "أموالي تك: دليل إلغاء الكول تون 2026 (مصدر غير رسمي)",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        9
+      ],
+      "removed_reason": "غير مؤكد في الدليل"
+    },
+    {
+      "id": "co-callertune-price",
+      "type": "unverified",
+      "category_ar": "كول تون (Caller Tune)",
+      "title_ar": "السعر الشهري وسعر النغمة",
+      "summary_ar": "بيقولوا إنه بين 3 و10 جنيه في الشهر غير سعر النغمة نفسها (غير مؤكد).",
+      "facts": [
+        {
+          "label_ar": "السعر الشهري",
+          "value": "بين 3 و10",
+          "kind": "price",
+          "unit": "ج"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "سعر كول تون",
+        "caller tune price"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        9
+      ],
+      "removed_reason": "غير مؤكد في الدليل"
+    },
+    {
+      "id": "co-callertune-provider",
+      "type": "article",
+      "category_ar": "كول تون (Caller Tune)",
+      "title_ar": "مزوّد منصة كول تون",
+      "summary_ar": "Comviva (شراكة مع اتصالات مصر لخدمة CRBT).",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "Comviva",
+        "CRBT",
+        "كول تون"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "معلومة تاريخية",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        9
+      ],
+      "removed_reason": "معلومة عن الشركة مش لازمة على الكاونتر"
+    },
+    {
+      "id": "co-content-shahid",
+      "type": "service",
+      "category_ar": "خدمات المحتوى والترفيه والشراكات",
+      "title_ar": "Shahid (MBC)",
+      "summary_ar": "شراكة حصرية اتعلنت في يونيو 2025: مكتبة Shahid كاملة، ومتاحة بس من خلال باقات e& مصر، مدمجة مع Emerald وVDSL وHekaya ودماغ تانية وe& Cash وAkwa Coins.",
+      "body_ar": "المحتوى: أعمال أصلية، أفلام عربي، قنوات مباشرة HD، رياضة، أطفال، تركي، أكتر من 40 قناة FAST.",
+      "facts": [
+        {
+          "label_ar": "تاريخ الإعلان",
+          "value": "يونيو 2025",
+          "kind": "date"
+        },
+        {
+          "label_ar": "قنوات FAST",
+          "value": "أكتر من 40",
+          "kind": "quantity"
+        },
+        {
+          "label_ar": "السعر وكود التفعيل",
+          "value": "(غير مؤكد)",
+          "kind": "text"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "شاهد",
+        "shahid",
+        "MBC",
+        "مسلسلات",
+        "أفلام"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "مؤكد. السعر وكود التفعيل (غير مؤكد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "Zawya: e& Egypt and MBC Group Shahid partnership",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        9
+      ],
+      "removed_reason": "البند فضل في التطبيق بعد التنضيف. اتشال السعر وكود التفعيل (غير مؤكد ص 9)"
+    },
+    {
+      "id": "co-content-tod",
+      "type": "service",
+      "category_ar": "خدمات المحتوى والترفيه والشراكات",
+      "title_ar": "TOD (beIN)",
+      "summary_ar": "الشراكة اتجددت للسنة التانية (نوفمبر 2025). عملاء Emerald بياخدوا TOD Total بالـ ecoins، وعملاء Hekaya بياخدوا TOD Mobile.",
+      "body_ar": "المحتوى: كأس الأمم الأفريقية 2025، الدوري الإنجليزي، دوري الأبطال، فورمولا 1، التنس.",
+      "facts": [
+        {
+          "label_ar": "تجديد الشراكة",
+          "value": "نوفمبر 2025",
+          "kind": "date"
+        },
+        {
+          "label_ar": "السعر وطريقة التفعيل",
+          "value": "(غير مؤكد)",
+          "kind": "text"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "تود",
+        "beIN",
+        "بي إن",
+        "ماتشات",
+        "كورة",
+        "football"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "مؤكد. السعر وطريقة التفعيل (غير مؤكد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "MEA Tech Watch: e& Egypt and TOD partnership (نوفمبر 2025)",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        9
+      ],
+      "removed_reason": "البند فضل في التطبيق بعد التنضيف. اتشال السعر وطريقة التفعيل (غير مؤكد ص 9) وكأس الأمم الأفريقية 2025 (خلصت)"
+    },
+    {
+      "id": "co-content-viu",
+      "type": "service",
+      "category_ar": "خدمات المحتوى والترفيه والشراكات",
+      "title_ar": "Viu",
+      "summary_ar": "e& مصر جددت الشراكة الاستراتيجية مع Viu.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "فيو",
+        "viu",
+        "مسلسلات"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "مؤكد (عنوان خبر). التفاصيل (غير مؤكد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "Broadcast Pro ME: e& Egypt renews partnership with Viu",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        9
+      ],
+      "removed_reason": "عنوان خبر بس، والتفاصيل غير مؤكدة (ص 9)"
+    },
+    {
+      "id": "co-content-anghami-watchit",
+      "type": "unverified",
+      "category_ar": "خدمات المحتوى والترفيه والشراكات",
+      "title_ar": "Anghami / Watch It",
+      "summary_ar": "(غير مؤكد)، لم نجد مصدر حديث لباقات e& مصر معاهم.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "أنغامي",
+        "anghami",
+        "watch it",
+        "واتش ات"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        9
+      ],
+      "removed_reason": "غير مؤكد في الدليل"
+    },
+    {
+      "id": "co-content-gaming",
+      "type": "unverified",
+      "category_ar": "خدمات المحتوى والترفيه والشراكات",
+      "title_ar": "باقات الألعاب (Gaming)",
+      "summary_ar": "باقات الألعاب (غير مؤكد).",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "ألعاب",
+        "gaming",
+        "جيمز",
+        "ببجي"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        9
+      ],
+      "removed_reason": "غير مؤكد في الدليل"
+    },
+    {
+      "id": "co-content-sms-subscriptions",
+      "type": "service",
+      "category_ar": "خدمات المحتوى والترفيه والشراكات",
+      "title_ar": "اشتراكات المحتوى بـ SMS (أخبار، ديني، رياضة)",
+      "summary_ar": "بتخضع لقواعد الجهاز، والإلغاء بـ *155#. الأكواد الخاصة بكل خدمة (غير مؤكد).",
+      "facts": [
+        {
+          "label_ar": "كود الإلغاء",
+          "value": "*155#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "الأكواد الخاصة بكل خدمة",
+          "value": "(غير مؤكد)",
+          "kind": "text"
+        }
+      ],
+      "codes": [
+        "*155#"
+      ],
+      "phones": [],
+      "tags": [
+        "رسائل",
+        "SMS",
+        "اشتراكات",
+        "أخبار",
+        "ديني"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "جزئي — الأكواد الخاصة بكل خدمة (غير مؤكد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "NTRA: Know your rights in VAS (الكود الموحد *155#)",
+          "type": "regulator"
+        }
+      ],
+      "pdf_pages": [
+        9
+      ],
+      "related": [
+        "num-vas-155"
+      ],
+      "removed_reason": "أكواد الخدمات غير مؤكدة، والإلغاء بـ *155# موجود في num-vas-155"
+    },
+    {
+      "id": "co-basic-missed-call",
+      "type": "unverified",
+      "category_ar": "خدمات أساسية تانية",
+      "title_ar": "Missed Call (مكالمات فائتة)",
+      "summary_ar": "(غير مؤكد).",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "مكالمات فائتة",
+        "missed call"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        10
+      ],
+      "removed_reason": "غير مؤكد في الدليل"
+    },
+    {
+      "id": "co-basic-sms-bundles",
+      "type": "unverified",
+      "category_ar": "خدمات أساسية تانية",
+      "title_ar": "باقات SMS",
+      "summary_ar": "(غير مؤكد).",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "رسائل",
+        "SMS"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        10
+      ],
+      "removed_reason": "غير مؤكد في الدليل"
+    },
+    {
+      "id": "co-basic-voicemail",
+      "type": "unverified",
+      "category_ar": "خدمات أساسية تانية",
+      "title_ar": "البريد الصوتي (Voicemail)",
+      "summary_ar": "(غير مؤكد).",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "بريد صوتي",
+        "voicemail"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        10
+      ],
+      "removed_reason": "غير مؤكد في الدليل"
+    },
+    {
+      "id": "co-basic-call-forward-fees",
+      "type": "unverified",
+      "category_ar": "خدمات أساسية تانية",
+      "title_ar": "رسوم تحويل المكالمات",
+      "summary_ar": "(غير مؤكد).",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "تحويل مكالمات",
+        "call forwarding"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        10
+      ],
+      "removed_reason": "غير مؤكد في الدليل"
+    },
+    {
+      "id": "co-basic-2020-codes-note",
+      "type": "rule",
+      "category_ar": "خدمات أساسية تانية",
+      "title_ar": "تنبيه عن أكواد 2020",
+      "summary_ar": "كل الأكواد المكتوب جنبها \"2020\" مأخوذة من جريدة الوطن نقلًا عن موقع الجهاز القومي لتنظيم الاتصالات (نوفمبر 2020)؛ اتأكد منها على النظام لأنها ممكن تكون اتغيرت.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "أكواد قديمة",
+        "2020"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "أكواد 2020 ممكن تكون اتغيرت",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "الوطن: أكواد شركات المحمول الأربعة نقلًا عن الجهاز (نوفمبر 2020)",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        10
+      ],
+      "removed_reason": "مذكرة عن أكواد 2020 المتشالة"
+    },
+    {
+      "id": "co-number-ownership",
+      "type": "rule",
+      "category_ar": "ملكية الرقم والأرقام المميزة",
+      "title_ar": "التحقق من ملكية الرقم",
+      "summary_ar": "قواعد الجهاز لنقل الأرقام بتشترط إن الرقم يكون مسجل باسم مقدم الطلب برقمه القومي (وجواز السفر للأجانب). إجراءات الفرع الداخلية للتحقق من الملكية (غير مؤكد).",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "ملكية الرقم",
+        "بدل فاقد",
+        "نقل ملكية",
+        "رقم قومي",
+        "باسمي"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "إجراءات الفرع الداخلية للتحقق من الملكية (بدل فاقد، نقل ملكية، وغيرها) (غير مؤكد)، اتبع دليل الإجراءات الداخلي",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "NTRA: Number Portability User Guide Summary",
+          "type": "regulator"
+        }
+      ],
+      "pdf_pages": [
+        10
+      ],
+      "removed_reason": "إجراءات الفرع للتحقق من الملكية غير مؤكدة (ص 10)، وشرط الملكية في النقل موجود في proc-case-4-mnp"
+    },
+    {
+      "id": "co-golden-numbers-mobile",
+      "type": "unverified",
+      "category_ar": "ملكية الرقم والأرقام المميزة",
+      "title_ar": "أرقام المحمول المميزة من e& مصر",
+      "summary_ar": "(غير مؤكد)، لم نجد قائمة أسعار رسمية منشورة. متعتمدش على أسعار السوق المفتوح (مواقع زي OpenSooq)، لأن بيع الأرقام بين الأفراد مش قناة رسمية.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "أرقام مميزة",
+        "رقم مميز",
+        "أرقام ذهبية",
+        "golden number"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        10
+      ],
+      "removed_reason": "غير مؤكد في الدليل"
+    },
+    {
+      "id": "co-golden-short-numbers",
+      "type": "article",
+      "category_ar": "ملكية الرقم والأرقام المميزة",
+      "title_ar": "الأرقام المختصرة المميزة للشركات (3 أو 6 أرقام)",
+      "summary_ar": "الجهاز القومي أطلق منصة مزايدات إلكترونية اسمها \"Auctions\" (auctions.tra.gov.eg)؛ أول مزاد كان في 26 يناير 2026 وخصص أرقام 999 و777 و225 و777000. الأسعار متنشرتش.",
+      "facts": [
+        {
+          "label_ar": "المنصة",
+          "value": "auctions.tra.gov.eg",
+          "kind": "text"
+        },
+        {
+          "label_ar": "أول مزاد",
+          "value": "26 يناير 2026",
+          "kind": "date"
+        },
+        {
+          "label_ar": "أرقام خصصها",
+          "value": "999 و777 و225 و777000",
+          "kind": "text"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "مزاد",
+        "أرقام مختصرة",
+        "auctions",
+        "شركات"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "NTRA: أول مزاد للأرقام المختصرة المميزة (فبراير 2026) وبنوك جيت: منصة Auctions",
+          "type": "regulator"
+        }
+      ],
+      "pdf_pages": [
+        10
+      ],
+      "removed_reason": "معلومة عن الشركة مش لازمة على الكاونتر"
+    },
+    {
+      "id": "co-biz-iot",
+      "type": "service",
+      "category_ar": "خدمات الشركات (Business / Enterprise)",
+      "title_ar": "حلول إنترنت الأشياء (IoT/AIoT)",
+      "summary_ar": "e& مصر شريكة مع منصة Cumulocity في حلول المدن الذكية والبيوت الذكية: تخطيط ونشر وإدارة، وتحليلات لحظية.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "IoT",
+        "إنترنت الأشياء",
+        "مدن ذكية",
+        "Cumulocity"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "Cumulocity Partner Listing: e& Egypt (IoT)",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        10
+      ],
+      "removed_reason": "معلومة عن الشركة مش لازمة على الكاونتر"
+    },
+    {
+      "id": "co-biz-core-network",
+      "type": "article",
+      "category_ar": "خدمات الشركات (Business / Enterprise)",
+      "title_ar": "تحديث الشبكة الأساسية",
+      "summary_ar": "اتفاقية مع Ericsson لمدة 4 سنين لتحديث الشبكة الأساسية وأنظمة الـ IT (2025).",
+      "facts": [
+        {
+          "label_ar": "مدة الاتفاقية",
+          "value": "4 سنين",
+          "kind": "duration"
+        },
+        {
+          "label_ar": "السنة",
+          "value": "2025",
+          "kind": "date"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "Ericsson",
+        "إريكسون",
+        "شبكة"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد (عنوان خبر)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "Ericsson: e& Egypt core network agreement",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        11
+      ],
+      "removed_reason": "معلومة عن الشركة مش لازمة على الكاونتر"
+    },
+    {
+      "id": "co-biz-cx-solutions",
+      "type": "article",
+      "category_ar": "خدمات الشركات (Business / Enterprise)",
+      "title_ar": "خدمة العملاء (e& CX Solutions Egypt)",
+      "summary_ar": "e& مصر حولت شركة تابعة ليها لـ \"e& CX Solutions Egypt\" لحلول تجربة العملاء بالذكاء الاصطناعي (سبتمبر 2025).",
+      "facts": [
+        {
+          "label_ar": "التاريخ",
+          "value": "سبتمبر 2025",
+          "kind": "date"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "CX",
+        "ذكاء اصطناعي",
+        "AI"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد (عنوان خبر)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "Satellite Pro ME: e& Egypt rebrands subsidiary as e& CX Solutions Egypt",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        11
+      ],
+      "removed_reason": "معلومة عن الشركة مش لازمة على الكاونتر"
+    },
+    {
+      "id": "co-biz-fixed-internet",
+      "type": "article",
+      "category_ar": "خدمات الشركات (Business / Enterprise)",
+      "title_ar": "الإنترنت الأرضي",
+      "summary_ar": "حصة e& حوالي 2% من سوق الإنترنت الأرضي، وباقات VDSL موجودة.",
+      "facts": [
+        {
+          "label_ar": "الحصة من الإنترنت الأرضي",
+          "value": "2",
+          "kind": "percent",
+          "unit": "% تقريبًا"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "إنترنت أرضي",
+        "VDSL",
+        "ADSL",
+        "home internet"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "Opensignal: Egypt at the convergence crossroads (سبتمبر 2026)",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        11
+      ],
+      "removed_reason": "مشتركين / إيرادات / حصة سوقية"
+    },
+    {
+      "id": "co-biz-enterprise-lines",
+      "type": "unverified",
+      "category_ar": "خدمات الشركات (Business / Enterprise)",
+      "title_ar": "خطوط الشركات وباقات الأعمال وشرائح M2M",
+      "summary_ar": "(غير مؤكد)، لم نجد أسعار أو شروط منشورة. وجّه العميل لفريق مبيعات الشركات (Enterprise) أو القناة الداخلية المختصة.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "خطوط شركات",
+        "business",
+        "enterprise",
+        "M2M"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        11
+      ],
+      "removed_reason": "غير مؤكد في الدليل"
+    },
+    {
+      "id": "co-competitors-table",
+      "type": "article",
+      "category_ar": "المنافسين ونقل الأرقام",
+      "title_ar": "البادئات وأرقام خدمة العملاء للشركات",
+      "summary_ar": "e& مصر 011 / 333، فودافون 010 / 888، أورنج 012 / 110، WE 015 / 111.",
+      "body_ar": "- e& مصر: البادئة 011، خدمة العملاء 333، من الأرضي 0235346333، الحصة السوقية: خسرت 0.9 نقطة في 19 شهر (الرقم الحالي مش منشور).\n- فودافون مصر: 010، 888، 16888، الحصة 41.5% (الأولى).\n- أورنج مصر: 012، 110، 16110، الحصة 28.6% (الربع الأول 2026، والشركة الوحيدة اللي حصتها بتزيد).\n- WE (المصرية للاتصالات): 015، 111، 19777، الحصة 12.1%.\n\nأرقام خدمة العملاء من جريدة الوطن (2020) نقلًا عن الجهاز القومي، وهي ثابتة من سنين، بس راجعها لو حصل أي تغيير. مهم: بعد نقل الرقم بتفضل البادئة زي ما هي، يعني رقم يبدأ بـ 010 ممكن يكون دلوقتي على شبكة e&؛ فالبادئة مبقتش دليل أكيد على الشبكة.",
+      "facts": [
+        {
+          "label_ar": "e& مصر — البادئة",
+          "value": "011",
+          "kind": "code"
+        },
+        {
+          "label_ar": "e& مصر — خدمة العملاء",
+          "value": "333",
+          "kind": "phone"
+        },
+        {
+          "label_ar": "e& مصر — من الأرضي",
+          "value": "0235346333",
+          "kind": "phone"
+        },
+        {
+          "label_ar": "e& مصر — الحصة السوقية",
+          "value": "خسرت 0.9 نقطة في 19 شهر (الرقم الحالي مش منشور)",
+          "kind": "text"
+        },
+        {
+          "label_ar": "فودافون — البادئة",
+          "value": "010",
+          "kind": "code"
+        },
+        {
+          "label_ar": "فودافون — خدمة العملاء",
+          "value": "888",
+          "kind": "phone"
+        },
+        {
+          "label_ar": "فودافون — من الأرضي",
+          "value": "16888",
+          "kind": "phone"
+        },
+        {
+          "label_ar": "فودافون — الحصة السوقية",
+          "value": "41.5",
+          "kind": "percent",
+          "unit": "% (الأولى)"
+        },
+        {
+          "label_ar": "أورنج — البادئة",
+          "value": "012",
+          "kind": "code"
+        },
+        {
+          "label_ar": "أورنج — خدمة العملاء",
+          "value": "110",
+          "kind": "phone"
+        },
+        {
+          "label_ar": "أورنج — من الأرضي",
+          "value": "16110",
+          "kind": "phone"
+        },
+        {
+          "label_ar": "أورنج — الحصة السوقية",
+          "value": "28.6",
+          "kind": "percent",
+          "unit": "% (الربع الأول 2026)"
+        },
+        {
+          "label_ar": "WE — البادئة",
+          "value": "015",
+          "kind": "code"
+        },
+        {
+          "label_ar": "WE — خدمة العملاء",
+          "value": "111",
+          "kind": "phone"
+        },
+        {
+          "label_ar": "WE — من الأرضي",
+          "value": "19777",
+          "kind": "phone"
+        },
+        {
+          "label_ar": "WE — الحصة السوقية",
+          "value": "12.1",
+          "kind": "percent",
+          "unit": "%"
+        }
+      ],
+      "codes": [
+        "011",
+        "010",
+        "012",
+        "015"
+      ],
+      "phones": [
+        "333",
+        "0235346333",
+        "888",
+        "16888",
+        "110",
+        "16110",
+        "111",
+        "19777"
+      ],
+      "tags": [
+        "فودافون",
+        "vodafone",
+        "أورنج",
+        "orange",
+        "وي",
+        "WE",
+        "منافسين",
+        "010",
+        "012",
+        "015",
+        "حصة سوقية"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "الحصة السوقية من Opensignal 2026؛ أرقام خدمة العملاء من الوطن (2020) نقلًا عن الجهاز",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "Opensignal: Egypt at the convergence crossroads (سبتمبر 2026)",
+          "type": "other"
+        },
+        {
+          "name": "الوطن: أكواد شركات المحمول الأربعة نقلًا عن الجهاز (نوفمبر 2020)",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        11
+      ],
+      "removed_reason": "منافسين"
+    },
+    {
+      "id": "co-mnp-rules",
+      "type": "rule",
+      "category_ar": "المنافسين ونقل الأرقام",
+      "title_ar": "قواعد نقل الرقم (MNP) حسب دليل الجهاز القومي",
+      "title_en": "Mobile Number Portability",
+      "summary_ar": "الرقم لازم يكون باسم العميل ومكمل 4 شهور على الأقل ومفيش مديونية؛ العميل يروح فرع الشركة اللي عايز ينقل ليها، والتفعيل خلال يوم عمل واحد.",
+      "body_ar": "- الأهلية: الرقم مسجل باسم العميل برقمه القومي ساري (وجواز السفر للأجنبي).\n- مدة البقاء على الشبكة: 4 شهور على الأقل مع الشركة اللي العميل خارج منها.\n- المديونيات: لازم يسدد كل فواتير الخط الآجل، وأي مديونية على المحفظة الإلكترونية، وأي مديونية من خدمة سلفة الرصيد.\n- مدة التفعيل: خلال يوم عمل واحد أو \"24 ساعة عمل\"، والتفعيل بيحصل بين 3 و6 الفجر.\n- أسباب الرفض: الرقم مش مسجل باسمه، أو مكملش 4 شهور، أو عليه مديونية.\n- التسوية النهائية: الشركة القديمة بتصدر التسوية خلال 60 يوم، ولو العميل عليه فلوس ومدفعهاش خلال 30 يوم من إخطاره، الشركة الجديدة بتوقف الخدمة نهائيًا.\n- المساعدة: كول سنتر الجهاز 155.",
+      "facts": [
+        {
+          "label_ar": "مدة البقاء على الشبكة",
+          "value": "4 شهور على الأقل",
+          "kind": "duration"
+        },
+        {
+          "label_ar": "مدة التفعيل",
+          "value": "يوم عمل واحد / 24 ساعة عمل",
+          "kind": "duration"
+        },
+        {
+          "label_ar": "وقت التفعيل",
+          "value": "بين 3 و6 الفجر",
+          "kind": "text"
+        },
+        {
+          "label_ar": "إصدار التسوية النهائية",
+          "value": "خلال 60 يوم",
+          "kind": "duration"
+        },
+        {
+          "label_ar": "مهلة السداد بعد الإخطار",
+          "value": "30 يوم",
+          "kind": "duration"
+        },
+        {
+          "label_ar": "كول سنتر الجهاز",
+          "value": "155",
+          "kind": "phone"
+        }
+      ],
+      "steps_ar": [
+        "العميل يروح فرع الشركة اللي عايز ينقل ليها.",
+        "يملا البطاقة ويملا الطلب ويمضي عليه (ومعاه شروط الجهاز).",
+        "ياخد شريحة جديدة مش متفعلة.",
+        "بتوصله رسالة لو الطلب اتقبل."
+      ],
+      "codes": [],
+      "phones": [
+        "155"
+      ],
+      "tags": [
+        "نقل رقم",
+        "نقل الخط",
+        "MNP",
+        "number portability",
+        "أحول من فودافون",
+        "انقل لاتصالات"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "NTRA: Number Portability User Guide Summary",
+          "type": "regulator"
+        }
+      ],
+      "pdf_pages": [
+        11,
+        12
+      ],
+      "removed_reason": "مكرر مع proc-case-4-mnp. (كان فيه غلطة: «يملا البطاقة»، والصح في ص 11 «ومعاه البطاقة»)"
+    },
+    {
+      "id": "co-mnp-fees",
+      "type": "unverified",
+      "category_ar": "المنافسين ونقل الأرقام",
+      "title_ar": "رسوم نقل الرقم والمدة بين كل نقل والتاني ومصير الرصيد",
+      "summary_ar": "(غير مؤكد)، الدليل (دليل الجهاز) مبيذكرهمش.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "رسوم نقل الرقم",
+        "MNP",
+        "الرصيد بعد النقل"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد)، الدليل مبيذكرهمش",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "NTRA: Number Portability User Guide Summary",
+          "type": "regulator"
+        }
+      ],
+      "pdf_pages": [
+        12
+      ],
+      "related": [
+        "co-mnp-rules"
+      ],
+      "removed_reason": "غير مؤكد في الدليل"
+    },
+    {
+      "id": "co-price-2024-11",
+      "type": "article",
+      "category_ar": "تاريخ زيادات الأسعار 2024-2026",
+      "title_ar": "نوفمبر 2024: موافقة مبدئية على زيادة الأسعار",
+      "summary_ar": "الرئيس التنفيذي للجهاز القومي (م. محمد شمروخ) أعلن موافقة مبدئية على زيادة أسعار خدمات الاتصالات في معرض Cairo ICT 2024. السبب ارتفاع تكاليف التشغيل، والنسبة متعلنتش وقتها.",
+      "facts": [
+        {
+          "label_ar": "التاريخ",
+          "value": "نوفمبر 2024",
+          "kind": "date"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "زيادة الأسعار",
+        "غلاء",
+        "شمروخ",
+        "price increase"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "صدى البلد: موافقة الجهاز على زيادة الأسعار (نوفمبر 2024) وبوابة محافظة القاهرة (20 نوفمبر 2024)",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        12
+      ],
+      "removed_reason": "تاريخ"
+    },
+    {
+      "id": "co-price-2024-12",
+      "type": "article",
+      "category_ar": "تاريخ زيادات الأسعار 2024-2026",
+      "title_ar": "ديسمبر 2024: زيادة كروت الفكة وباقات المحمول",
+      "summary_ar": "حوالي 5-6 ديسمبر 2024، زيادة حوالي 30%؛ الرصيد اللي بينزل حوالي 70% من سعر الكارت.",
+      "body_ar": "أمثلة لكروت الفكة: 10 بقى 13 جنيه، و12.5 بقى 16.5، و15 بقى 19.5، و20 بقى 26، و29 بقى 38 (زيادة حوالي 30%).",
+      "facts": [
+        {
+          "label_ar": "التاريخ",
+          "value": "حوالي 5-6 ديسمبر 2024",
+          "kind": "date"
+        },
+        {
+          "label_ar": "كارت 10",
+          "value": "13",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "كارت 12.5",
+          "value": "16.5",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "كارت 15",
+          "value": "19.5",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "كارت 20",
+          "value": "26",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "كارت 29",
+          "value": "38",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "نسبة الزيادة",
+          "value": "30",
+          "kind": "percent",
+          "unit": "% تقريبًا"
+        },
+        {
+          "label_ar": "الرصيد اللي بينزل",
+          "value": "70",
+          "kind": "percent",
+          "unit": "% من سعر الكارت تقريبًا"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "كروت الفكة",
+        "كارت شحن",
+        "سعر الكارت",
+        "زيادة الأسعار"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "أموال الغد: أسعار كروت الفكة الجديدة (6 ديسمبر 2024)",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        12
+      ],
+      "removed_reason": "تاريخ"
+    },
+    {
+      "id": "co-price-2025",
+      "type": "unverified",
+      "category_ar": "تاريخ زيادات الأسعار 2024-2026",
+      "title_ar": "2025: زيادة أسعار؟",
+      "summary_ar": "(غير مؤكد)، لم نجد زيادة رسمية معتمدة من الجهاز في 2025.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "زيادة الأسعار",
+        "2025"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "(غير مؤكد)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        12
+      ],
+      "removed_reason": "غير مؤكد في الدليل"
+    },
+    {
+      "id": "co-price-2026-05",
+      "type": "article",
+      "category_ar": "تاريخ زيادات الأسعار 2024-2026",
+      "title_ar": "6 مايو 2026: زيادة من 9% لـ 15% شاملة الضرائب",
+      "summary_ar": "الجهاز وافق على زيادة من 9% لـ 15% شاملة الضرائب على بعض باقات المحمول والإنترنت الأرضي وكروت الفكة.",
+      "body_ar": "- اللي متغيرش: سعر دقيقة المكالمات (أرضي ومحمول)، وكروت شحن الرصيد (كارت الـ 100 جنيه لسه بيدي 70 جنيه رصيد)، وخدمات المحافظ الإلكترونية.\n- باقات أرخص جديدة (مايو 2026 مع نفس القرار): باقة محمول بـ 5 جنيه (أقل باقة كانت حوالي 13 جنيه)، وباقة إنترنت أرضي بـ 150 جنيه (أقل باقة كانت 210)، ومتاحة عند WE وأورنج وفودافون وe&. وتصفح المواقع الحكومية والتعليمية مجاني حتى بعد ما الباقة تخلص.\n- أسباب الزيادة حسب الجهاز: سعر الصرف، وارتفاع أسعار الكهرباء والوقود (خصوصًا السولار اللي بيشغل محطات المحمول)، وتكاليف التشغيل والعمالة وبناء الشبكات، والشحن الدولي، ومشاكل سلاسل الإمداد وأسعار الشرائح الإلكترونية. كمان استخدام الإنترنت الأرضي زاد 36% في سنة واحدة.",
+      "facts": [
+        {
+          "label_ar": "التاريخ",
+          "value": "6 مايو 2026",
+          "kind": "date"
+        },
+        {
+          "label_ar": "نسبة الزيادة",
+          "value": "من 9% لـ 15% شاملة الضرائب",
+          "kind": "percent"
+        },
+        {
+          "label_ar": "كارت الـ 100 جنيه",
+          "value": "70",
+          "kind": "price",
+          "unit": "ج رصيد"
+        },
+        {
+          "label_ar": "أرخص باقة محمول جديدة",
+          "value": "5",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "أقل باقة محمول قبلها",
+          "value": "13",
+          "kind": "price",
+          "unit": "ج تقريبًا"
+        },
+        {
+          "label_ar": "أرخص باقة إنترنت أرضي جديدة",
+          "value": "150",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "أقل باقة إنترنت أرضي قبلها",
+          "value": "210",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "زيادة استخدام الإنترنت الأرضي",
+          "value": "36",
+          "kind": "percent",
+          "unit": "% في سنة"
+        },
+        {
+          "label_ar": "نسبة الزيادة",
+          "value": "9–15%",
+          "kind": "percent"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "زيادة الأسعار",
+        "الأسعار زادت ليه",
+        "باقة 5 جنيه",
+        "مواقع حكومية مجانا",
+        "price increase 2026",
+        "price increase",
+        "كروت فكة"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "مصراوي: التفاصيل الكاملة لزيادة أسعار باقات المحمول والإنترنت (6 مايو 2026)",
+          "type": "press"
+        },
+        {
+          "name": "Ahram Online: NTRA approves new internet, mobile prices (6 مايو 2026)",
+          "type": "press"
+        },
+        {
+          "name": "المال: تنظيم الاتصالات يوافق على زيادة 9 إلى 15%",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        12,
+        71
+      ],
+      "status_note_ar": "(من البند المدمج proc-rule-price-increase-may-2026: من الملحق (قواعد 2026 المهمة))",
+      "removed_reason": "تاريخ"
+    },
+    {
+      "id": "co-price-reply",
+      "type": "faq",
+      "category_ar": "تاريخ زيادات الأسعار 2024-2026",
+      "title_ar": "رد مقترح: العميل بيشتكي من زيادة الأسعار",
+      "summary_ar": "\"الزيادة دي رسمية ومعتمدة من الجهاز القومي لتنظيم الاتصالات، وطبقتها كل الشركات مش إحنا بس...\"",
+      "body_ar": "رد مقترح على العميل: الزيادة دي رسمية ومعتمدة من الجهاز القومي لتنظيم الاتصالات، وطبقتها كل الشركات مش إحنا بس. سعر الدقيقة وكروت الشحن العادية متغيروش. ولو حضرتك عايز حاجة أوفر، فيه باقة جديدة بـ 5 جنيه، وتصفح المواقع الحكومية والتعليمية مجاني.",
+      "facts": [
+        {
+          "label_ar": "أرخص باقة",
+          "value": "5",
+          "kind": "price",
+          "unit": "ج"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "رد على العميل",
+        "الأسعار غليت",
+        "زيادة"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        12
+      ],
+      "related": [
+        "co-price-2026-05"
+      ],
+      "removed_reason": "البند فضل في التطبيق بعد التنضيف. اتشالت باقة الـ 5 جنيه (محتواها عند e& غير مؤكد ص 26)"
+    },
+    {
+      "id": "co-unverified-rename-date",
+      "type": "unverified",
+      "category_ar": "بنود غير مؤكدة",
+      "title_ar": "بند غير مؤكد 1",
+      "summary_ar": "التاريخ بالظبط لتغيير الاسم من \"اتصالات من e&\" لـ \"e& مصر\" (اتقال إنه 2023).",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "غير مؤكد",
+        "راجع داخليا",
+        "unverified"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "ملخص البنود غير المؤكدة (لازم تتراجع داخليًا)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        12,
+        13
+      ],
+      "removed_reason": "بند غير مؤكد"
+    },
+    {
+      "id": "co-unverified-ownership-license-4g",
+      "type": "unverified",
+      "category_ar": "بنود غير مؤكدة",
+      "title_ar": "بند غير مؤكد 2",
+      "summary_ar": "نسب الملكية الحالية، وسنة رخصة 2006، وسنة إطلاق 4G.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "غير مؤكد",
+        "راجع داخليا",
+        "unverified"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "ملخص البنود غير المؤكدة (لازم تتراجع داخليًا)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        12,
+        13
+      ],
+      "removed_reason": "بند غير مؤكد"
+    },
+    {
+      "id": "co-unverified-content-prices-codes",
+      "type": "unverified",
+      "category_ar": "بنود غير مؤكدة",
+      "title_ar": "بند غير مؤكد 3",
+      "summary_ar": "أسعار كول تون، وأكواد خدمات المحتوى كل واحدة لوحدها، وأسعار وأكواد Shahid وTOD وViu، وباقات Anghami وWatch It والألعاب.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "غير مؤكد",
+        "راجع داخليا",
+        "unverified"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "ملخص البنود غير المؤكدة (لازم تتراجع داخليًا)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        12,
+        13
+      ],
+      "removed_reason": "بند غير مؤكد"
+    },
+    {
+      "id": "co-unverified-basic-services",
+      "type": "unverified",
+      "category_ar": "بنود غير مؤكدة",
+      "title_ar": "بند غير مؤكد 4",
+      "summary_ar": "خدمات Missed Call وباقات SMS والبريد الصوتي ورسوم تحويل المكالمات.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "غير مؤكد",
+        "راجع داخليا",
+        "unverified"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "ملخص البنود غير المؤكدة (لازم تتراجع داخليًا)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        12,
+        13
+      ],
+      "removed_reason": "بند غير مؤكد"
+    },
+    {
+      "id": "co-unverified-loyalty-codes",
+      "type": "unverified",
+      "category_ar": "بنود غير مؤكدة",
+      "title_ar": "بند غير مؤكد 5",
+      "summary_ar": "أكواد كسب نقاط الولاء واستبدالها.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "غير مؤكد",
+        "راجع داخليا",
+        "unverified"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "ملخص البنود غير المؤكدة (لازم تتراجع داخليًا)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        12,
+        13
+      ],
+      "removed_reason": "بند غير مؤكد"
+    },
+    {
+      "id": "co-unverified-golden-prices",
+      "type": "unverified",
+      "category_ar": "بنود غير مؤكدة",
+      "title_ar": "بند غير مؤكد 6",
+      "summary_ar": "أسعار الأرقام المميزة للمحمول وطريقة بيعها.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "غير مؤكد",
+        "راجع داخليا",
+        "unverified"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "ملخص البنود غير المؤكدة (لازم تتراجع داخليًا)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        12,
+        13
+      ],
+      "removed_reason": "بند غير مؤكد"
+    },
+    {
+      "id": "co-unverified-m2m-business",
+      "type": "unverified",
+      "category_ar": "بنود غير مؤكدة",
+      "title_ar": "بند غير مؤكد 7",
+      "summary_ar": "باقات الشركات وشرائح M2M (أسعار وشروط).",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "غير مؤكد",
+        "راجع داخليا",
+        "unverified"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "ملخص البنود غير المؤكدة (لازم تتراجع داخليًا)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        12,
+        13
+      ],
+      "removed_reason": "بند غير مؤكد"
+    },
+    {
+      "id": "co-unverified-mnp-fees",
+      "type": "unverified",
+      "category_ar": "بنود غير مؤكدة",
+      "title_ar": "بند غير مؤكد 8",
+      "summary_ar": "رسوم نقل الرقم والمدة بين كل نقل والتاني.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "غير مؤكد",
+        "راجع داخليا",
+        "unverified"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "ملخص البنود غير المؤكدة (لازم تتراجع داخليًا)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        12,
+        13
+      ],
+      "removed_reason": "بند غير مؤكد"
+    },
+    {
+      "id": "co-unverified-price-2025",
+      "type": "unverified",
+      "category_ar": "بنود غير مؤكدة",
+      "title_ar": "بند غير مؤكد 9",
+      "summary_ar": "هل كان فيه زيادة أسعار رسمية سنة 2025.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "غير مؤكد",
+        "راجع داخليا",
+        "unverified"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "ملخص البنود غير المؤكدة (لازم تتراجع داخليًا)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        12,
+        13
+      ],
+      "removed_reason": "بند غير مؤكد"
+    },
+    {
+      "id": "co-unverified-codes-2020",
+      "type": "unverified",
+      "category_ar": "بنود غير مؤكدة",
+      "title_ar": "بند غير مؤكد 10",
+      "summary_ar": "أكواد 2020 (الرصيد والشحن والتحويل و*166#) ممكن تكون اتغيرت.",
+      "facts": [],
+      "codes": [
+        "*166#"
+      ],
+      "phones": [],
+      "tags": [
+        "غير مؤكد",
+        "راجع داخليا",
+        "unverified"
+      ],
+      "status": "unconfirmed",
+      "status_note_ar": "ملخص البنود غير المؤكدة (لازم تتراجع داخليًا)",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        12,
+        13
+      ],
+      "removed_reason": "بند غير مؤكد"
+    },
+    {
+      "id": "co-sources",
+      "type": "article",
+      "category_ar": "المصادر",
+      "title_ar": "مصادر قسم الشركة والخدمات الإضافية",
+      "summary_ar": "قائمة المصادر الـ 31 اللي اتجمعت منها معلومات القسم.",
+      "body_ar": "- 1. Business Today Egypt: Etisalat Egypt rebrands to \"e& Etisalat by\" (يونيو 2022)\n- 2. The National: e& revives original Etisalat branding (6 أكتوبر 2026)\n- 3. Khaleej Times: UAE's Etisalat marks 50 years, returns to founding brand name\n- 4. tbreak: e& changes name back to Etisalat (مفيش تغيير للشركة في مصر)\n- 5. e& Group: Earnings Release Q1 2026 (بيانات e& مصر)\n- 6. اليوم السابع: رئيس إي آند والترددات الجديدة (7 فبراير 2026)\n- 7. TechAfrica News: e& Egypt rolls out 5G services (يونيو 2025)\n- 8. Techpoint Africa: Egypt's Vodafone, Orange and e& 5G licences (أكتوبر 2024)\n- 9. Opensignal: Egypt at the convergence crossroads (سبتمبر 2026)\n- 10. Ahram Online: Mobile subscriptions in Egypt Q1 2026 ومايو 2026\n- 11. Wikipedia: Etisalat Misr / e& Egypt\n- 12. Wikipedia: Telephone numbers in Egypt\n- 13. App Store: My e& - EG\n- 14. المال: إي آند مصر 13.1 مليون محفظة e& money (أكتوبر 2026)\n- 15. NTRA: Know your rights in VAS (الكود الموحد *155#)\n- 16. NTRA: Rules and conditions for mobile value added services\n- 17. الوطن: أكواد شركات المحمول الأربعة نقلًا عن الجهاز (نوفمبر 2020)\n- 18. أموالي تك: دليل إلغاء الكول تون 2026 (مصدر غير رسمي)\n- 19. Zawya: e& Egypt and MBC Group Shahid partnership\n- 20. MEA Tech Watch: e& Egypt and TOD partnership (نوفمبر 2025)\n- 21. Broadcast Pro ME: e& Egypt renews partnership with Viu\n- 22. NTRA: Number Portability User Guide Summary\n- 23. NTRA: أول مزاد للأرقام المختصرة المميزة (فبراير 2026) وبنوك جيت: منصة Auctions\n- 24. Cumulocity Partner Listing: e& Egypt (IoT)\n- 25. Ericsson: e& Egypt core network agreement\n- 26. Satellite Pro ME: e& Egypt rebrands subsidiary as e& CX Solutions Egypt\n- 27. صدى البلد: موافقة الجهاز على زيادة الأسعار (نوفمبر 2024) وبوابة محافظة القاهرة (20 نوفمبر 2024)\n- 28. أموال الغد: أسعار كروت الفكة الجديدة (6 ديسمبر 2024)\n- 29. مصراوي: التفاصيل الكاملة لزيادة أسعار باقات المحمول والإنترنت (6 مايو 2026)\n- 30. Ahram Online: NTRA approves new internet, mobile prices (6 مايو 2026)\n- 31. المال: تنظيم الاتصالات يوافق على زيادة 9 إلى 15%",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "مصادر",
+        "sources",
+        "مراجع"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "Business Today Egypt: Etisalat Egypt rebrands to \"e& Etisalat by\" (يونيو 2022)",
+          "type": "press"
+        },
+        {
+          "name": "The National: e& revives original Etisalat branding (6 أكتوبر 2026)",
+          "type": "press"
+        },
+        {
+          "name": "Khaleej Times: UAE's Etisalat marks 50 years, returns to founding brand name",
+          "type": "press"
+        },
+        {
+          "name": "tbreak: e& changes name back to Etisalat (مفيش تغيير للشركة في مصر)",
+          "type": "press"
+        },
+        {
+          "name": "e& Group: Earnings Release Q1 2026 (بيانات e& مصر)",
+          "type": "official_site"
+        },
+        {
+          "name": "اليوم السابع: رئيس إي آند والترددات الجديدة (7 فبراير 2026)",
+          "type": "press"
+        },
+        {
+          "name": "TechAfrica News: e& Egypt rolls out 5G services (يونيو 2025)",
+          "type": "press"
+        },
+        {
+          "name": "Techpoint Africa: Egypt's Vodafone, Orange and e& 5G licences (أكتوبر 2024)",
+          "type": "press"
+        },
+        {
+          "name": "Opensignal: Egypt at the convergence crossroads (سبتمبر 2026)",
+          "type": "other"
+        },
+        {
+          "name": "Ahram Online: Mobile subscriptions in Egypt Q1 2026 ومايو 2026",
+          "type": "press"
+        },
+        {
+          "name": "Wikipedia: Etisalat Misr / e& Egypt",
+          "type": "wikipedia"
+        },
+        {
+          "name": "Wikipedia: Telephone numbers in Egypt",
+          "type": "wikipedia"
+        },
+        {
+          "name": "App Store: My e& - EG",
+          "type": "app_store"
+        },
+        {
+          "name": "المال: إي آند مصر 13.1 مليون محفظة e& money (أكتوبر 2026)",
+          "type": "press"
+        },
+        {
+          "name": "NTRA: Know your rights in VAS (الكود الموحد *155#)",
+          "type": "regulator"
+        },
+        {
+          "name": "NTRA: Rules and conditions for mobile value added services",
+          "type": "regulator"
+        },
+        {
+          "name": "الوطن: أكواد شركات المحمول الأربعة نقلًا عن الجهاز (نوفمبر 2020)",
+          "type": "press"
+        },
+        {
+          "name": "أموالي تك: دليل إلغاء الكول تون 2026 (مصدر غير رسمي)",
+          "type": "other"
+        },
+        {
+          "name": "Zawya: e& Egypt and MBC Group Shahid partnership",
+          "type": "press"
+        },
+        {
+          "name": "MEA Tech Watch: e& Egypt and TOD partnership (نوفمبر 2025)",
+          "type": "press"
+        },
+        {
+          "name": "Broadcast Pro ME: e& Egypt renews partnership with Viu",
+          "type": "press"
+        },
+        {
+          "name": "NTRA: Number Portability User Guide Summary",
+          "type": "regulator"
+        },
+        {
+          "name": "NTRA: أول مزاد للأرقام المختصرة المميزة (فبراير 2026) وبنوك جيت: منصة Auctions",
+          "type": "regulator"
+        },
+        {
+          "name": "Cumulocity Partner Listing: e& Egypt (IoT)",
+          "type": "other"
+        },
+        {
+          "name": "Ericsson: e& Egypt core network agreement",
+          "type": "press"
+        },
+        {
+          "name": "Satellite Pro ME: e& Egypt rebrands subsidiary as e& CX Solutions Egypt",
+          "type": "press"
+        },
+        {
+          "name": "صدى البلد: موافقة الجهاز على زيادة الأسعار (نوفمبر 2024) وبوابة محافظة القاهرة (20 نوفمبر 2024)",
+          "type": "press"
+        },
+        {
+          "name": "أموال الغد: أسعار كروت الفكة الجديدة (6 ديسمبر 2024)",
+          "type": "press"
+        },
+        {
+          "name": "مصراوي: التفاصيل الكاملة لزيادة أسعار باقات المحمول والإنترنت (6 مايو 2026)",
+          "type": "press"
+        },
+        {
+          "name": "Ahram Online: NTRA approves new internet, mobile prices (6 مايو 2026)",
+          "type": "press"
+        },
+        {
+          "name": "المال: تنظيم الاتصالات يوافق على زيادة 9 إلى 15%",
+          "type": "press"
+        }
+      ],
+      "pdf_pages": [
+        13,
+        14
+      ],
+      "removed_reason": "قائمة مصادر"
+    }
+  ]
+}

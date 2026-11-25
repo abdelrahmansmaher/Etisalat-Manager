@@ -52,12 +52,10 @@ class _PressableScaleState extends State<PressableScale> {
 /// How a card sits in the hierarchy. Shadow, border, radius and fill encode
 /// the role, so not every surface looks the same:
 enum CardRole {
-  /// The one key answer of a page (price hero, answer card): radius 28,
-  /// lifted shadow, optional tint.
+  /// The one key answer of a page: radius 20, lifted shadow.
   hero,
 
-  /// Primary navigation tiles (Home sections, code row, review entry):
-  /// radius 20, soft shadow; in dark lit from the top.
+  /// Standalone entry: radius 20, soft shadow.
   raised,
 
   /// Repeating content (list rows, tables, settings, sources): radius 16,
@@ -80,7 +78,6 @@ class AppCard extends StatelessWidget {
     this.padding = const EdgeInsetsDirectional.all(AppSpacing.cardPadding),
     this.role = CardRole.raised,
     this.color,
-    this.gradient,
     this.borderColor,
     this.semanticLabel,
   });
@@ -91,13 +88,11 @@ class AppCard extends StatelessWidget {
   final CardRole role;
   final Color? color;
 
-  /// Optional tint painted under the content (hero cards only).
-  final Gradient? gradient;
   final Color? borderColor;
   final String? semanticLabel;
 
   BorderRadius get radius => switch (role) {
-    CardRole.hero => AppRadius.lgAll,
+    CardRole.hero => AppRadius.mdAll,
     CardRole.raised => AppRadius.mdAll,
     CardRole.flat => AppRadius.rowAll,
     CardRole.sunken => AppRadius.smAll,
@@ -109,23 +104,7 @@ class AppCard extends StatelessWidget {
     final fill =
         color ??
         (role == CardRole.sunken ? c.surfaceVariant : c.surfaceElevated);
-    // Dark raised/hero cards are lit from the top (cardTop → fill).
-    final paint =
-        gradient ??
-        (c.isDark && (role == CardRole.raised || role == CardRole.hero)
-            ? LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [c.cardTop, fill],
-              )
-            : null);
-    Widget content = Padding(padding: padding, child: child);
-    if (paint != null) {
-      content = DecoratedBox(
-        decoration: BoxDecoration(gradient: paint),
-        child: content,
-      );
-    }
+    final content = Padding(padding: padding, child: child);
     final shadow = switch (role) {
       CardRole.hero => AppShadows.raised(c),
       CardRole.raised => AppShadows.card(c),
@@ -157,12 +136,8 @@ class AppCard extends StatelessWidget {
   }
 }
 
-/// Tinted rounded-square icon tile — the one container for icons in tiles.
-///
-/// Size, glyph size and radius come from [IconTile]; the tint is a soft
-/// two-stop gradient of [background] → [glow] (emerald by default, the
-/// section tone for section content) with a faint same-hue rim so the tile
-/// stays crisp on dark surfaces.
+/// Rounded-square icon tile. Size, glyph size and radius come from
+/// [IconTile]; navy tint by default.
 class TintedIcon extends StatelessWidget {
   const TintedIcon(
     this.icon, {
@@ -170,34 +145,29 @@ class TintedIcon extends StatelessWidget {
     this.tile = IconTile.md,
     this.color,
     this.background,
-    this.glow,
   });
 
   final IconData icon;
   final IconTile tile;
   final Color? color;
   final Color? background;
-  final Color? glow;
 
   @override
   Widget build(BuildContext context) {
     final c = context.colors;
-    final fg = color ?? c.onPrimaryContainer;
-    final bg = background ?? c.primaryContainer;
     return Container(
       width: tile.box,
       height: tile.box,
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: AlignmentDirectional.topStart,
-          end: AlignmentDirectional.bottomEnd,
-          colors: [bg, glow ?? bg],
-        ),
+        color: background ?? c.primaryContainer,
         borderRadius: BorderRadius.circular(tile.radius),
-        border: Border.all(color: fg.withValues(alpha: c.isDark ? 0.16 : 0.08)),
       ),
-      child: Icon(icon, size: tile.glyph, color: fg),
+      child: Icon(
+        icon,
+        size: tile.glyph,
+        color: color ?? c.onPrimaryContainer,
+      ),
     );
   }
 }
@@ -225,7 +195,7 @@ class SectionHeader extends StatelessWidget {
                 header: true,
                 child: Text(
                   title,
-                  style: theme.textTheme.titleLarge?.copyWith(
+                  style: theme.textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.w700,
                   ),
                 ),

@@ -40,7 +40,6 @@ void main() {
     expect(a.sources[1].url, 'https://example.com/alpha');
     expect(a.pdfPages, [7]);
     expect(a.related, ['pkg-test-beta']);
-    expect(a.leadValue, '11.11 ج');
   });
 
   test('unknown enum values fall back safely', () {
@@ -53,8 +52,9 @@ void main() {
 
   test('library helpers', () {
     expect(lib.latestAsOf, DateTime(2026, 3, 1));
+    final unconfirmed = lib.all.where((i) => i.status != ItemStatus.confirmed);
     expect(
-      lib.needsReview.map((i) => i.id),
+      unconfirmed.map((i) => i.id),
       containsAll([
         'pkg-test-beta',
         'pkg-test-gamma',
@@ -62,7 +62,7 @@ void main() {
         'pkg-test-weird',
       ]),
     );
-    expect(lib.needsReview.any((i) => i.status == ItemStatus.confirmed), false);
+    expect(unconfirmed.any((i) => i.status == ItemStatus.confirmed), false);
     expect(lib.byId('nope'), isNull);
   });
 

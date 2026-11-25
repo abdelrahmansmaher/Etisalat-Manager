@@ -265,10 +265,10 @@ void main() {
     }
   });
 
-  test('doc 04 reference value: primary on white = 5.48:1', () {
+  test('reference value: navy primary on white = 10.66:1', () {
     expect(
       contrast(AppColors.light.primary, Colors.white),
-      closeTo(5.48, 0.02),
+      closeTo(10.66, 0.02),
     );
   });
 

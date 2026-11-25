@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../core/content/content.dart';
 import '../../core/settings/history.dart';
 import '../../core/theme/theme.dart';
 import '../../core/widgets/app_card.dart';
+import '../../core/widgets/list_surface.dart';
 import '../../core/widgets/ltr_text.dart';
 import '../../core/widgets/page_scaffold.dart';
 import '../../core/widgets/prose_text.dart';
-import '../../core/widgets/trust/trust.dart';
+import '../../core/widgets/sim_shape.dart';
 import '../../l10n/app_localizations.dart';
+import '../tools/dial.dart';
+import '../tools/item_actions.dart';
 import 'content_widgets.dart';
 import 'package_facts.dart';
-import 'section_ui.dart';
 
 /// Full item page.
 ///
@@ -72,78 +75,47 @@ class _ItemDetailScreenState extends ConsumerState<ItemDetailScreen> {
     final header = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (item.titleEn != null) ...[
+        if (item.titleEn != null)
           LtrText(
             item.titleEn!,
             style: AppTypography.bodyM.copyWith(color: c.textTertiary),
           ),
-          const SizedBox(height: AppSpacing.sm),
-        ],
-        Wrap(
-          spacing: AppSpacing.xs,
-          runSpacing: AppSpacing.xs,
-          crossAxisAlignment: WrapCrossAlignment.center,
-          children: [
-            ContentStatusPill(item.status, official: item.officiallyVerified),
-            _SectionTag(section: item.section, category: item.category),
-          ],
-        ),
+        const SizedBox(height: AppSpacing.xxs),
+        TrustLine(item),
       ],
     );
 
     final tail = <Widget>[
       if (item.sources.isNotEmpty || item.pdfPages.isNotEmpty) ...[
-        const SizedBox(height: AppSpacing.xl),
-        SectionHeader(l10n.detailSourcesTitle),
-        const SizedBox(height: AppSpacing.sm),
+        GroupHeader(l10n.detailSourcesTitle),
         _Sources(item: item),
       ],
       if (related.isNotEmpty) ...[
-        const SizedBox(height: AppSpacing.xl),
-        SectionHeader(l10n.detailRelatedTitle),
-        const SizedBox(height: AppSpacing.sm),
-        for (final r in related) ...[
-          ContentItemRow(item: r, showSection: r.section != item.section),
-          const SizedBox(height: AppSpacing.cardGap),
-        ],
+        GroupHeader(l10n.detailRelatedTitle),
+        ListSurface(
+          children: [
+            for (final r in related)
+              ContentItemRow(item: r, showSection: r.section != item.section),
+          ],
+        ),
       ],
-      const SizedBox(height: AppSpacing.xl),
     ];
 
     return PageScaffold(
       scrollKey: const ValueKey('item-detail-scroll'),
       title: item.title,
       titleIsProse: true,
-      titleStyle: Theme.of(context).textTheme.headlineLarge,
       header: header,
+      actions: [FavoriteButton(item.id)],
       children: [
+        if (item.status != ItemStatus.confirmed && !item.userEdited)
+          _ReviewNote(item: item),
         ...(isPackage
             ? _packageBody(context, item)
             : _genericBody(context, item)),
         ...tail,
       ],
     );
-  }
-
-  List<Widget> _conflict(BuildContext context, ContentItem item) {
-    final c = context.colors;
-    return [
-      ConflictBanner(
-        key: const ValueKey('conflict-banner'),
-        entries: [
-          for (final f in item.facts.where((f) => f.kind.isLtr).take(4))
-            ConflictEntry(value: f.display, sourceName: f.label),
-        ],
-      ),
-      if (item.statusNote != null) ...[
-        const SizedBox(height: AppSpacing.xs),
-        ProseText(
-          item.statusNote!,
-          style: AppTypography.bodyM.copyWith(color: c.textSecondary),
-        ),
-      ],
-      const SizedBox(height: AppSpacing.md),
-    ];
   }
 
   List<Widget> _packageBody(BuildContext context, ContentItem item) {
@@ -153,7 +125,6 @@ class _ItemDetailScreenState extends ConsumerState<ItemDetailScreen> {
     final code =
         pf.code?.value ?? (item.codes.isNotEmpty ? item.codes.first : null);
     return [
-      if (item.status == ItemStatus.conflict) ..._conflict(context, item),
       // Price + subscription code together: the two things quoted first.
       PackagePriceHero(
         item: item,
@@ -165,107 +136,78 @@ class _ItemDetailScreenState extends ConsumerState<ItemDetailScreen> {
         const SizedBox(height: AppSpacing.sm),
         PackageMetrics(metrics: metrics),
       ],
+      const SizedBox(height: AppSpacing.sm),
+      ItemActions(item),
       if (item.facts.length > 1) ...[
-        const SizedBox(height: AppSpacing.xl),
-        SectionHeader(l10n.packageDetailsTitle),
-        const SizedBox(height: AppSpacing.sm),
+        GroupHeader(l10n.packageDetailsTitle),
         _FactsTable(facts: item.facts),
       ],
-      if (item.body != null) ...[
-        const SizedBox(height: AppSpacing.xl),
-        SectionHeader(l10n.packageNotesTitle),
-        const SizedBox(height: AppSpacing.sm),
-        AppCard(
-          role: CardRole.flat,
-          child: _Body(text: item.body!),
-        ),
-      ],
-      if (item.steps.isNotEmpty) ...[
-        const SizedBox(height: AppSpacing.xl),
-        SectionHeader(l10n.detailStepsTitle),
-        const SizedBox(height: AppSpacing.sm),
-        _StepsChecklist(steps: item.steps),
-      ],
-      if (item.status == ItemStatus.unconfirmed) ...[
-        const SizedBox(height: AppSpacing.xl),
-        UnconfirmedBanner(note: item.statusNote),
-      ],
+      ..._bodyAndSteps(context, item, l10n.packageNotesTitle),
     ];
   }
 
   List<Widget> _genericBody(BuildContext context, ContentItem item) {
     final l10n = AppLocalizations.of(context);
     return [
-      if (item.status == ItemStatus.conflict)
-        ..._conflict(context, item)
-      else if (item.status == ItemStatus.unconfirmed) ...[
-        UnconfirmedBanner(note: item.statusNote),
-        const SizedBox(height: AppSpacing.md),
-      ],
       _AnswerCard(item: item),
+      const SizedBox(height: AppSpacing.sm),
+      ItemActions(item),
       if (item.facts.length > 4) ...[
-        const SizedBox(height: AppSpacing.xl),
-        SectionHeader(l10n.detailFactsTitle),
-        const SizedBox(height: AppSpacing.sm),
+        GroupHeader(l10n.detailFactsTitle),
         _FactsTable(facts: item.facts),
       ],
-      if (item.body != null) ...[
-        const SizedBox(height: AppSpacing.xl),
-        SectionHeader(l10n.detailOverviewTitle),
-        const SizedBox(height: AppSpacing.sm),
-        _Body(text: item.body!),
-      ],
+      ..._bodyAndSteps(context, item, l10n.detailOverviewTitle),
+    ];
+  }
+
+  List<Widget> _bodyAndSteps(
+    BuildContext context,
+    ContentItem item,
+    String bodyTitle,
+  ) {
+    final l10n = AppLocalizations.of(context);
+    return [
       if (item.steps.isNotEmpty) ...[
-        const SizedBox(height: AppSpacing.xl),
-        SectionHeader(l10n.detailStepsTitle),
-        const SizedBox(height: AppSpacing.sm),
+        GroupHeader(l10n.detailStepsTitle),
         _StepsChecklist(steps: item.steps),
+      ],
+      if (item.body != null) ...[
+        GroupHeader(bodyTitle),
+        AppCard(
+          role: CardRole.flat,
+          child: _Body(text: item.body!),
+        ),
       ],
     ];
   }
 }
 
-/// Section icon + "section · category" tag under a detail title.
-class _SectionTag extends StatelessWidget {
-  const _SectionTag({required this.section, required this.category});
+/// Safety note of an item that is not confirmed: nothing is picked for the
+/// customer.
+class _ReviewNote extends StatelessWidget {
+  const _ReviewNote({required this.item});
 
-  final ContentSection section;
-  final String category;
+  final ContentItem item;
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
-    final tone = section.tone(context);
-    final text = category.isEmpty
-        ? section.title(l10n)
-        : '${section.title(l10n)} · $category';
+    final t = context.trustColors;
+    final colors = item.status == ItemStatus.conflict
+        ? t.conflict
+        : t.needsReview;
     return Container(
-      padding: const EdgeInsetsDirectional.fromSTEB(
-        AppSpacing.xs,
-        AppSpacing.xxs + 1,
-        AppSpacing.sm,
-        AppSpacing.xxs + 1,
-      ),
+      key: const ValueKey('review-note'),
+      width: double.infinity,
+      margin: const EdgeInsets.only(bottom: AppSpacing.sm),
+      padding: const EdgeInsets.all(AppSpacing.sm),
       decoration: BoxDecoration(
-        color: tone.container,
-        borderRadius: AppRadius.fullAll,
+        color: colors.container,
+        borderRadius: AppRadius.smAll,
       ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(
-            CategoryIcons.of(section, category),
-            size: AppIconSize.inline,
-            color: tone.foreground,
-          ),
-          const SizedBox(width: AppSpacing.xxs + 2),
-          Flexible(
-            child: Text(
-              text,
-              style: AppTypography.labelS.copyWith(color: tone.foreground),
-            ),
-          ),
-        ],
+      child: ProseText(
+        [?item.statusNote, l10n.unconfirmedBannerBody].join('\n'),
+        style: AppTypography.bodyM.copyWith(color: colors.foreground),
       ),
     );
   }
@@ -275,9 +217,9 @@ class _SectionTag extends StatelessWidget {
 // Package layout
 // ---------------------------------------------------------------------------
 
-/// Price hero: the bundle price very large (tabular, LTR digits) with its
-/// unit, the label it came with, and the tax-basis / recharge line under it.
-/// For a conflicting price no single value is shown (doc 04 §5.4).
+/// The SIM-shaped price panel: navy body, price in gold (tabular, whole),
+/// the tax line and the subscription code. For a conflicting price no single
+/// value is shown.
 class PackagePriceHero extends StatelessWidget {
   const PackagePriceHero({
     super.key,
@@ -290,7 +232,7 @@ class PackagePriceHero extends StatelessWidget {
   final ContentItem item;
   final PackageFacts facts;
 
-  /// Subscription code shown inside the hero (with copy), if any.
+  /// Subscription code shown inside the panel (with copy and dial), if any.
   final String? code;
   final String? codeLabel;
 
@@ -307,20 +249,18 @@ class PackagePriceHero extends StatelessWidget {
       priceBlock = Text(
         l10n.packageConflictPrice,
         key: const ValueKey('package-price-conflict'),
-        style: AppTypography.titleL.copyWith(
-          color: context.trustColors.conflict.foreground,
-        ),
+        style: AppTypography.titleL.copyWith(color: c.onMasthead),
       );
     } else if (price != null && !price.rendersLtr) {
       priceBlock = ProseText(
         price.display,
         key: const ValueKey('package-price'),
-        style: AppTypography.headlineL.copyWith(color: c.textPrimary),
+        style: AppTypography.headlineL.copyWith(color: c.mastheadPrice),
       );
     } else if (price == null) {
       priceBlock = Text(
         l10n.packageNoPrice,
-        style: AppTypography.titleM.copyWith(color: c.textSecondary),
+        style: AppTypography.titleM.copyWith(color: c.onMasthead),
       );
     } else {
       priceBlock = Semantics(
@@ -337,12 +277,14 @@ class PackagePriceHero extends StatelessWidget {
             children: [
               LtrText(
                 price.value,
-                style: AppTypography.priceHero.copyWith(color: c.textPrimary),
+                style: AppTypography.priceHero.copyWith(
+                  color: c.mastheadPrice,
+                ),
               ),
               const SizedBox(width: AppSpacing.xs),
               Text(
                 price.unit ?? l10n.currencyEgp,
-                style: AppTypography.titleL.copyWith(color: c.accentText),
+                style: AppTypography.titleL.copyWith(color: c.mastheadPrice),
               ),
             ],
           ),
@@ -350,37 +292,30 @@ class PackagePriceHero extends StatelessWidget {
       );
     }
 
-    return AppCard(
+    return Container(
       key: const ValueKey('package-hero'),
-      padding: const EdgeInsetsDirectional.all(AppSpacing.lg),
-      role: CardRole.hero,
-      borderColor: c.primary.withValues(alpha: 0.18),
-      gradient: LinearGradient(
-        begin: AlignmentDirectional.topStart,
-        end: AlignmentDirectional.bottomEnd,
-        colors: [c.heroGradientStart, c.surfaceElevated],
+      padding: const EdgeInsetsDirectional.all(AppSpacing.md),
+      decoration: ShapeDecoration(
+        color: c.masthead,
+        shape: SimShape(
+          radius: AppRadius.m,
+          cut: 34,
+          side: c.isDark ? BorderSide(color: c.border) : BorderSide.none,
+        ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              Icon(AppIcons.price, size: AppIconSize.chip, color: c.primary),
-              const SizedBox(width: AppSpacing.xs - 2),
-              Expanded(
-                child: Text(
-                  price?.label ?? l10n.packagePriceLabel,
-                  style: AppTypography.labelL.copyWith(color: c.textSecondary),
-                ),
-              ),
-            ],
+          Padding(
+            // Clear of the cut corner.
+            padding: const EdgeInsetsDirectional.only(end: AppSpacing.xl),
+            child: Text(
+              price?.label ?? l10n.packagePriceLabel,
+              style: AppTypography.labelL.copyWith(color: c.onMastheadMuted),
+            ),
           ),
-          const SizedBox(height: AppSpacing.xs),
           priceBlock,
-          if (recharge != null && !conflict) ...[
-            const SizedBox(height: AppSpacing.sm),
-            _TaxLine(fact: recharge),
-          ],
+          if (recharge != null && !conflict) _TaxLine(fact: recharge),
           if (code != null) ...[
             const SizedBox(height: AppSpacing.sm),
             SubscriptionCodeRow(
@@ -389,12 +324,10 @@ class PackagePriceHero extends StatelessWidget {
             ),
           ],
           if (item.summary.isNotEmpty) ...[
-            const SizedBox(height: AppSpacing.md),
-            Divider(color: c.hairline, height: 1),
-            const SizedBox(height: AppSpacing.md),
+            const SizedBox(height: AppSpacing.sm),
             ProseText(
               item.summary,
-              style: AppTypography.bodyM.copyWith(color: c.textSecondary),
+              style: AppTypography.bodyM.copyWith(color: c.onMastheadMuted),
             ),
           ],
         ],
@@ -411,50 +344,23 @@ class _TaxLine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final c = context.colors;
-    return Container(
+    return Wrap(
       key: const ValueKey('package-tax-line'),
-      padding: const EdgeInsetsDirectional.symmetric(
-        horizontal: AppSpacing.sm,
-        vertical: AppSpacing.xs,
-      ),
-      decoration: BoxDecoration(
-        color: c.surface.withValues(alpha: c.isDark ? 0.5 : 0.75),
-        borderRadius: AppRadius.smAll,
-        border: Border.all(color: c.hairline),
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsetsDirectional.only(top: 2),
-            child: Icon(
-              AppIcons.recharge,
-              size: AppIconSize.inline,
-              color: c.textTertiary,
-            ),
+      spacing: AppSpacing.xs,
+      crossAxisAlignment: WrapCrossAlignment.center,
+      children: [
+        Text(
+          fact.label,
+          style: AppTypography.bodyM.copyWith(color: c.onMastheadMuted),
+        ),
+        _InlineValue(
+          fact: fact,
+          style: AppTypography.titleM.copyWith(
+            color: c.mastheadPrice,
+            fontFeatures: AppTypography.tabular,
           ),
-          const SizedBox(width: AppSpacing.xs),
-          Expanded(
-            child: Wrap(
-              spacing: AppSpacing.xs,
-              crossAxisAlignment: WrapCrossAlignment.center,
-              children: [
-                Text(
-                  fact.label,
-                  style: AppTypography.bodyM.copyWith(color: c.textSecondary),
-                ),
-                _InlineValue(
-                  fact: fact,
-                  style: AppTypography.titleM.copyWith(
-                    color: c.textPrimary,
-                    fontFeatures: AppTypography.tabular,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
@@ -480,7 +386,7 @@ class _InlineValue extends StatelessWidget {
           const SizedBox(width: 3),
           Text(
             fact.unit!,
-            style: AppTypography.labelL.copyWith(color: c.textSecondary),
+            style: AppTypography.labelL.copyWith(color: c.mastheadPrice),
           ),
         ],
       ],
@@ -503,7 +409,7 @@ class PackageMetrics extends StatelessWidget {
     return LayoutBuilder(
       key: const ValueKey('package-metrics'),
       builder: (context, constraints) {
-        const gap = AppSpacing.sm;
+        const gap = AppSpacing.xs;
         final columns = constraints.maxWidth >= 560 ? 3 : 2;
         final w = (constraints.maxWidth - gap * (columns - 1)) / columns;
         return Wrap(
@@ -538,14 +444,29 @@ class _MetricTile extends StatelessWidget {
     final c = context.colors;
     final icon = PackageMetrics.iconFor(role, fact);
     return AppCard(
-      role: CardRole.sunken,
+      role: CardRole.flat,
       key: ValueKey('metric-${role.name}'),
-      padding: const EdgeInsetsDirectional.all(AppSpacing.md - 2),
+      padding: const EdgeInsetsDirectional.symmetric(
+        horizontal: AppSpacing.sm,
+        vertical: AppSpacing.xs + 2,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          TintedIcon(icon, tile: IconTile.sm),
-          const SizedBox(height: AppSpacing.sm),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Icon(icon, size: AppIconSize.inline, color: c.primaryUi),
+              const SizedBox(width: AppSpacing.xxs + 2),
+              Expanded(
+                child: Text(
+                  fact.label,
+                  style: AppTypography.labelS.copyWith(color: c.textTertiary),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 2),
           if (fact.rendersLtr)
             Wrap(
               spacing: 3,
@@ -567,21 +488,16 @@ class _MetricTile extends StatelessWidget {
           else
             ProseText(
               fact.display,
-              style: AppTypography.titleM.copyWith(color: c.textPrimary),
+              style: AppTypography.titleS.copyWith(color: c.textPrimary),
             ),
-          const SizedBox(height: 2),
-          Text(
-            fact.label,
-            style: AppTypography.labelS.copyWith(color: c.textTertiary),
-          ),
         ],
       ),
     );
   }
 }
 
-/// Subscription-code row inside the price hero: big monospace LTR code +
-/// filled copy button (one tap, ≤ 1.5 s confirmation — doc 04 P6).
+/// Subscription-code row inside the price panel: the whole code, large and
+/// left-to-right, with dial and copy.
 class SubscriptionCodeRow extends StatelessWidget {
   const SubscriptionCodeRow({
     super.key,
@@ -596,6 +512,8 @@ class SubscriptionCodeRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final c = context.colors;
+    final fg = c.isDark ? c.onMasthead : c.textPrimary;
+    final muted = c.isDark ? c.onMastheadMuted : c.textSecondary;
     return Container(
       key: const ValueKey('package-code'),
       padding: const EdgeInsetsDirectional.fromSTEB(
@@ -605,36 +523,31 @@ class SubscriptionCodeRow extends StatelessWidget {
         AppSpacing.xs,
       ),
       decoration: BoxDecoration(
-        color: c.surface.withValues(alpha: c.isDark ? 0.5 : 0.75),
+        color: c.mastheadField,
         borderRadius: AppRadius.smAll,
-        border: Border.all(color: c.hairline),
       ),
       child: Row(
         children: [
-          Icon(AppIcons.code, size: AppIconSize.action, color: c.primaryUi),
-          const SizedBox(width: AppSpacing.xs),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  label,
-                  style: AppTypography.labelS.copyWith(color: c.textSecondary),
-                ),
-                // Whole code, always: scales down rather than clipping.
-                FittedBox(
-                  fit: BoxFit.scaleDown,
-                  alignment: AlignmentDirectional.centerStart,
-                  child: LtrText(
-                    code,
-                    style: AppTypography.codeL.copyWith(color: c.textPrimary),
-                    semanticsLabel: CodeText.spell(code, l10n),
-                  ),
+                Text(label, style: AppTypography.labelS.copyWith(color: muted)),
+                CodeValue(
+                  code,
+                  style: AppTypography.codeL.copyWith(color: fg),
                 ),
               ],
             ),
           ),
-          const SizedBox(width: AppSpacing.xs),
+          if (CodeActions.isDialable(code))
+            IconButton(
+              key: const ValueKey('package-code-dial'),
+              tooltip: l10n.callValueSemantics(code),
+              color: fg,
+              icon: const Icon(AppIcons.call, size: AppIconSize.action),
+              onPressed: () => launchDial(context, code),
+            ),
           IconButton.filled(
             key: const ValueKey('package-code-copy'),
             tooltip: l10n.copyValueSemantics(code),
@@ -669,8 +582,7 @@ class _AnswerCard extends StatelessWidget {
 
     return AppCard(
       key: const ValueKey('answer-card'),
-      padding: const EdgeInsetsDirectional.all(AppSpacing.lg),
-      role: CardRole.hero,
+      role: CardRole.flat,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -705,12 +617,7 @@ class _AnswerCard extends StatelessWidget {
           if (facts.isEmpty)
             for (final v in [...item.codes, ...item.phones]) ...[
               const SizedBox(height: AppSpacing.sm),
-              CodeText(
-                v,
-                onCall: item.phones.contains(v)
-                    ? (_) => showCallPlaceholder(context)
-                    : null,
-              ),
+              CodeText(v, onCall: (v) => launchDial(context, v)),
             ],
         ],
       ),
@@ -728,12 +635,10 @@ class _FactValue extends StatelessWidget {
   Widget build(BuildContext context) {
     final c = context.colors;
     switch (fact.kind) {
-      case FactKind.code:
-        return CodeText(fact.value);
-      case FactKind.phone:
+      case FactKind.code || FactKind.phone:
         return CodeText(
           fact.value,
-          onCall: (_) => showCallPlaceholder(context),
+          onCall: (v) => launchDial(context, v),
         );
       case _ when !fact.rendersLtr:
         return ProseText(
@@ -745,7 +650,7 @@ class _FactValue extends StatelessWidget {
       default:
         final style = (large ? AppTypography.price : AppTypography.titleM)
             .copyWith(
-              color: c.textPrimary,
+              color: fact.kind == FactKind.price ? c.accentText : c.textPrimary,
               fontFeatures: AppTypography.tabular,
             );
         return Wrap(
@@ -950,22 +855,45 @@ class _Sources extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           for (final s in item.sources) ...[
-            Align(
-              alignment: AlignmentDirectional.centerStart,
-              child: SourceBadge(sourceName: s.name, type: s.type.trustType),
+            Text(
+              s.name,
+              key: ValueKey('source-${s.name}'),
+              style: AppTypography.bodyM.copyWith(color: c.textSecondary),
             ),
             if (s.url != null)
-              Padding(
-                padding: const EdgeInsetsDirectional.only(
-                  start: AppSpacing.xs,
-                  top: AppSpacing.xxs,
-                ),
-                child: LtrText(
-                  s.url!,
-                  style: AppTypography.labelS.copyWith(color: c.textTertiary),
+              InkWell(
+                onTap: () {
+                  final uri = Uri.tryParse(s.url!);
+                  if (uri != null) {
+                    launchUrl(uri, mode: LaunchMode.externalApplication);
+                  }
+                },
+                borderRadius: AppRadius.xsAll,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 2),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        AppIcons.link,
+                        size: AppIconSize.inline,
+                        color: c.primary,
+                      ),
+                      const SizedBox(width: 4),
+                      Flexible(
+                        child: LtrText(
+                          s.url!,
+                          style: AppTypography.labelS.copyWith(
+                            color: c.primary,
+                            decoration: TextDecoration.underline,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            const SizedBox(height: AppSpacing.sm),
+            const SizedBox(height: AppSpacing.xs),
           ],
           if (item.pdfPages.isNotEmpty)
             Row(

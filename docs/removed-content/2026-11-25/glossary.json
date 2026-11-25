@@ -1,0 +1,116 @@
+{
+  "section": "glossary",
+  "source_document": "pdf_guide_2026_11",
+  "as_of": "2026-11-23",
+  "items": [
+    {
+      "id": "gl-e-and",
+      "type": "glossary",
+      "category_ar": "مسميات لازم تعرفها",
+      "title_ar": "e& (إي آند)",
+      "title_en": "e&",
+      "summary_ar": "الاسم التجاري الجديد لاتصالات مصر من 2023.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "إي آند",
+        "اي اند",
+        "اتصالات",
+        "etisalat"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        5
+      ],
+      "removed_reason": "البند فضل في التطبيق بعد التنضيف. اتشال (من 2023) لأن التاريخ غير مؤكد (ص 7 و12)"
+    },
+    {
+      "id": "gl-caller-tune",
+      "type": "glossary",
+      "category_ar": "مصطلحات من قسم الشركة",
+      "title_ar": "كول تون (Caller Tune)",
+      "title_en": "Caller Tune / CRBT",
+      "summary_ar": "نغمة الانتظار — خدمة قيمة مضافة؛ مزوّد المنصة تاريخيًا Comviva لخدمة CRBT.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "نغمة الانتظار",
+        "كول تون",
+        "CRBT",
+        "رنة"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        9
+      ],
+      "removed_reason": "البند فضل في التطبيق بعد التنضيف. اتشال مزوّد المنصة (معلومة تاريخية ص 9)"
+    },
+    {
+      "id": "gl-m2m",
+      "type": "glossary",
+      "category_ar": "مصطلحات من قسم الشركة",
+      "title_ar": "M2M",
+      "title_en": "Machine to Machine",
+      "summary_ar": "شرائح M2M من خدمات الشركات (Enterprise).",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "شرائح أجهزة",
+        "m2m"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        11
+      ],
+      "removed_reason": "M2M في ص 11 (غير مؤكد) ومش لازم على الكاونتر"
+    },
+    {
+      "id": "gl-iot",
+      "type": "glossary",
+      "category_ar": "مصطلحات من قسم الشركة",
+      "title_ar": "IoT / AIoT",
+      "title_en": "Internet of Things",
+      "summary_ar": "إنترنت الأشياء — حلول المدن الذكية والبيوت الذكية.",
+      "facts": [],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "إنترنت الأشياء",
+        "iot",
+        "مدن ذكية"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        10
+      ],
+      "removed_reason": "مش لازم على الكاونتر"
+    }
+  ]
+}

@@ -4,7 +4,6 @@ import '../router/tab_pager.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_motion.dart';
 import '../theme/app_radius.dart';
-import '../theme/app_shadows.dart';
 import '../theme/app_spacing.dart';
 import '../theme/app_typography.dart';
 import 'app_card.dart';
@@ -12,8 +11,7 @@ import '../theme/app_icons.dart';
 
 /// Capsule (pill) chip — the one navigation/filter shape used everywhere.
 ///
-/// * selected: filled emerald ([AppColors.capsuleSelected]) + white label,
-///   soft glow.
+/// * selected: filled navy ([AppColors.capsuleSelected]) + white label.
 /// * unselected: soft surface ([AppColors.capsuleSurface]) + hairline border.
 ///
 /// Colour changes animate in ~220ms; a press scales it to 0.96.
@@ -83,7 +81,6 @@ class Capsule extends StatelessWidget {
             border: Border.all(
               color: selected ? c.capsuleSelected : c.hairline,
             ),
-            boxShadow: selected ? AppShadows.primaryGlow(c) : null,
           ),
           child: Material(
             type: MaterialType.transparency,
@@ -147,7 +144,6 @@ class CapsuleRow extends StatelessWidget {
         clipBehavior: Clip.none,
         padding: padding,
         child: Padding(
-          // Room for the selected capsule's glow.
           padding: const EdgeInsets.symmetric(vertical: AppSpacing.xxs),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -183,7 +179,7 @@ class CapsuleSegment<T> {
 }
 
 /// Segmented capsule control: equal-width segments inside a soft pill track,
-/// with a filled emerald thumb that slides (220ms) to the selected segment.
+/// with a filled navy thumb that slides (220ms) to the selected segment.
 /// Labels wrap instead of clipping at large text scales.
 class SegmentedCapsule<T> extends StatelessWidget {
   const SegmentedCapsule({
@@ -228,7 +224,6 @@ class SegmentedCapsule<T> extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: c.capsuleSelected,
                         borderRadius: AppRadius.fullAll,
-                        boxShadow: AppShadows.primaryGlow(c),
                       ),
                     ),
                   ),

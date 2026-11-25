@@ -126,6 +126,11 @@ List<String> _strList(Object? v) => v is List
       ]
     : const [];
 
+num? _optNum(Object? v) {
+  if (v is num) return v;
+  return v is String ? num.tryParse(v.replaceAll(',', '').trim()) : null;
+}
+
 class Fact {
   const Fact({
     required this.label,
@@ -165,17 +170,23 @@ class Source {
     required this.name,
     this.url,
     this.type = ContentSourceType.other,
+    this.checkedAt,
   });
 
   factory Source.fromJson(Map<String, dynamic> j) => Source(
     name: _str(j['name']),
     url: _optStr(j['url']),
     type: ContentSourceType.parse(j['type']),
+    checkedAt: _optStr(j['checked_at']),
   );
 
   final String name;
   final String? url;
   final ContentSourceType type;
+
+  /// ISO date on which we opened this page and compared the item with it.
+  /// `null` = the guide merely cites the source; nobody checked it.
+  final String? checkedAt;
 }
 
 class ContentItem {
@@ -198,6 +209,14 @@ class ContentItem {
     this.sources = const [],
     this.pdfPages = const [],
     this.related = const [],
+    this.family,
+    this.priceEgp,
+    this.priceTotalEgp,
+    this.quotaGb,
+    this.quotaMinutes,
+    this.quotaMix,
+    this.validityDays,
+    this.editedAt,
   });
 
   /// Throws [FormatException] when `id` or `title_ar` is missing.
@@ -239,6 +258,14 @@ class ContentItem {
               int.parse('$p'),
       ],
       related: _strList(j['related']),
+      family: _optStr(j['family']),
+      priceEgp: _optNum(j['price_egp']),
+      priceTotalEgp: _optNum(j['price_total_egp']),
+      quotaGb: _optNum(j['quota_gb']),
+      quotaMinutes: _optNum(j['quota_minutes']),
+      quotaMix: _optNum(j['quota_mix']),
+      validityDays: _optNum(j['validity_days']),
+      editedAt: DateTime.tryParse(_str(j['user_edited_at'])),
     );
   }
 
@@ -249,9 +276,42 @@ class ContentItem {
   final String title;
   final String? titleEn;
 
-  /// True when at least one source is the official company website.
-  bool get officiallyVerified =>
-      sources.any((s) => s.type == ContentSourceType.officialSite);
+  // ---- Structured package values (optional, see SCHEMA.md) --------------
+
+  /// Package family shown as a capsule and as the tile colour.
+  final String? family;
+
+  /// Price deducted from the balance / before tax.
+  final num? priceEgp;
+
+  /// What the customer pays or recharges in total.
+  final num? priceTotalEgp;
+  final num? quotaGb;
+  final num? quotaMinutes;
+  final num? quotaMix;
+  final num? validityDays;
+
+  /// When the owner changed this item on the device; null = as bundled.
+  final DateTime? editedAt;
+
+  bool get userEdited => editedAt != null;
+
+  /// Date of the newest check against the official site.
+  DateTime? get verifiedOn {
+    DateTime? best;
+    for (final s in sources) {
+      if (s.type != ContentSourceType.officialSite) continue;
+      final d = DateTime.tryParse(s.checkedAt ?? '');
+      if (d != null && (best == null || d.isAfter(best))) best = d;
+    }
+    return best;
+  }
+
+  /// True only when the item was actually compared with the official site
+  /// ([Source.checkedAt]); a source that is merely cited does not count.
+  bool get officiallyVerified => sources.any(
+    (s) => s.type == ContentSourceType.officialSite && s.checkedAt != null,
+  );
 
   final String summary;
   final String? body;
@@ -265,23 +325,6 @@ class ContentItem {
   final List<Source> sources;
   final List<int> pdfPages;
   final List<String> related;
-
-  bool get isUnverifiedGroup =>
-      type == ItemType.unverified || status != ItemStatus.confirmed;
-
-  /// First code/phone/price worth showing in a list row.
-  String? get leadValue {
-    for (final f in facts) {
-      if (f.kind == FactKind.code ||
-          f.kind == FactKind.phone ||
-          f.kind == FactKind.price) {
-        if (f.value.isNotEmpty) return f.display;
-      }
-    }
-    if (codes.isNotEmpty) return codes.first;
-    if (phones.isNotEmpty) return phones.first;
-    return null;
-  }
 }
 
 /// One parsed section file.
@@ -334,13 +377,6 @@ class ContentLibrary {
     }
     return best;
   }
-
-  /// Every item not confirmed (unconfirmed or conflict), in section order.
-  List<ContentItem> get needsReview => [
-    for (final s in ContentSection.values)
-      for (final i in itemsOf(s))
-        if (i.status != ItemStatus.confirmed) i,
-  ];
 }
 
 /// USSD/MMI codes (`*319#`, `*566*2375#`, `##002#`) embedded in Arabic prose.

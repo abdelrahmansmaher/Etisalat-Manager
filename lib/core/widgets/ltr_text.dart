@@ -8,6 +8,7 @@ import '../theme/app_radius.dart';
 import '../theme/app_spacing.dart';
 import '../theme/app_typography.dart';
 import '../theme/app_icons.dart';
+import 'prose_text.dart';
 
 /// Unicode bidi isolation helpers (doc 04 §2.9).
 abstract final class Bidi {
@@ -66,32 +67,82 @@ class LtrText extends StatelessWidget {
   }
 }
 
-/// A copyable USSD code / phone number / ID rendered LTR in monospace.
-///
-/// * Copy button (one tap) puts the exact [value] on the clipboard and shows a
-///   short snackbar (≤ 1.5 s); [onCopied] lets callers log it.
-/// * [onCall] shows a call button — wiring to a dialer (url_launcher) is the
-///   caller's job; this widget only exposes the hook.
-/// * Screen readers spell the code ("star, 9, 9, 9, hash").
-class CodeText extends StatelessWidget {
-  const CodeText(
-    this.value, {
-    super.key,
-    this.copyable = true,
-    this.onCopied,
-    this.onCall,
-    this.style,
-    this.dense = false,
-  });
+/// A code or phone number, whole and strictly left-to-right: it scales down
+/// when space is short, it is never cut. Screen readers spell it.
+class CodeValue extends StatelessWidget {
+  const CodeValue(this.value, {super.key, this.style});
 
   final String value;
-  final bool copyable;
-  final ValueChanged<String>? onCopied;
-  final ValueChanged<String>? onCall;
   final TextStyle? style;
 
-  /// Text only, no chip background (for inline use).
-  final bool dense;
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    return Semantics(
+      label: CodeText.spell(value, l10n),
+      excludeSemantics: true,
+      child: Align(
+        alignment: AlignmentDirectional.centerStart,
+        widthFactor: 1,
+        heightFactor: 1,
+        child: CodeRuns(
+          value,
+          style: AppTypography.code
+              .copyWith(color: context.colors.textPrimary)
+              .merge(style),
+        ),
+      ),
+    );
+  }
+}
+
+/// Dial / copy buttons of a code or phone number.
+class CodeActions extends StatelessWidget {
+  const CodeActions(this.value, {super.key, this.onCall});
+
+  final String value;
+
+  /// Shown only for values a phone can dial (see [isDialable]).
+  final ValueChanged<String>? onCall;
+
+  static final RegExp _dialable = RegExp(r'^[0-9*#+\s\-]+$');
+
+  /// Digits and `* # +` only: `*556*رقم الكارت#` must be completed first.
+  static bool isDialable(String value) => _dialable.hasMatch(value.trim());
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final c = context.colors;
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        if (onCall != null && isDialable(value))
+          IconButton(
+            key: ValueKey('dial-$value'),
+            icon: const Icon(AppIcons.call, size: AppIconSize.action),
+            color: c.primary,
+            tooltip: l10n.callValueSemantics(value),
+            onPressed: () => onCall!(value),
+          ),
+        IconButton(
+          key: ValueKey('copy-$value'),
+          icon: const Icon(AppIcons.copy, size: AppIconSize.action),
+          color: c.primary,
+          tooltip: l10n.copyValueSemantics(value),
+          onPressed: () => CodeText.copyToClipboard(context, value),
+        ),
+      ],
+    );
+  }
+}
+
+/// A code with its copy (and dial) buttons, on a soft chip.
+class CodeText extends StatelessWidget {
+  const CodeText(this.value, {super.key, this.onCall});
+
+  final String value;
+  final ValueChanged<String>? onCall;
 
   /// Spoken form of a code for TalkBack, character by character.
   static String spell(String value, AppLocalizations l10n) {
@@ -111,11 +162,6 @@ class CodeText extends StatelessWidget {
       }
     }
     return parts.join(' ');
-  }
-
-  Future<void> _copy(BuildContext context, AppLocalizations l10n) async {
-    onCopied?.call(value);
-    await copyToClipboard(context, value);
   }
 
   /// Copies [value] exactly and confirms with a short snackbar (<= 1.5 s).
@@ -138,52 +184,25 @@ class CodeText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context);
-    final c = context.colors;
-    final textStyle = (style ?? AppTypography.code).copyWith(
-      color: style?.color ?? c.textPrimary,
-    );
-
-    final text = LtrText(
-      value,
-      style: textStyle,
-      semanticsLabel: spell(value, l10n),
-    );
-
-    if (dense && !copyable && onCall == null) return text;
-
     return Row(
-      mainAxisSize: MainAxisSize.min,
       children: [
-        Flexible(
-          child: dense
-              ? text
-              : Container(
-                  padding: const EdgeInsetsDirectional.symmetric(
-                    horizontal: AppSpacing.sm,
-                    vertical: AppSpacing.xs,
-                  ),
-                  decoration: BoxDecoration(
-                    color: c.surfaceVariant,
-                    borderRadius: AppRadius.smAll,
-                  ),
-                  child: text,
-                ),
+        Expanded(
+          child: Align(
+            alignment: AlignmentDirectional.centerStart,
+            child: Container(
+              padding: const EdgeInsetsDirectional.symmetric(
+                horizontal: AppSpacing.sm,
+                vertical: AppSpacing.xs,
+              ),
+              decoration: BoxDecoration(
+                color: context.colors.surfaceVariant,
+                borderRadius: AppRadius.smAll,
+              ),
+              child: CodeValue(value),
+            ),
+          ),
         ),
-        if (copyable)
-          IconButton(
-            icon: const Icon(AppIcons.copy, size: AppIconSize.action),
-            tooltip: l10n.copyValueSemantics(value),
-            onPressed: () => _copy(context, l10n),
-          ),
-        if (onCall != null) ...[
-          const SizedBox(width: AppSpacing.xs),
-          IconButton(
-            icon: const Icon(AppIcons.call, size: AppIconSize.action),
-            tooltip: l10n.callAction,
-            onPressed: () => onCall!(value),
-          ),
-        ],
+        CodeActions(value, onCall: onCall),
       ],
     );
   }

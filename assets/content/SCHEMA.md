@@ -81,3 +81,6 @@ The PDF's own "unconfirmed items to check internally" lists go in the section fi
 2. Never drop the PDF's "(غير مؤكد)" marks.
 3. Arabic wording may be lightly cleaned, but meaning must not change.
 4. Don't copy long paragraphs verbatim — summarize prose; keep tables/facts exact.
+
+### `sources[].checked_at`
+ISO date, only on `official_site` sources whose page was really opened and compared with the item. The app shows "مؤكد من الموقع الرسمي" only when it is present; a source that is merely cited must not have it.

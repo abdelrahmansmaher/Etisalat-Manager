@@ -31,9 +31,9 @@ void main() {
 
   test('nav: outlined when inactive, filled when active', () {
     expect(AppIcons.navHome, isNot(AppIcons.navHomeActive));
-    expect(AppIcons.navBrowse, isNot(AppIcons.navBrowseActive));
-    expect(AppIcons.navTraining, isNot(AppIcons.navTrainingActive));
-    expect(AppIcons.navMe, isNot(AppIcons.navMeActive));
+    expect(AppIcons.navPackages, isNot(AppIcons.navPackagesActive));
+    expect(AppIcons.navCodes, isNot(AppIcons.navCodesActive));
+    expect(AppIcons.navMore, isNot(AppIcons.navMoreActive));
   });
 
   test('tile sizes share one radius rule and grow monotonically', () {

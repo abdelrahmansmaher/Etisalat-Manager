@@ -2,6 +2,8 @@ import 'package:flutter/widgets.dart';
 
 import '../../core/theme/app_icons.dart';
 import '../../core/content/content_models.dart';
+import '../../core/widgets/trust/trust_format.dart';
+import '../../l10n/app_localizations.dart';
 
 /// What a fact means inside a package page.
 enum PackageFactRole {
@@ -265,5 +267,153 @@ abstract final class FactIcons {
       FactKind.date => AppIcons.date,
       FactKind.text => AppIcons.note,
     };
+  }
+}
+
+/// First number in [value] (`1,250 ج بدل 2,500` → 1250), or `null`.
+double? firstNumber(String value) {
+  final m = RegExp(r'\d[\d,]*(?:\.\d+)?').firstMatch(value);
+  return m == null ? null : double.tryParse(m[0]!.replaceAll(',', ''));
+}
+
+/// Price used for ordering a package (and shown in lists), or `null` when it
+/// has no price. The structured `price_egp` wins over the facts.
+double? packageSortPrice(ContentItem item) {
+  final typed = item.priceEgp ?? item.priceTotalEgp;
+  if (typed != null) return typed.toDouble();
+  final facts = PackageFacts.of(item);
+  for (final f in [facts.price, facts.rechargePrice]) {
+    final n = f == null ? null : firstNumber(f.value);
+    if (n != null) return n;
+  }
+  return null;
+}
+
+/// Data quota in GB used for ordering; mixes and minutes only break ties
+/// when a package has no data. `null` = no quota known.
+double? packageSortQuota(ContentItem item) {
+  if (item.quotaGb != null) return item.quotaGb!.toDouble();
+  final facts = PackageFacts.of(item);
+  for (final f in facts.quotas) {
+    final text = PackageFacts.normalizeLabel(
+      '${f.label} ${f.value} ${f.unit ?? ''}',
+    );
+    final n = firstNumber(f.value);
+    if (n == null) continue;
+    if (text.contains('جيجا') || text.contains('gb')) return n;
+    if (text.contains('ميجا') || text.contains('mb')) return n / 1000;
+  }
+  final mix = item.quotaMix ?? item.quotaMinutes;
+  if (mix != null) return mix / 1000000;
+  return null;
+}
+
+enum PackageSort { priceUp, priceDown, quota }
+
+/// Orders the packages among [items]. Packages come first; those without a
+/// price (or quota) follow, then every other item in its original order.
+List<ContentItem> sortedPackages(
+  List<ContentItem> items, [
+  PackageSort sort = PackageSort.priceUp,
+]) {
+  final keyed = <(double, int, ContentItem)>[];
+  final unkeyed = <ContentItem>[];
+  final rest = <ContentItem>[];
+  for (final (n, i) in items.indexed) {
+    if (i.type != ItemType.package) {
+      rest.add(i);
+      continue;
+    }
+    final k = sort == PackageSort.quota
+        ? packageSortQuota(i)
+        : packageSortPrice(i);
+    k == null ? unkeyed.add(i) : keyed.add((k, n, i));
+  }
+  final sign = sort == PackageSort.priceUp ? 1 : -1;
+  keyed.sort((a, b) {
+    final c = a.$1.compareTo(b.$1) * sign;
+    return c != 0 ? c : a.$2.compareTo(b.$2);
+  });
+  return [for (final e in keyed) e.$3, ...unkeyed, ...rest];
+}
+
+/// From cheapest to most expensive (the default everywhere).
+List<ContentItem> sortedByPrice(List<ContentItem> items) =>
+    sortedPackages(items);
+
+/// Everything a package list row shows, as ready text.
+class PackageLine {
+  const PackageLine._({this.price, this.quota, this.validity, this.code});
+
+  factory PackageLine.of(ContentItem item, AppLocalizations l10n) {
+    final facts = PackageFacts.of(item);
+    final price = packageSortPrice(item);
+
+    String? validity;
+    final days = item.validityDays;
+    final v = facts.validity;
+    if (days != null && days == days.roundToDouble()) {
+      validity = l10n.daysCount(days.toInt());
+    } else if (v != null && !v.isBlank) {
+      validity = _noBrackets(v.display);
+    }
+
+    final quota = <String>[
+      if (item.quotaMix case final q?) l10n.quotaMix(TrustFormat.amount(q)),
+      if (item.quotaGb case final q?)
+        q < 1
+            ? l10n.quotaMb(TrustFormat.amount(q * 1000))
+            : l10n.quotaGb(TrustFormat.amount(q)),
+      if (item.quotaMinutes case final q?)
+        l10n.quotaMinutes(TrustFormat.amount(q)),
+    ];
+    if (quota.isEmpty) {
+      for (final f in facts.quotas) {
+        if (f.isBlank || quota.length == 2) continue;
+        quota.add(_quotaText(f));
+      }
+    }
+
+    final code = facts.code?.value ?? item.codes.firstOrNull;
+    return PackageLine._(
+      price: item.status == ItemStatus.conflict || price == null
+          ? null
+          : TrustFormat.amount(price),
+      quota: quota.isEmpty ? null : quota.join('، '),
+      validity: validity,
+      code: code,
+    );
+  }
+
+  /// Amount without its unit; `null` = no single price to quote.
+  final String? price;
+  final String? quota;
+  final String? validity;
+  final String? code;
+
+  /// "quota · validity".
+  String get details => [?quota, ?validity].join(' · ');
+
+  static final RegExp _brackets = RegExp(r'\s*\([^)]*\)');
+
+  static String _noBrackets(String s) {
+    final out = s.replaceAll(_brackets, '').split(' — ').first.trim();
+    return out.isEmpty ? s : out;
+  }
+
+  /// `1,900` under "الحصة (ميكس)" reads "1,900 ميكس"; a value that already
+  /// carries words or a unit is kept.
+  static String _quotaText(Fact f) {
+    final value = _noBrackets(f.display);
+    final bracket = RegExp(r'\(([^)]*)\)').firstMatch(f.label)?.group(1);
+    if (bracket == null || f.unit != null) {
+      // Same unit several times (app hours): say what each one is for.
+      return f.unit == 'دقيقة' && bracket != null && !bracket.contains('دقا')
+          ? '$value $bracket'
+          : value;
+    }
+    return RegExp('[A-Za-z\u0600-\u06FF]').hasMatch(value)
+        ? value
+        : '$value $bracket';
   }
 }

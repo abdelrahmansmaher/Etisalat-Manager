@@ -23,7 +23,7 @@ class TabPagerScope extends InheritedWidget {
       controller != oldWidget.controller;
 }
 
-/// Swipeable container for the 5 tab branches (used as
+/// Swipeable container for the tab branches (used as
 /// `StatefulShellRoute(navigatorContainerBuilder: ...)`).
 ///
 /// * Horizontal swipe changes tab. [PageView] follows [Directionality], so in

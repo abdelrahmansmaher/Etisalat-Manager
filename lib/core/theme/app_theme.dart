@@ -211,7 +211,7 @@ abstract final class AppTheme {
         backgroundColor: c.textPrimary,
         contentTextStyle: AppTypography.bodyM.copyWith(color: c.surface),
         shape: const RoundedRectangleBorder(borderRadius: AppRadius.smAll),
-        insetPadding: const EdgeInsets.fromLTRB(16, 0, 16, 96),
+        insetPadding: const EdgeInsets.fromLTRB(16, 0, 16, 88),
       ),
       tooltipTheme: TooltipThemeData(
         decoration: BoxDecoration(

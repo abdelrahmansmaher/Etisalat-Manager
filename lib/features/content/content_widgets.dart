@@ -4,107 +4,100 @@ import 'package:go_router/go_router.dart';
 import '../../core/content/content.dart';
 import '../../core/router/app_routes.dart';
 import '../../core/theme/theme.dart';
-import '../../core/widgets/app_card.dart';
 import '../../core/widgets/ltr_text.dart';
 import '../../core/widgets/page_scaffold.dart';
 import '../../core/widgets/prose_text.dart';
 import '../../core/widgets/trust/trust.dart';
 import '../../l10n/app_localizations.dart';
+import '../tools/dial.dart';
+import 'package_facts.dart';
+import 'package_family.dart';
 import 'section_ui.dart';
 
-/// Icon, label and colours for an item status. Colour is never the only
-/// signal: every status UI pairs it with an icon or dot **and** a label.
-({IconData icon, String label, StatusColors colors}) statusVisual(
-  BuildContext context,
-  ItemStatus status, {
-  bool official = false,
-}) {
-  final l10n = AppLocalizations.of(context);
-  final t = context.trustColors;
-  return switch (status) {
-    ItemStatus.confirmed => (
-      icon: AppIcons.confirmed,
-      label: official
-          ? l10n.statusConfirmedOfficial
-          : l10n.statusConfirmedGuide,
-      colors: t.verified,
-    ),
-    ItemStatus.unconfirmed => (
-      icon: AppIcons.unconfirmed,
-      label: l10n.statusUnconfirmedReview,
-      colors: t.needsReview,
-    ),
-    ItemStatus.conflict => (
-      icon: AppIcons.conflict,
-      label: l10n.statusConflict,
-      colors: t.conflict,
-    ),
-  };
-}
+/// Tiny mark after a title in lists: a check for confirmed items, "edited by
+/// you" for the owner's own changes, nothing otherwise (an unknown status
+/// never looks confirmed).
+class ItemMark extends StatelessWidget {
+  const ItemMark(this.item, {super.key});
 
-/// Status pill for a content item (detail headers): icon + label on a soft
-/// tinted capsule.
-class ContentStatusPill extends StatelessWidget {
-  const ContentStatusPill(this.status, {super.key, this.official = false});
-
-  final ItemStatus status;
-
-  /// Confirmed on the official site (shows "confirmed from official site").
-  final bool official;
+  final ContentItem item;
 
   @override
   Widget build(BuildContext context) {
-    final v = statusVisual(context, status, official: official);
-    return TrustPill(
-      key: ValueKey('status-${status.name}'),
-      icon: v.icon,
-      label: v.label,
-      foreground: v.colors.foreground,
-      background: v.colors.container,
+    final l10n = AppLocalizations.of(context);
+    final c = context.colors;
+    if (item.userEdited) {
+      return Text(
+        l10n.editedByYou,
+        key: ValueKey('edited-${item.id}'),
+        style: AppTypography.labelS.copyWith(color: c.primary),
+      );
+    }
+    if (item.status != ItemStatus.confirmed) return const SizedBox.shrink();
+    return Icon(
+      AppIcons.confirmed,
+      key: ValueKey('confirmed-${item.id}'),
+      size: 14,
+      color: c.verified,
+      semanticLabel: item.officiallyVerified
+          ? l10n.statusConfirmedOfficial
+          : l10n.statusConfirmedGuide,
     );
   }
 }
 
-/// Compact status for list rows: coloured dot + label.
-class StatusDot extends StatelessWidget {
-  const StatusDot(this.status, {super.key, this.official = false});
+/// One quiet line on the detail page: where the information stands.
+class TrustLine extends StatelessWidget {
+  const TrustLine(this.item, {super.key});
 
-  final ItemStatus status;
-
-  /// Confirmed on the official site.
-  final bool official;
+  final ContentItem item;
 
   @override
   Widget build(BuildContext context) {
-    final v = statusVisual(context, status, official: official);
-    final fg = v.colors.foreground;
-    return Semantics(
-      key: ValueKey('status-${status.name}'),
-      label: v.label,
-      excludeSemantics: true,
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            width: 8,
-            height: 8,
-            decoration: BoxDecoration(
-              color: fg,
-              shape: BoxShape.circle,
-              boxShadow: [
-                BoxShadow(color: fg.withValues(alpha: 0.35), blurRadius: 4),
-              ],
-            ),
-          ),
-          const SizedBox(width: AppSpacing.xs - 2),
-          Flexible(
-            child: Text(
-              v.label,
-              style: AppTypography.labelS.copyWith(color: fg),
-            ),
-          ),
-        ],
+    final l10n = AppLocalizations.of(context);
+    final c = context.colors;
+    final t = context.trustColors;
+    final (IconData icon, String text, Color color) = switch (item) {
+      ContentItem(userEdited: true) => (
+        AppIcons.edit,
+        l10n.editedByYouOn(
+          TrustFormat.date(item.editedAt!, Localizations.localeOf(context)),
+        ),
+        c.primary,
       ),
+      ContentItem(status: ItemStatus.confirmed, verifiedOn: final d?) => (
+        AppIcons.confirmed,
+        '${l10n.statusConfirmedOfficial} · '
+            '${TrustFormat.date(d, Localizations.localeOf(context))}',
+        c.verified,
+      ),
+      ContentItem(status: ItemStatus.confirmed) => (
+        AppIcons.document,
+        l10n.statusPerGuide,
+        c.textTertiary,
+      ),
+      _ => (
+        AppIcons.unconfirmed,
+        l10n.statusUnconfirmedReview,
+        t.needsReview.foreground,
+      ),
+    };
+    return Row(
+      key: const ValueKey('trust-line'),
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsetsDirectional.only(top: 2),
+          child: Icon(icon, size: AppIconSize.inline, color: color),
+        ),
+        const SizedBox(width: AppSpacing.xxs + 2),
+        Expanded(
+          child: Text(
+            text,
+            style: AppTypography.labelL.copyWith(color: color),
+          ),
+        ),
+      ],
     );
   }
 }
@@ -116,13 +109,11 @@ class HighlightedText extends StatelessWidget {
     super.key,
     this.highlights = const [],
     this.style,
-    this.maxLines,
   });
 
   final String text;
   final List<Highlight> highlights;
   final TextStyle? style;
-  final int? maxLines;
 
   @override
   Widget build(BuildContext context) {
@@ -143,188 +134,215 @@ class HighlightedText extends StatelessWidget {
       pos = h.end;
     }
     if (pos < text.length) spans.add(TextSpan(text: text.substring(pos)));
-    return Text.rich(
-      TextSpan(style: style, children: spans),
-      maxLines: maxLines,
-      overflow: maxLines == null ? null : TextOverflow.ellipsis,
-    );
+    return Text.rich(TextSpan(style: style, children: spans));
   }
 }
 
-/// Soft banner for one trust state: icon disc, title, body lines.
-class StatusBanner extends StatelessWidget {
-  const StatusBanner({
-    super.key,
-    required this.icon,
-    required this.title,
-    required this.colors,
-    this.lines = const [],
+/// Shortens prose to about [max] characters at a word boundary. A number,
+/// price or code is kept whole or dropped, never cut.
+String clipWords(String text, {int max = 72}) {
+  final t = text.trim();
+  if (t.length <= max) return t;
+  final words = t.split(RegExp(r'\s+'));
+  final out = <String>[];
+  var length = 0;
+  for (final w in words) {
+    if (length + w.length > max) break;
+    out.add(w);
+    length += w.length + 1;
+  }
+  if (out.isEmpty) out.add(words.first);
+  // Never end on a bare preposition before a dropped number.
+  while (out.length > 1 &&
+      const {'بـ', 'ب', 'من', 'كل', 'حتى', 'و', '-', '–', '—'}.contains(
+        out.last,
+      )) {
+    out.removeLast();
+  }
+  return '${out.join(' ').replaceAll(RegExp(r'[،,:؛.\-–—]+$'), '')}…';
+}
+
+const double _rowMinHeight = 60;
+
+/// Shared frame of every dense row.
+class _RowFrame extends StatelessWidget {
+  const _RowFrame({
+    required this.item,
+    required this.child,
+    this.padding = const EdgeInsetsDirectional.symmetric(
+      horizontal: AppSpacing.sm,
+      vertical: AppSpacing.xs,
+    ),
   });
 
-  final IconData icon;
-  final String title;
-  final StatusColors colors;
-  final List<String> lines;
+  final ContentItem item;
+  final Widget child;
+  final EdgeInsetsGeometry padding;
 
   @override
   Widget build(BuildContext context) {
-    final fg = colors.foreground;
-    return Semantics(
-      container: true,
-      child: Container(
-        width: double.infinity,
-        padding: const EdgeInsetsDirectional.all(AppSpacing.md),
-        decoration: BoxDecoration(
-          color: colors.container,
-          borderRadius: AppRadius.mdAll,
-          border: Border.all(color: fg.withValues(alpha: 0.22)),
-        ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              width: 32,
-              height: 32,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: fg.withValues(alpha: 0.14),
-                shape: BoxShape.circle,
-              ),
-              child: Icon(icon, color: fg, size: AppIconSize.chip),
-            ),
-            const SizedBox(width: AppSpacing.sm),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(title, style: AppTypography.titleM.copyWith(color: fg)),
-                  for (final l in lines) ...[
-                    const SizedBox(height: AppSpacing.xxs),
-                    ProseText(
-                      l,
-                      style: AppTypography.bodyM.copyWith(color: fg),
-                    ),
-                  ],
-                ],
-              ),
-            ),
-          ],
-        ),
+    return InkWell(
+      key: ValueKey('item-row-${item.id}'),
+      onTap: () => context.push(ContentRoutes.item(item.id)),
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(minHeight: _rowMinHeight),
+        child: Padding(padding: padding, child: child),
       ),
     );
   }
 }
 
-/// Amber banner for unconfirmed items, with the guide's own note.
-class UnconfirmedBanner extends StatelessWidget {
-  const UnconfirmedBanner({super.key, this.note});
+/// Title with its mark flowing right after the last word.
+class _RowTitle extends StatelessWidget {
+  const _RowTitle(this.item, {this.title});
 
-  final String? note;
-
-  @override
-  Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context);
-    return StatusBanner(
-      key: const ValueKey('unconfirmed-banner'),
-      icon: AppIcons.unconfirmed,
-      title: l10n.unconfirmedBannerTitle,
-      colors: context.trustColors.needsReview,
-      lines: [?note, l10n.unconfirmedBannerBody],
-    );
-  }
-}
-
-/// Icon tile tinted with the section's tone. Shows [icon] (e.g. the item's
-/// category icon) or the section icon.
-class SectionIconTile extends StatelessWidget {
-  const SectionIconTile(
-    this.section, {
-    super.key,
-    this.icon,
-    this.tile = IconTile.md,
-  });
-
-  final ContentSection section;
-  final IconData? icon;
-  final IconTile tile;
-
-  @override
-  Widget build(BuildContext context) {
-    final tone = section.tone(context);
-    return TintedIcon(
-      icon ?? section.icon,
-      tile: tile,
-      color: tone.foreground,
-      background: tone.container,
-      glow: tone.glow,
-    );
-  }
-}
-
-/// The fact worth showing in a list row (first price, code or phone).
-Fact? leadFact(ContentItem item) {
-  for (final f in item.facts) {
-    if ((f.kind == FactKind.price ||
-            f.kind == FactKind.code ||
-            f.kind == FactKind.phone) &&
-        f.rendersLtr &&
-        !f.isBlank) {
-      return f;
-    }
-  }
-  return null;
-}
-
-/// LTR value capsule for list rows: prices in warm gold (value + unit as
-/// separate runs so "ج" sits naturally in Arabic), codes in monospace.
-class ValuePill extends StatelessWidget {
-  const ValuePill({
-    super.key,
-    required this.value,
-    this.unit,
-    this.isPrice = false,
-  });
-
-  final String value;
-  final String? unit;
-  final bool isPrice;
+  final ContentItem item;
+  final String? title;
 
   @override
   Widget build(BuildContext context) {
     final c = context.colors;
-    final fg = isPrice ? c.onAccentContainer : c.textPrimary;
-    return Container(
-      padding: const EdgeInsetsDirectional.symmetric(
-        horizontal: AppSpacing.sm,
-        vertical: 3,
-      ),
-      decoration: BoxDecoration(
-        color: isPrice ? c.accentContainer : c.surfaceVariant,
-        borderRadius: AppRadius.fullAll,
-        border: Border.all(color: fg.withValues(alpha: 0.12)),
-      ),
+    return Wrap(
+      spacing: AppSpacing.xxs,
+      crossAxisAlignment: WrapCrossAlignment.center,
+      children: [
+        ProseText(
+          title ?? item.title,
+          style: AppTypography.titleS.copyWith(
+            color: c.textPrimary,
+            fontSize: 15,
+            height: 22 / 15,
+          ),
+        ),
+        ItemMark(item),
+      ],
+    );
+  }
+}
+
+/// Price in gold, tabular and whole, with its currency.
+class PriceText extends StatelessWidget {
+  const PriceText(this.amount, {super.key, this.size = 19});
+
+  final String amount;
+  final double size;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final c = context.colors;
+    return Semantics(
+      label: '$amount ${l10n.currencyEgp}',
+      excludeSemantics: true,
       child: Row(
         mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.baseline,
+        textBaseline: TextBaseline.alphabetic,
         children: [
-          // Values are never cut: shrink to fit instead of clipping.
-          Flexible(
-            child: FittedBox(
-              fit: BoxFit.scaleDown,
-              child: LtrText(
-                value,
-                style:
-                    (isPrice
-                            ? AppTypography.titleS.copyWith(
-                                fontFeatures: AppTypography.tabular,
-                              )
-                            : AppTypography.code.copyWith(fontSize: 13))
-                        .copyWith(color: fg),
-              ),
+          LtrText(
+            amount,
+            style: AppTypography.price.copyWith(
+              color: c.accentText,
+              fontSize: size,
+              height: 24 / size,
             ),
           ),
-          if (unit != null) ...[
-            const SizedBox(width: 3),
-            Text(unit!, style: AppTypography.labelS.copyWith(color: fg)),
+          const SizedBox(width: 3),
+          Text(
+            l10n.currencyShort,
+            style: AppTypography.labelS.copyWith(color: c.accentText),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Dense package row: family tile, name, "quota · validity", and the price
+/// column with the subscription code under it.
+class PackageRow extends StatelessWidget {
+  const PackageRow({super.key, required this.item});
+
+  final ContentItem item;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final c = context.colors;
+    final line = PackageLine.of(item, l10n);
+    final large = MediaQuery.textScalerOf(context).scale(1) > 1.35;
+
+    final name = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        _RowTitle(item),
+        if (line.details.isNotEmpty)
+          ProseText(
+            line.details,
+            style: AppTypography.bodyS.copyWith(
+              color: c.textSecondary,
+              fontFeatures: AppTypography.tabular,
+            ),
+          ),
+      ],
+    );
+
+    final price = line.price;
+    final code = line.code;
+    final end = [
+      if (price != null)
+        PriceText(price, key: ValueKey('price-${item.id}'))
+      else
+        Text(
+          l10n.packageNoPriceShort,
+          style: AppTypography.labelS.copyWith(color: c.textTertiary),
+        ),
+      if (code != null)
+        CodeValue(
+          code,
+          key: ValueKey('code-${item.id}'),
+          style: AppTypography.code.copyWith(
+            color: c.textSecondary,
+            fontSize: 12,
+            height: 16 / 12,
+            letterSpacing: 0,
+          ),
+        ),
+    ];
+
+    return _RowFrame(
+      item: item,
+      child: Row(
+        children: [
+          FamilyTile(familyOf(item)),
+          const SizedBox(width: AppSpacing.sm),
+          // Large text: price and code drop under the name.
+          if (large)
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  name,
+                  Wrap(
+                    spacing: AppSpacing.sm,
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: end,
+                  ),
+                ],
+              ),
+            )
+          else ...[
+            Expanded(child: name),
+            const SizedBox(width: AppSpacing.xs),
+            ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 130),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: end,
+              ),
+            ),
           ],
         ],
       ),
@@ -332,8 +350,141 @@ class ValuePill extends StatelessWidget {
   }
 }
 
-/// List row for an item: section tile, title, one-line summary (or the
-/// highlighted search snippet), status dot + label and a value capsule.
+/// The value a code / hotline row shows: the first phone of a contact, the
+/// first code otherwise.
+String? leadCode(ContentItem i) {
+  final values = i.type == ItemType.contact
+      ? [...i.phones, ...i.codes]
+      : [...i.codes, ...i.phones];
+  return values.firstOrNull;
+}
+
+/// Dense code / hotline row: name, the whole value, dial and copy.
+class CodeRow extends StatelessWidget {
+  const CodeRow({super.key, required this.item, required this.value});
+
+  final ContentItem item;
+  final String value;
+
+  /// `*777*1# — تحويل أموال` repeats the code; show the words only.
+  static String nameOf(ContentItem i) {
+    final parts = i.title.split(RegExp(r'\s+[—–-]\s+'));
+    return parts.length > 1 && RegExp(r'^[*#0-9]+$').hasMatch(parts.first)
+        ? parts.skip(1).join(' — ')
+        : i.title;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final c = context.colors;
+    return _RowFrame(
+      item: item,
+      padding: const EdgeInsetsDirectional.fromSTEB(
+        AppSpacing.sm,
+        AppSpacing.xxs + 2,
+        AppSpacing.xxs,
+        AppSpacing.xxs + 2,
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                _RowTitle(item, title: nameOf(item)),
+                CodeValue(
+                  value,
+                  style: AppTypography.code.copyWith(
+                    color: c.primary,
+                    fontSize: 17,
+                    height: 24 / 17,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          CodeActions(value, onCall: (v) => launchDial(context, v)),
+        ],
+      ),
+    );
+  }
+}
+
+/// First price fact worth quoting next to a title (fees, services).
+Fact? _leadPrice(ContentItem item) {
+  for (final f in item.facts) {
+    if (f.kind == FactKind.price && f.rendersLtr && !f.isBlank) return f;
+  }
+  return null;
+}
+
+/// Dense row of any other item: title, short summary, price at the end.
+class ArticleRow extends StatelessWidget {
+  const ArticleRow({
+    super.key,
+    required this.item,
+    this.snippet,
+    this.highlights = const [],
+    this.sectionLabel,
+  });
+
+  final ContentItem item;
+  final String? snippet;
+  final List<Highlight> highlights;
+  final String? sectionLabel;
+
+  @override
+  Widget build(BuildContext context) {
+    final c = context.colors;
+    final price = _leadPrice(item);
+    final style = AppTypography.bodyS.copyWith(
+      color: c.textSecondary,
+      fontSize: 13,
+      height: 20 / 13,
+    );
+    return _RowFrame(
+      item: item,
+      child: Row(
+        children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                _RowTitle(item),
+                if (snippet != null)
+                  HighlightedText(snippet!, highlights: highlights, style: style)
+                else if (item.summary.isNotEmpty)
+                  ProseText(clipWords(item.summary), style: style),
+                if (sectionLabel != null)
+                  Text(
+                    sectionLabel!,
+                    style: AppTypography.labelS.copyWith(
+                      color: c.textTertiary,
+                    ),
+                  ),
+              ],
+            ),
+          ),
+          const SizedBox(width: AppSpacing.xs),
+          if (price != null)
+            PriceText(price.value, size: 17)
+          else
+            Icon(
+              AppIcons.chevron, // mirrors in RTL
+              size: AppIconSize.action,
+              color: c.textTertiary,
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+/// The right dense row for [item]: package, code / hotline, or article.
+/// Meant to sit inside a `ListSurface`.
 class ContentItemRow extends StatelessWidget {
   const ContentItemRow({
     super.key,
@@ -344,113 +495,29 @@ class ContentItemRow extends StatelessWidget {
   });
 
   final ContentItem item;
+
+  /// Name the section (mixed lists such as search results).
   final bool showSection;
 
-  /// Search snippet replacing the summary.
+  /// Search snippet replacing the summary of an article row.
   final String? snippet;
   final List<Highlight> highlights;
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context);
-    final theme = Theme.of(context);
-    final c = context.colors;
-    final lead = leadFact(item);
-    final copyable =
-        item.section == ContentSection.numbers &&
-        (item.codes.isNotEmpty || item.phones.isNotEmpty);
-    final body = snippet ?? item.summary;
-    final bodyStyle = theme.textTheme.bodyMedium?.copyWith(
-      color: c.textSecondary,
-    );
-
-    Widget? value;
-    if (copyable) {
-      value = Wrap(
-        spacing: AppSpacing.xxs,
-        children: [
-          for (final v in [...item.codes, ...item.phones].take(2))
-            CodeText(v, dense: true),
-        ],
-      );
-    } else if (lead != null) {
-      value = ValuePill(
-        value: lead.value,
-        unit: lead.unit,
-        isPrice: lead.kind == FactKind.price,
-      );
-    } else if (item.codes.isNotEmpty || item.phones.isNotEmpty) {
-      value = ValuePill(value: [...item.codes, ...item.phones].first);
+    if (item.type == ItemType.package) return PackageRow(item: item);
+    final code = leadCode(item);
+    if (code != null &&
+        (item.type == ItemType.code || item.type == ItemType.contact)) {
+      return CodeRow(item: item, value: code);
     }
-
-    return AppCard(
-      role: CardRole.flat,
-      key: ValueKey('item-row-${item.id}'),
-      padding: const EdgeInsetsDirectional.fromSTEB(
-        AppSpacing.md - 2,
-        AppSpacing.md - 2,
-        AppSpacing.md - 2,
-        AppSpacing.sm,
-      ),
-      onTap: () => context.push(ContentRoutes.item(item.id)),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SectionIconTile(item.section, icon: item.icon),
-          const SizedBox(width: AppSpacing.sm),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                if (showSection)
-                  Text(
-                    item.section.title(l10n),
-                    style: AppTypography.labelS.copyWith(
-                      color: item.section.tone(context).foreground,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ProseText(
-                  item.title,
-                  maxLines: 2,
-                  style: theme.textTheme.titleMedium,
-                ),
-                if (body.isNotEmpty) ...[
-                  const SizedBox(height: 2),
-                  if (snippet == null)
-                    ProseText(body, maxLines: 1, style: bodyStyle)
-                  else
-                    HighlightedText(
-                      body,
-                      highlights: highlights,
-                      maxLines: 2,
-                      style: bodyStyle,
-                    ),
-                ],
-                const SizedBox(height: AppSpacing.xs),
-                Wrap(
-                  spacing: AppSpacing.sm,
-                  runSpacing: AppSpacing.xxs,
-                  crossAxisAlignment: WrapCrossAlignment.center,
-                  children: [
-                    StatusDot(item.status, official: item.officiallyVerified),
-                    ?value,
-                  ],
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(width: AppSpacing.xxs),
-          Padding(
-            padding: const EdgeInsetsDirectional.only(top: AppSpacing.sm),
-            child: Icon(
-              AppIcons.chevron, // mirrors in RTL
-              size: AppIconSize.action,
-              color: c.textTertiary,
-            ),
-          ),
-        ],
-      ),
+    return ArticleRow(
+      item: item,
+      snippet: snippet,
+      highlights: highlights,
+      sectionLabel: showSection
+          ? item.section.title(AppLocalizations.of(context))
+          : null,
     );
   }
 }
@@ -466,10 +533,51 @@ class ContentLoading extends StatelessWidget {
   );
 }
 
-/// Shows a snackbar placeholder until a dialer is wired.
-void showCallPlaceholder(BuildContext context) {
-  final l10n = AppLocalizations.of(context);
-  ScaffoldMessenger.maybeOf(context)
-    ?..hideCurrentSnackBar()
-    ..showSnackBar(SnackBar(content: Text(l10n.callPlaceholder)));
+/// Header of a group of rows: name and count on one line.
+class GroupHeader extends StatelessWidget {
+  const GroupHeader(this.title, {super.key, this.count, this.trailing});
+
+  final String title;
+  final int? count;
+  final Widget? trailing;
+
+  @override
+  Widget build(BuildContext context) {
+    final c = context.colors;
+    return Padding(
+      padding: const EdgeInsetsDirectional.only(
+        top: AppSpacing.md,
+        bottom: AppSpacing.xs,
+      ),
+      child: Row(
+        children: [
+          Flexible(
+            child: Semantics(
+              header: true,
+              child: Text(
+                title,
+                key: ValueKey('group-$title'),
+                style: AppTypography.titleM.copyWith(
+                  color: c.textPrimary,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+          ),
+          if (count != null) ...[
+            const SizedBox(width: AppSpacing.xs),
+            Text(
+              '$count',
+              key: ValueKey('group-count-$title'),
+              style: AppTypography.labelL.copyWith(
+                color: c.textTertiary,
+                fontFeatures: AppTypography.tabular,
+              ),
+            ),
+          ],
+          if (trailing != null) ...[const Spacer(), trailing!],
+        ],
+      ),
+    );
+  }
 }

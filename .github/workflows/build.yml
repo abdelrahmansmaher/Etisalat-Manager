@@ -39,12 +39,33 @@ jobs:
           channel: stable
           cache: true
       - run: flutter pub get
-      # Personal build: signed with the default debug key from the Flutter template.
-      - run: flutter build apk --release --split-per-abi
+      # Releases must always use the same key, otherwise phones refuse to
+      # update the app in place. Tags fail without the secrets; ordinary
+      # pushes only check that the app compiles.
+      - name: Restore signing key
+        id: sign
+        env:
+          KS: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        run: |
+          if [ -n "$KS" ]; then
+            echo "$KS" | base64 -d > "$RUNNER_TEMP/release.jks"
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          elif [[ "$GITHUB_REF" == refs/tags/* ]]; then
+            echo "::error::Signing secrets are missing, refusing to release"
+            exit 1
+          fi
+      - if: steps.sign.outputs.ok == 'true'
+        env:
+          ANDROID_KEYSTORE_PATH: ${{ runner.temp }}/release.jks
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+        run: flutter build apk --release --split-per-abi
+      - if: steps.sign.outputs.ok != 'true'
+        run: flutter build apk --debug
       - uses: actions/upload-artifact@v4
         with:
           name: android-apk
-          path: build/app/outputs/flutter-apk/*-release.apk
+          path: build/app/outputs/flutter-apk/*.apk
 
   web:
     needs: test

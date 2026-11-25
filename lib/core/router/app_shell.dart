@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../l10n/app_localizations.dart';
 import '../theme/app_colors.dart';
 import '../widgets/app_bottom_nav.dart';
-import 'app_routes.dart';
 import 'tab_pager.dart';
-import 'search_focus.dart';
 import '../theme/app_icons.dart';
 
 /// App chrome: floating bottom nav on phones (< 600dp), NavigationRail on the
 /// start side for tablet/web (doc 04 §4.5).
-class AppShell extends ConsumerStatefulWidget {
+class AppShell extends StatefulWidget {
   const AppShell({super.key, required this.navigationShell});
 
   final StatefulNavigationShell navigationShell;
@@ -24,32 +21,27 @@ class AppShell extends ConsumerStatefulWidget {
       label: l10n.navHome,
     ),
     AppNavDestination(
-      icon: AppIcons.navBrowse,
-      selectedIcon: AppIcons.navBrowseActive,
-      label: l10n.navBrowse,
+      icon: AppIcons.navPackages,
+      selectedIcon: AppIcons.navPackagesActive,
+      label: l10n.navPackages,
     ),
     AppNavDestination(
-      icon: AppIcons.search,
-      selectedIcon: AppIcons.search,
-      label: l10n.navSearch,
+      icon: AppIcons.navCodes,
+      selectedIcon: AppIcons.navCodesActive,
+      label: l10n.navCodes,
     ),
     AppNavDestination(
-      icon: AppIcons.navTraining,
-      selectedIcon: AppIcons.comingSoon,
-      label: l10n.navTraining,
-    ),
-    AppNavDestination(
-      icon: AppIcons.navMe,
-      selectedIcon: AppIcons.navMeActive,
-      label: l10n.navMe,
+      icon: AppIcons.navMore,
+      selectedIcon: AppIcons.navMoreActive,
+      label: l10n.navMore,
     ),
   ];
 
   @override
-  ConsumerState<AppShell> createState() => _AppShellState();
+  State<AppShell> createState() => _AppShellState();
 }
 
-class _AppShellState extends ConsumerState<AppShell> {
+class _AppShellState extends State<AppShell> {
   late final PageController _pages = PageController(
     initialPage: widget.navigationShell.currentIndex,
   );
@@ -62,13 +54,10 @@ class _AppShellState extends ConsumerState<AppShell> {
     super.dispose();
   }
 
-  void _onSelected(int index) {
-    final reselect = index == navigationShell.currentIndex;
-    if (index == AppRoutes.searchTabIndex) {
-      ref.read(searchFocusRequestProvider.notifier).request(clear: reselect);
-    }
-    navigationShell.goBranch(index, initialLocation: reselect);
-  }
+  void _onSelected(int index) => navigationShell.goBranch(
+    index,
+    initialLocation: index == navigationShell.currentIndex,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -115,7 +104,6 @@ class _AppShellState extends ConsumerState<AppShell> {
         bottomNavigationBar: AppBottomNav(
           destinations: dests,
           currentIndex: navigationShell.currentIndex,
-          centerIndex: AppRoutes.searchTabIndex,
           onSelected: _onSelected,
           pageController: _pages,
         ),

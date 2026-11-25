@@ -1,39 +1,101 @@
 {
   "@@locale": "ar",
   "navHome": "الرئيسية",
-  "navBrowse": "تصفح",
-  "navSearch": "بحث",
-  "navTraining": "التدريب",
-  "navMe": "أنا",
+  "navPackages": "الباقات",
+  "navCodes": "الأكواد والأرقام",
+  "navMore": "المزيد",
   "greetingMorning": "صباح الخير",
   "greetingEvening": "مساء الخير",
   "homeSearchHint": "ابحث عن باقة، كود، رقم…",
-  "homeHeroSubtitle": "كل ما تحتاجه على الكاونتر في مكان واحد",
-  "homeSectionsSubtitle": "اختر قسمًا للاستكشاف",
-  "sectionPackagesDesc": "العروض والأسعار وأكواد الاشتراك",
-  "sectionServicesDesc": "خدمات الموبايل والإضافات",
-  "sectionNumbersCodesDesc": "أكواد USSD وأرقام الخدمة",
-  "sectionWalletDesc": "المحفظة الإلكترونية والتحويلات",
-  "sectionGlossaryDesc": "مصطلحات الأنظمة والفرع",
-  "browseSubtitle": "كل الموسوعات في مكان واحد",
-  "searchExampleTitle": "مثال توضيحي — بيانات وهمية",
-  "searchExampleItem": "باقة تجريبية",
-  "searchExampleSource": "الموقع العام (مثال)",
-  "homeSectionsTitle": "الموسوعات",
+  "homeSectionsTitle": "الأقسام",
   "sectionPackages": "الباقات",
-  "sectionServices": "الخدمات",
-  "sectionNumbersCodes": "الأرقام والأكواد",
+  "sectionNumbersCodes": "الأكواد والأرقام",
   "sectionWallet": "المحفظة",
   "sectionGlossary": "المصطلحات",
-  "browseTitle": "تصفح الموسوعات",
-  "contentComingSoon": "المحتوى قيد الإعداد",
-  "searchTitle": "بحث",
   "searchFieldHint": "اكتب كلمة أو كودًا أو رقمًا",
   "searchClear": "مسح البحث",
-  "searchPlaceholderBody": "البحث قيد الإنشاء — سيعمل بدون إنترنت وبالعامية.",
   "trainingTitle": "التدريب",
-  "trainingPlaceholderBody": "مسارات التعلم والمراجعة اليومية — قريبًا.",
-  "meTitle": "أنا",
+  "favoritesTitle": "المفضلة",
+  "favoritesEmpty": "اضغط القلب داخل أي بند ليظهر هنا.",
+  "showAll": "عرض الكل",
+  "showAllCount": "عرض الكل ({count})",
+  "@showAllCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "segmentMobile": "موبايل",
+  "segmentMobileInternet": "إنترنت موبايل",
+  "segmentHome": "منزلي",
+  "sortTitle": "الترتيب",
+  "sortPriceUp": "الأرخص أولًا",
+  "sortPriceDown": "الأغلى أولًا",
+  "sortQuota": "الأكبر إنترنت",
+  "toolCompareShort": "قارن",
+  "toolRecommendShort": "رشّح",
+  "toolCalculatorShort": "احسب",
+  "packagesInfoTitle": "قواعد ومعلومات",
+  "hotlinesTitle": "أرقام خدمة العملاء",
+  "codesNotesTitle": "ملاحظات وخدمات",
+  "moreToolsTitle": "أدواتي",
+  "moreNotes": "ملاحظاتي",
+  "moreEditor": "تعديل المحتوى",
+  "moreWhatsNew": "الجديد في المحتوى",
+  "moreSettingsTitle": "المظهر واللغة",
+  "editedByYou": "معدّل منك",
+  "editedByYouOn": "معدّل منك · {date}",
+  "@editedByYouOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "statusPerGuide": "حسب الدليل",
+  "daysCount": "{count, plural, =1{يوم} =2{يومين} few{{count} أيام} other{{count} يوم}}",
+  "@daysCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "quotaGb": "{n} جيجا",
+  "@quotaGb": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "quotaMb": "{n} ميجا",
+  "@quotaMb": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "quotaMix": "{n} ميكس",
+  "@quotaMix": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "quotaMinutes": "{n} دقيقة",
+  "@quotaMinutes": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "currencyShort": "ج",
+  "packageNoPriceShort": "بدون سعر",
   "settingsAppearance": "المظهر",
   "themeSystem": "حسب النظام",
   "themeLight": "فاتح",
@@ -41,9 +103,6 @@
   "settingsLanguage": "اللغة",
   "languageArabic": "العربية",
   "languageEnglish": "English",
-  "editorModeTitle": "وضع المحرر (دخول المالك)",
-  "editorModeSubtitle": "قريبًا",
-  "copyAction": "نسخ",
   "copyValueSemantics": "نسخ {value}",
   "@copyValueSemantics": {
     "placeholders": {
@@ -53,128 +112,22 @@
     }
   },
   "copiedMessage": "تم النسخ",
-  "callAction": "اتصال",
+  "callValueSemantics": "اتصال بـ {value}",
+  "@callValueSemantics": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
   "symbolStar": "نجمة",
   "symbolHash": "مربع",
   "symbolPlus": "زائد",
-  "statusVerified": "تم التحقق",
-  "statusNeedsReview": "يحتاج مراجعة",
-  "statusExpired": "منتهي",
-  "statusUnverified": "بدون مصدر معتمد",
-  "statusConflict": "تعارض",
-  "statusPrivate": "خاص",
-  "lastVerified": "آخر تحقق: {relative}",
-  "@lastVerified": {
-    "placeholders": {
-      "relative": {
-        "type": "String"
-      }
-    }
-  },
-  "daysAgo": "{count, plural, =0{اليوم} =1{منذ يوم} =2{منذ يومين} few{منذ {count} أيام} many{منذ {count} يومًا} other{منذ {count} يوم}}",
-  "@daysAgo": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "verifiedOn": "تم التحقق في {date}",
-  "@verifiedOn": {
-    "placeholders": {
-      "date": {
-        "type": "String"
-      }
-    }
-  },
-  "sourceOfficialInternal": "مستند رسمي داخلي",
-  "sourceOfficialPublic": "مصدر رسمي علني",
-  "sourceTraining": "مادة تدريبية معتمدة",
-  "sourceSupervisor": "تأكيد مشرف (موثّق)",
-  "sourceExternal": "مرجع عام",
-  "sourceOwnerNote": "ملاحظة المالك",
-  "sourceSemantics": "المصدر: {name}، {type}",
-  "@sourceSemantics": {
-    "placeholders": {
-      "name": {
-        "type": "String"
-      },
-      "type": {
-        "type": "String"
-      }
-    }
-  },
-  "conflictTitle": "يوجد تعارض بين مصدرين حول هذه المعلومة",
-  "conflictGuidance": "لا تُبلغ العميل بقيمة نهائية — راجع المصدر الرسمي أو المشرف.",
-  "conflictAction": "مراجعة المصادر",
-  "privateBadge": "ملاحظة خاصة — للمالك فقط",
   "currencyEgp": "ج.م",
-  "taxInclusiveRecharge": "شامل ضريبة الشحن",
-  "taxExclusiveVat": "غير شامل ضريبة القيمة المضافة",
-  "taxUnknown": "أساس الضريبة غير محدد",
-  "priceValidRange": "ساري من {from} حتى {until}",
-  "@priceValidRange": {
-    "placeholders": {
-      "from": {
-        "type": "String"
-      },
-      "until": {
-        "type": "String"
-      }
-    }
-  },
-  "priceValidFrom": "ساري من {from}",
-  "@priceValidFrom": {
-    "placeholders": {
-      "from": {
-        "type": "String"
-      }
-    }
-  },
-  "priceNoEndDate": "بدون تاريخ انتهاء معلن",
-  "priceEndsIn": "{count, plural, =0{ينتهي اليوم} =1{ينتهي غدًا} =2{ينتهي خلال يومين} few{ينتهي خلال {count} أيام} many{ينتهي خلال {count} يومًا} other{ينتهي خلال {count} يوم}}",
-  "@priceEndsIn": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "priceStartsOn": "يبدأ في {date} — ليس السعر الحالي",
-  "@priceStartsOn": {
-    "placeholders": {
-      "date": {
-        "type": "String"
-      }
-    }
-  },
-  "priceExpiredNote": "انتهى في {date} — لا تستخدمه كسعر ساري",
-  "@priceExpiredNote": {
-    "placeholders": {
-      "date": {
-        "type": "String"
-      }
-    }
-  },
   "sectionInternet": "الإنترنت",
-  "sectionInternetDesc": "باقات الموبايل والإنترنت المنزلي و5G",
-  "sectionProcedures": "الخدمات والإجراءات",
-  "sectionProceduresDesc": "إجراءات الفرع والحالات والتجوال",
+  "sectionProcedures": "إجراءات الفرع",
   "sectionCompany": "عن الشركة",
-  "sectionCompanyDesc": "نبذة، الشبكة، التطبيق والمنافسون",
-  "sectionPackagesHomeDesc": "أنظمة الكارت والفاتورة والإضافات",
-  "sectionNumbersHomeDesc": "أرقام خدمة العملاء وكل الأكواد",
-  "sectionWalletHomeDesc": "التسجيل والأكواد والحدود والرسوم",
-  "sectionGlossaryHomeDesc": "المصطلحات والاختصارات",
-  "itemCount": "{count, plural, =0{لا توجد بنود} =1{بند واحد} =2{بندان} few{{count} بنود} many{{count} بندًا} other{{count} بند}}",
-  "@itemCount": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "homeMustKnowTitle": "أرقام لازم تكون حافظها",
+  "homeMustKnowTitle": "الأكثر استخدامًا",
   "contentAsOf": "آخر تحديث للمحتوى: {date}",
   "@contentAsOf": {
     "placeholders": {
@@ -186,15 +139,10 @@
   "contentEmptySection": "لا يوجد محتوى في هذا القسم بعد",
   "contentEmptySectionBody": "سيظهر المحتوى هنا فور إضافته.",
   "filterAll": "الكل",
-  "filterConfirmed": "مؤكد",
-  "filterUnconfirmed": "غير مؤكد",
   "statusConfirmedGuide": "مؤكد حسب الدليل",
   "statusConfirmedOfficial": "مؤكد من الموقع الرسمي",
   "statusUnconfirmedReview": "غير مؤكد — راجع داخليًا",
-  "unconfirmedBannerTitle": "هذه المعلومة غير مؤكدة",
   "unconfirmedBannerBody": "راجع النظام الداخلي أو مشرفك قبل إبلاغ العميل.",
-  "unconfirmedGroupTitle": "بنود غير مؤكدة",
-  "answerCardTitle": "الإجابة السريعة",
   "detailFactsTitle": "كل التفاصيل",
   "detailStepsTitle": "الخطوات",
   "detailSourcesTitle": "المصادر",
@@ -209,7 +157,6 @@
   },
   "detailNotFound": "البند غير موجود",
   "detailNotFoundBody": "ربما تم حذفه أو تغيير معرّفه.",
-  "callPlaceholder": "الاتصال المباشر غير متاح بعد — الرقم منسوخ؟ استخدم زر النسخ.",
   "searchIdleBody": "ابحث في كل المحتوى بالعامية أو بالكود أو بالرقم — بدون إنترنت.",
   "searchEmptyTitle": "لا توجد نتائج",
   "searchEmptyBody": "جرّب كلمة أخرى، أو اكتب الكود أو الرقم مباشرة.",
@@ -221,31 +168,16 @@
       }
     }
   },
-  "trainingReviewTitle": "راجع البنود غير المؤكدة",
-  "trainingReviewSubtitle": "{count, plural, =0{لا توجد بنود تحتاج مراجعة} =1{بند واحد يحتاج مراجعة داخلية} =2{بندان يحتاجان مراجعة داخلية} few{{count} بنود تحتاج مراجعة داخلية} many{{count} بندًا يحتاج مراجعة داخلية} other{{count} بند يحتاج مراجعة داخلية}}",
-  "@trainingReviewSubtitle": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "reviewScreenTitle": "البنود غير المؤكدة",
-  "reviewScreenSubtitle": "كل البنود غير المؤكدة أو المتعارضة من كل الأقسام.",
   "languageSystem": "حسب لغة الجهاز",
-  "homeQuickAccess": "وصول سريع",
-  "homeRecentTitle": "فتحتها مؤخرًا",
-  "homeGreetingNight": "مساء النور",
+  "homeRecentTitle": "آخر ما فتحته",
   "searchRecentTitle": "عمليات بحث سابقة",
   "searchRecentClear": "مسح السجل",
-  "searchSuggestionsTitle": "جرّب البحث عن",
   "packagePriceLabel": "السعر",
   "packageCodeTitle": "كود الاشتراك",
   "packageDetailsTitle": "التفاصيل",
   "packageNotesTitle": "الشروط والملاحظات",
   "packageNoPrice": "السعر غير مذكور في الدليل",
   "packageConflictPrice": "السعر عليه تعارض — راجع القيمتين",
-  "packageCurrencyNote": "بالجنيه المصري",
   "sectionJumpTo": "انتقل إلى {name}",
   "@sectionJumpTo": {
     "placeholders": {
@@ -255,6 +187,279 @@
     }
   },
   "detailOverviewTitle": "الشرح",
-  "detailStatusTitle": "حالة المعلومة",
-  "settingsAppearanceHint": "يُحفظ اختيارك تلقائيًا"
+  "toolsNotStated": "غير مذكور",
+  "toolsCancel": "إلغاء",
+  "toolsSave": "حفظ",
+  "toolsDelete": "حذف",
+  "toolsUndo": "تراجع",
+  "toolsPickPackage": "اختار باقة",
+  "toolsSearchPackage": "ابحث عن باقة",
+  "toolsNoMatches": "مفيش نتيجة",
+  "toolsItemRemoved": "البند ده اتشال من المحتوى",
+  "toolsEditedOn": "معدّل منك – {date}",
+  "@toolsEditedOn": {"placeholders": {"date": {"type": "String"}}},
+  "toolsInvalidNumber": "اكتب رقم صحيح",
+  "toolsDial": "اتصال",
+  "toolsDialFillTitle": "اكتب البيانات قبل الاتصال",
+  "toolsDialFillHint": "مش بنحفظ اللي بتكتبه. الكود هيتفتح في برنامج الاتصال وإنت تضغط اتصال.",
+  "toolsDialOpen": "افتح برنامج الاتصال",
+  "toolsDialDigitsOnly": "أرقام بس",
+  "toolsDialChoose": "اختار اللي هتطلبه",
+  "toolsDialFailed": "برنامج الاتصال مفتحش، فنسخنا {value}",
+  "@toolsDialFailed": {"placeholders": {"value": {"type": "String"}}},
+  "toolsDialFailedTemplate": "برنامج الاتصال مفتحش، فنسخنا الكود من غير اللي كتبته",
+  "toolsDialNothing": "مفيش كود أو رقم يتطلب، فنسخنا النص",
+  "toolsFavorite": "المفضلة",
+  "toolsFavoriteAdd": "ضيف للمفضلة",
+  "toolsFavoriteRemove": "شيل من المفضلة",
+  "toolsFavoritesTitle": "المفضلة",
+  "toolsFavoritesEmpty": "مفيش مفضلة لسه",
+  "toolsFavoritesEmptyBody": "دوس على القلب في أي بند وهتلاقيه هنا.",
+  "toolsFavoritesHint": "اسحب عشان ترتّبها",
+  "toolsReorder": "غيّر ترتيب {name}",
+  "@toolsReorder": {"placeholders": {"name": {"type": "String"}}},
+  "toolsCompareAction": "قارن",
+  "toolsNoteAction": "ملاحظة",
+  "toolsNoteCount": "ملاحظات ({count})",
+  "@toolsNoteCount": {"placeholders": {"count": {"type": "int"}}},
+  "toolsEditAction": "عدّل",
+  "toolsCompareTitle": "قارن باقات",
+  "toolsCompareHint": "اختار من 2 لـ 4 باقات",
+  "toolsCompareAdd": "ضيف باقة",
+  "toolsCompareRemove": "شيل {name}",
+  "@toolsCompareRemove": {"placeholders": {"name": {"type": "String"}}},
+  "toolsComparePeriods": "المدد مختلفة أو مش مذكورة، فمش بنعلّم الأقل سعرًا ولا الأعلى حصة.",
+  "toolsRowPackage": "الباقة",
+  "toolsRowPrice": "السعر",
+  "toolsRowTotal": "شامل الضريبة",
+  "toolsRowQuota": "الحصة",
+  "toolsRowGb": "الإنترنت (جيجا)",
+  "toolsRowMinutes": "الدقائق",
+  "toolsRowMix": "الميكسات",
+  "toolsRowValidity": "الصلاحية",
+  "toolsRowCode": "الكود",
+  "toolsRowAfter": "بعد الباقة",
+  "toolsRowStatus": "الحالة",
+  "toolsBestLowest": "الأقل",
+  "toolsBestHighest": "الأعلى",
+  "toolsBestLongest": "الأطول",
+  "toolsStatusConfirmed": "مؤكد",
+  "toolsStatusUnconfirmed": "غير مؤكد",
+  "toolsStatusConflict": "متعارض",
+  "toolsRecommendTitle": "رشّح باقة",
+  "toolsRecommendSubtitle": "اكتب اللي العميل محتاجه وسيب الباقي فاضي",
+  "toolsRecommendBudget": "الميزانية (جنيه)",
+  "toolsRecommendGb": "إنترنت (جيجا)",
+  "toolsRecommendMinutes": "دقائق",
+  "toolsUseMobile": "موبايل",
+  "toolsUseHome": "منزلي",
+  "toolsRecommendStart": "اكتب ميزانية أو جيجا أو دقائق",
+  "toolsRecommendFits": "تغطي كل الطلبات",
+  "toolsRecommendNone": "مفيش باقة في المحتوى تغطي كل الطلبات بالأرقام المذكورة.",
+  "toolsRecommendMaybe": "ممكن تناسب، وفيها حاجة مش مذكورة",
+  "toolsRecommendClosest": "أقرب الباقات، بس مش كاملة",
+  "toolsBudgetMet": "التكلفة {value} جنيه، جوه الميزانية",
+  "@toolsBudgetMet": {"placeholders": {"value": {"type": "String"}}},
+  "toolsBudgetMissed": "السعر {value} جنيه، أعلى من الميزانية",
+  "@toolsBudgetMissed": {"placeholders": {"value": {"type": "String"}}},
+  "toolsBudgetUnknown": "السعر {value} جنيه، والتكلفة شاملة الضريبة مش مذكورة",
+  "@toolsBudgetUnknown": {"placeholders": {"value": {"type": "String"}}},
+  "toolsBudgetNotStated": "السعر مش مذكور",
+  "toolsGbMet": "{value} جيجا، تكفي",
+  "@toolsGbMet": {"placeholders": {"value": {"type": "String"}}},
+  "toolsGbMissed": "{value} جيجا، أقل من المطلوب",
+  "@toolsGbMissed": {"placeholders": {"value": {"type": "String"}}},
+  "toolsGbMix": "الحصة {value} ميكس، والجيجا مش مذكورة",
+  "@toolsGbMix": {"placeholders": {"value": {"type": "String"}}},
+  "toolsGbNotStated": "الجيجا مش مذكورة",
+  "toolsMinutesMet": "{value} دقيقة، تكفي",
+  "@toolsMinutesMet": {"placeholders": {"value": {"type": "String"}}},
+  "toolsMinutesMissed": "{value} دقيقة، أقل من المطلوب",
+  "@toolsMinutesMissed": {"placeholders": {"value": {"type": "String"}}},
+  "toolsMinutesMix": "الحصة {value} ميكس، والدقائق مش مذكورة",
+  "@toolsMinutesMix": {"placeholders": {"value": {"type": "String"}}},
+  "toolsMinutesNotStated": "الدقائق مش مذكورة",
+  "toolsMixNote": "اللي مكتوب عن الاستهلاك: {text}",
+  "@toolsMixNote": {"placeholders": {"text": {"type": "String"}}},
+  "toolsCalcTitle": "حاسبة الشحن",
+  "toolsCalcModeCard": "عندي كارت",
+  "toolsCalcModePrice": "عندي سعر باقة",
+  "toolsCalcCardLabel": "قيمة الكارت (جنيه)",
+  "toolsCalcPriceLabel": "سعر الباقة قبل الضريبة (جنيه)",
+  "toolsCalcBalanceResult": "الرصيد اللي هيوصل",
+  "toolsCalcCardResult": "الكارت المطلوب",
+  "toolsCalcEgp": "{value} جنيه",
+  "@toolsCalcEgp": {"placeholders": {"value": {"type": "String"}}},
+  "toolsCalcTaxPart": "الفرق {value} جنيه ضرايب ورسوم",
+  "@toolsCalcTaxPart": {"placeholders": {"value": {"type": "String"}}},
+  "toolsCalcStated": "المكتوب في المحتوى شامل الضريبة: {value}",
+  "@toolsCalcStated": {"placeholders": {"value": {"type": "String"}}},
+  "toolsCalcComputed": "رقم محسوب من النسبة اللي تحت، مش سعر منشور.",
+  "toolsCalcSource": "مصدر الحساب",
+  "toolsCalcRatio": "كل {card} جنيه كارت = {balance} جنيه رصيد",
+  "@toolsCalcRatio": {"placeholders": {"card": {"type": "String"}, "balance": {"type": "String"}}},
+  "toolsCalcUnavailable": "الحاسبة مش متاحة",
+  "toolsCalcUnavailableBody": "البند اللي فيه نسبة الشحن مش موجود أو نسبته مش واضحة، ومش بنحسب برقم من عندنا.",
+  "toolsWhatsNewTitle": "إيه اللي اتغير",
+  "toolsWhatsNewEmpty": "مفيش تغيير متسجل",
+  "toolsWhatsNewEmptyBody": "لما المحتوى يتحدّث، التغيير في الأسعار والأكواد هيظهر هنا.",
+  "toolsWhatsNewOn": "تحديث {date}",
+  "@toolsWhatsNewOn": {"placeholders": {"date": {"type": "String"}}},
+  "toolsWhatsNewRemoved": "اتشال {count} بند",
+  "@toolsWhatsNewRemoved": {"placeholders": {"count": {"type": "int"}}},
+  "toolsWhatsNewAdded": "{count} بند جديد",
+  "@toolsWhatsNewAdded": {"placeholders": {"count": {"type": "int"}}},
+  "toolsWhatsNewMore": "و{count} تاني",
+  "@toolsWhatsNewMore": {"placeholders": {"count": {"type": "int"}}},
+  "toolsWhatsNewBanner": "المحتوى اتحدّث. شوف إيه اللي اتغير",
+  "toolsWas": "كان",
+  "toolsNow": "بقى",
+  "editorMyEdits": "تعديلاتي",
+  "editorLocalOnly": "التعديلات على الموبايل ده بس، ومحدش غيرك بيشوفها. لو مسحت التطبيق هتروح، فصدّرها لو مهمة.",
+  "editorEmpty": "مفيش تعديلات",
+  "editorEmptyBody": "عدّل أي بند من صفحته، أو ضيف بند جديد.",
+  "editorAdd": "ضيف بند",
+  "editorExport": "تصدير",
+  "editorImport": "استيراد",
+  "editorStateAdded": "بند من إضافتك",
+  "editorStateHidden": "مخفي",
+  "editorStateNewer": "فيه نسخة أحدث من البند ده في التطبيق",
+  "editorStateRemoved": "البند الأصلي اتشال من المحتوى. تعديلك محفوظ بس مش ظاهر.",
+  "editorKeepMine": "سيب تعديلي",
+  "editorUseNew": "خد الجديدة",
+  "editorRestore": "رجّع الأصلي",
+  "editorDeleteAdded": "امسح البند",
+  "editorRestoreAsk": "نرجّع «{name}» للأصل؟",
+  "@editorRestoreAsk": {"placeholders": {"name": {"type": "String"}}},
+  "editorDeleteAsk": "نمسح «{name}»؟",
+  "@editorDeleteAsk": {"placeholders": {"name": {"type": "String"}}},
+  "editorRestoreBody": "تعديلك هيتمسح من الموبايل.",
+  "editorEditTitle": "تعديل بند",
+  "editorNewTitle": "بند جديد",
+  "editorFieldTitle": "العنوان",
+  "editorFieldSummary": "الملخص",
+  "editorFieldCategory": "المجموعة",
+  "editorFieldSection": "القسم",
+  "editorFieldType": "النوع",
+  "editorFieldFacts": "البيانات",
+  "editorFactLabel": "الاسم",
+  "editorFactValue": "القيمة",
+  "editorFactUnit": "الوحدة",
+  "editorFactKind": "نوع القيمة",
+  "editorAddFact": "ضيف بيان",
+  "editorRemoveFact": "شيل البيان رقم {n}",
+  "@editorRemoveFact": {"placeholders": {"n": {"type": "int"}}},
+  "editorFieldCodes": "الأكواد، كل كود في سطر",
+  "editorFieldPhones": "الأرقام، كل رقم في سطر",
+  "editorFieldStatusNote": "ملاحظة عن الحالة",
+  "editorHide": "إخفاء البند",
+  "editorHideHint": "مش هيظهر في القوائم ولا البحث لحد ما ترجّعه من تعديلاتي.",
+  "editorTitleRequired": "اكتب العنوان",
+  "editorFactRequired": "اكتب الاسم والقيمة، أو شيل البيان",
+  "editorNotConfirmed": "بعد الحفظ هيظهر عليه «معدّل منك» ومش هيتكتب عليه مؤكد لحد ما ترجّع الأصلي.",
+  "editorLeaveAsk": "تخرج من غير حفظ؟",
+  "editorLeave": "اخرج",
+  "editorStay": "كمّل تعديل",
+  "editorSaved": "التعديل اتحفظ على الموبايل",
+  "editorNothingChanged": "مفيش حاجة اتغيرت",
+  "editorExportNoNotes": "الملاحظات الخاصة مش بتتصدّر.",
+  "editorShare": "مشاركة",
+  "editorCopy": "نسخ النص",
+  "editorShareFailed": "المشاركة مش متاحة، فنسخنا النص",
+  "editorCopied": "النص اتنسخ",
+  "editorImportHint": "الصق النص المصدَّر هنا",
+  "editorPaste": "لصق",
+  "editorImportCheck": "افحص",
+  "editorImportInvalid": "النص ده مش تصدير صحيح من التطبيق، ومفيش حاجة اتغيرت.",
+  "editorImportDiff": "{added} جديد، {replaced} هيتبدّل، {same} زي ما هو",
+  "@editorImportDiff": {"placeholders": {"added": {"type": "int"}, "replaced": {"type": "int"}, "same": {"type": "int"}}},
+  "editorImportKeeps": "باقي تعديلاتك هتفضل زي ما هي.",
+  "editorImportMissing": "{count} منهم لبنود مش موجودة في المحتوى الحالي",
+  "@editorImportMissing": {"placeholders": {"count": {"type": "int"}}},
+  "editorImportApply": "طبّق",
+  "editorImportDone": "الاستيراد تم",
+  "editorImportNothing": "مفيش فرق عن اللي عندك",
+  "editorKindPrice": "سعر",
+  "editorKindCode": "كود",
+  "editorKindPhone": "رقم",
+  "editorKindQuantity": "كمية",
+  "editorKindDuration": "مدة",
+  "editorKindPercent": "نسبة",
+  "editorKindDate": "تاريخ",
+  "editorKindText": "نص",
+  "editorTypePackage": "باقة",
+  "editorTypeCode": "كود",
+  "editorTypeContact": "رقم تواصل",
+  "editorTypeService": "خدمة",
+  "editorTypeProcedure": "إجراء",
+  "editorTypeFee": "رسوم",
+  "editorTypeRule": "قاعدة",
+  "editorTypeArticle": "معلومة",
+  "editorTypeGlossary": "مصطلح",
+  "editorTypeFaq": "سؤال شائع",
+  "notesTitle": "ملاحظاتي",
+  "notesWarning": "متكتبش أسماء عملاء ولا أرقامهم ولا بياناتهم.",
+  "notesLocal": "على الموبايل ده بس، ومش بتتصدّر.",
+  "notesSearch": "ابحث في ملاحظاتك",
+  "notesEmpty": "مفيش ملاحظات",
+  "notesEmptyBody": "اكتب حاجة تفتكرها، لوحدها أو على بند.",
+  "notesAdd": "ملاحظة جديدة",
+  "notesEdit": "تعديل الملاحظة",
+  "notesHint": "اكتب الملاحظة",
+  "notesDeleted": "الملاحظة اتمسحت",
+  "notesForItem": "على: {name}",
+  "@notesForItem": {"placeholders": {"name": {"type": "String"}}},
+  "notesDeleteOne": "احذف الملاحظة",
+  "trainingIntro": "الأسئلة من المحتوى المؤكد بس",
+  "trainingDaily": "سؤال النهارده",
+  "trainingDailyDone": "جاوبت سؤال النهارده",
+  "trainingCards": "البطاقات",
+  "trainingCardsDue": "{due} للمراجعة النهارده، {fresh} جديدة",
+  "@trainingCardsDue": {"placeholders": {"due": {"type": "int"}, "fresh": {"type": "int"}}},
+  "trainingQuiz": "اختبار",
+  "trainingQuizCount": "{count} أسئلة باختيارات",
+  "@trainingQuizCount": {"placeholders": {"count": {"type": "int"}}},
+  "trainingScenarios": "حالات من الفرع",
+  "trainingScenariosCount": "{count} حالة",
+  "@trainingScenariosCount": {"placeholders": {"count": {"type": "int"}}},
+  "trainingLevel": "مستواك",
+  "trainingMastered": "متقنة",
+  "trainingLearning": "بتتعلمها",
+  "trainingNew": "جديدة",
+  "trainingWeakest": "محتاجة مراجعة",
+  "trainingWeakRow": "{wrong} غلط من {seen}",
+  "@trainingWeakRow": {"placeholders": {"wrong": {"type": "int"}, "seen": {"type": "int"}}},
+  "trainingNothing": "مفيش أسئلة دلوقتي",
+  "trainingNothingBody": "محتاجين محتوى مؤكد كفاية عشان نعمل أسئلة.",
+  "trainingShowAnswer": "اعرض الإجابة",
+  "trainingKnew": "عرفتها",
+  "trainingDidNot": "معرفتهاش",
+  "trainingNext": "التالي",
+  "trainingFinish": "خلاص",
+  "trainingCorrect": "صح",
+  "trainingWrong": "غلط",
+  "trainingOpenItem": "افتح البند",
+  "trainingQuizResult": "{right} صح من {total}",
+  "@trainingQuizResult": {"placeholders": {"right": {"type": "int"}, "total": {"type": "int"}}},
+  "trainingReviewWrong": "راجع دول",
+  "trainingStep": "{index} من {total}",
+  "@trainingStep": {"placeholders": {"index": {"type": "int"}, "total": {"type": "int"}}},
+  "trainingDone": "خلصت بطاقات النهارده",
+  "trainingDoneBody": "البطاقات اللي جاوبتها هترجع في ميعادها.",
+  "trainingReset": "ابدأ التدريب من الأول",
+  "trainingResetAsk": "نمسح تقدّمك في التدريب؟",
+  "trainingAskFact": "«{title}»: {label}؟",
+  "@trainingAskFact": {"placeholders": {"title": {"type": "String"}, "label": {"type": "String"}}},
+  "trainingAskCode": "إيه كود «{title}»؟",
+  "@trainingAskCode": {"placeholders": {"title": {"type": "String"}}},
+  "trainingAskPhone": "إيه رقم «{title}»؟",
+  "@trainingAskPhone": {"placeholders": {"title": {"type": "String"}}},
+  "trainingAskTerm": "يعني إيه «{title}»؟",
+  "@trainingAskTerm": {"placeholders": {"title": {"type": "String"}}},
+  "trainingAskDocuments": "إيه المستندات المطلوبة في «{title}»؟",
+  "@trainingAskDocuments": {"placeholders": {"title": {"type": "String"}}},
+  "trainingAskFirstStep": "إيه أول خطوة في «{title}»؟",
+  "@trainingAskFirstStep": {"placeholders": {"title": {"type": "String"}}},
+  "trainingAskScenario": "{title}. تعمل إيه؟",
+  "@trainingAskScenario": {"placeholders": {"title": {"type": "String"}}}
 }

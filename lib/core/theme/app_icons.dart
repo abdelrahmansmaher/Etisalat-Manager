@@ -17,16 +17,42 @@ import 'package:flutter/material.dart';
 ///
 /// Widgets never use `Icons.*` directly — add a semantic name here instead.
 abstract final class AppIcons {
+  // ---- Tools and training -------------------------------------------------
+  static const IconData toolFavorite = Icons.favorite_rounded;
+  static const IconData toolFavoriteOff = Icons.favorite_border_rounded;
+  static const IconData toolCompare = Icons.compare_arrows_rounded;
+  static const IconData toolRecommend = Icons.tips_and_updates_rounded;
+  static const IconData toolCalculator = Icons.calculate_rounded;
+  static const IconData toolEdits = Icons.edit_note_rounded;
+  static const IconData toolNotes = Icons.sticky_note_2_rounded;
+  static const IconData toolWhatsNew = Icons.new_releases_rounded;
+  static const IconData toolAdd = Icons.add_rounded;
+  static const IconData toolRemove = Icons.close_rounded;
+  static const IconData toolDelete = Icons.delete_rounded;
+  static const IconData toolRestore = Icons.restore_rounded;
+  static const IconData toolImport = Icons.content_paste_rounded;
+  static const IconData toolExport = Icons.ios_share_rounded;
+  static const IconData toolHide = Icons.visibility_off_rounded;
+  static const IconData toolBest = Icons.arrow_circle_up_rounded;
+  static const IconData toolMeets = Icons.check_circle_rounded;
+  static const IconData toolMisses = Icons.remove_circle_rounded;
+  static const IconData toolUnknown = Icons.help_rounded;
+  static const IconData toolDrag = Icons.drag_handle_rounded;
+  static const IconData toolSwap = Icons.swap_vert_rounded;
+  static const IconData trainCards = Icons.style_rounded;
+  static const IconData trainDaily = Icons.today_rounded;
+  static const IconData trainQuiz = Icons.quiz_rounded;
+  static const IconData trainScenario = Icons.storefront_rounded;
+
   // ---- Navigation tabs (outlined = inactive, filled = active) -------------
   static const IconData navHome = Icons.home_outlined;
   static const IconData navHomeActive = Icons.home_rounded;
-  static const IconData navBrowse = Icons.grid_view_outlined;
-  static const IconData navBrowseActive = Icons.grid_view_rounded;
-  static const IconData navSearch = Icons.search_rounded;
-  static const IconData navTraining = Icons.school_outlined;
-  static const IconData navTrainingActive = Icons.school_rounded;
-  static const IconData navMe = Icons.person_outline_rounded;
-  static const IconData navMeActive = Icons.person_rounded;
+  static const IconData navPackages = Icons.sim_card_outlined;
+  static const IconData navPackagesActive = Icons.sim_card_rounded;
+  static const IconData navCodes = Icons.dialpad_outlined;
+  static const IconData navCodesActive = Icons.dialpad_rounded;
+  static const IconData navMore = Icons.more_horiz_outlined;
+  static const IconData navMoreActive = Icons.more_horiz_rounded;
 
   // ---- Directional (auto-mirrored in RTL) -------------------------------
   static const IconData back = Icons.arrow_back_rounded;
@@ -52,6 +78,10 @@ abstract final class AppIcons {
   static const IconData quickAnswer = Icons.bolt_rounded;
   static const IconData offline = Icons.offline_bolt_rounded;
   static const IconData layers = Icons.layers_rounded;
+  static const IconData calculator = Icons.calculate_rounded;
+  static const IconData sort = Icons.swap_vert_rounded;
+  static const IconData selected = Icons.check_rounded;
+  static const IconData training = Icons.school_rounded;
   static const IconData brand = Icons.auto_stories_rounded;
 
   // ---- Settings -----------------------------------------------------------

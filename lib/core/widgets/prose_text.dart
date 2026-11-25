@@ -103,7 +103,9 @@ class CodeRuns extends StatelessWidget {
   final String code;
   final TextStyle? style;
 
-  static final RegExp _runs = RegExp(r'[0-9]+|[^0-9]');
+  /// Digit groups, single symbols, and words (`*556*رقم الكارت#` keeps its
+  /// Arabic placeholder as one shaped run).
+  static final RegExp _runs = RegExp(r'[0-9]+|[*#+]|[^0-9*#+]+');
 
   @override
   Widget build(BuildContext context) {
@@ -124,7 +126,14 @@ class CodeRuns extends StatelessWidget {
             textBaseline: TextBaseline.alphabetic,
             children: [
               for (final r in runs)
-                Text(r, style: style, textDirection: TextDirection.ltr),
+                Text(
+                  r,
+                  style: style,
+                  softWrap: false,
+                  textDirection: r.contains(ProseText._arabic)
+                      ? TextDirection.rtl
+                      : TextDirection.ltr,
+                ),
             ],
           ),
         ),
