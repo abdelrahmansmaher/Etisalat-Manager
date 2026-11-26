@@ -17,6 +17,25 @@ class MainActivity : FlutterActivity() {
     private var pendingNumber: String? = null
     private var pendingResult: MethodChannel.Result? = null
 
+    /** Ask for the screen's fastest refresh rate (90/120 Hz), same size. */
+    override fun onPostResume() {
+        super.onPostResume()
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) return
+        val screen = (if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) this.display
+            else @Suppress("DEPRECATION") windowManager.defaultDisplay) ?: return
+        val current = screen.mode
+        val best = screen.supportedModes
+            .filter {
+                it.physicalWidth == current.physicalWidth &&
+                    it.physicalHeight == current.physicalHeight
+            }
+            .maxByOrNull { it.refreshRate } ?: return
+        if (best.modeId == window.attributes.preferredDisplayModeId) return
+        window.attributes = window.attributes.apply {
+            preferredDisplayModeId = best.modeId
+        }
+    }
+
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CHANNEL)

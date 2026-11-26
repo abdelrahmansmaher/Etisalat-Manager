@@ -374,5 +374,131 @@
   "toolsRecommendPrice": "Stated price",
   "toolsRecommendBeforeTax": "before tax",
   "packageIncludesTitle": "What's included",
-  "badgeOfficial": "Official"
+  "badgeOfficial": "Official",
+  "filterFamiliesAll": "All kinds",
+  "filterFamilyTitle": "Choose a kind of package",
+  "jumpTitle": "Go to a group",
+  "jumpPill": "Groups",
+  "searchScopeTitle": "Search in",
+  "moreTrainingSub": "Test yourself daily",
+  "moreRecommendSub": "The right package",
+  "moreCompareSub": "Two packages side by side",
+  "moreCalculatorSub": "Card, balance and bill",
+  "moreFavoritesSub": "What you saved",
+  "moreNotesSub": "Your private notes",
+  "moreEditorSub": "Edit and add items",
+  "moreWhatsNewSub": "Latest content updates",
+  "moreItemsCount": "{count} items",
+  "toolsCalcIntro": "Work out the card for a package, the balance a card gives, or a monthly bill with taxes and fees.",
+  "toolsFavoritesIntro": "Items you come back to, in your order. Drag the handle to reorder.",
+  "toolsWhatsNewIntro": "Every content update on this phone: what is new, changed prices, and what was removed.",
+  "toolsRecommendIntro": "Enter the customer's needs: what they pay, how much internet and minutes, and for how long. Only confirmed prices are used.",
+  "heroSelected": "chosen of 4",
+  "heroInFavorites": "favourites",
+  "heroNotes": "notes",
+  "heroEdits": "edits",
+  "heroUpdates": "updates",
+  "heroAdded": "new items",
+  "heroPackages": "packages",
+  "exportTitle": "Share and export",
+  "exportPdf": "Formatted PDF",
+  "exportPdfHint": "A tidy page with the N-Core header, ready to send",
+  "exportText": "Text message",
+  "exportTextHint": "A customer summary for WhatsApp or SMS",
+  "exportCopy": "Copy",
+  "exportCopyHint": "Copy the summary and paste it anywhere",
+  "exportPreparing": "Preparing the file…",
+  "exportFailed": "Could not prepare the file, try again",
+  "exportCopied": "Copied",
+  "exportUnavailable": "Sharing is not available here",
+  "exportComparePdf": "Export comparison as PDF",
+  "exportListPdf": "Export the list as PDF",
+  "exportDetails": "Details",
+  "exportSteps": "Steps",
+  "exportCodes": "Codes and numbers",
+  "exportBestMark": "A shaded cell is the best in its row",
+  "exportTagline": "Counter guide · e& Egypt",
+  "exportConfirmed": "Confirmed",
+  "exportSource": "Source",
+  "exportVerified": "Last checked",
+  "exportFooter": "Issued by {name} · prices as last officially checked",
+  "@exportFooter": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "exportPage": "Page {page} of {total}",
+  "@exportPage": {
+    "placeholders": {
+      "page": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "exportItemCount": "{count, plural, =1{1 item} other{{count} items}}",
+  "@exportItemCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "valueTitle": "Best value for money",
+  "valueForBudget": "Best value for your money",
+  "valueForCalls": "For calls",
+  "valueForInternet": "For internet",
+  "valuePerGb": "{cost} per GB",
+  "@valuePerGb": {
+    "placeholders": {
+      "cost": {
+        "type": "String"
+      }
+    }
+  },
+  "valuePerMinute": "{cost} per minute to any network",
+  "@valuePerMinute": {
+    "placeholders": {
+      "cost": {
+        "type": "String"
+      }
+    }
+  },
+  "valuePerMix": "{cost} per 100 mixes",
+  "@valuePerMix": {
+    "placeholders": {
+      "cost": {
+        "type": "String"
+      }
+    }
+  },
+  "valueLead": "{percent}% cheaper per unit than the next",
+  "@valueLead": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "valueLeadLast": "and {percent}% cheaper than the dearest",
+  "@valueLeadLast": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "valueTie": "They all cost the same per unit; choose by use",
+  "valueNotComparable": "These packages share no single unit (GB or any-network minutes) to weigh them honestly",
+  "valueBasisGb": "Weighed by the price of a GB",
+  "valueBasisMinute": "Weighed by the price of a minute to any network",
+  "valueBasisMix": "Weighed by the price of a mix (same plan)",
+  "valuePriceTotal": "At what the customer pays, tax included",
+  "valuePriceBefore": "At every package's price before tax",
+  "valueBadge": "Best value",
+  "valueOpen": "Open the package"
 }

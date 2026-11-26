@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../theme/app_colors.dart';
 import '../theme/app_radius.dart';
+import 'glass_engine.dart';
 
 /// Ambient light behind every screen: a calm base lit by three soft lights.
 ///
@@ -113,8 +114,12 @@ enum GlassTone {
   /// Cards and rows resting on the backdrop.
   card,
 
-  /// Chrome that blurs what scrolls under it (header, nav bar, sheets).
+  /// Clear liquid glass that blurs what scrolls under it (dock, header,
+  /// floating buttons).
   chrome,
+
+  /// Denser glass for sheets and popups that hold a lot of text.
+  panel,
 
   /// Deep navy glass: the SIM panel holding the price.
   navy,
@@ -147,6 +152,7 @@ class GlassDecoration extends Decoration {
   static Color fillOf(AppColors c, GlassTone tone) => switch (tone) {
     GlassTone.card => c.glassFill,
     GlassTone.chrome => c.glassChrome,
+    GlassTone.panel => c.glassPanel,
     GlassTone.navy => c.masthead.withValues(alpha: c.isDark ? 0.86 : 0.93),
   };
 
@@ -200,6 +206,7 @@ class _GlassPainter extends BoxPainter {
     }
 
     final fill = d.fill ?? GlassDecoration.fillOf(c, d.tone);
+    final clear = d.tone == GlassTone.chrome;
     final top = Color.alphaBlend(
       Colors.white.withValues(alpha: navy ? 0.10 : (c.isDark ? 0.05 : 0.10)),
       fill,
@@ -213,10 +220,11 @@ class _GlassPainter extends BoxPainter {
         ]),
     );
 
-    // Sheen: light caught by the upper part of the glass.
-    final sheen = navy ? Colors.white.withValues(alpha: 0.10) : c.glassSheen;
     canvas.save();
     canvas.clipRRect(rrect);
+
+    // Sheen: light caught by the upper part of the glass.
+    final sheen = navy ? Colors.white.withValues(alpha: 0.10) : c.glassSheen;
     canvas.drawRect(
       Rect.fromLTWH(rect.left, rect.top, rect.width, rect.height * 0.55),
       Paint()
@@ -226,24 +234,83 @@ class _GlassPainter extends BoxPainter {
           [sheen, sheen.withValues(alpha: 0)],
         ),
     );
+
+    // Specular highlight: a soft hot spot where the light hits.
+    final spot = Offset(
+      rect.left + rect.width * 0.22,
+      rect.top + rect.height * 0.08,
+    );
+    final spotR = rect.longestSide * (clear ? 0.55 : 0.45);
+    final spotA = clear
+        ? (c.isDark ? 0.16 : 0.42)
+        : (navy ? 0.10 : (c.isDark ? 0.06 : 0.20));
+    canvas.drawCircle(
+      spot,
+      spotR,
+      Paint()
+        ..shader = ui.Gradient.radial(spot, spotR, [
+          Colors.white.withValues(alpha: spotA),
+          Colors.white.withValues(alpha: 0),
+        ]),
+    );
+
+    // Thickness: a refractive lip just inside the edge, bright on top and
+    // faint at the bottom, and a little depth along the lower edge.
+    final lipTop = clear
+        ? (c.isDark ? 0.34 : 0.85)
+        : (navy ? 0.20 : (c.isDark ? 0.14 : 0.55));
+    canvas.drawRRect(
+      rrect.deflate(2),
+      Paint()
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = clear ? 3 : 2
+        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 1.5)
+        ..shader = ui.Gradient.linear(
+          rect.topCenter,
+          rect.bottomCenter,
+          [
+            Colors.white.withValues(alpha: lipTop),
+            Colors.white.withValues(alpha: 0),
+            Colors.white.withValues(alpha: lipTop * 0.45),
+          ],
+          const [0, 0.45, 1],
+        ),
+    );
+    if (clear && !c.isDark) {
+      canvas.drawRect(
+        Rect.fromLTWH(
+          rect.left,
+          rect.bottom - rect.height * 0.35,
+          rect.width,
+          rect.height * 0.35,
+        ),
+        Paint()
+          ..shader = ui.Gradient.linear(
+            Offset(rect.center.dx, rect.bottom - rect.height * 0.35),
+            rect.bottomCenter,
+            [const Color(0x000A1230), const Color(0x120A1230)],
+          ),
+      );
+    }
     canvas.restore();
 
-    // Rim: bright at the top-start, faint at the bottom-end.
+    // Rim: bright at the top-start and again at the bottom-end, like light
+    // passing through a lens.
     final hi = navy ? Colors.white.withValues(alpha: 0.30) : c.glassEdge;
     final lo = navy ? Colors.white.withValues(alpha: 0.06) : c.glassEdgeLow;
     canvas.drawRRect(
       rrect.deflate(0.5),
       Paint()
         ..style = PaintingStyle.stroke
-        ..strokeWidth = 1
+        ..strokeWidth = clear ? 1.2 : 1
         ..shader = ui.Gradient.linear(
           rect.topLeft,
           rect.bottomRight,
           [
             hi,
-            hi.withValues(alpha: hi.a * 0.35),
+            hi.withValues(alpha: hi.a * 0.30),
             lo,
-            hi.withValues(alpha: hi.a * 0.55),
+            hi.withValues(alpha: hi.a * (clear ? 0.8 : 0.55)),
           ],
           const [0, 0.38, 0.7, 1],
         ),
@@ -279,14 +346,23 @@ class LiquidGlass extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
 
   /// Frost + saturation used by every blurred surface.
-  static ui.ImageFilter filter({double sigma = 22}) => ui.ImageFilter.compose(
-    outer: const ColorFilter.matrix(_saturate),
-    inner: ui.ImageFilter.blur(
-      sigmaX: sigma,
-      sigmaY: sigma,
-      tileMode: TileMode.mirror,
-    ),
-  );
+  static ui.ImageFilter filter({double sigma = 22, bool vivid = false}) =>
+      ui.ImageFilter.compose(
+        outer: ColorFilter.matrix(vivid ? _saturateVivid : _saturate),
+        inner: ui.ImageFilter.blur(
+          sigmaX: sigma,
+          sigmaY: sigma,
+          tileMode: TileMode.mirror,
+        ),
+      );
+
+  /// Saturation x1.9 for clear glass: colours under it glow through.
+  static const List<double> _saturateVivid = [
+    1.6496, -0.6437, -0.0650, 0, 0, //
+    -0.1914, 1.2563, -0.0650, 0, 0, //
+    -0.1914, -0.6437, 1.8350, 0, 0, //
+    0, 0, 0, 1, 0, //
+  ];
 
   /// Saturation x1.6 (Rec. 709 weights).
   static const List<double> _saturate = [
@@ -295,6 +371,37 @@ class LiquidGlass extends StatelessWidget {
     -0.1276, -0.4291, 1.5567, 0, 0, //
     0, 0, 0, 1, 0, //
   ];
+
+  /// Lens of each blurred tone when the refraction engine runs: clear
+  /// chrome bends strongly with a light frost; panels (sheets, popups)
+  /// bend gently under heavier frost so their text stays easy to read.
+  static GlassOptics? opticsOf(GlassTone tone) => switch (tone) {
+    GlassTone.chrome => const GlassOptics(
+      bezel: 24,
+      bend: 22,
+      dispersion: 0.3,
+      magnify: 0.04,
+      frost: 2.5,
+      saturation: _saturateVivid,
+    ),
+    GlassTone.panel => const GlassOptics(
+      bezel: 26,
+      bend: 12,
+      dispersion: 0.18,
+      magnify: 0.015,
+      frost: 18,
+      saturation: _saturate,
+    ),
+    GlassTone.navy => const GlassOptics(
+      bezel: 18,
+      bend: 12,
+      dispersion: 0.2,
+      magnify: 0.02,
+      frost: 10,
+      saturation: _saturate,
+    ),
+    GlassTone.card => null,
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -317,15 +424,25 @@ class LiquidGlass extends StatelessWidget {
           )
         : ClipRRect(borderRadius: borderRadius, child: content);
     if (blur && !reduce) {
+      final optics = opticsOf(tone);
+      final Widget glass = GlassEngine.refracts && optics != null
+          ? RefractiveBackdrop(
+              optics: optics,
+              radius: stadium ? null : borderRadius.topLeft.x,
+              child: content,
+            )
+          : BackdropFilter(
+              filter: tone == GlassTone.chrome
+                  ? filter(sigma: 12, vivid: true)
+                  : filter(),
+              child: content,
+            );
       content = stadium
           ? ClipPath(
               clipper: const ShapeBorderClipper(shape: StadiumBorder()),
-              child: BackdropFilter(filter: filter(), child: content),
+              child: glass,
             )
-          : ClipRRect(
-              borderRadius: borderRadius,
-              child: BackdropFilter(filter: filter(), child: content),
-            );
+          : ClipRRect(borderRadius: borderRadius, child: glass);
     } else {
       content = clip;
     }

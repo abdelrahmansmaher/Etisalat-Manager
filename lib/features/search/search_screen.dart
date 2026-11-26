@@ -10,6 +10,8 @@ import '../../core/content/content.dart';
 import '../../core/router/app_routes.dart';
 import '../../core/settings/history.dart';
 import '../../core/theme/theme.dart';
+import '../../core/widgets/app_card.dart';
+import '../../core/widgets/choice_sheet.dart';
 import '../../core/widgets/capsules.dart';
 import '../../core/widgets/list_surface.dart';
 import '../../core/widgets/liquid_glass.dart';
@@ -289,31 +291,56 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     final results = index.search(_query, section: _section, limit: 60);
     return [
       if (sections.length > 1)
+        // Where to search: one button and a sheet, not a row of capsules.
         PinnedHeaderSliver(
-          child: Container(
-            color: Theme.of(context).scaffoldBackgroundColor,
-            padding: const EdgeInsets.symmetric(vertical: AppSpacing.xxs),
-            child: CapsuleRow(
-              key: const ValueKey('search-filters'),
-              padding: hPad,
-              children: [
-                Capsule(
-                  key: const ValueKey('search-filter-all'),
-                  label: l10n.filterAll,
-                  dense: true,
-                  selected: _section == null,
-                  onTap: () => setState(() => _section = null),
-                ),
-                for (final s in sections)
-                  Capsule(
-                    key: ValueKey('search-filter-${s.key}'),
-                    label: s.title(l10n),
-                    dense: true,
-                    selected: _section == s,
-                    onTap: () =>
-                        setState(() => _section = _section == s ? null : s),
-                  ),
-              ],
+          child: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(
+              hPad.start,
+              AppSpacing.xs,
+              hPad.end,
+              AppSpacing.xxs,
+            ),
+            child: Align(
+              alignment: AlignmentDirectional.centerStart,
+              child: FilterPill(
+                key: const ValueKey('search-filters'),
+                floating: true,
+                label:
+                    _section?.title(l10n) ??
+                    '${l10n.searchScopeTitle}: ${l10n.filterAll}',
+                active: _section != null,
+                onTap: () async {
+                  final picked = await showChoiceSheet<String>(
+                    context,
+                    title: l10n.searchScopeTitle,
+                    selected: _section?.key ?? '',
+                    choices: [
+                      Choice(
+                        key: const ValueKey('search-filter-all'),
+                        value: '',
+                        label: l10n.filterAll,
+                        leading: const TintedIcon(
+                          AppIcons.layers,
+                          tile: IconTile.sm,
+                        ),
+                      ),
+                      for (final s in sections)
+                        Choice(
+                          key: ValueKey('search-filter-${s.key}'),
+                          value: s.key,
+                          label: s.title(l10n),
+                          leading: TintedIcon(s.icon, tile: IconTile.sm),
+                        ),
+                    ],
+                  );
+                  if (picked == null || !mounted) return;
+                  setState(
+                    () => _section = picked.isEmpty
+                        ? null
+                        : sections.firstWhere((s) => s.key == picked),
+                  );
+                },
+              ),
             ),
           ),
         ),

@@ -32,37 +32,6 @@ Future<void> swipe(WidgetTester tester, double dx) async {
 }
 
 void main() {
-  testWidgets('Arabic: swiping right goes to the next tab (RTL order)', (
-    tester,
-  ) async {
-    await pumpApp(tester);
-    expect(currentPath(tester), '/home');
-
-    // In RTL, Packages sits visually to the LEFT of Home; dragging the
-    // finger rightwards reveals it.
-    await swipe(tester, 300);
-    expect(currentPath(tester), '/packages');
-    expect(navSelected(tester, 1), isTrue);
-    expect(navSelected(tester, 0), isFalse);
-
-    await swipe(tester, -300);
-    expect(currentPath(tester), '/home');
-  });
-
-  testWidgets('English: swiping left goes to the next tab (LTR order)', (
-    tester,
-  ) async {
-    await pumpApp(tester, locale: en);
-    await swipe(tester, -300);
-    expect(currentPath(tester), '/packages');
-    expect(navSelected(tester, 1), isTrue);
-
-    // Swiping "back" past the first tab does nothing.
-    await swipe(tester, 300);
-    await swipe(tester, 300);
-    expect(currentPath(tester), '/home');
-  });
-
   testWidgets('tapping a tab animates the pager (no hard cut) and keeps '
       'state alive', (tester) async {
     await pumpApp(tester);
@@ -81,18 +50,6 @@ void main() {
     expect(currentPath(tester), '/more');
     // Home stayed alive while off-screen.
     expect(find.byType(HomeScreen, skipOffstage: false), findsOneWidget);
-  });
-
-  testWidgets('nav indicator follows swipe progress', (tester) async {
-    await pumpApp(tester, locale: en);
-    final gesture = await tester.startGesture(const Offset(300, 300));
-    await gesture.moveBy(const Offset(-40, 0)); // past touch slop
-    await gesture.moveBy(const Offset(-100, 0));
-    await tester.pump();
-    final pc = tester.widget<PageView>(find.byType(PageView)).controller!;
-    expect(pc.page, inExclusiveRange(0.1, 0.9));
-    await gesture.up();
-    await tester.pumpAndSettle();
   });
 
   testWidgets('TabSwipeOptOut keeps horizontal drags from switching tabs', (

@@ -104,35 +104,94 @@ class _QuickToolsStrip extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context);
     final calculator = ref.watch(rechargeCalculatorAvailableProvider);
+    final tools = [
+      (
+        'home-tool-recommend',
+        AppIcons.toolRecommend,
+        l10n.toolRecommendShort,
+        ToolRoutes.recommend,
+      ),
+      (
+        'home-tool-compare',
+        AppIcons.toolCompare,
+        l10n.toolCompareShort,
+        ToolRoutes.compare,
+      ),
+      if (calculator)
+        (
+          'home-tool-calculator',
+          AppIcons.toolCalculator,
+          l10n.toolCalculatorShort,
+          ToolRoutes.calculator,
+        ),
+      (
+        'home-tool-training',
+        AppIcons.training,
+        l10n.trainingTitle,
+        ToolRoutes.training,
+      ),
+    ];
+    // Shortcuts like app icons: a lit tile in the tool's colour, its name
+    // under it, all the same width.
     return Padding(
       padding: const EdgeInsets.only(top: AppSpacing.md),
-      child: CapsuleRow(
+      child: Row(
         key: const ValueKey('home-quick-tools'),
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Capsule(
-            key: const ValueKey('home-tool-recommend'),
-            icon: AppIcons.toolRecommend,
-            label: l10n.toolRecommendShort,
-            onTap: () => context.push(ToolRoutes.recommend),
-          ),
-          Capsule(
-            key: const ValueKey('home-tool-compare'),
-            icon: AppIcons.toolCompare,
-            label: l10n.toolCompareShort,
-            onTap: () => context.push(ToolRoutes.compare),
-          ),
-          if (calculator)
-            Capsule(
-              key: const ValueKey('home-tool-calculator'),
-              icon: AppIcons.toolCalculator,
-              label: l10n.toolCalculatorShort,
-              onTap: () => context.push(ToolRoutes.calculator),
+          for (final (i, (key, icon, label, route)) in tools.indexed) ...[
+            if (i > 0) const SizedBox(width: AppSpacing.xs),
+            Expanded(
+              child: _Shortcut(
+                key: ValueKey(key),
+                icon: icon,
+                label: label,
+                onTap: () => context.push(route),
+              ),
             ),
-          Capsule(
-            key: const ValueKey('home-tool-training'),
-            icon: AppIcons.training,
-            label: l10n.trainingTitle,
-            onTap: () => context.push(ToolRoutes.training),
+          ],
+        ],
+      ),
+    );
+  }
+}
+
+class _Shortcut extends StatelessWidget {
+  const _Shortcut({
+    super.key,
+    required this.icon,
+    required this.label,
+    required this.onTap,
+  });
+
+  final IconData icon;
+  final String label;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final c = context.colors;
+    return AppCard(
+      role: CardRole.flat,
+      semanticLabel: label,
+      onTap: onTap,
+      padding: const EdgeInsets.symmetric(
+        vertical: AppSpacing.sm,
+        horizontal: AppSpacing.xxs,
+      ),
+      child: Column(
+        children: [
+          TintedIcon(icon, tile: IconTile.md),
+          const SizedBox(height: AppSpacing.xs),
+          Text(
+            label,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.center,
+            style: AppTypography.labelL.copyWith(
+              color: c.textPrimary,
+              fontWeight: FontWeight.w600,
+            ),
           ),
         ],
       ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../export/export_sheet.dart';
 import '../../core/router/app_routes.dart';
 import '../../core/router/tab_pager.dart';
 import '../../core/theme/theme.dart';
@@ -14,7 +15,10 @@ import '../../l10n/app_localizations.dart';
 import '../content/package_family.dart';
 import 'compare_logic.dart';
 import 'package_info.dart';
+import 'recharge_rule.dart';
 import 'tool_widgets.dart';
+import 'value_logic.dart';
+import 'value_widgets.dart';
 
 /// Side-by-side comparison of 2 to 4 packages.
 class CompareScreen extends ConsumerStatefulWidget {
@@ -73,11 +77,27 @@ class _CompareScreenState extends ConsumerState<CompareScreen> {
         ? compareRows(selected)
         : const <CompareValues>[];
     final differs = selected.length >= 2 && periodsDiffer(selected);
+    final value = selected.length >= 2
+        ? compareValue(selected, rule: ref.watch(rechargeRuleProvider))
+        : null;
 
     return PageScaffold(
       title: l10n.toolsCompareTitle,
-      subtitle: l10n.toolsCompareHint,
+      actions: [
+        if (selected.length >= 2)
+          ExportButton(
+            title: l10n.toolsCompareTitle,
+            pdf: (pdf) => pdf.comparison(selected, value: value),
+          ),
+      ],
       children: [
+        ToolHero(
+          icon: AppIcons.toolCompare,
+          hue: ToolHue.compare,
+          text: l10n.toolsCompareHint,
+          stats: [('${selected.length}', l10n.heroSelected)],
+        ),
+        const SizedBox(height: AppSpacing.md),
         Wrap(
           spacing: AppSpacing.xs,
           runSpacing: AppSpacing.xs,
@@ -131,7 +151,23 @@ class _CompareScreenState extends ConsumerState<CompareScreen> {
             ),
             const SizedBox(height: AppSpacing.sm),
           ],
+          if (value != null)
+            ValueVerdictCard(ranking: value, title: l10n.valueTitle)
+          else
+            const ValueNotComparable(),
+          const SizedBox(height: AppSpacing.md),
           _CompareTable(packages: selected, rows: rows),
+          const SizedBox(height: AppSpacing.md),
+          FilledButton.icon(
+            key: const ValueKey('compare-export'),
+            onPressed: () => sharePdf(
+              context,
+              title: l10n.toolsCompareTitle,
+              pdf: (pdf) => pdf.comparison(selected, value: value),
+            ),
+            icon: const Icon(AppIcons.exportPdf),
+            label: Text(l10n.exportComparePdf),
+          ),
         ],
       ],
     );
@@ -143,29 +179,6 @@ class _CompareTable extends StatelessWidget {
 
   final List<PackageInfo> packages;
   final List<CompareValues> rows;
-
-  static String _rowLabel(AppLocalizations l10n, CompareRow row) =>
-      switch (row) {
-        CompareRow.price => l10n.toolsRowPrice,
-        CompareRow.total => l10n.toolsRowTotal,
-        CompareRow.quota => l10n.toolsRowQuota,
-        CompareRow.gb => l10n.toolsRowGb,
-        CompareRow.minutes => l10n.toolsRowMinutes,
-        CompareRow.mix => l10n.toolsRowMix,
-        CompareRow.validity => l10n.toolsRowValidity,
-        CompareRow.code => l10n.toolsRowCode,
-        CompareRow.after => l10n.toolsRowAfter,
-      };
-
-  static String? _bestBadge(AppLocalizations l10n, CompareRow row) =>
-      switch (row) {
-        CompareRow.price || CompareRow.total => l10n.toolsBestLowest,
-        CompareRow.gb ||
-        CompareRow.minutes ||
-        CompareRow.mix => l10n.toolsBestHighest,
-        CompareRow.validity => l10n.toolsBestLongest,
-        _ => null,
-      };
 
   @override
   Widget build(BuildContext context) {
@@ -187,7 +200,7 @@ class _CompareTable extends StatelessWidget {
               children: [
                 // Package header row
                 Container(
-                  color: c.surfaceVariant,
+                  color: c.glassTint,
                   padding: const EdgeInsets.symmetric(vertical: AppSpacing.sm),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -254,7 +267,7 @@ class _CompareTable extends StatelessWidget {
                               horizontal: AppSpacing.sm,
                             ),
                             child: Text(
-                              _rowLabel(l10n, r.row),
+                              compareRowLabel(l10n, r.row),
                               style: AppTypography.labelL.copyWith(
                                 color: c.textSecondary,
                               ),
@@ -271,7 +284,7 @@ class _CompareTable extends StatelessWidget {
                                   r.row == CompareRow.price ||
                                   r.row == CompareRow.total,
                               bestLabel: r.best.contains(i)
-                                  ? _bestBadge(l10n, r.row)
+                                  ? compareBestBadge(l10n, r.row)
                                   : null,
                             ),
                           ),

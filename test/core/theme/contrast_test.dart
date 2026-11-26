@@ -32,12 +32,12 @@ List<Pair> pairs(AppColors c) {
   final worstBackdrop = c.brightness == Brightness.light
       ? Colors.black
       : Colors.white;
-  // Blurred chrome over the darkest (light mode) / brightest (dark mode)
-  // thing that can scroll under it: a selected navy capsule / a light chip.
-  final glass = over(
-    GlassDecoration.fillOf(c, GlassTone.chrome),
-    c.isDark ? c.primary : c.capsuleSelected,
-  );
+  // Clear glass (dock, header) over what scrolls under it, blurred: the
+  // glass cards resting on the brightest/darkest light of the backdrop.
+  final under = AppBackdrop.samples(c)
+      .map((b) => over(GlassDecoration.fillOf(c, GlassTone.card), b))
+      .reduce((a, b) => luminance(a) < luminance(b) == c.isDark ? b : a);
+  final glass = over(GlassDecoration.fillOf(c, GlassTone.chrome), under);
   assert(worstBackdrop != glass);
   final trust = TrustColors.fromTokens(c);
   return [
@@ -228,12 +228,24 @@ List<Pair> pairs(AppColors c) {
           min,
         ),
         (
-          '$name / glass header over backdrop #$i',
+          '$name / glass panel (sheet, popup) over backdrop #$i',
           fg,
-          over(GlassDecoration.fillOf(c, GlassTone.chrome), back),
+          over(GlassDecoration.fillOf(c, GlassTone.panel), back),
           min,
         ),
       ],
+      // Text that sits on the clear header glass.
+      for (final (name, fg) in [
+        ('textPrimary', c.textPrimary),
+        ('textSecondary', c.textSecondary),
+        ('primary', c.primary),
+      ])
+        (
+          '$name / clear header glass over backdrop #$i',
+          fg,
+          over(GlassDecoration.fillOf(c, GlassTone.chrome), back),
+          text,
+        ),
       (
         'search hint / header field over backdrop #$i',
         c.textTertiary,

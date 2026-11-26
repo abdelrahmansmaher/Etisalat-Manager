@@ -429,6 +429,16 @@ class _NavItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final c = context.colors;
     final color = Color.lerp(c.textSecondary, c.primary, amount)!;
+    // Vibrancy: a soft halo keeps icons and names clear over anything the
+    // clear glass shows.
+    final halo = [
+      Shadow(
+        color: (c.isDark ? Colors.black : Colors.white).withValues(
+          alpha: c.isDark ? 0.55 : 0.85,
+        ),
+        blurRadius: 8,
+      ),
+    ];
     return Semantics(
       selected: selected,
       button: true,
@@ -466,6 +476,7 @@ class _NavItem extends StatelessWidget {
                               : destination.icon,
                           size: AppIconSize.nav,
                           color: color,
+                          shadows: halo,
                         ),
                         if (destination.badge)
                           const PositionedDirectional(
@@ -490,6 +501,7 @@ class _NavItem extends StatelessWidget {
                         softWrap: false,
                         style: AppBottomNav.labelStyle.copyWith(
                           color: color,
+                          shadows: halo,
                           fontWeight: amount > 0.5
                               ? FontWeight.w700
                               : FontWeight.w600,

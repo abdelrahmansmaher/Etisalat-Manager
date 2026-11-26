@@ -232,7 +232,7 @@ abstract final class AppTheme {
         behavior: SnackBarBehavior.floating,
         backgroundColor: c.masthead,
         contentTextStyle: AppTypography.bodyM.copyWith(color: c.onMasthead),
-        actionTextColor: c.mastheadPrice,
+        actionTextColor: c.onMasthead,
         shape: const StadiumBorder(),
         insetPadding: const EdgeInsets.fromLTRB(16, 0, 16, 88),
       ),

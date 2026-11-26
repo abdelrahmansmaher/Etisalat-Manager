@@ -9,6 +9,7 @@ import '../theme/app_typography.dart';
 import 'app_card.dart';
 import 'liquid_glass.dart';
 import '../theme/app_icons.dart';
+import '../theme/icon_hues.dart';
 
 /// Capsule (pill) chip — the one navigation/filter shape used everywhere.
 ///
@@ -51,7 +52,11 @@ class Capsule extends StatelessWidget {
     final c = context.colors;
     final sliding = _SlidingScope.of(context);
     final fg = selected ? c.onCapsuleSelected : c.textPrimary;
-    final iconColor = selected ? c.onCapsuleSelected : c.primary;
+    // An unselected capsule shows its icon in the icon's own hue.
+    final hue = icon == null ? null : IconHues.of(icon!);
+    final iconColor = selected
+        ? c.onCapsuleSelected
+        : (hue == null || hue == Hue.navy ? c.primary : hue.of(c));
     final d = AppMotion.resolve(context, duration);
 
     Widget text = AnimatedDefaultTextStyle(

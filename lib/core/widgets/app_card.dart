@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../theme/app_colors.dart';
 import '../theme/app_icons.dart';
+import '../theme/icon_hues.dart';
 import '../theme/app_motion.dart';
 import '../theme/app_radius.dart';
 import '../theme/app_shadows.dart';
@@ -156,8 +157,12 @@ class AppCard extends StatelessWidget {
   }
 }
 
-/// Rounded-square icon tile. Size, glyph size and radius come from
-/// [IconTile]; navy tint by default.
+/// Rounded-square icon tile: a lit, glossy tile in the icon's own hue
+/// ([IconHues]) with a white glyph, like a home-screen app icon. Size,
+/// glyph size and radius come from [IconTile].
+///
+/// Pass [hue] to choose the colour, or [background]/[color] for a quiet
+/// tinted tile instead (status rows, neutral info).
 class TintedIcon extends StatelessWidget {
   const TintedIcon(
     this.icon, {
@@ -165,37 +170,102 @@ class TintedIcon extends StatelessWidget {
     this.tile = IconTile.md,
     this.color,
     this.background,
+    this.hue,
   });
 
   final IconData icon;
   final IconTile tile;
   final Color? color;
   final Color? background;
+  final Hue? hue;
 
   @override
   Widget build(BuildContext context) {
     final c = context.colors;
-    final base = background ?? c.primaryContainer;
-    final lift = Color.alphaBlend(
-      Colors.white.withValues(alpha: c.isDark ? 0.10 : 0.55),
-      base,
-    );
+    final radius = BorderRadius.circular(tile.radius);
+    if (background != null || color != null) {
+      final base = background ?? c.primaryContainer;
+      return Container(
+        width: tile.box,
+        height: tile.box,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: AlignmentDirectional.topStart,
+            end: AlignmentDirectional.bottomEnd,
+            colors: [
+              Color.alphaBlend(
+                Colors.white.withValues(alpha: c.isDark ? 0.10 : 0.55),
+                base,
+              ),
+              base,
+            ],
+          ),
+          borderRadius: radius,
+          border: Border.all(
+            color: Colors.white.withValues(alpha: c.isDark ? 0.10 : 0.70),
+          ),
+        ),
+        child: Icon(
+          icon,
+          size: tile.glyph,
+          color: color ?? c.onPrimaryContainer,
+        ),
+      );
+    }
+    final h = (hue ?? IconHues.of(icon)).of(c);
+    final small = tile.box <= IconTile.xs.box;
     return Container(
       width: tile.box,
       height: tile.box,
       alignment: Alignment.center,
       decoration: BoxDecoration(
+        borderRadius: radius,
         gradient: LinearGradient(
-          begin: AlignmentDirectional.topStart,
-          end: AlignmentDirectional.bottomEnd,
-          colors: [lift, base],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Color.alphaBlend(Colors.white.withValues(alpha: 0.22), h),
+            h,
+            Color.alphaBlend(Colors.black.withValues(alpha: 0.10), h),
+          ],
+          stops: const [0, 0.55, 1],
         ),
-        borderRadius: BorderRadius.circular(tile.radius),
-        border: Border.all(
-          color: Colors.white.withValues(alpha: c.isDark ? 0.10 : 0.70),
+        boxShadow: small
+            ? null
+            : [
+                BoxShadow(
+                  color: h.withValues(alpha: c.isDark ? 0.45 : 0.32),
+                  blurRadius: tile.box * 0.28,
+                  offset: Offset(0, tile.box * 0.08),
+                  spreadRadius: -tile.box * 0.06,
+                ),
+              ],
+      ),
+      foregroundDecoration: BoxDecoration(
+        borderRadius: radius,
+        border: Border.all(color: Colors.white.withValues(alpha: 0.22)),
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.center,
+          colors: [
+            Colors.white.withValues(alpha: 0.18),
+            Colors.white.withValues(alpha: 0),
+          ],
         ),
       ),
-      child: Icon(icon, size: tile.glyph, color: color ?? c.onPrimaryContainer),
+      child: Icon(
+        icon,
+        size: tile.glyph,
+        color: Colors.white,
+        shadows: [
+          Shadow(
+            color: Colors.black.withValues(alpha: 0.18),
+            blurRadius: 2,
+            offset: const Offset(0, 1),
+          ),
+        ],
+      ),
     );
   }
 }

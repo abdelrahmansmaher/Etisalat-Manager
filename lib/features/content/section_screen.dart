@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../export/export_sheet.dart';
 import '../../core/content/content.dart';
 import '../../core/theme/theme.dart';
 import '../../core/widgets/page_scaffold.dart';
@@ -83,6 +84,13 @@ class _SectionScreenState extends ConsumerState<SectionScreen> {
       scrollKey: const ValueKey('section-scroll'),
       controller: _jumper.scroll,
       title: section.title(l10n),
+      actions: [
+        if (items.isNotEmpty)
+          ExportButton(
+            title: section.title(l10n),
+            pdf: (pdf) => pdf.list(section.title(l10n), items),
+          ),
+      ],
       slivers: [
         if (async.isLoading && async.value == null)
           SliverPadding(

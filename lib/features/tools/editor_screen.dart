@@ -209,7 +209,6 @@ class EditorScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context);
-    final c = context.colors;
     final overrides = ref.watch(overridesProvider);
     final edits = overrides.values.toList()
       ..sort((a, b) => b.editedAt.compareTo(a.editedAt));
@@ -226,16 +225,11 @@ class EditorScreen extends ConsumerWidget {
         ),
       ],
       children: [
-        AppCard(
-          role: CardRole.flat,
-          color: c.primaryContainer,
-          borderColor: c.primary.withValues(alpha: 0.25),
-          padding: const EdgeInsets.all(AppSpacing.sm),
-          child: IconLine(
-            icon: AppIcons.info,
-            text: l10n.editorLocalOnly,
-            color: c.onPrimaryContainer,
-          ),
+        ToolHero(
+          icon: AppIcons.toolEdits,
+          hue: ToolHue.editor,
+          text: l10n.editorLocalOnly,
+          stats: [('${edits.length}', l10n.heroEdits)],
         ),
         const SizedBox(height: AppSpacing.sm),
         Row(

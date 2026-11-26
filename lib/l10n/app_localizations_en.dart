@@ -1298,4 +1298,236 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get badgeOfficial => 'Official';
+
+  @override
+  String get filterFamiliesAll => 'All kinds';
+
+  @override
+  String get filterFamilyTitle => 'Choose a kind of package';
+
+  @override
+  String get jumpTitle => 'Go to a group';
+
+  @override
+  String get jumpPill => 'Groups';
+
+  @override
+  String get searchScopeTitle => 'Search in';
+
+  @override
+  String get moreTrainingSub => 'Test yourself daily';
+
+  @override
+  String get moreRecommendSub => 'The right package';
+
+  @override
+  String get moreCompareSub => 'Two packages side by side';
+
+  @override
+  String get moreCalculatorSub => 'Card, balance and bill';
+
+  @override
+  String get moreFavoritesSub => 'What you saved';
+
+  @override
+  String get moreNotesSub => 'Your private notes';
+
+  @override
+  String get moreEditorSub => 'Edit and add items';
+
+  @override
+  String get moreWhatsNewSub => 'Latest content updates';
+
+  @override
+  String moreItemsCount(int count) {
+    return '$count items';
+  }
+
+  @override
+  String get toolsCalcIntro =>
+      'Work out the card for a package, the balance a card gives, or a monthly bill with taxes and fees.';
+
+  @override
+  String get toolsFavoritesIntro =>
+      'Items you come back to, in your order. Drag the handle to reorder.';
+
+  @override
+  String get toolsWhatsNewIntro =>
+      'Every content update on this phone: what is new, changed prices, and what was removed.';
+
+  @override
+  String get toolsRecommendIntro =>
+      'Enter the customer\'s needs: what they pay, how much internet and minutes, and for how long. Only confirmed prices are used.';
+
+  @override
+  String get heroSelected => 'chosen of 4';
+
+  @override
+  String get heroInFavorites => 'favourites';
+
+  @override
+  String get heroNotes => 'notes';
+
+  @override
+  String get heroEdits => 'edits';
+
+  @override
+  String get heroUpdates => 'updates';
+
+  @override
+  String get heroAdded => 'new items';
+
+  @override
+  String get heroPackages => 'packages';
+
+  @override
+  String get exportTitle => 'Share and export';
+
+  @override
+  String get exportPdf => 'Formatted PDF';
+
+  @override
+  String get exportPdfHint =>
+      'A tidy page with the N-Core header, ready to send';
+
+  @override
+  String get exportText => 'Text message';
+
+  @override
+  String get exportTextHint => 'A customer summary for WhatsApp or SMS';
+
+  @override
+  String get exportCopy => 'Copy';
+
+  @override
+  String get exportCopyHint => 'Copy the summary and paste it anywhere';
+
+  @override
+  String get exportPreparing => 'Preparing the file…';
+
+  @override
+  String get exportFailed => 'Could not prepare the file, try again';
+
+  @override
+  String get exportCopied => 'Copied';
+
+  @override
+  String get exportUnavailable => 'Sharing is not available here';
+
+  @override
+  String get exportComparePdf => 'Export comparison as PDF';
+
+  @override
+  String get exportListPdf => 'Export the list as PDF';
+
+  @override
+  String get exportDetails => 'Details';
+
+  @override
+  String get exportSteps => 'Steps';
+
+  @override
+  String get exportCodes => 'Codes and numbers';
+
+  @override
+  String get exportBestMark => 'A shaded cell is the best in its row';
+
+  @override
+  String get exportTagline => 'Counter guide · e& Egypt';
+
+  @override
+  String get exportConfirmed => 'Confirmed';
+
+  @override
+  String get exportSource => 'Source';
+
+  @override
+  String get exportVerified => 'Last checked';
+
+  @override
+  String exportFooter(String name) {
+    return 'Issued by $name · prices as last officially checked';
+  }
+
+  @override
+  String exportPage(int page, int total) {
+    return 'Page $page of $total';
+  }
+
+  @override
+  String exportItemCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count items',
+      one: '1 item',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get valueTitle => 'Best value for money';
+
+  @override
+  String get valueForBudget => 'Best value for your money';
+
+  @override
+  String get valueForCalls => 'For calls';
+
+  @override
+  String get valueForInternet => 'For internet';
+
+  @override
+  String valuePerGb(String cost) {
+    return '$cost per GB';
+  }
+
+  @override
+  String valuePerMinute(String cost) {
+    return '$cost per minute to any network';
+  }
+
+  @override
+  String valuePerMix(String cost) {
+    return '$cost per 100 mixes';
+  }
+
+  @override
+  String valueLead(String percent) {
+    return '$percent% cheaper per unit than the next';
+  }
+
+  @override
+  String valueLeadLast(String percent) {
+    return 'and $percent% cheaper than the dearest';
+  }
+
+  @override
+  String get valueTie => 'They all cost the same per unit; choose by use';
+
+  @override
+  String get valueNotComparable =>
+      'These packages share no single unit (GB or any-network minutes) to weigh them honestly';
+
+  @override
+  String get valueBasisGb => 'Weighed by the price of a GB';
+
+  @override
+  String get valueBasisMinute =>
+      'Weighed by the price of a minute to any network';
+
+  @override
+  String get valueBasisMix => 'Weighed by the price of a mix (same plan)';
+
+  @override
+  String get valuePriceTotal => 'At what the customer pays, tax included';
+
+  @override
+  String get valuePriceBefore => 'At every package\'s price before tax';
+
+  @override
+  String get valueBadge => 'Best value';
+
+  @override
+  String get valueOpen => 'Open the package';
 }

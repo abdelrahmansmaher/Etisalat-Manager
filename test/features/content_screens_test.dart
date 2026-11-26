@@ -167,7 +167,7 @@ void main() {
         findsOneWidget,
       );
       expect(
-        find.byKey(const ValueKey('family-capsules')).hitTestable(),
+        find.byKey(const ValueKey('package-sort')).hitTestable(),
         findsOneWidget,
       );
     });
@@ -316,6 +316,8 @@ void main() {
         find.byKey(const ValueKey('item-row-code-test-balance')),
         findsOneWidget,
       );
+      await tester.tap(find.byKey(const ValueKey('search-filters')));
+      await tester.pumpAndSettle();
       await tester.tap(find.byKey(const ValueKey('search-filter-packages')));
       await tester.pumpAndSettle();
       expect(

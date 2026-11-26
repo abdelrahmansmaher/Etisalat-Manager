@@ -71,6 +71,8 @@ abstract final class AppIcons {
   static const IconData copy = LucideIcons.copy;
   static const IconData call = LucideIcons.phone;
   static const IconData filter = LucideIcons.slidersHorizontal;
+  static const IconData dropdown = LucideIcons.chevronDown;
+  static const IconData jump = LucideIcons.listFilter;
   static const IconData history = LucideIcons.history;
   static const IconData link = LucideIcons.link;
   static const IconData pdf = LucideIcons.fileText;
@@ -83,6 +85,13 @@ abstract final class AppIcons {
   static const IconData layers = LucideIcons.layers;
   static const IconData calculator = LucideIcons.calculator;
   static const IconData sort = LucideIcons.arrowUpDown;
+  static const IconData sortPriceUp = LucideIcons.arrowUpNarrowWide;
+  static const IconData sortPriceDown = LucideIcons.arrowDownWideNarrow;
+  static const IconData sortQuota = LucideIcons.database;
+  static const IconData exportPdf = LucideIcons.fileDown;
+  static const IconData valueBest = LucideIcons.trophy;
+  static const IconData exportText = LucideIcons.messageSquareText;
+  static const IconData print = LucideIcons.printer;
   static const IconData selected = LucideIcons.check;
   static const IconData training = LucideIcons.graduationCap;
   static const IconData brand = LucideIcons.bookOpen;

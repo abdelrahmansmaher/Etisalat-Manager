@@ -12,6 +12,7 @@ import '../../core/widgets/trust/trust.dart';
 import '../../l10n/app_localizations.dart';
 import '../content/content_widgets.dart';
 import 'whats_new.dart';
+import 'tool_widgets.dart';
 
 /// Changelog of bundled prices, codes, and added/removed items across updates.
 class WhatsNewScreen extends ConsumerStatefulWidget {
@@ -41,6 +42,19 @@ class _WhatsNewScreenState extends ConsumerState<WhatsNewScreen> {
     return PageScaffold(
       title: l10n.toolsWhatsNewTitle,
       children: [
+        ToolHero(
+          icon: AppIcons.toolWhatsNew,
+          hue: ToolHue.whatsNew,
+          text: l10n.toolsWhatsNewIntro,
+          stats: [
+            ('${updates.length}', l10n.heroUpdates),
+            (
+              '${updates.fold(0, (n, u) => n + u.added.length)}',
+              l10n.heroAdded,
+            ),
+          ],
+        ),
+        const SizedBox(height: AppSpacing.sm),
         if (async.isLoading && async.value == null)
           const ContentLoading()
         else if (updates.isEmpty)

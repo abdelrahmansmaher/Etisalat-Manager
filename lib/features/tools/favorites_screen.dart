@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../export/export_sheet.dart';
 import '../../core/router/app_routes.dart';
 import '../../core/theme/theme.dart';
 import '../../core/user/user.dart';
@@ -10,6 +11,7 @@ import '../../core/widgets/page_scaffold.dart';
 import '../../core/widgets/prose_text.dart';
 import '../../l10n/app_localizations.dart';
 import '../content/section_ui.dart';
+import 'tool_widgets.dart';
 
 /// Ordered favorites list with drag-to-reorder.
 class FavoritesScreen extends ConsumerWidget {
@@ -23,8 +25,21 @@ class FavoritesScreen extends ConsumerWidget {
 
     return PageScaffold(
       title: l10n.toolsFavoritesTitle,
-      subtitle: items.length > 1 ? l10n.toolsFavoritesHint : null,
+      actions: [
+        if (items.isNotEmpty)
+          ExportButton(
+            title: l10n.toolsFavoritesTitle,
+            pdf: (pdf) => pdf.list(l10n.toolsFavoritesTitle, items),
+          ),
+      ],
       children: [
+        ToolHero(
+          icon: AppIcons.toolFavorite,
+          hue: ToolHue.favorites,
+          text: l10n.toolsFavoritesIntro,
+          stats: [('${items.length}', l10n.heroInFavorites)],
+        ),
+        const SizedBox(height: AppSpacing.md),
         if (items.isEmpty)
           PlaceholderPanel(
             icon: AppIcons.toolFavoriteOff,

@@ -876,5 +876,196 @@
   "packageIncludesTitle": "مميزات الباقة",
   "@packageIncludesTitle": {},
   "badgeOfficial": "رسمي",
-  "@badgeOfficial": {}
+  "@badgeOfficial": {},
+  "filterFamiliesAll": "كل الأنواع",
+  "@filterFamiliesAll": {},
+  "filterFamilyTitle": "اختار نوع الباقة",
+  "@filterFamilyTitle": {},
+  "jumpTitle": "روح لقسم",
+  "@jumpTitle": {},
+  "jumpPill": "الأقسام",
+  "@jumpPill": {},
+  "searchScopeTitle": "ابحث في",
+  "@searchScopeTitle": {},
+  "moreTrainingSub": "اختبر معلوماتك كل يوم",
+  "@moreTrainingSub": {},
+  "moreRecommendSub": "الباقة المناسبة للعميل",
+  "@moreRecommendSub": {},
+  "moreCompareSub": "باقتين جنب بعض",
+  "@moreCompareSub": {},
+  "moreCalculatorSub": "الكارت والرصيد والفاتورة",
+  "@moreCalculatorSub": {},
+  "moreFavoritesSub": "اللي حفظته",
+  "@moreFavoritesSub": {},
+  "moreNotesSub": "ملاحظاتك الخاصة",
+  "@moreNotesSub": {},
+  "moreEditorSub": "عدّل وضيف بنود",
+  "@moreEditorSub": {},
+  "moreWhatsNewSub": "آخر تحديثات المحتوى",
+  "@moreWhatsNewSub": {},
+  "moreItemsCount": "{count} بند",
+  "@moreItemsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "toolsCalcIntro": "احسب الكارت المطلوب لأي باقة، أو الرصيد اللي هيوصل من الكارت، أو فاتورة شهرية بالضرايب والرسوم.",
+  "@toolsCalcIntro": {},
+  "toolsFavoritesIntro": "البنود اللي بترجعلها كتير، مرتبة زي ما تحب. اسحب من المقبض لتغيير الترتيب.",
+  "@toolsFavoritesIntro": {},
+  "toolsWhatsNewIntro": "كل تحديث للمحتوى على الموبايل ده: الجديد، والأسعار اللي اتغيرت، واللي اتشال.",
+  "@toolsWhatsNewIntro": {},
+  "toolsRecommendIntro": "قول احتياج العميل: بيدفع كام، وعايز إنترنت ودقايق قد إيه، ولمدة قد إيه. الترشيح من الأسعار المؤكدة بس.",
+  "@toolsRecommendIntro": {},
+  "heroSelected": "مختارة من 4",
+  "@heroSelected": {},
+  "heroInFavorites": "في المفضلة",
+  "@heroInFavorites": {},
+  "heroNotes": "ملاحظة",
+  "@heroNotes": {},
+  "heroEdits": "تعديل",
+  "@heroEdits": {},
+  "heroUpdates": "تحديث",
+  "@heroUpdates": {},
+  "heroAdded": "بند جديد",
+  "@heroAdded": {},
+  "heroPackages": "باقة",
+  "@heroPackages": {},
+  "exportTitle": "مشاركة وتصدير",
+  "@exportTitle": {},
+  "exportPdf": "ملف PDF منسّق",
+  "@exportPdf": {},
+  "exportPdfHint": "صفحة مرتبة بشعار إنكور، تتبعت لأي حد",
+  "@exportPdfHint": {},
+  "exportText": "رسالة نصية",
+  "@exportText": {},
+  "exportTextHint": "ملخص للعميل يتبعت واتساب أو SMS",
+  "@exportTextHint": {},
+  "exportCopy": "نسخ",
+  "@exportCopy": {},
+  "exportCopyHint": "انسخ الملخص والصقه في أي مكان",
+  "@exportCopyHint": {},
+  "exportPreparing": "بيتجهّز الملف…",
+  "@exportPreparing": {},
+  "exportFailed": "معرفناش نجهّز الملف، جرّب تاني",
+  "@exportFailed": {},
+  "exportCopied": "اتنسخ",
+  "@exportCopied": {},
+  "exportUnavailable": "المشاركة مش متاحة هنا",
+  "@exportUnavailable": {},
+  "exportComparePdf": "صدّر المقارنة PDF",
+  "@exportComparePdf": {},
+  "exportListPdf": "صدّر القائمة PDF",
+  "@exportListPdf": {},
+  "exportDetails": "التفاصيل",
+  "@exportDetails": {},
+  "exportSteps": "الخطوات",
+  "@exportSteps": {},
+  "exportCodes": "الأكواد والأرقام",
+  "@exportCodes": {},
+  "exportBestMark": "الخانة الملوّنة هي الأفضل في صفها",
+  "@exportBestMark": {},
+  "exportTagline": "مرجع الكاونتر · اتصالات مصر",
+  "@exportTagline": {},
+  "exportConfirmed": "مؤكد",
+  "@exportConfirmed": {},
+  "exportSource": "المصدر",
+  "@exportSource": {},
+  "exportVerified": "آخر تحقق",
+  "@exportVerified": {},
+  "exportFooter": "صادر من {name} · الأسعار حسب آخر تحقق رسمي",
+  "@exportFooter": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "exportPage": "صفحة {page} من {total}",
+  "@exportPage": {
+    "placeholders": {
+      "page": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "exportItemCount": "{count, plural, =1{بند واحد} =2{بندين} few{{count} بنود} many{{count} بند} other{{count} بند}}",
+  "@exportItemCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "valueTitle": "أفضل قيمة مقابل السعر",
+  "@valueTitle": {},
+  "valueForBudget": "أوفر قيمة بفلوسك",
+  "@valueForBudget": {},
+  "valueForCalls": "للمكالمات",
+  "@valueForCalls": {},
+  "valueForInternet": "للإنترنت",
+  "@valueForInternet": {},
+  "valuePerGb": "الجيجا بـ {cost}",
+  "@valuePerGb": {
+    "placeholders": {
+      "cost": {
+        "type": "String"
+      }
+    }
+  },
+  "valuePerMinute": "الدقيقة لأي شبكة بـ {cost}",
+  "@valuePerMinute": {
+    "placeholders": {
+      "cost": {
+        "type": "String"
+      }
+    }
+  },
+  "valuePerMix": "كل 100 ميكس بـ {cost}",
+  "@valuePerMix": {
+    "placeholders": {
+      "cost": {
+        "type": "String"
+      }
+    }
+  },
+  "valueLead": "أوفر بـ {percent}٪ من اللي بعدها",
+  "@valueLead": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "valueLeadLast": "وأوفر بـ {percent}٪ من أغلاهم",
+  "@valueLeadLast": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "valueTie": "كلهم نفس السعر للوحدة، اختار على حسب الاستخدام",
+  "@valueTie": {},
+  "valueNotComparable": "الباقات دي مفيش وحدة واحدة مشتركة بينها (جيجا أو دقايق لأي شبكة) نقارن بيها بأمانة",
+  "@valueNotComparable": {},
+  "valueBasisGb": "المقارنة بسعر الجيجا",
+  "@valueBasisGb": {},
+  "valueBasisMinute": "المقارنة بسعر الدقيقة لأي شبكة",
+  "@valueBasisMinute": {},
+  "valueBasisMix": "المقارنة بسعر الميكس (نفس النظام)",
+  "@valueBasisMix": {},
+  "valuePriceTotal": "بالسعر اللي العميل بيدفعه شامل الضريبة",
+  "@valuePriceTotal": {},
+  "valuePriceBefore": "بسعر الباقة قبل الضريبة لكلهم",
+  "@valuePriceBefore": {},
+  "valueBadge": "أفضل قيمة",
+  "@valueBadge": {},
+  "valueOpen": "افتح الباقة",
+  "@valueOpen": {}
 }

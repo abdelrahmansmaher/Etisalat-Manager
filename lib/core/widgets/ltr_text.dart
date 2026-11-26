@@ -9,6 +9,7 @@ import '../theme/app_radius.dart';
 import '../theme/app_spacing.dart';
 import '../theme/app_typography.dart';
 import '../theme/app_icons.dart';
+import '../theme/icon_hues.dart';
 import 'prose_text.dart';
 
 /// Unicode bidi isolation helpers (doc 04 §2.9).
@@ -115,21 +116,37 @@ class CodeActions extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final c = context.colors;
+    // Soft discs in the action's own colour: call is teal, copy is slate.
+    ButtonStyle tint(Hue hue) {
+      final h = hue.of(c);
+      return IconButton.styleFrom(
+        foregroundColor: c.isDark
+            ? Color.alphaBlend(Colors.white.withValues(alpha: 0.25), h)
+            : h,
+        backgroundColor: h.withValues(alpha: c.isDark ? 0.22 : 0.10),
+        fixedSize: const Size.square(38),
+        minimumSize: const Size.square(38),
+        padding: EdgeInsets.zero,
+      );
+    }
+
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        if (onCall != null && isDialable(value))
+        if (onCall != null && isDialable(value)) ...[
           IconButton(
             key: ValueKey('dial-$value'),
-            icon: const Icon(AppIcons.call, size: AppIconSize.action),
-            color: c.primary,
+            icon: const Icon(AppIcons.call, size: AppIconSize.chip),
+            style: tint(Hue.teal),
             tooltip: l10n.callValueSemantics(value),
             onPressed: () => onCall!(value),
           ),
+          const SizedBox(width: AppSpacing.xxs),
+        ],
         IconButton(
           key: ValueKey('copy-$value'),
-          icon: const Icon(AppIcons.copy, size: AppIconSize.action),
-          color: c.primary,
+          icon: const Icon(AppIcons.copy, size: AppIconSize.chip),
+          style: tint(Hue.indigo),
           tooltip: l10n.copyValueSemantics(value),
           onPressed: () => CodeText.copyToClipboard(context, value),
         ),

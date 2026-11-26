@@ -103,7 +103,7 @@ class GlassPopupCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => LiquidGlass(
-    tone: GlassTone.chrome,
+    tone: GlassTone.panel,
     blur: true,
     borderRadius: AppRadius.lgAll,
     shadows: AppShadows.raised(context.colors),
@@ -206,7 +206,7 @@ class _Toast extends StatelessWidget {
                 action!.onPressed();
                 ScaffoldMessenger.maybeOf(context)?.hideCurrentSnackBar();
               },
-              style: TextButton.styleFrom(foregroundColor: c.mastheadPrice),
+              style: TextButton.styleFrom(foregroundColor: c.onMasthead),
               child: Text(action!.label),
             ),
         ],
@@ -245,7 +245,7 @@ Future<T?> showGlassSheet<T>(BuildContext context, WidgetBuilder builder) {
       padding: EdgeInsets.only(bottom: MediaQuery.viewInsetsOf(context).bottom),
       child: LiquidGlass(
         key: const ValueKey('glass-sheet'),
-        tone: GlassTone.chrome,
+        tone: GlassTone.panel,
         blur: true,
         borderRadius: const BorderRadius.vertical(
           top: Radius.circular(AppRadius.l),

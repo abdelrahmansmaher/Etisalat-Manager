@@ -129,6 +129,15 @@ void main() {
     // The stated quota, not a converted one.
     expect(find.text('2000 ميجا'), findsWidgets);
     expect(tester.takeException(), isNull);
+    // A value-for-money verdict (or why there is none) leads the table,
+    // and the comparison can leave as a PDF.
+    expect(
+      find.byKey(const ValueKey('value-verdict')).evaluate().length +
+          find.byKey(const ValueKey('value-not-comparable')).evaluate().length,
+      1,
+    );
+    expect(_key('compare-export'), findsOneWidget);
+    expect(_key('export-open'), findsOneWidget);
 
     await tester.tap(_key('compare-chip-pkg-2'));
     await tester.pumpAndSettle();
@@ -143,12 +152,21 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('تغطي كل الطلبات'), findsOneWidget);
     // 80 pays for packages 1..4 (20, 40, 60, 80); 4 GB needs 2 or more.
+    await tester.scrollUntilVisible(
+      find.text('باقة وهمية 4'),
+      300,
+      scrollable: find.byType(Scrollable).first,
+    );
+    await tester.pumpAndSettle();
     final y2 = tester.getTopLeft(find.text('باقة وهمية 2')).dy;
     final y3 = tester.getTopLeft(find.text('باقة وهمية 3')).dy;
     final y4 = tester.getTopLeft(find.text('باقة وهمية 4')).dy;
     expect(y2, lessThan(y3));
     expect(y3, lessThan(y4));
     expect(find.text('4000 ميجا، تكفي'), findsOneWidget);
+    // Every test package costs the same per GB: no "best value" is named
+    // when nobody gives more for the money.
+    expect(find.byKey(const ValueKey('value-budget-gb')), findsNothing);
   });
 
   testWidgets('recommend: Arabic digits work, letters are refused', (

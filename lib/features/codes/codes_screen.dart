@@ -68,7 +68,6 @@ class _CodesScreenState extends ConsumerState<CodesScreen> {
     return TabScaffold(
       controller: _jumper.scroll,
       scrollKey: const ValueKey('codes-scroll'),
-      top: MastheadTitle(l10n.navCodes),
       slivers: [
         if (async.isLoading && async.value == null)
           SliverPadding(

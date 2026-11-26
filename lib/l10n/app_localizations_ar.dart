@@ -1294,4 +1294,237 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get badgeOfficial => 'رسمي';
+
+  @override
+  String get filterFamiliesAll => 'كل الأنواع';
+
+  @override
+  String get filterFamilyTitle => 'اختار نوع الباقة';
+
+  @override
+  String get jumpTitle => 'روح لقسم';
+
+  @override
+  String get jumpPill => 'الأقسام';
+
+  @override
+  String get searchScopeTitle => 'ابحث في';
+
+  @override
+  String get moreTrainingSub => 'اختبر معلوماتك كل يوم';
+
+  @override
+  String get moreRecommendSub => 'الباقة المناسبة للعميل';
+
+  @override
+  String get moreCompareSub => 'باقتين جنب بعض';
+
+  @override
+  String get moreCalculatorSub => 'الكارت والرصيد والفاتورة';
+
+  @override
+  String get moreFavoritesSub => 'اللي حفظته';
+
+  @override
+  String get moreNotesSub => 'ملاحظاتك الخاصة';
+
+  @override
+  String get moreEditorSub => 'عدّل وضيف بنود';
+
+  @override
+  String get moreWhatsNewSub => 'آخر تحديثات المحتوى';
+
+  @override
+  String moreItemsCount(int count) {
+    return '$count بند';
+  }
+
+  @override
+  String get toolsCalcIntro =>
+      'احسب الكارت المطلوب لأي باقة، أو الرصيد اللي هيوصل من الكارت، أو فاتورة شهرية بالضرايب والرسوم.';
+
+  @override
+  String get toolsFavoritesIntro =>
+      'البنود اللي بترجعلها كتير، مرتبة زي ما تحب. اسحب من المقبض لتغيير الترتيب.';
+
+  @override
+  String get toolsWhatsNewIntro =>
+      'كل تحديث للمحتوى على الموبايل ده: الجديد، والأسعار اللي اتغيرت، واللي اتشال.';
+
+  @override
+  String get toolsRecommendIntro =>
+      'قول احتياج العميل: بيدفع كام، وعايز إنترنت ودقايق قد إيه، ولمدة قد إيه. الترشيح من الأسعار المؤكدة بس.';
+
+  @override
+  String get heroSelected => 'مختارة من 4';
+
+  @override
+  String get heroInFavorites => 'في المفضلة';
+
+  @override
+  String get heroNotes => 'ملاحظة';
+
+  @override
+  String get heroEdits => 'تعديل';
+
+  @override
+  String get heroUpdates => 'تحديث';
+
+  @override
+  String get heroAdded => 'بند جديد';
+
+  @override
+  String get heroPackages => 'باقة';
+
+  @override
+  String get exportTitle => 'مشاركة وتصدير';
+
+  @override
+  String get exportPdf => 'ملف PDF منسّق';
+
+  @override
+  String get exportPdfHint => 'صفحة مرتبة بشعار إنكور، تتبعت لأي حد';
+
+  @override
+  String get exportText => 'رسالة نصية';
+
+  @override
+  String get exportTextHint => 'ملخص للعميل يتبعت واتساب أو SMS';
+
+  @override
+  String get exportCopy => 'نسخ';
+
+  @override
+  String get exportCopyHint => 'انسخ الملخص والصقه في أي مكان';
+
+  @override
+  String get exportPreparing => 'بيتجهّز الملف…';
+
+  @override
+  String get exportFailed => 'معرفناش نجهّز الملف، جرّب تاني';
+
+  @override
+  String get exportCopied => 'اتنسخ';
+
+  @override
+  String get exportUnavailable => 'المشاركة مش متاحة هنا';
+
+  @override
+  String get exportComparePdf => 'صدّر المقارنة PDF';
+
+  @override
+  String get exportListPdf => 'صدّر القائمة PDF';
+
+  @override
+  String get exportDetails => 'التفاصيل';
+
+  @override
+  String get exportSteps => 'الخطوات';
+
+  @override
+  String get exportCodes => 'الأكواد والأرقام';
+
+  @override
+  String get exportBestMark => 'الخانة الملوّنة هي الأفضل في صفها';
+
+  @override
+  String get exportTagline => 'مرجع الكاونتر · اتصالات مصر';
+
+  @override
+  String get exportConfirmed => 'مؤكد';
+
+  @override
+  String get exportSource => 'المصدر';
+
+  @override
+  String get exportVerified => 'آخر تحقق';
+
+  @override
+  String exportFooter(String name) {
+    return 'صادر من $name · الأسعار حسب آخر تحقق رسمي';
+  }
+
+  @override
+  String exportPage(int page, int total) {
+    return 'صفحة $page من $total';
+  }
+
+  @override
+  String exportItemCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count بند',
+      many: '$count بند',
+      few: '$count بنود',
+      two: 'بندين',
+      one: 'بند واحد',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get valueTitle => 'أفضل قيمة مقابل السعر';
+
+  @override
+  String get valueForBudget => 'أوفر قيمة بفلوسك';
+
+  @override
+  String get valueForCalls => 'للمكالمات';
+
+  @override
+  String get valueForInternet => 'للإنترنت';
+
+  @override
+  String valuePerGb(String cost) {
+    return 'الجيجا بـ $cost';
+  }
+
+  @override
+  String valuePerMinute(String cost) {
+    return 'الدقيقة لأي شبكة بـ $cost';
+  }
+
+  @override
+  String valuePerMix(String cost) {
+    return 'كل 100 ميكس بـ $cost';
+  }
+
+  @override
+  String valueLead(String percent) {
+    return 'أوفر بـ $percent٪ من اللي بعدها';
+  }
+
+  @override
+  String valueLeadLast(String percent) {
+    return 'وأوفر بـ $percent٪ من أغلاهم';
+  }
+
+  @override
+  String get valueTie => 'كلهم نفس السعر للوحدة، اختار على حسب الاستخدام';
+
+  @override
+  String get valueNotComparable =>
+      'الباقات دي مفيش وحدة واحدة مشتركة بينها (جيجا أو دقايق لأي شبكة) نقارن بيها بأمانة';
+
+  @override
+  String get valueBasisGb => 'المقارنة بسعر الجيجا';
+
+  @override
+  String get valueBasisMinute => 'المقارنة بسعر الدقيقة لأي شبكة';
+
+  @override
+  String get valueBasisMix => 'المقارنة بسعر الميكس (نفس النظام)';
+
+  @override
+  String get valuePriceTotal => 'بالسعر اللي العميل بيدفعه شامل الضريبة';
+
+  @override
+  String get valuePriceBefore => 'بسعر الباقة قبل الضريبة لكلهم';
+
+  @override
+  String get valueBadge => 'أفضل قيمة';
+
+  @override
+  String get valueOpen => 'افتح الباقة';
 }

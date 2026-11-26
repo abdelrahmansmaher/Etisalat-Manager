@@ -54,6 +54,23 @@ class PackageInfo {
         units ??= _factCallUnits(q);
       }
       days ??= _factDays(facts.validity);
+      // The stated minutes are on-net / family / international only
+      // (`الحصة (دقائق e&)`): not minutes to any network.
+      final m = minutes;
+      if (m != null &&
+          facts.quotas.any(
+            (q) =>
+                _plain(q.value) == m &&
+                (_has(_norm(q.label), _notGeneral) ||
+                    _has(_norm(q.label), const [
+                      'e&',
+                      'اتصالات',
+                      'عائل',
+                      'دولي',
+                    ])),
+          )) {
+        minutes = null;
+      }
     }
 
     return PackageInfo._(
@@ -187,6 +204,8 @@ class PackageInfo {
     'اضافي',
     'ليل',
     'تجوال',
+    'ترفيه',
+    'ستريم',
   ];
 
   static double? _factGb(Fact f) {

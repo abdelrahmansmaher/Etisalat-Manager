@@ -449,17 +449,27 @@ class _InfoChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final c = context.colors;
+    // Each fact wears its meaning's colour: data blue, calls teal...
+    final hue = IconHues.of(icon).of(c);
+    final ink = c.isDark
+        ? Color.alphaBlend(Colors.white.withValues(alpha: 0.35), hue)
+        : hue;
     return Container(
       padding: const EdgeInsetsDirectional.fromSTEB(6, 2, 8, 2),
       decoration: BoxDecoration(
-        color: c.glassTint,
+        color: Color.alphaBlend(
+          hue.withValues(alpha: c.isDark ? 0.16 : 0.08),
+          c.glassTint,
+        ),
         borderRadius: AppRadius.fullAll,
-        border: Border.all(color: c.hairline),
+        border: Border.all(
+          color: hue.withValues(alpha: c.isDark ? 0.30 : 0.18),
+        ),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, size: 13, color: c.primaryUi),
+          Icon(icon, size: 13, color: ink),
           const SizedBox(width: 4),
           Flexible(
             child: ProseText(

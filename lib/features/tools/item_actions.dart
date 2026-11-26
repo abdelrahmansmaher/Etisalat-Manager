@@ -7,10 +7,11 @@ import 'package:share_plus/share_plus.dart';
 import '../../core/content/content.dart';
 import '../../core/theme/theme.dart';
 import '../../core/user/user.dart';
-import '../../core/widgets/capsules.dart';
+import '../../core/widgets/app_card.dart';
 import '../../l10n/app_localizations.dart';
 import '../content/item_summary.dart';
 import '../content/package_facts.dart';
+import '../export/export_sheet.dart';
 import 'dial.dart';
 import 'dial_template.dart';
 import 'tool_routes.dart';
@@ -52,53 +53,112 @@ class ItemActions extends ConsumerWidget {
     );
     final notes = ref.watch(itemNotesProvider(item.id)).length;
     final dial = dialValuesOf(item);
-    return Wrap(
+    final actions = <Widget>[
+      if (dial.isNotEmpty)
+        _ActionTile(
+          key: const ValueKey('action-dial'),
+          icon: AppIcons.call,
+          label: l10n.toolsDial,
+          onTap: () => launchDialAny(context, dial),
+        ),
+      _ActionTile(
+        key: const ValueKey('action-favorite'),
+        icon: favorite ? AppIcons.toolFavorite : AppIcons.toolFavoriteOff,
+        label: l10n.toolsFavorite,
+        semanticsLabel: favorite
+            ? l10n.toolsFavoriteRemove
+            : l10n.toolsFavoriteAdd,
+        onTap: () => ref.read(favoritesProvider.notifier).toggle(item.id),
+      ),
+      if (item.type == ItemType.package)
+        _ActionTile(
+          key: const ValueKey('action-compare'),
+          icon: AppIcons.toolCompare,
+          label: l10n.toolsCompareAction,
+          onTap: () => context.push(ToolRoutes.compareWith(item.id)),
+        ),
+      _ActionTile(
+        key: const ValueKey('action-share'),
+        icon: AppIcons.share,
+        label: l10n.toolsShareSummary,
+        onTap: () => showExportSheet(
+          context,
+          title: item.title,
+          text: customerSummary(item),
+          pdf: (pdf) => pdf.item(item),
+        ),
+      ),
+      _ActionTile(
+        key: const ValueKey('action-note'),
+        icon: AppIcons.toolNotes,
+        label: notes == 0 ? l10n.toolsNoteAction : l10n.toolsNoteCount(notes),
+        onTap: () => context.push(ToolRoutes.notesFor(item.id)),
+      ),
+      _ActionTile(
+        key: const ValueKey('action-edit'),
+        icon: AppIcons.toolEdits,
+        label: l10n.toolsEditAction,
+        onTap: () => context.push(ToolRoutes.editItem(item.id)),
+      ),
+    ];
+    // An even grid: three equal tiles a row, icon over its name.
+    return LayoutBuilder(
       key: const ValueKey('item-actions'),
-      spacing: AppSpacing.xs,
-      runSpacing: AppSpacing.xs,
-      children: [
-        if (dial.isNotEmpty)
-          Capsule(
-            key: const ValueKey('action-dial'),
-            icon: AppIcons.call,
-            label: l10n.toolsDial,
-            onTap: () => launchDialAny(context, dial),
+      builder: (context, box) {
+        const gap = AppSpacing.xs;
+        final columns = box.maxWidth >= 560 ? 6 : 3;
+        final w = (box.maxWidth - gap * (columns - 1)) / columns;
+        return Wrap(
+          spacing: gap,
+          runSpacing: gap,
+          children: [for (final a in actions) SizedBox(width: w, child: a)],
+        );
+      },
+    );
+  }
+}
+
+/// One action: a tinted circle with the icon and the name under it.
+class _ActionTile extends StatelessWidget {
+  const _ActionTile({
+    super.key,
+    required this.icon,
+    required this.label,
+    required this.onTap,
+    this.semanticsLabel,
+  });
+
+  final IconData icon;
+  final String label;
+  final VoidCallback onTap;
+  final String? semanticsLabel;
+
+  @override
+  Widget build(BuildContext context) {
+    final c = context.colors;
+    return AppCard(
+      role: CardRole.flat,
+      semanticLabel: semanticsLabel ?? label,
+      padding: const EdgeInsets.symmetric(
+        vertical: AppSpacing.sm,
+        horizontal: AppSpacing.xxs,
+      ),
+      onTap: onTap,
+      child: Column(
+        children: [
+          TintedIcon(icon, tile: IconTile.sm),
+          const SizedBox(height: AppSpacing.xxs + 2),
+          Text(
+            label,
+            textAlign: TextAlign.center,
+            maxLines: 2,
+            style: AppTypography.labelS.copyWith(
+              color: c.textPrimary,
+              fontWeight: FontWeight.w600,
+            ),
           ),
-        Capsule(
-          key: const ValueKey('action-favorite'),
-          icon: favorite ? AppIcons.toolFavorite : AppIcons.toolFavoriteOff,
-          label: l10n.toolsFavorite,
-          semanticsLabel: favorite
-              ? l10n.toolsFavoriteRemove
-              : l10n.toolsFavoriteAdd,
-          onTap: () => ref.read(favoritesProvider.notifier).toggle(item.id),
-        ),
-        if (item.type == ItemType.package)
-          Capsule(
-            key: const ValueKey('action-compare'),
-            icon: AppIcons.toolCompare,
-            label: l10n.toolsCompareAction,
-            onTap: () => context.push(ToolRoutes.compareWith(item.id)),
-          ),
-        Capsule(
-          key: const ValueKey('action-share'),
-          icon: AppIcons.share,
-          label: l10n.toolsShareSummary,
-          onTap: () => shareSummary(context, item),
-        ),
-        Capsule(
-          key: const ValueKey('action-note'),
-          icon: AppIcons.toolNotes,
-          label: notes == 0 ? l10n.toolsNoteAction : l10n.toolsNoteCount(notes),
-          onTap: () => context.push(ToolRoutes.notesFor(item.id)),
-        ),
-        Capsule(
-          key: const ValueKey('action-edit'),
-          icon: AppIcons.toolEdits,
-          label: l10n.toolsEditAction,
-          onTap: () => context.push(ToolRoutes.editItem(item.id)),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

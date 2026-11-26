@@ -79,6 +79,12 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
     return PageScaffold(
       title: l10n.toolsCalcTitle,
       children: [
+        ToolHero(
+          icon: AppIcons.toolCalculator,
+          hue: ToolHue.calculator,
+          text: l10n.toolsCalcIntro,
+        ),
+        const SizedBox(height: AppSpacing.md),
         SegmentedCapsule<_CalcMode>(
           selected: _mode,
           onChanged: (m) => setState(() => _mode = m),

@@ -19,6 +19,8 @@ class KnowledgeHubApp extends ConsumerWidget {
     final themeMode = ref.watch(themeModeProvider);
 
     return MaterialApp.router(
+      // iOS-style elastic scrolling everywhere, no Android glow.
+      scrollBehavior: const _AppScrollBehavior(),
       debugShowCheckedModeBanner: false,
       onGenerateTitle: (context) => AppIdentity.of(context),
       routerConfig: router,
@@ -48,4 +50,23 @@ class KnowledgeHubApp extends ConsumerWidget {
       themeAnimationCurve: AppMotion.enter,
     );
   }
+}
+
+/// Elastic, iOS-like scrolling on every platform; mouse drags scroll too.
+class _AppScrollBehavior extends MaterialScrollBehavior {
+  const _AppScrollBehavior();
+
+  @override
+  ScrollPhysics getScrollPhysics(BuildContext context) =>
+      const BouncingScrollPhysics(
+        decelerationRate: ScrollDecelerationRate.normal,
+        parent: AlwaysScrollableScrollPhysics(),
+      );
+
+  @override
+  Widget buildOverscrollIndicator(
+    BuildContext context,
+    Widget child,
+    ScrollableDetails details,
+  ) => child;
 }

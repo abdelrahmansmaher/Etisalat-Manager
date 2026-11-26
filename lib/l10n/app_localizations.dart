@@ -2347,6 +2347,408 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'رسمي'**
   String get badgeOfficial;
+
+  /// No description provided for @filterFamiliesAll.
+  ///
+  /// In ar, this message translates to:
+  /// **'كل الأنواع'**
+  String get filterFamiliesAll;
+
+  /// No description provided for @filterFamilyTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'اختار نوع الباقة'**
+  String get filterFamilyTitle;
+
+  /// No description provided for @jumpTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'روح لقسم'**
+  String get jumpTitle;
+
+  /// No description provided for @jumpPill.
+  ///
+  /// In ar, this message translates to:
+  /// **'الأقسام'**
+  String get jumpPill;
+
+  /// No description provided for @searchScopeTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'ابحث في'**
+  String get searchScopeTitle;
+
+  /// No description provided for @moreTrainingSub.
+  ///
+  /// In ar, this message translates to:
+  /// **'اختبر معلوماتك كل يوم'**
+  String get moreTrainingSub;
+
+  /// No description provided for @moreRecommendSub.
+  ///
+  /// In ar, this message translates to:
+  /// **'الباقة المناسبة للعميل'**
+  String get moreRecommendSub;
+
+  /// No description provided for @moreCompareSub.
+  ///
+  /// In ar, this message translates to:
+  /// **'باقتين جنب بعض'**
+  String get moreCompareSub;
+
+  /// No description provided for @moreCalculatorSub.
+  ///
+  /// In ar, this message translates to:
+  /// **'الكارت والرصيد والفاتورة'**
+  String get moreCalculatorSub;
+
+  /// No description provided for @moreFavoritesSub.
+  ///
+  /// In ar, this message translates to:
+  /// **'اللي حفظته'**
+  String get moreFavoritesSub;
+
+  /// No description provided for @moreNotesSub.
+  ///
+  /// In ar, this message translates to:
+  /// **'ملاحظاتك الخاصة'**
+  String get moreNotesSub;
+
+  /// No description provided for @moreEditorSub.
+  ///
+  /// In ar, this message translates to:
+  /// **'عدّل وضيف بنود'**
+  String get moreEditorSub;
+
+  /// No description provided for @moreWhatsNewSub.
+  ///
+  /// In ar, this message translates to:
+  /// **'آخر تحديثات المحتوى'**
+  String get moreWhatsNewSub;
+
+  /// No description provided for @moreItemsCount.
+  ///
+  /// In ar, this message translates to:
+  /// **'{count} بند'**
+  String moreItemsCount(int count);
+
+  /// No description provided for @toolsCalcIntro.
+  ///
+  /// In ar, this message translates to:
+  /// **'احسب الكارت المطلوب لأي باقة، أو الرصيد اللي هيوصل من الكارت، أو فاتورة شهرية بالضرايب والرسوم.'**
+  String get toolsCalcIntro;
+
+  /// No description provided for @toolsFavoritesIntro.
+  ///
+  /// In ar, this message translates to:
+  /// **'البنود اللي بترجعلها كتير، مرتبة زي ما تحب. اسحب من المقبض لتغيير الترتيب.'**
+  String get toolsFavoritesIntro;
+
+  /// No description provided for @toolsWhatsNewIntro.
+  ///
+  /// In ar, this message translates to:
+  /// **'كل تحديث للمحتوى على الموبايل ده: الجديد، والأسعار اللي اتغيرت، واللي اتشال.'**
+  String get toolsWhatsNewIntro;
+
+  /// No description provided for @toolsRecommendIntro.
+  ///
+  /// In ar, this message translates to:
+  /// **'قول احتياج العميل: بيدفع كام، وعايز إنترنت ودقايق قد إيه، ولمدة قد إيه. الترشيح من الأسعار المؤكدة بس.'**
+  String get toolsRecommendIntro;
+
+  /// No description provided for @heroSelected.
+  ///
+  /// In ar, this message translates to:
+  /// **'مختارة من 4'**
+  String get heroSelected;
+
+  /// No description provided for @heroInFavorites.
+  ///
+  /// In ar, this message translates to:
+  /// **'في المفضلة'**
+  String get heroInFavorites;
+
+  /// No description provided for @heroNotes.
+  ///
+  /// In ar, this message translates to:
+  /// **'ملاحظة'**
+  String get heroNotes;
+
+  /// No description provided for @heroEdits.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعديل'**
+  String get heroEdits;
+
+  /// No description provided for @heroUpdates.
+  ///
+  /// In ar, this message translates to:
+  /// **'تحديث'**
+  String get heroUpdates;
+
+  /// No description provided for @heroAdded.
+  ///
+  /// In ar, this message translates to:
+  /// **'بند جديد'**
+  String get heroAdded;
+
+  /// No description provided for @heroPackages.
+  ///
+  /// In ar, this message translates to:
+  /// **'باقة'**
+  String get heroPackages;
+
+  /// No description provided for @exportTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'مشاركة وتصدير'**
+  String get exportTitle;
+
+  /// No description provided for @exportPdf.
+  ///
+  /// In ar, this message translates to:
+  /// **'ملف PDF منسّق'**
+  String get exportPdf;
+
+  /// No description provided for @exportPdfHint.
+  ///
+  /// In ar, this message translates to:
+  /// **'صفحة مرتبة بشعار إنكور، تتبعت لأي حد'**
+  String get exportPdfHint;
+
+  /// No description provided for @exportText.
+  ///
+  /// In ar, this message translates to:
+  /// **'رسالة نصية'**
+  String get exportText;
+
+  /// No description provided for @exportTextHint.
+  ///
+  /// In ar, this message translates to:
+  /// **'ملخص للعميل يتبعت واتساب أو SMS'**
+  String get exportTextHint;
+
+  /// No description provided for @exportCopy.
+  ///
+  /// In ar, this message translates to:
+  /// **'نسخ'**
+  String get exportCopy;
+
+  /// No description provided for @exportCopyHint.
+  ///
+  /// In ar, this message translates to:
+  /// **'انسخ الملخص والصقه في أي مكان'**
+  String get exportCopyHint;
+
+  /// No description provided for @exportPreparing.
+  ///
+  /// In ar, this message translates to:
+  /// **'بيتجهّز الملف…'**
+  String get exportPreparing;
+
+  /// No description provided for @exportFailed.
+  ///
+  /// In ar, this message translates to:
+  /// **'معرفناش نجهّز الملف، جرّب تاني'**
+  String get exportFailed;
+
+  /// No description provided for @exportCopied.
+  ///
+  /// In ar, this message translates to:
+  /// **'اتنسخ'**
+  String get exportCopied;
+
+  /// No description provided for @exportUnavailable.
+  ///
+  /// In ar, this message translates to:
+  /// **'المشاركة مش متاحة هنا'**
+  String get exportUnavailable;
+
+  /// No description provided for @exportComparePdf.
+  ///
+  /// In ar, this message translates to:
+  /// **'صدّر المقارنة PDF'**
+  String get exportComparePdf;
+
+  /// No description provided for @exportListPdf.
+  ///
+  /// In ar, this message translates to:
+  /// **'صدّر القائمة PDF'**
+  String get exportListPdf;
+
+  /// No description provided for @exportDetails.
+  ///
+  /// In ar, this message translates to:
+  /// **'التفاصيل'**
+  String get exportDetails;
+
+  /// No description provided for @exportSteps.
+  ///
+  /// In ar, this message translates to:
+  /// **'الخطوات'**
+  String get exportSteps;
+
+  /// No description provided for @exportCodes.
+  ///
+  /// In ar, this message translates to:
+  /// **'الأكواد والأرقام'**
+  String get exportCodes;
+
+  /// No description provided for @exportBestMark.
+  ///
+  /// In ar, this message translates to:
+  /// **'الخانة الملوّنة هي الأفضل في صفها'**
+  String get exportBestMark;
+
+  /// No description provided for @exportTagline.
+  ///
+  /// In ar, this message translates to:
+  /// **'مرجع الكاونتر · اتصالات مصر'**
+  String get exportTagline;
+
+  /// No description provided for @exportConfirmed.
+  ///
+  /// In ar, this message translates to:
+  /// **'مؤكد'**
+  String get exportConfirmed;
+
+  /// No description provided for @exportSource.
+  ///
+  /// In ar, this message translates to:
+  /// **'المصدر'**
+  String get exportSource;
+
+  /// No description provided for @exportVerified.
+  ///
+  /// In ar, this message translates to:
+  /// **'آخر تحقق'**
+  String get exportVerified;
+
+  /// No description provided for @exportFooter.
+  ///
+  /// In ar, this message translates to:
+  /// **'صادر من {name} · الأسعار حسب آخر تحقق رسمي'**
+  String exportFooter(String name);
+
+  /// No description provided for @exportPage.
+  ///
+  /// In ar, this message translates to:
+  /// **'صفحة {page} من {total}'**
+  String exportPage(int page, int total);
+
+  /// No description provided for @exportItemCount.
+  ///
+  /// In ar, this message translates to:
+  /// **'{count, plural, =1{بند واحد} =2{بندين} few{{count} بنود} many{{count} بند} other{{count} بند}}'**
+  String exportItemCount(int count);
+
+  /// No description provided for @valueTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'أفضل قيمة مقابل السعر'**
+  String get valueTitle;
+
+  /// No description provided for @valueForBudget.
+  ///
+  /// In ar, this message translates to:
+  /// **'أوفر قيمة بفلوسك'**
+  String get valueForBudget;
+
+  /// No description provided for @valueForCalls.
+  ///
+  /// In ar, this message translates to:
+  /// **'للمكالمات'**
+  String get valueForCalls;
+
+  /// No description provided for @valueForInternet.
+  ///
+  /// In ar, this message translates to:
+  /// **'للإنترنت'**
+  String get valueForInternet;
+
+  /// No description provided for @valuePerGb.
+  ///
+  /// In ar, this message translates to:
+  /// **'الجيجا بـ {cost}'**
+  String valuePerGb(String cost);
+
+  /// No description provided for @valuePerMinute.
+  ///
+  /// In ar, this message translates to:
+  /// **'الدقيقة لأي شبكة بـ {cost}'**
+  String valuePerMinute(String cost);
+
+  /// No description provided for @valuePerMix.
+  ///
+  /// In ar, this message translates to:
+  /// **'كل 100 ميكس بـ {cost}'**
+  String valuePerMix(String cost);
+
+  /// No description provided for @valueLead.
+  ///
+  /// In ar, this message translates to:
+  /// **'أوفر بـ {percent}٪ من اللي بعدها'**
+  String valueLead(String percent);
+
+  /// No description provided for @valueLeadLast.
+  ///
+  /// In ar, this message translates to:
+  /// **'وأوفر بـ {percent}٪ من أغلاهم'**
+  String valueLeadLast(String percent);
+
+  /// No description provided for @valueTie.
+  ///
+  /// In ar, this message translates to:
+  /// **'كلهم نفس السعر للوحدة، اختار على حسب الاستخدام'**
+  String get valueTie;
+
+  /// No description provided for @valueNotComparable.
+  ///
+  /// In ar, this message translates to:
+  /// **'الباقات دي مفيش وحدة واحدة مشتركة بينها (جيجا أو دقايق لأي شبكة) نقارن بيها بأمانة'**
+  String get valueNotComparable;
+
+  /// No description provided for @valueBasisGb.
+  ///
+  /// In ar, this message translates to:
+  /// **'المقارنة بسعر الجيجا'**
+  String get valueBasisGb;
+
+  /// No description provided for @valueBasisMinute.
+  ///
+  /// In ar, this message translates to:
+  /// **'المقارنة بسعر الدقيقة لأي شبكة'**
+  String get valueBasisMinute;
+
+  /// No description provided for @valueBasisMix.
+  ///
+  /// In ar, this message translates to:
+  /// **'المقارنة بسعر الميكس (نفس النظام)'**
+  String get valueBasisMix;
+
+  /// No description provided for @valuePriceTotal.
+  ///
+  /// In ar, this message translates to:
+  /// **'بالسعر اللي العميل بيدفعه شامل الضريبة'**
+  String get valuePriceTotal;
+
+  /// No description provided for @valuePriceBefore.
+  ///
+  /// In ar, this message translates to:
+  /// **'بسعر الباقة قبل الضريبة لكلهم'**
+  String get valuePriceBefore;
+
+  /// No description provided for @valueBadge.
+  ///
+  /// In ar, this message translates to:
+  /// **'أفضل قيمة'**
+  String get valueBadge;
+
+  /// No description provided for @valueOpen.
+  ///
+  /// In ar, this message translates to:
+  /// **'افتح الباقة'**
+  String get valueOpen;
 }
 
 class _AppLocalizationsDelegate

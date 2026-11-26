@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart' show ValueListenable;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
@@ -6,6 +7,7 @@ import '../../l10n/app_localizations.dart';
 import '../router/app_routes.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_icons.dart';
+import '../theme/app_motion.dart';
 import '../theme/app_radius.dart';
 import '../theme/app_spacing.dart';
 import '../theme/app_typography.dart';
@@ -18,11 +20,17 @@ SystemUiOverlayStyle headerOverlayStyle(AppColors c) =>
     (c.isDark ? SystemUiOverlayStyle.light : SystemUiOverlayStyle.dark)
         .copyWith(statusBarColor: Colors.transparent);
 
-/// Frosted glass header at the top of every tab: one title line, the search
-/// pill and, optionally, filters. The page scrolls under it and shows
-/// through, blurred.
+/// Header at the top of every tab, iOS style: a large title, the search
+/// pill and, optionally, filters. At rest it sits on the page with no frame;
+/// once the page scrolls under it, it turns into frosted glass.
 class Masthead extends StatelessWidget {
-  const Masthead({super.key, this.top, required this.field, this.bottom});
+  const Masthead({
+    super.key,
+    this.top,
+    required this.field,
+    this.bottom,
+    this.scrolled,
+  });
 
   /// Title line.
   final Widget? top;
@@ -33,6 +41,9 @@ class Masthead extends StatelessWidget {
   /// Filters that stay with the header (segments, capsules).
   final Widget? bottom;
 
+  /// True once content is under the header; `null` = always glass.
+  final ValueListenable<bool>? scrolled;
+
   static const BorderRadius radius = BorderRadius.vertical(
     bottom: Radius.circular(AppRadius.l),
   );
@@ -41,46 +52,66 @@ class Masthead extends StatelessWidget {
   Widget build(BuildContext context) {
     final c = context.colors;
     final pad = AppSpacing.screenPaddingFor(MediaQuery.sizeOf(context).width);
+    const glass = LiquidGlass(
+      tone: GlassTone.chrome,
+      blur: true,
+      borderRadius: radius,
+      child: SizedBox.expand(),
+    );
+    final listen = scrolled;
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: headerOverlayStyle(c),
-      child: LiquidGlass(
+      child: Stack(
         key: const ValueKey('masthead'),
-        tone: GlassTone.chrome,
-        blur: true,
-        borderRadius: radius,
-        child: SafeArea(
-          bottom: false,
-          child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(
-              pad,
-              AppSpacing.xs,
-              pad,
-              AppSpacing.sm,
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                if (top != null) ...[
-                  ConstrainedBox(
-                    constraints: const BoxConstraints(minHeight: 36),
-                    child: Align(
-                      alignment: AlignmentDirectional.centerStart,
-                      heightFactor: 1,
-                      child: top,
+        children: [
+          Positioned.fill(
+            child: listen == null
+                ? glass
+                : ValueListenableBuilder<bool>(
+                    valueListenable: listen,
+                    builder: (context, on, child) => AnimatedOpacity(
+                      opacity: on ? 1 : 0,
+                      duration: AppMotion.resolve(context, AppMotion.normal),
+                      curve: AppMotion.enter,
+                      child: child,
                     ),
+                    child: glass,
                   ),
-                  const SizedBox(height: AppSpacing.xxs),
+          ),
+          SafeArea(
+            bottom: false,
+            child: Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(
+                pad,
+                AppSpacing.xs,
+                pad,
+                AppSpacing.sm,
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  if (top != null) ...[
+                    ConstrainedBox(
+                      constraints: const BoxConstraints(minHeight: 44),
+                      child: Align(
+                        alignment: AlignmentDirectional.centerStart,
+                        heightFactor: 1,
+                        child: top,
+                      ),
+                    ),
+                    const SizedBox(height: AppSpacing.xxs),
+                  ],
+                  field,
+                  if (bottom != null) ...[
+                    const SizedBox(height: AppSpacing.xs),
+                    bottom!,
+                  ],
                 ],
-                field,
-                if (bottom != null) ...[
-                  const SizedBox(height: AppSpacing.xs),
-                  bottom!,
-                ],
-              ],
+              ),
             ),
           ),
-        ),
+        ],
       ),
     );
   }
@@ -97,10 +128,12 @@ class MastheadTitle extends StatelessWidget {
     header: true,
     child: Text(
       text,
-      style: AppTypography.titleL.copyWith(
+      style: AppTypography.displayM.copyWith(
         color: context.colors.onHeader,
+        fontSize: 28,
+        height: 36 / 28,
         fontWeight: FontWeight.w800,
-        letterSpacing: -0.2,
+        letterSpacing: -0.3,
       ),
     ),
   );
@@ -163,12 +196,12 @@ class SearchPill extends StatelessWidget {
   }
 }
 
-/// A tab: the glass [Masthead] pinned over a scrolling body that passes
-/// under it. Rows rise into place the first time the tab appears.
-class TabScaffold extends StatelessWidget {
+/// A tab: the [Masthead] pinned over a scrolling body that passes under it.
+/// Rows rise into place the first time the tab appears.
+class TabScaffold extends StatefulWidget {
   const TabScaffold({
     super.key,
-    required this.top,
+    this.top,
     this.children = const [],
     this.slivers,
     this.scrollKey,
@@ -176,7 +209,9 @@ class TabScaffold extends StatelessWidget {
     this.headerBottom,
   });
 
-  final Widget top;
+  /// Line above the search pill (a greeting); tabs need no title, the dock
+  /// already says where you are.
+  final Widget? top;
   final List<Widget> children;
   final List<Widget>? slivers;
   final Key? scrollKey;
@@ -186,38 +221,62 @@ class TabScaffold extends StatelessWidget {
   final Widget? headerBottom;
 
   @override
+  State<TabScaffold> createState() => _TabScaffoldState();
+}
+
+class _TabScaffoldState extends State<TabScaffold> {
+  final ValueNotifier<bool> _scrolled = ValueNotifier(false);
+
+  @override
+  void dispose() {
+    _scrolled.dispose();
+    super.dispose();
+  }
+
+  bool _onScroll(ScrollNotification n) {
+    if (n.depth == 0 && n.metrics.axis == Axis.vertical) {
+      _scrolled.value = n.metrics.pixels > 2;
+    }
+    return false;
+  }
+
+  @override
   Widget build(BuildContext context) {
     final pad = AppSpacing.screenPaddingFor(MediaQuery.sizeOf(context).width);
     final bottom = AppSpacing.md + MediaQuery.paddingOf(context).bottom;
     return EntranceScope(
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        body: CustomScrollView(
-          key: scrollKey,
-          controller: controller,
-          slivers: [
-            PinnedHeaderSliver(
-              child: Masthead(
-                top: top,
-                field: const SearchPill(),
-                bottom: headerBottom,
-              ),
-            ),
-            const SliverToBoxAdapter(child: SizedBox(height: AppSpacing.sm)),
-            if (slivers != null)
-              ...slivers!
-            else
-              SliverPadding(
-                padding: EdgeInsetsDirectional.symmetric(horizontal: pad),
-                sliver: SliverList.list(
-                  children: [
-                    for (var i = 0; i < children.length; i++)
-                      Entrance(index: i, child: children[i]),
-                  ],
+        body: NotificationListener<ScrollNotification>(
+          onNotification: _onScroll,
+          child: CustomScrollView(
+            key: widget.scrollKey,
+            controller: widget.controller,
+            slivers: [
+              PinnedHeaderSliver(
+                child: Masthead(
+                  top: widget.top,
+                  field: const SearchPill(),
+                  bottom: widget.headerBottom,
+                  scrolled: _scrolled,
                 ),
               ),
-            SliverPadding(padding: EdgeInsets.only(bottom: bottom)),
-          ],
+              const SliverToBoxAdapter(child: SizedBox(height: AppSpacing.xs)),
+              if (widget.slivers != null)
+                ...widget.slivers!
+              else
+                SliverPadding(
+                  padding: EdgeInsetsDirectional.symmetric(horizontal: pad),
+                  sliver: SliverList.list(
+                    children: [
+                      for (var i = 0; i < widget.children.length; i++)
+                        Entrance(index: i, child: widget.children[i]),
+                    ],
+                  ),
+                ),
+              SliverPadding(padding: EdgeInsets.only(bottom: bottom)),
+            ],
+          ),
         ),
       ),
     );

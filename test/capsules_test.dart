@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:go_router/go_router.dart';
+import 'package:knowledge_hub/features/packages/packages_screen.dart';
 import 'package:knowledge_hub/app.dart';
 import 'package:knowledge_hub/core/content/content.dart';
 import 'package:knowledge_hub/core/router/app_router.dart';
@@ -112,21 +114,20 @@ void main() {
       expect(rectOf(tester, 'nav-indicator').center.dx, closeTo(to, 1));
     });
 
-    testWidgets('indicator is mid-way while swiping (LTR)', (tester) async {
+    testWidgets('a sideways swipe never changes the dock tab', (tester) async {
       await pumpApp(tester, locale: en);
       final start = rectOf(tester, 'nav-indicator');
-      expect(start.center.dx, closeTo(rectOf(tester, 'nav-0').center.dx, 1));
-      final gesture = await tester.startGesture(const Offset(300, 300));
-      await gesture.moveBy(const Offset(-40, 0));
-      await gesture.moveBy(const Offset(-180, 0));
-      await tester.pump();
-      final mid = rectOf(tester, 'nav-indicator');
-      expect(mid.center.dx, greaterThan(start.center.dx + 5));
-      await gesture.up();
+      await tester.flingFrom(
+        const Offset(300, 400),
+        const Offset(-250, 0),
+        1500,
+      );
       await tester.pumpAndSettle();
-      expect(currentPath(tester), '/packages');
-      final end = rectOf(tester, 'nav-indicator');
-      expect(end.center.dx, closeTo(rectOf(tester, 'nav-1').center.dx, 1));
+      expect(currentPath(tester), '/home');
+      expect(
+        rectOf(tester, 'nav-indicator').center.dx,
+        closeTo(start.center.dx, 1),
+      );
     });
   });
 
@@ -163,35 +164,32 @@ void main() {
       );
     });
 
-    testWidgets('jump-to-category capsule scrolls to that header', (
-      tester,
-    ) async {
+    testWidgets('the groups button jumps to a group', (tester) async {
       await pumpApp(tester, size: const Size(360, 420));
       await tester.tap(find.byKey(const ValueKey('nav-2')));
       await tester.pumpAndSettle();
       const group = 'أكواد الرصيد';
-      final capsule = find.byKey(const ValueKey('jump-$group'));
-      await tester.ensureVisible(capsule);
+      await tester.tap(find.byKey(const ValueKey('category-capsules')));
       await tester.pumpAndSettle();
-      await tester.tap(capsule);
+      await tester.tap(find.byKey(const ValueKey('jump-$group')));
       await tester.pumpAndSettle();
       final header = find.byKey(const ValueKey('group-$group'));
       expect(header, findsOneWidget);
-      // The capsule row stays pinned above the group headers.
-      final row = find.byKey(const ValueKey('category-capsules'));
+      // The button stays pinned above the group that was jumped to.
+      final pill = find.byKey(const ValueKey('category-capsules'));
       expect(
         tester.getTopLeft(header).dy,
-        greaterThanOrEqualTo(tester.getBottomLeft(row).dy - 1),
+        greaterThanOrEqualTo(tester.getBottomLeft(pill).dy - 1),
       );
       expect(
-        tester
-            .widget<Capsule>(find.byKey(const ValueKey('jump-$group')))
-            .selected,
-        isTrue,
+        find.descendant(of: pill, matching: find.text(group)),
+        findsOneWidget,
       );
     });
 
-    testWidgets('search section capsules filter results', (tester) async {
+    testWidgets('the search section filter narrows the results', (
+      tester,
+    ) async {
       await pumpApp(tester);
       await openSearch(tester);
       await tester.enterText(
@@ -200,17 +198,16 @@ void main() {
       );
       await tester.pump(const Duration(milliseconds: 150));
       await tester.pumpAndSettle();
-      Capsule cap(String k) =>
-          tester.widget<Capsule>(find.byKey(ValueKey('search-filter-$k')));
-      expect(cap('all').selected, isTrue);
-      await tester.ensureVisible(
-        find.byKey(const ValueKey('search-filter-numbers')),
-      );
+      await tester.tap(find.byKey(const ValueKey('search-filters')));
       await tester.pumpAndSettle();
+      expect(find.byKey(const ValueKey('search-filter-all')), findsOneWidget);
       await tester.tap(find.byKey(const ValueKey('search-filter-numbers')));
       await tester.pumpAndSettle();
-      expect(cap('numbers').selected, isTrue);
-      expect(cap('all').selected, isFalse);
+      final pill = find.byKey(const ValueKey('search-filters'));
+      expect(
+        find.descendant(of: pill, matching: find.text('الأكواد والأرقام')),
+        findsWidgets,
+      );
       expect(
         find.byKey(const ValueKey('item-row-code-test-balance')),
         findsOneWidget,
@@ -312,30 +309,45 @@ void main() {
     );
   });
 
-  testWidgets('the family pill glides to the chosen family', (tester) async {
+  testWidgets('the kinds button filters the packages', (tester) async {
     await pumpApp(tester, size: const Size(400, 900));
     await tester.tap(find.byKey(const ValueKey('nav-1')));
     await tester.pumpAndSettle();
-    final indicator = find.byKey(const ValueKey('capsule-indicator'));
-    expect(indicator, findsOneWidget);
-    final all = tester.getRect(find.byKey(const ValueKey('family-all')));
-    expect(tester.getRect(indicator).center.dx, closeTo(all.center.dx, 1));
+    await tester.tap(find.byKey(const ValueKey('family-filter')));
+    await tester.pumpAndSettle();
+    expect(find.byKey(const ValueKey('family-all')), findsOneWidget);
     final other = find.byWidgetPredicate((w) {
       final k = w.key;
-      return w is Capsule &&
-          k is ValueKey<String> &&
+      return k is ValueKey<String> &&
           k.value.startsWith('family-') &&
-          k.value != 'family-all';
+          !{'family-all', 'family-filter', 'family-capsules'}.contains(k.value);
     }).first;
-    await tester.ensureVisible(other);
-    await tester.pumpAndSettle();
+    final name = (tester.widget(other).key! as ValueKey<String>).value
+        .substring('family-'.length);
     await tester.tap(other);
-    await tester.pump();
-    await tester.pump(const Duration(milliseconds: 80));
-    final mid = tester.getRect(indicator).center.dx;
     await tester.pumpAndSettle();
-    final target = tester.getRect(other).center.dx;
-    expect(tester.getRect(indicator).center.dx, closeTo(target, 1));
-    expect((mid - target).abs(), greaterThan(2)); // it moved, not jumped
+    final pill = find.byKey(const ValueKey('family-filter'));
+    expect(
+      find.descendant(of: pill, matching: find.text(name)),
+      findsOneWidget,
+    );
+  });
+
+  testWidgets('a sideways swipe on Packages moves to the next segment', (
+    tester,
+  ) async {
+    await pumpApp(tester, size: const Size(400, 900));
+    await tester.tap(find.byKey(const ValueKey('nav-1')));
+    await tester.pumpAndSettle();
+    // Arabic: the next segment is on the left; the finger moves right.
+    await tester.flingFrom(const Offset(100, 600), const Offset(250, 0), 1500);
+    await tester.pumpAndSettle();
+    expect(currentPath(tester), startsWith('/packages'));
+    expect(
+      GoRouterState.of(tester.element(find.byType(PackagesScreen)))
+          .uri
+          .queryParameters['s'],
+      'mobileInternet',
+    );
   });
 }

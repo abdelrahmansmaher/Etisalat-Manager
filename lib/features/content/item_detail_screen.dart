@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../export/export_sheet.dart';
+import 'item_summary.dart';
 import '../../core/content/content.dart';
 import '../../core/settings/history.dart';
 import '../../core/theme/theme.dart';
@@ -142,6 +144,11 @@ class _ItemDetailScreenState extends ConsumerState<ItemDetailScreen> {
             color: c.primary,
             onPressed: () => setState(() => _customer = !_customer),
           ),
+        ExportButton(
+          title: item.title,
+          text: customerSummary(item),
+          pdf: (pdf) => pdf.item(item),
+        ),
         FavoriteButton(item.id),
       ],
       children: [

@@ -1,11 +1,11 @@
 {
-    "name": "دليل الكاونتر",
-    "short_name": "دليل الكاونتر",
+    "name": "إنكور · N-Core",
+    "short_name": "إنكور",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#142258",
     "theme_color": "#142258",
-    "description": "دليل الكاونتر",
+    "description": "إنكور · N-Core",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

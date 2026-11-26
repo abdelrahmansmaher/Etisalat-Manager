@@ -8,150 +8,205 @@ import '../../core/settings/history.dart';
 import '../../core/theme/theme.dart';
 import '../../core/user/user.dart';
 import '../../core/widgets/app_card.dart';
+import '../../core/widgets/app_mark.dart';
 import '../../core/widgets/capsules.dart';
-import '../../core/widgets/list_surface.dart';
 import '../../core/widgets/masthead.dart';
+import '../../core/widgets/sim_shape.dart';
 import '../../core/widgets/trust/trust.dart';
+import '../../l10n/app_identity.dart';
 import '../../l10n/app_localizations.dart';
 import '../../l10n/locale_provider.dart';
 import '../content/content_widgets.dart';
 import '../content/section_ui.dart';
+import '../tools/recharge_rule.dart';
 import '../tools/tool_routes.dart';
 import '../tools/tool_widgets.dart';
 
-/// "More" tab: the remaining sections, the owner's tools, appearance and
-/// language.
+/// "More" tab: the app card with what the database holds, the tools as a
+/// grid of tiles, the other sections, and appearance and language.
 class MoreScreen extends ConsumerWidget {
   const MoreScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context);
-    final themeMode = ref.watch(themeModeProvider);
-    final locale = ref.watch(localeProvider);
+    final library = ref.watch(contentLibraryProvider);
+    final calculator = ref.watch(rechargeCalculatorAvailableProvider);
 
-    Widget section(ContentSection s) => _MoreRow(
-      key: ValueKey('more-${s.key}'),
-      icon: s.icon,
-      label: s.title(l10n),
-      onTap: () => context.push(ContentRoutes.section(s.key)),
-    );
-    Widget tool(String key, IconData icon, String label, String route) =>
-        _MoreRow(
-          key: ValueKey('more-$key'),
-          icon: icon,
-          label: label,
-          onTap: () => context.push(route),
-        );
+    final tools = <_Tile>[
+      (
+        'training',
+        AppIcons.training,
+        l10n.trainingTitle,
+        l10n.moreTrainingSub,
+        ToolRoutes.training,
+        7,
+      ),
+      (
+        'recommend',
+        AppIcons.toolRecommend,
+        l10n.toolsRecommendTitle,
+        l10n.moreRecommendSub,
+        ToolRoutes.recommend,
+        2,
+      ),
+      (
+        'compare',
+        AppIcons.toolCompare,
+        l10n.toolsCompareTitle,
+        l10n.moreCompareSub,
+        ToolRoutes.compare,
+        1,
+      ),
+      if (calculator)
+        (
+          'calculator',
+          AppIcons.toolCalculator,
+          l10n.toolsCalcTitle,
+          l10n.moreCalculatorSub,
+          ToolRoutes.calculator,
+          5,
+        ),
+      (
+        'favorites',
+        AppIcons.toolFavorite,
+        l10n.toolsFavoritesTitle,
+        l10n.moreFavoritesSub,
+        ToolRoutes.favorites,
+        3,
+      ),
+      (
+        'notes',
+        AppIcons.toolNotes,
+        l10n.moreNotes,
+        l10n.moreNotesSub,
+        ToolRoutes.notes,
+        6,
+      ),
+      (
+        'editor',
+        AppIcons.toolEdits,
+        l10n.moreEditor,
+        l10n.moreEditorSub,
+        ToolRoutes.editor,
+        4,
+      ),
+      (
+        'whats-new',
+        AppIcons.toolWhatsNew,
+        l10n.moreWhatsNew,
+        l10n.moreWhatsNewSub,
+        ToolRoutes.whatsNew,
+        0,
+      ),
+    ];
+    final sections = [
+      for (final (i, s) in const [
+        ContentSection.procedures,
+        ContentSection.wallet,
+        ContentSection.glossary,
+        ContentSection.company,
+      ].indexed)
+        (
+          s.key,
+          s.icon,
+          s.title(l10n),
+          l10n.moreItemsCount(library.itemsOf(s).length),
+          ContentRoutes.section(s.key),
+          [0, 5, 2, 4][i],
+        ),
+    ];
 
     return TabScaffold(
       scrollKey: const ValueKey('more-scroll'),
-      top: MastheadTitle(l10n.navMore),
       children: [
-        GroupHeader(l10n.homeSectionsTitle),
-        ListSurface(
-          children: [
-            section(ContentSection.procedures),
-            section(ContentSection.wallet),
-            section(ContentSection.glossary),
-            section(ContentSection.company),
-          ],
-        ),
-        GroupHeader(l10n.moreToolsTitle),
-        ListSurface(
-          children: [
-            tool(
-              'training',
-              AppIcons.training,
-              l10n.trainingTitle,
-              ToolRoutes.training,
-            ),
-            tool('notes', AppIcons.toolNotes, l10n.moreNotes, ToolRoutes.notes),
-            tool(
-              'editor',
-              AppIcons.toolEdits,
-              l10n.moreEditor,
-              ToolRoutes.editor,
-            ),
-            tool(
-              'whats-new',
-              AppIcons.toolWhatsNew,
-              l10n.moreWhatsNew,
-              ToolRoutes.whatsNew,
-            ),
-          ],
-        ),
-        GroupHeader(l10n.moreContentTitle),
-        const _ContentStats(),
-        GroupHeader(l10n.moreSettingsTitle),
-        AppCard(
-          role: CardRole.flat,
-          padding: const EdgeInsets.all(AppSpacing.sm),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              _SettingLabel(l10n.settingsAppearance),
-              SegmentedCapsule<ThemeMode>(
-                key: const ValueKey('theme-segments'),
-                selected: themeMode,
-                onChanged: (m) =>
-                    ref.read(themeModeProvider.notifier).setMode(m),
-                segments: [
-                  CapsuleSegment(
-                    key: const ValueKey('theme-system'),
-                    value: ThemeMode.system,
-                    label: l10n.themeSystem,
-                  ),
-                  CapsuleSegment(
-                    key: const ValueKey('theme-light'),
-                    value: ThemeMode.light,
-                    label: l10n.themeLight,
-                  ),
-                  CapsuleSegment(
-                    key: const ValueKey('theme-dark'),
-                    value: ThemeMode.dark,
-                    label: l10n.themeDark,
-                  ),
-                ],
-              ),
-              const SizedBox(height: AppSpacing.md),
-              _SettingLabel(l10n.settingsLanguage),
-              SegmentedCapsule<String>(
-                key: const ValueKey('lang-segments'),
-                selected: locale?.languageCode ?? 'system',
-                onChanged: (code) => ref
-                    .read(localeProvider.notifier)
-                    .setLocale(code == 'system' ? null : Locale(code)),
-                segments: [
-                  CapsuleSegment(
-                    key: const ValueKey('lang-system'),
-                    value: 'system',
-                    label: l10n.languageSystem,
-                  ),
-                  CapsuleSegment(
-                    key: const ValueKey('lang-ar'),
-                    value: 'ar',
-                    label: l10n.languageArabic,
-                  ),
-                  CapsuleSegment(
-                    key: const ValueKey('lang-en'),
-                    value: 'en',
-                    label: l10n.languageEnglish,
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
+        const _AppCard(),
+        GroupHeader(l10n.moreToolsTitle, icon: AppIcons.toolRecommend),
+        _TileGrid(tiles: tools),
+        GroupHeader(l10n.homeSectionsTitle, icon: AppIcons.layers),
+        _TileGrid(tiles: sections),
+        GroupHeader(l10n.moreSettingsTitle, icon: AppIcons.appearance),
+        const _Settings(),
       ],
     );
   }
 }
 
-/// How much the app holds, what was checked on the official site, when it was
-/// last updated, and a way to clear the search and reading history.
-class _ContentStats extends ConsumerWidget {
-  const _ContentStats();
+/// A tool or a section: key, icon, title, one line, route, palette hue.
+typedef _Tile = (String, IconData, String, String, String, int);
+
+class _TileGrid extends StatelessWidget {
+  const _TileGrid({required this.tiles});
+
+  final List<_Tile> tiles;
+
+  @override
+  Widget build(BuildContext context) => LayoutBuilder(
+    builder: (context, box) {
+      const gap = AppSpacing.xs;
+      final columns = box.maxWidth >= 600 ? 3 : 2;
+      final w = (box.maxWidth - gap * (columns - 1)) / columns;
+      return Wrap(
+        spacing: gap,
+        runSpacing: gap,
+        children: [
+          for (final t in tiles)
+            SizedBox(
+              width: w,
+              child: _ToolTile(tile: t),
+            ),
+        ],
+      );
+    },
+  );
+}
+
+/// Glass tile: a coloured icon squircle, the name and what it is for.
+class _ToolTile extends StatelessWidget {
+  const _ToolTile({required this.tile});
+
+  final _Tile tile;
+
+  @override
+  Widget build(BuildContext context) {
+    final c = context.colors;
+    final (key, icon, title, sub, route, hue) = tile;
+    return AppCard(
+      key: ValueKey('more-$key'),
+      role: CardRole.flat,
+      semanticLabel: title,
+      padding: const EdgeInsets.all(AppSpacing.sm),
+      onTap: () => context.push(route),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Same colour as the tool everywhere (home, its page).
+          TintedIcon(icon, tile: IconTile.md),
+          const SizedBox(height: AppSpacing.sm),
+          Text(
+            title,
+            maxLines: 2,
+            style: AppTypography.titleS.copyWith(
+              color: c.textPrimary,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+          const SizedBox(height: 2),
+          Text(
+            sub,
+            maxLines: 2,
+            style: AppTypography.bodyS.copyWith(color: c.textSecondary),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// The app on a navy glass card: its mark, its name, how much it holds and
+/// what was checked on the official site, and clearing the history.
+class _AppCard extends ConsumerWidget {
+  const _AppCard();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -166,54 +221,93 @@ class _ContentStats extends ConsumerWidget {
         ref.watch(recentSearchesProvider).isNotEmpty;
 
     Widget stat(String key, int n, String label, Color color) => Expanded(
-      child: Column(
-        children: [
-          Text(
-            '$n',
-            key: ValueKey('stat-$key'),
-            style: AppTypography.headlineM.copyWith(
-              color: color,
-              fontFeatures: AppTypography.tabular,
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: AppSpacing.xs),
+        decoration: BoxDecoration(
+          color: Colors.white.withValues(alpha: 0.08),
+          borderRadius: AppRadius.smAll,
+          border: Border.all(color: Colors.white.withValues(alpha: 0.12)),
+        ),
+        child: Column(
+          children: [
+            Text(
+              '$n',
+              key: ValueKey('stat-$key'),
+              style: AppTypography.headlineM.copyWith(
+                color: color,
+                fontFeatures: AppTypography.tabular,
+                fontWeight: FontWeight.w800,
+              ),
             ),
-          ),
-          Text(
-            label,
-            textAlign: TextAlign.center,
-            style: AppTypography.labelS.copyWith(color: c.textSecondary),
-          ),
-        ],
+            Text(
+              label,
+              textAlign: TextAlign.center,
+              style: AppTypography.labelS.copyWith(color: c.onMastheadMuted),
+            ),
+          ],
+        ),
       ),
     );
 
-    return AppCard(
+    return Container(
       key: const ValueKey('content-stats'),
-      role: CardRole.flat,
-      padding: const EdgeInsets.all(AppSpacing.sm),
+      padding: const EdgeInsets.all(AppSpacing.md),
+      decoration: simGlassDecoration(c, cut: 30),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              stat('items', library.length, l10n.moreStatItems, c.textPrimary),
-              stat('official', official, l10n.moreStatOfficial, c.verified),
-              stat('edits', edits, l10n.editorMyEdits, c.primary),
+              const AppMark(size: 52),
+              const SizedBox(width: AppSpacing.sm),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      AppIdentity.of(context),
+                      style: AppTypography.titleL.copyWith(
+                        color: c.onMasthead,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                    if (asOf != null)
+                      Text(
+                        l10n.contentAsOf(
+                          TrustFormat.date(
+                            asOf,
+                            Localizations.localeOf(context),
+                          ),
+                        ),
+                        style: AppTypography.bodyS.copyWith(
+                          color: c.onMastheadMuted,
+                        ),
+                      ),
+                  ],
+                ),
+              ),
             ],
           ),
-          if (asOf != null) ...[
-            const SizedBox(height: AppSpacing.sm),
-            Text(
-              l10n.contentAsOf(
-                TrustFormat.date(asOf, Localizations.localeOf(context)),
+          const SizedBox(height: AppSpacing.md),
+          Row(
+            children: [
+              stat('items', library.length, l10n.moreStatItems, c.onMasthead),
+              const SizedBox(width: AppSpacing.xs),
+              stat(
+                'official',
+                official,
+                l10n.moreStatOfficial,
+                const Color(0xFF7BE3B4),
               ),
-              textAlign: TextAlign.center,
-              style: AppTypography.labelS.copyWith(color: c.textTertiary),
-            ),
-          ],
+              const SizedBox(width: AppSpacing.xs),
+              stat('edits', edits, l10n.editorMyEdits, const Color(0xFF9DB8FF)),
+            ],
+          ),
           if (hasHistory) ...[
             const SizedBox(height: AppSpacing.xs),
             TextButton.icon(
               key: const ValueKey('clear-history'),
+              style: TextButton.styleFrom(foregroundColor: c.onMasthead),
               onPressed: () {
                 ref.read(recentItemsProvider.notifier).clear();
                 ref.read(recentSearchesProvider.notifier).clear();
@@ -229,66 +323,97 @@ class _ContentStats extends ConsumerWidget {
   }
 }
 
-class _SettingLabel extends StatelessWidget {
-  const _SettingLabel(this.text);
-
-  final String text;
-
-  @override
-  Widget build(BuildContext context) => Padding(
-    padding: const EdgeInsetsDirectional.only(
-      start: AppSpacing.xxs,
-      bottom: AppSpacing.xs,
-    ),
-    child: Text(
-      text,
-      style: AppTypography.labelL.copyWith(color: context.colors.textSecondary),
-    ),
-  );
-}
-
-class _MoreRow extends StatelessWidget {
-  const _MoreRow({
-    super.key,
-    required this.icon,
-    required this.label,
-    required this.onTap,
-  });
-
-  final IconData icon;
-  final String label;
-  final VoidCallback onTap;
+/// Appearance and language, grouped like iOS settings.
+class _Settings extends ConsumerWidget {
+  const _Settings();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context);
     final c = context.colors;
-    return InkWell(
-      onTap: onTap,
-      child: ConstrainedBox(
-        constraints: const BoxConstraints(minHeight: 52),
-        child: Padding(
-          padding: const EdgeInsetsDirectional.symmetric(
-            horizontal: AppSpacing.md,
-            vertical: AppSpacing.xs,
-          ),
-          child: Row(
-            children: [
-              Icon(icon, size: AppIconSize.nav, color: c.primary),
-              const SizedBox(width: AppSpacing.md),
-              Expanded(
-                child: Text(
-                  label,
-                  style: AppTypography.titleM.copyWith(color: c.textPrimary),
-                ),
+    final themeMode = ref.watch(themeModeProvider);
+    final locale = ref.watch(localeProvider);
+
+    Widget label(IconData icon, String text) => Padding(
+      padding: const EdgeInsets.only(bottom: AppSpacing.xs),
+      child: Row(
+        children: [
+          TintedIcon(icon, tile: IconTile.xs),
+          const SizedBox(width: AppSpacing.xs),
+          Flexible(
+            child: Text(
+              text,
+              style: AppTypography.titleS.copyWith(
+                color: c.textPrimary,
+                fontWeight: FontWeight.w700,
               ),
-              Icon(
-                AppIcons.chevron, // mirrors in RTL
-                size: AppIconSize.action,
-                color: c.textTertiary,
+            ),
+          ),
+        ],
+      ),
+    );
+
+    return AppCard(
+      role: CardRole.flat,
+      padding: const EdgeInsets.all(AppSpacing.sm),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          label(AppIcons.themeSystem, l10n.settingsAppearance),
+          SegmentedCapsule<ThemeMode>(
+            key: const ValueKey('theme-segments'),
+            selected: themeMode,
+            onChanged: (m) => ref.read(themeModeProvider.notifier).setMode(m),
+            segments: [
+              CapsuleSegment(
+                key: const ValueKey('theme-system'),
+                value: ThemeMode.system,
+                label: l10n.themeSystem,
+                icon: AppIcons.themeSystem,
+              ),
+              CapsuleSegment(
+                key: const ValueKey('theme-light'),
+                value: ThemeMode.light,
+                label: l10n.themeLight,
+                icon: AppIcons.themeLight,
+              ),
+              CapsuleSegment(
+                key: const ValueKey('theme-dark'),
+                value: ThemeMode.dark,
+                label: l10n.themeDark,
+                icon: AppIcons.themeDark,
               ),
             ],
           ),
-        ),
+          const SizedBox(height: AppSpacing.md),
+          Divider(height: 1, color: c.hairline),
+          const SizedBox(height: AppSpacing.md),
+          label(AppIcons.language, l10n.settingsLanguage),
+          SegmentedCapsule<String>(
+            key: const ValueKey('lang-segments'),
+            selected: locale?.languageCode ?? 'system',
+            onChanged: (code) => ref
+                .read(localeProvider.notifier)
+                .setLocale(code == 'system' ? null : Locale(code)),
+            segments: [
+              CapsuleSegment(
+                key: const ValueKey('lang-system'),
+                value: 'system',
+                label: l10n.languageSystem,
+              ),
+              CapsuleSegment(
+                key: const ValueKey('lang-ar'),
+                value: 'ar',
+                label: l10n.languageArabic,
+              ),
+              CapsuleSegment(
+                key: const ValueKey('lang-en'),
+                value: 'en',
+                label: l10n.languageEnglish,
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

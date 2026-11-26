@@ -1,3 +1,4 @@
+import '../../l10n/app_localizations.dart';
 import 'package_info.dart';
 
 enum CompareRow { price, total, quota, gb, minutes, mix, validity, code, after }
@@ -95,3 +96,26 @@ bool periodsDiffer(List<PackageInfo> packages) {
   final days = [for (final p in packages) p.validityDays];
   return days.any((d) => d == null) || days.toSet().length > 1;
 }
+
+String compareRowLabel(AppLocalizations l10n, CompareRow row) => switch (row) {
+  CompareRow.price => l10n.toolsRowPrice,
+  CompareRow.total => l10n.toolsRowTotal,
+  CompareRow.quota => l10n.toolsRowQuota,
+  CompareRow.gb => l10n.toolsRowGb,
+  CompareRow.minutes => l10n.toolsRowMinutes,
+  CompareRow.mix => l10n.toolsRowMix,
+  CompareRow.validity => l10n.toolsRowValidity,
+  CompareRow.code => l10n.toolsRowCode,
+  CompareRow.after => l10n.toolsRowAfter,
+};
+
+/// Word shown under the best value of a row, `null` when none is marked.
+String? compareBestBadge(AppLocalizations l10n, CompareRow row) =>
+    switch (row) {
+      CompareRow.price || CompareRow.total => l10n.toolsBestLowest,
+      CompareRow.gb ||
+      CompareRow.minutes ||
+      CompareRow.mix => l10n.toolsBestHighest,
+      CompareRow.validity => l10n.toolsBestLongest,
+      _ => null,
+    };

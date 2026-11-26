@@ -143,8 +143,9 @@ class _TabPagerState extends State<TabPager> {
       child: PageView(
         controller: _controller,
         onPageChanged: _onPageChanged,
-        // Snappy but smooth; no overscroll glow at the first/last tab.
-        physics: const PageScrollPhysics(parent: ClampingScrollPhysics()),
+        // Tabs change from the dock only: a sideways swipe belongs to the
+        // page (e.g. the package segments), never to the dock.
+        physics: const NeverScrollableScrollPhysics(),
         children: [
           for (final child in widget.children) _KeepAlive(child: child),
         ],

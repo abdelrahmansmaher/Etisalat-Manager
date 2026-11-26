@@ -62,6 +62,7 @@ class AppColors extends ThemeExtension<AppColors> {
     required this.aurora3,
     required this.glassFill,
     required this.glassChrome,
+    required this.glassPanel,
     required this.glassEdge,
     required this.glassEdgeLow,
     required this.glassSheen,
@@ -165,8 +166,12 @@ class AppColors extends ThemeExtension<AppColors> {
   /// Translucent fill of glass cards and rows (over the backdrop).
   final Color glassFill;
 
-  /// Translucent fill of blurred chrome (headers, nav, sheets).
+  /// Clear liquid glass of chrome (dock, header, floating buttons):
+  /// the page shows through it, blurred and saturated.
   final Color glassChrome;
+
+  /// Denser glass for sheets and popups that hold a lot of text.
+  final Color glassPanel;
 
   /// Bright rim where light hits glass (top / start).
   final Color glassEdge;
@@ -188,7 +193,7 @@ class AppColors extends ThemeExtension<AppColors> {
 
   /// Search field and tool buttons on the glass header.
   Color get headerField =>
-      isDark ? const Color(0x14FFFFFF) : const Color(0xD9FFFFFF);
+      isDark ? const Color(0x8C0A1030) : const Color(0xD9FFFFFF);
 
   static const AppColors light = AppColors(
     brightness: Brightness.light,
@@ -236,7 +241,8 @@ class AppColors extends ThemeExtension<AppColors> {
     aurora2: Color(0xFF62C6FF),
     aurora3: Color(0xFFBFA2FF),
     glassFill: Color(0x9EFFFFFF),
-    glassChrome: Color(0xB3FFFFFF),
+    glassChrome: Color(0x38FFFFFF),
+    glassPanel: Color(0xB8FFFFFF),
     glassEdge: Color(0xF2FFFFFF),
     glassEdgeLow: Color(0x1A0A1230),
     glassSheen: Color(0x40FFFFFF),
@@ -289,7 +295,8 @@ class AppColors extends ThemeExtension<AppColors> {
     aurora2: Color(0xFF00A3D9),
     aurora3: Color(0xFF7A3CF0),
     glassFill: Color(0x94131C3F),
-    glassChrome: Color(0xA80D1430),
+    glassChrome: Color(0x590E1638),
+    glassPanel: Color(0xB30D1430),
     glassEdge: Color(0x3DFFFFFF),
     glassEdgeLow: Color(0x0FFFFFFF),
     glassSheen: Color(0x14FFFFFF),
@@ -345,6 +352,7 @@ class AppColors extends ThemeExtension<AppColors> {
       aurora3: aurora3,
       glassFill: glassFill,
       glassChrome: glassChrome,
+      glassPanel: glassPanel,
       glassEdge: glassEdge,
       glassEdgeLow: glassEdgeLow,
       glassSheen: glassSheen,
@@ -405,6 +413,7 @@ class AppColors extends ThemeExtension<AppColors> {
       aurora3: l(aurora3, other.aurora3),
       glassFill: l(glassFill, other.glassFill),
       glassChrome: l(glassChrome, other.glassChrome),
+      glassPanel: l(glassPanel, other.glassPanel),
       glassEdge: l(glassEdge, other.glassEdge),
       glassEdgeLow: l(glassEdgeLow, other.glassEdgeLow),
       glassSheen: l(glassSheen, other.glassSheen),

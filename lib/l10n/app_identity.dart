@@ -6,8 +6,8 @@ import 'package:flutter/widgets.dart';
 /// name or logo). Change it here only — every screen, the window title and
 /// tests read from this class.
 abstract final class AppIdentity {
-  static const String nameAr = 'دليل الكاونتر';
-  static const String nameEn = 'Counter Guide';
+  static const String nameAr = 'إنكور';
+  static const String nameEn = 'N-Core';
 
   static String nameFor(Locale locale) =>
       locale.languageCode == 'ar' ? nameAr : nameEn;

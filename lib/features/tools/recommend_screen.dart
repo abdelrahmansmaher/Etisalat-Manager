@@ -19,6 +19,8 @@ import 'package_info.dart';
 import 'recharge_rule.dart';
 import 'recommend_logic.dart';
 import 'tool_widgets.dart';
+import 'value_logic.dart';
+import 'value_widgets.dart';
 
 /// Package recommender: what the customer pays, how much internet, how many
 /// minutes and for how long. The top pick is shown first with its price and
@@ -106,10 +108,11 @@ class _RecommendScreenState extends ConsumerState<RecommendScreen> {
     final result = recommend(packages, needs, rule: rule);
     final best = result.best;
     final others = result.fits.skip(1).toList();
+    // What the money buys best: the cheapest GB and/or minute it covers.
+    final values = valueForBudget(packages, needs, rule: rule);
 
     return PageScaffold(
       title: l10n.toolsRecommendTitle,
-      subtitle: l10n.toolsRecommendSubtitle,
       actions: [
         if (!needs.isEmpty)
           IconButton(
@@ -120,6 +123,18 @@ class _RecommendScreenState extends ConsumerState<RecommendScreen> {
           ),
       ],
       children: [
+        ToolHero(
+          icon: AppIcons.toolRecommend,
+          hue: ToolHue.recommend,
+          text: l10n.toolsRecommendIntro,
+          stats: [
+            (
+              '${packages.where((p) => p.use == _use).length}',
+              l10n.heroPackages,
+            ),
+          ],
+        ),
+        const SizedBox(height: AppSpacing.md),
         SegmentedCapsule<PackageUse>(
           selected: _use,
           onChanged: (u) => setState(() {
@@ -229,6 +244,20 @@ class _RecommendScreenState extends ConsumerState<RecommendScreen> {
               style: AppTypography.bodyM.copyWith(color: c.textSecondary),
             ),
             const SizedBox(height: AppSpacing.sm),
+          ],
+          for (final v in values) ...[
+            ValueVerdictCard(
+              key: ValueKey('value-budget-${v.basis.name}'),
+              ranking: v,
+              title: l10n.valueForBudget,
+              subtitle: values.length > 1
+                  ? (v.basis == ValueBasis.gb
+                        ? l10n.valueForInternet
+                        : l10n.valueForCalls)
+                  : null,
+              maxBars: 3,
+            ),
+            const SizedBox(height: AppSpacing.md),
           ],
           if (others.isNotEmpty) ...[
             SectionHeader(l10n.toolsRecommendFits),
@@ -489,10 +518,6 @@ class _BestCard extends StatelessWidget {
           const SizedBox(height: AppSpacing.sm),
           FilledButton.icon(
             key: const ValueKey('recommend-open-best'),
-            style: FilledButton.styleFrom(
-              backgroundColor: c.mastheadPrice,
-              foregroundColor: c.masthead,
-            ),
             onPressed: () => context.push(ContentRoutes.item(p.item.id)),
             icon: const Icon(AppIcons.arrowForward),
             label: Text(l10n.toolsRecommendOpen),

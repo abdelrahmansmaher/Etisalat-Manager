@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../core/content/content.dart';
 import '../../core/theme/theme.dart';
-import '../../core/widgets/capsules.dart';
+import '../../core/widgets/choice_sheet.dart';
 import '../../core/widgets/list_surface.dart';
 import '../../l10n/app_localizations.dart';
 import 'content_widgets.dart';
@@ -54,31 +54,40 @@ List<Widget> groupedSlivers(
   required ValueChanged<String> onJump,
 }) {
   final l10n = AppLocalizations.of(context);
-  final page = Theme.of(context).scaffoldBackgroundColor;
   final pad = AppSpacing.screenPaddingFor(MediaQuery.sizeOf(context).width);
   final hPad = EdgeInsetsDirectional.symmetric(horizontal: pad);
   return [
     if (groups.length > 1)
-      // Pinned, so groups stay one tap away while scrolling; the group
-      // headers pin right under it.
+      // One "groups" button, pinned, instead of a long row of capsules.
       PinnedHeaderSliver(
-        child: Container(
-          color: page,
-          padding: const EdgeInsets.only(top: AppSpacing.xxs),
-          child: CapsuleRow(
-            key: const ValueKey('category-capsules'),
-            padding: hPad,
-            children: [
-              for (final g in groups.keys)
-                Capsule(
-                  key: ValueKey('jump-$g'),
-                  label: g,
-                  dense: true,
-                  selected: active == g,
-                  semanticsLabel: l10n.sectionJumpTo(g),
-                  onTap: () => onJump(g),
-                ),
-            ],
+        child: Padding(
+          padding: EdgeInsetsDirectional.fromSTEB(pad, AppSpacing.xxs, pad, 0),
+          child: Align(
+            alignment: AlignmentDirectional.centerEnd,
+            child: FilterPill(
+              key: const ValueKey('category-capsules'),
+              floating: true,
+              icon: AppIcons.jump,
+              label: active ?? l10n.jumpPill,
+              count: groups.length,
+              onTap: () async {
+                final g = await showChoiceSheet<String>(
+                  context,
+                  title: l10n.jumpTitle,
+                  selected: active,
+                  choices: [
+                    for (final e in groups.entries)
+                      Choice(
+                        key: ValueKey('jump-${e.key}'),
+                        value: e.key,
+                        label: e.key,
+                        count: e.value.length,
+                      ),
+                  ],
+                );
+                if (g != null && context.mounted) onJump(g);
+              },
+            ),
           ),
         ),
       ),
@@ -87,10 +96,9 @@ List<Widget> groupedSlivers(
         slivers: [
           // Non-pinned anchor for jumps.
           SliverToBoxAdapter(child: SizedBox(key: jumper.keyFor(g.key))),
-          PinnedHeaderSliver(
-            child: Container(
-              color: page,
-              padding: hPad,
+          SliverPadding(
+            padding: hPad,
+            sliver: SliverToBoxAdapter(
               child: GroupHeader(g.key, count: g.value.length),
             ),
           ),

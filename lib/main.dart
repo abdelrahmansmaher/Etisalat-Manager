@@ -4,15 +4,18 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'app.dart';
 import 'core/settings/preferences.dart';
+import 'core/widgets/glass_engine.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  final glass = GlassEngine.warmUp();
   SharedPreferences? prefs;
   try {
     prefs = await SharedPreferences.getInstance();
   } catch (_) {
     prefs = null; // the app still works, choices just are not remembered
   }
+  await glass;
   runApp(
     ProviderScope(
       overrides: [

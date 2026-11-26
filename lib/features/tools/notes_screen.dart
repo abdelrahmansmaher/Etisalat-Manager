@@ -127,27 +127,23 @@ class _NotesScreenState extends ConsumerState<NotesScreen> {
         ),
       ],
       children: [
-        AppCard(
-          role: CardRole.flat,
-          color: c.warningContainer,
-          borderColor: c.warning.withValues(alpha: 0.35),
-          padding: const EdgeInsets.all(AppSpacing.sm),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              IconLine(
-                icon: AppIcons.privateNote,
-                text: l10n.notesWarning,
-                color: c.onWarningContainer,
+        ToolHero(
+          icon: AppIcons.privateNote,
+          hue: ToolHue.notes,
+          text: '${l10n.notesWarning}\n${l10n.notesLocal}',
+          stats: [('${all.length}', l10n.heroNotes)],
+          footer: Align(
+            alignment: AlignmentDirectional.centerStart,
+            child: FilledButton.icon(
+              key: const ValueKey('notes-add-hero'),
+              style: FilledButton.styleFrom(
+                backgroundColor: Colors.white,
+                foregroundColor: c.textPrimary,
               ),
-              const SizedBox(height: 2),
-              Text(
-                l10n.notesLocal,
-                style: AppTypography.labelS.copyWith(
-                  color: c.onWarningContainer,
-                ),
-              ),
-            ],
+              onPressed: () => _openEditor(),
+              icon: const Icon(AppIcons.toolAdd),
+              label: Text(l10n.notesAdd),
+            ),
           ),
         ),
         const SizedBox(height: AppSpacing.sm),

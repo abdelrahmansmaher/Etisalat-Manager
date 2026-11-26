@@ -427,3 +427,147 @@ class _PackagePickerState extends ConsumerState<_PackagePicker> {
     return words.every(hay.contains);
   }
 }
+
+/// Colour of each tool, shared with its tile in "More" (family palette).
+abstract final class ToolHue {
+  static const int whatsNew = 0;
+  static const int compare = 1;
+  static const int recommend = 2;
+  static const int favorites = 3;
+  static const int editor = 4;
+  static const int calculator = 5;
+  static const int notes = 6;
+  static const int training = 7;
+}
+
+/// The coloured card at the top of a tool page: its icon, what it is for,
+/// and its own numbers. Gives every tool a face of its own.
+class ToolHero extends StatelessWidget {
+  const ToolHero({
+    super.key,
+    required this.icon,
+    required this.hue,
+    required this.text,
+    this.stats = const [],
+    this.footer,
+  });
+
+  final IconData icon;
+  final int hue;
+  final String text;
+
+  /// (value, label) pairs shown as glass chips.
+  final List<(String, String)> stats;
+  final Widget? footer;
+
+  @override
+  Widget build(BuildContext context) {
+    final c = context.colors;
+    // The tool's own colour, as on its tile at home and in More.
+    final color = IconHues.of(icon).of(c);
+    return Container(
+      key: const ValueKey('tool-hero'),
+      padding: const EdgeInsets.all(AppSpacing.md),
+      decoration: BoxDecoration(
+        borderRadius: AppRadius.lgAll,
+        gradient: LinearGradient(
+          begin: AlignmentDirectional.topStart,
+          end: AlignmentDirectional.bottomEnd,
+          colors: [
+            Color.alphaBlend(Colors.white.withValues(alpha: 0.14), color),
+            color,
+            Color.alphaBlend(Colors.black.withValues(alpha: 0.18), color),
+          ],
+        ),
+        border: Border.all(color: Colors.white.withValues(alpha: 0.22)),
+        boxShadow: [
+          BoxShadow(
+            color: color.withValues(alpha: 0.38),
+            blurRadius: 26,
+            offset: const Offset(0, 10),
+            spreadRadius: -10,
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                width: 48,
+                height: 48,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: Colors.white.withValues(alpha: 0.18),
+                  borderRadius: BorderRadius.circular(15),
+                  border: Border.all(
+                    color: Colors.white.withValues(alpha: 0.25),
+                  ),
+                ),
+                child: Icon(icon, size: 24, color: Colors.white),
+              ),
+              const SizedBox(width: AppSpacing.sm),
+              Expanded(
+                child: Text(
+                  text,
+                  style: AppTypography.bodyM.copyWith(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500,
+                    height: 1.5,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          if (stats.isNotEmpty) ...[
+            const SizedBox(height: AppSpacing.sm),
+            Row(
+              children: [
+                for (final (i, (value, label)) in stats.indexed) ...[
+                  if (i > 0) const SizedBox(width: AppSpacing.xs),
+                  Expanded(
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: AppSpacing.xs,
+                        horizontal: AppSpacing.xxs,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withValues(alpha: 0.14),
+                        borderRadius: AppRadius.smAll,
+                      ),
+                      child: Column(
+                        children: [
+                          Text(
+                            value,
+                            style: AppTypography.headlineM.copyWith(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w800,
+                              fontFeatures: AppTypography.tabular,
+                            ),
+                          ),
+                          Text(
+                            label,
+                            textAlign: TextAlign.center,
+                            style: AppTypography.labelS.copyWith(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ],
+            ),
+          ],
+          if (footer != null) ...[
+            const SizedBox(height: AppSpacing.sm),
+            footer!,
+          ],
+        ],
+      ),
+    );
+  }
+}

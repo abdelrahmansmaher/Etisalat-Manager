@@ -104,7 +104,13 @@ class _PageScaffoldState extends State<PageScaffold> {
 
     final style =
         widget.titleStyle ??
-        AppTypography.headlineM.copyWith(color: c.textPrimary);
+        AppTypography.displayM.copyWith(
+          color: c.textPrimary,
+          fontSize: 26,
+          height: 34 / 26,
+          fontWeight: FontWeight.w800,
+          letterSpacing: -0.3,
+        );
     final title = Semantics(
       header: true,
       child: widget.titleIsProse
@@ -372,7 +378,20 @@ class PlaceholderPanel extends StatelessWidget {
       ),
       child: Column(
         children: [
-          TintedIcon(icon, tile: IconTile.xl),
+          // A soft glow behind the icon gives the empty state some life.
+          DecoratedBox(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              boxShadow: [
+                BoxShadow(
+                  color: c.primaryUi.withValues(alpha: 0.25),
+                  blurRadius: 40,
+                  spreadRadius: 4,
+                ),
+              ],
+            ),
+            child: TintedIcon(icon, tile: IconTile.xl),
+          ),
           const SizedBox(height: AppSpacing.md),
           Text(
             title,

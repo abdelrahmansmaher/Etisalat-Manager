@@ -43,6 +43,7 @@ dependencies:
   url_launcher: ^6.3.3
   share_plus: ^13.3.1
   lucide_icons_flutter: ^4.0.3
+  pdf: ^3.13.1
 
 dev_dependencies:
   flutter_test:
@@ -71,6 +72,10 @@ flutter:
   # Bundled offline content, one JSON file per section (see SCHEMA.md).
   assets:
     - assets/content/
+
+  # Liquid-glass refraction (lib/core/widgets/glass_engine.dart).
+  shaders:
+    - shaders/liquid_glass.frag
 
   # To add assets to your application, add an assets section, like this:
   # assets:

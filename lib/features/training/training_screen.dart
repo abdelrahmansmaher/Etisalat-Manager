@@ -66,42 +66,21 @@ class TrainingScreen extends ConsumerWidget {
 
     return PageScaffold(
       title: l10n.trainingTitle,
-      subtitle: l10n.trainingIntro,
       children: [
-        if (daily != null) ...[
-          _DailyCard(question: daily, day: day),
-          const SizedBox(height: AppSpacing.md),
-        ],
-        SectionHeader(l10n.trainingLevel),
-        const SizedBox(height: AppSpacing.xs),
-        AppCard(
-          role: CardRole.flat,
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  _LevelStat(
-                    label: l10n.trainingMastered,
-                    count: mastered,
-                    color: c.verified,
-                  ),
-                  _LevelStat(
-                    label: l10n.trainingLearning,
-                    count: learning,
-                    color: c.primary,
-                  ),
-                  _LevelStat(
-                    label: l10n.trainingNew,
-                    count: fresh,
-                    color: c.textSecondary,
-                  ),
-                ],
-              ),
-              if (mastered > 0 || learning > 0) ...[
-                const SizedBox(height: AppSpacing.xs),
-                Align(
+        ToolHero(
+          icon: AppIcons.training,
+          hue: ToolHue.training,
+          text: l10n.trainingIntro,
+          stats: [
+            ('$mastered', l10n.trainingMastered),
+            ('$learning', l10n.trainingLearning),
+            ('$fresh', l10n.trainingNew),
+          ],
+          footer: mastered > 0 || learning > 0
+              ? Align(
                   alignment: AlignmentDirectional.centerEnd,
                   child: TextButton(
+                    style: TextButton.styleFrom(foregroundColor: Colors.white),
                     onPressed: () async {
                       final ok = await askToConfirm(
                         context,
@@ -115,11 +94,11 @@ class TrainingScreen extends ConsumerWidget {
                     },
                     child: Text(l10n.trainingReset),
                   ),
-                ),
-              ],
-            ],
-          ),
+                )
+              : null,
         ),
+        const SizedBox(height: AppSpacing.md),
+        if (daily != null) ...[_DailyCard(question: daily, day: day)],
         const SizedBox(height: AppSpacing.md),
         ListSurface(
           children: [
@@ -178,41 +157,6 @@ class TrainingScreen extends ConsumerWidget {
           ),
         ],
       ],
-    );
-  }
-}
-
-class _LevelStat extends StatelessWidget {
-  const _LevelStat({
-    required this.label,
-    required this.count,
-    required this.color,
-  });
-
-  final String label;
-  final int count;
-  final Color color;
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Column(
-        children: [
-          Text(
-            '$count',
-            style: AppTypography.headlineM.copyWith(
-              color: color,
-              fontFeatures: AppTypography.tabular,
-            ),
-          ),
-          Text(
-            label,
-            style: AppTypography.labelS.copyWith(
-              color: context.colors.textSecondary,
-            ),
-          ),
-        ],
-      ),
     );
   }
 }
