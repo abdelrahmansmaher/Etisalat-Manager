@@ -2,7 +2,7 @@
 
 > **Updated:** 2026-11-26 (after the v4 refactor started by Antigravity on 2026-11-25)
 > **State:** `flutter analyze` clean, `flutter test` 623/623 green, `flutter build web --release` OK.
-> Nothing released yet: the latest GitHub release is still v0.3.1.
+> Released as v0.4.0 (APK + web) on 2026-11-26.
 
 ## Owner's standing rules (do not break)
 - Content ships **only if confirmed, current and useful at the counter**. Anything else goes to
@@ -38,7 +38,7 @@
   notes, editor, import, training, what's new, More stats, and real-content rules.
 
 ## Open
-- Release v0.4.0 (APK + web) when the owner asks.
+- Merge `claude/graffiti-app-0cb29c` into `main` (v0.4.0 was tagged on the branch).
 - Pages not read yet: gated-community, pensions, International_Money_Remittance,
   multi-media-SMS, video-call. Blocked (HTTP 500): parental-control-service, activation-steps,
   configuration-steps.
