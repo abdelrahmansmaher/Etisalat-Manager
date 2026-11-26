@@ -46,6 +46,8 @@ enum PackageSegment {
   ];
 
   static PackageSegment of(ContentItem i) {
+    // Listed next to the landline plans, but used on a mobile line.
+    if (i.family == 'ro2ya') return mobile;
     final text = ArabicNormalizer.normalize('${i.category} ${i.family ?? ''}');
     bool has(List<String> words) => words.any(text.contains);
     if (has(_homeWords)) return home;
@@ -57,11 +59,24 @@ enum PackageSegment {
   }
 }
 
-/// Family name of a package: the data's `family`, else its category without
-/// the bracketed English name.
+/// Families whose name differs from the group they are listed in.
+const Map<String, String> _familyNames = {
+  'landline': 'الخط الأرضي',
+  'ro2ya': 'رؤية',
+};
+
+final RegExp _slug = RegExp(r'^[a-z0-9-]+$');
+
+/// Family name of a package, always in readable words: a data slug
+/// (`super-connect`) becomes its Arabic name or the item's group; anything
+/// else is shown as written.
 String familyOf(ContentItem item) {
   final f = item.family;
-  if (f != null) return f;
+  if (f != null) {
+    final named = _familyNames[f];
+    if (named != null) return named;
+    if (!_slug.hasMatch(f)) return f;
+  }
   final c = item.category.replaceAll(RegExp(r'\s*\([^)]*\)'), '').trim();
   return c.isEmpty ? item.category : c;
 }
@@ -95,6 +110,7 @@ class FamilyStyle {
   /// Known families first (specific before general), so they keep their
   /// colour whatever else the content holds.
   static const List<(List<String>, int, String)> _known = [
+    (['اضاف', 'booster'], 4, '+'),
     (['super connect', 'سوبر كونكت'], 5, 'سك'),
     (['super hours', 'sa3at', 'ساعات'], 2, 'سا'),
     (['super mega', 'سوبر ميجا', 'mbs', 'ميجابايتس'], 1, 'سم'),
@@ -110,7 +126,9 @@ class FamilyStyle {
     (['ارضي', 'dsl'], 0, 'DSL'),
     (['هوايي', 'لاسلكي', 'wireless', 'home'], 2, '4G'),
     (['فاتوره'], 7, 'ف'),
-    (['اضاف'], 4, '+'),
+    (['انظمه اليوم'], 6, 'يوم'),
+    (['تجوال'], 1, 'ت'),
+    (['زوار'], 5, 'ز'),
   ];
 
   static final Map<String, FamilyStyle> _cache = {};

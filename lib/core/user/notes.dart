@@ -124,9 +124,10 @@ class Notes extends Notifier<List<PrivateNote>> {
 
 /// Notes matching every word of [query] (Arabic spelling variants folded).
 List<PrivateNote> searchNotes(List<PrivateNote> notes, String query) {
-  final words = normalizeArabic(
-    query,
-  ).split(' ').where((w) => w.isNotEmpty).toList();
+  final words = normalizeArabic(query)
+      .split(' ')
+      .where((w) => w.isNotEmpty)
+      .toList();
   if (words.isEmpty) return notes;
   return [
     for (final n in notes)

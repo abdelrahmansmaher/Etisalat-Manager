@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../core/router/app_page_transitions.dart';
 import '../../core/router/app_routes.dart';
 import '../../core/theme/theme.dart';
 import '../../core/user/user.dart';
@@ -16,8 +17,9 @@ import 'training_progress.dart';
 
 String trainingPrompt(AppLocalizations l10n, TrainingCard card) =>
     switch (card.kind) {
-      CardKind.price || CardKind.total || CardKind.validity =>
-        l10n.trainingAskFact(card.item.title, card.label),
+      CardKind.price ||
+      CardKind.total ||
+      CardKind.validity => l10n.trainingAskFact(card.item.title, card.label),
       CardKind.code => l10n.trainingAskCode(card.item.title),
       CardKind.phone => l10n.trainingAskPhone(card.item.title),
       CardKind.term => l10n.trainingAskTerm(card.item.title),
@@ -128,7 +130,7 @@ class TrainingScreen extends ConsumerWidget {
               onTap: () {
                 final session = progress.session(deck, day);
                 Navigator.of(context).push(
-                  MaterialPageRoute<void>(
+                  AppPageRoute<void>(
                     builder: (_) => _FlashcardsSession(cards: session),
                   ),
                 );
@@ -140,7 +142,7 @@ class TrainingScreen extends ConsumerWidget {
                 title: l10n.trainingQuiz,
                 subtitle: l10n.trainingQuizCount(quiz.length),
                 onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute<void>(
+                  AppPageRoute<void>(
                     builder: (_) => _QuizSession(questions: quiz),
                   ),
                 ),
@@ -151,7 +153,7 @@ class TrainingScreen extends ConsumerWidget {
                 title: l10n.trainingScenarios,
                 subtitle: l10n.trainingScenariosCount(scenarios.length),
                 onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute<void>(
+                  AppPageRoute<void>(
                     builder: (_) => _ScenariosView(scenarios: scenarios),
                   ),
                 ),
@@ -249,9 +251,7 @@ class _ModeRow extends StatelessWidget {
                   ),
                   Text(
                     subtitle,
-                    style: AppTypography.bodyS.copyWith(
-                      color: c.textSecondary,
-                    ),
+                    style: AppTypography.bodyS.copyWith(color: c.textSecondary),
                   ),
                 ],
               ),
@@ -337,11 +337,7 @@ class _DailyCard extends ConsumerWidget {
 enum _ChoiceVisual { idle, correct, wrong, dimmed }
 
 class _ChoiceButton extends StatelessWidget {
-  const _ChoiceButton({
-    required this.label,
-    required this.state,
-    this.onTap,
-  });
+  const _ChoiceButton({required this.label, required this.state, this.onTap});
 
   final String label;
   final _ChoiceVisual state;
@@ -516,9 +512,7 @@ class _QuizSessionState extends ConsumerState<_QuizSession> {
     if (_picked != null) return;
     final q = widget.questions[_index];
     final ok = choice == q.card.answer;
-    ref
-        .read(trainingProgressProvider.notifier)
-        .answer(q.card, correct: ok);
+    ref.read(trainingProgressProvider.notifier).answer(q.card, correct: ok);
     setState(() {
       _picked = choice;
       if (ok) {
@@ -557,8 +551,7 @@ class _QuizSessionState extends ConsumerState<_QuizSession> {
                     title: ProseText(card.item.title),
                     subtitle: ProseText(card.answer),
                     trailing: Icon(AppIcons.chevron, color: c.textTertiary),
-                    onTap: () =>
-                        context.push(ContentRoutes.item(card.item.id)),
+                    onTap: () => context.push(ContentRoutes.item(card.item.id)),
                   ),
               ],
             ),

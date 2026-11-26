@@ -81,129 +81,129 @@ class EditorScreen extends ConsumerWidget {
 
   Future<void> _import(BuildContext context, WidgetRef ref) async {
     final l10n = AppLocalizations.of(context);
-    final controller = TextEditingController();
     ImportDiff? preview;
     String? error;
     int missing = 0;
 
     await showToolSheet<void>(
       context,
-      (ctx) => StatefulBuilder(
-        builder: (ctx, setSheet) {
-          final bundled = ref.read(bundledRawProvider).value ?? const {};
-          final mine = ref.read(overridesProvider);
-          void inspect() {
-            try {
-              final incoming = OverridesTransfer.parse(controller.text);
-              final diff = OverridesTransfer.diff(mine, incoming);
-              final m = incoming
-                  .where((o) => !o.isNew && !bundled.containsKey(o.id))
-                  .length;
-              setSheet(() {
-                preview = diff;
-                missing = m;
-                error = null;
-              });
-            } catch (_) {
-              setSheet(() {
-                preview = null;
-                error = l10n.editorImportInvalid;
-              });
+      (ctx) => SheetTextController(
+        builder: (ctx, controller) => StatefulBuilder(
+          builder: (ctx, setSheet) {
+            final bundled = ref.read(bundledRawProvider).value ?? const {};
+            final mine = ref.read(overridesProvider);
+            void inspect() {
+              try {
+                final incoming = OverridesTransfer.parse(controller.text);
+                final diff = OverridesTransfer.diff(mine, incoming);
+                final m = incoming
+                    .where((o) => !o.isNew && !bundled.containsKey(o.id))
+                    .length;
+                setSheet(() {
+                  preview = diff;
+                  missing = m;
+                  error = null;
+                });
+              } catch (_) {
+                setSheet(() {
+                  preview = null;
+                  error = l10n.editorImportInvalid;
+                });
+              }
             }
-          }
 
-          return SheetBody(
-            title: l10n.editorImport,
-            children: [
-              TextField(
-                controller: controller,
-                minLines: 3,
-                maxLines: 6,
-                decoration: InputDecoration(
-                  hintText: l10n.editorImportHint,
-                  errorText: error,
-                  errorMaxLines: 3,
+            return SheetBody(
+              title: l10n.editorImport,
+              children: [
+                TextField(
+                  controller: controller,
+                  minLines: 3,
+                  maxLines: 6,
+                  decoration: InputDecoration(
+                    hintText: l10n.editorImportHint,
+                    errorText: error,
+                    errorMaxLines: 3,
+                  ),
                 ),
-              ),
-              const SizedBox(height: AppSpacing.sm),
-              Row(
-                children: [
-                  OutlinedButton.icon(
-                    onPressed: () async {
-                      final data = await Clipboard.getData(
-                        Clipboard.kTextPlain,
-                      );
-                      if (data?.text != null) {
-                        controller.text = data!.text!;
-                        inspect();
-                      }
-                    },
-                    icon: const Icon(AppIcons.toolImport),
-                    label: Text(l10n.editorPaste),
-                  ),
-                  const SizedBox(width: AppSpacing.xs),
-                  Expanded(
-                    child: FilledButton(
-                      onPressed: inspect,
-                      child: Text(l10n.editorImportCheck),
+                const SizedBox(height: AppSpacing.sm),
+                Row(
+                  children: [
+                    OutlinedButton.icon(
+                      onPressed: () async {
+                        final data = await Clipboard.getData(
+                          Clipboard.kTextPlain,
+                        );
+                        if (data?.text != null) {
+                          controller.text = data!.text!;
+                          inspect();
+                        }
+                      },
+                      icon: const Icon(AppIcons.toolImport),
+                      label: Text(l10n.editorPaste),
                     ),
-                  ),
-                ],
-              ),
-              if (preview != null) ...[
-                const SizedBox(height: AppSpacing.md),
-                if (preview!.isEmpty)
-                  Text(
-                    l10n.editorImportNothing,
-                    style: AppTypography.bodyM.copyWith(
-                      color: ctx.colors.textSecondary,
-                    ),
-                  )
-                else ...[
-                  Text(
-                    l10n.editorImportDiff(
-                      preview!.added.length,
-                      preview!.replaced.length,
-                      preview!.same,
-                    ),
-                    style: AppTypography.titleS,
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    l10n.editorImportKeeps,
-                    style: AppTypography.bodyS.copyWith(
-                      color: ctx.colors.textSecondary,
-                    ),
-                  ),
-                  if (missing > 0) ...[
-                    const SizedBox(height: 4),
-                    Text(
-                      l10n.editorImportMissing(missing),
-                      style: AppTypography.bodyS.copyWith(
-                        color: ctx.colors.onWarningContainer,
+                    const SizedBox(width: AppSpacing.xs),
+                    Expanded(
+                      child: FilledButton(
+                        onPressed: inspect,
+                        child: Text(l10n.editorImportCheck),
                       ),
                     ),
                   ],
-                  const SizedBox(height: AppSpacing.sm),
-                  FilledButton(
-                    onPressed: () {
-                      ref.read(overridesProvider.notifier).saveAll([
-                        ...preview!.added,
-                        ...preview!.replaced,
-                      ]);
-                      Navigator.pop(ctx);
-                      showToolMessage(context, l10n.editorImportDone);
-                    },
-                    child: Text(l10n.editorImportApply),
-                  ),
+                ),
+                if (preview != null) ...[
+                  const SizedBox(height: AppSpacing.md),
+                  if (preview!.isEmpty)
+                    Text(
+                      l10n.editorImportNothing,
+                      style: AppTypography.bodyM.copyWith(
+                        color: ctx.colors.textSecondary,
+                      ),
+                    )
+                  else ...[
+                    Text(
+                      l10n.editorImportDiff(
+                        preview!.added.length,
+                        preview!.replaced.length,
+                        preview!.same,
+                      ),
+                      style: AppTypography.titleS,
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      l10n.editorImportKeeps,
+                      style: AppTypography.bodyS.copyWith(
+                        color: ctx.colors.textSecondary,
+                      ),
+                    ),
+                    if (missing > 0) ...[
+                      const SizedBox(height: 4),
+                      Text(
+                        l10n.editorImportMissing(missing),
+                        style: AppTypography.bodyS.copyWith(
+                          color: ctx.colors.onWarningContainer,
+                        ),
+                      ),
+                    ],
+                    const SizedBox(height: AppSpacing.sm),
+                    FilledButton(
+                      onPressed: () {
+                        ref.read(overridesProvider.notifier).saveAll([
+                          ...preview!.added,
+                          ...preview!.replaced,
+                        ]);
+                        Navigator.pop(ctx);
+                        showToolMessage(context, l10n.editorImportDone);
+                      },
+                      child: Text(l10n.editorImportApply),
+                    ),
+                  ],
                 ],
               ],
-            ],
-          );
-        },
+            );
+          },
+        ),
       ),
     );
-    controller.dispose();
   }
 
   @override
@@ -446,6 +446,8 @@ class ItemEditorScreen extends ConsumerStatefulWidget {
 class _ItemEditorScreenState extends ConsumerState<ItemEditorScreen> {
   final _title = TextEditingController();
   final _summary = TextEditingController();
+  final _body = TextEditingController();
+  final _steps = TextEditingController();
   final _category = TextEditingController();
   final _codes = TextEditingController();
   final _phones = TextEditingController();
@@ -463,6 +465,8 @@ class _ItemEditorScreenState extends ConsumerState<ItemEditorScreen> {
   void dispose() {
     _title.dispose();
     _summary.dispose();
+    _body.dispose();
+    _steps.dispose();
     _category.dispose();
     _codes.dispose();
     _phones.dispose();
@@ -473,6 +477,19 @@ class _ItemEditorScreenState extends ConsumerState<ItemEditorScreen> {
     super.dispose();
   }
 
+  static ContentItem? _hiddenItem(RawItem? base, ContentOverride? existing) {
+    if (existing == null) return null;
+    try {
+      return ContentItem.fromJson({
+        ...?base,
+        ...existing.fields,
+        'id': existing.id,
+      }, existing.section);
+    } on FormatException {
+      return null;
+    }
+  }
+
   void _initFrom(ContentItem? item, ContentOverride? existing) {
     if (_loaded) return;
     _loaded = true;
@@ -480,7 +497,9 @@ class _ItemEditorScreenState extends ConsumerState<ItemEditorScreen> {
       _section = item.section;
       _type = item.type;
       _title.text = item.title;
-      _summary.text = item.summary;
+      _summary.text = _clean(item.summary);
+      _body.text = _clean(item.body ?? '');
+      _steps.text = item.steps.map(_clean).join('\n');
       _category.text = item.category;
       _codes.text = item.codes.join('\n');
       _phones.text = item.phones.join('\n');
@@ -501,6 +520,10 @@ class _ItemEditorScreenState extends ConsumerState<ItemEditorScreen> {
     }
   }
 
+  /// Without the invisible marks added around codes for display.
+  static String _clean(String s) =>
+      s.replaceAll(String.fromCharCode(0x200E), '');
+
   void _markDirty([Object? _]) {
     if (!_dirty) setState(() => _dirty = true);
   }
@@ -510,7 +533,11 @@ class _ItemEditorScreenState extends ConsumerState<ItemEditorScreen> {
       if (line.trim().isNotEmpty) line.trim(),
   ];
 
-  void _save(ContentItem? current, ContentOverride? existing, RawItem? baseRaw) {
+  void _save(
+    ContentItem? current,
+    ContentOverride? existing,
+    RawItem? baseRaw,
+  ) {
     final l10n = AppLocalizations.of(context);
     final title = _title.text.trim();
     if (title.isEmpty) {
@@ -539,6 +566,8 @@ class _ItemEditorScreenState extends ConsumerState<ItemEditorScreen> {
     final fields = <String, dynamic>{
       'title_ar': title,
       'summary_ar': _summary.text.trim(),
+      'body_ar': _body.text.trim(),
+      'steps_ar': _lines(_steps),
       'category_ar': _category.text.trim(),
       'type': _type.name,
       'facts': factsJson,
@@ -550,6 +579,23 @@ class _ItemEditorScreenState extends ConsumerState<ItemEditorScreen> {
 
     final notifier = ref.read(overridesProvider.notifier);
     final isNew = widget.itemId == null || (existing?.isNew ?? false);
+    if (!isNew && baseRaw != null) {
+      // Keep only what really changed, so a corrected title does not drop
+      // the original's structured price and quota.
+      fields.removeWhere((k, v) => _sameAsBase(baseRaw[k], v));
+      if (fields.isEmpty && !_hidden) {
+        if (existing != null) {
+          notifier.restore(existing.id);
+          setState(() => _dirty = false);
+          showToolMessage(context, l10n.editorSaved);
+        } else {
+          setState(() => _dirty = false);
+          showToolMessage(context, l10n.editorNothingChanged);
+        }
+        if (context.canPop()) context.pop();
+        return;
+      }
+    }
     final id = widget.itemId ?? notifier.newId();
     final override = ContentOverride(
       id: id,
@@ -566,6 +612,27 @@ class _ItemEditorScreenState extends ConsumerState<ItemEditorScreen> {
     setState(() => _dirty = false);
     showToolMessage(context, l10n.editorSaved);
     if (context.canPop()) context.pop();
+  }
+
+  /// Missing and empty mean the same; a fact without a unit equals one with
+  /// an empty unit.
+  static bool _sameAsBase(Object? base, Object? mine) {
+    bool empty(Object? v) => v == null || v == '' || (v is List && v.isEmpty);
+    if (empty(base) && empty(mine)) return true;
+    if (base is List && mine is List && base.every((e) => e is Map)) {
+      Object? norm(Object? f) => f is! Map
+          ? f
+          : {
+              'label_ar': '${f['label_ar'] ?? ''}'.trim(),
+              'value': '${f['value'] ?? ''}'.trim(),
+              'unit': '${f['unit'] ?? ''}'.trim(),
+              'kind': FactKind.parse(f['kind']).name,
+            };
+      return canonicalJson([for (final f in base) norm(f)]) ==
+          canonicalJson([for (final f in mine) norm(f)]);
+    }
+    if (base is String && mine is String) return base.trim() == mine.trim();
+    return canonicalJson(base) == canonicalJson(mine);
   }
 
   static String _kindLabel(AppLocalizations l10n, FactKind k) => switch (k) {
@@ -603,10 +670,17 @@ class _ItemEditorScreenState extends ConsumerState<ItemEditorScreen> {
     final existing = widget.itemId == null
         ? null
         : ref.watch(itemOverrideProvider(widget.itemId!));
+    final bundled = ref.watch(bundledRawProvider);
     final baseRaw = widget.itemId == null
         ? null
-        : ref.watch(bundledRawProvider).value?[widget.itemId!]?.$2;
+        : bundled.value?[widget.itemId!]?.$2;
 
+    if (widget.itemId != null && bundled.value == null && bundled.isLoading) {
+      return PageScaffold(
+        title: l10n.editorEditTitle,
+        children: const [SkeletonList()],
+      );
+    }
     if (widget.itemId != null && item == null && existing == null) {
       return PageScaffold(
         title: l10n.editorEditTitle,
@@ -620,7 +694,9 @@ class _ItemEditorScreenState extends ConsumerState<ItemEditorScreen> {
       );
     }
 
-    _initFrom(item, existing);
+    // A hidden item is not in the library: rebuild it from its original and
+    // the edit, so the form never opens blank over existing data.
+    _initFrom(item ?? _hiddenItem(baseRaw, existing), existing);
     final isNew = widget.itemId == null || (existing?.isNew ?? false);
 
     return PopScope(
@@ -674,6 +750,7 @@ class _ItemEditorScreenState extends ConsumerState<ItemEditorScreen> {
           const SizedBox(height: AppSpacing.md),
           if (isNew) ...[
             DropdownButtonFormField<ContentSection>(
+              isExpanded: true,
               initialValue: _section,
               decoration: InputDecoration(labelText: l10n.editorFieldSection),
               items: [
@@ -689,6 +766,7 @@ class _ItemEditorScreenState extends ConsumerState<ItemEditorScreen> {
             ),
             const SizedBox(height: AppSpacing.sm),
             DropdownButtonFormField<ItemType>(
+              isExpanded: true,
               initialValue: _type,
               decoration: InputDecoration(labelText: l10n.editorFieldType),
               items: [
@@ -704,10 +782,7 @@ class _ItemEditorScreenState extends ConsumerState<ItemEditorScreen> {
                   ItemType.glossary,
                   ItemType.faq,
                 ])
-                  DropdownMenuItem(
-                    value: t,
-                    child: Text(_typeLabel(l10n, t)),
-                  ),
+                  DropdownMenuItem(value: t, child: Text(_typeLabel(l10n, t))),
               ],
               onChanged: (t) {
                 if (t != null) {
@@ -719,6 +794,7 @@ class _ItemEditorScreenState extends ConsumerState<ItemEditorScreen> {
             const SizedBox(height: AppSpacing.sm),
           ],
           TextField(
+            key: const ValueKey('editor-title'),
             controller: _title,
             onChanged: _markDirty,
             decoration: InputDecoration(labelText: l10n.editorFieldTitle),
@@ -736,6 +812,24 @@ class _ItemEditorScreenState extends ConsumerState<ItemEditorScreen> {
             maxLines: 4,
             onChanged: _markDirty,
             decoration: InputDecoration(labelText: l10n.editorFieldSummary),
+          ),
+          const SizedBox(height: AppSpacing.sm),
+          TextField(
+            key: const ValueKey('editor-body'),
+            controller: _body,
+            minLines: 2,
+            maxLines: 8,
+            onChanged: _markDirty,
+            decoration: InputDecoration(labelText: l10n.editorFieldBody),
+          ),
+          const SizedBox(height: AppSpacing.sm),
+          TextField(
+            key: const ValueKey('editor-steps'),
+            controller: _steps,
+            minLines: 1,
+            maxLines: 8,
+            onChanged: _markDirty,
+            decoration: InputDecoration(labelText: l10n.editorFieldSteps),
           ),
           const SizedBox(height: AppSpacing.md),
           SectionHeader(
@@ -761,6 +855,7 @@ class _ItemEditorScreenState extends ConsumerState<ItemEditorScreen> {
           const SizedBox(height: AppSpacing.xs),
           for (var i = 0; i < _facts.length; i++) ...[
             AppCard(
+              key: ObjectKey(_facts[i]),
               role: CardRole.flat,
               child: Column(
                 children: [
@@ -817,6 +912,7 @@ class _ItemEditorScreenState extends ConsumerState<ItemEditorScreen> {
                   ),
                   const SizedBox(height: AppSpacing.xs),
                   DropdownButtonFormField<FactKind>(
+                    isExpanded: true,
                     initialValue: _facts[i].kind,
                     decoration: InputDecoration(
                       labelText: l10n.editorFactKind,

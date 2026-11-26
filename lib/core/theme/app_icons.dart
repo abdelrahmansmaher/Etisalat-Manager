@@ -31,6 +31,9 @@ abstract final class AppIcons {
   static const IconData toolDelete = Icons.delete_rounded;
   static const IconData toolRestore = Icons.restore_rounded;
   static const IconData toolImport = Icons.content_paste_rounded;
+  static const IconData share = Icons.share_rounded;
+  static const IconData customerView = Icons.visibility_rounded;
+  static const IconData customerViewOff = Icons.visibility_off_rounded;
   static const IconData toolExport = Icons.ios_share_rounded;
   static const IconData toolHide = Icons.visibility_off_rounded;
   static const IconData toolBest = Icons.arrow_circle_up_rounded;
@@ -66,7 +69,6 @@ abstract final class AppIcons {
   static const IconData clear = Icons.cancel_rounded;
   static const IconData copy = Icons.content_copy_rounded;
   static const IconData call = Icons.call_rounded;
-  static const IconData share = Icons.share_rounded;
   static const IconData filter = Icons.tune_rounded;
   static const IconData history = Icons.history_rounded;
   static const IconData link = Icons.link_rounded;

@@ -15,7 +15,9 @@ class CompareValues {
 }
 
 List<CompareValues> compareRows(List<PackageInfo> packages) {
-  List<T> each<T>(T Function(PackageInfo) f) => [for (final p in packages) f(p)];
+  List<T> each<T>(T Function(PackageInfo) f) => [
+    for (final p in packages) f(p),
+  ];
 
   final days = each((p) => p.validityDays);
   // A daily and a monthly price (or quota) are not comparable.
@@ -47,7 +49,11 @@ List<CompareValues> compareRows(List<PackageInfo> packages) {
     ),
     CompareValues(CompareRow.quota, each((p) => p.quotaText), const {}),
     if (gb.any((n) => n != null))
-      CompareValues(CompareRow.gb, fmt(gb), highest(gb, when: samePeriod)),
+      CompareValues(
+        CompareRow.gb,
+        each((p) => p.gbText),
+        highest(gb, when: samePeriod),
+      ),
     if (minutes.any((n) => n != null))
       CompareValues(
         CompareRow.minutes,

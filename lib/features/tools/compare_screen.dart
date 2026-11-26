@@ -69,7 +69,9 @@ class _CompareScreenState extends ConsumerState<CompareScreen> {
         if (byId[id] != null) byId[id]!,
     ];
 
-    final rows = selected.length >= 2 ? compareRows(selected) : const <CompareValues>[];
+    final rows = selected.length >= 2
+        ? compareRows(selected)
+        : const <CompareValues>[];
     final differs = selected.length >= 2 && periodsDiffer(selected);
 
     return PageScaffold(
@@ -142,23 +144,25 @@ class _CompareTable extends StatelessWidget {
   final List<PackageInfo> packages;
   final List<CompareValues> rows;
 
-  static String _rowLabel(AppLocalizations l10n, CompareRow row) => switch (row) {
-    CompareRow.price => l10n.toolsRowPrice,
-    CompareRow.total => l10n.toolsRowTotal,
-    CompareRow.quota => l10n.toolsRowQuota,
-    CompareRow.gb => l10n.toolsRowGb,
-    CompareRow.minutes => l10n.toolsRowMinutes,
-    CompareRow.mix => l10n.toolsRowMix,
-    CompareRow.validity => l10n.toolsRowValidity,
-    CompareRow.code => l10n.toolsRowCode,
-    CompareRow.after => l10n.toolsRowAfter,
-  };
+  static String _rowLabel(AppLocalizations l10n, CompareRow row) =>
+      switch (row) {
+        CompareRow.price => l10n.toolsRowPrice,
+        CompareRow.total => l10n.toolsRowTotal,
+        CompareRow.quota => l10n.toolsRowQuota,
+        CompareRow.gb => l10n.toolsRowGb,
+        CompareRow.minutes => l10n.toolsRowMinutes,
+        CompareRow.mix => l10n.toolsRowMix,
+        CompareRow.validity => l10n.toolsRowValidity,
+        CompareRow.code => l10n.toolsRowCode,
+        CompareRow.after => l10n.toolsRowAfter,
+      };
 
   static String? _bestBadge(AppLocalizations l10n, CompareRow row) =>
       switch (row) {
         CompareRow.price || CompareRow.total => l10n.toolsBestLowest,
-        CompareRow.gb || CompareRow.minutes || CompareRow.mix =>
-          l10n.toolsBestHighest,
+        CompareRow.gb ||
+        CompareRow.minutes ||
+        CompareRow.mix => l10n.toolsBestHighest,
         CompareRow.validity => l10n.toolsBestLongest,
         _ => null,
       };
@@ -184,9 +188,7 @@ class _CompareTable extends StatelessWidget {
                 // Package header row
                 Container(
                   color: c.surfaceVariant,
-                  padding: const EdgeInsets.symmetric(
-                    vertical: AppSpacing.sm,
-                  ),
+                  padding: const EdgeInsets.symmetric(vertical: AppSpacing.sm),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -239,7 +241,9 @@ class _CompareTable extends StatelessWidget {
                     decoration: BoxDecoration(
                       border: Border(top: BorderSide(color: c.hairline)),
                     ),
-                    padding: const EdgeInsets.symmetric(vertical: AppSpacing.sm),
+                    padding: const EdgeInsets.symmetric(
+                      vertical: AppSpacing.sm,
+                    ),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [

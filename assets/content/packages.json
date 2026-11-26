@@ -1,7 +1,7 @@
 {
   "section": "packages",
   "source_document": "pdf_guide_2026_11",
-  "as_of": "2026-11-23",
+  "as_of": "2026-11-25",
   "items": [
     {
       "id": "pkg-hekaya-mixat-52",
@@ -3266,7 +3266,7 @@
       "type": "service",
       "category_ar": "خدمات الخط",
       "title_ar": "خدمة العملاء وتغيير النظام",
-      "summary_ar": "خدمة العملاء 333 من خط اتصالات / 01111234333 من أي شبكة / 0235346333 من أرضي / +201111234333 من الخارج؛ تغيير النظام 525.",
+      "summary_ar": "خدمة العملاء 333 من خط اتصالات / 01111234333 من أي شبكة / 0235346333 من أرضي؛ تغيير النظام 525.",
       "facts": [
         {
           "label_ar": "خدمة العملاء من خط اتصالات",
@@ -3284,11 +3284,6 @@
           "kind": "phone"
         },
         {
-          "label_ar": "خدمة العملاء من الخارج",
-          "value": "+201111234333",
-          "kind": "phone"
-        },
-        {
           "label_ar": "تغيير النظام",
           "value": "525",
           "kind": "phone"
@@ -3299,7 +3294,6 @@
         "333",
         "01111234333",
         "0235346333",
-        "+201111234333",
         "525"
       ],
       "tags": [
@@ -3495,9 +3489,10 @@
           "type": "pdf_guide"
         },
         {
-          "name": "الموقع الرسمي — Super Sallefny",
+          "name": "الموقع الرسمي — Super Salefny (تم التحقق 2026-11-25)",
+          "url": "https://www.eand.com.eg/portal/Mobile/super-salefni",
           "type": "official_site",
-          "url": "https://www.eand.com.eg/portal"
+          "checked_at": "2026-11-25"
         }
       ],
       "pdf_pages": [

@@ -62,10 +62,7 @@ class _RecommendScreenState extends ConsumerState<RecommendScreen> {
               value: PackageUse.mobile,
               label: l10n.toolsUseMobile,
             ),
-            CapsuleSegment(
-              value: PackageUse.home,
-              label: l10n.toolsUseHome,
-            ),
+            CapsuleSegment(value: PackageUse.home, label: l10n.toolsUseHome),
           ],
         ),
         const SizedBox(height: AppSpacing.md),
@@ -165,8 +162,9 @@ class _RecommendationCard extends StatelessWidget {
 
   final Recommendation rec;
 
-  static String _needText(AppLocalizations l10n, NeedResult r) {
+  static String _needText(AppLocalizations l10n, NeedResult r, PackageInfo p) {
     final val = r.value == null ? '' : formatNumber(r.value!);
+    final gb = p.gbText ?? val;
     return switch (r.need) {
       NeedKind.budget => switch (r.verdict) {
         Verdict.met => l10n.toolsBudgetMet(val),
@@ -177,8 +175,8 @@ class _RecommendationCard extends StatelessWidget {
               : l10n.toolsBudgetNotStated,
       },
       NeedKind.gb => switch (r.verdict) {
-        Verdict.met => l10n.toolsGbMet(val),
-        Verdict.missed => l10n.toolsGbMissed(val),
+        Verdict.met => l10n.toolsGbMet(gb),
+        Verdict.missed => l10n.toolsGbMissed(gb),
         Verdict.unknown =>
           r.reason == VerdictReason.mixOnly
               ? l10n.toolsGbMix(val)
@@ -216,7 +214,9 @@ class _RecommendationCard extends StatelessWidget {
                   children: [
                     ProseText(
                       p.item.title,
-                      style: AppTypography.titleM.copyWith(color: c.textPrimary),
+                      style: AppTypography.titleM.copyWith(
+                        color: c.textPrimary,
+                      ),
                     ),
                     const SizedBox(height: 2),
                     ItemStatusTag(p.item),
@@ -238,7 +238,7 @@ class _RecommendationCard extends StatelessWidget {
                   Verdict.missed => AppIcons.toolMisses,
                   Verdict.unknown => AppIcons.toolUnknown,
                 },
-                text: _needText(l10n, n),
+                text: _needText(l10n, n, p),
                 color: switch (n.verdict) {
                   Verdict.met => c.verified,
                   Verdict.missed => c.error,

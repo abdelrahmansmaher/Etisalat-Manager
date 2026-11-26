@@ -350,12 +350,6 @@ abstract class AppLocalizations {
   /// **'{n} جيجا'**
   String quotaGb(String n);
 
-  /// No description provided for @quotaMb.
-  ///
-  /// In ar, this message translates to:
-  /// **'{n} ميجا'**
-  String quotaMb(String n);
-
   /// No description provided for @quotaMix.
   ///
   /// In ar, this message translates to:
@@ -707,7 +701,7 @@ abstract class AppLocalizations {
   /// No description provided for @toolsPickPackage.
   ///
   /// In ar, this message translates to:
-  /// **'اختار باقة'**
+  /// **'اختر باقة'**
   String get toolsPickPackage;
 
   /// No description provided for @toolsSearchPackage.
@@ -719,13 +713,13 @@ abstract class AppLocalizations {
   /// No description provided for @toolsNoMatches.
   ///
   /// In ar, this message translates to:
-  /// **'مفيش نتيجة'**
+  /// **'لا توجد نتائج'**
   String get toolsNoMatches;
 
   /// No description provided for @toolsItemRemoved.
   ///
   /// In ar, this message translates to:
-  /// **'البند ده اتشال من المحتوى'**
+  /// **'هذا البند لم يعد في المحتوى'**
   String get toolsItemRemoved;
 
   /// No description provided for @toolsEditedOn.
@@ -737,7 +731,7 @@ abstract class AppLocalizations {
   /// No description provided for @toolsInvalidNumber.
   ///
   /// In ar, this message translates to:
-  /// **'اكتب رقم صحيح'**
+  /// **'اكتب رقمًا صحيحًا'**
   String get toolsInvalidNumber;
 
   /// No description provided for @toolsDial.
@@ -755,43 +749,43 @@ abstract class AppLocalizations {
   /// No description provided for @toolsDialFillHint.
   ///
   /// In ar, this message translates to:
-  /// **'مش بنحفظ اللي بتكتبه. الكود هيتفتح في برنامج الاتصال وإنت تضغط اتصال.'**
+  /// **'لا نحفظ ما تكتبه. سيُفتح الكود في تطبيق الاتصال، وتضغط أنت اتصال.'**
   String get toolsDialFillHint;
 
   /// No description provided for @toolsDialOpen.
   ///
   /// In ar, this message translates to:
-  /// **'افتح برنامج الاتصال'**
+  /// **'افتح تطبيق الاتصال'**
   String get toolsDialOpen;
 
   /// No description provided for @toolsDialDigitsOnly.
   ///
   /// In ar, this message translates to:
-  /// **'أرقام بس'**
+  /// **'أرقام فقط'**
   String get toolsDialDigitsOnly;
 
   /// No description provided for @toolsDialChoose.
   ///
   /// In ar, this message translates to:
-  /// **'اختار اللي هتطلبه'**
+  /// **'اختر ما تريد طلبه'**
   String get toolsDialChoose;
 
   /// No description provided for @toolsDialFailed.
   ///
   /// In ar, this message translates to:
-  /// **'برنامج الاتصال مفتحش، فنسخنا {value}'**
+  /// **'تعذّر فتح تطبيق الاتصال، وتم نسخ {value}'**
   String toolsDialFailed(String value);
 
   /// No description provided for @toolsDialFailedTemplate.
   ///
   /// In ar, this message translates to:
-  /// **'برنامج الاتصال مفتحش، فنسخنا الكود من غير اللي كتبته'**
+  /// **'تعذّر فتح تطبيق الاتصال، وتم نسخ الكود بدون ما كتبته'**
   String get toolsDialFailedTemplate;
 
   /// No description provided for @toolsDialNothing.
   ///
   /// In ar, this message translates to:
-  /// **'مفيش كود أو رقم يتطلب، فنسخنا النص'**
+  /// **'لا يوجد كود أو رقم للاتصال، وتم نسخ النص'**
   String get toolsDialNothing;
 
   /// No description provided for @toolsFavorite.
@@ -803,13 +797,13 @@ abstract class AppLocalizations {
   /// No description provided for @toolsFavoriteAdd.
   ///
   /// In ar, this message translates to:
-  /// **'ضيف للمفضلة'**
+  /// **'أضف إلى المفضلة'**
   String get toolsFavoriteAdd;
 
   /// No description provided for @toolsFavoriteRemove.
   ///
   /// In ar, this message translates to:
-  /// **'شيل من المفضلة'**
+  /// **'أزل من المفضلة'**
   String get toolsFavoriteRemove;
 
   /// No description provided for @toolsFavoritesTitle.
@@ -821,19 +815,19 @@ abstract class AppLocalizations {
   /// No description provided for @toolsFavoritesEmpty.
   ///
   /// In ar, this message translates to:
-  /// **'مفيش مفضلة لسه'**
+  /// **'لا توجد مفضلة بعد'**
   String get toolsFavoritesEmpty;
 
   /// No description provided for @toolsFavoritesEmptyBody.
   ///
   /// In ar, this message translates to:
-  /// **'دوس على القلب في أي بند وهتلاقيه هنا.'**
+  /// **'اضغط القلب في أي بند ليظهر هنا.'**
   String get toolsFavoritesEmptyBody;
 
   /// No description provided for @toolsFavoritesHint.
   ///
   /// In ar, this message translates to:
-  /// **'اسحب عشان ترتّبها'**
+  /// **'اسحب لتغيير الترتيب'**
   String get toolsFavoritesHint;
 
   /// No description provided for @toolsReorder.
@@ -869,31 +863,31 @@ abstract class AppLocalizations {
   /// No description provided for @toolsCompareTitle.
   ///
   /// In ar, this message translates to:
-  /// **'قارن باقات'**
+  /// **'قارن الباقات'**
   String get toolsCompareTitle;
 
   /// No description provided for @toolsCompareHint.
   ///
   /// In ar, this message translates to:
-  /// **'اختار من 2 لـ 4 باقات'**
+  /// **'اختر من باقتين إلى 4 باقات'**
   String get toolsCompareHint;
 
   /// No description provided for @toolsCompareAdd.
   ///
   /// In ar, this message translates to:
-  /// **'ضيف باقة'**
+  /// **'أضف باقة'**
   String get toolsCompareAdd;
 
   /// No description provided for @toolsCompareRemove.
   ///
   /// In ar, this message translates to:
-  /// **'شيل {name}'**
+  /// **'أزل {name}'**
   String toolsCompareRemove(String name);
 
   /// No description provided for @toolsComparePeriods.
   ///
   /// In ar, this message translates to:
-  /// **'المدد مختلفة أو مش مذكورة، فمش بنعلّم الأقل سعرًا ولا الأعلى حصة.'**
+  /// **'المدد مختلفة أو غير مذكورة، لذلك لا نحدد الأقل سعرًا أو الأعلى حصة.'**
   String get toolsComparePeriods;
 
   /// No description provided for @toolsRowPackage.
@@ -1007,7 +1001,7 @@ abstract class AppLocalizations {
   /// No description provided for @toolsRecommendSubtitle.
   ///
   /// In ar, this message translates to:
-  /// **'اكتب اللي العميل محتاجه وسيب الباقي فاضي'**
+  /// **'اكتب ما يحتاجه العميل واترك الباقي فارغًا'**
   String get toolsRecommendSubtitle;
 
   /// No description provided for @toolsRecommendBudget.
@@ -1043,7 +1037,7 @@ abstract class AppLocalizations {
   /// No description provided for @toolsRecommendStart.
   ///
   /// In ar, this message translates to:
-  /// **'اكتب ميزانية أو جيجا أو دقائق'**
+  /// **'اكتب الميزانية أو الجيجا أو الدقائق'**
   String get toolsRecommendStart;
 
   /// No description provided for @toolsRecommendFits.
@@ -1055,25 +1049,25 @@ abstract class AppLocalizations {
   /// No description provided for @toolsRecommendNone.
   ///
   /// In ar, this message translates to:
-  /// **'مفيش باقة في المحتوى تغطي كل الطلبات بالأرقام المذكورة.'**
+  /// **'لا توجد باقة تغطي كل الطلبات بالأرقام المذكورة.'**
   String get toolsRecommendNone;
 
   /// No description provided for @toolsRecommendMaybe.
   ///
   /// In ar, this message translates to:
-  /// **'ممكن تناسب، وفيها حاجة مش مذكورة'**
+  /// **'قد تناسب، وبها قيمة غير مذكورة'**
   String get toolsRecommendMaybe;
 
   /// No description provided for @toolsRecommendClosest.
   ///
   /// In ar, this message translates to:
-  /// **'أقرب الباقات، بس مش كاملة'**
+  /// **'أقرب الباقات (لا تغطي كل الطلبات)'**
   String get toolsRecommendClosest;
 
   /// No description provided for @toolsBudgetMet.
   ///
   /// In ar, this message translates to:
-  /// **'التكلفة {value} جنيه، جوه الميزانية'**
+  /// **'التكلفة {value} جنيه، في حدود الميزانية'**
   String toolsBudgetMet(String value);
 
   /// No description provided for @toolsBudgetMissed.
@@ -1085,37 +1079,37 @@ abstract class AppLocalizations {
   /// No description provided for @toolsBudgetUnknown.
   ///
   /// In ar, this message translates to:
-  /// **'السعر {value} جنيه، والتكلفة شاملة الضريبة مش مذكورة'**
+  /// **'السعر {value} جنيه، والتكلفة شاملة الضريبة غير مذكورة'**
   String toolsBudgetUnknown(String value);
 
   /// No description provided for @toolsBudgetNotStated.
   ///
   /// In ar, this message translates to:
-  /// **'السعر مش مذكور'**
+  /// **'السعر غير مذكور'**
   String get toolsBudgetNotStated;
 
   /// No description provided for @toolsGbMet.
   ///
   /// In ar, this message translates to:
-  /// **'{value} جيجا، تكفي'**
+  /// **'{value}، تكفي'**
   String toolsGbMet(String value);
 
   /// No description provided for @toolsGbMissed.
   ///
   /// In ar, this message translates to:
-  /// **'{value} جيجا، أقل من المطلوب'**
+  /// **'{value}، أقل من المطلوب'**
   String toolsGbMissed(String value);
 
   /// No description provided for @toolsGbMix.
   ///
   /// In ar, this message translates to:
-  /// **'الحصة {value} ميكس، والجيجا مش مذكورة'**
+  /// **'الحصة {value} ميكس، والجيجا غير مذكورة'**
   String toolsGbMix(String value);
 
   /// No description provided for @toolsGbNotStated.
   ///
   /// In ar, this message translates to:
-  /// **'الجيجا مش مذكورة'**
+  /// **'الجيجا غير مذكورة'**
   String get toolsGbNotStated;
 
   /// No description provided for @toolsMinutesMet.
@@ -1133,19 +1127,19 @@ abstract class AppLocalizations {
   /// No description provided for @toolsMinutesMix.
   ///
   /// In ar, this message translates to:
-  /// **'الحصة {value} ميكس، والدقائق مش مذكورة'**
+  /// **'الحصة {value} ميكس، والدقائق غير مذكورة'**
   String toolsMinutesMix(String value);
 
   /// No description provided for @toolsMinutesNotStated.
   ///
   /// In ar, this message translates to:
-  /// **'الدقائق مش مذكورة'**
+  /// **'الدقائق غير مذكورة'**
   String get toolsMinutesNotStated;
 
   /// No description provided for @toolsMixNote.
   ///
   /// In ar, this message translates to:
-  /// **'اللي مكتوب عن الاستهلاك: {text}'**
+  /// **'طريقة الاستهلاك: {text}'**
   String toolsMixNote(String text);
 
   /// No description provided for @toolsCalcTitle.
@@ -1181,7 +1175,7 @@ abstract class AppLocalizations {
   /// No description provided for @toolsCalcBalanceResult.
   ///
   /// In ar, this message translates to:
-  /// **'الرصيد اللي هيوصل'**
+  /// **'الرصيد الذي سيصل'**
   String get toolsCalcBalanceResult;
 
   /// No description provided for @toolsCalcCardResult.
@@ -1199,19 +1193,19 @@ abstract class AppLocalizations {
   /// No description provided for @toolsCalcTaxPart.
   ///
   /// In ar, this message translates to:
-  /// **'الفرق {value} جنيه ضرايب ورسوم'**
+  /// **'الفرق {value} جنيه ضرائب ورسوم'**
   String toolsCalcTaxPart(String value);
 
   /// No description provided for @toolsCalcStated.
   ///
   /// In ar, this message translates to:
-  /// **'المكتوب في المحتوى شامل الضريبة: {value}'**
+  /// **'المذكور في المحتوى شامل الضريبة: {value}'**
   String toolsCalcStated(String value);
 
   /// No description provided for @toolsCalcComputed.
   ///
   /// In ar, this message translates to:
-  /// **'رقم محسوب من النسبة اللي تحت، مش سعر منشور.'**
+  /// **'رقم محسوب من النسبة الموضحة، وليس سعرًا منشورًا.'**
   String get toolsCalcComputed;
 
   /// No description provided for @toolsCalcSource.
@@ -1229,31 +1223,31 @@ abstract class AppLocalizations {
   /// No description provided for @toolsCalcUnavailable.
   ///
   /// In ar, this message translates to:
-  /// **'الحاسبة مش متاحة'**
+  /// **'الحاسبة غير متاحة'**
   String get toolsCalcUnavailable;
 
   /// No description provided for @toolsCalcUnavailableBody.
   ///
   /// In ar, this message translates to:
-  /// **'البند اللي فيه نسبة الشحن مش موجود أو نسبته مش واضحة، ومش بنحسب برقم من عندنا.'**
+  /// **'بند نسبة الشحن غير موجود أو نسبته غير واضحة، ولا نحسب برقم من عندنا.'**
   String get toolsCalcUnavailableBody;
 
   /// No description provided for @toolsWhatsNewTitle.
   ///
   /// In ar, this message translates to:
-  /// **'إيه اللي اتغير'**
+  /// **'الجديد في المحتوى'**
   String get toolsWhatsNewTitle;
 
   /// No description provided for @toolsWhatsNewEmpty.
   ///
   /// In ar, this message translates to:
-  /// **'مفيش تغيير متسجل'**
+  /// **'لا توجد تغييرات مسجلة'**
   String get toolsWhatsNewEmpty;
 
   /// No description provided for @toolsWhatsNewEmptyBody.
   ///
   /// In ar, this message translates to:
-  /// **'لما المحتوى يتحدّث، التغيير في الأسعار والأكواد هيظهر هنا.'**
+  /// **'عند تحديث المحتوى تظهر هنا تغييرات الأسعار والأكواد.'**
   String get toolsWhatsNewEmptyBody;
 
   /// No description provided for @toolsWhatsNewOn.
@@ -1265,7 +1259,7 @@ abstract class AppLocalizations {
   /// No description provided for @toolsWhatsNewRemoved.
   ///
   /// In ar, this message translates to:
-  /// **'اتشال {count} بند'**
+  /// **'حُذف {count} بند'**
   String toolsWhatsNewRemoved(int count);
 
   /// No description provided for @toolsWhatsNewAdded.
@@ -1277,13 +1271,13 @@ abstract class AppLocalizations {
   /// No description provided for @toolsWhatsNewMore.
   ///
   /// In ar, this message translates to:
-  /// **'و{count} تاني'**
+  /// **'و{count} أخرى'**
   String toolsWhatsNewMore(int count);
 
   /// No description provided for @toolsWhatsNewBanner.
   ///
   /// In ar, this message translates to:
-  /// **'المحتوى اتحدّث. شوف إيه اللي اتغير'**
+  /// **'تم تحديث المحتوى. اعرف ما تغيّر'**
   String get toolsWhatsNewBanner;
 
   /// No description provided for @toolsWas.
@@ -1295,7 +1289,7 @@ abstract class AppLocalizations {
   /// No description provided for @toolsNow.
   ///
   /// In ar, this message translates to:
-  /// **'بقى'**
+  /// **'الآن'**
   String get toolsNow;
 
   /// No description provided for @editorMyEdits.
@@ -1307,25 +1301,25 @@ abstract class AppLocalizations {
   /// No description provided for @editorLocalOnly.
   ///
   /// In ar, this message translates to:
-  /// **'التعديلات على الموبايل ده بس، ومحدش غيرك بيشوفها. لو مسحت التطبيق هتروح، فصدّرها لو مهمة.'**
+  /// **'التعديلات محفوظة على هذا الموبايل فقط ولا يراها غيرك. حذف التطبيق يمسحها، فصدّر المهم منها.'**
   String get editorLocalOnly;
 
   /// No description provided for @editorEmpty.
   ///
   /// In ar, this message translates to:
-  /// **'مفيش تعديلات'**
+  /// **'لا توجد تعديلات'**
   String get editorEmpty;
 
   /// No description provided for @editorEmptyBody.
   ///
   /// In ar, this message translates to:
-  /// **'عدّل أي بند من صفحته، أو ضيف بند جديد.'**
+  /// **'عدّل أي بند من صفحته، أو أضف بندًا جديدًا.'**
   String get editorEmptyBody;
 
   /// No description provided for @editorAdd.
   ///
   /// In ar, this message translates to:
-  /// **'ضيف بند'**
+  /// **'أضف بندًا'**
   String get editorAdd;
 
   /// No description provided for @editorExport.
@@ -1355,55 +1349,55 @@ abstract class AppLocalizations {
   /// No description provided for @editorStateNewer.
   ///
   /// In ar, this message translates to:
-  /// **'فيه نسخة أحدث من البند ده في التطبيق'**
+  /// **'توجد نسخة أحدث من هذا البند في التطبيق'**
   String get editorStateNewer;
 
   /// No description provided for @editorStateRemoved.
   ///
   /// In ar, this message translates to:
-  /// **'البند الأصلي اتشال من المحتوى. تعديلك محفوظ بس مش ظاهر.'**
+  /// **'البند الأصلي حُذف من المحتوى. تعديلك محفوظ لكنه غير ظاهر.'**
   String get editorStateRemoved;
 
   /// No description provided for @editorKeepMine.
   ///
   /// In ar, this message translates to:
-  /// **'سيب تعديلي'**
+  /// **'احتفظ بتعديلي'**
   String get editorKeepMine;
 
   /// No description provided for @editorUseNew.
   ///
   /// In ar, this message translates to:
-  /// **'خد الجديدة'**
+  /// **'استخدم الجديدة'**
   String get editorUseNew;
 
   /// No description provided for @editorRestore.
   ///
   /// In ar, this message translates to:
-  /// **'رجّع الأصلي'**
+  /// **'استرجع الأصل'**
   String get editorRestore;
 
   /// No description provided for @editorDeleteAdded.
   ///
   /// In ar, this message translates to:
-  /// **'امسح البند'**
+  /// **'احذف البند'**
   String get editorDeleteAdded;
 
   /// No description provided for @editorRestoreAsk.
   ///
   /// In ar, this message translates to:
-  /// **'نرجّع «{name}» للأصل؟'**
+  /// **'استرجاع «{name}» إلى الأصل؟'**
   String editorRestoreAsk(String name);
 
   /// No description provided for @editorDeleteAsk.
   ///
   /// In ar, this message translates to:
-  /// **'نمسح «{name}»؟'**
+  /// **'حذف «{name}»؟'**
   String editorDeleteAsk(String name);
 
   /// No description provided for @editorRestoreBody.
   ///
   /// In ar, this message translates to:
-  /// **'تعديلك هيتمسح من الموبايل.'**
+  /// **'سيُحذف تعديلك من الموبايل.'**
   String get editorRestoreBody;
 
   /// No description provided for @editorEditTitle.
@@ -1481,13 +1475,13 @@ abstract class AppLocalizations {
   /// No description provided for @editorAddFact.
   ///
   /// In ar, this message translates to:
-  /// **'ضيف بيان'**
+  /// **'أضف بيانًا'**
   String get editorAddFact;
 
   /// No description provided for @editorRemoveFact.
   ///
   /// In ar, this message translates to:
-  /// **'شيل البيان رقم {n}'**
+  /// **'أزل البيان رقم {n}'**
   String editorRemoveFact(int n);
 
   /// No description provided for @editorFieldCodes.
@@ -1517,7 +1511,7 @@ abstract class AppLocalizations {
   /// No description provided for @editorHideHint.
   ///
   /// In ar, this message translates to:
-  /// **'مش هيظهر في القوائم ولا البحث لحد ما ترجّعه من تعديلاتي.'**
+  /// **'لن يظهر في القوائم أو البحث حتى تسترجعه من تعديلاتي.'**
   String get editorHideHint;
 
   /// No description provided for @editorTitleRequired.
@@ -1529,49 +1523,49 @@ abstract class AppLocalizations {
   /// No description provided for @editorFactRequired.
   ///
   /// In ar, this message translates to:
-  /// **'اكتب الاسم والقيمة، أو شيل البيان'**
+  /// **'اكتب الاسم والقيمة، أو أزل البيان'**
   String get editorFactRequired;
 
   /// No description provided for @editorNotConfirmed.
   ///
   /// In ar, this message translates to:
-  /// **'بعد الحفظ هيظهر عليه «معدّل منك» ومش هيتكتب عليه مؤكد لحد ما ترجّع الأصلي.'**
+  /// **'بعد الحفظ يظهر عليه «معدّل منك» ولا يُكتب عليه مؤكد حتى تسترجع الأصل.'**
   String get editorNotConfirmed;
 
   /// No description provided for @editorLeaveAsk.
   ///
   /// In ar, this message translates to:
-  /// **'تخرج من غير حفظ؟'**
+  /// **'الخروج بدون حفظ؟'**
   String get editorLeaveAsk;
 
   /// No description provided for @editorLeave.
   ///
   /// In ar, this message translates to:
-  /// **'اخرج'**
+  /// **'خروج'**
   String get editorLeave;
 
   /// No description provided for @editorStay.
   ///
   /// In ar, this message translates to:
-  /// **'كمّل تعديل'**
+  /// **'أكمل التعديل'**
   String get editorStay;
 
   /// No description provided for @editorSaved.
   ///
   /// In ar, this message translates to:
-  /// **'التعديل اتحفظ على الموبايل'**
+  /// **'تم حفظ التعديل على الموبايل'**
   String get editorSaved;
 
   /// No description provided for @editorNothingChanged.
   ///
   /// In ar, this message translates to:
-  /// **'مفيش حاجة اتغيرت'**
+  /// **'لم يتغير شيء'**
   String get editorNothingChanged;
 
   /// No description provided for @editorExportNoNotes.
   ///
   /// In ar, this message translates to:
-  /// **'الملاحظات الخاصة مش بتتصدّر.'**
+  /// **'الملاحظات الخاصة لا تُصدَّر.'**
   String get editorExportNoNotes;
 
   /// No description provided for @editorShare.
@@ -1589,13 +1583,13 @@ abstract class AppLocalizations {
   /// No description provided for @editorShareFailed.
   ///
   /// In ar, this message translates to:
-  /// **'المشاركة مش متاحة، فنسخنا النص'**
+  /// **'المشاركة غير متاحة، تم نسخ النص'**
   String get editorShareFailed;
 
   /// No description provided for @editorCopied.
   ///
   /// In ar, this message translates to:
-  /// **'النص اتنسخ'**
+  /// **'تم نسخ النص'**
   String get editorCopied;
 
   /// No description provided for @editorImportHint.
@@ -1613,49 +1607,49 @@ abstract class AppLocalizations {
   /// No description provided for @editorImportCheck.
   ///
   /// In ar, this message translates to:
-  /// **'افحص'**
+  /// **'فحص'**
   String get editorImportCheck;
 
   /// No description provided for @editorImportInvalid.
   ///
   /// In ar, this message translates to:
-  /// **'النص ده مش تصدير صحيح من التطبيق، ومفيش حاجة اتغيرت.'**
+  /// **'هذا النص ليس تصديرًا صحيحًا من التطبيق، ولم يتغير شيء.'**
   String get editorImportInvalid;
 
   /// No description provided for @editorImportDiff.
   ///
   /// In ar, this message translates to:
-  /// **'{added} جديد، {replaced} هيتبدّل، {same} زي ما هو'**
+  /// **'{added} جديد، {replaced} سيُستبدل، {same} بدون تغيير'**
   String editorImportDiff(int added, int replaced, int same);
 
   /// No description provided for @editorImportKeeps.
   ///
   /// In ar, this message translates to:
-  /// **'باقي تعديلاتك هتفضل زي ما هي.'**
+  /// **'باقي تعديلاتك تبقى كما هي.'**
   String get editorImportKeeps;
 
   /// No description provided for @editorImportMissing.
   ///
   /// In ar, this message translates to:
-  /// **'{count} منهم لبنود مش موجودة في المحتوى الحالي'**
+  /// **'{count} منها لبنود غير موجودة في المحتوى الحالي'**
   String editorImportMissing(int count);
 
   /// No description provided for @editorImportApply.
   ///
   /// In ar, this message translates to:
-  /// **'طبّق'**
+  /// **'تطبيق'**
   String get editorImportApply;
 
   /// No description provided for @editorImportDone.
   ///
   /// In ar, this message translates to:
-  /// **'الاستيراد تم'**
+  /// **'تم الاستيراد'**
   String get editorImportDone;
 
   /// No description provided for @editorImportNothing.
   ///
   /// In ar, this message translates to:
-  /// **'مفيش فرق عن اللي عندك'**
+  /// **'لا فرق عمّا لديك'**
   String get editorImportNothing;
 
   /// No description provided for @editorKindPrice.
@@ -1775,13 +1769,13 @@ abstract class AppLocalizations {
   /// No description provided for @notesWarning.
   ///
   /// In ar, this message translates to:
-  /// **'متكتبش أسماء عملاء ولا أرقامهم ولا بياناتهم.'**
+  /// **'لا تكتب أسماء العملاء أو أرقامهم أو بياناتهم.'**
   String get notesWarning;
 
   /// No description provided for @notesLocal.
   ///
   /// In ar, this message translates to:
-  /// **'على الموبايل ده بس، ومش بتتصدّر.'**
+  /// **'على هذا الموبايل فقط، ولا تُصدَّر.'**
   String get notesLocal;
 
   /// No description provided for @notesSearch.
@@ -1793,13 +1787,13 @@ abstract class AppLocalizations {
   /// No description provided for @notesEmpty.
   ///
   /// In ar, this message translates to:
-  /// **'مفيش ملاحظات'**
+  /// **'لا توجد ملاحظات'**
   String get notesEmpty;
 
   /// No description provided for @notesEmptyBody.
   ///
   /// In ar, this message translates to:
-  /// **'اكتب حاجة تفتكرها، لوحدها أو على بند.'**
+  /// **'اكتب ما تريد تذكره، وحده أو على بند.'**
   String get notesEmptyBody;
 
   /// No description provided for @notesAdd.
@@ -1823,7 +1817,7 @@ abstract class AppLocalizations {
   /// No description provided for @notesDeleted.
   ///
   /// In ar, this message translates to:
-  /// **'الملاحظة اتمسحت'**
+  /// **'تم حذف الملاحظة'**
   String get notesDeleted;
 
   /// No description provided for @notesForItem.
@@ -1841,19 +1835,19 @@ abstract class AppLocalizations {
   /// No description provided for @trainingIntro.
   ///
   /// In ar, this message translates to:
-  /// **'الأسئلة من المحتوى المؤكد بس'**
+  /// **'الأسئلة من المحتوى المؤكد فقط'**
   String get trainingIntro;
 
   /// No description provided for @trainingDaily.
   ///
   /// In ar, this message translates to:
-  /// **'سؤال النهارده'**
+  /// **'سؤال اليوم'**
   String get trainingDaily;
 
   /// No description provided for @trainingDailyDone.
   ///
   /// In ar, this message translates to:
-  /// **'جاوبت سؤال النهارده'**
+  /// **'أجبت عن سؤال اليوم'**
   String get trainingDailyDone;
 
   /// No description provided for @trainingCards.
@@ -1865,7 +1859,7 @@ abstract class AppLocalizations {
   /// No description provided for @trainingCardsDue.
   ///
   /// In ar, this message translates to:
-  /// **'{due} للمراجعة النهارده، {fresh} جديدة'**
+  /// **'{due} للمراجعة اليوم، {fresh} جديدة'**
   String trainingCardsDue(int due, int fresh);
 
   /// No description provided for @trainingQuiz.
@@ -1907,7 +1901,7 @@ abstract class AppLocalizations {
   /// No description provided for @trainingLearning.
   ///
   /// In ar, this message translates to:
-  /// **'بتتعلمها'**
+  /// **'قيد التعلم'**
   String get trainingLearning;
 
   /// No description provided for @trainingNew.
@@ -1919,25 +1913,25 @@ abstract class AppLocalizations {
   /// No description provided for @trainingWeakest.
   ///
   /// In ar, this message translates to:
-  /// **'محتاجة مراجعة'**
+  /// **'تحتاج مراجعة'**
   String get trainingWeakest;
 
   /// No description provided for @trainingWeakRow.
   ///
   /// In ar, this message translates to:
-  /// **'{wrong} غلط من {seen}'**
+  /// **'{wrong} خطأ من {seen}'**
   String trainingWeakRow(int wrong, int seen);
 
   /// No description provided for @trainingNothing.
   ///
   /// In ar, this message translates to:
-  /// **'مفيش أسئلة دلوقتي'**
+  /// **'لا توجد أسئلة الآن'**
   String get trainingNothing;
 
   /// No description provided for @trainingNothingBody.
   ///
   /// In ar, this message translates to:
-  /// **'محتاجين محتوى مؤكد كفاية عشان نعمل أسئلة.'**
+  /// **'نحتاج محتوى مؤكدًا كافيًا لإعداد الأسئلة.'**
   String get trainingNothingBody;
 
   /// No description provided for @trainingShowAnswer.
@@ -1955,7 +1949,7 @@ abstract class AppLocalizations {
   /// No description provided for @trainingDidNot.
   ///
   /// In ar, this message translates to:
-  /// **'معرفتهاش'**
+  /// **'لم أعرفها'**
   String get trainingDidNot;
 
   /// No description provided for @trainingNext.
@@ -1967,19 +1961,19 @@ abstract class AppLocalizations {
   /// No description provided for @trainingFinish.
   ///
   /// In ar, this message translates to:
-  /// **'خلاص'**
+  /// **'إنهاء'**
   String get trainingFinish;
 
   /// No description provided for @trainingCorrect.
   ///
   /// In ar, this message translates to:
-  /// **'صح'**
+  /// **'صحيح'**
   String get trainingCorrect;
 
   /// No description provided for @trainingWrong.
   ///
   /// In ar, this message translates to:
-  /// **'غلط'**
+  /// **'خطأ'**
   String get trainingWrong;
 
   /// No description provided for @trainingOpenItem.
@@ -1991,13 +1985,13 @@ abstract class AppLocalizations {
   /// No description provided for @trainingQuizResult.
   ///
   /// In ar, this message translates to:
-  /// **'{right} صح من {total}'**
+  /// **'{right} صحيحة من {total}'**
   String trainingQuizResult(int right, int total);
 
   /// No description provided for @trainingReviewWrong.
   ///
   /// In ar, this message translates to:
-  /// **'راجع دول'**
+  /// **'راجع هذه الأسئلة'**
   String get trainingReviewWrong;
 
   /// No description provided for @trainingStep.
@@ -2009,25 +2003,25 @@ abstract class AppLocalizations {
   /// No description provided for @trainingDone.
   ///
   /// In ar, this message translates to:
-  /// **'خلصت بطاقات النهارده'**
+  /// **'انتهت بطاقات اليوم'**
   String get trainingDone;
 
   /// No description provided for @trainingDoneBody.
   ///
   /// In ar, this message translates to:
-  /// **'البطاقات اللي جاوبتها هترجع في ميعادها.'**
+  /// **'البطاقات التي أجبت عنها تعود في موعدها.'**
   String get trainingDoneBody;
 
   /// No description provided for @trainingReset.
   ///
   /// In ar, this message translates to:
-  /// **'ابدأ التدريب من الأول'**
+  /// **'ابدأ التدريب من جديد'**
   String get trainingReset;
 
   /// No description provided for @trainingResetAsk.
   ///
   /// In ar, this message translates to:
-  /// **'نمسح تقدّمك في التدريب؟'**
+  /// **'مسح تقدّمك في التدريب؟'**
   String get trainingResetAsk;
 
   /// No description provided for @trainingAskFact.
@@ -2039,38 +2033,128 @@ abstract class AppLocalizations {
   /// No description provided for @trainingAskCode.
   ///
   /// In ar, this message translates to:
-  /// **'إيه كود «{title}»؟'**
+  /// **'ما كود «{title}»؟'**
   String trainingAskCode(String title);
 
   /// No description provided for @trainingAskPhone.
   ///
   /// In ar, this message translates to:
-  /// **'إيه رقم «{title}»؟'**
+  /// **'ما رقم «{title}»؟'**
   String trainingAskPhone(String title);
 
   /// No description provided for @trainingAskTerm.
   ///
   /// In ar, this message translates to:
-  /// **'يعني إيه «{title}»؟'**
+  /// **'ما معنى «{title}»؟'**
   String trainingAskTerm(String title);
 
   /// No description provided for @trainingAskDocuments.
   ///
   /// In ar, this message translates to:
-  /// **'إيه المستندات المطلوبة في «{title}»؟'**
+  /// **'ما المستندات المطلوبة في «{title}»؟'**
   String trainingAskDocuments(String title);
 
   /// No description provided for @trainingAskFirstStep.
   ///
   /// In ar, this message translates to:
-  /// **'إيه أول خطوة في «{title}»؟'**
+  /// **'ما أول خطوة في «{title}»؟'**
   String trainingAskFirstStep(String title);
 
   /// No description provided for @trainingAskScenario.
   ///
   /// In ar, this message translates to:
-  /// **'{title}. تعمل إيه؟'**
+  /// **'{title}. ماذا تفعل؟'**
   String trainingAskScenario(String title);
+
+  /// No description provided for @searchQuickTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'بحث سريع'**
+  String get searchQuickTitle;
+
+  /// No description provided for @searchAllSections.
+  ///
+  /// In ar, this message translates to:
+  /// **'ابحث في كل الأقسام'**
+  String get searchAllSections;
+
+  /// No description provided for @detailStepsReset.
+  ///
+  /// In ar, this message translates to:
+  /// **'من البداية'**
+  String get detailStepsReset;
+
+  /// No description provided for @toolsShareSummary.
+  ///
+  /// In ar, this message translates to:
+  /// **'مشاركة'**
+  String get toolsShareSummary;
+
+  /// No description provided for @toolsSummaryCopied.
+  ///
+  /// In ar, this message translates to:
+  /// **'المشاركة غير متاحة، تم نسخ الملخص'**
+  String get toolsSummaryCopied;
+
+  /// No description provided for @customerView.
+  ///
+  /// In ar, this message translates to:
+  /// **'عرض للعميل'**
+  String get customerView;
+
+  /// No description provided for @customerViewOff.
+  ///
+  /// In ar, this message translates to:
+  /// **'إنهاء عرض العميل'**
+  String get customerViewOff;
+
+  /// No description provided for @moreContentTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'قاعدة المعلومات'**
+  String get moreContentTitle;
+
+  /// No description provided for @moreStatItems.
+  ///
+  /// In ar, this message translates to:
+  /// **'كل البنود'**
+  String get moreStatItems;
+
+  /// No description provided for @moreStatOfficial.
+  ///
+  /// In ar, this message translates to:
+  /// **'من الموقع الرسمي'**
+  String get moreStatOfficial;
+
+  /// No description provided for @moreClearHistory.
+  ///
+  /// In ar, this message translates to:
+  /// **'مسح سجل البحث وآخر ما فتحته'**
+  String get moreClearHistory;
+
+  /// No description provided for @moreHistoryCleared.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم مسح السجل'**
+  String get moreHistoryCleared;
+
+  /// No description provided for @editorFieldBody.
+  ///
+  /// In ar, this message translates to:
+  /// **'الشرح'**
+  String get editorFieldBody;
+
+  /// No description provided for @editorFieldSteps.
+  ///
+  /// In ar, this message translates to:
+  /// **'الخطوات، كل خطوة في سطر'**
+  String get editorFieldSteps;
+
+  /// No description provided for @detailStepsProgress.
+  ///
+  /// In ar, this message translates to:
+  /// **'{done} من {total}'**
+  String detailStepsProgress(int done, int total);
 }
 
 class _AppLocalizationsDelegate

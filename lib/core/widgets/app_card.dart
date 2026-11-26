@@ -163,11 +163,7 @@ class TintedIcon extends StatelessWidget {
         color: background ?? c.primaryContainer,
         borderRadius: BorderRadius.circular(tile.radius),
       ),
-      child: Icon(
-        icon,
-        size: tile.glyph,
-        color: color ?? c.onPrimaryContainer,
-      ),
+      child: Icon(icon, size: tile.glyph, color: color ?? c.onPrimaryContainer),
     );
   }
 }

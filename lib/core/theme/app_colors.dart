@@ -223,7 +223,7 @@ class AppColors extends ThemeExtension<AppColors> {
     info: Color(0xFF7CB4FB),
     verified: Color(0xFF6BDDAA),
     verifiedContainer: Color(0xFF0E3729),
-    capsuleSelected: Color(0xFF3450BF),
+    capsuleSelected: Color(0xFF3D5BCF),
     onCapsuleSelected: Color(0xFFFFFFFF),
     capsuleSurface: Color(0xFF121A34),
     glassHighlight: Color(0xFF2A3661),

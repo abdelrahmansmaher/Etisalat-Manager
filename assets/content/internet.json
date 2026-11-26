@@ -1,7 +1,7 @@
 {
   "section": "internet",
   "source_document": "pdf_guide_2026_11",
-  "as_of": "2026-11-23",
+  "as_of": "2026-11-25",
   "items": [
     {
       "id": "net-super-connect-10-5",
@@ -7615,6 +7615,53 @@
       ]
     },
     {
+      "id": "net-dsl-activation-times",
+      "type": "rule",
+      "category_ar": "خدمة الأرضي",
+      "title_ar": "مدة تفعيل وإلغاء الإنترنت الأرضي",
+      "summary_ar": "التفعيل خلال 48 ساعة والإلغاء خلال 24 ساعة (على النحاس: 72 ساعة و3 أيام).",
+      "facts": [
+        {
+          "label_ar": "التفعيل",
+          "value": "48 ساعة",
+          "kind": "duration"
+        },
+        {
+          "label_ar": "الإلغاء",
+          "value": "24 ساعة",
+          "kind": "duration"
+        },
+        {
+          "label_ar": "التفعيل (نحاس)",
+          "value": "72 ساعة",
+          "kind": "duration"
+        },
+        {
+          "label_ar": "الإلغاء (نحاس)",
+          "value": "3 أيام",
+          "kind": "duration"
+        }
+      ],
+      "tags": [
+        "تفعيل النت",
+        "الغاء النت",
+        "dsl",
+        "adsl",
+        "أرضي"
+      ],
+      "sources": [
+        {
+          "name": "الموقع الرسمي — حقوق وواجبات العميل (تم التحقق 2026-11-25)",
+          "url": "https://www.eand.com.eg/portal/rights-duties",
+          "type": "official_site",
+          "checked_at": "2026-11-25"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "status": "confirmed"
+    },
+    {
       "id": "net-dsl-after-quota",
       "type": "rule",
       "category_ar": "خدمة الأرضي",
@@ -7733,46 +7780,6 @@
         "esim",
         "سعر",
         "خط جديد",
-        "اي سيم"
-      ],
-      "status": "confirmed",
-      "status_note_ar": "مؤكد من الموقع الرسمي (23 نوفمبر 2026).",
-      "sources": [
-        {
-          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
-          "type": "pdf_guide"
-        },
-        {
-          "name": "الموقع الرسمي — eSIM (تم التحقق 2026-11-23)",
-          "url": "https://www.eand.com.eg/portal/Mobile/eSIM",
-          "type": "official_site",
-          "checked_at": "2026-11-23"
-        }
-      ],
-      "pdf_pages": [
-        38
-      ]
-    },
-    {
-      "id": "net-esim-price-convert",
-      "type": "fee",
-      "category_ar": "eSIM",
-      "title_ar": "سعر eSIM (تحويل / استبدال شريحة عادية)",
-      "summary_ar": "تحويل شريحة عادية لـ eSIM بـ 367.72 ج شامل الضريبة ورسوم eKYC.",
-      "facts": [
-        {
-          "label_ar": "السعر (تحويل، شامل الضريبة ورسوم eKYC)",
-          "value": "367.72",
-          "kind": "price",
-          "unit": "ج"
-        }
-      ],
-      "codes": [],
-      "phones": [],
-      "tags": [
-        "esim",
-        "تحويل",
-        "استبدال",
         "اي سيم"
       ],
       "status": "confirmed",
@@ -8489,17 +8496,11 @@
       "type": "faq",
       "category_ar": "أسئلة سريعة",
       "title_ar": "eSIM بكام؟",
-      "summary_ar": "350 ج خط جديد، و367.72 ج تحويل من شريحة عادية.",
+      "summary_ar": "350 ج للخط الجديد شامل الضريبة.",
       "facts": [
         {
           "label_ar": "خط جديد",
           "value": "350",
-          "kind": "price",
-          "unit": "ج"
-        },
-        {
-          "label_ar": "تحويل من شريحة عادية",
-          "value": "367.72",
           "kind": "price",
           "unit": "ج"
         }
@@ -8520,14 +8521,19 @@
         {
           "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
           "type": "pdf_guide"
+        },
+        {
+          "name": "الموقع الرسمي — eSIM (تم التحقق 2026-11-23)",
+          "url": "https://www.eand.com.eg/portal/Mobile/eSIM",
+          "type": "official_site",
+          "checked_at": "2026-11-23"
         }
       ],
       "pdf_pages": [
         39
       ],
       "related": [
-        "net-esim-price-new",
-        "net-esim-price-convert"
+        "net-esim-price-new"
       ]
     },
     {

@@ -152,11 +152,6 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
-  String quotaMb(String n) {
-    return '$n ميجا';
-  }
-
-  @override
   String quotaMix(String n) {
     return '$n ميكس';
   }
@@ -359,16 +354,16 @@ class AppLocalizationsAr extends AppLocalizations {
   String get toolsUndo => 'تراجع';
 
   @override
-  String get toolsPickPackage => 'اختار باقة';
+  String get toolsPickPackage => 'اختر باقة';
 
   @override
   String get toolsSearchPackage => 'ابحث عن باقة';
 
   @override
-  String get toolsNoMatches => 'مفيش نتيجة';
+  String get toolsNoMatches => 'لا توجد نتائج';
 
   @override
-  String get toolsItemRemoved => 'البند ده اتشال من المحتوى';
+  String get toolsItemRemoved => 'هذا البند لم يعد في المحتوى';
 
   @override
   String toolsEditedOn(String date) {
@@ -376,7 +371,7 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
-  String get toolsInvalidNumber => 'اكتب رقم صحيح';
+  String get toolsInvalidNumber => 'اكتب رقمًا صحيحًا';
 
   @override
   String get toolsDial => 'اتصال';
@@ -386,49 +381,49 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get toolsDialFillHint =>
-      'مش بنحفظ اللي بتكتبه. الكود هيتفتح في برنامج الاتصال وإنت تضغط اتصال.';
+      'لا نحفظ ما تكتبه. سيُفتح الكود في تطبيق الاتصال، وتضغط أنت اتصال.';
 
   @override
-  String get toolsDialOpen => 'افتح برنامج الاتصال';
+  String get toolsDialOpen => 'افتح تطبيق الاتصال';
 
   @override
-  String get toolsDialDigitsOnly => 'أرقام بس';
+  String get toolsDialDigitsOnly => 'أرقام فقط';
 
   @override
-  String get toolsDialChoose => 'اختار اللي هتطلبه';
+  String get toolsDialChoose => 'اختر ما تريد طلبه';
 
   @override
   String toolsDialFailed(String value) {
-    return 'برنامج الاتصال مفتحش، فنسخنا $value';
+    return 'تعذّر فتح تطبيق الاتصال، وتم نسخ $value';
   }
 
   @override
   String get toolsDialFailedTemplate =>
-      'برنامج الاتصال مفتحش، فنسخنا الكود من غير اللي كتبته';
+      'تعذّر فتح تطبيق الاتصال، وتم نسخ الكود بدون ما كتبته';
 
   @override
-  String get toolsDialNothing => 'مفيش كود أو رقم يتطلب، فنسخنا النص';
+  String get toolsDialNothing => 'لا يوجد كود أو رقم للاتصال، وتم نسخ النص';
 
   @override
   String get toolsFavorite => 'المفضلة';
 
   @override
-  String get toolsFavoriteAdd => 'ضيف للمفضلة';
+  String get toolsFavoriteAdd => 'أضف إلى المفضلة';
 
   @override
-  String get toolsFavoriteRemove => 'شيل من المفضلة';
+  String get toolsFavoriteRemove => 'أزل من المفضلة';
 
   @override
   String get toolsFavoritesTitle => 'المفضلة';
 
   @override
-  String get toolsFavoritesEmpty => 'مفيش مفضلة لسه';
+  String get toolsFavoritesEmpty => 'لا توجد مفضلة بعد';
 
   @override
-  String get toolsFavoritesEmptyBody => 'دوس على القلب في أي بند وهتلاقيه هنا.';
+  String get toolsFavoritesEmptyBody => 'اضغط القلب في أي بند ليظهر هنا.';
 
   @override
-  String get toolsFavoritesHint => 'اسحب عشان ترتّبها';
+  String get toolsFavoritesHint => 'اسحب لتغيير الترتيب';
 
   @override
   String toolsReorder(String name) {
@@ -450,22 +445,22 @@ class AppLocalizationsAr extends AppLocalizations {
   String get toolsEditAction => 'عدّل';
 
   @override
-  String get toolsCompareTitle => 'قارن باقات';
+  String get toolsCompareTitle => 'قارن الباقات';
 
   @override
-  String get toolsCompareHint => 'اختار من 2 لـ 4 باقات';
+  String get toolsCompareHint => 'اختر من باقتين إلى 4 باقات';
 
   @override
-  String get toolsCompareAdd => 'ضيف باقة';
+  String get toolsCompareAdd => 'أضف باقة';
 
   @override
   String toolsCompareRemove(String name) {
-    return 'شيل $name';
+    return 'أزل $name';
   }
 
   @override
   String get toolsComparePeriods =>
-      'المدد مختلفة أو مش مذكورة، فمش بنعلّم الأقل سعرًا ولا الأعلى حصة.';
+      'المدد مختلفة أو غير مذكورة، لذلك لا نحدد الأقل سعرًا أو الأعلى حصة.';
 
   @override
   String get toolsRowPackage => 'الباقة';
@@ -523,7 +518,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get toolsRecommendSubtitle =>
-      'اكتب اللي العميل محتاجه وسيب الباقي فاضي';
+      'اكتب ما يحتاجه العميل واترك الباقي فارغًا';
 
   @override
   String get toolsRecommendBudget => 'الميزانية (جنيه)';
@@ -541,24 +536,24 @@ class AppLocalizationsAr extends AppLocalizations {
   String get toolsUseHome => 'منزلي';
 
   @override
-  String get toolsRecommendStart => 'اكتب ميزانية أو جيجا أو دقائق';
+  String get toolsRecommendStart => 'اكتب الميزانية أو الجيجا أو الدقائق';
 
   @override
   String get toolsRecommendFits => 'تغطي كل الطلبات';
 
   @override
   String get toolsRecommendNone =>
-      'مفيش باقة في المحتوى تغطي كل الطلبات بالأرقام المذكورة.';
+      'لا توجد باقة تغطي كل الطلبات بالأرقام المذكورة.';
 
   @override
-  String get toolsRecommendMaybe => 'ممكن تناسب، وفيها حاجة مش مذكورة';
+  String get toolsRecommendMaybe => 'قد تناسب، وبها قيمة غير مذكورة';
 
   @override
-  String get toolsRecommendClosest => 'أقرب الباقات، بس مش كاملة';
+  String get toolsRecommendClosest => 'أقرب الباقات (لا تغطي كل الطلبات)';
 
   @override
   String toolsBudgetMet(String value) {
-    return 'التكلفة $value جنيه، جوه الميزانية';
+    return 'التكلفة $value جنيه، في حدود الميزانية';
   }
 
   @override
@@ -568,29 +563,29 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String toolsBudgetUnknown(String value) {
-    return 'السعر $value جنيه، والتكلفة شاملة الضريبة مش مذكورة';
+    return 'السعر $value جنيه، والتكلفة شاملة الضريبة غير مذكورة';
   }
 
   @override
-  String get toolsBudgetNotStated => 'السعر مش مذكور';
+  String get toolsBudgetNotStated => 'السعر غير مذكور';
 
   @override
   String toolsGbMet(String value) {
-    return '$value جيجا، تكفي';
+    return '$value، تكفي';
   }
 
   @override
   String toolsGbMissed(String value) {
-    return '$value جيجا، أقل من المطلوب';
+    return '$value، أقل من المطلوب';
   }
 
   @override
   String toolsGbMix(String value) {
-    return 'الحصة $value ميكس، والجيجا مش مذكورة';
+    return 'الحصة $value ميكس، والجيجا غير مذكورة';
   }
 
   @override
-  String get toolsGbNotStated => 'الجيجا مش مذكورة';
+  String get toolsGbNotStated => 'الجيجا غير مذكورة';
 
   @override
   String toolsMinutesMet(String value) {
@@ -604,15 +599,15 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String toolsMinutesMix(String value) {
-    return 'الحصة $value ميكس، والدقائق مش مذكورة';
+    return 'الحصة $value ميكس، والدقائق غير مذكورة';
   }
 
   @override
-  String get toolsMinutesNotStated => 'الدقائق مش مذكورة';
+  String get toolsMinutesNotStated => 'الدقائق غير مذكورة';
 
   @override
   String toolsMixNote(String text) {
-    return 'اللي مكتوب عن الاستهلاك: $text';
+    return 'طريقة الاستهلاك: $text';
   }
 
   @override
@@ -631,7 +626,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get toolsCalcPriceLabel => 'سعر الباقة قبل الضريبة (جنيه)';
 
   @override
-  String get toolsCalcBalanceResult => 'الرصيد اللي هيوصل';
+  String get toolsCalcBalanceResult => 'الرصيد الذي سيصل';
 
   @override
   String get toolsCalcCardResult => 'الكارت المطلوب';
@@ -643,16 +638,17 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String toolsCalcTaxPart(String value) {
-    return 'الفرق $value جنيه ضرايب ورسوم';
+    return 'الفرق $value جنيه ضرائب ورسوم';
   }
 
   @override
   String toolsCalcStated(String value) {
-    return 'المكتوب في المحتوى شامل الضريبة: $value';
+    return 'المذكور في المحتوى شامل الضريبة: $value';
   }
 
   @override
-  String get toolsCalcComputed => 'رقم محسوب من النسبة اللي تحت، مش سعر منشور.';
+  String get toolsCalcComputed =>
+      'رقم محسوب من النسبة الموضحة، وليس سعرًا منشورًا.';
 
   @override
   String get toolsCalcSource => 'مصدر الحساب';
@@ -663,21 +659,21 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
-  String get toolsCalcUnavailable => 'الحاسبة مش متاحة';
+  String get toolsCalcUnavailable => 'الحاسبة غير متاحة';
 
   @override
   String get toolsCalcUnavailableBody =>
-      'البند اللي فيه نسبة الشحن مش موجود أو نسبته مش واضحة، ومش بنحسب برقم من عندنا.';
+      'بند نسبة الشحن غير موجود أو نسبته غير واضحة، ولا نحسب برقم من عندنا.';
 
   @override
-  String get toolsWhatsNewTitle => 'إيه اللي اتغير';
+  String get toolsWhatsNewTitle => 'الجديد في المحتوى';
 
   @override
-  String get toolsWhatsNewEmpty => 'مفيش تغيير متسجل';
+  String get toolsWhatsNewEmpty => 'لا توجد تغييرات مسجلة';
 
   @override
   String get toolsWhatsNewEmptyBody =>
-      'لما المحتوى يتحدّث، التغيير في الأسعار والأكواد هيظهر هنا.';
+      'عند تحديث المحتوى تظهر هنا تغييرات الأسعار والأكواد.';
 
   @override
   String toolsWhatsNewOn(String date) {
@@ -686,7 +682,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String toolsWhatsNewRemoved(int count) {
-    return 'اتشال $count بند';
+    return 'حُذف $count بند';
   }
 
   @override
@@ -696,33 +692,33 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String toolsWhatsNewMore(int count) {
-    return 'و$count تاني';
+    return 'و$count أخرى';
   }
 
   @override
-  String get toolsWhatsNewBanner => 'المحتوى اتحدّث. شوف إيه اللي اتغير';
+  String get toolsWhatsNewBanner => 'تم تحديث المحتوى. اعرف ما تغيّر';
 
   @override
   String get toolsWas => 'كان';
 
   @override
-  String get toolsNow => 'بقى';
+  String get toolsNow => 'الآن';
 
   @override
   String get editorMyEdits => 'تعديلاتي';
 
   @override
   String get editorLocalOnly =>
-      'التعديلات على الموبايل ده بس، ومحدش غيرك بيشوفها. لو مسحت التطبيق هتروح، فصدّرها لو مهمة.';
+      'التعديلات محفوظة على هذا الموبايل فقط ولا يراها غيرك. حذف التطبيق يمسحها، فصدّر المهم منها.';
 
   @override
-  String get editorEmpty => 'مفيش تعديلات';
+  String get editorEmpty => 'لا توجد تعديلات';
 
   @override
-  String get editorEmptyBody => 'عدّل أي بند من صفحته، أو ضيف بند جديد.';
+  String get editorEmptyBody => 'عدّل أي بند من صفحته، أو أضف بندًا جديدًا.';
 
   @override
-  String get editorAdd => 'ضيف بند';
+  String get editorAdd => 'أضف بندًا';
 
   @override
   String get editorExport => 'تصدير';
@@ -737,36 +733,36 @@ class AppLocalizationsAr extends AppLocalizations {
   String get editorStateHidden => 'مخفي';
 
   @override
-  String get editorStateNewer => 'فيه نسخة أحدث من البند ده في التطبيق';
+  String get editorStateNewer => 'توجد نسخة أحدث من هذا البند في التطبيق';
 
   @override
   String get editorStateRemoved =>
-      'البند الأصلي اتشال من المحتوى. تعديلك محفوظ بس مش ظاهر.';
+      'البند الأصلي حُذف من المحتوى. تعديلك محفوظ لكنه غير ظاهر.';
 
   @override
-  String get editorKeepMine => 'سيب تعديلي';
+  String get editorKeepMine => 'احتفظ بتعديلي';
 
   @override
-  String get editorUseNew => 'خد الجديدة';
+  String get editorUseNew => 'استخدم الجديدة';
 
   @override
-  String get editorRestore => 'رجّع الأصلي';
+  String get editorRestore => 'استرجع الأصل';
 
   @override
-  String get editorDeleteAdded => 'امسح البند';
+  String get editorDeleteAdded => 'احذف البند';
 
   @override
   String editorRestoreAsk(String name) {
-    return 'نرجّع «$name» للأصل؟';
+    return 'استرجاع «$name» إلى الأصل؟';
   }
 
   @override
   String editorDeleteAsk(String name) {
-    return 'نمسح «$name»؟';
+    return 'حذف «$name»؟';
   }
 
   @override
-  String get editorRestoreBody => 'تعديلك هيتمسح من الموبايل.';
+  String get editorRestoreBody => 'سيُحذف تعديلك من الموبايل.';
 
   @override
   String get editorEditTitle => 'تعديل بند';
@@ -805,11 +801,11 @@ class AppLocalizationsAr extends AppLocalizations {
   String get editorFactKind => 'نوع القيمة';
 
   @override
-  String get editorAddFact => 'ضيف بيان';
+  String get editorAddFact => 'أضف بيانًا';
 
   @override
   String editorRemoveFact(int n) {
-    return 'شيل البيان رقم $n';
+    return 'أزل البيان رقم $n';
   }
 
   @override
@@ -826,35 +822,35 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get editorHideHint =>
-      'مش هيظهر في القوائم ولا البحث لحد ما ترجّعه من تعديلاتي.';
+      'لن يظهر في القوائم أو البحث حتى تسترجعه من تعديلاتي.';
 
   @override
   String get editorTitleRequired => 'اكتب العنوان';
 
   @override
-  String get editorFactRequired => 'اكتب الاسم والقيمة، أو شيل البيان';
+  String get editorFactRequired => 'اكتب الاسم والقيمة، أو أزل البيان';
 
   @override
   String get editorNotConfirmed =>
-      'بعد الحفظ هيظهر عليه «معدّل منك» ومش هيتكتب عليه مؤكد لحد ما ترجّع الأصلي.';
+      'بعد الحفظ يظهر عليه «معدّل منك» ولا يُكتب عليه مؤكد حتى تسترجع الأصل.';
 
   @override
-  String get editorLeaveAsk => 'تخرج من غير حفظ؟';
+  String get editorLeaveAsk => 'الخروج بدون حفظ؟';
 
   @override
-  String get editorLeave => 'اخرج';
+  String get editorLeave => 'خروج';
 
   @override
-  String get editorStay => 'كمّل تعديل';
+  String get editorStay => 'أكمل التعديل';
 
   @override
-  String get editorSaved => 'التعديل اتحفظ على الموبايل';
+  String get editorSaved => 'تم حفظ التعديل على الموبايل';
 
   @override
-  String get editorNothingChanged => 'مفيش حاجة اتغيرت';
+  String get editorNothingChanged => 'لم يتغير شيء';
 
   @override
-  String get editorExportNoNotes => 'الملاحظات الخاصة مش بتتصدّر.';
+  String get editorExportNoNotes => 'الملاحظات الخاصة لا تُصدَّر.';
 
   @override
   String get editorShare => 'مشاركة';
@@ -863,10 +859,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get editorCopy => 'نسخ النص';
 
   @override
-  String get editorShareFailed => 'المشاركة مش متاحة، فنسخنا النص';
+  String get editorShareFailed => 'المشاركة غير متاحة، تم نسخ النص';
 
   @override
-  String get editorCopied => 'النص اتنسخ';
+  String get editorCopied => 'تم نسخ النص';
 
   @override
   String get editorImportHint => 'الصق النص المصدَّر هنا';
@@ -875,33 +871,33 @@ class AppLocalizationsAr extends AppLocalizations {
   String get editorPaste => 'لصق';
 
   @override
-  String get editorImportCheck => 'افحص';
+  String get editorImportCheck => 'فحص';
 
   @override
   String get editorImportInvalid =>
-      'النص ده مش تصدير صحيح من التطبيق، ومفيش حاجة اتغيرت.';
+      'هذا النص ليس تصديرًا صحيحًا من التطبيق، ولم يتغير شيء.';
 
   @override
   String editorImportDiff(int added, int replaced, int same) {
-    return '$added جديد، $replaced هيتبدّل، $same زي ما هو';
+    return '$added جديد، $replaced سيُستبدل، $same بدون تغيير';
   }
 
   @override
-  String get editorImportKeeps => 'باقي تعديلاتك هتفضل زي ما هي.';
+  String get editorImportKeeps => 'باقي تعديلاتك تبقى كما هي.';
 
   @override
   String editorImportMissing(int count) {
-    return '$count منهم لبنود مش موجودة في المحتوى الحالي';
+    return '$count منها لبنود غير موجودة في المحتوى الحالي';
   }
 
   @override
-  String get editorImportApply => 'طبّق';
+  String get editorImportApply => 'تطبيق';
 
   @override
-  String get editorImportDone => 'الاستيراد تم';
+  String get editorImportDone => 'تم الاستيراد';
 
   @override
-  String get editorImportNothing => 'مفيش فرق عن اللي عندك';
+  String get editorImportNothing => 'لا فرق عمّا لديك';
 
   @override
   String get editorKindPrice => 'سعر';
@@ -961,19 +957,19 @@ class AppLocalizationsAr extends AppLocalizations {
   String get notesTitle => 'ملاحظاتي';
 
   @override
-  String get notesWarning => 'متكتبش أسماء عملاء ولا أرقامهم ولا بياناتهم.';
+  String get notesWarning => 'لا تكتب أسماء العملاء أو أرقامهم أو بياناتهم.';
 
   @override
-  String get notesLocal => 'على الموبايل ده بس، ومش بتتصدّر.';
+  String get notesLocal => 'على هذا الموبايل فقط، ولا تُصدَّر.';
 
   @override
   String get notesSearch => 'ابحث في ملاحظاتك';
 
   @override
-  String get notesEmpty => 'مفيش ملاحظات';
+  String get notesEmpty => 'لا توجد ملاحظات';
 
   @override
-  String get notesEmptyBody => 'اكتب حاجة تفتكرها، لوحدها أو على بند.';
+  String get notesEmptyBody => 'اكتب ما تريد تذكره، وحده أو على بند.';
 
   @override
   String get notesAdd => 'ملاحظة جديدة';
@@ -985,7 +981,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get notesHint => 'اكتب الملاحظة';
 
   @override
-  String get notesDeleted => 'الملاحظة اتمسحت';
+  String get notesDeleted => 'تم حذف الملاحظة';
 
   @override
   String notesForItem(String name) {
@@ -996,20 +992,20 @@ class AppLocalizationsAr extends AppLocalizations {
   String get notesDeleteOne => 'احذف الملاحظة';
 
   @override
-  String get trainingIntro => 'الأسئلة من المحتوى المؤكد بس';
+  String get trainingIntro => 'الأسئلة من المحتوى المؤكد فقط';
 
   @override
-  String get trainingDaily => 'سؤال النهارده';
+  String get trainingDaily => 'سؤال اليوم';
 
   @override
-  String get trainingDailyDone => 'جاوبت سؤال النهارده';
+  String get trainingDailyDone => 'أجبت عن سؤال اليوم';
 
   @override
   String get trainingCards => 'البطاقات';
 
   @override
   String trainingCardsDue(int due, int fresh) {
-    return '$due للمراجعة النهارده، $fresh جديدة';
+    return '$due للمراجعة اليوم، $fresh جديدة';
   }
 
   @override
@@ -1035,24 +1031,24 @@ class AppLocalizationsAr extends AppLocalizations {
   String get trainingMastered => 'متقنة';
 
   @override
-  String get trainingLearning => 'بتتعلمها';
+  String get trainingLearning => 'قيد التعلم';
 
   @override
   String get trainingNew => 'جديدة';
 
   @override
-  String get trainingWeakest => 'محتاجة مراجعة';
+  String get trainingWeakest => 'تحتاج مراجعة';
 
   @override
   String trainingWeakRow(int wrong, int seen) {
-    return '$wrong غلط من $seen';
+    return '$wrong خطأ من $seen';
   }
 
   @override
-  String get trainingNothing => 'مفيش أسئلة دلوقتي';
+  String get trainingNothing => 'لا توجد أسئلة الآن';
 
   @override
-  String get trainingNothingBody => 'محتاجين محتوى مؤكد كفاية عشان نعمل أسئلة.';
+  String get trainingNothingBody => 'نحتاج محتوى مؤكدًا كافيًا لإعداد الأسئلة.';
 
   @override
   String get trainingShowAnswer => 'اعرض الإجابة';
@@ -1061,30 +1057,30 @@ class AppLocalizationsAr extends AppLocalizations {
   String get trainingKnew => 'عرفتها';
 
   @override
-  String get trainingDidNot => 'معرفتهاش';
+  String get trainingDidNot => 'لم أعرفها';
 
   @override
   String get trainingNext => 'التالي';
 
   @override
-  String get trainingFinish => 'خلاص';
+  String get trainingFinish => 'إنهاء';
 
   @override
-  String get trainingCorrect => 'صح';
+  String get trainingCorrect => 'صحيح';
 
   @override
-  String get trainingWrong => 'غلط';
+  String get trainingWrong => 'خطأ';
 
   @override
   String get trainingOpenItem => 'افتح البند';
 
   @override
   String trainingQuizResult(int right, int total) {
-    return '$right صح من $total';
+    return '$right صحيحة من $total';
   }
 
   @override
-  String get trainingReviewWrong => 'راجع دول';
+  String get trainingReviewWrong => 'راجع هذه الأسئلة';
 
   @override
   String trainingStep(int index, int total) {
@@ -1092,16 +1088,16 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
-  String get trainingDone => 'خلصت بطاقات النهارده';
+  String get trainingDone => 'انتهت بطاقات اليوم';
 
   @override
-  String get trainingDoneBody => 'البطاقات اللي جاوبتها هترجع في ميعادها.';
+  String get trainingDoneBody => 'البطاقات التي أجبت عنها تعود في موعدها.';
 
   @override
-  String get trainingReset => 'ابدأ التدريب من الأول';
+  String get trainingReset => 'ابدأ التدريب من جديد';
 
   @override
-  String get trainingResetAsk => 'نمسح تقدّمك في التدريب؟';
+  String get trainingResetAsk => 'مسح تقدّمك في التدريب؟';
 
   @override
   String trainingAskFact(String title, String label) {
@@ -1110,31 +1106,78 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String trainingAskCode(String title) {
-    return 'إيه كود «$title»؟';
+    return 'ما كود «$title»؟';
   }
 
   @override
   String trainingAskPhone(String title) {
-    return 'إيه رقم «$title»؟';
+    return 'ما رقم «$title»؟';
   }
 
   @override
   String trainingAskTerm(String title) {
-    return 'يعني إيه «$title»؟';
+    return 'ما معنى «$title»؟';
   }
 
   @override
   String trainingAskDocuments(String title) {
-    return 'إيه المستندات المطلوبة في «$title»؟';
+    return 'ما المستندات المطلوبة في «$title»؟';
   }
 
   @override
   String trainingAskFirstStep(String title) {
-    return 'إيه أول خطوة في «$title»؟';
+    return 'ما أول خطوة في «$title»؟';
   }
 
   @override
   String trainingAskScenario(String title) {
-    return '$title. تعمل إيه؟';
+    return '$title. ماذا تفعل؟';
+  }
+
+  @override
+  String get searchQuickTitle => 'بحث سريع';
+
+  @override
+  String get searchAllSections => 'ابحث في كل الأقسام';
+
+  @override
+  String get detailStepsReset => 'من البداية';
+
+  @override
+  String get toolsShareSummary => 'مشاركة';
+
+  @override
+  String get toolsSummaryCopied => 'المشاركة غير متاحة، تم نسخ الملخص';
+
+  @override
+  String get customerView => 'عرض للعميل';
+
+  @override
+  String get customerViewOff => 'إنهاء عرض العميل';
+
+  @override
+  String get moreContentTitle => 'قاعدة المعلومات';
+
+  @override
+  String get moreStatItems => 'كل البنود';
+
+  @override
+  String get moreStatOfficial => 'من الموقع الرسمي';
+
+  @override
+  String get moreClearHistory => 'مسح سجل البحث وآخر ما فتحته';
+
+  @override
+  String get moreHistoryCleared => 'تم مسح السجل';
+
+  @override
+  String get editorFieldBody => 'الشرح';
+
+  @override
+  String get editorFieldSteps => 'الخطوات، كل خطوة في سطر';
+
+  @override
+  String detailStepsProgress(int done, int total) {
+    return '$done من $total';
   }
 }

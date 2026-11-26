@@ -5,8 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:knowledge_hub/core/content/content.dart';
-import 'package:knowledge_hub/core/theme/app_icons.dart';
-import 'package:knowledge_hub/core/widgets/trust/trust.dart';
+import 'package:knowledge_hub/features/content/item_summary.dart';
 import 'package:knowledge_hub/features/content/package_facts.dart';
 import 'package:knowledge_hub/features/home/home_screen.dart';
 
@@ -217,8 +216,9 @@ void main() {
       find.byKey(const ValueKey('metric-afterBundle')),
     );
     expect(afterY.dy, greaterThan(quotaY.dy));
-    // Details table + notes.
-    for (final k in ['facts-table', 'item-body']) {
+    // Notes follow; the details table would only repeat the tiles.
+    expect(find.byKey(const ValueKey('facts-table')), findsNothing);
+    for (final k in ['item-body']) {
       await tester.scrollUntilVisible(
         find.byKey(ValueKey(k)),
         300,
@@ -230,14 +230,6 @@ void main() {
       );
       expect(find.byKey(ValueKey(k)), findsOneWidget);
     }
-    // Every details row leads with an icon chosen by the fact's meaning.
-    expect(
-      find.descendant(
-        of: find.byKey(const ValueKey('facts-table')),
-        matching: find.byIcon(AppIcons.recharge),
-      ),
-      findsOneWidget,
-    );
     expect(tester.takeException(), isNull);
   });
 
@@ -260,7 +252,10 @@ void main() {
     );
 
     await _open(tester, 'pkg-full');
-    expect(_inside('package-code', find.text('*319*52#')), findsOneWidget);
+    expect(
+      _inside('package-code', find.byKey(const ValueKey('code-runs-*319*52#'))),
+      findsOneWidget,
+    );
     // The code row lives inside the price hero (price + code together) and
     // is not repeated further down.
     expect(find.byKey(const ValueKey('package-code')), findsOneWidget);
@@ -278,6 +273,72 @@ void main() {
     await tester.pumpAndSettle();
   });
 
+  testWidgets('details list only what the panel and tiles do not show', (
+    tester,
+  ) async {
+    final extra = jsonEncode({
+      'section': 'packages',
+      'items': [
+        {
+          'id': 'pkg-extra',
+          'type': 'package',
+          'title_ar': 'باقة بتفاصيل',
+          'facts': [
+            {'label_ar': 'السعر', 'value': '10', 'unit': 'ج', 'kind': 'price'},
+            {'label_ar': 'الحصة', 'value': '5', 'kind': 'quantity'},
+            {'label_ar': 'العرض', 'value': 'شرط خاص', 'kind': 'text'},
+          ],
+          'status': 'confirmed',
+        },
+      ],
+    });
+    await pumpApp(
+      tester,
+      content: MemoryContentSource({ContentSection.packages: extra}),
+      size: const Size(400, 1800),
+    );
+    GoRouter.of(tester.element(find.byType(HomeScreen)))
+        .push('/item/pkg-extra');
+    await tester.pumpAndSettle();
+    expect(_inside('facts-table', find.text('شرط خاص')), findsOneWidget);
+    expect(_inside('facts-table', find.text('الحصة')), findsNothing);
+  });
+
+  testWidgets('customer view hides sources, notes and tools', (tester) async {
+    await _open(tester, 'pkg-full');
+    expect(find.byKey(const ValueKey('trust-line')), findsOneWidget);
+    expect(find.byKey(const ValueKey('item-actions')), findsOneWidget);
+    expect(find.text('دليل تجريبي'), findsOneWidget);
+
+    await tester.tap(find.byKey(const ValueKey('customer-view')));
+    await tester.pumpAndSettle();
+    expect(find.byKey(const ValueKey('trust-line')), findsNothing);
+    expect(find.byKey(const ValueKey('item-actions')), findsNothing);
+    expect(find.text('دليل تجريبي'), findsNothing);
+    expect(find.byKey(const ValueKey('package-price')), findsOneWidget);
+    expect(
+      _inside('package-code', find.byKey(const ValueKey('code-runs-*319*52#'))),
+      findsOneWidget,
+    );
+
+    await tester.tap(find.byKey(const ValueKey('customer-view-exit')));
+    await tester.pumpAndSettle();
+    expect(find.byKey(const ValueKey('trust-line')), findsOneWidget);
+  });
+
+  test('customer summary has every value and no sources', () {
+    final item = ContentLoader.parseSection(
+      ContentSection.packages,
+      _packages,
+    )!.items.first;
+    final text = customerSummary(item);
+    expect(text, contains('باقة كاملة تجريبية 52'));
+    expect(text, contains('السعر (الخصم من الرصيد): 52 ج'));
+    expect(text, contains('كود الاشتراك: *319*52#'));
+    expect(text, isNot(contains('دليل تجريبي')));
+    expect(text, isNot(contains(String.fromCharCode(0x200E))));
+  });
+
   testWidgets('conflicting price shows no single price', (tester) async {
     await _open(tester, 'pkg-conflict');
     expect(find.byKey(const ValueKey('package-price')), findsNothing);
@@ -285,9 +346,17 @@ void main() {
       find.byKey(const ValueKey('package-price-conflict')),
       findsOneWidget,
     );
-    expect(find.byType(ConflictBanner), findsOneWidget);
-    expect(find.text('10 ج'), findsOneWidget);
-    expect(find.text('12 ج'), findsOneWidget);
+    expect(find.byKey(const ValueKey('review-note')), findsOneWidget);
+    // Both values stay visible in the details.
+    final table = find.byKey(const ValueKey('facts-table'));
+    expect(
+      find.descendant(of: table, matching: find.text('10')),
+      findsOneWidget,
+    );
+    expect(
+      find.descendant(of: table, matching: find.text('12')),
+      findsOneWidget,
+    );
   });
 
   for (final locale in [ar, en]) {

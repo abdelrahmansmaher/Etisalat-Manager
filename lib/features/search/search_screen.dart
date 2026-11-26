@@ -15,6 +15,7 @@ import '../../core/widgets/page_scaffold.dart';
 import '../../l10n/app_localizations.dart';
 import '../content/content_widgets.dart';
 import '../content/section_ui.dart';
+import '../tools/tool_routes.dart';
 
 /// Full search, pushed from the pill of any tab with the keyboard up.
 /// Idle: recent searches. Typing: instant (debounced) results with section
@@ -33,6 +34,20 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   Timer? _remember;
   String _query = '';
   ContentSection? _section;
+
+  /// What customers ask for most at the counter.
+  static const _quickQueries = [
+    'خدمة العملاء',
+    'حكاية',
+    'إيميرالد',
+    'سلفني',
+    'بدل فاقد',
+    'نقل الرقم',
+    'المحفظة',
+    'eSIM',
+    'تجوال',
+    'راوتر',
+  ];
 
   static const _debounceDelay = Duration(milliseconds: 120);
 
@@ -166,7 +181,8 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                 ..._results(context, l10n),
                 SliverPadding(
                   padding: EdgeInsets.only(
-                    bottom: AppSpacing.md + MediaQuery.paddingOf(context).bottom,
+                    bottom:
+                        AppSpacing.md + MediaQuery.paddingOf(context).bottom,
                   ),
                 ),
               ],
@@ -195,7 +211,31 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
 
     if (_query.trim().isEmpty) {
       final recent = ref.watch(recentSearchesProvider);
+      // Only words that find something in the current content.
+      final quick = [
+        for (final q in _quickQueries)
+          if (index.search(q, limit: 1).isNotEmpty) q,
+      ];
       return [
+        if (quick.isNotEmpty) ...[
+          box(GroupHeader(l10n.searchQuickTitle)),
+          box(
+            Wrap(
+              key: const ValueKey('search-quick'),
+              spacing: AppSpacing.xs,
+              runSpacing: AppSpacing.xs,
+              children: [
+                for (final q in quick)
+                  Capsule(
+                    key: ValueKey('quick-search-$q'),
+                    label: q,
+                    dense: true,
+                    onTap: () => _useQuery(q),
+                  ),
+              ],
+            ),
+          ),
+        ],
         if (recent.isNotEmpty) ...[
           box(
             GroupHeader(
@@ -278,6 +318,18 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
               icon: AppIcons.emptySearch,
               title: l10n.searchEmptyTitle,
               body: l10n.searchEmptyBody,
+              action: _section != null
+                  ? FilledButton(
+                      key: const ValueKey('search-all-sections'),
+                      onPressed: () => setState(() => _section = null),
+                      child: Text(l10n.searchAllSections),
+                    )
+                  : OutlinedButton.icon(
+                      key: const ValueKey('search-add-item'),
+                      onPressed: () => context.push(ToolRoutes.newItem),
+                      icon: const Icon(AppIcons.toolAdd),
+                      label: Text(l10n.editorAdd),
+                    ),
             ),
           ),
         )

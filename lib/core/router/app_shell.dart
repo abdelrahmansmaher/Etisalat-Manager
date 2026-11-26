@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../l10n/app_localizations.dart';
 import '../theme/app_colors.dart';
 import '../widgets/app_bottom_nav.dart';
+import 'app_routes.dart';
 import 'tab_pager.dart';
 import '../theme/app_icons.dart';
 
@@ -59,8 +61,22 @@ class _AppShellState extends State<AppShell> {
     initialLocation: index == navigationShell.currentIndex,
   );
 
+  /// Ctrl+K (Cmd+K) opens search on a keyboard.
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) => CallbackShortcuts(
+    bindings: {
+      for (final meta in [false, true])
+        SingleActivator(
+          LogicalKeyboardKey.keyK,
+          control: !meta,
+          meta: meta,
+        ): () =>
+            context.push(AppRoutes.search),
+    },
+    child: Focus(autofocus: true, skipTraversal: true, child: _layout(context)),
+  );
+
+  Widget _layout(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final dests = AppShell.destinations(l10n);
     final width = MediaQuery.sizeOf(context).width;
@@ -89,7 +105,16 @@ class _AppShellState extends State<AppShell> {
                 ],
               ),
               VerticalDivider(width: 1, color: c.hairline),
-              Expanded(child: navigationShell),
+              // Screens size themselves by the room beside the rail.
+              Expanded(
+                child: LayoutBuilder(
+                  builder: (context, box) => MediaQuery(
+                    data: MediaQuery.of(context)
+                        .copyWith(size: Size(box.maxWidth, box.maxHeight)),
+                    child: navigationShell,
+                  ),
+                ),
+              ),
             ],
           ),
         ),

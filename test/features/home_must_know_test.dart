@@ -28,17 +28,20 @@ void main() {
           );
           expect(strip, findsOneWidget);
           for (final value in ['7777', '01000000000', '*555#']) {
-            final text = find.descendant(of: strip, matching: find.text(value));
+            // A code is laid out as left-to-right runs, one widget.
+            final text = find.descendant(
+              of: strip,
+              matching: find.byKey(ValueKey('code-runs-$value')),
+            );
             await tester.ensureVisible(text);
             await tester.pumpAndSettle();
             expect(text, findsOneWidget, reason: value);
-            final widget = tester.widget<Text>(text);
-            expect(widget.overflow, isNot(TextOverflow.ellipsis));
-            expect(widget.maxLines, isNull, reason: value);
-            final paragraph = tester.renderObject<RenderParagraph>(
+            for (final p in tester.renderObjectList<RenderParagraph>(
               find.descendant(of: text, matching: find.byType(RichText)),
-            );
-            expect(paragraph.didExceedMaxLines, isFalse, reason: value);
+            )) {
+              expect(p.didExceedMaxLines, isFalse, reason: value);
+              expect(p.overflow, isNot(TextOverflow.ellipsis), reason: value);
+            }
             final rect = tester.getRect(text);
             expect(rect.left, greaterThanOrEqualTo(0), reason: value);
             expect(rect.right, lessThanOrEqualTo(360), reason: value);

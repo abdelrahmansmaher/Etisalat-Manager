@@ -1,7 +1,7 @@
 # Official site findings, read in a browser 2026-11-25 (English pages)
 
-To be added to `assets/content` with an `official_site` source and
-`checked_at: 2026-11-25`. Not yet added. Base: https://www.eand.com.eg/portal
+Merged into `assets/content` on 2026-11-26 with an `official_site` source and
+`checked_at: 2026-11-25` (conflicting values left out, as noted below). Base: https://www.eand.com.eg/portal
 
 - `/home` Call Us: 333 from e& line; 0235346333 landline; 778 Cash care from e& line, +201111234778 abroad; Emerald 800; Smart ADSL 7333. (The "any mobile" 0111123433 and abroad +20111123433 are one digit short: do NOT use.)
 - `/contracts`: 333 is a flat rate per call whatever the duration, 24/7.

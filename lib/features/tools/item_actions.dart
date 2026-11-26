@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:share_plus/share_plus.dart';
 
 import '../../core/content/content.dart';
 import '../../core/theme/theme.dart';
 import '../../core/user/user.dart';
 import '../../core/widgets/capsules.dart';
 import '../../l10n/app_localizations.dart';
+import '../content/item_summary.dart';
 import '../content/package_facts.dart';
 import 'dial.dart';
 import 'dial_template.dart';
 import 'tool_routes.dart';
+import 'tool_widgets.dart';
 
 /// Heart toggle for one item.
 class FavoriteButton extends ConsumerWidget {
@@ -77,11 +81,15 @@ class ItemActions extends ConsumerWidget {
             onTap: () => context.push(ToolRoutes.compareWith(item.id)),
           ),
         Capsule(
+          key: const ValueKey('action-share'),
+          icon: AppIcons.share,
+          label: l10n.toolsShareSummary,
+          onTap: () => shareSummary(context, item),
+        ),
+        Capsule(
           key: const ValueKey('action-note'),
           icon: AppIcons.toolNotes,
-          label: notes == 0
-              ? l10n.toolsNoteAction
-              : l10n.toolsNoteCount(notes),
+          label: notes == 0 ? l10n.toolsNoteAction : l10n.toolsNoteCount(notes),
           onTap: () => context.push(ToolRoutes.notesFor(item.id)),
         ),
         Capsule(
@@ -93,6 +101,23 @@ class ItemActions extends ConsumerWidget {
       ],
     );
   }
+}
+
+/// Sends the customer summary through the share sheet; copies it when sharing
+/// is not available.
+Future<void> shareSummary(BuildContext context, ContentItem item) async {
+  final l10n = AppLocalizations.of(context);
+  final text = customerSummary(item);
+  var shared = false;
+  try {
+    final r = await SharePlus.instance.share(ShareParams(text: text));
+    shared = r.status != ShareResultStatus.unavailable;
+  } catch (_) {
+    // No share sheet on this device or browser.
+  }
+  if (shared) return;
+  await Clipboard.setData(ClipboardData(text: text));
+  if (context.mounted) showToolMessage(context, l10n.toolsSummaryCopied);
 }
 
 /// What the dial action offers: the subscription code of a package, else

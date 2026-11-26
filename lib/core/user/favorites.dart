@@ -19,9 +19,7 @@ final favoritesProvider = NotifierProvider<Favorites, Set<String>>(
 /// a removed item are skipped silently.
 final favoriteItemsProvider = Provider<List<ContentItem>>((ref) {
   final library = ref.watch(contentLibraryProvider);
-  return [
-    for (final id in ref.watch(favoritesProvider)) ?library.byId(id),
-  ];
+  return [for (final id in ref.watch(favoritesProvider)) ?library.byId(id)];
 });
 
 class Favorites extends Notifier<Set<String>> {

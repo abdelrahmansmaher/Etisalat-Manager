@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:knowledge_hub/core/theme/app_icons.dart';
+import 'package:go_router/go_router.dart';
 import 'package:knowledge_hub/core/content/content.dart';
+import 'package:knowledge_hub/core/theme/app_icons.dart';
 import 'package:knowledge_hub/core/widgets/ltr_text.dart';
-import 'package:knowledge_hub/core/widgets/trust/trust.dart';
+import 'package:knowledge_hub/features/content/content_widgets.dart';
 import 'package:knowledge_hub/features/content/item_detail_screen.dart';
-import 'package:knowledge_hub/features/content/review_screen.dart';
 import 'package:knowledge_hub/features/content/section_screen.dart';
+import 'package:knowledge_hub/features/home/home_screen.dart';
+import 'package:knowledge_hub/features/packages/packages_screen.dart';
 
 import '../helpers/pump_app.dart';
 
@@ -25,213 +28,244 @@ Future<void> reveal(
   double delta = 200,
 }) async {
   await tester.scrollUntilVisible(target, delta, scrollable: mainScroll);
-  await tester.ensureVisible(target);
+  await Scrollable.ensureVisible(tester.element(target), alignment: 0.3);
   await tester.pumpAndSettle();
 }
 
 void main() {
-  Future<void> openSection(WidgetTester tester, String key) async {
-    final card = find.byKey(ValueKey('section-card-$key'));
-    await reveal(tester, card);
-    await tester.tap(card);
-    await tester.pumpAndSettle();
-  }
-
   Future<void> openItem(WidgetTester tester, String id) async {
-    final row = find.byKey(ValueKey('item-row-$id'));
-    await reveal(tester, row, delta: 200);
-    await tester.tap(row);
+    GoRouter.of(tester.element(find.byType(HomeScreen))).push('/item/$id');
     await tester.pumpAndSettle();
+    expect(find.byType(ItemDetailScreen), findsOneWidget);
   }
 
   group('Home', () {
-    testWidgets('section cards show counts, strip and as-of', (tester) async {
+    testWidgets('hotlines, section counts and content date', (tester) async {
       await pumpApp(tester);
       expect(find.byKey(const ValueKey('must-know-strip')), findsOneWidget);
+      final card = find.byKey(const ValueKey('section-card-numbers'));
+      await reveal(tester, card);
       expect(
-        find.byKey(const ValueKey('must-know-num-test-hotline')),
+        find.descendant(of: card, matching: find.text('3')),
         findsOneWidget,
       );
-      await reveal(
-        tester,
-        find.byKey(const ValueKey('section-card-packages')),
-        delta: 200,
-      );
-      expect(find.text('5 بنود'), findsOneWidget); // packages
-      await reveal(
-        tester,
-        find.byKey(const ValueKey('content-as-of')),
-        delta: 200,
-      );
+      await reveal(tester, find.byKey(const ValueKey('content-as-of')));
       expect(find.textContaining('1 مارس 2026'), findsOneWidget);
     });
 
-    testWidgets('quick strip opens the contact detail', (tester) async {
+    testWidgets('a hotline row opens its page', (tester) async {
       await pumpApp(tester);
       final tile = find.byKey(const ValueKey('must-know-num-test-hotline'));
-      await reveal(tester, tile, delta: 200);
-      await tester.tap(tile);
+      await reveal(tester, tile);
+      await tester.tap(
+        find.descendant(
+          of: tile,
+          matching: find.text('خدمة العملاء التجريبية'),
+        ),
+      );
       await tester.pumpAndSettle();
       expect(find.byType(ItemDetailScreen), findsOneWidget);
-      // Large title + the (hidden until scrolled) app-bar title.
-      expect(find.text('خدمة العملاء التجريبية'), findsWidgets);
+    });
+
+    testWidgets('the header link sits on the far edge', (tester) async {
+      await pumpApp(tester);
+      final link = find.text('عرض الكل');
+      await reveal(tester, link);
+      expect(tester.getRect(link).left, lessThan(40)); // RTL: far = left
     });
   });
 
   group('Section screen', () {
-    testWidgets('groups by category, status pills, unverified last, filters', (
-      tester,
-    ) async {
+    testWidgets('groups rows under their category', (tester) async {
       await pumpApp(tester);
-      await openSection(tester, 'packages');
+      final card = find.byKey(const ValueKey('section-card-procedures'));
+      await reveal(tester, card);
+      await tester.tap(card);
+      await tester.pumpAndSettle();
       expect(find.byType(SectionScreen), findsOneWidget);
-      expect(find.byKey(const ValueKey('group-باقات تجريبية')), findsOneWidget);
-      // Jump-to-category capsules, one per group.
-      expect(find.byKey(const ValueKey('category-capsules')), findsOneWidget);
-      expect(find.byKey(const ValueKey('jump-باقات أخرى')), findsOneWidget);
-      expect(find.byKey(const ValueKey('status-confirmed')), findsWidgets);
+      expect(find.byKey(const ValueKey('group-إجراءات الخط')), findsOneWidget);
       expect(
-        find.byWidgetPredicate(
-          (w) =>
-              w is Text &&
-              (w.data == 'مؤكد حسب الدليل' ||
-                  w.data == 'مؤكد من الموقع الرسمي'),
-        ),
-        findsWidgets,
-      );
-      expect(find.text('غير مؤكد — راجع داخليًا'), findsWidgets);
-
-      // Unverified group header is after the others.
-      await reveal(
-        tester,
-        find.byKey(const ValueKey('group-بنود غير مؤكدة')),
-        delta: 200,
-      );
-      final unverifiedY = tester.getTopLeft(find.text('بند للمراجعة')).dy;
-      await reveal(tester, find.text('باقة جاما'), delta: -200);
-      expect(
-        tester.getTopLeft(find.text('باقة جاما')).dy,
-        lessThan(unverifiedY),
-      );
-
-      // Filter: confirmed only.
-      await reveal(
-        tester,
-        find.byKey(const ValueKey('filter-confirmed')),
-        delta: -300,
-      );
-      await tester.tap(find.byKey(const ValueKey('filter-confirmed')));
-      await tester.pumpAndSettle();
-      expect(
-        find.byKey(const ValueKey('item-row-pkg-test-alpha')),
+        find.byKey(const ValueKey('confirmed-proc-test-replace-sim')),
         findsOneWidget,
       );
-      expect(
-        find.byKey(const ValueKey('item-row-pkg-test-beta')),
-        findsNothing,
+      await tester.tap(
+        find.byKey(const ValueKey('item-row-proc-test-replace-sim')),
       );
-      await tester.tap(find.byKey(const ValueKey('filter-unconfirmed')));
       await tester.pumpAndSettle();
-      expect(
-        find.byKey(const ValueKey('item-row-pkg-test-alpha')),
-        findsNothing,
-      );
-      expect(
-        find.byKey(const ValueKey('item-row-pkg-test-beta')),
-        findsOneWidget,
-      );
+      await tester.tap(find.byType(BackButton));
+      await tester.pumpAndSettle();
+      expect(find.byType(SectionScreen), findsOneWidget);
     });
 
     testWidgets('empty section shows empty state', (tester) async {
       await pumpApp(tester);
-      await openSection(tester, 'company');
+      GoRouter.of(tester.element(find.byType(HomeScreen)))
+          .push('/section/company');
+      await tester.pumpAndSettle();
       expect(find.text('لا يوجد محتوى في هذا القسم بعد'), findsOneWidget);
-    });
-
-    testWidgets('numbers section rows expose copyable codes', (tester) async {
-      await pumpApp(tester);
-      await openSection(tester, 'numbers');
-      expect(find.byType(CodeText), findsWidgets);
-      expect(find.byIcon(AppIcons.copy), findsWidgets);
     });
   });
 
+  group('Packages tab', () {
+    testWidgets('only confirmed packages look confirmed', (tester) async {
+      await pumpApp(tester, size: const Size(375, 900));
+      await tester.tap(find.byKey(const ValueKey('nav-1')));
+      await tester.pumpAndSettle();
+      expect(find.byType(PackagesScreen), findsOneWidget);
+      expect(
+        find.byKey(const ValueKey('confirmed-pkg-test-alpha')),
+        findsOneWidget,
+      );
+      expect(
+        find.byKey(const ValueKey('confirmed-pkg-test-beta')),
+        findsNothing,
+      );
+      // A conflicting price is never quoted.
+      expect(find.byKey(const ValueKey('price-pkg-test-gamma')), findsNothing);
+    });
+
+    testWidgets('one tap copies the code without opening the page', (
+      tester,
+    ) async {
+      final copied = <String>[];
+      tester.binding.defaultBinaryMessenger.setMockMethodCallHandler(
+        SystemChannels.platform,
+        (call) async {
+          if (call.method == 'Clipboard.setData') {
+            copied.add((call.arguments as Map)['text'] as String);
+          }
+          return null;
+        },
+      );
+      addTearDown(
+        () => tester.binding.defaultBinaryMessenger.setMockMethodCallHandler(
+          SystemChannels.platform,
+          null,
+        ),
+      );
+      await pumpApp(tester, size: const Size(375, 900));
+      await tester.tap(find.byKey(const ValueKey('nav-1')));
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(const ValueKey('copy-code-pkg-test-alpha')));
+      await tester.pump(const Duration(milliseconds: 300));
+      expect(copied, ['*999#']);
+      expect(find.text('تم النسخ'), findsOneWidget);
+      expect(find.byType(ItemDetailScreen), findsNothing);
+      await tester.pumpAndSettle();
+    });
+
+    testWidgets('segments and families stay pinned while scrolling', (
+      tester,
+    ) async {
+      await pumpApp(tester, size: const Size(360, 420));
+      await tester.tap(find.byKey(const ValueKey('nav-1')));
+      await tester.pumpAndSettle();
+      await tester.drag(mainScroll, const Offset(0, -300));
+      await tester.pumpAndSettle();
+      expect(
+        find.byKey(const ValueKey('package-segments')).hitTestable(),
+        findsOneWidget,
+      );
+      expect(
+        find.byKey(const ValueKey('family-capsules')).hitTestable(),
+        findsOneWidget,
+      );
+    });
+  });
+
+  testWidgets('codes tab: every row has its kind, value and copy', (
+    tester,
+  ) async {
+    await pumpApp(tester, size: const Size(375, 900));
+    await tester.tap(find.byKey(const ValueKey('nav-2')));
+    await tester.pumpAndSettle();
+    expect(find.byType(CodeRow), findsNWidgets(3));
+    expect(find.byType(CodeActions), findsNWidgets(3));
+    final hotline = find.byKey(const ValueKey('item-row-num-test-hotline'));
+    expect(
+      find.descendant(of: hotline, matching: find.byIcon(AppIcons.catHotline)),
+      findsOneWidget,
+    );
+  });
+
   group('Item detail', () {
-    testWidgets('answer card, facts, body, sources, pages, related', (
+    testWidgets('package page: hero, code, notes, sources, related', (
       tester,
     ) async {
       await pumpApp(tester);
-      await openSection(tester, 'packages');
       await openItem(tester, 'pkg-test-alpha');
-      expect(find.byType(ItemDetailScreen), findsOneWidget);
-      // type == package → dedicated package layout.
       expect(find.byKey(const ValueKey('package-hero')), findsOneWidget);
       expect(find.byKey(const ValueKey('answer-card')), findsNothing);
-      expect(find.byKey(const ValueKey('package-metrics')), findsOneWidget);
       expect(find.byKey(const ValueKey('package-code')), findsOneWidget);
-      expect(find.byKey(const ValueKey('conflict-banner')), findsNothing);
-      expect(find.byKey(const ValueKey('unconfirmed-banner')), findsNothing);
+      expect(find.byKey(const ValueKey('review-note')), findsNothing);
       for (final k in ['facts-table', 'item-body', 'pdf-pages']) {
-        await reveal(tester, find.byKey(ValueKey(k)), delta: 200);
-        if (k == 'facts-table') expect(find.byType(CodeText), findsWidgets);
+        await reveal(tester, find.byKey(ValueKey(k)));
       }
       expect(find.text('من الدليل صفحة 7'), findsOneWidget);
-      expect(find.byType(SourceBadge), findsNWidgets(2));
       expect(find.text('https://example.com/alpha'), findsOneWidget);
       await reveal(
         tester,
         find.byKey(const ValueKey('item-row-pkg-test-beta')),
-        delta: 200,
       );
     });
 
-    testWidgets('unconfirmed item shows amber banner with note', (
+    testWidgets('an unconfirmed item says so and never looks confirmed', (
       tester,
     ) async {
       await pumpApp(tester);
-      await openSection(tester, 'packages');
       await openItem(tester, 'pkg-test-beta');
-      expect(find.byKey(const ValueKey('unconfirmed-banner')), findsOneWidget);
-      expect(find.text('غير مؤكد في الدليل الوهمي'), findsOneWidget);
+      final note = find.byKey(const ValueKey('review-note'));
+      expect(note, findsOneWidget);
+      expect(
+        find.descendant(
+          of: note,
+          matching: find.textContaining('غير مؤكد في الدليل الوهمي'),
+        ),
+        findsOneWidget,
+      );
+      expect(find.text('غير مؤكد — راجع داخليًا'), findsOneWidget);
     });
 
-    testWidgets('conflict item shows ConflictBanner with both values', (
-      tester,
-    ) async {
+    testWidgets('steps keep their place, count and reset', (tester) async {
       await pumpApp(tester);
-      await openSection(tester, 'packages');
-      await openItem(tester, 'pkg-test-gamma');
-      expect(find.byType(ConflictBanner), findsOneWidget);
-      expect(find.text('33 ج'), findsOneWidget);
-      expect(find.text('34 ج'), findsOneWidget);
-    });
-
-    testWidgets('steps checklist toggles', (tester) async {
-      await pumpApp(tester);
-      await openSection(tester, 'procedures');
       await openItem(tester, 'proc-test-replace-sim');
-      // Non-package items keep the generic Answer Card layout.
       expect(find.byKey(const ValueKey('answer-card')), findsOneWidget);
       expect(find.byKey(const ValueKey('package-hero')), findsNothing);
+      expect(find.byKey(const ValueKey('steps-progress')), findsNothing);
+
       final step = find.byKey(const ValueKey('step-0'));
-      await reveal(tester, step, delta: 200);
+      await reveal(tester, step);
       await tester.tap(step);
       await tester.pumpAndSettle();
       expect(tester.widget<CheckboxListTile>(step).value, isTrue);
-    });
+      expect(find.text('1 من 3'), findsOneWidget);
 
-    testWidgets('swipe back / back button returns to section', (tester) async {
-      await pumpApp(tester);
-      await openSection(tester, 'packages');
-      await openItem(tester, 'pkg-test-alpha');
+      // Leaving to look something up does not lose the place.
       await tester.tap(find.byType(BackButton));
       await tester.pumpAndSettle();
-      expect(find.byType(ItemDetailScreen), findsNothing);
-      expect(find.byType(SectionScreen), findsOneWidget);
+      await openItem(tester, 'proc-test-replace-sim');
+      await reveal(tester, step);
+      expect(tester.widget<CheckboxListTile>(step).value, isTrue);
+
+      await tester.tap(find.byKey(const ValueKey('steps-reset')));
+      await tester.pumpAndSettle();
+      expect(tester.widget<CheckboxListTile>(step).value, isFalse);
+      expect(find.byKey(const ValueKey('steps-progress')), findsNothing);
+    });
+
+    testWidgets('a missing item says so', (tester) async {
+      await pumpApp(tester);
+      await openItem(tester, 'nope');
+      expect(find.text('البند غير موجود'), findsWidgets);
     });
   });
 
   group('Search', () {
+    Future<void> open(WidgetTester tester) async {
+      await tester.tap(find.byKey(const ValueKey('search-pill')).hitTestable());
+      await tester.pumpAndSettle();
+    }
+
     Future<void> type(WidgetTester tester, String q) async {
       await tester.enterText(find.byKey(const ValueKey('search-field')), q);
       await tester.pump(const Duration(milliseconds: 150));
@@ -242,26 +276,41 @@ void main() {
       tester,
     ) async {
       await pumpApp(tester);
-      await tester.tap(find.byKey(const ValueKey('nav-2')));
-      await tester.pumpAndSettle();
+      await open(tester);
       await type(tester, '*٩٩٩#');
-      expect(
-        find.byKey(const ValueKey('item-row-pkg-test-alpha')),
-        findsOneWidget,
-      );
+      final row = find.byKey(const ValueKey('item-row-pkg-test-alpha'));
+      expect(row, findsOneWidget);
       expect(find.byKey(const ValueKey('search-count')), findsOneWidget);
-      await tester.tap(find.byKey(const ValueKey('item-row-pkg-test-alpha')));
+      await tester.tap(find.text('باقة ألفا التجريبية'));
       await tester.pumpAndSettle();
       expect(find.byType(ItemDetailScreen), findsOneWidget);
+      await tester.pump(const Duration(seconds: 2));
     });
 
-    testWidgets('zero-result state and section filter', (tester) async {
+    testWidgets('quick searches only offer what the content has', (
+      tester,
+    ) async {
       await pumpApp(tester);
-      await tester.tap(find.byKey(const ValueKey('nav-2')));
+      await open(tester);
+      final quick = find.byKey(const ValueKey('quick-search-خدمة العملاء'));
+      expect(quick, findsOneWidget);
+      expect(find.byKey(const ValueKey('quick-search-إيميرالد')), findsNothing);
+      await tester.tap(quick);
       await tester.pumpAndSettle();
+      expect(
+        find.byKey(const ValueKey('item-row-num-test-hotline')),
+        findsOneWidget,
+      );
+    });
+
+    testWidgets('no result is never a dead end', (tester) async {
+      await pumpApp(tester);
+      await open(tester);
       await type(tester, 'زززززز');
       expect(find.byKey(const ValueKey('search-empty')), findsOneWidget);
+      expect(find.byKey(const ValueKey('search-add-item')), findsOneWidget);
 
+      // A section filter that hides everything offers all sections.
       await type(tester, 'رصيد');
       expect(
         find.byKey(const ValueKey('item-row-code-test-balance')),
@@ -273,29 +322,21 @@ void main() {
         find.byKey(const ValueKey('item-row-code-test-balance')),
         findsNothing,
       );
+      await tester.tap(find.byKey(const ValueKey('search-all-sections')));
+      await tester.pumpAndSettle();
+      expect(
+        find.byKey(const ValueKey('item-row-code-test-balance')),
+        findsOneWidget,
+      );
+      await tester.pump(const Duration(seconds: 2));
     });
-  });
-
-  testWidgets('Training review entry lists unconfirmed items', (tester) async {
-    await pumpApp(tester);
-    await tester.tap(find.byKey(const ValueKey('nav-3')));
-    await tester.pumpAndSettle();
-    expect(find.text('4 بنود تحتاج مراجعة داخلية'), findsOneWidget);
-    await tester.tap(find.byKey(const ValueKey('training-review-entry')));
-    await tester.pumpAndSettle();
-    expect(find.byType(ReviewScreen), findsOneWidget);
-    expect(
-      find.byKey(const ValueKey('item-row-pkg-test-beta')),
-      findsOneWidget,
-    );
-    expect(find.byKey(const ValueKey('item-row-pkg-test-alpha')), findsNothing);
   });
 
   testWidgets('works with no content at all', (tester) async {
     await pumpApp(tester, content: const MemoryContentSource({}));
     expect(tester.takeException(), isNull);
     expect(find.byKey(const ValueKey('must-know-strip')), findsNothing);
-    await tester.tap(find.byKey(const ValueKey('nav-2')));
+    await tester.tap(find.byKey(const ValueKey('search-pill')).hitTestable());
     await tester.pumpAndSettle();
     await tester.enterText(find.byKey(const ValueKey('search-field')), 'x');
     await tester.pump(const Duration(milliseconds: 150));

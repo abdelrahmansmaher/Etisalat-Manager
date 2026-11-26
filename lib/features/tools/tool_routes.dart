@@ -46,31 +46,23 @@ final List<RouteBase> toolRoutes = [
   ),
   GoRoute(
     path: ToolRoutes.recommend,
-    pageBuilder: (context, state) => AppPage<void>(
-      key: state.pageKey,
-      child: const RecommendScreen(),
-    ),
+    pageBuilder: (context, state) =>
+        AppPage<void>(key: state.pageKey, child: const RecommendScreen()),
   ),
   GoRoute(
     path: ToolRoutes.calculator,
-    pageBuilder: (context, state) => AppPage<void>(
-      key: state.pageKey,
-      child: const CalculatorScreen(),
-    ),
+    pageBuilder: (context, state) =>
+        AppPage<void>(key: state.pageKey, child: const CalculatorScreen()),
   ),
   GoRoute(
     path: ToolRoutes.editor,
-    pageBuilder: (context, state) => AppPage<void>(
-      key: state.pageKey,
-      child: const EditorScreen(),
-    ),
+    pageBuilder: (context, state) =>
+        AppPage<void>(key: state.pageKey, child: const EditorScreen()),
   ),
   GoRoute(
     path: ToolRoutes.newItem,
-    pageBuilder: (context, state) => AppPage<void>(
-      key: state.pageKey,
-      child: const ItemEditorScreen(),
-    ),
+    pageBuilder: (context, state) =>
+        AppPage<void>(key: state.pageKey, child: const ItemEditorScreen()),
   ),
   GoRoute(
     path: '${ToolRoutes.editor}/item',
@@ -88,23 +80,17 @@ final List<RouteBase> toolRoutes = [
   ),
   GoRoute(
     path: ToolRoutes.whatsNew,
-    pageBuilder: (context, state) => AppPage<void>(
-      key: state.pageKey,
-      child: const WhatsNewScreen(),
-    ),
+    pageBuilder: (context, state) =>
+        AppPage<void>(key: state.pageKey, child: const WhatsNewScreen()),
   ),
   GoRoute(
     path: ToolRoutes.training,
-    pageBuilder: (context, state) => AppPage<void>(
-      key: state.pageKey,
-      child: const TrainingScreen(),
-    ),
+    pageBuilder: (context, state) =>
+        AppPage<void>(key: state.pageKey, child: const TrainingScreen()),
   ),
   GoRoute(
     path: ToolRoutes.favorites,
-    pageBuilder: (context, state) => AppPage<void>(
-      key: state.pageKey,
-      child: const FavoritesScreen(),
-    ),
+    pageBuilder: (context, state) =>
+        AppPage<void>(key: state.pageKey, child: const FavoritesScreen()),
   ),
 ];

@@ -150,11 +150,6 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String quotaMb(String n) {
-    return '$n MB';
-  }
-
-  @override
   String quotaMix(String n) {
     return '$n mix';
   }
@@ -574,12 +569,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String toolsGbMet(String value) {
-    return '$value GB, enough';
+    return '$value, enough';
   }
 
   @override
   String toolsGbMissed(String value) {
-    return '$value GB, less than needed';
+    return '$value, less than needed';
   }
 
   @override
@@ -1139,5 +1134,53 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String trainingAskScenario(String title) {
     return '$title. What do you do?';
+  }
+
+  @override
+  String get searchQuickTitle => 'Quick search';
+
+  @override
+  String get searchAllSections => 'Search all sections';
+
+  @override
+  String get detailStepsReset => 'Start over';
+
+  @override
+  String get toolsShareSummary => 'Share';
+
+  @override
+  String get toolsSummaryCopied =>
+      'Sharing is not available; the summary was copied';
+
+  @override
+  String get customerView => 'Show to customer';
+
+  @override
+  String get customerViewOff => 'Leave customer view';
+
+  @override
+  String get moreContentTitle => 'Knowledge base';
+
+  @override
+  String get moreStatItems => 'All items';
+
+  @override
+  String get moreStatOfficial => 'Official site';
+
+  @override
+  String get moreClearHistory => 'Clear search and reading history';
+
+  @override
+  String get moreHistoryCleared => 'History cleared';
+
+  @override
+  String get editorFieldBody => 'Explanation';
+
+  @override
+  String get editorFieldSteps => 'Steps, one per line';
+
+  @override
+  String detailStepsProgress(int done, int total) {
+    return '$done of $total';
   }
 }

@@ -27,7 +27,7 @@ void main() {
 
   for (final s in ContentSection.values) {
     test('${s.key}: packages are ascending in every group', () {
-      final groups = groupByUsefulness(load(s), (i) => i.category);
+      final groups = groupInOrder(load(s), (i) => i.category);
       groups.forEach((name, items) {
         final prices = [
           for (final i in items)

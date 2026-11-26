@@ -90,9 +90,11 @@ class _PackagesScreenState extends ConsumerState<PackagesScreen> {
       scrollKey: const ValueKey('packages-scroll'),
       top: _PackagesTop(title: l10n.navPackages),
       slivers: [
-        SliverPadding(
-          padding: EdgeInsetsDirectional.fromSTEB(pad, AppSpacing.sm, pad, 0),
-          sliver: SliverToBoxAdapter(
+        // Segment and families stay one tap away while the list scrolls.
+        PinnedHeaderSliver(
+          child: Container(
+            color: Theme.of(context).scaffoldBackgroundColor,
+            padding: EdgeInsetsDirectional.fromSTEB(pad, AppSpacing.xs, pad, 0),
             child: SegmentedCapsule<PackageSegment>(
               key: const ValueKey('package-segments'),
               selected: _segment,
@@ -197,7 +199,8 @@ class _PackagesScreenState extends ConsumerState<PackagesScreen> {
   }
 }
 
-/// Title and the three tools on one line (wrapping at large text).
+/// Title and the three tools on one line. On narrow phones or large text the
+/// tools keep their icon (and spoken name) only, so nothing is clipped.
 class _PackagesTop extends ConsumerWidget {
   const _PackagesTop({required this.title});
 
@@ -207,6 +210,10 @@ class _PackagesTop extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context);
     final calculator = ref.watch(rechargeCalculatorAvailableProvider);
+    final iconOnly =
+        MediaQuery.sizeOf(context).width < 340 ||
+        MediaQuery.textScalerOf(context).scale(1) > 1.1 ||
+        Localizations.localeOf(context).languageCode != 'ar';
     return Row(
       children: [
         MastheadTitle(title),
@@ -222,12 +229,14 @@ class _PackagesTop extends ConsumerWidget {
                   key: const ValueKey('tool-compare'),
                   icon: AppIcons.toolCompare,
                   label: l10n.toolCompareShort,
+                  iconOnly: iconOnly,
                   onTap: () => context.push(ToolRoutes.compare),
                 ),
                 _ToolButton(
                   key: const ValueKey('tool-recommend'),
                   icon: AppIcons.toolRecommend,
                   label: l10n.toolRecommendShort,
+                  iconOnly: iconOnly,
                   onTap: () => context.push(ToolRoutes.recommend),
                 ),
                 if (calculator)
@@ -235,6 +244,7 @@ class _PackagesTop extends ConsumerWidget {
                     key: const ValueKey('tool-calculator'),
                     icon: AppIcons.toolCalculator,
                     label: l10n.toolCalculatorShort,
+                    iconOnly: iconOnly,
                     onTap: () => context.push(ToolRoutes.calculator),
                   ),
               ],
@@ -252,16 +262,18 @@ class _ToolButton extends StatelessWidget {
     required this.icon,
     required this.label,
     required this.onTap,
+    this.iconOnly = false,
   });
 
   final IconData icon;
   final String label;
   final VoidCallback onTap;
+  final bool iconOnly;
 
   @override
   Widget build(BuildContext context) {
     final c = context.colors;
-    return Semantics(
+    final button = Semantics(
       button: true,
       label: label,
       excludeSemantics: true,
@@ -272,7 +284,10 @@ class _ToolButton extends StatelessWidget {
         child: InkWell(
           onTap: onTap,
           child: ConstrainedBox(
-            constraints: const BoxConstraints(minHeight: 36),
+            constraints: BoxConstraints(
+              minHeight: iconOnly ? 40 : 36,
+              minWidth: iconOnly ? 44 : 0,
+            ),
             child: Padding(
               padding: const EdgeInsetsDirectional.symmetric(
                 horizontal: AppSpacing.sm,
@@ -280,12 +295,18 @@ class _ToolButton extends StatelessWidget {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(icon, size: AppIconSize.inline, color: c.onMasthead),
-                  const SizedBox(width: AppSpacing.xxs),
-                  Text(
-                    label,
-                    style: AppTypography.labelL.copyWith(color: c.onMasthead),
+                  Icon(
+                    icon,
+                    size: iconOnly ? AppIconSize.action : AppIconSize.inline,
+                    color: c.onMasthead,
                   ),
+                  if (!iconOnly) ...[
+                    const SizedBox(width: AppSpacing.xxs),
+                    Text(
+                      label,
+                      style: AppTypography.labelL.copyWith(color: c.onMasthead),
+                    ),
+                  ],
                 ],
               ),
             ),
@@ -293,6 +314,7 @@ class _ToolButton extends StatelessWidget {
         ),
       ),
     );
+    return iconOnly ? Tooltip(message: label, child: button) : button;
   }
 }
 

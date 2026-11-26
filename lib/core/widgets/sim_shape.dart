@@ -36,10 +36,7 @@ class SimShape extends OutlinedBorder {
   @override
   void paint(Canvas canvas, Rect rect, {TextDirection? textDirection}) {
     if (side.style == BorderStyle.none) return;
-    canvas.drawPath(
-      _path(rect, textDirection, side.width / 2),
-      side.toPaint(),
-    );
+    canvas.drawPath(_path(rect, textDirection, side.width / 2), side.toPaint());
   }
 
   @override

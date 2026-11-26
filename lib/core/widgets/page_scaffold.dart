@@ -138,9 +138,8 @@ class _PageScaffoldState extends State<PageScaffold> {
                           widget.appBarTitle ?? widget.title,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          textScaler: MediaQuery.textScalerOf(
-                            context,
-                          ).clamp(maxScaleFactor: 1.5),
+                          textScaler: MediaQuery.textScalerOf(context)
+                              .clamp(maxScaleFactor: 1.5),
                           style: AppTypography.titleM.copyWith(
                             color: c.textPrimary,
                           ),

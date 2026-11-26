@@ -35,43 +35,44 @@ class _NotesScreenState extends ConsumerState<NotesScreen> {
 
   Future<void> _openEditor({PrivateNote? note}) async {
     final l10n = AppLocalizations.of(context);
-    final controller = TextEditingController(text: note?.text ?? '');
     final saved = await showToolSheet<String>(
       context,
-      (context) => SheetBody(
-        title: note == null ? l10n.notesAdd : l10n.notesEdit,
-        children: [
-          TextField(
-            key: const ValueKey('note-editor-field'),
-            controller: controller,
-            autofocus: true,
-            minLines: 3,
-            maxLines: 6,
-            decoration: InputDecoration(hintText: l10n.notesHint),
-          ),
-          const SizedBox(height: AppSpacing.md),
-          Row(
-            children: [
-              Expanded(
-                child: OutlinedButton(
-                  onPressed: () => Navigator.pop(context),
-                  child: Text(l10n.toolsCancel),
+      (context) => SheetTextController(
+        text: note?.text ?? '',
+        builder: (context, controller) => SheetBody(
+          title: note == null ? l10n.notesAdd : l10n.notesEdit,
+          children: [
+            TextField(
+              key: const ValueKey('note-editor-field'),
+              controller: controller,
+              autofocus: true,
+              minLines: 3,
+              maxLines: 6,
+              decoration: InputDecoration(hintText: l10n.notesHint),
+            ),
+            const SizedBox(height: AppSpacing.md),
+            Row(
+              children: [
+                Expanded(
+                  child: OutlinedButton(
+                    onPressed: () => Navigator.pop(context),
+                    child: Text(l10n.toolsCancel),
+                  ),
                 ),
-              ),
-              const SizedBox(width: AppSpacing.sm),
-              Expanded(
-                child: FilledButton(
-                  key: const ValueKey('note-save'),
-                  onPressed: () => Navigator.pop(context, controller.text),
-                  child: Text(l10n.toolsSave),
+                const SizedBox(width: AppSpacing.sm),
+                Expanded(
+                  child: FilledButton(
+                    key: const ValueKey('note-save'),
+                    onPressed: () => Navigator.pop(context, controller.text),
+                    child: Text(l10n.toolsSave),
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
-    controller.dispose();
     if (saved == null || saved.trim().isEmpty || !mounted) return;
     final notifier = ref.read(notesProvider.notifier);
     if (note == null) {
@@ -161,7 +162,10 @@ class _NotesScreenState extends ConsumerState<NotesScreen> {
               suffixIcon: _query.isEmpty
                   ? null
                   : IconButton(
-                      icon: const Icon(AppIcons.clear, size: AppIconSize.action),
+                      icon: const Icon(
+                        AppIcons.clear,
+                        size: AppIconSize.action,
+                      ),
                       onPressed: () {
                         _search.clear();
                         setState(() => _query = '');

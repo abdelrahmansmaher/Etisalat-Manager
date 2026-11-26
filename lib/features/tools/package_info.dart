@@ -40,7 +40,8 @@ class PackageInfo {
     double? price, total, gb, minutes, mix, days;
     if (settled) {
       price = item.priceEgp?.toDouble() ?? _plain(facts.price?.value);
-      total = item.priceTotalEgp?.toDouble() ?? _plain(facts.rechargePrice?.value);
+      total =
+          item.priceTotalEgp?.toDouble() ?? _plain(facts.rechargePrice?.value);
       gb = item.quotaGb?.toDouble();
       minutes = item.quotaMinutes?.toDouble();
       mix = item.quotaMix?.toDouble();
@@ -91,11 +92,16 @@ class PackageInfo {
   final String? mixNote;
 
   /// Confirmed and not edited by the owner.
-  bool get confirmed =>
-      item.status == ItemStatus.confirmed && !item.userEdited;
+  bool get confirmed => item.status == ItemStatus.confirmed && !item.userEdited;
 
   String? get priceText => facts.price?.display ?? _egp(price);
   String? get totalText => facts.rechargePrice?.display ?? _egp(total);
+
+  /// Internet quota as the content states it; the rounded number only when
+  /// there is no stated text.
+  String? get gbText =>
+      gb == null ? null : facts.internetText ?? '${formatNumber(gb!)} جيجا';
+
   String? get validityText => _text(facts.validity);
   String? get afterText => _text(facts.afterBundle);
   String? get codeText => facts.code?.value ?? item.codes.firstOrNull;
@@ -174,15 +180,15 @@ class PackageInfo {
   static double? _factDays(Fact? f) {
     if (f == null) return null;
     final text = toAsciiDigits('${f.value} ${f.unit ?? ''}');
-    final m = RegExp(
-      r'^\s*(\d+)\s*(يوم|أيام|ايام|ساعة|ساعه)(?=$|[\s(])',
-    ).firstMatch(text);
+    final m = RegExp(r'^\s*(\d+)\s*(يوم|أيام|ايام|ساعة|ساعه)(?=$|[\s(])')
+        .firstMatch(text);
     if (m == null) return null;
     final n = double.parse(m[1]!);
     return m[2]!.startsWith('ساع') ? n / 24 : n;
   }
 
   static PackageUse _useOf(ContentItem item) {
+    if (item.family == 'addon') return PackageUse.other;
     final s = _norm('${item.family ?? ''} ${item.category}');
     if (_has(s, const ['تجوال', 'roaming', 'زوار', 'travel', 'اضافات'])) {
       return PackageUse.other;

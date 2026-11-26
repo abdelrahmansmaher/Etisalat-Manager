@@ -21,11 +21,16 @@ abstract final class AppSpacing {
   /// Minimum touch target (Material) — doc 04 §6.1.
   static const double minTouchTarget = 48;
 
-  /// Horizontal screen padding by width class (mobile / tablet / web).
+  /// Widest readable column; wider screens centre it.
+  static const double maxContentWidth = 840;
+
+  /// Horizontal screen padding by width class (mobile / tablet / web). On
+  /// wide screens it grows so the content column never passes
+  /// [maxContentWidth].
   static double screenPaddingFor(double width) {
-    if (width >= 1200) return xxl;
-    if (width >= 600) return xl;
-    return md;
+    final base = width >= 600 ? xl : md;
+    final side = (width - maxContentWidth) / 2;
+    return side > base ? side : base;
   }
 
   static EdgeInsetsDirectional screenPadding(double width) =>

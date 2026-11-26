@@ -1,7 +1,7 @@
 {
   "section": "procedures",
   "source_document": "pdf_guide_2026_11",
-  "as_of": "2026-11-23",
+  "as_of": "2026-11-25",
   "items": [
     {
       "id": "proc-case-1a-new-line-egyptian",
@@ -61,8 +61,57 @@
       ],
       "related": [
         "proc-rule-face-id",
-        "proc-rule-sales-place"
+        "proc-rule-sales-place",
+        "proc-rule-lines-per-id"
       ]
+    },
+    {
+      "id": "proc-rule-lines-per-id",
+      "type": "rule",
+      "category_ar": "بيع خط جديد",
+      "title_ar": "أقصى عدد خطوط على البطاقة",
+      "summary_ar": "10 خطوط صوت + 5 خطوط داتا على الرقم القومي، و5 + 5 على جواز الأجنبي.",
+      "facts": [
+        {
+          "label_ar": "مصري: خطوط صوت",
+          "value": "10",
+          "kind": "quantity"
+        },
+        {
+          "label_ar": "مصري: خطوط داتا",
+          "value": "5",
+          "kind": "quantity"
+        },
+        {
+          "label_ar": "أجنبي بالجواز: خطوط صوت",
+          "value": "5",
+          "kind": "quantity"
+        },
+        {
+          "label_ar": "أجنبي بالجواز: خطوط داتا",
+          "value": "5",
+          "kind": "quantity"
+        }
+      ],
+      "tags": [
+        "عدد الخطوط",
+        "كام خط",
+        "الحد الأقصى",
+        "أجنبي",
+        "جواز سفر",
+        "رقم قومي"
+      ],
+      "sources": [
+        {
+          "name": "الموقع الرسمي — حقوق وواجبات العميل (تم التحقق 2026-11-25)",
+          "url": "https://www.eand.com.eg/portal/rights-duties",
+          "type": "official_site",
+          "checked_at": "2026-11-25"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "status": "confirmed"
     },
     {
       "id": "proc-case-1d-corporate",
@@ -133,11 +182,14 @@
       "codes": [],
       "phones": [],
       "tags": [
-        "بدل فاقد",
-        "بدل تالف",
-        "شريحة ضاعت",
         "replacement sim",
-        "sim swap"
+        "sim",
+        "sim swap",
+        "بدل تالف",
+        "بدل فاقد",
+        "سيم",
+        "شريحة",
+        "شريحة ضاعت"
       ],
       "status": "confirmed",
       "sources": [
@@ -377,6 +429,70 @@
       "related": [
         "proc-case-4-mnp"
       ]
+    },
+    {
+      "id": "proc-mnp-official",
+      "type": "procedure",
+      "category_ar": "نقل الرقم (MNP)",
+      "title_ar": "التحويل لـ e& حسب الموقع الرسمي",
+      "summary_ar": "الفرع يمضّي العميل على الطلب ويختار النظام، والتفعيل خلال 24 ساعة من غير رسوم إضافية.",
+      "facts": [
+        {
+          "label_ar": "شرط الملكية",
+          "value": "الخط باسم العميل من 4 شهور على الأقل",
+          "kind": "text"
+        },
+        {
+          "label_ar": "خط الفاتورة",
+          "value": "لازم يسدد كل الفواتير",
+          "kind": "text"
+        },
+        {
+          "label_ar": "مدة التفعيل",
+          "value": "24 ساعة",
+          "kind": "duration"
+        },
+        {
+          "label_ar": "رسوم إضافية",
+          "value": "من غير رسوم",
+          "kind": "text"
+        }
+      ],
+      "steps_ar": [
+        "العميل يزور الفرع ويمضي طلب النقل.",
+        "يختار النظام المناسب.",
+        "الخط يتفعّل خلال 24 ساعة."
+      ],
+      "tags": [
+        "نقل الرقم",
+        "mnp",
+        "تحويل من شبكة",
+        "رسوم النقل",
+        "فودافون",
+        "اورنج",
+        "وي"
+      ],
+      "sources": [
+        {
+          "name": "الموقع الرسمي — Switch to e& (تم التحقق 2026-11-25)",
+          "url": "https://www.eand.com.eg/portal/Mobile/Switch-to-etisalat-Egypt",
+          "type": "official_site",
+          "checked_at": "2026-11-25"
+        },
+        {
+          "name": "الموقع الرسمي — حقوق وواجبات العميل (تم التحقق 2026-11-25)",
+          "url": "https://www.eand.com.eg/portal/rights-duties",
+          "type": "official_site",
+          "checked_at": "2026-11-25"
+        }
+      ],
+      "related": [
+        "proc-case-4-mnp",
+        "proc-case-4-port-in"
+      ],
+      "codes": [],
+      "phones": [],
+      "status": "confirmed"
     },
     {
       "id": "proc-case-4-port-out",

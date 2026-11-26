@@ -33,7 +33,9 @@ class DialTemplate {
 
   /// The code with every placeholder replaced.
   String fill(Map<String, String> values) => parts
-      .map((p) => p.isPlaceholder ? toAsciiDigits(values[p.text] ?? '') : p.text)
+      .map(
+        (p) => p.isPlaceholder ? toAsciiDigits(values[p.text] ?? '') : p.text,
+      )
       .join();
 
   static final RegExp _marks = RegExp('[\u200E\u200F\u2066-\u2069]');

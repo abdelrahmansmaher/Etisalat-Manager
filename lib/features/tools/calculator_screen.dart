@@ -63,9 +63,7 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
     final val = parseTypedNumber(_input.text);
     final result = val == null
         ? null
-        : (_mode == _CalcMode.card
-              ? rule.balanceFor(val)
-              : rule.cardFor(val));
+        : (_mode == _CalcMode.card ? rule.balanceFor(val) : rule.cardFor(val));
     final taxDiff = val != null && result != null
         ? (_mode == _CalcMode.card ? val - result : result - val)
         : null;
@@ -137,7 +135,9 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
                   _mode == _CalcMode.card
                       ? l10n.toolsCalcBalanceResult
                       : l10n.toolsCalcCardResult,
-                  style: AppTypography.labelL.copyWith(color: c.onMastheadMuted),
+                  style: AppTypography.labelL.copyWith(
+                    color: c.onMastheadMuted,
+                  ),
                 ),
                 const SizedBox(height: 4),
                 Text(
@@ -151,13 +151,17 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
                   const SizedBox(height: 4),
                   Text(
                     l10n.toolsCalcTaxPart(formatNumber(taxDiff)),
-                    style: AppTypography.bodyM.copyWith(color: c.onMastheadMuted),
+                    style: AppTypography.bodyM.copyWith(
+                      color: c.onMastheadMuted,
+                    ),
                   ),
                 ],
                 const SizedBox(height: AppSpacing.xs),
                 Text(
                   l10n.toolsCalcComputed,
-                  style: AppTypography.labelS.copyWith(color: c.onMastheadMuted),
+                  style: AppTypography.labelS.copyWith(
+                    color: c.onMastheadMuted,
+                  ),
                 ),
               ],
             ),
@@ -186,7 +190,9 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
                         formatNumber(rule.card),
                         formatNumber(rule.balance),
                       ),
-                      style: AppTypography.titleS.copyWith(color: c.textPrimary),
+                      style: AppTypography.titleS.copyWith(
+                        color: c.textPrimary,
+                      ),
                     ),
                   ],
                 ),

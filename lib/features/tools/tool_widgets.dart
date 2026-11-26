@@ -40,6 +40,32 @@ Future<T?> showToolSheet<T>(BuildContext context, WidgetBuilder builder) =>
       ),
     );
 
+/// A text controller that lives as long as its sheet: it is disposed with the
+/// sheet, after the closing animation, never while its field is still shown.
+class SheetTextController extends StatefulWidget {
+  const SheetTextController({super.key, this.text = '', required this.builder});
+
+  final String text;
+  final Widget Function(BuildContext context, TextEditingController controller)
+  builder;
+
+  @override
+  State<SheetTextController> createState() => _SheetTextControllerState();
+}
+
+class _SheetTextControllerState extends State<SheetTextController> {
+  late final _controller = TextEditingController(text: widget.text);
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) => widget.builder(context, _controller);
+}
+
 /// Scrolling column with sheet padding.
 class SheetBody extends StatelessWidget {
   const SheetBody({super.key, required this.title, required this.children});
@@ -179,9 +205,10 @@ class IconLine extends StatelessWidget {
 /// Number typed by the owner; accepts Arabic digits. `null` = empty or not
 /// a number.
 double? parseTypedNumber(String text) {
-  final s = toAsciiDigits(
-    text,
-  ).replaceAll(String.fromCharCode(0x66B), '.').replaceAll(',', '').trim();
+  final s = toAsciiDigits(text)
+      .replaceAll(String.fromCharCode(0x66B), '.')
+      .replaceAll(',', '')
+      .trim();
   return RegExp(r'^\d{1,9}(\.\d{1,3})?$').hasMatch(s) ? double.parse(s) : null;
 }
 
@@ -307,9 +334,10 @@ class _PackagePickerState extends ConsumerState<_PackagePicker> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final c = context.colors;
-    final words = normalizeArabic(
-      _query,
-    ).split(' ').where((w) => w.isNotEmpty).toList();
+    final words = normalizeArabic(_query)
+        .split(' ')
+        .where((w) => w.isNotEmpty)
+        .toList();
     final found = [
       for (final p in ref.watch(packageInfosProvider))
         if (!widget.exclude.contains(p.item.id) && _matches(p, words)) p,

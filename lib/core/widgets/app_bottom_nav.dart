@@ -84,9 +84,16 @@ class AppBottomNav extends StatelessWidget {
     ];
     final sum = natural.fold(0.0, (a, b) => a + b);
     final spare = (total - sum) / natural.length;
-    return spare >= 0
-        ? [for (final w in natural) w + spare]
-        : [for (final w in natural) w * total / sum];
+    if (spare >= 0) return [for (final w in natural) w + spare];
+    // Too little room: every tab keeps the minimum target and the rest is
+    // shared by how much more each label wanted (labels then scale down).
+    const min = AppSpacing.minTouchTarget;
+    final extra = natural.fold(0.0, (a, w) => a + (w - min));
+    final room = total - min * natural.length;
+    if (room <= 0 || extra <= 0) {
+      return [for (final _ in natural) total / natural.length];
+    }
+    return [for (final w in natural) min + (w - min) * room / extra];
   }
 
   Widget _bar(BuildContext context, double total) {

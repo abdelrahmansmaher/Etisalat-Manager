@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/content/content.dart';
 import '../../core/router/app_routes.dart';
 import '../../core/theme/theme.dart';
+import '../../core/user/user.dart';
+import '../../core/widgets/app_card.dart';
 import '../../core/widgets/ltr_text.dart';
 import '../../core/widgets/page_scaffold.dart';
 import '../../core/widgets/prose_text.dart';
@@ -92,10 +95,7 @@ class TrustLine extends StatelessWidget {
         ),
         const SizedBox(width: AppSpacing.xxs + 2),
         Expanded(
-          child: Text(
-            text,
-            style: AppTypography.labelL.copyWith(color: color),
-          ),
+          child: Text(text, style: AppTypography.labelL.copyWith(color: color)),
         ),
       ],
     );
@@ -154,15 +154,46 @@ String clipWords(String text, {int max = 72}) {
   if (out.isEmpty) out.add(words.first);
   // Never end on a bare preposition before a dropped number.
   while (out.length > 1 &&
-      const {'بـ', 'ب', 'من', 'كل', 'حتى', 'و', '-', '–', '—'}.contains(
-        out.last,
-      )) {
+      const {
+        'بـ',
+        'ب',
+        'من',
+        'كل',
+        'حتى',
+        'و',
+        '-',
+        '–',
+        '—',
+      }.contains(out.last)) {
     out.removeLast();
   }
   return '${out.join(' ').replaceAll(RegExp(r'[،,:؛.\-–—]+$'), '')}…';
 }
 
 const double _rowMinHeight = 60;
+
+/// Small heart after the title of a favourite.
+class _FavoriteMark extends ConsumerWidget {
+  const _FavoriteMark(this.id);
+
+  final String id;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final on = ref.watch(favoritesProvider.select((s) => s.contains(id)));
+    if (!on) return const SizedBox.shrink();
+    return Padding(
+      padding: const EdgeInsetsDirectional.only(start: AppSpacing.xxs),
+      child: Icon(
+        AppIcons.toolFavorite,
+        key: ValueKey('favorite-mark-$id'),
+        size: 14,
+        color: context.colors.primary,
+        semanticLabel: AppLocalizations.of(context).toolsFavorite,
+      ),
+    );
+  }
+}
 
 /// Shared frame of every dense row.
 class _RowFrame extends StatelessWidget {
@@ -192,7 +223,8 @@ class _RowFrame extends StatelessWidget {
   }
 }
 
-/// Title with its mark flowing right after the last word.
+/// Title with its marks beside it: a long title wraps, the marks never drop
+/// to a line of their own.
 class _RowTitle extends StatelessWidget {
   const _RowTitle(this.item, {this.title});
 
@@ -202,19 +234,22 @@ class _RowTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final c = context.colors;
-    return Wrap(
-      spacing: AppSpacing.xxs,
-      crossAxisAlignment: WrapCrossAlignment.center,
+    return Row(
+      mainAxisSize: MainAxisSize.min,
       children: [
-        ProseText(
-          title ?? item.title,
-          style: AppTypography.titleS.copyWith(
-            color: c.textPrimary,
-            fontSize: 15,
-            height: 22 / 15,
+        Flexible(
+          child: ProseText(
+            title ?? item.title,
+            style: AppTypography.titleS.copyWith(
+              color: c.textPrimary,
+              fontSize: 15,
+              height: 22 / 15,
+            ),
           ),
         ),
+        const SizedBox(width: AppSpacing.xxs),
         ItemMark(item),
+        _FavoriteMark(item.id),
       ],
     );
   }
@@ -234,25 +269,29 @@ class PriceText extends StatelessWidget {
     return Semantics(
       label: '$amount ${l10n.currencyEgp}',
       excludeSemantics: true,
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.baseline,
-        textBaseline: TextBaseline.alphabetic,
-        children: [
-          LtrText(
-            amount,
-            style: AppTypography.price.copyWith(
-              color: c.accentText,
-              fontSize: size,
-              height: 24 / size,
+      child: FittedBox(
+        fit: BoxFit.scaleDown,
+        alignment: AlignmentDirectional.centerEnd,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.baseline,
+          textBaseline: TextBaseline.alphabetic,
+          children: [
+            LtrText(
+              amount,
+              style: AppTypography.price.copyWith(
+                color: c.accentText,
+                fontSize: size,
+                height: 24 / size,
+              ),
             ),
-          ),
-          const SizedBox(width: 3),
-          Text(
-            l10n.currencyShort,
-            style: AppTypography.labelS.copyWith(color: c.accentText),
-          ),
-        ],
+            const SizedBox(width: 3),
+            Text(
+              l10n.currencyShort,
+              style: AppTypography.labelS.copyWith(color: c.accentText),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -298,17 +337,7 @@ class PackageRow extends StatelessWidget {
           l10n.packageNoPriceShort,
           style: AppTypography.labelS.copyWith(color: c.textTertiary),
         ),
-      if (code != null)
-        CodeValue(
-          code,
-          key: ValueKey('code-${item.id}'),
-          style: AppTypography.code.copyWith(
-            color: c.textSecondary,
-            fontSize: 12,
-            height: 16 / 12,
-            letterSpacing: 0,
-          ),
-        ),
+      if (code != null) _RowCode(item.id, code),
     ];
 
     return _RowFrame(
@@ -350,6 +379,53 @@ class PackageRow extends StatelessWidget {
   }
 }
 
+/// Subscription code of a package row; one tap copies it.
+class _RowCode extends StatelessWidget {
+  const _RowCode(this.itemId, this.code);
+
+  final String itemId;
+  final String code;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final c = context.colors;
+    return Semantics(
+      button: true,
+      label: l10n.copyValueSemantics(code),
+      excludeSemantics: true,
+      child: InkWell(
+        key: ValueKey('copy-code-$itemId'),
+        borderRadius: AppRadius.xsAll,
+        onTap: () => CodeText.copyToClipboard(context, code),
+        child: Padding(
+          // A taller target than the text, without a taller row.
+          padding: const EdgeInsets.symmetric(vertical: AppSpacing.xxs + 2),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Flexible(
+                child: CodeValue(
+                  code,
+                  key: ValueKey('code-$itemId'),
+                  style: AppTypography.code.copyWith(
+                    color: c.primary,
+                    fontSize: 13,
+                    height: 18 / 13,
+                    letterSpacing: 0,
+                  ),
+                ),
+              ),
+              const SizedBox(width: AppSpacing.xxs),
+              Icon(AppIcons.copy, size: 14, color: c.primary),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 /// The value a code / hotline row shows: the first phone of a contact, the
 /// first code otherwise.
 String? leadCode(ContentItem i) {
@@ -374,6 +450,13 @@ class CodeRow extends StatelessWidget {
         : i.title;
   }
 
+  /// Hotline, wallet code or network code at a glance.
+  static IconData iconOf(ContentItem i) => i.type == ItemType.contact
+      ? AppIcons.catHotline
+      : i.section == ContentSection.wallet
+      ? AppIcons.catWalletCodes
+      : AppIcons.catGsm;
+
   @override
   Widget build(BuildContext context) {
     final c = context.colors;
@@ -387,6 +470,8 @@ class CodeRow extends StatelessWidget {
       ),
       child: Row(
         children: [
+          TintedIcon(iconOf(item), tile: IconTile.sm),
+          const SizedBox(width: AppSpacing.sm),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -455,15 +540,17 @@ class ArticleRow extends StatelessWidget {
               children: [
                 _RowTitle(item),
                 if (snippet != null)
-                  HighlightedText(snippet!, highlights: highlights, style: style)
+                  HighlightedText(
+                    snippet!,
+                    highlights: highlights,
+                    style: style,
+                  )
                 else if (item.summary.isNotEmpty)
                   ProseText(clipWords(item.summary), style: style),
                 if (sectionLabel != null)
                   Text(
                     sectionLabel!,
-                    style: AppTypography.labelS.copyWith(
-                      color: c.textTertiary,
-                    ),
+                    style: AppTypography.labelS.copyWith(color: c.textTertiary),
                   ),
               ],
             ),
@@ -551,31 +638,38 @@ class GroupHeader extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Flexible(
-            child: Semantics(
-              header: true,
-              child: Text(
-                title,
-                key: ValueKey('group-$title'),
-                style: AppTypography.titleM.copyWith(
-                  color: c.textPrimary,
-                  fontWeight: FontWeight.w700,
+          // Takes all the room left, so a trailing link sits on the edge.
+          Expanded(
+            child: Row(
+              children: [
+                Flexible(
+                  child: Semantics(
+                    header: true,
+                    child: Text(
+                      title,
+                      key: ValueKey('group-$title'),
+                      style: AppTypography.titleM.copyWith(
+                        color: c.textPrimary,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
                 ),
-              ),
+                if (count != null) ...[
+                  const SizedBox(width: AppSpacing.xs),
+                  Text(
+                    '$count',
+                    key: ValueKey('group-count-$title'),
+                    style: AppTypography.labelL.copyWith(
+                      color: c.textTertiary,
+                      fontFeatures: AppTypography.tabular,
+                    ),
+                  ),
+                ],
+              ],
             ),
           ),
-          if (count != null) ...[
-            const SizedBox(width: AppSpacing.xs),
-            Text(
-              '$count',
-              key: ValueKey('group-count-$title'),
-              style: AppTypography.labelL.copyWith(
-                color: c.textTertiary,
-                fontFeatures: AppTypography.tabular,
-              ),
-            ),
-          ],
-          if (trailing != null) ...[const Spacer(), trailing!],
+          ?trailing,
         ],
       ),
     );

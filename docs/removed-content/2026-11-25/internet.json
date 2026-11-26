@@ -14457,6 +14457,94 @@
         }
       ],
       "removed_reason": "عُدّل (الأصل قبل التعديل): اختصار الملاحظات/المصادر"
+    },
+    {
+      "id": "net-esim-price-convert",
+      "type": "fee",
+      "category_ar": "eSIM",
+      "title_ar": "سعر eSIM (تحويل / استبدال شريحة عادية)",
+      "summary_ar": "تحويل شريحة عادية لـ eSIM بـ 367.72 ج شامل الضريبة ورسوم eKYC.",
+      "facts": [
+        {
+          "label_ar": "السعر (تحويل، شامل الضريبة ورسوم eKYC)",
+          "value": "367.72",
+          "kind": "price",
+          "unit": "ج"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "esim",
+        "تحويل",
+        "استبدال",
+        "اي سيم"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "مؤكد من الموقع الرسمي (23 نوفمبر 2026).",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "الموقع الرسمي — eSIM (تم التحقق 2026-11-23)",
+          "url": "https://www.eand.com.eg/portal/Mobile/eSIM",
+          "type": "official_site",
+          "checked_at": "2026-11-23"
+        }
+      ],
+      "pdf_pages": [
+        38
+      ],
+      "removed_reason": "تعارض داخل الموقع الرسمي: 367.72 ج في صفحة eSIM و300 ج في /faq (25 نوفمبر 2026)"
+    },
+    {
+      "id": "net-faq-esim-price",
+      "type": "faq",
+      "category_ar": "أسئلة سريعة",
+      "title_ar": "eSIM بكام؟",
+      "summary_ar": "350 ج خط جديد، و367.72 ج تحويل من شريحة عادية.",
+      "facts": [
+        {
+          "label_ar": "خط جديد",
+          "value": "350",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "تحويل من شريحة عادية",
+          "value": "367.72",
+          "kind": "price",
+          "unit": "ج"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "نت",
+        "داتا",
+        "انترنت",
+        "internet",
+        "data",
+        "سؤال",
+        "كاونتر"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        39
+      ],
+      "related": [
+        "net-esim-price-new",
+        "net-esim-price-convert"
+      ],
+      "removed_reason": "البند فضل في التطبيق. اتشال سعر التحويل 367.72 ج (تعارض داخل الموقع الرسمي)"
     }
   ]
 }

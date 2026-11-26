@@ -4421,6 +4421,44 @@
         49
       ],
       "removed_reason": "حُذف: قائمة مصادر"
+    },
+    {
+      "id": "wal-fee-open",
+      "type": "fee",
+      "category_ar": "الرسوم",
+      "title_ar": "رسوم فتح المحفظة",
+      "summary_ar": "مجاني.",
+      "facts": [
+        {
+          "label_ar": "الرسوم",
+          "value": "مجاني",
+          "kind": "text"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "اتصالات كاش",
+        "e& cash",
+        "e& money",
+        "etisalat cash",
+        "wallet",
+        "رسوم",
+        "فتح محفظة"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        }
+      ],
+      "pdf_pages": [
+        45
+      ],
+      "removed_reason": "البند فضل في التطبيق. اتضاف رسم تنمية موارد الدولة من الموقع الرسمي (25 نوفمبر 2026)"
     }
   ]
 }
