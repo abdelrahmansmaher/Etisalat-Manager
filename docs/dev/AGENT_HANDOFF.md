@@ -2,8 +2,9 @@
 
 > **Updated:** 2026-11-26 (v5: liquid glass, strict prices, direct call, postpaid taxes)
 > **State:** `flutter analyze` clean, `flutter test` 781/781 green, `flutter build web --release` OK.
-> v0.4.0 was tagged but its release job failed: the repo has no Android signing secrets
-> (`ANDROID_KEYSTORE_BASE64`, `ANDROID_KEYSTORE_PASSWORD`, `ANDROID_KEY_ALIAS`); only the owner can add them.
+> Release v0.5.0 (2026-11-26) is the first one signed with the release key (secrets
+> `ANDROID_KEYSTORE_BASE64`, `ANDROID_KEYSTORE_PASSWORD`, `ANDROID_KEY_ALIAS`, `ANDROID_KEY_PASSWORD`).
+> Earlier APKs were debug-signed, so phones must uninstall them once before installing v0.5.0.
 
 ## Owner's standing rules (do not break)
 - Content ships **only if confirmed, current and useful at the counter**. Anything else goes to

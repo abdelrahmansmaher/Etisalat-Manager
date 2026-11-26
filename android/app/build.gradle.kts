@@ -46,7 +46,9 @@ android {
             signing("storeFile", "ANDROID_KEYSTORE_PATH")?.let { storeFile = file(it) }
             storePassword = signing("storePassword", "ANDROID_KEYSTORE_PASSWORD")
             keyAlias = signing("keyAlias", "ANDROID_KEY_ALIAS")
-            keyPassword = signing("keyPassword", "ANDROID_KEYSTORE_PASSWORD")
+            // The key may have its own password; else it shares the store's.
+            keyPassword = signing("keyPassword", "ANDROID_KEY_PASSWORD")
+                ?: signing("keyPassword", "ANDROID_KEYSTORE_PASSWORD")
         }
     }
 
