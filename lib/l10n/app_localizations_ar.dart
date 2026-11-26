@@ -518,10 +518,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get toolsRecommendSubtitle =>
-      'اكتب ما يحتاجه العميل واترك الباقي فارغًا';
+      'اختار اللي العميل محتاجه، والباقي سيبه فاضي';
 
   @override
-  String get toolsRecommendBudget => 'الميزانية (جنيه)';
+  String get toolsRecommendBudget => 'العميل هيدفع كام؟ (جنيه شامل الضريبة)';
 
   @override
   String get toolsRecommendGb => 'إنترنت (جيجا)';
@@ -536,7 +536,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get toolsUseHome => 'منزلي';
 
   @override
-  String get toolsRecommendStart => 'اكتب الميزانية أو الجيجا أو الدقائق';
+  String get toolsRecommendStart =>
+      'اختار ميزانية أو جيجا أو دقايق أو مدة، والنتيجة بتظهر على طول';
 
   @override
   String get toolsRecommendFits => 'تغطي كل الطلبات';
@@ -558,7 +559,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String toolsBudgetMissed(String value) {
-    return 'السعر $value جنيه، أعلى من الميزانية';
+    return 'التكلفة $value جنيه، أعلى من الميزانية';
   }
 
   @override
@@ -1180,4 +1181,117 @@ class AppLocalizationsAr extends AppLocalizations {
   String detailStepsProgress(int done, int total) {
     return '$done من $total';
   }
+
+  @override
+  String get badgeNew => 'جديد';
+
+  @override
+  String get peekOpen => 'افتح التفاصيل';
+
+  @override
+  String get peekHint => 'اضغط مطوّل على أي بند لمعاينة سريعة';
+
+  @override
+  String get navNewContent => 'فيه تحديث جديد';
+
+  @override
+  String get toolsCalcModePostpaid => 'باقة فاتورة';
+
+  @override
+  String get toolsCalcPostpaidLabel => 'سعر الباقة الشهري قبل الضريبة (جنيه)';
+
+  @override
+  String get toolsCalcPostpaidResult => 'الإجمالي الشهري شامل الضرائب والرسوم';
+
+  @override
+  String toolsCalcPostpaidParts(String table, String vat, String fees) {
+    return 'ضريبة جدول 8%: $table · قيمة مضافة 14%: $vat · رسوم: $fees';
+  }
+
+  @override
+  String get toolsCalcPostpaidRule =>
+      'السعر × 1.08 × 1.14 + 10 تنمية + 1.34 دمغة';
+
+  @override
+  String get toolsRecommendValidity => 'المدة';
+
+  @override
+  String get toolsValidityAny => 'أي مدة';
+
+  @override
+  String get toolsValidityMonthly => 'شهرية';
+
+  @override
+  String get toolsValidityShort => 'أقل من شهر';
+
+  @override
+  String get toolsRecommendBest => 'الترشيح الأول';
+
+  @override
+  String get toolsRecommendBestBudget => 'أكتر حاجة الميزانية تجيبها';
+
+  @override
+  String get toolsRecommendBestCheapest => 'أرخص باقة تغطي الطلب';
+
+  @override
+  String get toolsRecommendReset => 'مسح';
+
+  @override
+  String get toolsRecommendOpen => 'افتح الباقة';
+
+  @override
+  String get toolsRecommendComputed => 'محسوب';
+
+  @override
+  String get toolsRecommendPays => 'العميل يدفع';
+
+  @override
+  String toolsRecommendDeducted(String value) {
+    return 'يتخصم من الرصيد $value ج';
+  }
+
+  @override
+  String toolsBudgetComputed(String value) {
+    return 'يشحن $value جنيه (محسوب من سعر الخصم)، في حدود الميزانية';
+  }
+
+  @override
+  String toolsMinutesEandOnly(String value) {
+    return '$value وحدة: تكفي لو المكالمات لأرقام e&';
+  }
+
+  @override
+  String toolsMinutesAnyNetwork(String value) {
+    return '$value وحدة: تكفي حتى للشبكات التانية';
+  }
+
+  @override
+  String toolsMinutesUnitsShort(String value) {
+    return '$value وحدة: أقل من المطلوب';
+  }
+
+  @override
+  String toolsValidityMet(String value) {
+    return 'المدة $value يوم، مناسبة';
+  }
+
+  @override
+  String toolsValidityMissed(String value) {
+    return 'المدة $value يوم، مش مناسبة';
+  }
+
+  @override
+  String get toolsValidityNotStated => 'المدة غير مذكورة';
+
+  @override
+  String get toolsRecommendPrice => 'السعر المذكور';
+
+  @override
+  String get toolsRecommendBeforeTax => 'قبل الضريبة';
+
+  @override
+  String get packageIncludesTitle => 'مميزات الباقة';
+
+  @override
+  String get badgeOfficial => 'رسمي';
 }

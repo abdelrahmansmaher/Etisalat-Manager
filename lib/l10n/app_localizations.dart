@@ -1001,13 +1001,13 @@ abstract class AppLocalizations {
   /// No description provided for @toolsRecommendSubtitle.
   ///
   /// In ar, this message translates to:
-  /// **'اكتب ما يحتاجه العميل واترك الباقي فارغًا'**
+  /// **'اختار اللي العميل محتاجه، والباقي سيبه فاضي'**
   String get toolsRecommendSubtitle;
 
   /// No description provided for @toolsRecommendBudget.
   ///
   /// In ar, this message translates to:
-  /// **'الميزانية (جنيه)'**
+  /// **'العميل هيدفع كام؟ (جنيه شامل الضريبة)'**
   String get toolsRecommendBudget;
 
   /// No description provided for @toolsRecommendGb.
@@ -1037,7 +1037,7 @@ abstract class AppLocalizations {
   /// No description provided for @toolsRecommendStart.
   ///
   /// In ar, this message translates to:
-  /// **'اكتب الميزانية أو الجيجا أو الدقائق'**
+  /// **'اختار ميزانية أو جيجا أو دقايق أو مدة، والنتيجة بتظهر على طول'**
   String get toolsRecommendStart;
 
   /// No description provided for @toolsRecommendFits.
@@ -1073,7 +1073,7 @@ abstract class AppLocalizations {
   /// No description provided for @toolsBudgetMissed.
   ///
   /// In ar, this message translates to:
-  /// **'السعر {value} جنيه، أعلى من الميزانية'**
+  /// **'التكلفة {value} جنيه، أعلى من الميزانية'**
   String toolsBudgetMissed(String value);
 
   /// No description provided for @toolsBudgetUnknown.
@@ -2155,6 +2155,198 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'{done} من {total}'**
   String detailStepsProgress(int done, int total);
+
+  /// No description provided for @badgeNew.
+  ///
+  /// In ar, this message translates to:
+  /// **'جديد'**
+  String get badgeNew;
+
+  /// No description provided for @peekOpen.
+  ///
+  /// In ar, this message translates to:
+  /// **'افتح التفاصيل'**
+  String get peekOpen;
+
+  /// No description provided for @peekHint.
+  ///
+  /// In ar, this message translates to:
+  /// **'اضغط مطوّل على أي بند لمعاينة سريعة'**
+  String get peekHint;
+
+  /// No description provided for @navNewContent.
+  ///
+  /// In ar, this message translates to:
+  /// **'فيه تحديث جديد'**
+  String get navNewContent;
+
+  /// No description provided for @toolsCalcModePostpaid.
+  ///
+  /// In ar, this message translates to:
+  /// **'باقة فاتورة'**
+  String get toolsCalcModePostpaid;
+
+  /// No description provided for @toolsCalcPostpaidLabel.
+  ///
+  /// In ar, this message translates to:
+  /// **'سعر الباقة الشهري قبل الضريبة (جنيه)'**
+  String get toolsCalcPostpaidLabel;
+
+  /// No description provided for @toolsCalcPostpaidResult.
+  ///
+  /// In ar, this message translates to:
+  /// **'الإجمالي الشهري شامل الضرائب والرسوم'**
+  String get toolsCalcPostpaidResult;
+
+  /// No description provided for @toolsCalcPostpaidParts.
+  ///
+  /// In ar, this message translates to:
+  /// **'ضريبة جدول 8%: {table} · قيمة مضافة 14%: {vat} · رسوم: {fees}'**
+  String toolsCalcPostpaidParts(String table, String vat, String fees);
+
+  /// No description provided for @toolsCalcPostpaidRule.
+  ///
+  /// In ar, this message translates to:
+  /// **'السعر × 1.08 × 1.14 + 10 تنمية + 1.34 دمغة'**
+  String get toolsCalcPostpaidRule;
+
+  /// No description provided for @toolsRecommendValidity.
+  ///
+  /// In ar, this message translates to:
+  /// **'المدة'**
+  String get toolsRecommendValidity;
+
+  /// No description provided for @toolsValidityAny.
+  ///
+  /// In ar, this message translates to:
+  /// **'أي مدة'**
+  String get toolsValidityAny;
+
+  /// No description provided for @toolsValidityMonthly.
+  ///
+  /// In ar, this message translates to:
+  /// **'شهرية'**
+  String get toolsValidityMonthly;
+
+  /// No description provided for @toolsValidityShort.
+  ///
+  /// In ar, this message translates to:
+  /// **'أقل من شهر'**
+  String get toolsValidityShort;
+
+  /// No description provided for @toolsRecommendBest.
+  ///
+  /// In ar, this message translates to:
+  /// **'الترشيح الأول'**
+  String get toolsRecommendBest;
+
+  /// No description provided for @toolsRecommendBestBudget.
+  ///
+  /// In ar, this message translates to:
+  /// **'أكتر حاجة الميزانية تجيبها'**
+  String get toolsRecommendBestBudget;
+
+  /// No description provided for @toolsRecommendBestCheapest.
+  ///
+  /// In ar, this message translates to:
+  /// **'أرخص باقة تغطي الطلب'**
+  String get toolsRecommendBestCheapest;
+
+  /// No description provided for @toolsRecommendReset.
+  ///
+  /// In ar, this message translates to:
+  /// **'مسح'**
+  String get toolsRecommendReset;
+
+  /// No description provided for @toolsRecommendOpen.
+  ///
+  /// In ar, this message translates to:
+  /// **'افتح الباقة'**
+  String get toolsRecommendOpen;
+
+  /// No description provided for @toolsRecommendComputed.
+  ///
+  /// In ar, this message translates to:
+  /// **'محسوب'**
+  String get toolsRecommendComputed;
+
+  /// No description provided for @toolsRecommendPays.
+  ///
+  /// In ar, this message translates to:
+  /// **'العميل يدفع'**
+  String get toolsRecommendPays;
+
+  /// No description provided for @toolsRecommendDeducted.
+  ///
+  /// In ar, this message translates to:
+  /// **'يتخصم من الرصيد {value} ج'**
+  String toolsRecommendDeducted(String value);
+
+  /// No description provided for @toolsBudgetComputed.
+  ///
+  /// In ar, this message translates to:
+  /// **'يشحن {value} جنيه (محسوب من سعر الخصم)، في حدود الميزانية'**
+  String toolsBudgetComputed(String value);
+
+  /// No description provided for @toolsMinutesEandOnly.
+  ///
+  /// In ar, this message translates to:
+  /// **'{value} وحدة: تكفي لو المكالمات لأرقام e&'**
+  String toolsMinutesEandOnly(String value);
+
+  /// No description provided for @toolsMinutesAnyNetwork.
+  ///
+  /// In ar, this message translates to:
+  /// **'{value} وحدة: تكفي حتى للشبكات التانية'**
+  String toolsMinutesAnyNetwork(String value);
+
+  /// No description provided for @toolsMinutesUnitsShort.
+  ///
+  /// In ar, this message translates to:
+  /// **'{value} وحدة: أقل من المطلوب'**
+  String toolsMinutesUnitsShort(String value);
+
+  /// No description provided for @toolsValidityMet.
+  ///
+  /// In ar, this message translates to:
+  /// **'المدة {value} يوم، مناسبة'**
+  String toolsValidityMet(String value);
+
+  /// No description provided for @toolsValidityMissed.
+  ///
+  /// In ar, this message translates to:
+  /// **'المدة {value} يوم، مش مناسبة'**
+  String toolsValidityMissed(String value);
+
+  /// No description provided for @toolsValidityNotStated.
+  ///
+  /// In ar, this message translates to:
+  /// **'المدة غير مذكورة'**
+  String get toolsValidityNotStated;
+
+  /// No description provided for @toolsRecommendPrice.
+  ///
+  /// In ar, this message translates to:
+  /// **'السعر المذكور'**
+  String get toolsRecommendPrice;
+
+  /// No description provided for @toolsRecommendBeforeTax.
+  ///
+  /// In ar, this message translates to:
+  /// **'قبل الضريبة'**
+  String get toolsRecommendBeforeTax;
+
+  /// No description provided for @packageIncludesTitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'مميزات الباقة'**
+  String get packageIncludesTitle;
+
+  /// No description provided for @badgeOfficial.
+  ///
+  /// In ar, this message translates to:
+  /// **'رسمي'**
+  String get badgeOfficial;
 }
 
 class _AppLocalizationsDelegate

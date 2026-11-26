@@ -5,6 +5,8 @@ import 'package:go_router/go_router.dart';
 import '../../core/content/content.dart';
 import '../../core/router/app_routes.dart';
 import '../../core/theme/theme.dart';
+import '../../core/widgets/app_card.dart';
+import '../../core/widgets/motion.dart';
 import '../../core/widgets/capsules.dart';
 import '../../core/widgets/list_surface.dart';
 import '../../core/widgets/masthead.dart';
@@ -89,71 +91,70 @@ class _PackagesScreenState extends ConsumerState<PackagesScreen> {
       controller: _scroll,
       scrollKey: const ValueKey('packages-scroll'),
       top: _PackagesTop(title: l10n.navPackages),
-      slivers: [
-        // Segment and families stay one tap away while the list scrolls.
-        PinnedHeaderSliver(
-          child: Container(
-            color: Theme.of(context).scaffoldBackgroundColor,
-            padding: EdgeInsetsDirectional.fromSTEB(pad, AppSpacing.xs, pad, 0),
-            child: SegmentedCapsule<PackageSegment>(
-              key: const ValueKey('package-segments'),
-              selected: _segment,
-              onChanged: (s) => context.go(AppRoutes.packagesSegment(s.name)),
-              segments: [
-                for (final s in PackageSegment.values)
-                  CapsuleSegment(
-                    key: ValueKey('segment-${s.name}'),
-                    value: s,
-                    label: switch (s) {
-                      PackageSegment.mobile => l10n.segmentMobile,
-                      PackageSegment.mobileInternet =>
-                        l10n.segmentMobileInternet,
-                      PackageSegment.home => l10n.segmentHome,
-                    },
-                  ),
-              ],
-            ),
-          ),
-        ),
-        PinnedHeaderSliver(
-          child: Container(
-            color: Theme.of(context).scaffoldBackgroundColor,
-            padding: const EdgeInsets.symmetric(vertical: AppSpacing.xxs),
-            child: CapsuleRow(
-              key: const ValueKey('family-capsules'),
-              padding: hPad,
-              children: [
-                _SortButton(
-                  sort: _sort,
-                  onChanged: (s) => setState(() {
-                    _sort = s;
-                    _toTop();
-                  }),
+      // Segment and families stay in the glass header while the list
+      // scrolls under it.
+      headerBottom: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          SegmentedCapsule<PackageSegment>(
+            key: const ValueKey('package-segments'),
+            selected: _segment,
+            onChanged: (s) => context.go(AppRoutes.packagesSegment(s.name)),
+            segments: [
+              for (final s in PackageSegment.values)
+                CapsuleSegment(
+                  key: ValueKey('segment-${s.name}'),
+                  value: s,
+                  label: switch (s) {
+                    PackageSegment.mobile => l10n.segmentMobile,
+                    PackageSegment.mobileInternet => l10n.segmentMobileInternet,
+                    PackageSegment.home => l10n.segmentHome,
+                  },
                 ),
-                if (families.length > 1) ...[
-                  Capsule(
-                    key: const ValueKey('family-all'),
-                    label: l10n.filterAll,
-                    dense: true,
-                    selected: family == null,
-                    onTap: () => setState(() => _family = null),
-                  ),
-                  for (final f in families)
-                    Capsule(
-                      key: ValueKey('family-$f'),
-                      label: f,
-                      dense: true,
-                      selected: family == f,
-                      onTap: () => setState(() {
-                        _family = family == f ? null : f;
-                        _toTop();
-                      }),
-                    ),
-                ],
-              ],
-            ),
+            ],
           ),
-        ),
+          const SizedBox(height: AppSpacing.xxs),
+          CapsuleRow(
+            key: const ValueKey('family-capsules'),
+            padding: EdgeInsets.zero,
+            // The navy pill glides between families.
+            selected: families.length > 1
+                ? (family == null ? 1 : 2 + families.indexOf(family))
+                : null,
+            children: [
+              _SortButton(
+                sort: _sort,
+                onChanged: (s) => setState(() {
+                  _sort = s;
+                  _toTop();
+                }),
+              ),
+              if (families.length > 1) ...[
+                Capsule(
+                  key: const ValueKey('family-all'),
+                  label: l10n.filterAll,
+                  dense: true,
+                  selected: family == null,
+                  onTap: () => setState(() => _family = null),
+                ),
+                for (final f in families)
+                  Capsule(
+                    key: ValueKey('family-$f'),
+                    label: f,
+                    dense: true,
+                    selected: family == f,
+                    onTap: () => setState(() {
+                      _family = family == f ? null : f;
+                      _toTop();
+                    }),
+                  ),
+              ],
+            ],
+          ),
+        ],
+      ),
+      slivers: [
         if (async.isLoading && async.value == null)
           SliverPadding(
             padding: hPad,
@@ -173,10 +174,19 @@ class _PackagesScreenState extends ConsumerState<PackagesScreen> {
         if (shown.isNotEmpty)
           SliverPadding(
             padding: hPad,
-            sliver: SliverListSurface(
+            // Every package is a card of its own.
+            sliver: SliverList.separated(
               key: const ValueKey('package-list'),
               itemCount: shown.length,
-              itemBuilder: (_, i) => PackageRow(item: shown[i]),
+              separatorBuilder: (_, _) => const SizedBox(height: AppSpacing.xs),
+              itemBuilder: (_, i) => Entrance(
+                index: i,
+                child: AppCard(
+                  role: CardRole.flat,
+                  padding: EdgeInsets.zero,
+                  child: PackageRow(item: shown[i]),
+                ),
+              ),
             ),
           ),
         if (info.isNotEmpty) ...[
@@ -278,8 +288,8 @@ class _ToolButton extends StatelessWidget {
       label: label,
       excludeSemantics: true,
       child: Material(
-        color: c.onMasthead.withValues(alpha: 0.10),
-        shape: const StadiumBorder(),
+        color: c.headerField,
+        shape: StadiumBorder(side: BorderSide(color: c.glassEdge)),
         clipBehavior: Clip.antiAlias,
         child: InkWell(
           onTap: onTap,
@@ -298,13 +308,13 @@ class _ToolButton extends StatelessWidget {
                   Icon(
                     icon,
                     size: iconOnly ? AppIconSize.action : AppIconSize.inline,
-                    color: c.onMasthead,
+                    color: c.primary,
                   ),
                   if (!iconOnly) ...[
                     const SizedBox(width: AppSpacing.xxs),
                     Text(
                       label,
-                      style: AppTypography.labelL.copyWith(color: c.onMasthead),
+                      style: AppTypography.labelL.copyWith(color: c.primary),
                     ),
                   ],
                 ],

@@ -156,11 +156,15 @@ void main() {
       return key.currentState!;
     }
 
-    testWidgets('push transition stays within 300ms', (tester) async {
+    testWidgets('pop follows the iOS timing (done within 500ms)', (
+      tester,
+    ) async {
       final nav = await pumpNav(tester, en);
       nav.pop();
       await tester.pump();
-      await tester.pump(const Duration(milliseconds: 300));
+      await tester.pump(const Duration(milliseconds: 250));
+      expect(find.text('detail'), findsOneWidget); // still sliding out
+      await tester.pump(const Duration(milliseconds: 260));
       expect(find.text('detail'), findsNothing);
     });
 

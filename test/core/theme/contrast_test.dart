@@ -3,7 +3,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:knowledge_hub/core/theme/theme.dart';
-import 'package:knowledge_hub/core/widgets/glass_surface.dart';
+import 'package:knowledge_hub/core/widgets/liquid_glass.dart';
 import 'package:knowledge_hub/features/content/package_family.dart';
 
 /// WCAG 2.x relative luminance.
@@ -32,10 +32,13 @@ List<Pair> pairs(AppColors c) {
   final worstBackdrop = c.brightness == Brightness.light
       ? Colors.black
       : Colors.white;
+  // Blurred chrome over the darkest (light mode) / brightest (dark mode)
+  // thing that can scroll under it: a selected navy capsule / a light chip.
   final glass = over(
-    GlassSurface.surfaceColor(c, opacity: 0.88),
-    worstBackdrop,
+    GlassDecoration.fillOf(c, GlassTone.chrome),
+    c.isDark ? c.primary : c.capsuleSelected,
   );
+  assert(worstBackdrop != glass);
   final trust = TrustColors.fromTokens(c);
   return [
     ('textPrimary/surface', c.textPrimary, c.surface, text),
@@ -152,7 +155,7 @@ List<Pair> pairs(AppColors c) {
     (
       'nav icon (textSecondary) / glass on worst backdrop',
       c.textSecondary,
-      over(GlassSurface.surfaceColor(c, opacity: 0.94), worstBackdrop),
+      glass,
       ui,
     ),
     (
@@ -207,6 +210,65 @@ List<Pair> pairs(AppColors c) {
     ('textPrimary/primaryContainer', c.textPrimary, c.primaryContainer, text),
     for (final (light, dark) in FamilyStyle.palette)
       ('family monogram', Colors.white, c.isDark ? dark : light, text),
+    // v5: liquid glass over every point of the ambient backdrop.
+    for (final (i, back) in AppBackdrop.samples(c).indexed) ...[
+      for (final (name, fg, min) in [
+        ('textPrimary', c.textPrimary, text),
+        ('textSecondary', c.textSecondary, text),
+        ('textTertiary', c.textTertiary, text),
+        ('primary', c.primary, text),
+        ('accentText (price)', c.accentText, text),
+        ('verified', c.verified, text),
+        ('primaryUi (graphics)', c.primaryUi, ui),
+      ]) ...[
+        (
+          '$name / glass card over backdrop #$i',
+          fg,
+          over(GlassDecoration.fillOf(c, GlassTone.card), back),
+          min,
+        ),
+        (
+          '$name / glass header over backdrop #$i',
+          fg,
+          over(GlassDecoration.fillOf(c, GlassTone.chrome), back),
+          min,
+        ),
+      ],
+      (
+        'search hint / header field over backdrop #$i',
+        c.textTertiary,
+        over(
+          c.headerField,
+          over(GlassDecoration.fillOf(c, GlassTone.chrome), back),
+        ),
+        text,
+      ),
+      (
+        'segment label / track over backdrop #$i',
+        c.textSecondary,
+        over(
+          c.glassTint,
+          over(GlassDecoration.fillOf(c, GlassTone.chrome), back),
+        ),
+        text,
+      ),
+      ('subtitle (textSecondary) on backdrop #$i', c.textSecondary, back, text),
+    ],
+    // Navy glass panel (price) and toasts.
+    (
+      'mastheadPrice / navy glass',
+      c.mastheadPrice,
+      over(GlassDecoration.fillOf(c, GlassTone.navy), c.background),
+      text,
+    ),
+    (
+      'onMasthead / navy glass',
+      c.onMasthead,
+      over(GlassDecoration.fillOf(c, GlassTone.navy), c.background),
+      text,
+    ),
+    ('badge fresh', c.onCapsuleSelected, c.capsuleSelected, text),
+    ('badge count', c.onPrimaryContainer, c.primaryContainer, text),
   ];
 }
 

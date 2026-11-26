@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -9,15 +10,33 @@ import '../../l10n/app_localizations.dart';
 import 'dial_template.dart';
 import 'tool_widgets.dart';
 
-/// Opens a `tel:` link; replaced in tests.
+/// Calls a `tel:` link; replaced in tests.
 typedef DialOpener = Future<bool> Function(Uri uri);
 
-final dialOpenerProvider = Provider<DialOpener>(
-  (ref) =>
-      (uri) => launchUrl(uri, mode: LaunchMode.externalApplication),
-);
+const _callChannel = MethodChannel('counter_guide/call');
 
-/// Opens the phone's dialer with [value] filled in; the user presses call.
+/// On Android the call starts at once (a USSD code runs as if typed), once
+/// the user allows phone calls; otherwise, or elsewhere, the dialer opens.
+Future<bool> placeCall(Uri uri) async {
+  if (!kIsWeb && defaultTargetPlatform == TargetPlatform.android) {
+    try {
+      final number = Uri.decodeComponent(uri.path);
+      final ok = await _callChannel.invokeMethod<bool>('call', {
+        'number': number,
+      });
+      if (ok ?? false) return true;
+    } on PlatformException {
+      // Fall through to the dialer.
+    } on MissingPluginException {
+      // Fall through to the dialer.
+    }
+  }
+  return launchUrl(uri, mode: LaunchMode.externalApplication);
+}
+
+final dialOpenerProvider = Provider<DialOpener>((ref) => placeCall);
+
+/// Calls [value] straight away (Android) or opens the dialer with it.
 ///
 /// A value with placeholders (`*557*رقم المستلم*المبلغ#`) asks for each one
 /// first, and a value listing several codes asks which. Nothing typed is

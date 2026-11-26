@@ -1,7 +1,7 @@
 {
   "section": "wallet",
   "source_document": "pdf_guide_2026_11",
-  "as_of": "2026-11-25",
+  "as_of": "2026-11-26",
   "items": [
     {
       "id": "wal-case-open",
@@ -144,7 +144,7 @@
       "type": "procedure",
       "category_ar": "حالات الفرع",
       "title_ar": "عميل يريد سحب نقدية من الفرع",
-      "summary_ar": "اطلب منه بدء عملية السحب من هاتفه (*777*11#) أو حسب إجراء النظام. الرسم 5 ج ثابت لحد 5,000 ج في الشهر، وبعدها 1%.",
+      "summary_ar": "اطلب منه يبدأ السحب من موبايله بـ *777*11# أو حسب إجراء النظام.",
       "facts": [
         {
           "label_ar": "كود",
@@ -1432,197 +1432,6 @@
       ]
     },
     {
-      "id": "wal-fee-instapay-bank",
-      "type": "fee",
-      "category_ar": "الرسوم",
-      "title_ar": "رسوم التحويل من بنك للمحفظة عبر إنستاباي",
-      "summary_ar": "0.1% بحد أدنى 0.50 جنيه وأقصى 20 جنيه، ويدفعها المرسل لبنكه.",
-      "facts": [
-        {
-          "label_ar": "النسبة",
-          "value": "0.1%",
-          "kind": "percent"
-        },
-        {
-          "label_ar": "الحد الأدنى",
-          "value": "0.50",
-          "kind": "price",
-          "unit": "جنيه"
-        },
-        {
-          "label_ar": "الحد الأقصى",
-          "value": "20",
-          "kind": "price",
-          "unit": "جنيه"
-        }
-      ],
-      "codes": [],
-      "phones": [],
-      "tags": [
-        "محفظة",
-        "كاش",
-        "اتصالات كاش",
-        "e& cash",
-        "e& money",
-        "etisalat cash",
-        "wallet",
-        "رسوم",
-        "انستاباي",
-        "instapay",
-        "بنك"
-      ],
-      "status": "confirmed",
-      "sources": [
-        {
-          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
-          "type": "pdf_guide"
-        },
-        {
-          "name": "بانكر نيوز — حدود ورسوم إنستاباي الحالية (10 نوفمبر 2026)",
-          "url": "https://www.banker.news/160011",
-          "type": "press"
-        }
-      ],
-      "pdf_pages": [
-        45
-      ]
-    },
-    {
-      "id": "wal-limit-daily",
-      "type": "limit",
-      "category_ar": "الحدود",
-      "title_ar": "الحد اليومي للمعاملات",
-      "summary_ar": "الحد اليومي للمعاملات: 60,000 جنيه.",
-      "facts": [
-        {
-          "label_ar": "الحد اليومي للمعاملات",
-          "value": "60,000",
-          "kind": "price",
-          "unit": "جنيه"
-        }
-      ],
-      "codes": [],
-      "phones": [],
-      "tags": [
-        "محفظة",
-        "كاش",
-        "اتصالات كاش",
-        "e& cash",
-        "e& money",
-        "etisalat cash",
-        "wallet",
-        "حدود",
-        "حد",
-        "limit"
-      ],
-      "status": "confirmed",
-      "status_note_ar": "آخر رقم منشور (فبراير 2025).",
-      "sources": [
-        {
-          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
-          "type": "pdf_guide"
-        },
-        {
-          "name": "Egypt Telegraph — الحدود 60 ألف و200 ألف و200 ألف رصيد (21 فبراير 2025)",
-          "url": "https://www.egypttelegraph.com/121906",
-          "type": "press"
-        }
-      ],
-      "pdf_pages": [
-        44
-      ]
-    },
-    {
-      "id": "wal-limit-monthly",
-      "type": "limit",
-      "category_ar": "الحدود",
-      "title_ar": "الحد الشهري للمعاملات",
-      "summary_ar": "الحد الشهري للمعاملات: 200,000 جنيه.",
-      "facts": [
-        {
-          "label_ar": "الحد الشهري للمعاملات",
-          "value": "200,000",
-          "kind": "price",
-          "unit": "جنيه"
-        }
-      ],
-      "codes": [],
-      "phones": [],
-      "tags": [
-        "محفظة",
-        "كاش",
-        "اتصالات كاش",
-        "e& cash",
-        "e& money",
-        "etisalat cash",
-        "wallet",
-        "حدود",
-        "حد",
-        "limit"
-      ],
-      "status": "confirmed",
-      "status_note_ar": "آخر رقم منشور (فبراير 2025).",
-      "sources": [
-        {
-          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
-          "type": "pdf_guide"
-        },
-        {
-          "name": "Egypt Telegraph — الحدود 60 ألف و200 ألف و200 ألف رصيد (21 فبراير 2025)",
-          "url": "https://www.egypttelegraph.com/121906",
-          "type": "press"
-        }
-      ],
-      "pdf_pages": [
-        44
-      ]
-    },
-    {
-      "id": "wal-limit-balance",
-      "type": "limit",
-      "category_ar": "الحدود",
-      "title_ar": "الحد الأقصى لرصيد المحفظة",
-      "summary_ar": "الحد الأقصى لرصيد المحفظة: 200,000 جنيه.",
-      "facts": [
-        {
-          "label_ar": "الحد الأقصى لرصيد المحفظة",
-          "value": "200,000",
-          "kind": "price",
-          "unit": "جنيه"
-        }
-      ],
-      "codes": [],
-      "phones": [],
-      "tags": [
-        "محفظة",
-        "كاش",
-        "اتصالات كاش",
-        "e& cash",
-        "e& money",
-        "etisalat cash",
-        "wallet",
-        "حدود",
-        "حد",
-        "limit"
-      ],
-      "status": "confirmed",
-      "status_note_ar": "آخر رقم منشور (فبراير 2025).",
-      "sources": [
-        {
-          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
-          "type": "pdf_guide"
-        },
-        {
-          "name": "Egypt Telegraph — الحدود 60 ألف و200 ألف و200 ألف رصيد (21 فبراير 2025)",
-          "url": "https://www.egypttelegraph.com/121906",
-          "type": "press"
-        }
-      ],
-      "pdf_pages": [
-        44
-      ]
-    },
-    {
       "id": "wal-limit-wallet-count",
       "type": "limit",
       "category_ar": "الحدود",
@@ -1746,62 +1555,6 @@
       "codes": [],
       "phones": [],
       "status": "confirmed"
-    },
-    {
-      "id": "wal-limit-instapay",
-      "type": "limit",
-      "category_ar": "الحدود",
-      "title_ar": "حد إنستاباي (عند تحويل العميل من البنك للمحفظة)",
-      "summary_ar": "70,000 للمعاملة، و120,000 يوميًا، و400,000 شهريًا لكل بنك.",
-      "facts": [
-        {
-          "label_ar": "للمعاملة",
-          "value": "70,000",
-          "kind": "price",
-          "unit": "جنيه"
-        },
-        {
-          "label_ar": "يوميًا",
-          "value": "120,000",
-          "kind": "price",
-          "unit": "جنيه"
-        },
-        {
-          "label_ar": "شهريًا لكل بنك",
-          "value": "400,000",
-          "kind": "price",
-          "unit": "جنيه"
-        }
-      ],
-      "codes": [],
-      "phones": [],
-      "tags": [
-        "محفظة",
-        "كاش",
-        "اتصالات كاش",
-        "e& cash",
-        "e& money",
-        "etisalat cash",
-        "wallet",
-        "انستاباي",
-        "instapay",
-        "حدود"
-      ],
-      "status": "confirmed",
-      "sources": [
-        {
-          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
-          "type": "pdf_guide"
-        },
-        {
-          "name": "بانكر نيوز — حدود ورسوم إنستاباي الحالية (10 نوفمبر 2026)",
-          "url": "https://www.banker.news/160011",
-          "type": "press"
-        }
-      ],
-      "pdf_pages": [
-        45
-      ]
     },
     {
       "id": "wal-register-branch",

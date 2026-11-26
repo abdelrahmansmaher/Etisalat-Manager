@@ -16,6 +16,7 @@ import '../../l10n/app_localizations.dart';
 import '../tools/dial.dart';
 import '../tools/item_actions.dart';
 import 'content_widgets.dart';
+import 'package_family.dart';
 import 'package_facts.dart';
 import 'steps_progress.dart';
 
@@ -81,7 +82,9 @@ class _ItemDetailScreenState extends ConsumerState<ItemDetailScreen> {
     final header = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (item.titleEn != null)
+        // The English name only when the app itself is in English.
+        if (item.titleEn != null &&
+            Localizations.localeOf(context).languageCode != 'ar')
           LtrText(
             item.titleEn!,
             style: AppTypography.bodyM.copyWith(color: c.textTertiary),
@@ -107,11 +110,11 @@ class _ItemDetailScreenState extends ConsumerState<ItemDetailScreen> {
         ),
       ] else ...[
         if (item.sources.isNotEmpty || item.pdfPages.isNotEmpty) ...[
-          GroupHeader(l10n.detailSourcesTitle),
+          GroupHeader(l10n.detailSourcesTitle, icon: AppIcons.link),
           _Sources(item: item),
         ],
         if (related.isNotEmpty) ...[
-          GroupHeader(l10n.detailRelatedTitle),
+          GroupHeader(l10n.detailRelatedTitle, icon: AppIcons.layers),
           ListSurface(
             children: [
               for (final r in related)
@@ -172,16 +175,16 @@ class _ItemDetailScreenState extends ConsumerState<ItemDetailScreen> {
         code: code,
         codeLabel: pf.code?.label ?? l10n.packageCodeTitle,
       ),
-      if (metrics.isNotEmpty) ...[
-        const SizedBox(height: AppSpacing.sm),
-        PackageMetrics(metrics: metrics),
-      ],
       if (!customer) ...[
         const SizedBox(height: AppSpacing.sm),
         ItemActions(item),
       ],
+      if (metrics.isNotEmpty) ...[
+        GroupHeader(l10n.packageIncludesTitle, icon: AppIcons.layers),
+        PackageMetrics(metrics: metrics),
+      ],
       if (details.isNotEmpty) ...[
-        GroupHeader(l10n.packageDetailsTitle),
+        GroupHeader(l10n.packageDetailsTitle, icon: AppIcons.info),
         _FactsTable(facts: details),
       ],
       ..._bodyAndSteps(context, item, l10n.packageNotesTitle),
@@ -195,7 +198,7 @@ class _ItemDetailScreenState extends ConsumerState<ItemDetailScreen> {
       const SizedBox(height: AppSpacing.sm),
       ItemActions(item),
       if (item.facts.length > 4) ...[
-        GroupHeader(l10n.detailFactsTitle),
+        GroupHeader(l10n.detailFactsTitle, icon: AppIcons.info),
         _FactsTable(facts: item.facts),
       ],
       ..._bodyAndSteps(context, item, l10n.detailOverviewTitle),
@@ -213,7 +216,7 @@ class _ItemDetailScreenState extends ConsumerState<ItemDetailScreen> {
         _StepsChecklist(item: item),
       ],
       if (item.body != null) ...[
-        GroupHeader(bodyTitle),
+        GroupHeader(bodyTitle, icon: AppIcons.note),
         AppCard(
           role: CardRole.flat,
           child: _Body(text: item.body!),
@@ -284,6 +287,7 @@ class PackagePriceHero extends StatelessWidget {
     final price = facts.price;
     final recharge = facts.rechargePrice;
     final conflict = item.status == ItemStatus.conflict;
+    final family = familyOf(item);
 
     final Widget priceBlock;
     if (conflict) {
@@ -334,27 +338,39 @@ class PackagePriceHero extends StatelessWidget {
     return Container(
       key: const ValueKey('package-hero'),
       padding: const EdgeInsetsDirectional.all(AppSpacing.md),
-      decoration: ShapeDecoration(
-        color: c.masthead,
-        shape: SimShape(
-          radius: AppRadius.m,
-          cut: 34,
-          side: c.isDark ? BorderSide(color: c.border) : BorderSide.none,
-        ),
-      ),
+      decoration: simGlassDecoration(c, cut: 34),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          // Family and trust, like the brand line printed on a SIM.
           Padding(
-            // Clear of the cut corner.
             padding: const EdgeInsetsDirectional.only(end: AppSpacing.xl),
-            child: Text(
-              price?.label ?? l10n.packagePriceLabel,
-              style: AppTypography.labelL.copyWith(color: c.onMastheadMuted),
+            child: Row(
+              children: [
+                FamilyTile(family),
+                const SizedBox(width: AppSpacing.sm),
+                Expanded(
+                  child: Text(
+                    family,
+                    style: AppTypography.titleS.copyWith(
+                      color: c.onMasthead,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
+          const SizedBox(height: AppSpacing.md),
+          Text(
+            price?.label ?? l10n.packagePriceLabel,
+            style: AppTypography.labelL.copyWith(color: c.onMastheadMuted),
+          ),
           priceBlock,
-          if (recharge != null && !conflict) _TaxLine(fact: recharge),
+          if (recharge != null && !conflict) ...[
+            const SizedBox(height: AppSpacing.sm),
+            _TaxLine(fact: recharge),
+          ],
           if (code != null) ...[
             const SizedBox(height: AppSpacing.sm),
             SubscriptionCodeRow(
@@ -362,7 +378,7 @@ class PackagePriceHero extends StatelessWidget {
               label: codeLabel ?? l10n.packageCodeTitle,
             ),
           ],
-          if (item.summary.isNotEmpty) ...[
+          if (facts.metrics.isEmpty && item.summary.isNotEmpty) ...[
             const SizedBox(height: AppSpacing.sm),
             ProseText(
               item.summary,
@@ -375,6 +391,8 @@ class PackagePriceHero extends StatelessWidget {
   }
 }
 
+/// The second price (what the customer recharges / pays with taxes), in
+/// its own glass cell under the main price.
 class _TaxLine extends StatelessWidget {
   const _TaxLine({required this.fact});
 
@@ -383,23 +401,42 @@ class _TaxLine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final c = context.colors;
-    return Wrap(
+    return Container(
       key: const ValueKey('package-tax-line'),
-      spacing: AppSpacing.xs,
-      crossAxisAlignment: WrapCrossAlignment.center,
-      children: [
-        Text(
-          fact.label,
-          style: AppTypography.bodyM.copyWith(color: c.onMastheadMuted),
-        ),
-        _InlineValue(
-          fact: fact,
-          style: AppTypography.titleM.copyWith(
+      padding: const EdgeInsetsDirectional.symmetric(
+        horizontal: AppSpacing.sm,
+        vertical: AppSpacing.xs,
+      ),
+      decoration: BoxDecoration(
+        color: Colors.white.withValues(alpha: 0.08),
+        borderRadius: AppRadius.smAll,
+        border: Border.all(color: Colors.white.withValues(alpha: 0.12)),
+      ),
+      child: Row(
+        children: [
+          Icon(
+            AppIcons.recharge,
+            size: AppIconSize.chip,
             color: c.mastheadPrice,
-            fontFeatures: AppTypography.tabular,
           ),
-        ),
-      ],
+          const SizedBox(width: AppSpacing.xs),
+          Expanded(
+            child: Text(
+              fact.label,
+              style: AppTypography.bodyM.copyWith(color: c.onMastheadMuted),
+            ),
+          ),
+          const SizedBox(width: AppSpacing.xs),
+          _InlineValue(
+            fact: fact,
+            style: AppTypography.titleL.copyWith(
+              color: c.mastheadPrice,
+              fontFeatures: AppTypography.tabular,
+              fontWeight: FontWeight.w800,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -433,8 +470,8 @@ class _InlineValue extends StatelessWidget {
   }
 }
 
-/// Key metrics (quota, validity, renewal, after-bundle) as a 2-column grid of
-/// tiles that grow with text scale.
+/// What the package gives (quota, validity, renewal, after-bundle) as a
+/// 2-column grid of tiles that grow with text scale.
 class PackageMetrics extends StatelessWidget {
   const PackageMetrics({super.key, required this.metrics});
 
@@ -472,6 +509,8 @@ class PackageMetrics extends StatelessWidget {
   }
 }
 
+/// One feature: a tinted icon, a short label and the value with its unit in
+/// Arabic.
 class _MetricTile extends StatelessWidget {
   const _MetricTile({required this.role, required this.fact});
 
@@ -482,53 +521,55 @@ class _MetricTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final c = context.colors;
     final icon = PackageMetrics.iconFor(role, fact);
+    final unit = impliedUnit(fact);
     return AppCard(
       role: CardRole.flat,
       key: ValueKey('metric-${role.name}'),
-      padding: const EdgeInsetsDirectional.symmetric(
-        horizontal: AppSpacing.sm,
-        vertical: AppSpacing.xs + 2,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      padding: const EdgeInsetsDirectional.all(AppSpacing.sm),
+      child: Row(
+        crossAxisAlignment: fact.rendersLtr
+            ? CrossAxisAlignment.center
+            : CrossAxisAlignment.start,
         children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Icon(icon, size: AppIconSize.inline, color: c.primaryUi),
-              const SizedBox(width: AppSpacing.xxs + 2),
-              Expanded(
-                child: Text(
-                  fact.label,
+          TintedIcon(icon, tile: IconTile.sm),
+          const SizedBox(width: AppSpacing.sm),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  shortFactLabel(fact.label),
                   style: AppTypography.labelS.copyWith(color: c.textTertiary),
                 ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 2),
-          if (fact.rendersLtr)
-            Wrap(
-              spacing: 3,
-              crossAxisAlignment: WrapCrossAlignment.end,
-              children: [
-                LtrText(
-                  fact.value,
-                  style: AppTypography.metric.copyWith(color: c.textPrimary),
-                ),
-                if (fact.unit != null)
-                  Text(
-                    fact.unit!,
-                    style: AppTypography.labelL.copyWith(
-                      color: c.textSecondary,
-                    ),
+                const SizedBox(height: 2),
+                if (fact.rendersLtr)
+                  Wrap(
+                    spacing: 4,
+                    crossAxisAlignment: WrapCrossAlignment.end,
+                    children: [
+                      LtrText(
+                        fact.value,
+                        style: AppTypography.metric.copyWith(
+                          color: c.textPrimary,
+                        ),
+                      ),
+                      if (unit != null)
+                        Text(
+                          unit,
+                          style: AppTypography.labelL.copyWith(
+                            color: c.textSecondary,
+                          ),
+                        ),
+                    ],
+                  )
+                else
+                  ProseText(
+                    fact.display,
+                    style: AppTypography.titleS.copyWith(color: c.textPrimary),
                   ),
               ],
-            )
-          else
-            ProseText(
-              fact.display,
-              style: AppTypography.titleS.copyWith(color: c.textPrimary),
             ),
+          ),
         ],
       ),
     );
@@ -564,6 +605,7 @@ class SubscriptionCodeRow extends StatelessWidget {
       decoration: BoxDecoration(
         color: c.mastheadField,
         borderRadius: AppRadius.smAll,
+        border: Border.all(color: c.glassEdge),
       ),
       child: Row(
         children: [
@@ -706,7 +748,8 @@ class _FactValue extends StatelessWidget {
   }
 }
 
-/// Label / value table with hairline separators.
+/// Details as a list: each fact on its own row, a tinted icon, the label
+/// above and the value under it (long Arabic values read naturally).
 class _FactsTable extends StatelessWidget {
   const _FactsTable({required this.facts});
 
@@ -721,41 +764,43 @@ class _FactsTable extends StatelessWidget {
       padding: EdgeInsetsDirectional.zero,
       child: Column(
         children: [
-          for (var i = 0; i < facts.length; i++)
-            Container(
+          for (var i = 0; i < facts.length; i++) ...[
+            if (i > 0)
+              Divider(
+                height: 1,
+                indent: AppSpacing.md + IconTile.xs.box + AppSpacing.sm,
+                endIndent: AppSpacing.md,
+                color: c.hairline,
+              ),
+            Padding(
               padding: const EdgeInsetsDirectional.symmetric(
                 horizontal: AppSpacing.md,
                 vertical: AppSpacing.sm,
               ),
-              decoration: BoxDecoration(
-                border: i == 0
-                    ? null
-                    : Border(top: BorderSide(color: c.hairline)),
-              ),
               child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Leading icon by fact kind / meaning.
-                  Icon(
-                    FactIcons.of(facts[i]),
-                    size: AppIconSize.action,
-                    color: c.primaryUi,
-                  ),
+                  TintedIcon(FactIcons.of(facts[i]), tile: IconTile.xs),
                   const SizedBox(width: AppSpacing.sm),
                   Expanded(
-                    flex: 5,
-                    child: Text(
-                      facts[i].label,
-                      style: AppTypography.bodyM.copyWith(
-                        color: c.textSecondary,
-                      ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          facts[i].label,
+                          style: AppTypography.labelL.copyWith(
+                            color: c.textTertiary,
+                          ),
+                        ),
+                        const SizedBox(height: 2),
+                        _FactValue(fact: facts[i]),
+                      ],
                     ),
                   ),
-                  const SizedBox(width: AppSpacing.sm),
-                  Expanded(flex: 6, child: _FactValue(fact: facts[i])),
                 ],
               ),
             ),
+          ],
         ],
       ),
     );

@@ -97,6 +97,21 @@ void main() {
       }
     }
 
+    testWidgets('a tap glides the lens across, it never jumps', (tester) async {
+      await pumpApp(tester);
+      final from = rectOf(tester, 'nav-0').center.dx;
+      final to = rectOf(tester, 'nav-3').center.dx;
+      await tester.tap(find.byKey(const ValueKey('nav-3')));
+      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 90));
+      final mid = rectOf(tester, 'nav-indicator').center.dx;
+      // Somewhere between the two tabs (RTL: from is on the right).
+      expect(mid, lessThan(from - 4));
+      expect(mid, greaterThan(to + 4));
+      await tester.pumpAndSettle();
+      expect(rectOf(tester, 'nav-indicator').center.dx, closeTo(to, 1));
+    });
+
     testWidgets('indicator is mid-way while swiping (LTR)', (tester) async {
       await pumpApp(tester, locale: en);
       final start = rectOf(tester, 'nav-indicator');
@@ -295,5 +310,32 @@ void main() {
         expect(prefs.getString(PrefKeys.locale), 'system');
       },
     );
+  });
+
+  testWidgets('the family pill glides to the chosen family', (tester) async {
+    await pumpApp(tester, size: const Size(400, 900));
+    await tester.tap(find.byKey(const ValueKey('nav-1')));
+    await tester.pumpAndSettle();
+    final indicator = find.byKey(const ValueKey('capsule-indicator'));
+    expect(indicator, findsOneWidget);
+    final all = tester.getRect(find.byKey(const ValueKey('family-all')));
+    expect(tester.getRect(indicator).center.dx, closeTo(all.center.dx, 1));
+    final other = find.byWidgetPredicate((w) {
+      final k = w.key;
+      return w is Capsule &&
+          k is ValueKey<String> &&
+          k.value.startsWith('family-') &&
+          k.value != 'family-all';
+    }).first;
+    await tester.ensureVisible(other);
+    await tester.pumpAndSettle();
+    await tester.tap(other);
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 80));
+    final mid = tester.getRect(indicator).center.dx;
+    await tester.pumpAndSettle();
+    final target = tester.getRect(other).center.dx;
+    expect(tester.getRect(indicator).center.dx, closeTo(target, 1));
+    expect((mid - target).abs(), greaterThan(2)); // it moved, not jumped
   });
 }

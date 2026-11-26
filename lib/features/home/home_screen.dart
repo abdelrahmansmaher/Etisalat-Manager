@@ -169,7 +169,7 @@ class _Greeting extends StatelessWidget {
             dateText,
             key: const ValueKey('home-date'),
             style: AppTypography.labelL.copyWith(
-              color: context.colors.onMastheadMuted,
+              color: context.colors.onHeaderMuted,
             ),
           ),
         ],

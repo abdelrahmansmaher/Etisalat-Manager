@@ -7,6 +7,7 @@ import '../theme/app_radius.dart';
 import '../theme/app_spacing.dart';
 import '../theme/app_typography.dart';
 import 'app_card.dart';
+import 'liquid_glass.dart';
 import '../theme/app_icons.dart';
 
 /// Capsule (pill) chip — the one navigation/filter shape used everywhere.
@@ -43,23 +44,28 @@ class Capsule extends StatelessWidget {
   /// Lay the label out left-to-right (codes, phone numbers).
   final bool ltrLabel;
 
-  static const Duration duration = Duration(milliseconds: 220);
+  static const Duration duration = AppMotion.normal;
 
   @override
   Widget build(BuildContext context) {
     final c = context.colors;
+    final sliding = _SlidingScope.of(context);
     final fg = selected ? c.onCapsuleSelected : c.textPrimary;
     final iconColor = selected ? c.onCapsuleSelected : c.primary;
     final d = AppMotion.resolve(context, duration);
 
-    Widget text = Text(
-      label,
-      maxLines: 1,
-      overflow: TextOverflow.ellipsis,
-      textDirection: ltrLabel ? TextDirection.ltr : null,
+    Widget text = AnimatedDefaultTextStyle(
+      duration: d,
+      curve: AppMotion.enter,
       style: (ltrLabel ? AppTypography.code : AppTypography.labelL).copyWith(
         color: fg,
         fontWeight: selected ? FontWeight.w600 : FontWeight.w500,
+      ),
+      child: Text(
+        label,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+        textDirection: ltrLabel ? TextDirection.ltr : null,
       ),
     );
 
@@ -71,63 +77,120 @@ class Capsule extends StatelessWidget {
       child: PressableScale(
         pressedScale: 0.96,
         enabled: onTap != null,
-        child: AnimatedContainer(
-          duration: d,
-          curve: AppMotion.enter,
+        child: ConstrainedBox(
           constraints: BoxConstraints(minHeight: dense ? 36 : 44),
-          decoration: BoxDecoration(
-            color: selected ? c.capsuleSelected : c.capsuleSurface,
-            borderRadius: AppRadius.fullAll,
-            border: Border.all(
-              color: selected ? c.capsuleSelected : c.hairline,
-            ),
-          ),
-          child: Material(
-            type: MaterialType.transparency,
-            shape: const StadiumBorder(),
-            clipBehavior: Clip.antiAlias,
-            child: InkWell(
-              onTap: onTap,
-              customBorder: const StadiumBorder(),
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(
-                  icon == null ? AppSpacing.md : AppSpacing.sm,
-                  AppSpacing.xs,
-                  AppSpacing.md,
-                  AppSpacing.xs,
+          child: DecoratedBox(
+            decoration: sliding
+                ? const BoxDecoration()
+                : GlassDecoration(
+                    colors: c,
+                    stadium: true,
+                    fill: c.headerField,
+                  ),
+            child: Stack(
+              children: [
+                Positioned.fill(
+                  child: AnimatedOpacity(
+                    opacity: selected && !sliding ? 1 : 0,
+                    duration: d,
+                    curve: AppMotion.enter,
+                    child: DecoratedBox(decoration: selectedDecoration(c)),
+                  ),
                 ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    if (icon != null) ...[
-                      Icon(icon, size: AppIconSize.chip, color: iconColor),
-                      const SizedBox(width: AppSpacing.xs - 2),
-                    ],
-                    Flexible(child: text),
-                    if (trailing != null) ...[
-                      const SizedBox(width: AppSpacing.xs - 2),
-                      trailing!,
-                    ],
-                  ],
+                Material(
+                  type: MaterialType.transparency,
+                  shape: const StadiumBorder(),
+                  clipBehavior: Clip.antiAlias,
+                  child: InkWell(
+                    onTap: onTap,
+                    customBorder: const StadiumBorder(),
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                        icon == null ? AppSpacing.md : AppSpacing.sm,
+                        AppSpacing.xs,
+                        AppSpacing.md,
+                        AppSpacing.xs,
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          if (icon != null) ...[
+                            Icon(
+                              icon,
+                              size: AppIconSize.chip,
+                              color: iconColor,
+                            ),
+                            const SizedBox(width: AppSpacing.xs - 2),
+                          ],
+                          Flexible(child: text),
+                          if (trailing != null) ...[
+                            const SizedBox(width: AppSpacing.xs - 2),
+                            trailing!,
+                          ],
+                        ],
+                      ),
+                    ),
+                  ),
                 ),
-              ),
+              ],
             ),
           ),
         ),
       ),
     );
   }
+
+  /// Selected fill: navy with a soft top light and a glow under it.
+  static BoxDecoration selectedDecoration(AppColors c) => BoxDecoration(
+    gradient: LinearGradient(
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+      colors: [
+        Color.alphaBlend(
+          Colors.white.withValues(alpha: 0.16),
+          c.capsuleSelected,
+        ),
+        c.capsuleSelected,
+      ],
+    ),
+    borderRadius: AppRadius.fullAll,
+    border: Border.all(color: Colors.white.withValues(alpha: 0.20)),
+    boxShadow: [
+      BoxShadow(
+        color: c.capsuleSelected.withValues(alpha: 0.35),
+        blurRadius: 12,
+        offset: const Offset(0, 4),
+        spreadRadius: -4,
+      ),
+    ],
+  );
+}
+
+/// Tells capsules that their row paints the pills and a sliding indicator.
+class _SlidingScope extends InheritedWidget {
+  const _SlidingScope({required super.child});
+
+  static bool of(BuildContext context) =>
+      context.dependOnInheritedWidgetOfExactType<_SlidingScope>() != null;
+
+  @override
+  bool updateShouldNotify(_SlidingScope old) => false;
 }
 
 /// Horizontally scrollable row of capsules. Claims horizontal drags, so it
 /// never switches tabs when it sits inside the swipeable tab pager.
-class CapsuleRow extends StatelessWidget {
+///
+/// With [selected] (the index of the chosen child), one navy indicator
+/// glides from the old choice to the new one on a spring, the way iOS
+/// moves a selection, and the chosen capsule scrolls into view.
+class CapsuleRow extends StatefulWidget {
   const CapsuleRow({
     super.key,
     required this.children,
     this.padding = EdgeInsetsDirectional.zero,
     this.spacing = AppSpacing.xs,
     this.controller,
+    this.selected,
   });
 
   final List<Widget> children;
@@ -135,25 +198,132 @@ class CapsuleRow extends StatelessWidget {
   final double spacing;
   final ScrollController? controller;
 
+  /// Index in [children] of the selected one (-1: none yet); `null` = a
+  /// plain row without a sliding indicator.
+  final int? selected;
+
+  @override
+  State<CapsuleRow> createState() => _CapsuleRowState();
+}
+
+class _CapsuleRowState extends State<CapsuleRow> {
+  final GlobalKey _stack = GlobalKey();
+  List<GlobalKey> _keys = const [];
+  List<Rect> _rects = const [];
+
+  void _syncKeys() {
+    if (_keys.length != widget.children.length) {
+      _keys = [for (final _ in widget.children) GlobalKey()];
+    }
+  }
+
+  @override
+  void didUpdateWidget(CapsuleRow old) {
+    super.didUpdateWidget(old);
+    final i = widget.selected;
+    if (i != null && i != old.selected) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (!mounted) return;
+        final ctx = i < _keys.length ? _keys[i].currentContext : null;
+        if (ctx == null || !ctx.mounted) return;
+        Scrollable.ensureVisible(
+          ctx,
+          alignment: 0.5,
+          duration: AppMotion.resolve(context, AppMotion.max),
+          curve: AppMotion.enter,
+        );
+      });
+    }
+  }
+
+  void _measure(Duration _) {
+    if (!mounted) return;
+    final stack = _stack.currentContext?.findRenderObject();
+    if (stack is! RenderBox || !stack.hasSize) return;
+    final rects = <Rect>[];
+    for (final k in _keys) {
+      final box = k.currentContext?.findRenderObject();
+      if (box is! RenderBox || !box.hasSize) return;
+      final o = box.localToGlobal(Offset.zero, ancestor: stack);
+      rects.add(o & box.size);
+    }
+    var same = rects.length == _rects.length;
+    for (var i = 0; same && i < rects.length; i++) {
+      final a = rects[i], b = _rects[i];
+      same =
+          (a.left - b.left).abs() < 0.5 &&
+          (a.top - b.top).abs() < 0.5 &&
+          (a.width - b.width).abs() < 0.5 &&
+          (a.height - b.height).abs() < 0.5;
+    }
+    if (!same) setState(() => _rects = rects);
+  }
+
   @override
   Widget build(BuildContext context) {
+    final sliding = widget.selected != null;
+    Widget row;
+    if (!sliding) {
+      row = Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          for (var i = 0; i < widget.children.length; i++) ...[
+            if (i > 0) SizedBox(width: widget.spacing),
+            widget.children[i],
+          ],
+        ],
+      );
+    } else {
+      _syncKeys();
+      WidgetsBinding.instance.addPostFrameCallback(_measure);
+      final c = context.colors;
+      final sel = widget.selected!;
+      final selRect = sel >= 0 && sel < _rects.length ? _rects[sel] : null;
+      row = Stack(
+        key: _stack,
+        children: [
+          for (final r in _rects)
+            Positioned.fromRect(
+              rect: r,
+              child: DecoratedBox(
+                decoration: GlassDecoration(
+                  colors: c,
+                  stadium: true,
+                  fill: c.headerField,
+                ),
+              ),
+            ),
+          if (selRect != null)
+            AnimatedPositioned.fromRect(
+              key: const ValueKey('capsule-indicator'),
+              rect: selRect,
+              duration: AppMotion.resolve(context, AppMotion.spring),
+              curve: AppMotion.snappy,
+              child: DecoratedBox(decoration: Capsule.selectedDecoration(c)),
+            ),
+          _SlidingScope(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                for (var i = 0; i < widget.children.length; i++) ...[
+                  if (i > 0) SizedBox(width: widget.spacing),
+                  KeyedSubtree(key: _keys[i], child: widget.children[i]),
+                ],
+              ],
+            ),
+          ),
+        ],
+      );
+    }
     return TabSwipeOptOut(
       child: SingleChildScrollView(
-        controller: controller,
+        controller: widget.controller,
         scrollDirection: Axis.horizontal,
         clipBehavior: Clip.none,
-        padding: padding,
+        padding: widget.padding,
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: AppSpacing.xxs),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              for (var i = 0; i < children.length; i++) ...[
-                if (i > 0) SizedBox(width: spacing),
-                children[i],
-              ],
-            ],
-          ),
+          child: row,
         ),
       ),
     );
@@ -205,26 +375,23 @@ class SegmentedCapsule<T> extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(AppSpacing.xxs),
         decoration: BoxDecoration(
-          color: c.surfaceVariant,
+          color: c.glassTint,
           borderRadius: AppRadius.fullAll,
-          border: Border.all(color: c.hairline),
+          border: Border.all(color: c.glassEdge),
         ),
         child: Stack(
           children: [
             if (index >= 0)
               Positioned.fill(
                 child: AnimatedAlign(
-                  duration: d,
-                  curve: AppMotion.enter,
+                  duration: AppMotion.resolve(context, AppMotion.spring),
+                  curve: AppMotion.snappy,
                   alignment: AlignmentDirectional(x, 0),
                   child: FractionallySizedBox(
                     widthFactor: 1 / n,
                     heightFactor: 1,
                     child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        color: c.capsuleSelected,
-                        borderRadius: AppRadius.fullAll,
-                      ),
+                      decoration: Capsule.selectedDecoration(c),
                     ),
                   ),
                 ),

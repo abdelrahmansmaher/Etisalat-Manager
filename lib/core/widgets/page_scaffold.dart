@@ -9,7 +9,10 @@ import '../theme/app_radius.dart';
 import '../theme/app_spacing.dart';
 import '../theme/app_typography.dart';
 import 'app_card.dart';
+import 'liquid_glass.dart';
 import 'list_surface.dart';
+import 'masthead.dart' show headerOverlayStyle;
+import 'motion.dart';
 import 'prose_text.dart';
 
 /// Standard pushed page: back button, title and actions share the first
@@ -113,199 +116,233 @@ class _PageScaffoldState extends State<PageScaffold> {
       valueListenable: _collapsed,
       builder: (context, collapsed, _) {
         final d = AppMotion.resolve(context, AppMotion.normal);
-        return DecoratedBox(
-          decoration: BoxDecoration(
-            color: collapsed ? c.surface : null,
-            border: collapsed
-                ? Border(bottom: BorderSide(color: c.border))
-                : null,
-          ),
-          child: SafeArea(
-            bottom: false,
-            child: SizedBox(
-              height: PageScaffold.barHeight,
-              child: Row(
-                children: [
-                  const SizedBox(width: AppSpacing.xxs),
-                  BackButton(onPressed: _back, color: c.textPrimary),
-                  Expanded(
-                    child: ExcludeSemantics(
-                      child: AnimatedOpacity(
-                        opacity: collapsed ? 1 : 0,
-                        duration: d,
-                        curve: AppMotion.enter,
-                        child: Text(
-                          widget.appBarTitle ?? widget.title,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          textScaler: MediaQuery.textScalerOf(context)
-                              .clamp(maxScaleFactor: 1.5),
-                          style: AppTypography.titleM.copyWith(
-                            color: c.textPrimary,
+        return Stack(
+          children: [
+            // Frosted glass fades in once the page scrolls under the bar.
+            Positioned.fill(
+              child: IgnorePointer(
+                child: AnimatedOpacity(
+                  opacity: collapsed ? 1 : 0,
+                  duration: d,
+                  curve: AppMotion.enter,
+                  child: const LiquidGlass(
+                    key: ValueKey('page-bar-glass'),
+                    tone: GlassTone.chrome,
+                    blur: true,
+                    borderRadius: BorderRadius.vertical(
+                      bottom: Radius.circular(AppRadius.m),
+                    ),
+                    child: SizedBox.expand(),
+                  ),
+                ),
+              ),
+            ),
+            SafeArea(
+              bottom: false,
+              child: SizedBox(
+                height: PageScaffold.barHeight,
+                child: Row(
+                  children: [
+                    const SizedBox(width: AppSpacing.xxs),
+                    BackButton(onPressed: _back, color: c.textPrimary),
+                    Expanded(
+                      child: ExcludeSemantics(
+                        child: AnimatedOpacity(
+                          opacity: collapsed ? 1 : 0,
+                          duration: d,
+                          curve: AppMotion.enter,
+                          child: Text(
+                            widget.appBarTitle ?? widget.title,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            textScaler: MediaQuery.textScalerOf(context)
+                                .clamp(maxScaleFactor: 1.5),
+                            style: AppTypography.titleM.copyWith(
+                              color: c.textPrimary,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  ...actions,
-                  const SizedBox(width: AppSpacing.xxs),
-                ],
+                    ...actions,
+                    const SizedBox(width: AppSpacing.xxs),
+                  ],
+                ),
               ),
             ),
-          ),
+          ],
         );
       },
     );
 
     if (widget.slivers != null) {
-      return Scaffold(
-        body: Column(
-          children: [
-            SafeArea(
-              bottom: false,
-              child: Row(
-                children: [
-                  const SizedBox(width: AppSpacing.xxs),
-                  BackButton(onPressed: _back, color: c.textPrimary),
-                  Expanded(
-                    child: ConstrainedBox(
-                      constraints: const BoxConstraints(
-                        minHeight: PageScaffold.barHeight,
-                      ),
-                      child: Align(
-                        alignment: AlignmentDirectional.centerStart,
-                        heightFactor: 1,
-                        child: title,
-                      ),
-                    ),
-                  ),
-                  ...actions,
-                  const SizedBox(width: AppSpacing.xs),
-                ],
-              ),
-            ),
-            Expanded(
-              child: CustomScrollView(
-                key: widget.scrollKey,
-                controller: widget.controller,
-                slivers: [
-                  if (widget.subtitle != null || widget.header != null)
-                    SliverPadding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                        pad,
-                        0,
-                        pad,
-                        AppSpacing.xs,
-                      ),
-                      sliver: SliverToBoxAdapter(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            if (widget.subtitle != null)
-                              Text(
-                                widget.subtitle!,
-                                style: AppTypography.bodyM.copyWith(
-                                  color: c.textTertiary,
-                                ),
-                              ),
-                            ?widget.header,
-                          ],
+      return _page(
+        c,
+        Scaffold(
+          backgroundColor: Colors.transparent,
+          body: Column(
+            children: [
+              SafeArea(
+                bottom: false,
+                child: Row(
+                  children: [
+                    const SizedBox(width: AppSpacing.xxs),
+                    BackButton(onPressed: _back, color: c.textPrimary),
+                    Expanded(
+                      child: ConstrainedBox(
+                        constraints: const BoxConstraints(
+                          minHeight: PageScaffold.barHeight,
+                        ),
+                        child: Align(
+                          alignment: AlignmentDirectional.centerStart,
+                          heightFactor: 1,
+                          child: title,
                         ),
                       ),
                     ),
-                  ...widget.slivers!,
-                  SliverPadding(padding: EdgeInsets.only(bottom: bottom)),
-                ],
+                    ...actions,
+                    const SizedBox(width: AppSpacing.xs),
+                  ],
+                ),
               ),
-            ),
-          ],
+              Expanded(
+                child: CustomScrollView(
+                  key: widget.scrollKey,
+                  controller: widget.controller,
+                  slivers: [
+                    if (widget.subtitle != null || widget.header != null)
+                      SliverPadding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                          pad,
+                          0,
+                          pad,
+                          AppSpacing.xs,
+                        ),
+                        sliver: SliverToBoxAdapter(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              if (widget.subtitle != null)
+                                Text(
+                                  widget.subtitle!,
+                                  style: AppTypography.bodyM.copyWith(
+                                    color: c.textSecondary,
+                                  ),
+                                ),
+                              ?widget.header,
+                            ],
+                          ),
+                        ),
+                      ),
+                    ...widget.slivers!,
+                    SliverPadding(padding: EdgeInsets.only(bottom: bottom)),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       );
     }
 
-    return Scaffold(
-      body: Stack(
-        children: [
-          NotificationListener<ScrollNotification>(
-            onNotification: _onScroll,
-            child: CustomScrollView(
-              key: widget.scrollKey,
-              controller: widget.controller,
-              slivers: [
-                SliverToBoxAdapter(
-                  child: Padding(
-                    padding: EdgeInsets.only(top: insets.top),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Padding(
-                          // Clears the back button and the actions, so the
-                          // title sits on their line.
-                          padding: EdgeInsetsDirectional.only(
-                            start: AppSpacing.minTouchTarget + AppSpacing.xs,
-                            end:
-                                AppSpacing.xs +
-                                (actions.isEmpty
-                                    ? AppSpacing.xs
-                                    : AppSpacing.minTouchTarget *
-                                          actions.length),
-                          ),
-                          child: ConstrainedBox(
-                            constraints: const BoxConstraints(
-                              minHeight: PageScaffold.barHeight,
+    return _page(
+      c,
+      Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Stack(
+          children: [
+            NotificationListener<ScrollNotification>(
+              onNotification: _onScroll,
+              child: CustomScrollView(
+                key: widget.scrollKey,
+                controller: widget.controller,
+                slivers: [
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: EdgeInsets.only(top: insets.top),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Padding(
+                            // Clears the back button and the actions, so the
+                            // title sits on their line.
+                            padding: EdgeInsetsDirectional.only(
+                              start: AppSpacing.minTouchTarget + AppSpacing.xs,
+                              end:
+                                  AppSpacing.xs +
+                                  (actions.isEmpty
+                                      ? AppSpacing.xs
+                                      : AppSpacing.minTouchTarget *
+                                            actions.length),
                             ),
-                            child: Align(
-                              alignment: AlignmentDirectional.centerStart,
-                              heightFactor: 1,
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: 10,
+                            child: ConstrainedBox(
+                              constraints: const BoxConstraints(
+                                minHeight: PageScaffold.barHeight,
+                              ),
+                              child: Align(
+                                alignment: AlignmentDirectional.centerStart,
+                                heightFactor: 1,
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: 10,
+                                  ),
+                                  child: title,
                                 ),
-                                child: title,
                               ),
                             ),
                           ),
-                        ),
-                        if (widget.subtitle != null)
-                          Padding(
-                            padding: EdgeInsetsDirectional.symmetric(
-                              horizontal: pad,
-                            ),
-                            child: Text(
-                              widget.subtitle!,
-                              style: AppTypography.bodyM.copyWith(
-                                color: c.textTertiary,
+                          if (widget.subtitle != null)
+                            Padding(
+                              padding: EdgeInsetsDirectional.symmetric(
+                                horizontal: pad,
+                              ),
+                              child: Text(
+                                widget.subtitle!,
+                                style: AppTypography.bodyM.copyWith(
+                                  color: c.textSecondary,
+                                ),
                               ),
                             ),
-                          ),
-                        if (widget.header != null)
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                              pad,
-                              widget.subtitle == null ? 0 : AppSpacing.xs,
-                              pad,
-                              0,
+                          if (widget.header != null)
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                pad,
+                                widget.subtitle == null ? 0 : AppSpacing.xs,
+                                pad,
+                                0,
+                              ),
+                              child: widget.header!,
                             ),
-                            child: widget.header!,
-                          ),
-                        const SizedBox(height: AppSpacing.sm),
+                          const SizedBox(height: AppSpacing.sm),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SliverPadding(
+                    padding: EdgeInsetsDirectional.symmetric(horizontal: pad),
+                    sliver: SliverList.list(
+                      children: [
+                        for (var i = 0; i < widget.children.length; i++)
+                          Entrance(index: i, child: widget.children[i]),
                       ],
                     ),
                   ),
-                ),
-                SliverPadding(
-                  padding: EdgeInsetsDirectional.symmetric(horizontal: pad),
-                  sliver: SliverList.list(children: widget.children),
-                ),
-                SliverPadding(padding: EdgeInsets.only(bottom: bottom)),
-              ],
+                  SliverPadding(padding: EdgeInsets.only(bottom: bottom)),
+                ],
+              ),
             ),
-          ),
-          Positioned(top: 0, left: 0, right: 0, child: bar),
-        ],
+            Positioned(top: 0, left: 0, right: 0, child: bar),
+          ],
+        ),
       ),
     );
   }
+
+  /// The ambient backdrop, status bar style and entrance clock of a page.
+  Widget _page(AppColors c, Widget scaffold) => AnnotatedRegion(
+    value: headerOverlayStyle(c),
+    child: AppBackdrop(child: EntranceScope(child: scaffold)),
+  );
 }
 
 /// Calm empty / "coming soon" panel: tinted icon, title, one line of body.

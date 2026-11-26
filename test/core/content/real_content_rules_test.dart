@@ -5,6 +5,7 @@ import 'package:knowledge_hub/core/content/content.dart';
 import 'package:knowledge_hub/features/content/package_facts.dart';
 import 'package:knowledge_hub/features/content/package_family.dart';
 import 'package:knowledge_hub/features/tools/package_info.dart';
+import 'package:knowledge_hub/features/tools/postpaid_tax.dart';
 import 'package:knowledge_hub/l10n/app_localizations_ar.dart';
 
 /// The owner's rules, checked on the REAL bundled content: only confirmed
@@ -90,5 +91,52 @@ void main() {
         reason: '${i.id}: ${familyOf(i)}',
       );
     }
+  });
+
+  test('every price shown was checked on the official site', () {
+    for (final i in items) {
+      if (!i.facts.any((f) => f.kind == FactKind.price)) continue;
+      expect(i.officiallyVerified, isTrue, reason: i.id);
+    }
+  });
+
+  test('no old price or price-increase history ships', () {
+    final old = RegExp(
+      r'زيادة (مايو|يناير)|السعر القديم|الباقة الأساسية القديمة',
+    );
+    for (final i in items) {
+      final text = [
+        i.title,
+        i.summary,
+        i.body ?? '',
+        for (final f in i.facts) '${f.label} ${f.value}',
+      ].join(' ');
+      expect(old.hasMatch(text), isFalse, reason: i.id);
+    }
+  });
+
+  test('postpaid packages state the total with taxes and fees', () {
+    const expected = {
+      'pkg-emerald-460': '577.69',
+      'pkg-emerald-820': '1,020.92',
+      'pkg-emerald-1170': '1,451.84',
+      'pkg-emerald-1725': '2,135.16',
+      'pkg-emerald-3450': '4,258.98',
+    };
+    for (final MapEntry(key: id, value: total) in expected.entries) {
+      final item = items.firstWhere((i) => i.id == id);
+      final fee = double.parse(id.split('-').last);
+      final fact = item.facts.firstWhere(
+        (f) => f.label == 'السعر شامل الضرائب والرسوم',
+      );
+      expect(fact.value, total, reason: id);
+      expect(
+        PostpaidTax(fee).total,
+        double.parse(total.replaceAll(',', '')),
+        reason: id,
+      );
+      expect(item.phones, contains('800'), reason: id);
+    }
+    expect(items.any((i) => i.id == PostpaidTax.itemId), isTrue);
   });
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../core/widgets/glass_popups.dart';
 import '../../core/content/content.dart';
 import '../../core/router/app_routes.dart';
 import '../../core/theme/theme.dart';
@@ -89,17 +90,16 @@ class _NotesScreenState extends ConsumerState<NotesScreen> {
     final l10n = AppLocalizations.of(context);
     final notifier = ref.read(notesProvider.notifier);
     notifier.remove(note.id);
-    ScaffoldMessenger.maybeOf(context)
-      ?..hideCurrentSnackBar()
-      ..showSnackBar(
-        SnackBar(
-          content: Text(l10n.notesDeleted),
-          action: SnackBarAction(
-            label: l10n.toolsUndo,
-            onPressed: () => notifier.putBack(note),
-          ),
-        ),
-      );
+    showGlassToast(
+      context,
+      l10n.notesDeleted,
+      icon: AppIcons.toolDelete,
+      duration: const Duration(seconds: 4),
+      action: SnackBarAction(
+        label: l10n.toolsUndo,
+        onPressed: () => notifier.putBack(note),
+      ),
+    );
   }
 
   @override

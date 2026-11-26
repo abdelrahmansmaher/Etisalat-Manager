@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../l10n/app_localizations.dart';
+import 'glass_popups.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_motion.dart';
 import '../theme/app_radius.dart';
@@ -172,14 +173,13 @@ class CodeText extends StatelessWidget {
     final l10n = AppLocalizations.of(context);
     await Clipboard.setData(ClipboardData(text: value));
     if (!context.mounted) return;
-    ScaffoldMessenger.maybeOf(context)
-      ?..hideCurrentSnackBar()
-      ..showSnackBar(
-        SnackBar(
-          content: Text(l10n.copiedMessage),
-          duration: AppMotion.copyConfirmation,
-        ),
-      );
+    HapticFeedback.selectionClick();
+    showGlassToast(
+      context,
+      l10n.copiedMessage,
+      icon: AppIcons.copy,
+      duration: AppMotion.copyConfirmation,
+    );
   }
 
   @override

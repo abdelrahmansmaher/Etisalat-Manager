@@ -7,12 +7,15 @@ import '../../core/router/app_routes.dart';
 import '../../core/theme/theme.dart';
 import '../../core/user/user.dart';
 import '../../core/widgets/app_card.dart';
+import '../../core/widgets/badges.dart';
 import '../../core/widgets/ltr_text.dart';
 import '../../core/widgets/page_scaffold.dart';
 import '../../core/widgets/prose_text.dart';
 import '../../core/widgets/trust/trust.dart';
 import '../../l10n/app_localizations.dart';
 import '../tools/dial.dart';
+import '../tools/whats_new.dart' show freshItemIdsProvider;
+import 'item_peek.dart';
 import 'package_facts.dart';
 import 'package_family.dart';
 import 'section_ui.dart';
@@ -20,31 +23,57 @@ import 'section_ui.dart';
 /// Tiny mark after a title in lists: a check for confirmed items, "edited by
 /// you" for the owner's own changes, nothing otherwise (an unknown status
 /// never looks confirmed).
-class ItemMark extends StatelessWidget {
+///
+/// An item checked on the official site gets a green seal, and an item the
+/// latest update added gets a "جديد" badge.
+class ItemMark extends ConsumerWidget {
   const ItemMark(this.item, {super.key});
 
   final ContentItem item;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context);
     final c = context.colors;
+    final fresh = ref.watch(
+      freshItemIdsProvider.select((ids) => ids.contains(item.id)),
+    );
+    final Widget mark;
     if (item.userEdited) {
-      return Text(
+      mark = Text(
         l10n.editedByYou,
         key: ValueKey('edited-${item.id}'),
         style: AppTypography.labelS.copyWith(color: c.primary),
       );
+    } else if (item.status != ItemStatus.confirmed) {
+      mark = const SizedBox.shrink();
+    } else if (item.officiallyVerified) {
+      mark = VerifiedSeal(
+        key: ValueKey('confirmed-${item.id}'),
+        size: 16,
+        semanticLabel: l10n.statusConfirmedOfficial,
+      );
+    } else {
+      mark = Icon(
+        AppIcons.confirmed,
+        key: ValueKey('confirmed-${item.id}'),
+        size: 14,
+        color: c.verified,
+        semanticLabel: l10n.statusConfirmedGuide,
+      );
     }
-    if (item.status != ItemStatus.confirmed) return const SizedBox.shrink();
-    return Icon(
-      AppIcons.confirmed,
-      key: ValueKey('confirmed-${item.id}'),
-      size: 14,
-      color: c.verified,
-      semanticLabel: item.officiallyVerified
-          ? l10n.statusConfirmedOfficial
-          : l10n.statusConfirmedGuide,
+    if (!fresh) return mark;
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        mark,
+        const SizedBox(width: AppSpacing.xxs),
+        AppBadge(
+          key: ValueKey('fresh-${item.id}'),
+          label: l10n.badgeNew,
+          tone: BadgeTone.fresh,
+        ),
+      ],
     );
   }
 }
@@ -215,6 +244,7 @@ class _RowFrame extends StatelessWidget {
     return InkWell(
       key: ValueKey('item-row-${item.id}'),
       onTap: () => context.push(ContentRoutes.item(item.id)),
+      onLongPress: () => showItemPeek(context, item),
       child: ConstrainedBox(
         constraints: const BoxConstraints(minHeight: _rowMinHeight),
         child: Padding(padding: padding, child: child),
@@ -297,12 +327,30 @@ class PriceText extends StatelessWidget {
   }
 }
 
-/// Dense package row: family tile, name, "quota · validity", and the price
-/// column with the subscription code under it.
+/// Package card row: family SIM, name with its marks, what it gives as
+/// small chips (internet, minutes, mixes, duration), and the price with the
+/// subscription code on the end side.
 class PackageRow extends StatelessWidget {
   const PackageRow({super.key, required this.item});
 
   final ContentItem item;
+
+  /// One chip per part of the quota, then the duration.
+  static List<(IconData, String)> chipsOf(PackageLine line) => [
+    for (final part in (line.quota ?? '').split('، '))
+      if (part.trim().isNotEmpty) (_iconFor(part), part.trim()),
+    if (line.validity != null) (AppIcons.validity, line.validity!),
+  ];
+
+  static IconData _iconFor(String text) {
+    if (text.contains('جيجا') || text.contains('ميجا')) {
+      return AppIcons.quotaData;
+    }
+    if (text.contains('دقيق')) return AppIcons.quotaMinutes;
+    if (text.contains('ميكس')) return AppIcons.quotaMixes;
+    if (text.contains('رسال')) return AppIcons.quotaSms;
+    return AppIcons.quota;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -310,20 +358,24 @@ class PackageRow extends StatelessWidget {
     final c = context.colors;
     final line = PackageLine.of(item, l10n);
     final large = MediaQuery.textScalerOf(context).scale(1) > 1.35;
+    final chips = chipsOf(line);
 
     final name = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         _RowTitle(item),
-        if (line.details.isNotEmpty)
-          ProseText(
-            line.details,
-            style: AppTypography.bodyS.copyWith(
-              color: c.textSecondary,
-              fontFeatures: AppTypography.tabular,
-            ),
+        if (chips.isNotEmpty) ...[
+          const SizedBox(height: AppSpacing.xxs + 2),
+          Wrap(
+            spacing: AppSpacing.xxs + 2,
+            runSpacing: AppSpacing.xxs,
+            children: [
+              for (final (icon, text) in chips)
+                _InfoChip(icon: icon, text: text),
+            ],
           ),
+        ],
       ],
     );
 
@@ -331,7 +383,7 @@ class PackageRow extends StatelessWidget {
     final code = line.code;
     final end = [
       if (price != null)
-        PriceText(price, key: ValueKey('price-${item.id}'))
+        PriceText(price, key: ValueKey('price-${item.id}'), size: 22)
       else
         Text(
           l10n.packageNoPriceShort,
@@ -342,7 +394,14 @@ class PackageRow extends StatelessWidget {
 
     return _RowFrame(
       item: item,
+      padding: const EdgeInsetsDirectional.fromSTEB(
+        AppSpacing.sm,
+        AppSpacing.sm,
+        AppSpacing.sm,
+        AppSpacing.sm,
+      ),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           FamilyTile(familyOf(item)),
           const SizedBox(width: AppSpacing.sm),
@@ -353,6 +412,7 @@ class PackageRow extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   name,
+                  const SizedBox(height: AppSpacing.xxs),
                   Wrap(
                     spacing: AppSpacing.sm,
                     crossAxisAlignment: WrapCrossAlignment.center,
@@ -373,6 +433,44 @@ class PackageRow extends StatelessWidget {
               ),
             ),
           ],
+        ],
+      ),
+    );
+  }
+}
+
+/// Small rounded label with an icon: "13 جيجا", "28 يوم".
+class _InfoChip extends StatelessWidget {
+  const _InfoChip({required this.icon, required this.text});
+
+  final IconData icon;
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    final c = context.colors;
+    return Container(
+      padding: const EdgeInsetsDirectional.fromSTEB(6, 2, 8, 2),
+      decoration: BoxDecoration(
+        color: c.glassTint,
+        borderRadius: AppRadius.fullAll,
+        border: Border.all(color: c.hairline),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon, size: 13, color: c.primaryUi),
+          const SizedBox(width: 4),
+          Flexible(
+            child: ProseText(
+              text,
+              style: AppTypography.labelS.copyWith(
+                color: c.textSecondary,
+                fontWeight: FontWeight.w600,
+                fontFeatures: AppTypography.tabular,
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -622,11 +720,20 @@ class ContentLoading extends StatelessWidget {
 
 /// Header of a group of rows: name and count on one line.
 class GroupHeader extends StatelessWidget {
-  const GroupHeader(this.title, {super.key, this.count, this.trailing});
+  const GroupHeader(
+    this.title, {
+    super.key,
+    this.count,
+    this.trailing,
+    this.icon,
+  });
 
   final String title;
   final int? count;
   final Widget? trailing;
+
+  /// Small tinted icon before the title.
+  final IconData? icon;
 
   @override
   Widget build(BuildContext context) {
@@ -642,6 +749,10 @@ class GroupHeader extends StatelessWidget {
           Expanded(
             child: Row(
               children: [
+                if (icon != null) ...[
+                  TintedIcon(icon!, tile: IconTile.xs),
+                  const SizedBox(width: AppSpacing.xs),
+                ],
                 Flexible(
                   child: Semantics(
                     header: true,
@@ -657,13 +768,9 @@ class GroupHeader extends StatelessWidget {
                 ),
                 if (count != null) ...[
                   const SizedBox(width: AppSpacing.xs),
-                  Text(
-                    '$count',
+                  AppBadge(
                     key: ValueKey('group-count-$title'),
-                    style: AppTypography.labelL.copyWith(
-                      color: c.textTertiary,
-                      fontFeatures: AppTypography.tabular,
-                    ),
+                    label: '$count',
                   ),
                 ],
               ],

@@ -10,10 +10,11 @@ import '../../core/widgets/page_scaffold.dart';
 import '../../core/widgets/sim_shape.dart';
 import '../../l10n/app_localizations.dart';
 import 'package_info.dart';
+import 'postpaid_tax.dart';
 import 'recharge_rule.dart';
 import 'tool_widgets.dart';
 
-enum _CalcMode { card, price }
+enum _CalcMode { card, price, postpaid }
 
 /// Recharge / tax calculator grounded in the guide's stated ratio.
 class CalculatorScreen extends ConsumerStatefulWidget {
@@ -61,10 +62,17 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
     }
 
     final val = parseTypedNumber(_input.text);
+    final postpaid = _mode == _CalcMode.postpaid && val != null
+        ? PostpaidTax(val)
+        : null;
     final result = val == null
         ? null
-        : (_mode == _CalcMode.card ? rule.balanceFor(val) : rule.cardFor(val));
-    final taxDiff = val != null && result != null
+        : switch (_mode) {
+            _CalcMode.card => rule.balanceFor(val),
+            _CalcMode.price => rule.cardFor(val),
+            _CalcMode.postpaid => postpaid!.total,
+          };
+    final taxDiff = val != null && result != null && postpaid == null
         ? (_mode == _CalcMode.card ? val - result : result - val)
         : null;
 
@@ -83,6 +91,11 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
               value: _CalcMode.price,
               label: l10n.toolsCalcModePrice,
             ),
+            CapsuleSegment(
+              key: const ValueKey('calc-mode-postpaid'),
+              value: _CalcMode.postpaid,
+              label: l10n.toolsCalcModePostpaid,
+            ),
           ],
         ),
         const SizedBox(height: AppSpacing.md),
@@ -93,14 +106,20 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
             children: [
               NumberField(
                 controller: _input,
-                label: _mode == _CalcMode.card
-                    ? l10n.toolsCalcCardLabel
-                    : l10n.toolsCalcPriceLabel,
+                label: switch (_mode) {
+                  _CalcMode.card => l10n.toolsCalcCardLabel,
+                  _CalcMode.price => l10n.toolsCalcPriceLabel,
+                  _CalcMode.postpaid => l10n.toolsCalcPostpaidLabel,
+                },
                 onChanged: (_) => setState(() {}),
               ),
               if (_mode == _CalcMode.card) ...[
                 const SizedBox(height: AppSpacing.sm),
                 CapsuleRow(
+                  selected: () {
+                    final i = _presets.indexWhere((a) => val == a.toDouble());
+                    return i;
+                  }(),
                   children: [
                     for (final amount in _presets)
                       Capsule(
@@ -120,21 +139,16 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
           const SizedBox(height: AppSpacing.md),
           Container(
             padding: const EdgeInsets.all(AppSpacing.md),
-            decoration: ShapeDecoration(
-              color: c.masthead,
-              shape: SimShape(
-                radius: AppRadius.m,
-                cut: 30,
-                side: c.isDark ? BorderSide(color: c.border) : BorderSide.none,
-              ),
-            ),
+            decoration: simGlassDecoration(c, cut: 30),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  _mode == _CalcMode.card
-                      ? l10n.toolsCalcBalanceResult
-                      : l10n.toolsCalcCardResult,
+                  switch (_mode) {
+                    _CalcMode.card => l10n.toolsCalcBalanceResult,
+                    _CalcMode.price => l10n.toolsCalcCardResult,
+                    _CalcMode.postpaid => l10n.toolsCalcPostpaidResult,
+                  },
                   style: AppTypography.labelL.copyWith(
                     color: c.onMastheadMuted,
                   ),
@@ -142,11 +156,25 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
                 const SizedBox(height: 4),
                 Text(
                   l10n.toolsCalcEgp(formatNumber(result)),
+                  key: const ValueKey('calc-result'),
                   style: AppTypography.priceHero.copyWith(
                     color: c.mastheadPrice,
                     fontSize: 36,
                   ),
                 ),
+                if (postpaid != null) ...[
+                  const SizedBox(height: 4),
+                  Text(
+                    l10n.toolsCalcPostpaidParts(
+                      formatNumber(postpaid.tableTax),
+                      formatNumber(postpaid.vat),
+                      formatNumber(postpaid.fees),
+                    ),
+                    style: AppTypography.bodyM.copyWith(
+                      color: c.onMastheadMuted,
+                    ),
+                  ),
+                ],
                 if (taxDiff != null && taxDiff > 0) ...[
                   const SizedBox(height: 4),
                   Text(
@@ -170,7 +198,11 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
         const SizedBox(height: AppSpacing.md),
         AppCard(
           role: CardRole.flat,
-          onTap: () => context.push(ContentRoutes.item(rule.item.id)),
+          onTap: () => context.push(
+            ContentRoutes.item(
+              _mode == _CalcMode.postpaid ? PostpaidTax.itemId : rule.item.id,
+            ),
+          ),
           child: Row(
             children: [
               TintedIcon(AppIcons.info, tile: IconTile.sm),
@@ -186,10 +218,12 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
                       ),
                     ),
                     Text(
-                      l10n.toolsCalcRatio(
-                        formatNumber(rule.card),
-                        formatNumber(rule.balance),
-                      ),
+                      _mode == _CalcMode.postpaid
+                          ? l10n.toolsCalcPostpaidRule
+                          : l10n.toolsCalcRatio(
+                              formatNumber(rule.card),
+                              formatNumber(rule.balance),
+                            ),
                       style: AppTypography.titleS.copyWith(
                         color: c.textPrimary,
                       ),

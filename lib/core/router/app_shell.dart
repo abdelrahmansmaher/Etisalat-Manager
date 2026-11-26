@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../l10n/app_localizations.dart';
 import '../theme/app_colors.dart';
 import '../widgets/app_bottom_nav.dart';
+import '../widgets/liquid_glass.dart';
+import '../../features/tools/whats_new.dart' show whatsNewUnseenProvider;
 import 'app_routes.dart';
 import 'tab_pager.dart';
 import '../theme/app_icons.dart';
@@ -47,12 +50,14 @@ class _AppShellState extends State<AppShell> {
   late final PageController _pages = PageController(
     initialPage: widget.navigationShell.currentIndex,
   );
+  final ValueNotifier<bool> _swiping = ValueNotifier(false);
 
   StatefulNavigationShell get navigationShell => widget.navigationShell;
 
   @override
   void dispose() {
     _pages.dispose();
+    _swiping.dispose();
     super.dispose();
   }
 
@@ -86,36 +91,39 @@ class _AppShellState extends State<AppShell> {
       return TabPagerScope(
         controller: _pages,
         child: Scaffold(
-          body: Row(
-            children: [
-              NavigationRail(
-                extended: width >= 1200,
-                selectedIndex: navigationShell.currentIndex,
-                onDestinationSelected: _onSelected,
-                labelType: width >= 1200
-                    ? NavigationRailLabelType.none
-                    : NavigationRailLabelType.all,
-                destinations: [
-                  for (final d in dests)
-                    NavigationRailDestination(
-                      icon: Icon(d.icon),
-                      selectedIcon: Icon(d.selectedIcon),
-                      label: Text(d.label),
+          body: AppBackdrop(
+            child: Row(
+              children: [
+                NavigationRail(
+                  backgroundColor: c.glassChrome,
+                  extended: width >= 1200,
+                  selectedIndex: navigationShell.currentIndex,
+                  onDestinationSelected: _onSelected,
+                  labelType: width >= 1200
+                      ? NavigationRailLabelType.none
+                      : NavigationRailLabelType.all,
+                  destinations: [
+                    for (final d in dests)
+                      NavigationRailDestination(
+                        icon: Icon(d.icon),
+                        selectedIcon: Icon(d.selectedIcon),
+                        label: Text(d.label),
+                      ),
+                  ],
+                ),
+                VerticalDivider(width: 1, color: c.hairline),
+                // Screens size themselves by the room beside the rail.
+                Expanded(
+                  child: LayoutBuilder(
+                    builder: (context, box) => MediaQuery(
+                      data: MediaQuery.of(context)
+                          .copyWith(size: Size(box.maxWidth, box.maxHeight)),
+                      child: navigationShell,
                     ),
-                ],
-              ),
-              VerticalDivider(width: 1, color: c.hairline),
-              // Screens size themselves by the room beside the rail.
-              Expanded(
-                child: LayoutBuilder(
-                  builder: (context, box) => MediaQuery(
-                    data: MediaQuery.of(context)
-                        .copyWith(size: Size(box.maxWidth, box.maxHeight)),
-                    child: navigationShell,
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       );
@@ -123,14 +131,26 @@ class _AppShellState extends State<AppShell> {
 
     return TabPagerScope(
       controller: _pages,
+      swiping: _swiping,
       child: Scaffold(
         extendBody: true,
-        body: navigationShell,
-        bottomNavigationBar: AppBottomNav(
-          destinations: dests,
-          currentIndex: navigationShell.currentIndex,
-          onSelected: _onSelected,
-          pageController: _pages,
+        body: AppBackdrop(child: navigationShell),
+        bottomNavigationBar: Consumer(
+          builder: (context, ref, _) {
+            final unseen = ref.watch(whatsNewUnseenProvider);
+            return AppBottomNav(
+              destinations: [
+                for (final (i, d) in dests.indexed)
+                  i == 0 ? d.withBadge(unseen) : d,
+              ],
+              currentIndex: navigationShell.currentIndex,
+              onSelected: _onSelected,
+              pageController: _pages,
+              swiping: _swiping,
+              onSearch: () => context.push(AppRoutes.search),
+              searchLabel: l10n.homeSearchHint,
+            );
+          },
         ),
       ),
     );

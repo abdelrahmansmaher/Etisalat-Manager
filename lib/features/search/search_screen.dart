@@ -1,3 +1,5 @@
+import 'love_note.dart';
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -10,6 +12,7 @@ import '../../core/settings/history.dart';
 import '../../core/theme/theme.dart';
 import '../../core/widgets/capsules.dart';
 import '../../core/widgets/list_surface.dart';
+import '../../core/widgets/liquid_glass.dart';
 import '../../core/widgets/masthead.dart';
 import '../../core/widgets/page_scaffold.dart';
 import '../../l10n/app_localizations.dart';
@@ -114,7 +117,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     final c = context.colors;
     final border = OutlineInputBorder(
       borderRadius: AppRadius.fullAll,
-      borderSide: BorderSide(color: c.mastheadField),
+      borderSide: BorderSide(color: c.glassEdge),
     );
 
     final field = TextField(
@@ -123,15 +126,19 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
       focusNode: _focusNode,
       autofocus: true,
       textInputAction: TextInputAction.search,
-      onSubmitted: (_) => _commit(),
+      onSubmitted: (text) {
+        if (LoveNote.matches(text)) {
+          LoveNote.show(context);
+          return;
+        }
+        _commit();
+      },
       style: AppTypography.bodyL.copyWith(color: c.textPrimary),
       decoration: InputDecoration(
         hintText: l10n.searchFieldHint,
         hintMaxLines: 2,
-        hintStyle: AppTypography.bodyL.copyWith(
-          color: c.isDark ? c.onMastheadMuted : c.textTertiary,
-        ),
-        fillColor: c.mastheadField,
+        hintStyle: AppTypography.bodyL.copyWith(color: c.textTertiary),
+        fillColor: c.headerField,
         isDense: true,
         contentPadding: const EdgeInsetsDirectional.fromSTEB(
           AppSpacing.md,
@@ -142,14 +149,11 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
         suffixIcon: ListenableBuilder(
           listenable: _controller,
           builder: (context, _) => _controller.text.isEmpty
-              ? Icon(
-                  AppIcons.search,
-                  color: c.isDark ? c.onMasthead : c.primary,
-                )
+              ? Icon(AppIcons.search, color: c.primary)
               : IconButton(
                   tooltip: l10n.searchClear,
                   icon: const Icon(AppIcons.clear, size: AppIconSize.action),
-                  color: c.isDark ? c.onMastheadMuted : c.textTertiary,
+                  color: c.textTertiary,
                   onPressed: _controller.clear,
                 ),
         ),
@@ -161,34 +165,38 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
       ),
     );
 
-    return Scaffold(
-      body: Column(
-        children: [
-          Masthead(
-            field: Row(
-              children: [
-                BackButton(onPressed: _back, color: c.onMasthead),
-                const SizedBox(width: AppSpacing.xxs),
-                Expanded(child: field),
-              ],
+    return AppBackdrop(
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Column(
+          children: [
+            Masthead(
+              field: Row(
+                children: [
+                  BackButton(onPressed: _back, color: c.onHeader),
+                  const SizedBox(width: AppSpacing.xxs),
+                  Expanded(child: field),
+                ],
+              ),
             ),
-          ),
-          Expanded(
-            child: CustomScrollView(
-              key: const ValueKey('search-scroll'),
-              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-              slivers: [
-                ..._results(context, l10n),
-                SliverPadding(
-                  padding: EdgeInsets.only(
-                    bottom:
-                        AppSpacing.md + MediaQuery.paddingOf(context).bottom,
+            Expanded(
+              child: CustomScrollView(
+                key: const ValueKey('search-scroll'),
+                keyboardDismissBehavior:
+                    ScrollViewKeyboardDismissBehavior.onDrag,
+                slivers: [
+                  ..._results(context, l10n),
+                  SliverPadding(
+                    padding: EdgeInsets.only(
+                      bottom:
+                          AppSpacing.md + MediaQuery.paddingOf(context).bottom,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

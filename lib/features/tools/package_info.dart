@@ -29,6 +29,7 @@ class PackageInfo {
     this.mix,
     this.validityDays,
     this.mixNote,
+    this.units,
   });
 
   factory PackageInfo.of(ContentItem item) {
@@ -37,7 +38,7 @@ class PackageInfo {
     // Two different prices for the same thing: the price is not settled.
     final settled = item.status != ItemStatus.conflict;
 
-    double? price, total, gb, minutes, mix, days;
+    double? price, total, gb, minutes, mix, days, units;
     if (settled) {
       price = item.priceEgp?.toDouble() ?? _plain(facts.price?.value);
       total =
@@ -50,6 +51,7 @@ class PackageInfo {
         gb ??= _factGb(q);
         minutes ??= _factMinutes(q);
         mix ??= _factMix(q);
+        units ??= _factCallUnits(q);
       }
       days ??= _factDays(facts.validity);
     }
@@ -65,6 +67,7 @@ class PackageInfo {
       minutes: minutes,
       mix: mix,
       validityDays: days,
+      units: units,
       mixNote: item.facts
           .where(
             (f) =>
@@ -90,6 +93,45 @@ class PackageInfo {
 
   /// How mixes/units are used up, in the content's own words.
   final String? mixNote;
+
+  /// Call/SMS units of a package that counts in units, not minutes.
+  final double? units;
+
+  /// Mixes or call units that pay for minutes.
+  double? get callUnits => mix ?? units;
+
+  /// Units one minute to an e& number uses, as [mixNote] states it.
+  double? get unitsPerMinuteEand => _rate(_eandRate);
+
+  /// Units one minute to another network uses, as [mixNote] states it.
+  double? get unitsPerMinuteOther => _rate(_otherRate);
+
+  double? _rate(RegExp r) {
+    final note = mixNote;
+    if (note == null) return null;
+    final m = r.firstMatch(toAsciiDigits(note));
+    return m == null ? null : double.parse(m[1]!);
+  }
+
+  static final RegExp _eandRate = RegExp(r'e&\s*=\s*(\d+(?:\.\d+)?)');
+  static final RegExp _otherRate = RegExp(
+    r'شبك[ةه]\s*(?:أخرى|اخرى|تانية|تانيه)\s*=\s*(\d+(?:\.\d+)?)',
+  );
+
+  /// The stated price excludes taxes.
+  bool get priceBeforeTax {
+    final f = facts.price;
+    return f != null && _norm(f.label).contains('قبل');
+  }
+
+  /// The stated price is taken from the balance (the customer recharges
+  /// more than that, because of the recharge tax).
+  bool get priceIsDeducted {
+    final f = facts.price;
+    if (f == null) return false;
+    final l = _norm(f.label);
+    return l.contains('خصم') || l.contains('من الرصيد');
+  }
 
   /// Confirmed and not edited by the owner.
   bool get confirmed => item.status == ItemStatus.confirmed && !item.userEdited;
@@ -177,9 +219,20 @@ class PackageInfo {
     return _plain(f.value);
   }
 
+  static double? _factCallUnits(Fact f) {
+    final l = _norm(f.label);
+    if (!l.contains('وحدات') || !(l.contains('مكالم') || l.contains('دقائق'))) {
+      return null;
+    }
+    return _plain(f.value);
+  }
+
   static double? _factDays(Fact? f) {
     if (f == null) return null;
     final text = toAsciiDigits('${f.value} ${f.unit ?? ''}');
+    final months = RegExp(r'^\s*(\d+)\s*(شهر|شهور|أشهر|اشهر)').firstMatch(text);
+    if (months != null) return double.parse(months[1]!) * 30;
+    if (RegExp(r'^\s*(شهري|شهر)(?=$|[\s(—-])').hasMatch(text)) return 30;
     final m = RegExp(r'^\s*(\d+)\s*(يوم|أيام|ايام|ساعة|ساعه)(?=$|[\s(])')
         .firstMatch(text);
     if (m == null) return null;

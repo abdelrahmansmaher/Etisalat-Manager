@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/content/content.dart';
 import '../../core/search/arabic_normalizer.dart';
 import '../../core/theme/theme.dart';
+import '../../core/widgets/glass_popups.dart';
 import '../../core/widgets/ltr_text.dart';
 import '../../core/widgets/prose_text.dart';
 import '../../l10n/app_localizations.dart';
@@ -12,33 +13,14 @@ import '../../core/user/json_store.dart' show isoDate;
 import 'dial_template.dart';
 import 'package_info.dart';
 
-/// Short message at the bottom.
-void showToolMessage(BuildContext context, String text) {
-  ScaffoldMessenger.maybeOf(context)
-    ?..hideCurrentSnackBar()
-    ..showSnackBar(SnackBar(content: Text(text)));
-}
+/// Short message floating above the nav bar.
+void showToolMessage(BuildContext context, String text) =>
+    showGlassToast(context, text, icon: AppIcons.info);
 
-/// Bottom sheet above everything, lifted over the keyboard, scrollable at
-/// any text size; its slide follows the reduced-motion setting.
+/// Frosted glass bottom sheet above everything, lifted over the keyboard,
+/// scrollable at any text size; its slide follows the reduced-motion setting.
 Future<T?> showToolSheet<T>(BuildContext context, WidgetBuilder builder) =>
-    showModalBottomSheet<T>(
-      context: context,
-      isScrollControlled: true,
-      useSafeArea: true,
-      useRootNavigator: true,
-      showDragHandle: true,
-      sheetAnimationStyle: AnimationStyle(
-        duration: AppMotion.resolve(context, AppMotion.emphasized),
-        reverseDuration: AppMotion.resolve(context, AppMotion.normal),
-      ),
-      builder: (context) => Padding(
-        padding: EdgeInsets.only(
-          bottom: MediaQuery.viewInsetsOf(context).bottom,
-        ),
-        child: builder(context),
-      ),
-    );
+    showGlassSheet<T>(context, builder);
 
 /// A text controller that lives as long as its sheet: it is disposed with the
 /// sheet, after the closing animation, never while its field is still shown.
@@ -104,27 +86,60 @@ Future<bool> askToConfirm(
   required String confirm,
   String? cancel,
 }) async {
-  final ok = await showDialog<bool>(
-    context: context,
-    animationStyle: AnimationStyle(
-      duration: AppMotion.resolve(context, AppMotion.normal),
-    ),
-    builder: (context) => AlertDialog(
-      scrollable: true,
-      title: Text(title),
-      content: body == null ? null : Text(body),
-      actions: [
-        TextButton(
-          onPressed: () => Navigator.pop(context, false),
-          child: Text(cancel ?? AppLocalizations.of(context).toolsCancel),
+  final ok = await showGlassPopup<bool>(
+    context,
+    builder: (context) {
+      final c = context.colors;
+      return GlassPopupCard(
+        padding: const EdgeInsets.fromLTRB(
+          AppSpacing.lg,
+          AppSpacing.lg,
+          AppSpacing.lg,
+          AppSpacing.md,
         ),
-        FilledButton(
-          key: const ValueKey('confirm-yes'),
-          onPressed: () => Navigator.pop(context, true),
-          child: Text(confirm),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Semantics(
+                header: true,
+                child: Text(
+                  title,
+                  style: AppTypography.titleL.copyWith(color: c.textPrimary),
+                ),
+              ),
+              if (body != null) ...[
+                const SizedBox(height: AppSpacing.xs),
+                Text(
+                  body,
+                  style: AppTypography.bodyM.copyWith(color: c.textSecondary),
+                ),
+              ],
+              const SizedBox(height: AppSpacing.md),
+              Wrap(
+                alignment: WrapAlignment.end,
+                spacing: AppSpacing.xs,
+                runSpacing: AppSpacing.xs,
+                children: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(context, false),
+                    child: Text(
+                      cancel ?? AppLocalizations.of(context).toolsCancel,
+                    ),
+                  ),
+                  FilledButton(
+                    key: const ValueKey('confirm-yes'),
+                    onPressed: () => Navigator.pop(context, true),
+                    child: Text(confirm),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
-      ],
-    ),
+      );
+    },
   );
   return ok ?? false;
 }

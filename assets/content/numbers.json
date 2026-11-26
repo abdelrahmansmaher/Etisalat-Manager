@@ -1,7 +1,7 @@
 {
   "section": "numbers",
   "source_document": "pdf_guide_2026_11",
-  "as_of": "2026-11-25",
+  "as_of": "2026-11-26",
   "items": [
     {
       "id": "num-cs-333",
@@ -332,7 +332,10 @@
         "emerald",
         "ايميرالد",
         "خدمة العملاء",
-        "vip"
+        "vip",
+        "إيميرالد",
+        "خدمة عملاء إيميرالد",
+        "فاتورة"
       ],
       "sources": [
         {
@@ -343,7 +346,11 @@
         }
       ],
       "codes": [],
-      "status": "confirmed"
+      "status": "confirmed",
+      "related": [
+        "pkg-emerald-460",
+        "pkg-postpaid-tax-rule"
+      ]
     },
     {
       "id": "num-most-used-summary",

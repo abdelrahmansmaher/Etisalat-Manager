@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart' show ValueListenable;
+import 'package:flutter/physics.dart';
+import 'package:flutter/services.dart';
 
 import '../theme/app_colors.dart';
 import '../theme/app_icons.dart';
+import '../theme/app_motion.dart';
 import '../theme/app_radius.dart';
 import '../theme/app_shadows.dart';
 import '../theme/app_spacing.dart';
 import '../theme/app_typography.dart';
 import 'app_card.dart';
-import 'glass_surface.dart';
+import 'badges.dart';
+import 'liquid_glass.dart';
+import 'motion.dart';
 
 @immutable
 class AppNavDestination {
@@ -15,29 +21,45 @@ class AppNavDestination {
     required this.icon,
     required this.selectedIcon,
     required this.label,
+    this.badge = false,
   });
 
   final IconData icon;
   final IconData selectedIcon;
   final String label;
+
+  /// A dot on the icon: something new waits on this tab.
+  final bool badge;
+
+  AppNavDestination withBadge(bool on) => AppNavDestination(
+    icon: icon,
+    selectedIcon: selectedIcon,
+    label: label,
+    badge: on,
+  );
 }
 
-/// Floating capsule navigation bar.
+/// Floating liquid-glass dock, iOS style.
 ///
-/// A fully rounded, faux-glass pill (no blur: it floats above scrolling
-/// lists). Every tab shows icon and label; the selected one sits on a navy
-/// capsule that slides and stretches between tabs and follows the live swipe
-/// position of [pageController].
+/// * A frosted capsule the content scrolls under, with a round search
+///   button beside it.
+/// * The selected tab sits under a clear glass "lens" that glides to the
+///   next tab on a spring: its leading edge runs ahead and the trailing edge
+///   catches up, so it stretches like a drop of liquid and settles.
+/// * While the user swipes between tabs the lens follows the finger 1:1.
+/// * The selected icon springs, and turns navy.
 ///
-/// Labels are clamped to 1.3× text scale so four tabs always fit at 360dp;
-/// content screens honour the full 2.0× scale.
-class AppBottomNav extends StatelessWidget {
+/// Labels are clamped to 1.3x text scale so four tabs always fit at 360dp.
+class AppBottomNav extends StatefulWidget {
   const AppBottomNav({
     super.key,
     required this.destinations,
     required this.currentIndex,
     required this.onSelected,
     this.pageController,
+    this.swiping,
+    this.onSearch,
+    this.searchLabel,
   });
 
   final List<AppNavDestination> destinations;
@@ -45,7 +67,14 @@ class AppBottomNav extends StatelessWidget {
   final ValueChanged<int> onSelected;
   final PageController? pageController;
 
-  /// Height of the capsule items (the bar adds [_inset] around them).
+  /// True while the user drags the tab pages.
+  final ValueListenable<bool>? swiping;
+
+  /// Round search button beside the dock.
+  final VoidCallback? onSearch;
+  final String? searchLabel;
+
+  /// Height of the tab items (the dock adds [_inset] around them).
   static const double itemHeight = 54;
   static const double _inset = 5;
 
@@ -53,15 +82,92 @@ class AppBottomNav extends StatelessWidget {
     fontWeight: FontWeight.w600,
   );
 
-  double _page() {
-    final pc = pageController;
+  @override
+  State<AppBottomNav> createState() => _AppBottomNavState();
+}
+
+class _AppBottomNavState extends State<AppBottomNav>
+    with TickerProviderStateMixin {
+  // Lens edges, in "boundary" units: tab i spans [i, i + 1].
+  late final AnimationController _start = AnimationController.unbounded(
+    vsync: this,
+    value: widget.currentIndex.toDouble(),
+  );
+  late final AnimationController _end = AnimationController.unbounded(
+    vsync: this,
+    value: widget.currentIndex + 1.0,
+  );
+
+  bool get _swiping => widget.swiping?.value ?? false;
+
+  @override
+  void initState() {
+    super.initState();
+    widget.swiping?.addListener(_onSwipingChanged);
+  }
+
+  @override
+  void didUpdateWidget(AppBottomNav old) {
+    super.didUpdateWidget(old);
+    if (old.swiping != widget.swiping) {
+      old.swiping?.removeListener(_onSwipingChanged);
+      widget.swiping?.addListener(_onSwipingChanged);
+    }
+    if (old.currentIndex != widget.currentIndex && !_swiping) {
+      _glideTo(widget.currentIndex);
+    }
+  }
+
+  void _onSwipingChanged() {
+    if (_swiping) {
+      _start.stop();
+      _end.stop();
+    } else {
+      // The swipe ended on a page: rest the lens there.
+      _glideTo(widget.currentIndex);
+    }
+  }
+
+  /// Moves the lens to [index]: the leading edge on a quick spring, the
+  /// trailing one on a softer one (the liquid stretch).
+  void _glideTo(int index) {
+    final reduce = AppMotion.reduced(context);
+    final a = index.toDouble(), b = index + 1.0;
+    if (reduce) {
+      _start.value = a;
+      _end.value = b;
+      return;
+    }
+    final forward = b > _end.value;
+    final lead = AppMotion.springOf(response: 0.34, dampingFraction: 0.78);
+    final trail = AppMotion.springOf(response: 0.5, dampingFraction: 0.86);
+    _start.animateWith(
+      SpringSimulation(forward ? trail : lead, _start.value, a, _start.velocity)
+        ..tolerance = const Tolerance(distance: 0.001, velocity: 0.01),
+    );
+    _end.animateWith(
+      SpringSimulation(forward ? lead : trail, _end.value, b, _end.velocity)
+        ..tolerance = const Tolerance(distance: 0.001, velocity: 0.01),
+    );
+  }
+
+  @override
+  void dispose() {
+    widget.swiping?.removeListener(_onSwipingChanged);
+    _start.dispose();
+    _end.dispose();
+    super.dispose();
+  }
+
+  double? _page() {
+    final pc = widget.pageController;
     if (pc != null && pc.hasClients && pc.position.haveDimensions) {
-      return (pc.page ?? currentIndex.toDouble()).clamp(
+      return (pc.page ?? widget.currentIndex.toDouble()).clamp(
         0.0,
-        destinations.length - 1.0,
+        widget.destinations.length - 1.0,
       );
     }
-    return currentIndex.toDouble();
+    return null;
   }
 
   /// Item widths: each label gets the room it needs and the spare space is
@@ -69,10 +175,10 @@ class AppBottomNav extends StatelessWidget {
   List<double> _widths(BuildContext context, double total) {
     final scaler = MediaQuery.textScalerOf(context);
     final natural = [
-      for (final d in destinations)
+      for (final d in widget.destinations)
         () {
           final tp = TextPainter(
-            text: TextSpan(text: d.label, style: labelStyle),
+            text: TextSpan(text: d.label, style: AppBottomNav.labelStyle),
             textDirection: TextDirection.ltr,
             textScaler: scaler,
             maxLines: 1,
@@ -96,25 +202,43 @@ class AppBottomNav extends StatelessWidget {
     return [for (final w in natural) min + (w - min) * room / extra];
   }
 
-  Widget _bar(BuildContext context, double total) {
-    final c = context.colors;
-    final page = _page();
-    final n = destinations.length;
-    final widths = _widths(context, total);
-    final amounts = [
-      for (var i = 0; i < n; i++) (1 - (page - i).abs()).clamp(0.0, 1.0),
-    ];
-    var start = 0.0;
-    var width = 0.0;
-    var acc = 0.0;
-    for (var i = 0; i < n; i++) {
-      start += amounts[i] * acc;
-      width += amounts[i] * widths[i];
-      acc += widths[i];
+  /// Boundary units to pixels from the start edge.
+  static double _px(List<double> widths, double b) {
+    final n = widths.length;
+    final clamped = b.clamp(-0.4, n + 0.4);
+    var x = 0.0;
+    var i = 0;
+    var rest = clamped;
+    while (rest >= 1 && i < n) {
+      x += widths[i];
+      rest -= 1;
+      i++;
     }
+    if (rest < 0) return x + rest * widths.first;
+    return x + rest * (i < n ? widths[i] : widths.last);
+  }
+
+  Widget _bar(BuildContext context, double total) {
+    final n = widget.destinations.length;
+    final widths = _widths(context, total);
+
+    // Edges: the finger while swiping, otherwise the springs.
+    final page = _page();
+    final double a, b;
+    if (_swiping && page != null) {
+      a = page;
+      b = page + 1;
+    } else {
+      a = _start.value;
+      b = _end.value;
+    }
+    final left = _px(widths, a), right = _px(widths, b);
+    final start = left < right ? left : right;
+    final width = (right - left).abs().clamp(24.0, total);
+    final center = (a + b) / 2 - 0.5;
 
     return ConstrainedBox(
-      constraints: const BoxConstraints(minHeight: itemHeight),
+      constraints: const BoxConstraints(minHeight: AppBottomNav.itemHeight),
       child: Stack(
         children: [
           PositionedDirectional(
@@ -123,12 +247,7 @@ class AppBottomNav extends StatelessWidget {
             width: width,
             top: 0,
             bottom: 0,
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                color: c.capsuleSelected,
-                borderRadius: AppRadius.fullAll,
-              ),
-            ),
+            child: const _Lens(),
           ),
           Row(
             children: [
@@ -137,9 +256,15 @@ class AppBottomNav extends StatelessWidget {
                   width: widths[i],
                   child: _NavItem(
                     key: ValueKey('nav-$i'),
-                    destination: destinations[i],
-                    amount: amounts[i],
-                    onTap: () => onSelected(i),
+                    destination: widget.destinations[i],
+                    amount: (1 - (center - i).abs()).clamp(0.0, 1.0),
+                    selected: i == widget.currentIndex,
+                    onTap: () {
+                      if (i != widget.currentIndex) {
+                        HapticFeedback.selectionClick();
+                      }
+                      widget.onSelected(i);
+                    },
                   ),
                 ),
             ],
@@ -152,7 +277,24 @@ class AppBottomNav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final c = context.colors;
-    final pc = pageController;
+    final pc = widget.pageController;
+    final listenable = Listenable.merge([_start, _end, ?pc, ?widget.swiping]);
+    final dock = LiquidGlass(
+      key: const ValueKey('nav-glass'),
+      tone: GlassTone.chrome,
+      blur: true,
+      stadium: true,
+      shadows: AppShadows.raised(c),
+      child: Padding(
+        padding: const EdgeInsets.all(AppBottomNav._inset),
+        child: LayoutBuilder(
+          builder: (context, constraints) => AnimatedBuilder(
+            animation: listenable,
+            builder: (context, _) => _bar(context, constraints.maxWidth),
+          ),
+        ),
+      ),
+    );
     return MediaQuery.withClampedTextScaling(
       maxScaleFactor: 1.3,
       child: SafeArea(
@@ -162,27 +304,101 @@ class AppBottomNav extends StatelessWidget {
           padding: const EdgeInsetsDirectional.symmetric(
             horizontal: AppSpacing.md,
           ),
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-              borderRadius: AppRadius.fullAll,
-              boxShadow: AppShadows.raised(c),
-            ),
-            child: GlassSurface(
-              opacity: 0.97,
-              borderRadius: AppRadius.fullAll,
-              borderColor: c.border,
-              child: Padding(
-                padding: const EdgeInsets.all(_inset),
-                child: LayoutBuilder(
-                  builder: (context, constraints) {
-                    final w = constraints.maxWidth;
-                    return pc == null
-                        ? _bar(context, w)
-                        : AnimatedBuilder(
-                            animation: pc,
-                            builder: (context, _) => _bar(context, w),
-                          );
-                  },
+          child: Row(
+            children: [
+              Expanded(child: dock),
+              if (widget.onSearch != null) ...[
+                const SizedBox(width: AppSpacing.xs + 2),
+                _SearchOrb(
+                  onTap: widget.onSearch!,
+                  label: widget.searchLabel ?? '',
+                ),
+              ],
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// The clear glass lens over the selected tab.
+class _Lens extends StatelessWidget {
+  const _Lens();
+
+  @override
+  Widget build(BuildContext context) {
+    final c = context.colors;
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        borderRadius: AppRadius.fullAll,
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: c.isDark
+              ? [
+                  Colors.white.withValues(alpha: 0.20),
+                  Colors.white.withValues(alpha: 0.09),
+                ]
+              : [
+                  Colors.white.withValues(alpha: 0.95),
+                  c.primaryContainer.withValues(alpha: 0.85),
+                ],
+        ),
+        border: Border.all(
+          color: Colors.white.withValues(alpha: c.isDark ? 0.22 : 0.9),
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: c.primaryUi.withValues(alpha: c.isDark ? 0.30 : 0.22),
+            blurRadius: 14,
+            offset: const Offset(0, 4),
+            spreadRadius: -4,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Round glass search button beside the dock.
+class _SearchOrb extends StatelessWidget {
+  const _SearchOrb({required this.onTap, required this.label});
+
+  final VoidCallback onTap;
+  final String label;
+
+  static const double size = AppBottomNav.itemHeight + 2 * AppBottomNav._inset;
+
+  @override
+  Widget build(BuildContext context) {
+    final c = context.colors;
+    return Semantics(
+      button: true,
+      label: label,
+      excludeSemantics: true,
+      child: PressableScale(
+        pressedScale: 0.9,
+        child: SizedBox.square(
+          dimension: size,
+          child: LiquidGlass(
+            key: const ValueKey('nav-search'),
+            tone: GlassTone.chrome,
+            blur: true,
+            stadium: true,
+            shadows: AppShadows.raised(c),
+            child: Material(
+              type: MaterialType.transparency,
+              shape: const CircleBorder(),
+              clipBehavior: Clip.antiAlias,
+              child: InkWell(
+                onTap: onTap,
+                child: Center(
+                  child: Icon(
+                    AppIcons.search,
+                    size: AppIconSize.nav,
+                    color: c.primary,
+                  ),
                 ),
               ),
             ),
@@ -198,27 +414,28 @@ class _NavItem extends StatelessWidget {
     super.key,
     required this.destination,
     required this.amount,
+    required this.selected,
     required this.onTap,
   });
 
   final AppNavDestination destination;
 
-  /// 0 = not selected … 1 = fully selected (fractional mid-swipe).
+  /// 0 = away from the lens ... 1 = under it (fractional while moving).
   final double amount;
+  final bool selected;
   final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     final c = context.colors;
-    final selected = amount > 0.5;
-    final color = Color.lerp(c.textSecondary, c.onCapsuleSelected, amount)!;
+    final color = Color.lerp(c.textSecondary, c.primary, amount)!;
     return Semantics(
       selected: selected,
       button: true,
       label: destination.label,
       excludeSemantics: true,
       child: PressableScale(
-        pressedScale: 0.94,
+        pressedScale: 0.9,
         child: Material(
           type: MaterialType.transparency,
           shape: const StadiumBorder(),
@@ -226,6 +443,8 @@ class _NavItem extends StatelessWidget {
           child: InkWell(
             onTap: onTap,
             customBorder: const StadiumBorder(),
+            splashFactory: NoSplash.splashFactory,
+            highlightColor: Colors.transparent,
             child: ConstrainedBox(
               constraints: const BoxConstraints(
                 minHeight: AppBottomNav.itemHeight,
@@ -235,10 +454,28 @@ class _NavItem extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const SizedBox(height: 4),
-                  Icon(
-                    selected ? destination.selectedIcon : destination.icon,
-                    size: AppIconSize.nav,
-                    color: color,
+                  SpringPop(
+                    trigger: selected,
+                    from: 0.72,
+                    child: Stack(
+                      clipBehavior: Clip.none,
+                      children: [
+                        Icon(
+                          amount > 0.5
+                              ? destination.selectedIcon
+                              : destination.icon,
+                          size: AppIconSize.nav,
+                          color: color,
+                        ),
+                        if (destination.badge)
+                          const PositionedDirectional(
+                            key: ValueKey('nav-badge'),
+                            top: -2,
+                            end: -4,
+                            child: BadgeDot(),
+                          ),
+                      ],
+                    ),
                   ),
                   const SizedBox(height: 1),
                   Padding(
@@ -251,7 +488,12 @@ class _NavItem extends StatelessWidget {
                         destination.label,
                         maxLines: 1,
                         softWrap: false,
-                        style: AppBottomNav.labelStyle.copyWith(color: color),
+                        style: AppBottomNav.labelStyle.copyWith(
+                          color: color,
+                          fontWeight: amount > 0.5
+                              ? FontWeight.w700
+                              : FontWeight.w600,
+                        ),
                       ),
                     ),
                   ),

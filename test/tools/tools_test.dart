@@ -177,6 +177,34 @@ void main() {
     expect(find.text('200 جنيه'), findsOneWidget);
   });
 
+  testWidgets('calculator: postpaid total with taxes and fees', (tester) async {
+    await _open(tester, ToolRoutes.calculator);
+    await tester.tap(_key('calc-mode-postpaid'));
+    await tester.pumpAndSettle();
+    await tester.enterText(find.byType(TextField).first, '460');
+    await tester.pumpAndSettle();
+    // 460 x 1.08 x 1.14 + 10 + 1.34
+    expect(find.text('577.69 جنيه'), findsOneWidget);
+    expect(find.textContaining('36.8'), findsOneWidget);
+    expect(find.textContaining('69.55'), findsOneWidget);
+    expect(find.textContaining('11.34'), findsOneWidget);
+  });
+
+  testWidgets('long-press shows a quick look that opens the item', (
+    tester,
+  ) async {
+    await _open(tester, '/section/packages');
+    await tester.longPress(_key('item-row-pkg-1'));
+    await tester.pumpAndSettle();
+    expect(_key('peek-pkg-1'), findsOneWidget);
+    expect(_key('copy-*91#'), findsOneWidget);
+    expect(_key('dial-*91#'), findsOneWidget);
+    await tester.tap(_key('peek-open'));
+    await tester.pumpAndSettle();
+    expect(_key('peek-pkg-1'), findsNothing);
+    expect(_key('package-hero'), findsOneWidget);
+  });
+
   testWidgets('favorites: added from a page, listed, marked and removed', (
     tester,
   ) async {

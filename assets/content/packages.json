@@ -1,7 +1,7 @@
 {
   "section": "packages",
   "source_document": "pdf_guide_2026_11",
-  "as_of": "2026-11-25",
+  "as_of": "2026-11-26",
   "items": [
     {
       "id": "pkg-hekaya-mixat-52",
@@ -102,9 +102,9 @@
         },
         {
           "name": "الموقع الرسمي — Hekaya Mixat (تم التحقق 2026-11-23)",
-          "url": "https://www.eand.com.eg/portal/Mobile/hekaya-mixat",
+          "url": "https://www.etisalat.com.eg/portal/Mobile/hekaya-mixat",
           "type": "official_site",
-          "checked_at": "2026-11-23"
+          "checked_at": "2026-11-26"
         }
       ],
       "pdf_pages": [
@@ -220,9 +220,9 @@
         },
         {
           "name": "الموقع الرسمي — Hekaya Mixat (تم التحقق 2026-11-23)",
-          "url": "https://www.eand.com.eg/portal/Mobile/hekaya-mixat",
+          "url": "https://www.etisalat.com.eg/portal/Mobile/hekaya-mixat",
           "type": "official_site",
-          "checked_at": "2026-11-23"
+          "checked_at": "2026-11-26"
         }
       ],
       "pdf_pages": [
@@ -338,9 +338,9 @@
         },
         {
           "name": "الموقع الرسمي — Hekaya Mixat (تم التحقق 2026-11-23)",
-          "url": "https://www.eand.com.eg/portal/Mobile/hekaya-mixat",
+          "url": "https://www.etisalat.com.eg/portal/Mobile/hekaya-mixat",
           "type": "official_site",
-          "checked_at": "2026-11-23"
+          "checked_at": "2026-11-26"
         }
       ],
       "pdf_pages": [
@@ -456,9 +456,9 @@
         },
         {
           "name": "الموقع الرسمي — Hekaya Mixat (تم التحقق 2026-11-23)",
-          "url": "https://www.eand.com.eg/portal/Mobile/hekaya-mixat",
+          "url": "https://www.etisalat.com.eg/portal/Mobile/hekaya-mixat",
           "type": "official_site",
-          "checked_at": "2026-11-23"
+          "checked_at": "2026-11-26"
         }
       ],
       "pdf_pages": [
@@ -574,9 +574,9 @@
         },
         {
           "name": "الموقع الرسمي — Hekaya Mixat (تم التحقق 2026-11-23)",
-          "url": "https://www.eand.com.eg/portal/Mobile/hekaya-mixat",
+          "url": "https://www.etisalat.com.eg/portal/Mobile/hekaya-mixat",
           "type": "official_site",
-          "checked_at": "2026-11-23"
+          "checked_at": "2026-11-26"
         }
       ],
       "pdf_pages": [
@@ -692,9 +692,9 @@
         },
         {
           "name": "الموقع الرسمي — Hekaya Mixat (تم التحقق 2026-11-23)",
-          "url": "https://www.eand.com.eg/portal/Mobile/hekaya-mixat",
+          "url": "https://www.etisalat.com.eg/portal/Mobile/hekaya-mixat",
           "type": "official_site",
-          "checked_at": "2026-11-23"
+          "checked_at": "2026-11-26"
         }
       ],
       "pdf_pages": [
@@ -783,16 +783,13 @@
         },
         {
           "name": "الموقع الرسمي — Hekaya Mixat (تم التحقق 2026-11-23)",
-          "url": "https://www.eand.com.eg/portal/Mobile/hekaya-mixat",
+          "url": "https://www.etisalat.com.eg/portal/Mobile/hekaya-mixat",
           "type": "official_site",
-          "checked_at": "2026-11-23"
+          "checked_at": "2026-11-26"
         }
       ],
       "pdf_pages": [
         20
-      ],
-      "related": [
-        "pkg-small-cards"
       ]
     },
     {
@@ -867,16 +864,13 @@
         },
         {
           "name": "الموقع الرسمي — Hekaya Mixat (تم التحقق 2026-11-23)",
-          "url": "https://www.eand.com.eg/portal/Mobile/hekaya-mixat",
+          "url": "https://www.etisalat.com.eg/portal/Mobile/hekaya-mixat",
           "type": "official_site",
-          "checked_at": "2026-11-23"
+          "checked_at": "2026-11-26"
         }
       ],
       "pdf_pages": [
         20
-      ],
-      "related": [
-        "pkg-small-cards"
       ]
     },
     {
@@ -951,16 +945,13 @@
         },
         {
           "name": "الموقع الرسمي — Hekaya Mixat (تم التحقق 2026-11-23)",
-          "url": "https://www.eand.com.eg/portal/Mobile/hekaya-mixat",
+          "url": "https://www.etisalat.com.eg/portal/Mobile/hekaya-mixat",
           "type": "official_site",
-          "checked_at": "2026-11-23"
+          "checked_at": "2026-11-26"
         }
       ],
       "pdf_pages": [
         20
-      ],
-      "related": [
-        "pkg-small-cards"
       ]
     },
     {
@@ -968,7 +959,7 @@
       "type": "package",
       "category_ar": "إضافات حكاية",
       "family": "addon",
-      "title_ar": "إضافة حكاية Extra 4.5 (60 ميكس)",
+      "title_ar": "إضافة حكاية إكسترا 4.5 (60 ميكس)",
       "title_en": "Hekaya Mixat Extra 4.5",
       "summary_ar": "60 ميكس، مع الباقة الشهرية الحالية، بـ 4.5 ج (6.43 ج شامل الضريبة/الشحن) — اشترك *626#",
       "facts": [
@@ -1019,7 +1010,9 @@
         "ميكسات",
         "إضافي",
         "add-on",
-        "خلصت الباقة"
+        "خلصت الباقة",
+        "إكسترا",
+        "Extra"
       ],
       "status": "confirmed",
       "status_note_ar": "مؤكد من الموقع الرسمي (23 نوفمبر 2026).",
@@ -1030,9 +1023,9 @@
         },
         {
           "name": "الموقع الرسمي — Hekaya Mixat (تم التحقق 2026-11-23)",
-          "url": "https://www.eand.com.eg/portal/Mobile/hekaya-mixat",
+          "url": "https://www.etisalat.com.eg/portal/Mobile/hekaya-mixat",
           "type": "official_site",
-          "checked_at": "2026-11-23"
+          "checked_at": "2026-11-26"
         }
       ],
       "pdf_pages": [
@@ -1047,7 +1040,7 @@
       "type": "package",
       "category_ar": "إضافات حكاية",
       "family": "addon",
-      "title_ar": "إضافة حكاية Extra 7.5 (120 ميكس)",
+      "title_ar": "إضافة حكاية إكسترا 7.5 (120 ميكس)",
       "title_en": "Hekaya Mixat Extra 7.5",
       "summary_ar": "120 ميكس، مع الباقة الشهرية الحالية، بـ 7.5 ج (10.71 ج شامل الضريبة/الشحن) — اشترك *626#",
       "facts": [
@@ -1098,7 +1091,9 @@
         "ميكسات",
         "إضافي",
         "add-on",
-        "خلصت الباقة"
+        "خلصت الباقة",
+        "إكسترا",
+        "Extra"
       ],
       "status": "confirmed",
       "status_note_ar": "مؤكد من الموقع الرسمي (23 نوفمبر 2026).",
@@ -1109,9 +1104,9 @@
         },
         {
           "name": "الموقع الرسمي — Hekaya Mixat (تم التحقق 2026-11-23)",
-          "url": "https://www.eand.com.eg/portal/Mobile/hekaya-mixat",
+          "url": "https://www.etisalat.com.eg/portal/Mobile/hekaya-mixat",
           "type": "official_site",
-          "checked_at": "2026-11-23"
+          "checked_at": "2026-11-26"
         }
       ],
       "pdf_pages": [
@@ -1185,7 +1180,7 @@
       "type": "package",
       "category_ar": "إضافات حكاية",
       "family": "addon",
-      "title_ar": "إضافة حكاية Extra 15 (300 ميكس)",
+      "title_ar": "إضافة حكاية إكسترا 15 (300 ميكس)",
       "title_en": "Hekaya Mixat Extra 15",
       "summary_ar": "300 ميكس، مع الباقة الشهرية الحالية، بـ 15 ج (21.43 ج شامل الضريبة/الشحن) — اشترك *626#",
       "facts": [
@@ -1236,7 +1231,9 @@
         "ميكسات",
         "إضافي",
         "add-on",
-        "خلصت الباقة"
+        "خلصت الباقة",
+        "إكسترا",
+        "Extra"
       ],
       "status": "confirmed",
       "status_note_ar": "مؤكد من الموقع الرسمي (23 نوفمبر 2026).",
@@ -1247,9 +1244,9 @@
         },
         {
           "name": "الموقع الرسمي — Hekaya Mixat (تم التحقق 2026-11-23)",
-          "url": "https://www.eand.com.eg/portal/Mobile/hekaya-mixat",
+          "url": "https://www.etisalat.com.eg/portal/Mobile/hekaya-mixat",
           "type": "official_site",
-          "checked_at": "2026-11-23"
+          "checked_at": "2026-11-26"
         }
       ],
       "pdf_pages": [
@@ -1441,9 +1438,9 @@
       "type": "package",
       "category_ar": "إيميرالد",
       "family": "emerald",
-      "title_ar": "Emerald 460",
+      "title_ar": "إيميرالد 460",
       "title_en": "Emerald 460",
-      "summary_ar": "13 GB + 2,500 دقيقة محلية + 500 رسالة، شهري (فاتورة)، بـ 460 ج",
+      "summary_ar": "13 جيجا + 2,500 دقيقة محلية + 500 رسالة، شهري (فاتورة)، بسعر 460 ج قبل الضريبة",
       "facts": [
         {
           "label_ar": "السعر (قبل الضريبة)",
@@ -1452,9 +1449,16 @@
           "unit": "ج"
         },
         {
+          "label_ar": "السعر شامل الضرائب والرسوم",
+          "value": "577.69",
+          "unit": "ج",
+          "kind": "price"
+        },
+        {
           "label_ar": "الحصة (إنترنت)",
-          "value": "13 GB",
-          "kind": "quantity"
+          "value": "13",
+          "kind": "quantity",
+          "unit": "جيجا"
         },
         {
           "label_ar": "الحصة (دقائق محلية)",
@@ -1472,19 +1476,24 @@
           "kind": "duration"
         },
         {
-          "label_ar": "سعر ما بعد الباقة",
-          "value": "الدقيقة المحلية 19 قرش، الرسالة 30 قرش",
-          "kind": "price"
-        },
-        {
           "label_ar": "خطوط عائلة مضمنة",
           "value": "1",
           "kind": "quantity"
         },
         {
-          "label_ar": "الضرائب المضافة",
-          "value": "ضريبة جدول 8% + ضريبة قيمة مضافة 14% + 10 ج تنمية موارد الدولة",
-          "kind": "text"
+          "label_ar": "دقائق بين أفراد العائلة",
+          "value": "10,000",
+          "kind": "quantity"
+        },
+        {
+          "label_ar": "نقاط لايف ستايل",
+          "value": "250",
+          "kind": "quantity"
+        },
+        {
+          "label_ar": "سعر ما بعد الباقة",
+          "value": "الدقيقة المحلية 19 قرش، الرسالة 30 قرش",
+          "kind": "price"
         },
         {
           "label_ar": "خط داتا عائلة إضافي (بعد المضمنة)",
@@ -1499,40 +1508,44 @@
           "unit": "ج/شهر"
         },
         {
-          "label_ar": "دقائق بين أفراد العائلة",
-          "value": "10,000",
-          "kind": "quantity"
-        },
-        {
-          "label_ar": "تخفيض على eHome DSL",
+          "label_ar": "تخفيض على الإنترنت الأرضي (eHome DSL)",
           "value": "185",
           "kind": "price",
           "unit": "ج/شهر"
         },
         {
-          "label_ar": "تخفيض على eHome Wireless",
+          "label_ar": "تخفيض على الإنترنت الهوائي (eHome Wireless)",
           "value": "190",
           "kind": "price",
           "unit": "ج/شهر"
         },
         {
-          "label_ar": "Lifestyle E-coins",
-          "value": "250",
-          "kind": "quantity"
+          "label_ar": "حساب الضرائب والرسوم",
+          "value": "460 + ضريبة جدول 8% (36.80) + قيمة مضافة 14% (69.55) + رسم تنمية موارد الدولة 10 + دمغة 1.34",
+          "kind": "text"
+        },
+        {
+          "label_ar": "خدمة عملاء إيميرالد",
+          "value": "800",
+          "kind": "phone"
         }
       ],
       "price_egp": 460,
       "quota_gb": 13,
       "quota_minutes": 2500,
       "codes": [],
-      "phones": [],
+      "phones": [
+        "800"
+      ],
       "tags": [
         "إيميرالد",
         "Emerald",
         "فاتورة",
         "postpaid",
         "خط فاتورة",
-        "باقة"
+        "باقة",
+        "خدمة عملاء إيميرالد",
+        "800"
       ],
       "status": "confirmed",
       "status_note_ar": "مؤكد من الموقع الرسمي (23 نوفمبر 2026).",
@@ -1543,9 +1556,13 @@
         },
         {
           "name": "الموقع الرسمي — Emerald (تم التحقق 2026-11-23)",
-          "url": "https://www.eand.com.eg/portal/Mobile/emerald",
+          "url": "https://www.etisalat.com.eg/portal/Mobile/emerald",
           "type": "official_site",
-          "checked_at": "2026-11-23"
+          "checked_at": "2026-11-26"
+        },
+        {
+          "name": "صاحب التطبيق (تعليمات الفرع): ضريبة الدمغة 1.34 ج",
+          "type": "other"
         }
       ],
       "pdf_pages": [
@@ -1555,7 +1572,9 @@
         "pkg-emerald-820",
         "pkg-emerald-1170",
         "pkg-emerald-1725",
-        "pkg-emerald-3450"
+        "pkg-emerald-3450",
+        "pkg-postpaid-tax-rule",
+        "num-cs-emerald-800"
       ]
     },
     {
@@ -1563,9 +1582,9 @@
       "type": "package",
       "category_ar": "إيميرالد",
       "family": "emerald",
-      "title_ar": "Emerald 820",
+      "title_ar": "إيميرالد 820",
       "title_en": "Emerald 820",
-      "summary_ar": "27 GB + 4,500 دقيقة محلية + 2,000 رسالة، شهري (فاتورة)، بـ 820 ج",
+      "summary_ar": "27 جيجا + 4,500 دقيقة محلية + 2,000 رسالة، شهري (فاتورة)، بسعر 820 ج قبل الضريبة",
       "facts": [
         {
           "label_ar": "السعر (قبل الضريبة)",
@@ -1574,9 +1593,16 @@
           "unit": "ج"
         },
         {
+          "label_ar": "السعر شامل الضرائب والرسوم",
+          "value": "1,020.92",
+          "unit": "ج",
+          "kind": "price"
+        },
+        {
           "label_ar": "الحصة (إنترنت)",
-          "value": "27 GB",
-          "kind": "quantity"
+          "value": "27",
+          "kind": "quantity",
+          "unit": "جيجا"
         },
         {
           "label_ar": "الحصة (دقائق محلية)",
@@ -1589,14 +1615,14 @@
           "kind": "quantity"
         },
         {
+          "label_ar": "دقائق دولية",
+          "value": "30",
+          "kind": "quantity"
+        },
+        {
           "label_ar": "الصلاحية",
           "value": "شهري (فاتورة)",
           "kind": "duration"
-        },
-        {
-          "label_ar": "سعر ما بعد الباقة",
-          "value": "الدقيقة المحلية 19 قرش، الرسالة 30 قرش",
-          "kind": "price"
         },
         {
           "label_ar": "خطوط عائلة مضمنة",
@@ -1604,9 +1630,19 @@
           "kind": "quantity"
         },
         {
-          "label_ar": "الضرائب المضافة",
-          "value": "ضريبة جدول 8% + ضريبة قيمة مضافة 14% + 10 ج تنمية موارد الدولة",
-          "kind": "text"
+          "label_ar": "دقائق بين أفراد العائلة",
+          "value": "10,000",
+          "kind": "quantity"
+        },
+        {
+          "label_ar": "نقاط لايف ستايل",
+          "value": "450",
+          "kind": "quantity"
+        },
+        {
+          "label_ar": "سعر ما بعد الباقة",
+          "value": "الدقيقة المحلية 19 قرش، الرسالة 30 قرش",
+          "kind": "price"
         },
         {
           "label_ar": "خط داتا عائلة إضافي (بعد المضمنة)",
@@ -1621,45 +1657,44 @@
           "unit": "ج/شهر"
         },
         {
-          "label_ar": "دقائق بين أفراد العائلة",
-          "value": "10,000",
-          "kind": "quantity"
-        },
-        {
-          "label_ar": "تخفيض على eHome DSL",
+          "label_ar": "تخفيض على الإنترنت الأرضي (eHome DSL)",
           "value": "245",
           "kind": "price",
           "unit": "ج/شهر"
         },
         {
-          "label_ar": "تخفيض على eHome Wireless",
+          "label_ar": "تخفيض على الإنترنت الهوائي (eHome Wireless)",
           "value": "260",
           "kind": "price",
           "unit": "ج/شهر"
         },
         {
-          "label_ar": "دقائق دولية",
-          "value": "30",
-          "kind": "quantity"
+          "label_ar": "حساب الضرائب والرسوم",
+          "value": "820 + ضريبة جدول 8% (65.60) + قيمة مضافة 14% (123.98) + رسم تنمية موارد الدولة 10 + دمغة 1.34",
+          "kind": "text"
         },
         {
-          "label_ar": "Lifestyle E-coins",
-          "value": "450",
-          "kind": "quantity"
+          "label_ar": "خدمة عملاء إيميرالد",
+          "value": "800",
+          "kind": "phone"
         }
       ],
       "price_egp": 820,
       "quota_gb": 27,
       "quota_minutes": 4500,
       "codes": [],
-      "phones": [],
+      "phones": [
+        "800"
+      ],
       "tags": [
         "إيميرالد",
         "Emerald",
         "فاتورة",
         "postpaid",
         "خط فاتورة",
-        "باقة"
+        "باقة",
+        "خدمة عملاء إيميرالد",
+        "800"
       ],
       "status": "confirmed",
       "status_note_ar": "مؤكد من الموقع الرسمي (23 نوفمبر 2026).",
@@ -1670,9 +1705,13 @@
         },
         {
           "name": "الموقع الرسمي — Emerald (تم التحقق 2026-11-23)",
-          "url": "https://www.eand.com.eg/portal/Mobile/emerald",
+          "url": "https://www.etisalat.com.eg/portal/Mobile/emerald",
           "type": "official_site",
-          "checked_at": "2026-11-23"
+          "checked_at": "2026-11-26"
+        },
+        {
+          "name": "صاحب التطبيق (تعليمات الفرع): ضريبة الدمغة 1.34 ج",
+          "type": "other"
         }
       ],
       "pdf_pages": [
@@ -1682,7 +1721,9 @@
         "pkg-emerald-460",
         "pkg-emerald-1170",
         "pkg-emerald-1725",
-        "pkg-emerald-3450"
+        "pkg-emerald-3450",
+        "pkg-postpaid-tax-rule",
+        "num-cs-emerald-800"
       ]
     },
     {
@@ -1690,9 +1731,9 @@
       "type": "package",
       "category_ar": "إيميرالد",
       "family": "emerald",
-      "title_ar": "Emerald 1170",
+      "title_ar": "إيميرالد 1170",
       "title_en": "Emerald 1170",
-      "summary_ar": "43 GB + 6,500 دقيقة محلية + 2,000 رسالة، شهري (فاتورة)، بـ 1,170 ج",
+      "summary_ar": "43 جيجا + 6,500 دقيقة محلية + 2,000 رسالة، شهري (فاتورة)، بسعر 1,170 ج قبل الضريبة",
       "facts": [
         {
           "label_ar": "السعر (قبل الضريبة)",
@@ -1701,9 +1742,16 @@
           "unit": "ج"
         },
         {
+          "label_ar": "السعر شامل الضرائب والرسوم",
+          "value": "1,451.84",
+          "unit": "ج",
+          "kind": "price"
+        },
+        {
           "label_ar": "الحصة (إنترنت)",
-          "value": "43 GB",
-          "kind": "quantity"
+          "value": "43",
+          "kind": "quantity",
+          "unit": "جيجا"
         },
         {
           "label_ar": "الحصة (دقائق محلية)",
@@ -1716,14 +1764,14 @@
           "kind": "quantity"
         },
         {
+          "label_ar": "دقائق دولية",
+          "value": "45",
+          "kind": "quantity"
+        },
+        {
           "label_ar": "الصلاحية",
           "value": "شهري (فاتورة)",
           "kind": "duration"
-        },
-        {
-          "label_ar": "سعر ما بعد الباقة",
-          "value": "الدقيقة المحلية 19 قرش، الرسالة 30 قرش",
-          "kind": "price"
         },
         {
           "label_ar": "خطوط عائلة مضمنة",
@@ -1731,9 +1779,19 @@
           "kind": "quantity"
         },
         {
-          "label_ar": "الضرائب المضافة",
-          "value": "ضريبة جدول 8% + ضريبة قيمة مضافة 14% + 10 ج تنمية موارد الدولة",
-          "kind": "text"
+          "label_ar": "دقائق بين أفراد العائلة",
+          "value": "10,000",
+          "kind": "quantity"
+        },
+        {
+          "label_ar": "نقاط لايف ستايل",
+          "value": "1000",
+          "kind": "quantity"
+        },
+        {
+          "label_ar": "سعر ما بعد الباقة",
+          "value": "الدقيقة المحلية 19 قرش، الرسالة 30 قرش",
+          "kind": "price"
         },
         {
           "label_ar": "خط داتا عائلة إضافي (بعد المضمنة)",
@@ -1748,45 +1806,44 @@
           "unit": "ج/شهر"
         },
         {
-          "label_ar": "دقائق بين أفراد العائلة",
-          "value": "10,000",
-          "kind": "quantity"
-        },
-        {
-          "label_ar": "تخفيض على eHome DSL",
+          "label_ar": "تخفيض على الإنترنت الأرضي (eHome DSL)",
           "value": "380",
           "kind": "price",
           "unit": "ج/شهر"
         },
         {
-          "label_ar": "تخفيض على eHome Wireless",
+          "label_ar": "تخفيض على الإنترنت الهوائي (eHome Wireless)",
           "value": "440",
           "kind": "price",
           "unit": "ج/شهر"
         },
         {
-          "label_ar": "دقائق دولية",
-          "value": "45",
-          "kind": "quantity"
+          "label_ar": "حساب الضرائب والرسوم",
+          "value": "1,170 + ضريبة جدول 8% (93.60) + قيمة مضافة 14% (176.90) + رسم تنمية موارد الدولة 10 + دمغة 1.34",
+          "kind": "text"
         },
         {
-          "label_ar": "Lifestyle E-coins",
-          "value": "1000",
-          "kind": "quantity"
+          "label_ar": "خدمة عملاء إيميرالد",
+          "value": "800",
+          "kind": "phone"
         }
       ],
       "price_egp": 1170,
       "quota_gb": 43,
       "quota_minutes": 6500,
       "codes": [],
-      "phones": [],
+      "phones": [
+        "800"
+      ],
       "tags": [
         "إيميرالد",
         "Emerald",
         "فاتورة",
         "postpaid",
         "خط فاتورة",
-        "باقة"
+        "باقة",
+        "خدمة عملاء إيميرالد",
+        "800"
       ],
       "status": "confirmed",
       "status_note_ar": "مؤكد من الموقع الرسمي (23 نوفمبر 2026).",
@@ -1797,9 +1854,13 @@
         },
         {
           "name": "الموقع الرسمي — Emerald (تم التحقق 2026-11-23)",
-          "url": "https://www.eand.com.eg/portal/Mobile/emerald",
+          "url": "https://www.etisalat.com.eg/portal/Mobile/emerald",
           "type": "official_site",
-          "checked_at": "2026-11-23"
+          "checked_at": "2026-11-26"
+        },
+        {
+          "name": "صاحب التطبيق (تعليمات الفرع): ضريبة الدمغة 1.34 ج",
+          "type": "other"
         }
       ],
       "pdf_pages": [
@@ -1809,7 +1870,9 @@
         "pkg-emerald-460",
         "pkg-emerald-820",
         "pkg-emerald-1725",
-        "pkg-emerald-3450"
+        "pkg-emerald-3450",
+        "pkg-postpaid-tax-rule",
+        "num-cs-emerald-800"
       ]
     },
     {
@@ -1817,9 +1880,9 @@
       "type": "package",
       "category_ar": "إيميرالد",
       "family": "emerald",
-      "title_ar": "Emerald 1725",
+      "title_ar": "إيميرالد 1725",
       "title_en": "Emerald 1725",
-      "summary_ar": "70 GB + 10,000 دقيقة محلية + 2,000 رسالة، شهري (فاتورة)، بـ 1,725 ج",
+      "summary_ar": "70 جيجا + 10,000 دقيقة محلية + 2,000 رسالة، شهري (فاتورة)، بسعر 1,725 ج قبل الضريبة",
       "facts": [
         {
           "label_ar": "السعر (قبل الضريبة)",
@@ -1828,9 +1891,16 @@
           "unit": "ج"
         },
         {
+          "label_ar": "السعر شامل الضرائب والرسوم",
+          "value": "2,135.16",
+          "unit": "ج",
+          "kind": "price"
+        },
+        {
           "label_ar": "الحصة (إنترنت)",
-          "value": "70 GB",
-          "kind": "quantity"
+          "value": "70",
+          "kind": "quantity",
+          "unit": "جيجا"
         },
         {
           "label_ar": "الحصة (دقائق محلية)",
@@ -1843,14 +1913,14 @@
           "kind": "quantity"
         },
         {
+          "label_ar": "دقائق دولية",
+          "value": "60",
+          "kind": "quantity"
+        },
+        {
           "label_ar": "الصلاحية",
           "value": "شهري (فاتورة)",
           "kind": "duration"
-        },
-        {
-          "label_ar": "سعر ما بعد الباقة",
-          "value": "الدقيقة المحلية 19 قرش، الرسالة 30 قرش",
-          "kind": "price"
         },
         {
           "label_ar": "خطوط عائلة مضمنة",
@@ -1858,9 +1928,19 @@
           "kind": "quantity"
         },
         {
-          "label_ar": "الضرائب المضافة",
-          "value": "ضريبة جدول 8% + ضريبة قيمة مضافة 14% + 10 ج تنمية موارد الدولة",
-          "kind": "text"
+          "label_ar": "دقائق بين أفراد العائلة",
+          "value": "10,000",
+          "kind": "quantity"
+        },
+        {
+          "label_ar": "نقاط لايف ستايل",
+          "value": "2000",
+          "kind": "quantity"
+        },
+        {
+          "label_ar": "سعر ما بعد الباقة",
+          "value": "الدقيقة المحلية 19 قرش، الرسالة 30 قرش",
+          "kind": "price"
         },
         {
           "label_ar": "خط داتا عائلة إضافي (بعد المضمنة)",
@@ -1875,45 +1955,44 @@
           "unit": "ج/شهر"
         },
         {
-          "label_ar": "دقائق بين أفراد العائلة",
-          "value": "10,000",
-          "kind": "quantity"
-        },
-        {
-          "label_ar": "تخفيض على eHome DSL",
+          "label_ar": "تخفيض على الإنترنت الأرضي (eHome DSL)",
           "value": "500",
           "kind": "price",
           "unit": "ج/شهر"
         },
         {
-          "label_ar": "تخفيض على eHome Wireless",
+          "label_ar": "تخفيض على الإنترنت الهوائي (eHome Wireless)",
           "value": "525",
           "kind": "price",
           "unit": "ج/شهر"
         },
         {
-          "label_ar": "دقائق دولية",
-          "value": "60",
-          "kind": "quantity"
+          "label_ar": "حساب الضرائب والرسوم",
+          "value": "1,725 + ضريبة جدول 8% (138) + قيمة مضافة 14% (260.82) + رسم تنمية موارد الدولة 10 + دمغة 1.34",
+          "kind": "text"
         },
         {
-          "label_ar": "Lifestyle E-coins",
-          "value": "2000",
-          "kind": "quantity"
+          "label_ar": "خدمة عملاء إيميرالد",
+          "value": "800",
+          "kind": "phone"
         }
       ],
       "price_egp": 1725,
       "quota_gb": 70,
       "quota_minutes": 10000,
       "codes": [],
-      "phones": [],
+      "phones": [
+        "800"
+      ],
       "tags": [
         "إيميرالد",
         "Emerald",
         "فاتورة",
         "postpaid",
         "خط فاتورة",
-        "باقة"
+        "باقة",
+        "خدمة عملاء إيميرالد",
+        "800"
       ],
       "status": "confirmed",
       "status_note_ar": "مؤكد من الموقع الرسمي (23 نوفمبر 2026).",
@@ -1924,9 +2003,13 @@
         },
         {
           "name": "الموقع الرسمي — Emerald (تم التحقق 2026-11-23)",
-          "url": "https://www.eand.com.eg/portal/Mobile/emerald",
+          "url": "https://www.etisalat.com.eg/portal/Mobile/emerald",
           "type": "official_site",
-          "checked_at": "2026-11-23"
+          "checked_at": "2026-11-26"
+        },
+        {
+          "name": "صاحب التطبيق (تعليمات الفرع): ضريبة الدمغة 1.34 ج",
+          "type": "other"
         }
       ],
       "pdf_pages": [
@@ -1936,7 +2019,9 @@
         "pkg-emerald-460",
         "pkg-emerald-820",
         "pkg-emerald-1170",
-        "pkg-emerald-3450"
+        "pkg-emerald-3450",
+        "pkg-postpaid-tax-rule",
+        "num-cs-emerald-800"
       ]
     },
     {
@@ -1944,9 +2029,9 @@
       "type": "package",
       "category_ar": "إيميرالد",
       "family": "emerald",
-      "title_ar": "Emerald 3450",
+      "title_ar": "إيميرالد 3450",
       "title_en": "Emerald 3450",
-      "summary_ar": "200 GB + 12,000 دقيقة محلية + 2,000 رسالة، شهري (فاتورة)، بـ 3,450 ج",
+      "summary_ar": "200 جيجا + 12,000 دقيقة محلية + 2,000 رسالة، شهري (فاتورة)، بسعر 3,450 ج قبل الضريبة",
       "facts": [
         {
           "label_ar": "السعر (قبل الضريبة)",
@@ -1955,9 +2040,16 @@
           "unit": "ج"
         },
         {
+          "label_ar": "السعر شامل الضرائب والرسوم",
+          "value": "4,258.98",
+          "unit": "ج",
+          "kind": "price"
+        },
+        {
           "label_ar": "الحصة (إنترنت)",
-          "value": "200 GB",
-          "kind": "quantity"
+          "value": "200",
+          "kind": "quantity",
+          "unit": "جيجا"
         },
         {
           "label_ar": "الحصة (دقائق محلية)",
@@ -1970,14 +2062,14 @@
           "kind": "quantity"
         },
         {
+          "label_ar": "دقائق دولية",
+          "value": "90",
+          "kind": "quantity"
+        },
+        {
           "label_ar": "الصلاحية",
           "value": "شهري (فاتورة)",
           "kind": "duration"
-        },
-        {
-          "label_ar": "سعر ما بعد الباقة",
-          "value": "الدقيقة المحلية 19 قرش، الرسالة 30 قرش",
-          "kind": "price"
         },
         {
           "label_ar": "خطوط عائلة مضمنة",
@@ -1985,9 +2077,19 @@
           "kind": "quantity"
         },
         {
-          "label_ar": "الضرائب المضافة",
-          "value": "ضريبة جدول 8% + ضريبة قيمة مضافة 14% + 10 ج تنمية موارد الدولة",
-          "kind": "text"
+          "label_ar": "دقائق بين أفراد العائلة",
+          "value": "10,000",
+          "kind": "quantity"
+        },
+        {
+          "label_ar": "نقاط لايف ستايل",
+          "value": "4000",
+          "kind": "quantity"
+        },
+        {
+          "label_ar": "سعر ما بعد الباقة",
+          "value": "الدقيقة المحلية 19 قرش، الرسالة 30 قرش",
+          "kind": "price"
         },
         {
           "label_ar": "خط داتا عائلة إضافي (بعد المضمنة)",
@@ -2002,45 +2104,44 @@
           "unit": "ج/شهر"
         },
         {
-          "label_ar": "دقائق بين أفراد العائلة",
-          "value": "10,000",
-          "kind": "quantity"
-        },
-        {
-          "label_ar": "تخفيض على eHome DSL",
+          "label_ar": "تخفيض على الإنترنت الأرضي (eHome DSL)",
           "value": "700",
           "kind": "price",
           "unit": "ج/شهر"
         },
         {
-          "label_ar": "تخفيض على eHome Wireless",
+          "label_ar": "تخفيض على الإنترنت الهوائي (eHome Wireless)",
           "value": "925",
           "kind": "price",
           "unit": "ج/شهر"
         },
         {
-          "label_ar": "دقائق دولية",
-          "value": "90",
-          "kind": "quantity"
+          "label_ar": "حساب الضرائب والرسوم",
+          "value": "3,450 + ضريبة جدول 8% (276) + قيمة مضافة 14% (521.64) + رسم تنمية موارد الدولة 10 + دمغة 1.34",
+          "kind": "text"
         },
         {
-          "label_ar": "Lifestyle E-coins",
-          "value": "4000",
-          "kind": "quantity"
+          "label_ar": "خدمة عملاء إيميرالد",
+          "value": "800",
+          "kind": "phone"
         }
       ],
       "price_egp": 3450,
       "quota_gb": 200,
       "quota_minutes": 12000,
       "codes": [],
-      "phones": [],
+      "phones": [
+        "800"
+      ],
       "tags": [
         "إيميرالد",
         "Emerald",
         "فاتورة",
         "postpaid",
         "خط فاتورة",
-        "باقة"
+        "باقة",
+        "خدمة عملاء إيميرالد",
+        "800"
       ],
       "status": "confirmed",
       "status_note_ar": "مؤكد من الموقع الرسمي (23 نوفمبر 2026).",
@@ -2051,9 +2152,13 @@
         },
         {
           "name": "الموقع الرسمي — Emerald (تم التحقق 2026-11-23)",
-          "url": "https://www.eand.com.eg/portal/Mobile/emerald",
+          "url": "https://www.etisalat.com.eg/portal/Mobile/emerald",
           "type": "official_site",
-          "checked_at": "2026-11-23"
+          "checked_at": "2026-11-26"
+        },
+        {
+          "name": "صاحب التطبيق (تعليمات الفرع): ضريبة الدمغة 1.34 ج",
+          "type": "other"
         }
       ],
       "pdf_pages": [
@@ -2063,7 +2168,9 @@
         "pkg-emerald-460",
         "pkg-emerald-820",
         "pkg-emerald-1170",
-        "pkg-emerald-1725"
+        "pkg-emerald-1725",
+        "pkg-postpaid-tax-rule",
+        "num-cs-emerald-800"
       ]
     },
     {
@@ -2896,170 +3003,36 @@
       ]
     },
     {
-      "id": "pkg-small-cards",
-      "type": "fee",
-      "category_ar": "الشحن والرصيد",
-      "title_ar": "كروت الفكة (الأسعار الحالية)",
-      "summary_ar": "كروت الفكة: 15 و19 و22.5 و30 ج — وهي باقات مش رصيد حر.",
-      "body_ar": "اقرأ المكتوب على الكارت (رصيد ولا باقة) قبل البيع.",
-      "facts": [
-        {
-          "label_ar": "فئات كروت الفكة",
-          "value": "15 / 19 / 22.5 / 30",
-          "kind": "price",
-          "unit": "ج"
-        },
-        {
-          "label_ar": "نوع الكارت",
-          "value": "باقة مش رصيد حر",
-          "kind": "text"
-        }
-      ],
-      "codes": [],
-      "phones": [],
-      "tags": [
-        "كروت فكة",
-        "كارت صغير",
-        "حكاية ميني",
-        "كارت 15",
-        "كارت 19"
-      ],
-      "status": "confirmed",
-      "sources": [
-        {
-          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
-          "type": "pdf_guide"
-        },
-        {
-          "name": "صدى البلد – أسعار الكروت بعد الزيادة",
-          "url": "https://www.elbalad.news/6962755",
-          "type": "press"
-        },
-        {
-          "name": "البنكر – كروت الشحن والإنترنت الأرضي",
-          "url": "https://banker.news/137143",
-          "type": "press"
-        },
-        {
-          "name": "aboutmsr – أسعار كروت الشحن الجديدة",
-          "url": "https://aboutmsr.com/أسعار-كروت-الشحن-الجديدة-الفكة-والعاد/",
-          "type": "other"
-        }
-      ],
-      "pdf_pages": [
-        16
-      ],
-      "related": [
-        "pkg-hekaya-mini-19",
-        "pkg-hekaya-mini-22-5",
-        "pkg-hekaya-mini-30"
-      ]
-    },
-    {
-      "id": "pkg-recharge-cards-balance",
-      "type": "fee",
-      "category_ar": "الشحن والرصيد",
-      "title_ar": "كروت الشحن العادية (رصيد) – الرصيد الفعلي",
-      "summary_ar": "الرصيد الفعلي لكل كارت محسوب بقاعدة 100 ج كارت = 70 ج رصيد.",
-      "facts": [
-        {
-          "label_ar": "كارت 10 ج",
-          "value": "7",
-          "kind": "price",
-          "unit": "ج"
-        },
-        {
-          "label_ar": "كارت 15 ج",
-          "value": "10.5",
-          "kind": "price",
-          "unit": "ج"
-        },
-        {
-          "label_ar": "كارت 25 ج",
-          "value": "17.5",
-          "kind": "price",
-          "unit": "ج"
-        },
-        {
-          "label_ar": "كارت 50 ج",
-          "value": "35",
-          "kind": "price",
-          "unit": "ج"
-        },
-        {
-          "label_ar": "كارت 100 ج",
-          "value": "70",
-          "kind": "price",
-          "unit": "ج"
-        },
-        {
-          "label_ar": "كارت 200 ج",
-          "value": "140",
-          "kind": "price",
-          "unit": "ج"
-        },
-        {
-          "label_ar": "كارت 300 ج",
-          "value": "210",
-          "kind": "price",
-          "unit": "ج"
-        }
-      ],
-      "codes": [],
-      "phones": [],
-      "tags": [
-        "كروت شحن",
-        "رصيد",
-        "كارت",
-        "recharge"
-      ],
-      "status": "confirmed",
-      "status_note_ar": "محسوب بقاعدة 100 ج = 70 ج.",
-      "sources": [
-        {
-          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
-          "type": "pdf_guide"
-        }
-      ],
-      "pdf_pages": [
-        16
-      ]
-    },
-    {
       "id": "pkg-recharge-tax-rule",
       "type": "rule",
       "category_ar": "الشحن والرصيد",
       "title_ar": "ضريبة الشحن: كل 100 ج كارت = 70 ج رصيد",
-      "summary_ar": "كل 100 ج كارت = 70 ج رصيد. قيمة الكارت المطلوب = سعر الباقة ÷ 0.7.",
-      "body_ar": "بعد كل عملية شحن الشركة ملزمة تبعت رسالة مجانية بالمبلغ المشحون وأي مديونية أو سلفة اتخصمت وسبب أي خصم تاني.",
+      "summary_ar": "الموقع الرسمي بيكتب سعر كل باقة شامل ضريبة الشحن: حكاية 52 = 74.29 ج. يعني كل 100 ج كارت = 70 ج رصيد.",
+      "body_ar": "",
       "facts": [
         {
           "label_ar": "كارت",
           "value": "100",
-          "kind": "price",
-          "unit": "ج"
+          "unit": "ج",
+          "kind": "price"
         },
         {
           "label_ar": "رصيد فعلي",
           "value": "70",
-          "kind": "price",
-          "unit": "ج"
+          "unit": "ج",
+          "kind": "price"
         },
         {
-          "label_ar": "ضرائب ورسوم",
-          "value": "≈ 30%",
-          "kind": "percent"
-        },
-        {
-          "label_ar": "المعادلة",
-          "value": "قيمة الكارت = سعر الباقة ÷ 0.7 (أي × 1.4286)",
-          "kind": "text"
-        },
-        {
-          "label_ar": "مثال: حكاية 52 شاملة ضريبة الشحن",
+          "label_ar": "مثال من الموقع: حكاية 52 شاملة ضريبة الشحن",
           "value": "74.29",
-          "kind": "price",
-          "unit": "ج"
+          "unit": "ج",
+          "kind": "price"
+        },
+        {
+          "label_ar": "مثال من الموقع: حكاية 69 شاملة ضريبة الشحن",
+          "value": "98.58",
+          "unit": "ج",
+          "kind": "price"
         }
       ],
       "codes": [],
@@ -3081,23 +3054,10 @@
       "status": "confirmed",
       "sources": [
         {
-          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
-          "type": "pdf_guide"
-        },
-        {
-          "name": "مصراوي – التفاصيل الكاملة لزيادة أسعار باقات المحمول",
-          "url": "https://www.masrawy.com/news/news_economy/details/2026/5/6/2983762",
-          "type": "press"
-        },
-        {
-          "name": "مصراوي – الكارت والفاتورة: اعرف حقوقك",
-          "url": "https://www.masrawy.com/news/news_economy/details/2025/7/1/2813628/",
-          "type": "press"
-        },
-        {
-          "name": "مصراوي — تفاصيل زيادة الأسعار (6 مايو 2026)",
-          "url": "https://www.masrawy.com/news/news_economy/details/2026/5/6/2983762/",
-          "type": "press"
+          "name": "الموقع الرسمي",
+          "url": "https://www.etisalat.com.eg/portal/Mobile/hekaya-mixat",
+          "type": "official_site",
+          "checked_at": "2026-11-26"
         }
       ],
       "pdf_pages": [
@@ -3105,6 +3065,81 @@
         16,
         28,
         71
+      ],
+      "status_note_ar": "من أسعار الموقع الرسمي شاملة ضريبة الشحن"
+    },
+    {
+      "id": "pkg-postpaid-tax-rule",
+      "type": "rule",
+      "category_ar": "الشحن والرصيد",
+      "title_ar": "ضرائب ورسوم باقات الفاتورة",
+      "summary_ar": "سعر الباقة + ضريبة جدول 8% + قيمة مضافة 14% (على السعر بعد الـ 8%) + 10 ج رسم تنمية موارد الدولة + 1.34 ج دمغة. مثال: إيميرالد 460 = 577.69 ج.",
+      "facts": [
+        {
+          "label_ar": "ضريبة الجدول",
+          "value": "8%",
+          "kind": "percent"
+        },
+        {
+          "label_ar": "ضريبة القيمة المضافة",
+          "value": "14% على السعر بعد ضريبة الجدول",
+          "kind": "text"
+        },
+        {
+          "label_ar": "رسم تنمية موارد الدولة",
+          "value": "10",
+          "unit": "ج",
+          "kind": "price"
+        },
+        {
+          "label_ar": "ضريبة الدمغة",
+          "value": "1.34",
+          "unit": "ج",
+          "kind": "price"
+        },
+        {
+          "label_ar": "المعادلة",
+          "value": "السعر × 1.08 × 1.14 + 10 + 1.34",
+          "kind": "text"
+        },
+        {
+          "label_ar": "مثال: إيميرالد 460 شامل الضرائب والرسوم",
+          "value": "577.69",
+          "unit": "ج",
+          "kind": "price"
+        }
+      ],
+      "tags": [
+        "ضريبة",
+        "ضرايب",
+        "فاتورة",
+        "فاتوره",
+        "دمغة",
+        "قيمة مضافة",
+        "إيميرالد",
+        "postpaid",
+        "tax"
+      ],
+      "status": "confirmed",
+      "status_note_ar": "الضرائب ورسم التنمية من الموقع الرسمي؛ الدمغة من تعليمات الفرع",
+      "sources": [
+        {
+          "name": "الموقع الرسمي",
+          "url": "https://www.etisalat.com.eg/portal/Mobile/emerald",
+          "type": "official_site",
+          "checked_at": "2026-11-26"
+        },
+        {
+          "name": "صاحب التطبيق (تعليمات الفرع): ضريبة الدمغة 1.34 ج",
+          "type": "other"
+        }
+      ],
+      "related": [
+        "pkg-emerald-460",
+        "pkg-emerald-820",
+        "pkg-emerald-1170",
+        "pkg-emerald-1725",
+        "pkg-emerald-3450"
       ]
     },
     {
@@ -3322,39 +3357,6 @@
       ]
     },
     {
-      "id": "pkg-faq-1",
-      "type": "faq",
-      "category_ar": "أسئلة سريعة",
-      "title_ar": "\"شحنت 100 ج ليه لقيت 70؟\"",
-      "summary_ar": "ضرائب ورسوم ≈ 30% على الشحن، وده ثابت بقرار تنظيمي ومتغيرش في زيادة مايو 2026.",
-      "facts": [
-        {
-          "label_ar": "الرد المختصر",
-          "value": "ضرائب ورسوم ≈ 30% على الشحن، وده ثابت بقرار تنظيمي ومتغيرش في زيادة مايو 2026.",
-          "kind": "text"
-        }
-      ],
-      "codes": [],
-      "phones": [],
-      "tags": [
-        "سؤال",
-        "العميل بيسأل",
-        "ضريبة",
-        "70",
-        "شحنت 100"
-      ],
-      "status": "confirmed",
-      "sources": [
-        {
-          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
-          "type": "pdf_guide"
-        }
-      ],
-      "pdf_pages": [
-        26
-      ]
-    },
-    {
       "id": "pkg-faq-5",
       "type": "faq",
       "category_ar": "أسئلة سريعة",
@@ -3520,39 +3522,6 @@
         "مواقع حكومية",
         "تعليمية",
         "مجاني"
-      ],
-      "status": "confirmed",
-      "sources": [
-        {
-          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
-          "type": "pdf_guide"
-        }
-      ],
-      "pdf_pages": [
-        26
-      ]
-    },
-    {
-      "id": "pkg-faq-2",
-      "type": "faq",
-      "category_ar": "أسئلة سريعة",
-      "title_ar": "\"سعر باقتي زاد ليه؟\"",
-      "summary_ar": "زيادة 6 مايو 2026 المعتمدة من الجهاز القومي لتنظيم الاتصالات (9%–15%).",
-      "facts": [
-        {
-          "label_ar": "الرد المختصر",
-          "value": "زيادة 6 مايو 2026 المعتمدة من الجهاز القومي لتنظيم الاتصالات (9%–15%).",
-          "kind": "text"
-        }
-      ],
-      "codes": [],
-      "phones": [],
-      "tags": [
-        "سؤال",
-        "العميل بيسأل",
-        "زيادة",
-        "حكاية 45",
-        "52"
       ],
       "status": "confirmed",
       "sources": [

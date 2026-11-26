@@ -262,6 +262,26 @@ class PackageFacts {
 
 /// Leading icon for any fact: by package role when given, else by kind,
 /// refined by label keywords (data vs minutes vs SMS, fees, limits…).
+/// Short label of a fact for tiles: `الحصة (إنترنت)` reads `إنترنت`.
+String shortFactLabel(String label) {
+  final m = RegExp(r'^الحصة\s*\(([^)]+)\)\s*$').firstMatch(label.trim());
+  return m == null ? label : m[1]!.trim();
+}
+
+/// The Arabic unit a quantity implies when the content gives none:
+/// minutes, messages, mixes, units.
+String? impliedUnit(Fact f) {
+  if (f.unit != null || !f.rendersLtr) return f.unit;
+  final l = PackageFacts.normalizeLabel(f.label);
+  if (l.contains('دقائق') || l.contains('دقيق')) return 'دقيقة';
+  if (l.contains('رسائل') || l.contains('رساله')) return 'رسالة';
+  if (l.contains('ميكس')) return 'ميكس';
+  if (l.contains('وحدات')) return 'وحدة';
+  if (l.contains('نقاط')) return 'نقطة';
+  if (l.contains('خطوط')) return 'خط';
+  return null;
+}
+
 abstract final class FactIcons {
   static IconData of(Fact f, [PackageFactRole? role]) {
     final l = PackageFacts.normalizeLabel('${f.label} ${f.unit ?? ''}');

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- The app mark: an N in rounded strokes, white uprights and a gold diagonal. -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp" android:height="108dp"
     android:viewportWidth="108" android:viewportHeight="108">
-    <path android:pathData="M39,41 L39,67 M27.74,47.5 L50.26,60.5 M50.26,47.5 L27.74,60.5" android:strokeColor="#F2C15A" android:strokeWidth="5.5" android:strokeLineCap="round" />
-    <path android:pathData="M65,41 L61,67 M76,41 L72,67 M58.5,49 L81,49 M56.5,59.5 L79,59.5" android:strokeColor="#FFFFFF" android:strokeWidth="5" android:strokeLineCap="round" />
+    <path android:pathData="M39.8,37.5 L39.8,70.5 M68.2,37.5 L68.2,70.5" android:strokeColor="#FFFFFF" android:strokeWidth="6.3" android:strokeLineCap="round" />
+    <path android:pathData="M39.8,37.5 L68.2,70.5" android:strokeColor="#F2C15A" android:strokeWidth="6.3" android:strokeLineCap="round" />
 </vector>

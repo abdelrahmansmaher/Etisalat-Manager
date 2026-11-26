@@ -1,7 +1,7 @@
 {
   "section": "internet",
   "source_document": "pdf_guide_2026_11",
-  "as_of": "2026-11-25",
+  "as_of": "2026-11-26",
   "items": [
     {
       "id": "net-super-connect-10-5",
@@ -91,6 +91,12 @@
           "url": "https://www.eand.com.eg/portal/Mobile/super-connect",
           "type": "official_site",
           "checked_at": "2026-11-23"
+        },
+        {
+          "name": "الموقع الرسمي (صفحة حكاية ميكسات)",
+          "url": "https://www.etisalat.com.eg/portal/Mobile/hekaya-mixat",
+          "type": "official_site",
+          "checked_at": "2026-11-26"
         }
       ],
       "pdf_pages": [
@@ -198,6 +204,12 @@
           "url": "https://www.eand.com.eg/portal/Mobile/super-connect",
           "type": "official_site",
           "checked_at": "2026-11-23"
+        },
+        {
+          "name": "الموقع الرسمي (صفحة حكاية ميكسات)",
+          "url": "https://www.etisalat.com.eg/portal/Mobile/hekaya-mixat",
+          "type": "official_site",
+          "checked_at": "2026-11-26"
         }
       ],
       "pdf_pages": [
@@ -305,6 +317,12 @@
           "url": "https://www.eand.com.eg/portal/Mobile/super-connect",
           "type": "official_site",
           "checked_at": "2026-11-23"
+        },
+        {
+          "name": "الموقع الرسمي (صفحة حكاية ميكسات)",
+          "url": "https://www.etisalat.com.eg/portal/Mobile/hekaya-mixat",
+          "type": "official_site",
+          "checked_at": "2026-11-26"
         }
       ],
       "pdf_pages": [
@@ -412,6 +430,12 @@
           "url": "https://www.eand.com.eg/portal/Mobile/super-connect",
           "type": "official_site",
           "checked_at": "2026-11-23"
+        },
+        {
+          "name": "الموقع الرسمي (صفحة حكاية ميكسات)",
+          "url": "https://www.etisalat.com.eg/portal/Mobile/hekaya-mixat",
+          "type": "official_site",
+          "checked_at": "2026-11-26"
         }
       ],
       "pdf_pages": [
@@ -519,6 +543,12 @@
           "url": "https://www.eand.com.eg/portal/Mobile/super-connect",
           "type": "official_site",
           "checked_at": "2026-11-23"
+        },
+        {
+          "name": "الموقع الرسمي (صفحة حكاية ميكسات)",
+          "url": "https://www.etisalat.com.eg/portal/Mobile/hekaya-mixat",
+          "type": "official_site",
+          "checked_at": "2026-11-26"
         }
       ],
       "pdf_pages": [
@@ -626,6 +656,12 @@
           "url": "https://www.eand.com.eg/portal/Mobile/super-connect",
           "type": "official_site",
           "checked_at": "2026-11-23"
+        },
+        {
+          "name": "الموقع الرسمي (صفحة حكاية ميكسات)",
+          "url": "https://www.etisalat.com.eg/portal/Mobile/hekaya-mixat",
+          "type": "official_site",
+          "checked_at": "2026-11-26"
         }
       ],
       "pdf_pages": [
@@ -733,6 +769,12 @@
           "url": "https://www.eand.com.eg/portal/Mobile/super-connect",
           "type": "official_site",
           "checked_at": "2026-11-23"
+        },
+        {
+          "name": "الموقع الرسمي (صفحة حكاية ميكسات)",
+          "url": "https://www.etisalat.com.eg/portal/Mobile/hekaya-mixat",
+          "type": "official_site",
+          "checked_at": "2026-11-26"
         }
       ],
       "pdf_pages": [
@@ -840,6 +882,12 @@
           "url": "https://www.eand.com.eg/portal/Mobile/super-connect",
           "type": "official_site",
           "checked_at": "2026-11-23"
+        },
+        {
+          "name": "الموقع الرسمي (صفحة حكاية ميكسات)",
+          "url": "https://www.etisalat.com.eg/portal/Mobile/hekaya-mixat",
+          "type": "official_site",
+          "checked_at": "2026-11-26"
         }
       ],
       "pdf_pages": [
@@ -947,6 +995,12 @@
           "url": "https://www.eand.com.eg/portal/Mobile/super-connect",
           "type": "official_site",
           "checked_at": "2026-11-23"
+        },
+        {
+          "name": "الموقع الرسمي (صفحة حكاية ميكسات)",
+          "url": "https://www.etisalat.com.eg/portal/Mobile/hekaya-mixat",
+          "type": "official_site",
+          "checked_at": "2026-11-26"
         }
       ],
       "pdf_pages": [
@@ -1054,6 +1108,12 @@
           "url": "https://www.eand.com.eg/portal/Mobile/super-connect",
           "type": "official_site",
           "checked_at": "2026-11-23"
+        },
+        {
+          "name": "الموقع الرسمي (صفحة حكاية ميكسات)",
+          "url": "https://www.etisalat.com.eg/portal/Mobile/hekaya-mixat",
+          "type": "official_site",
+          "checked_at": "2026-11-26"
         }
       ],
       "pdf_pages": [
@@ -5163,7 +5223,7 @@
       "type": "package",
       "category_ar": "إضافات الأرضي",
       "family": "addon",
-      "title_ar": "إضافة أرضي Extra 5 جيجا",
+      "title_ar": "إضافة أرضي إكسترا 5 جيجا",
       "summary_ar": "5 جيجا بـ 19 ج",
       "facts": [
         {
@@ -5199,7 +5259,9 @@
         "ارضي",
         "اضافة",
         "extra",
-        "dsl"
+        "dsl",
+        "إكسترا",
+        "Extra"
       ],
       "status": "confirmed",
       "status_note_ar": "مؤكد من الموقع الرسمي (23 نوفمبر 2026).",
@@ -5217,14 +5279,15 @@
       ],
       "pdf_pages": [
         37
-      ]
+      ],
+      "title_en": "إضافة أرضي Extra 5 جيجا"
     },
     {
       "id": "net-dsl-extra-package-2",
       "type": "package",
       "category_ar": "إضافات الأرضي",
       "family": "addon",
-      "title_ar": "إضافة أرضي Extra 20 جيجا",
+      "title_ar": "إضافة أرضي إكسترا 20 جيجا",
       "summary_ar": "20 جيجا بـ 60 ج",
       "facts": [
         {
@@ -5260,7 +5323,9 @@
         "ارضي",
         "اضافة",
         "extra",
-        "dsl"
+        "dsl",
+        "إكسترا",
+        "Extra"
       ],
       "status": "confirmed",
       "status_note_ar": "مؤكد من الموقع الرسمي (23 نوفمبر 2026).",
@@ -5278,14 +5343,15 @@
       ],
       "pdf_pages": [
         37
-      ]
+      ],
+      "title_en": "إضافة أرضي Extra 20 جيجا"
     },
     {
       "id": "net-dsl-extra-package-3",
       "type": "package",
       "category_ar": "إضافات الأرضي",
       "family": "addon",
-      "title_ar": "إضافة أرضي Extra 50 جيجا",
+      "title_ar": "إضافة أرضي إكسترا 50 جيجا",
       "summary_ar": "50 جيجا بـ 120 ج",
       "facts": [
         {
@@ -5321,7 +5387,9 @@
         "ارضي",
         "اضافة",
         "extra",
-        "dsl"
+        "dsl",
+        "إكسترا",
+        "Extra"
       ],
       "status": "confirmed",
       "status_note_ar": "مؤكد من الموقع الرسمي (23 نوفمبر 2026).",
@@ -5339,14 +5407,15 @@
       ],
       "pdf_pages": [
         37
-      ]
+      ],
+      "title_en": "إضافة أرضي Extra 50 جيجا"
     },
     {
       "id": "net-dsl-extra-package-4",
       "type": "package",
       "category_ar": "إضافات الأرضي",
       "family": "addon",
-      "title_ar": "إضافة أرضي Extra 100 جيجا",
+      "title_ar": "إضافة أرضي إكسترا 100 جيجا",
       "summary_ar": "100 جيجا بـ 190 ج",
       "facts": [
         {
@@ -5382,7 +5451,9 @@
         "ارضي",
         "اضافة",
         "extra",
-        "dsl"
+        "dsl",
+        "إكسترا",
+        "Extra"
       ],
       "status": "confirmed",
       "status_note_ar": "مؤكد من الموقع الرسمي (23 نوفمبر 2026).",
@@ -5400,14 +5471,15 @@
       ],
       "pdf_pages": [
         37
-      ]
+      ],
+      "title_en": "إضافة أرضي Extra 100 جيجا"
     },
     {
       "id": "net-dsl-booster-streaming-50gb",
       "type": "package",
       "category_ar": "Boosters الأرضي",
       "family": "addon",
-      "title_ar": "Booster مشاهدة 50 جيجا (أرضي)",
+      "title_ar": "بوستر مشاهدة 50 جيجا (أرضي)",
       "title_en": "eHome DSL Booster Streaming 50 GB",
       "summary_ar": "50 جيجا لمدة 30 يوم بـ 55 ج",
       "facts": [
@@ -5479,7 +5551,7 @@
       "type": "package",
       "category_ar": "Boosters الأرضي",
       "family": "addon",
-      "title_ar": "Booster ألعاب 60 جيجا (أرضي)",
+      "title_ar": "بوستر ألعاب 60 جيجا (أرضي)",
       "title_en": "eHome DSL Booster Gaming 60 GB",
       "summary_ar": "60 جيجا لمدة 30 يوم بـ 60 ج",
       "facts": [
@@ -5551,7 +5623,7 @@
       "type": "package",
       "category_ar": "Boosters الأرضي",
       "family": "addon",
-      "title_ar": "Booster خارج الذروة 100 جيجا (أرضي)",
+      "title_ar": "بوستر خارج الذروة 100 جيجا (أرضي)",
       "summary_ar": "100 جيجا لمدة 30 يوم بـ 80 ج",
       "facts": [
         {
@@ -5631,7 +5703,7 @@
       "type": "package",
       "category_ar": "Boosters الأرضي",
       "family": "addon",
-      "title_ar": "Booster مشاهدة 100 جيجا (أرضي)",
+      "title_ar": "بوستر مشاهدة 100 جيجا (أرضي)",
       "summary_ar": "100 جيجا لمدة 30 يوم بـ 100 ج",
       "facts": [
         {
@@ -5711,7 +5783,7 @@
       "type": "package",
       "category_ar": "Boosters الأرضي",
       "family": "addon",
-      "title_ar": "Booster ألعاب 150 جيجا (أرضي)",
+      "title_ar": "بوستر ألعاب 150 جيجا (أرضي)",
       "summary_ar": "150 جيجا لمدة 30 يوم بـ 120 ج",
       "facts": [
         {
@@ -5791,7 +5863,7 @@
       "type": "package",
       "category_ar": "Boosters الأرضي",
       "family": "addon",
-      "title_ar": "Booster مشاهدة 200 جيجا (أرضي)",
+      "title_ar": "بوستر مشاهدة 200 جيجا (أرضي)",
       "summary_ar": "200 جيجا لمدة 30 يوم بـ 200 ج",
       "facts": [
         {
@@ -5871,7 +5943,7 @@
       "type": "package",
       "category_ar": "Boosters الأرضي",
       "family": "addon",
-      "title_ar": "Booster ألعاب 300 جيجا (أرضي)",
+      "title_ar": "بوستر ألعاب 300 جيجا (أرضي)",
       "summary_ar": "300 جيجا لمدة 30 يوم بـ 240 ج",
       "facts": [
         {
@@ -6271,7 +6343,7 @@
       "type": "package",
       "category_ar": "هوائي كارت",
       "family": "ehome-wireless",
-      "title_ar": "eHome Wireless كارت 40 جيجا",
+      "title_ar": "إنترنت هوائي كارت 40 جيجا",
       "title_en": "eHome Wireless Prepaid 40 GB",
       "summary_ar": "40 جيجا بـ 290 ج (415 ج شامل الضريبة)",
       "facts": [
@@ -6323,7 +6395,7 @@
       "type": "package",
       "category_ar": "هوائي كارت",
       "family": "ehome-wireless",
-      "title_ar": "eHome Wireless كارت 140 جيجا",
+      "title_ar": "إنترنت هوائي كارت 140 جيجا",
       "title_en": "eHome Wireless Prepaid 140 GB",
       "summary_ar": "140 جيجا بـ 520 ج (743 ج شامل الضريبة)",
       "facts": [
@@ -6375,7 +6447,7 @@
       "type": "package",
       "category_ar": "هوائي كارت",
       "family": "ehome-wireless",
-      "title_ar": "eHome Wireless كارت 225 جيجا",
+      "title_ar": "إنترنت هوائي كارت 225 جيجا",
       "title_en": "eHome Wireless Prepaid 225 GB",
       "summary_ar": "225 جيجا بـ 750 ج (1,072 ج شامل الضريبة)",
       "facts": [
@@ -6427,7 +6499,7 @@
       "type": "package",
       "category_ar": "إضافات الهوائي",
       "family": "addon",
-      "title_ar": "إضافة eHome Wireless 2 جيجا",
+      "title_ar": "إضافة إنترنت هوائي 2 جيجا",
       "title_en": "eHome Wireless Extra 2 GB",
       "summary_ar": "2 جيجا، لحد ميعاد التجديد الجاي، بـ 23 ج",
       "facts": [
@@ -6463,7 +6535,9 @@
         "إضافة",
         "extra",
         "جيجا",
-        "نت منزلي"
+        "نت منزلي",
+        "إكسترا",
+        "Extra"
       ],
       "status": "confirmed",
       "status_note_ar": "مؤكد من الموقع الرسمي (23 نوفمبر 2026).",
@@ -6481,7 +6555,7 @@
       "type": "package",
       "category_ar": "إضافات الهوائي",
       "family": "addon",
-      "title_ar": "إضافة eHome Wireless 5 جيجا",
+      "title_ar": "إضافة إنترنت هوائي 5 جيجا",
       "title_en": "eHome Wireless Extra 5 GB",
       "summary_ar": "5 جيجا، لحد ميعاد التجديد الجاي، بـ 52 ج",
       "facts": [
@@ -6517,7 +6591,9 @@
         "إضافة",
         "extra",
         "جيجا",
-        "نت منزلي"
+        "نت منزلي",
+        "إكسترا",
+        "Extra"
       ],
       "status": "confirmed",
       "status_note_ar": "مؤكد من الموقع الرسمي (23 نوفمبر 2026).",
@@ -6535,7 +6611,7 @@
       "type": "package",
       "category_ar": "إضافات الهوائي",
       "family": "addon",
-      "title_ar": "إضافة eHome Wireless 10 جيجا",
+      "title_ar": "إضافة إنترنت هوائي 10 جيجا",
       "title_en": "eHome Wireless Extra 10 GB",
       "summary_ar": "10 جيجا، لحد ميعاد التجديد الجاي، بـ 98 ج",
       "facts": [
@@ -6571,7 +6647,9 @@
         "إضافة",
         "extra",
         "جيجا",
-        "نت منزلي"
+        "نت منزلي",
+        "إكسترا",
+        "Extra"
       ],
       "status": "confirmed",
       "status_note_ar": "مؤكد من الموقع الرسمي (23 نوفمبر 2026).",
@@ -6589,7 +6667,7 @@
       "type": "package",
       "category_ar": "إضافات الهوائي",
       "family": "addon",
-      "title_ar": "إضافة eHome Wireless 20 جيجا",
+      "title_ar": "إضافة إنترنت هوائي 20 جيجا",
       "title_en": "eHome Wireless Extra 20 GB",
       "summary_ar": "20 جيجا، لحد ميعاد التجديد الجاي، بـ 150 ج",
       "facts": [
@@ -6625,7 +6703,9 @@
         "إضافة",
         "extra",
         "جيجا",
-        "نت منزلي"
+        "نت منزلي",
+        "إكسترا",
+        "Extra"
       ],
       "status": "confirmed",
       "status_note_ar": "مؤكد من الموقع الرسمي (23 نوفمبر 2026).",
@@ -7444,36 +7524,26 @@
       "type": "rule",
       "category_ar": "أكواد وبعد الباقة",
       "title_ar": "بعد انتهاء الباقة بيتحاسب إزاي؟",
-      "summary_ar": "سوبر كونكت 15 قرش للميجا، حكاية ميكسات 19 قرش للدقيقة أو الميجا أو تجديد مبكر *807#، ميني حكاية إنترنت 19 قرش.",
+      "summary_ar": "حكاية ميكسات بعد نفاد الباقة: 19 قرش لكل دقيقة أو ميجا، ونفس السعر لدقيقة الأرقام المختصرة.",
       "facts": [
         {
-          "label_ar": "سوبر كونكت",
-          "value": "15 قرش لكل ميجا",
+          "label_ar": "حكاية ميكسات بعد نفاد الباقة",
+          "value": "19 قرش لكل دقيقة أو ميجا",
           "kind": "price"
         },
         {
-          "label_ar": "حكاية ميكسات",
-          "value": "19 قرش للدقيقة أو الميجا",
+          "label_ar": "الأرقام المختصرة",
+          "value": "19 قرش للدقيقة",
           "kind": "price"
         },
         {
-          "label_ar": "ميني حكاية إنترنت",
-          "value": "19 قرش للدقيقة أو الرسالة أو الميجا",
-          "kind": "price"
-        },
-        {
-          "label_ar": "تجديد مبكر حكاية",
-          "value": "*807#",
+          "label_ar": "شحن بعد نفاد الباقة",
+          "value": "*319#",
           "kind": "code"
-        },
-        {
-          "label_ar": "المواقع الحكومية والتعليمية",
-          "value": "مجانية بعد نفاد الباقة",
-          "kind": "text"
         }
       ],
       "codes": [
-        "*807#"
+        "*319#"
       ],
       "phones": [],
       "tags": [
@@ -7489,25 +7559,23 @@
       "status": "confirmed",
       "sources": [
         {
-          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
-          "type": "pdf_guide"
-        },
-        {
-          "name": "NTRA — اعتماد باقات الشمول الرقمي وتحريك الأسعار (6 مايو 2026)",
-          "url": "https://www.tra.gov.eg/en/?p=10979",
-          "type": "regulator"
+          "name": "الموقع الرسمي",
+          "url": "https://www.etisalat.com.eg/portal/Mobile/hekaya-mixat",
+          "type": "official_site",
+          "checked_at": "2026-11-26"
         }
       ],
       "pdf_pages": [
         34
-      ]
+      ],
+      "status_note_ar": "مؤكد من الموقع الرسمي"
     },
     {
       "id": "net-hekaya-rules",
       "type": "rule",
       "category_ar": "أكواد وبعد الباقة",
       "title_ar": "حكاية ميكسات: بعد نفاد الميكسات والترحيل",
-      "summary_ar": "بعد نفاد الميكسات: تجديد مبكر *807# أو 19 قرش للدقيقة أو الميجا. المتبقي بيترحّل مجانًا لو التجديد في الموعد أو قبله.",
+      "summary_ar": "بعد نفاد الميكسات: 19 قرش للدقيقة أو الميجا، والشحن من *319#. المتبقي بيترحّل لو جددت في الموعد أو قبله.",
       "facts": [
         {
           "label_ar": "سعر ما بعد الباقة",
@@ -7515,18 +7583,23 @@
           "kind": "price"
         },
         {
-          "label_ar": "تجديد مبكر",
-          "value": "*807#",
+          "label_ar": "الشحن بعد نفاد الباقة",
+          "value": "*319#",
           "kind": "code"
         },
         {
           "label_ar": "الترحيل",
           "value": "المتبقي بيترحّل لو التجديد في الموعد أو قبله",
           "kind": "text"
+        },
+        {
+          "label_ar": "ترتيب الاستهلاك",
+          "value": "الباقة الجديدة الأول، وبعدها المترحّل",
+          "kind": "text"
         }
       ],
       "codes": [
-        "*807#"
+        "*319#"
       ],
       "phones": [],
       "tags": [
@@ -7539,18 +7612,16 @@
       "status": "confirmed",
       "sources": [
         {
-          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
-          "type": "pdf_guide"
-        },
-        {
-          "name": "صفحة اتصالات الرسمية — حكاية",
-          "url": "https://www.etisalat.eg/StaticFiles/portal/etisalat/pages/plans/hekaya.html",
-          "type": "official_site"
+          "name": "الموقع الرسمي",
+          "url": "https://www.etisalat.com.eg/portal/Mobile/hekaya-mixat",
+          "type": "official_site",
+          "checked_at": "2026-11-26"
         }
       ],
       "pdf_pages": [
         31
-      ]
+      ],
+      "status_note_ar": "مؤكد من الموقع الرسمي"
     },
     {
       "id": "net-dsl-requirements",
@@ -7702,62 +7773,6 @@
       ],
       "pdf_pages": [
         37
-      ]
-    },
-    {
-      "id": "net-dsl-notes-2026",
-      "type": "rule",
-      "category_ar": "خدمة الأرضي",
-      "title_ar": "عميل الباقة الأساسية القديمة (150 ج)",
-      "summary_ar": "الباقة الأساسية 100 جيجا بـ 150 ج قبل الضريبة؛ العميل القديم بيحوّل من التطبيق أو بالتواصل مع الشركة.",
-      "facts": [
-        {
-          "label_ar": "السعة",
-          "value": "100",
-          "kind": "quantity",
-          "unit": "جيجا"
-        },
-        {
-          "label_ar": "الاشتراك (قبل الضريبة)",
-          "value": "150",
-          "kind": "price",
-          "unit": "ج"
-        },
-        {
-          "label_ar": "التحويل",
-          "value": "من التطبيق أو بالتواصل مع الشركة",
-          "kind": "text"
-        }
-      ],
-      "codes": [],
-      "phones": [],
-      "tags": [
-        "ارضي",
-        "مضاعفة",
-        "100 جيجا"
-      ],
-      "status": "confirmed",
-      "sources": [
-        {
-          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
-          "type": "pdf_guide"
-        },
-        {
-          "name": "مصراوي — رفع الباقة الأساسية إلى 100 جيجا (1 نوفمبر 2026)",
-          "url": "https://www.masrawy.com/news/news_egypt/details/2026/11/1/3072108/",
-          "type": "press"
-        },
-        {
-          "name": "اليوم السابع — أسعار الإنترنت الأرضي بعد الزيادة (8 مايو 2026)",
-          "url": "https://www.youm7.com/story/2026/5/8/أسعار-باقات-الإنترنت-الجديدة-تعرف-على-التفاصيل-الكاملة-بعد-تطبيق/7406422",
-          "type": "press"
-        }
-      ],
-      "pdf_pages": [
-        36
-      ],
-      "related": [
-        "net-dsl-100gb"
       ]
     },
     {
@@ -8302,107 +8317,6 @@
       ],
       "pdf_pages": [
         39
-      ]
-    },
-    {
-      "id": "net-faq-mobile-bundle-ended",
-      "type": "faq",
-      "category_ar": "أسئلة سريعة",
-      "title_ar": "خلصت باقة الموبايل؟",
-      "summary_ar": "سوبر كونكت 15 قرش/ميجا، وحكاية ميكسات 19 قرش أو تجديد مبكر *807#.",
-      "facts": [
-        {
-          "label_ar": "سوبر كونكت",
-          "value": "15 قرش/ميجا",
-          "kind": "price"
-        },
-        {
-          "label_ar": "حكاية ميكسات",
-          "value": "19 قرش",
-          "kind": "price"
-        },
-        {
-          "label_ar": "تجديد مبكر",
-          "value": "*807#",
-          "kind": "code"
-        }
-      ],
-      "codes": [
-        "*807#"
-      ],
-      "phones": [],
-      "tags": [
-        "نت",
-        "داتا",
-        "انترنت",
-        "internet",
-        "data",
-        "سؤال",
-        "كاونتر"
-      ],
-      "status": "confirmed",
-      "sources": [
-        {
-          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
-          "type": "pdf_guide"
-        }
-      ],
-      "pdf_pages": [
-        39
-      ],
-      "related": [
-        "net-after-bundle-end"
-      ]
-    },
-    {
-      "id": "net-faq-cheapest-landline",
-      "type": "faq",
-      "category_ar": "أسئلة سريعة",
-      "title_ar": "أرخص إنترنت أرضي؟",
-      "summary_ar": "100 جيجا بـ 150 ج قبل الضريبة (171 ج شاملة)، من 1 نوفمبر 2026.",
-      "facts": [
-        {
-          "label_ar": "السعة",
-          "value": "100",
-          "kind": "quantity",
-          "unit": "جيجا"
-        },
-        {
-          "label_ar": "قبل الضريبة",
-          "value": "150",
-          "kind": "price",
-          "unit": "ج"
-        },
-        {
-          "label_ar": "شامل الضريبة",
-          "value": "171",
-          "kind": "price",
-          "unit": "ج"
-        }
-      ],
-      "codes": [],
-      "phones": [],
-      "tags": [
-        "نت",
-        "داتا",
-        "انترنت",
-        "internet",
-        "data",
-        "سؤال",
-        "كاونتر"
-      ],
-      "status": "confirmed",
-      "sources": [
-        {
-          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
-          "type": "pdf_guide"
-        }
-      ],
-      "pdf_pages": [
-        39
-      ],
-      "related": [
-        "net-dsl-100gb"
       ]
     },
     {

@@ -6,9 +6,10 @@ import '../theme/app_motion.dart';
 import '../theme/app_radius.dart';
 import '../theme/app_shadows.dart';
 import '../theme/app_spacing.dart';
+import 'liquid_glass.dart';
 
-/// Subtle press feedback: scales the child to [pressedScale] while a pointer
-/// is down (100ms, easeOutCubic). Cheap — a transform, no opacity layer.
+/// iOS press feedback: the child dips to [pressedScale] at once while a
+/// finger is down, and springs back when it lifts. Cheap: a transform.
 class PressableScale extends StatefulWidget {
   const PressableScale({
     super.key,
@@ -41,8 +42,11 @@ class _PressableScaleState extends State<PressableScale> {
       onPointerCancel: (_) => _set(false),
       child: AnimatedScale(
         scale: _pressed ? widget.pressedScale : 1,
-        duration: AppMotion.resolve(context, AppMotion.fast),
-        curve: AppMotion.enter,
+        duration: AppMotion.resolve(
+          context,
+          _pressed ? const Duration(milliseconds: 110) : AppMotion.spring,
+        ),
+        curve: _pressed ? Curves.easeOut : AppMotion.bouncy,
         child: widget.child,
       ),
     );
@@ -67,9 +71,9 @@ enum CardRole {
   sunken,
 }
 
-/// Solid content card (never glass — doc 04 §2.6) with ink ripple when
-/// tappable. No press-scale: cards stay calm; capsules/nav carry the
-/// tactile motion.
+/// Liquid-glass content card: the ambient light shows through, a bright rim
+/// catches it, and a tappable card dips slightly under the finger.
+/// A card given an explicit [color] (warnings, banners) stays solid.
 class AppCard extends StatelessWidget {
   const AppCard({
     super.key,
@@ -101,29 +105,45 @@ class AppCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final c = context.colors;
-    final fill =
-        color ??
-        (role == CardRole.sunken ? c.surfaceVariant : c.surfaceElevated);
     final content = Padding(padding: padding, child: child);
     final shadow = switch (role) {
       CardRole.hero => AppShadows.raised(c),
       CardRole.raised => AppShadows.card(c),
       _ => null,
     };
-    Widget card = DecoratedBox(
-      decoration: BoxDecoration(borderRadius: radius, boxShadow: shadow),
-      child: Material(
-        color: fill,
-        shape: RoundedRectangleBorder(
+    final inner = onTap == null
+        ? content
+        : InkWell(onTap: onTap, child: content);
+    Widget card;
+    if (color == null && role != CardRole.sunken) {
+      card = DecoratedBox(
+        decoration: GlassDecoration(
+          colors: c,
           borderRadius: radius,
-          side: role == CardRole.sunken && borderColor == null
-              ? BorderSide.none
-              : BorderSide(color: borderColor ?? c.hairline),
+          shadows: shadow,
         ),
-        clipBehavior: Clip.antiAlias,
-        child: onTap == null ? content : InkWell(onTap: onTap, child: content),
-      ),
-    );
+        child: ClipRRect(
+          borderRadius: radius,
+          child: Material(type: MaterialType.transparency, child: inner),
+        ),
+      );
+    } else {
+      card = DecoratedBox(
+        decoration: BoxDecoration(borderRadius: radius, boxShadow: shadow),
+        child: Material(
+          color: color ?? c.glassTint,
+          shape: RoundedRectangleBorder(
+            borderRadius: radius,
+            side: role == CardRole.sunken && borderColor == null
+                ? BorderSide.none
+                : BorderSide(color: borderColor ?? c.hairline),
+          ),
+          clipBehavior: Clip.antiAlias,
+          child: inner,
+        ),
+      );
+    }
+    if (onTap != null) card = PressableScale(pressedScale: 0.985, child: card);
     if (semanticLabel != null) {
       card = Semantics(
         button: onTap != null,
@@ -155,13 +175,25 @@ class TintedIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final c = context.colors;
+    final base = background ?? c.primaryContainer;
+    final lift = Color.alphaBlend(
+      Colors.white.withValues(alpha: c.isDark ? 0.10 : 0.55),
+      base,
+    );
     return Container(
       width: tile.box,
       height: tile.box,
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        color: background ?? c.primaryContainer,
+        gradient: LinearGradient(
+          begin: AlignmentDirectional.topStart,
+          end: AlignmentDirectional.bottomEnd,
+          colors: [lift, base],
+        ),
         borderRadius: BorderRadius.circular(tile.radius),
+        border: Border.all(
+          color: Colors.white.withValues(alpha: c.isDark ? 0.10 : 0.70),
+        ),
       ),
       child: Icon(icon, size: tile.glyph, color: color ?? c.onPrimaryContainer),
     );
@@ -200,7 +232,7 @@ class SectionHeader extends StatelessWidget {
                 Text(
                   subtitle!,
                   style: theme.textTheme.bodyMedium?.copyWith(
-                    color: c.textTertiary,
+                    color: c.textSecondary,
                   ),
                 ),
             ],

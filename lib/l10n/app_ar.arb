@@ -19,7 +19,13 @@
   "favoritesEmpty": "اضغط القلب داخل أي بند ليظهر هنا.",
   "showAll": "عرض الكل",
   "showAllCount": "عرض الكل ({count})",
-  "@showAllCount": {"placeholders": {"count": {"type": "int"}}},
+  "@showAllCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "segmentMobile": "موبايل",
   "segmentMobileInternet": "إنترنت موبايل",
   "segmentHome": "منزلي",
@@ -40,16 +46,46 @@
   "moreSettingsTitle": "المظهر واللغة",
   "editedByYou": "معدّل منك",
   "editedByYouOn": "معدّل منك · {date}",
-  "@editedByYouOn": {"placeholders": {"date": {"type": "String"}}},
+  "@editedByYouOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
   "statusPerGuide": "حسب الدليل",
   "daysCount": "{count, plural, =1{يوم} =2{يومين} few{{count} أيام} other{{count} يوم}}",
-  "@daysCount": {"placeholders": {"count": {"type": "int"}}},
+  "@daysCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "quotaGb": "{n} جيجا",
-  "@quotaGb": {"placeholders": {"n": {"type": "String"}}},
+  "@quotaGb": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
   "quotaMix": "{n} ميكس",
-  "@quotaMix": {"placeholders": {"n": {"type": "String"}}},
+  "@quotaMix": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
   "quotaMinutes": "{n} دقيقة",
-  "@quotaMinutes": {"placeholders": {"n": {"type": "String"}}},
+  "@quotaMinutes": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
   "currencyShort": "ج",
   "packageNoPriceShort": "بدون سعر",
   "settingsAppearance": "المظهر",
@@ -60,10 +96,22 @@
   "languageArabic": "العربية",
   "languageEnglish": "English",
   "copyValueSemantics": "نسخ {value}",
-  "@copyValueSemantics": {"placeholders": {"value": {"type": "String"}}},
+  "@copyValueSemantics": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
   "copiedMessage": "تم النسخ",
   "callValueSemantics": "اتصال بـ {value}",
-  "@callValueSemantics": {"placeholders": {"value": {"type": "String"}}},
+  "@callValueSemantics": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
   "symbolStar": "نجمة",
   "symbolHash": "مربع",
   "symbolPlus": "زائد",
@@ -73,7 +121,13 @@
   "sectionCompany": "عن الشركة",
   "homeMustKnowTitle": "الأكثر استخدامًا",
   "contentAsOf": "آخر تحديث للمحتوى: {date}",
-  "@contentAsOf": {"placeholders": {"date": {"type": "String"}}},
+  "@contentAsOf": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
   "contentEmptySection": "لا يوجد محتوى في هذا القسم بعد",
   "contentEmptySectionBody": "سيظهر المحتوى هنا فور إضافته.",
   "filterAll": "الكل",
@@ -86,14 +140,26 @@
   "detailSourcesTitle": "المصادر",
   "detailRelatedTitle": "بنود ذات صلة",
   "detailPdfPages": "من الدليل صفحة {pages}",
-  "@detailPdfPages": {"placeholders": {"pages": {"type": "String"}}},
+  "@detailPdfPages": {
+    "placeholders": {
+      "pages": {
+        "type": "String"
+      }
+    }
+  },
   "detailNotFound": "البند غير موجود",
   "detailNotFoundBody": "ربما تم حذفه أو تغيير معرّفه.",
   "searchIdleBody": "ابحث في كل المحتوى بالعامية أو بالكود أو بالرقم — بدون إنترنت.",
   "searchEmptyTitle": "لا توجد نتائج",
   "searchEmptyBody": "جرّب كلمة أخرى، أو اكتب الكود أو الرقم مباشرة.",
   "searchResultsCount": "{count, plural, =1{نتيجة واحدة} =2{نتيجتان} few{{count} نتائج} many{{count} نتيجة} other{{count} نتيجة}}",
-  "@searchResultsCount": {"placeholders": {"count": {"type": "int"}}},
+  "@searchResultsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "languageSystem": "حسب لغة الجهاز",
   "homeRecentTitle": "آخر ما فتحته",
   "searchRecentTitle": "عمليات بحث سابقة",
@@ -105,7 +171,13 @@
   "packageNoPrice": "السعر غير مذكور في الدليل",
   "packageConflictPrice": "السعر عليه تعارض — راجع القيمتين",
   "sectionJumpTo": "انتقل إلى {name}",
-  "@sectionJumpTo": {"placeholders": {"name": {"type": "String"}}},
+  "@sectionJumpTo": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "detailOverviewTitle": "الشرح",
   "toolsNotStated": "غير مذكور",
   "toolsCancel": "إلغاء",
@@ -117,7 +189,13 @@
   "toolsNoMatches": "لا توجد نتائج",
   "toolsItemRemoved": "هذا البند لم يعد في المحتوى",
   "toolsEditedOn": "معدّل منك – {date}",
-  "@toolsEditedOn": {"placeholders": {"date": {"type": "String"}}},
+  "@toolsEditedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
   "toolsInvalidNumber": "اكتب رقمًا صحيحًا",
   "toolsDial": "اتصال",
   "toolsDialFillTitle": "اكتب البيانات قبل الاتصال",
@@ -126,7 +204,13 @@
   "toolsDialDigitsOnly": "أرقام فقط",
   "toolsDialChoose": "اختر ما تريد طلبه",
   "toolsDialFailed": "تعذّر فتح تطبيق الاتصال، وتم نسخ {value}",
-  "@toolsDialFailed": {"placeholders": {"value": {"type": "String"}}},
+  "@toolsDialFailed": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
   "toolsDialFailedTemplate": "تعذّر فتح تطبيق الاتصال، وتم نسخ الكود بدون ما كتبته",
   "toolsDialNothing": "لا يوجد كود أو رقم للاتصال، وتم نسخ النص",
   "toolsFavorite": "المفضلة",
@@ -137,17 +221,35 @@
   "toolsFavoritesEmptyBody": "اضغط القلب في أي بند ليظهر هنا.",
   "toolsFavoritesHint": "اسحب لتغيير الترتيب",
   "toolsReorder": "غيّر ترتيب {name}",
-  "@toolsReorder": {"placeholders": {"name": {"type": "String"}}},
+  "@toolsReorder": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "toolsCompareAction": "قارن",
   "toolsNoteAction": "ملاحظة",
   "toolsNoteCount": "ملاحظات ({count})",
-  "@toolsNoteCount": {"placeholders": {"count": {"type": "int"}}},
+  "@toolsNoteCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "toolsEditAction": "عدّل",
   "toolsCompareTitle": "قارن الباقات",
   "toolsCompareHint": "اختر من باقتين إلى 4 باقات",
   "toolsCompareAdd": "أضف باقة",
   "toolsCompareRemove": "أزل {name}",
-  "@toolsCompareRemove": {"placeholders": {"name": {"type": "String"}}},
+  "@toolsCompareRemove": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "toolsComparePeriods": "المدد مختلفة أو غير مذكورة، لذلك لا نحدد الأقل سعرًا أو الأعلى حصة.",
   "toolsRowPackage": "الباقة",
   "toolsRowPrice": "السعر",
@@ -167,40 +269,100 @@
   "toolsStatusUnconfirmed": "غير مؤكد",
   "toolsStatusConflict": "متعارض",
   "toolsRecommendTitle": "رشّح باقة",
-  "toolsRecommendSubtitle": "اكتب ما يحتاجه العميل واترك الباقي فارغًا",
-  "toolsRecommendBudget": "الميزانية (جنيه)",
+  "toolsRecommendSubtitle": "اختار اللي العميل محتاجه، والباقي سيبه فاضي",
+  "toolsRecommendBudget": "العميل هيدفع كام؟ (جنيه شامل الضريبة)",
   "toolsRecommendGb": "إنترنت (جيجا)",
   "toolsRecommendMinutes": "دقائق",
   "toolsUseMobile": "موبايل",
   "toolsUseHome": "منزلي",
-  "toolsRecommendStart": "اكتب الميزانية أو الجيجا أو الدقائق",
+  "toolsRecommendStart": "اختار ميزانية أو جيجا أو دقايق أو مدة، والنتيجة بتظهر على طول",
   "toolsRecommendFits": "تغطي كل الطلبات",
   "toolsRecommendNone": "لا توجد باقة تغطي كل الطلبات بالأرقام المذكورة.",
   "toolsRecommendMaybe": "قد تناسب، وبها قيمة غير مذكورة",
   "toolsRecommendClosest": "أقرب الباقات (لا تغطي كل الطلبات)",
   "toolsBudgetMet": "التكلفة {value} جنيه، في حدود الميزانية",
-  "@toolsBudgetMet": {"placeholders": {"value": {"type": "String"}}},
-  "toolsBudgetMissed": "السعر {value} جنيه، أعلى من الميزانية",
-  "@toolsBudgetMissed": {"placeholders": {"value": {"type": "String"}}},
+  "@toolsBudgetMet": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "toolsBudgetMissed": "التكلفة {value} جنيه، أعلى من الميزانية",
+  "@toolsBudgetMissed": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
   "toolsBudgetUnknown": "السعر {value} جنيه، والتكلفة شاملة الضريبة غير مذكورة",
-  "@toolsBudgetUnknown": {"placeholders": {"value": {"type": "String"}}},
+  "@toolsBudgetUnknown": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
   "toolsBudgetNotStated": "السعر غير مذكور",
   "toolsGbMet": "{value}، تكفي",
-  "@toolsGbMet": {"placeholders": {"value": {"type": "String"}}},
+  "@toolsGbMet": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
   "toolsGbMissed": "{value}، أقل من المطلوب",
-  "@toolsGbMissed": {"placeholders": {"value": {"type": "String"}}},
+  "@toolsGbMissed": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
   "toolsGbMix": "الحصة {value} ميكس، والجيجا غير مذكورة",
-  "@toolsGbMix": {"placeholders": {"value": {"type": "String"}}},
+  "@toolsGbMix": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
   "toolsGbNotStated": "الجيجا غير مذكورة",
   "toolsMinutesMet": "{value} دقيقة، تكفي",
-  "@toolsMinutesMet": {"placeholders": {"value": {"type": "String"}}},
+  "@toolsMinutesMet": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
   "toolsMinutesMissed": "{value} دقيقة، أقل من المطلوب",
-  "@toolsMinutesMissed": {"placeholders": {"value": {"type": "String"}}},
+  "@toolsMinutesMissed": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
   "toolsMinutesMix": "الحصة {value} ميكس، والدقائق غير مذكورة",
-  "@toolsMinutesMix": {"placeholders": {"value": {"type": "String"}}},
+  "@toolsMinutesMix": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
   "toolsMinutesNotStated": "الدقائق غير مذكورة",
   "toolsMixNote": "طريقة الاستهلاك: {text}",
-  "@toolsMixNote": {"placeholders": {"text": {"type": "String"}}},
+  "@toolsMixNote": {
+    "placeholders": {
+      "text": {
+        "type": "String"
+      }
+    }
+  },
   "toolsCalcTitle": "حاسبة الشحن",
   "toolsCalcModeCard": "عندي كارت",
   "toolsCalcModePrice": "عندي سعر باقة",
@@ -209,28 +371,79 @@
   "toolsCalcBalanceResult": "الرصيد الذي سيصل",
   "toolsCalcCardResult": "الكارت المطلوب",
   "toolsCalcEgp": "{value} جنيه",
-  "@toolsCalcEgp": {"placeholders": {"value": {"type": "String"}}},
+  "@toolsCalcEgp": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
   "toolsCalcTaxPart": "الفرق {value} جنيه ضرائب ورسوم",
-  "@toolsCalcTaxPart": {"placeholders": {"value": {"type": "String"}}},
+  "@toolsCalcTaxPart": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
   "toolsCalcStated": "المذكور في المحتوى شامل الضريبة: {value}",
-  "@toolsCalcStated": {"placeholders": {"value": {"type": "String"}}},
+  "@toolsCalcStated": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
   "toolsCalcComputed": "رقم محسوب من النسبة الموضحة، وليس سعرًا منشورًا.",
   "toolsCalcSource": "مصدر الحساب",
   "toolsCalcRatio": "كل {card} جنيه كارت = {balance} جنيه رصيد",
-  "@toolsCalcRatio": {"placeholders": {"card": {"type": "String"}, "balance": {"type": "String"}}},
+  "@toolsCalcRatio": {
+    "placeholders": {
+      "card": {
+        "type": "String"
+      },
+      "balance": {
+        "type": "String"
+      }
+    }
+  },
   "toolsCalcUnavailable": "الحاسبة غير متاحة",
   "toolsCalcUnavailableBody": "بند نسبة الشحن غير موجود أو نسبته غير واضحة، ولا نحسب برقم من عندنا.",
   "toolsWhatsNewTitle": "الجديد في المحتوى",
   "toolsWhatsNewEmpty": "لا توجد تغييرات مسجلة",
   "toolsWhatsNewEmptyBody": "عند تحديث المحتوى تظهر هنا تغييرات الأسعار والأكواد.",
   "toolsWhatsNewOn": "تحديث {date}",
-  "@toolsWhatsNewOn": {"placeholders": {"date": {"type": "String"}}},
+  "@toolsWhatsNewOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
   "toolsWhatsNewRemoved": "حُذف {count} بند",
-  "@toolsWhatsNewRemoved": {"placeholders": {"count": {"type": "int"}}},
+  "@toolsWhatsNewRemoved": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "toolsWhatsNewAdded": "{count} بند جديد",
-  "@toolsWhatsNewAdded": {"placeholders": {"count": {"type": "int"}}},
+  "@toolsWhatsNewAdded": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "toolsWhatsNewMore": "و{count} أخرى",
-  "@toolsWhatsNewMore": {"placeholders": {"count": {"type": "int"}}},
+  "@toolsWhatsNewMore": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "toolsWhatsNewBanner": "تم تحديث المحتوى. اعرف ما تغيّر",
   "toolsWas": "كان",
   "toolsNow": "الآن",
@@ -250,9 +463,21 @@
   "editorRestore": "استرجع الأصل",
   "editorDeleteAdded": "احذف البند",
   "editorRestoreAsk": "استرجاع «{name}» إلى الأصل؟",
-  "@editorRestoreAsk": {"placeholders": {"name": {"type": "String"}}},
+  "@editorRestoreAsk": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "editorDeleteAsk": "حذف «{name}»؟",
-  "@editorDeleteAsk": {"placeholders": {"name": {"type": "String"}}},
+  "@editorDeleteAsk": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "editorRestoreBody": "سيُحذف تعديلك من الموبايل.",
   "editorEditTitle": "تعديل بند",
   "editorNewTitle": "بند جديد",
@@ -268,7 +493,13 @@
   "editorFactKind": "نوع القيمة",
   "editorAddFact": "أضف بيانًا",
   "editorRemoveFact": "أزل البيان رقم {n}",
-  "@editorRemoveFact": {"placeholders": {"n": {"type": "int"}}},
+  "@editorRemoveFact": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "editorFieldCodes": "الأكواد، كل كود في سطر",
   "editorFieldPhones": "الأرقام، كل رقم في سطر",
   "editorFieldStatusNote": "ملاحظة عن الحالة",
@@ -292,10 +523,28 @@
   "editorImportCheck": "فحص",
   "editorImportInvalid": "هذا النص ليس تصديرًا صحيحًا من التطبيق، ولم يتغير شيء.",
   "editorImportDiff": "{added} جديد، {replaced} سيُستبدل، {same} بدون تغيير",
-  "@editorImportDiff": {"placeholders": {"added": {"type": "int"}, "replaced": {"type": "int"}, "same": {"type": "int"}}},
+  "@editorImportDiff": {
+    "placeholders": {
+      "added": {
+        "type": "int"
+      },
+      "replaced": {
+        "type": "int"
+      },
+      "same": {
+        "type": "int"
+      }
+    }
+  },
   "editorImportKeeps": "باقي تعديلاتك تبقى كما هي.",
   "editorImportMissing": "{count} منها لبنود غير موجودة في المحتوى الحالي",
-  "@editorImportMissing": {"placeholders": {"count": {"type": "int"}}},
+  "@editorImportMissing": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "editorImportApply": "تطبيق",
   "editorImportDone": "تم الاستيراد",
   "editorImportNothing": "لا فرق عمّا لديك",
@@ -328,27 +577,63 @@
   "notesHint": "اكتب الملاحظة",
   "notesDeleted": "تم حذف الملاحظة",
   "notesForItem": "على: {name}",
-  "@notesForItem": {"placeholders": {"name": {"type": "String"}}},
+  "@notesForItem": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "notesDeleteOne": "احذف الملاحظة",
   "trainingIntro": "الأسئلة من المحتوى المؤكد فقط",
   "trainingDaily": "سؤال اليوم",
   "trainingDailyDone": "أجبت عن سؤال اليوم",
   "trainingCards": "البطاقات",
   "trainingCardsDue": "{due} للمراجعة اليوم، {fresh} جديدة",
-  "@trainingCardsDue": {"placeholders": {"due": {"type": "int"}, "fresh": {"type": "int"}}},
+  "@trainingCardsDue": {
+    "placeholders": {
+      "due": {
+        "type": "int"
+      },
+      "fresh": {
+        "type": "int"
+      }
+    }
+  },
   "trainingQuiz": "اختبار",
   "trainingQuizCount": "{count} أسئلة باختيارات",
-  "@trainingQuizCount": {"placeholders": {"count": {"type": "int"}}},
+  "@trainingQuizCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "trainingScenarios": "حالات من الفرع",
   "trainingScenariosCount": "{count} حالة",
-  "@trainingScenariosCount": {"placeholders": {"count": {"type": "int"}}},
+  "@trainingScenariosCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "trainingLevel": "مستواك",
   "trainingMastered": "متقنة",
   "trainingLearning": "قيد التعلم",
   "trainingNew": "جديدة",
   "trainingWeakest": "تحتاج مراجعة",
   "trainingWeakRow": "{wrong} خطأ من {seen}",
-  "@trainingWeakRow": {"placeholders": {"wrong": {"type": "int"}, "seen": {"type": "int"}}},
+  "@trainingWeakRow": {
+    "placeholders": {
+      "wrong": {
+        "type": "int"
+      },
+      "seen": {
+        "type": "int"
+      }
+    }
+  },
   "trainingNothing": "لا توجد أسئلة الآن",
   "trainingNothingBody": "نحتاج محتوى مؤكدًا كافيًا لإعداد الأسئلة.",
   "trainingShowAnswer": "اعرض الإجابة",
@@ -360,28 +645,91 @@
   "trainingWrong": "خطأ",
   "trainingOpenItem": "افتح البند",
   "trainingQuizResult": "{right} صحيحة من {total}",
-  "@trainingQuizResult": {"placeholders": {"right": {"type": "int"}, "total": {"type": "int"}}},
+  "@trainingQuizResult": {
+    "placeholders": {
+      "right": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
   "trainingReviewWrong": "راجع هذه الأسئلة",
   "trainingStep": "{index} من {total}",
-  "@trainingStep": {"placeholders": {"index": {"type": "int"}, "total": {"type": "int"}}},
+  "@trainingStep": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
   "trainingDone": "انتهت بطاقات اليوم",
   "trainingDoneBody": "البطاقات التي أجبت عنها تعود في موعدها.",
   "trainingReset": "ابدأ التدريب من جديد",
   "trainingResetAsk": "مسح تقدّمك في التدريب؟",
   "trainingAskFact": "«{title}»: {label}؟",
-  "@trainingAskFact": {"placeholders": {"title": {"type": "String"}, "label": {"type": "String"}}},
+  "@trainingAskFact": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      },
+      "label": {
+        "type": "String"
+      }
+    }
+  },
   "trainingAskCode": "ما كود «{title}»؟",
-  "@trainingAskCode": {"placeholders": {"title": {"type": "String"}}},
+  "@trainingAskCode": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
   "trainingAskPhone": "ما رقم «{title}»؟",
-  "@trainingAskPhone": {"placeholders": {"title": {"type": "String"}}},
+  "@trainingAskPhone": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
   "trainingAskTerm": "ما معنى «{title}»؟",
-  "@trainingAskTerm": {"placeholders": {"title": {"type": "String"}}},
+  "@trainingAskTerm": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
   "trainingAskDocuments": "ما المستندات المطلوبة في «{title}»؟",
-  "@trainingAskDocuments": {"placeholders": {"title": {"type": "String"}}},
+  "@trainingAskDocuments": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
   "trainingAskFirstStep": "ما أول خطوة في «{title}»؟",
-  "@trainingAskFirstStep": {"placeholders": {"title": {"type": "String"}}},
+  "@trainingAskFirstStep": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
   "trainingAskScenario": "{title}. ماذا تفعل؟",
-  "@trainingAskScenario": {"placeholders": {"title": {"type": "String"}}},
+  "@trainingAskScenario": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
   "searchQuickTitle": "بحث سريع",
   "searchAllSections": "ابحث في كل الأقسام",
   "detailStepsReset": "من البداية",
@@ -397,5 +745,136 @@
   "editorFieldBody": "الشرح",
   "editorFieldSteps": "الخطوات، كل خطوة في سطر",
   "detailStepsProgress": "{done} من {total}",
-  "@detailStepsProgress": {"placeholders": {"done": {"type": "int"}, "total": {"type": "int"}}}
+  "@detailStepsProgress": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "badgeNew": "جديد",
+  "@badgeNew": {},
+  "peekOpen": "افتح التفاصيل",
+  "@peekOpen": {},
+  "peekHint": "اضغط مطوّل على أي بند لمعاينة سريعة",
+  "@peekHint": {},
+  "navNewContent": "فيه تحديث جديد",
+  "@navNewContent": {},
+  "toolsCalcModePostpaid": "باقة فاتورة",
+  "@toolsCalcModePostpaid": {},
+  "toolsCalcPostpaidLabel": "سعر الباقة الشهري قبل الضريبة (جنيه)",
+  "@toolsCalcPostpaidLabel": {},
+  "toolsCalcPostpaidResult": "الإجمالي الشهري شامل الضرائب والرسوم",
+  "@toolsCalcPostpaidResult": {},
+  "toolsCalcPostpaidParts": "ضريبة جدول 8%: {table} · قيمة مضافة 14%: {vat} · رسوم: {fees}",
+  "@toolsCalcPostpaidParts": {
+    "placeholders": {
+      "table": {
+        "type": "String"
+      },
+      "vat": {
+        "type": "String"
+      },
+      "fees": {
+        "type": "String"
+      }
+    }
+  },
+  "toolsCalcPostpaidRule": "السعر × 1.08 × 1.14 + 10 تنمية + 1.34 دمغة",
+  "@toolsCalcPostpaidRule": {},
+  "@toolsRecommendBudget": {},
+  "@toolsRecommendSubtitle": {},
+  "@toolsRecommendStart": {},
+  "toolsRecommendValidity": "المدة",
+  "@toolsRecommendValidity": {},
+  "toolsValidityAny": "أي مدة",
+  "@toolsValidityAny": {},
+  "toolsValidityMonthly": "شهرية",
+  "@toolsValidityMonthly": {},
+  "toolsValidityShort": "أقل من شهر",
+  "@toolsValidityShort": {},
+  "toolsRecommendBest": "الترشيح الأول",
+  "@toolsRecommendBest": {},
+  "toolsRecommendBestBudget": "أكتر حاجة الميزانية تجيبها",
+  "@toolsRecommendBestBudget": {},
+  "toolsRecommendBestCheapest": "أرخص باقة تغطي الطلب",
+  "@toolsRecommendBestCheapest": {},
+  "@toolsRecommendFits": {},
+  "toolsRecommendReset": "مسح",
+  "@toolsRecommendReset": {},
+  "toolsRecommendOpen": "افتح الباقة",
+  "@toolsRecommendOpen": {},
+  "toolsRecommendComputed": "محسوب",
+  "@toolsRecommendComputed": {},
+  "toolsRecommendPays": "العميل يدفع",
+  "@toolsRecommendPays": {},
+  "toolsRecommendDeducted": "يتخصم من الرصيد {value} ج",
+  "@toolsRecommendDeducted": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "toolsBudgetComputed": "يشحن {value} جنيه (محسوب من سعر الخصم)، في حدود الميزانية",
+  "@toolsBudgetComputed": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "toolsMinutesEandOnly": "{value} وحدة: تكفي لو المكالمات لأرقام e&",
+  "@toolsMinutesEandOnly": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "toolsMinutesAnyNetwork": "{value} وحدة: تكفي حتى للشبكات التانية",
+  "@toolsMinutesAnyNetwork": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "toolsMinutesUnitsShort": "{value} وحدة: أقل من المطلوب",
+  "@toolsMinutesUnitsShort": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "toolsValidityMet": "المدة {value} يوم، مناسبة",
+  "@toolsValidityMet": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "toolsValidityMissed": "المدة {value} يوم، مش مناسبة",
+  "@toolsValidityMissed": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "toolsValidityNotStated": "المدة غير مذكورة",
+  "@toolsValidityNotStated": {},
+  "toolsRecommendPrice": "السعر المذكور",
+  "@toolsRecommendPrice": {},
+  "toolsRecommendBeforeTax": "قبل الضريبة",
+  "@toolsRecommendBeforeTax": {},
+  "packageIncludesTitle": "مميزات الباقة",
+  "@packageIncludesTitle": {},
+  "badgeOfficial": "رسمي",
+  "@badgeOfficial": {}
 }
