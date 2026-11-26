@@ -1,13 +1,14 @@
+import 'package:flutter/cupertino.dart' show CupertinoPageTransition;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import '../theme/app_motion.dart';
 
-/// Shared push/pop transition: subtle slide (8 % of width) + fade, mirrored
-/// in RTL — the new page enters from the **end** side (from the left in
-/// Arabic, doc 04 §2.8) and the page underneath drifts 4 % toward the start.
+/// Shared push/pop transition: the iOS one. The new page slides in from
+/// the trailing edge (from the left in Arabic) over the old page, which
+/// drifts a third of the way back under it, with the iOS curve and a soft
+/// shadow on the incoming edge. A back swipe follows the finger 1:1.
 ///
-/// easeOutCubic in, easeInCubic out, linear while a back-swipe drives it.
 /// With "remove animations" it collapses to a plain fade.
 class AppPageTransition extends StatelessWidget {
   const AppPageTransition({
@@ -27,37 +28,18 @@ class AppPageTransition extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final rtl = Directionality.of(context) == TextDirection.rtl;
     final reduce = MediaQuery.maybeDisableAnimationsOf(context) ?? false;
-
-    final primary = linear
-        ? animation
-        : CurvedAnimation(
-            parent: animation,
-            curve: AppMotion.enter,
-            reverseCurve: AppMotion.exit,
-          );
-    if (reduce) return FadeTransition(opacity: primary, child: child);
-
-    final secondary = linear
-        ? secondaryAnimation
-        : CurvedAnimation(
-            parent: secondaryAnimation,
-            curve: AppMotion.enter,
-            reverseCurve: AppMotion.exit,
-          );
-    final enterFrom = Offset(rtl ? -0.08 : 0.08, 0);
-    final exitTo = Offset(rtl ? 0.04 : -0.04, 0);
-
-    return SlideTransition(
-      position: Tween(begin: Offset.zero, end: exitTo).animate(secondary),
-      child: SlideTransition(
-        position: Tween(begin: enterFrom, end: Offset.zero).animate(primary),
-        child: FadeTransition(
-          opacity: Tween<double>(begin: 0, end: 1).animate(primary),
-          child: child,
-        ),
-      ),
+    if (reduce) {
+      return FadeTransition(
+        opacity: CurvedAnimation(parent: animation, curve: Curves.easeOut),
+        child: child,
+      );
+    }
+    return CupertinoPageTransition(
+      primaryRouteAnimation: animation,
+      secondaryRouteAnimation: secondaryAnimation,
+      linearTransition: linear,
+      child: child,
     );
   }
 }
@@ -70,7 +52,10 @@ class AppPageTransitionsBuilder extends PageTransitionsBuilder {
   const AppPageTransitionsBuilder();
 
   @override
-  Duration get transitionDuration => AppMotion.max;
+  Duration get transitionDuration => AppMotion.page;
+
+  @override
+  Duration get reverseTransitionDuration => AppMotion.page;
 
   @override
   Widget buildTransitions<T>(
@@ -109,10 +94,10 @@ class AppPageRoute<T> extends PageRoute<T> {
   bool get maintainState => true;
 
   @override
-  Duration get transitionDuration => const Duration(milliseconds: 280);
+  Duration get transitionDuration => AppMotion.page;
 
   @override
-  Duration get reverseTransitionDuration => AppMotion.emphasized;
+  Duration get reverseTransitionDuration => AppMotion.page;
 
   @override
   Widget buildPage(
@@ -142,7 +127,11 @@ class AppPageRoute<T> extends PageRoute<T> {
         ? fractionVelocity <= 0
         : c.value > 0.5;
     if (stay) {
-      c.animateTo(1, duration: AppMotion.normal, curve: AppMotion.enter);
+      c.animateTo(
+        1,
+        duration: AppMotion.normal,
+        curve: Curves.fastEaseInToSlowEaseOut,
+      );
     } else {
       nav.pop();
     }

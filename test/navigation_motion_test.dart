@@ -4,7 +4,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:knowledge_hub/core/router/app_page_transitions.dart';
 import 'package:knowledge_hub/core/router/app_router.dart';
 import 'package:knowledge_hub/core/router/tab_pager.dart';
-import 'package:knowledge_hub/core/widgets/staggered_fade_in.dart';
 import 'package:knowledge_hub/features/home/home_screen.dart';
 
 import 'helpers/pump_app.dart';
@@ -39,10 +38,10 @@ void main() {
     await pumpApp(tester);
     expect(currentPath(tester), '/home');
 
-    // In RTL, Browse sits visually to the LEFT of Home; dragging the
+    // In RTL, Packages sits visually to the LEFT of Home; dragging the
     // finger rightwards reveals it.
     await swipe(tester, 300);
-    expect(currentPath(tester), '/browse');
+    expect(currentPath(tester), '/packages');
     expect(navSelected(tester, 1), isTrue);
     expect(navSelected(tester, 0), isFalse);
 
@@ -55,7 +54,7 @@ void main() {
   ) async {
     await pumpApp(tester, locale: en);
     await swipe(tester, -300);
-    expect(currentPath(tester), '/browse');
+    expect(currentPath(tester), '/packages');
     expect(navSelected(tester, 1), isTrue);
 
     // Swiping "back" past the first tab does nothing.
@@ -69,17 +68,17 @@ void main() {
     await pumpApp(tester);
     final pager = tester.widget<PageView>(find.byType(PageView));
 
-    await tester.tap(find.byKey(const ValueKey('nav-4')));
+    await tester.tap(find.byKey(const ValueKey('nav-3')));
     await tester.pump(); // goBranch
     await tester.pump(); // post-frame animateToPage starts
     await tester.pump(const Duration(milliseconds: 120));
     final mid = pager.controller!.page!;
     expect(mid, greaterThan(0));
-    expect(mid, lessThan(4), reason: 'still animating mid-way');
+    expect(mid, lessThan(3), reason: 'still animating mid-way');
 
     await tester.pumpAndSettle();
-    expect(pager.controller!.page, 4);
-    expect(currentPath(tester), '/me');
+    expect(pager.controller!.page, 3);
+    expect(currentPath(tester), '/more');
     // Home stayed alive while off-screen.
     expect(find.byType(HomeScreen, skipOffstage: false), findsOneWidget);
   });
@@ -133,47 +132,6 @@ void main() {
     expect(await flingFirstPage(true), 0, reason: 'opt-out blocks it');
   });
 
-  group('Home stagger', () {
-    testWidgets('animates on first load within 300ms', (tester) async {
-      await pumpApp(tester); // settles
-      // Re-pump fresh and inspect mid-animation.
-      await tester.pumpWidget(const SizedBox());
-      await pumpAppNoSettle(tester);
-      final fades = tester
-          .widgetList<FadeTransition>(
-            find.descendant(
-              of: find.byType(StaggeredFadeIn),
-              matching: find.byType(FadeTransition),
-            ),
-          )
-          .toList();
-      expect(fades, isNotEmpty);
-      expect(fades.last.opacity.value, lessThan(1));
-      await tester.pump(const Duration(milliseconds: 300));
-      for (final f in fades) {
-        expect(f.opacity.value, 1);
-      }
-    });
-
-    testWidgets('reduce motion disables the stagger', (tester) async {
-      tester.platformDispatcher.accessibilityFeaturesTestValue =
-          const FakeAccessibilityFeatures(disableAnimations: true);
-      addTearDown(
-        tester.platformDispatcher.clearAccessibilityFeaturesTestValue,
-      );
-      await pumpAppNoSettle(tester);
-      expect(find.byType(StaggeredFadeIn), findsWidgets);
-      expect(
-        find.descendant(
-          of: find.byType(StaggeredFadeIn),
-          matching: find.byType(FadeTransition),
-        ),
-        findsNothing,
-      );
-      await tester.pumpAndSettle();
-    });
-  });
-
   group('AppPageRoute', () {
     Future<NavigatorState> pumpNav(WidgetTester tester, Locale locale) async {
       setSurface(tester);
@@ -198,11 +156,15 @@ void main() {
       return key.currentState!;
     }
 
-    testWidgets('push transition stays within 300ms', (tester) async {
+    testWidgets('pop follows the iOS timing (done within 500ms)', (
+      tester,
+    ) async {
       final nav = await pumpNav(tester, en);
       nav.pop();
       await tester.pump();
-      await tester.pump(const Duration(milliseconds: 300));
+      await tester.pump(const Duration(milliseconds: 250));
+      expect(find.text('detail'), findsOneWidget); // still sliding out
+      await tester.pump(const Duration(milliseconds: 260));
       expect(find.text('detail'), findsNothing);
     });
 

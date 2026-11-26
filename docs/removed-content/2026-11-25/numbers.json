@@ -3108,6 +3108,75 @@
         58
       ],
       "removed_reason": "قائمة مصادر"
+    },
+    {
+      "id": "num-salefny-911",
+      "type": "code",
+      "category_ar": "أكواد الرصيد والباقات",
+      "title_ar": "سلفني / رصيد الطوارئ",
+      "summary_ar": "*911# — القيمة والرسوم بتتخصم مع أول شحن.",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*911#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "الخصم",
+          "value": "القيمة والرسوم بتتخصم مع أول شحن",
+          "kind": "text"
+        }
+      ],
+      "codes": [
+        "*911#"
+      ],
+      "phones": [],
+      "tags": [
+        "سلفني",
+        "سلفة",
+        "رصيد طوارئ",
+        "loan",
+        "emergency credit",
+        "مفيش رصيد",
+        "salefny"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
+          "type": "pdf_guide"
+        },
+        {
+          "name": "pricesworld",
+          "type": "other"
+        },
+        {
+          "name": "aboutmsr",
+          "type": "other"
+        },
+        {
+          "name": "mobilemasr",
+          "type": "other"
+        },
+        {
+          "name": "pricesworld – كود كلمني شكرًا وسلفني",
+          "url": "https://www.pricesworld.net/?p=61248",
+          "type": "other"
+        },
+        {
+          "name": "prices2day – باقات مكالمات اتصالات 2026",
+          "url": "https://www.prices2day.net/2019/03/etisalat-call-packages-egypt.html",
+          "type": "other"
+        }
+      ],
+      "pdf_pages": [
+        22,
+        26,
+        52,
+        56,
+        70
+      ],
+      "removed_reason": "البند فضل في التطبيق. اتحدّث من صفحة Super Salefny على الموقع الرسمي (25 نوفمبر 2026)"
     }
   ]
 }

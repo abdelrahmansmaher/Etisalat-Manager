@@ -1,7 +1,7 @@
 {
   "section": "wallet",
   "source_document": "pdf_guide_2026_11",
-  "as_of": "2026-11-23",
+  "as_of": "2026-11-26",
   "items": [
     {
       "id": "wal-case-open",
@@ -144,7 +144,7 @@
       "type": "procedure",
       "category_ar": "حالات الفرع",
       "title_ar": "عميل يريد سحب نقدية من الفرع",
-      "summary_ar": "اطلب منه بدء عملية السحب من هاتفه (*777*11#) أو حسب إجراء النظام. الرسم 5 ج ثابت لحد 5,000 ج في الشهر، وبعدها 1%.",
+      "summary_ar": "اطلب منه يبدأ السحب من موبايله بـ *777*11# أو حسب إجراء النظام.",
       "facts": [
         {
           "label_ar": "كود",
@@ -533,6 +533,12 @@
           "name": "App Store: etisalat money - EG",
           "url": "https://apps.apple.com/us/app/-/id1123428821",
           "type": "app_store"
+        },
+        {
+          "name": "الموقع الرسمي — e& money (تم التحقق 2026-11-25)",
+          "url": "https://www.eand.com.eg/portal/etisalat_money/etisalat_money",
+          "type": "official_site",
+          "checked_at": "2026-11-25"
         }
       ],
       "pdf_pages": [
@@ -594,6 +600,12 @@
         {
           "name": "صناع المال (almaal.org)",
           "type": "other"
+        },
+        {
+          "name": "الموقع الرسمي — e& money (تم التحقق 2026-11-25)",
+          "url": "https://www.eand.com.eg/portal/etisalat_money/etisalat_money",
+          "type": "official_site",
+          "checked_at": "2026-11-25"
         }
       ],
       "pdf_pages": [
@@ -655,6 +667,12 @@
         {
           "name": "صناع المال (almaal.org)",
           "type": "other"
+        },
+        {
+          "name": "الموقع الرسمي — e& money (تم التحقق 2026-11-25)",
+          "url": "https://www.eand.com.eg/portal/etisalat_money/etisalat_money",
+          "type": "official_site",
+          "checked_at": "2026-11-25"
         }
       ],
       "pdf_pages": [
@@ -721,6 +739,12 @@
         {
           "name": "صناع المال (almaal.org)",
           "type": "other"
+        },
+        {
+          "name": "الموقع الرسمي — e& money (تم التحقق 2026-11-25)",
+          "url": "https://www.eand.com.eg/portal/etisalat_money/etisalat_money",
+          "type": "official_site",
+          "checked_at": "2026-11-25"
         }
       ],
       "pdf_pages": [
@@ -782,12 +806,57 @@
         {
           "name": "صناع المال (almaal.org)",
           "type": "other"
+        },
+        {
+          "name": "الموقع الرسمي — e& money (تم التحقق 2026-11-25)",
+          "url": "https://www.eand.com.eg/portal/etisalat_money/etisalat_money",
+          "type": "official_site",
+          "checked_at": "2026-11-25"
         }
       ],
       "pdf_pages": [
         43,
         54
       ]
+    },
+    {
+      "id": "wal-code-777-5",
+      "type": "code",
+      "category_ar": "أكواد *777#",
+      "title_ar": "*777*5# — الدفع للتجار",
+      "summary_ar": "*777*5#: الدفع للتجار من المحفظة.",
+      "facts": [
+        {
+          "label_ar": "الكود المباشر",
+          "value": "*777*5#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "الخدمة",
+          "value": "الدفع للتجار",
+          "kind": "text"
+        }
+      ],
+      "codes": [
+        "*777*5#"
+      ],
+      "tags": [
+        "تاجر",
+        "merchant",
+        "دفع",
+        "محفظة",
+        "كاش"
+      ],
+      "sources": [
+        {
+          "name": "الموقع الرسمي — e& money (تم التحقق 2026-11-25)",
+          "url": "https://www.eand.com.eg/portal/etisalat_money/etisalat_money",
+          "type": "official_site",
+          "checked_at": "2026-11-25"
+        }
+      ],
+      "phones": [],
+      "status": "confirmed"
     },
     {
       "id": "wal-code-777-6",
@@ -843,6 +912,12 @@
         {
           "name": "صناع المال (almaal.org)",
           "type": "other"
+        },
+        {
+          "name": "الموقع الرسمي — e& money (تم التحقق 2026-11-25)",
+          "url": "https://www.eand.com.eg/portal/etisalat_money/etisalat_money",
+          "type": "official_site",
+          "checked_at": "2026-11-25"
         }
       ],
       "pdf_pages": [
@@ -954,6 +1029,12 @@
         {
           "name": "صناع المال (almaal.org)",
           "type": "other"
+        },
+        {
+          "name": "الموقع الرسمي — e& money (تم التحقق 2026-11-25)",
+          "url": "https://www.eand.com.eg/portal/etisalat_money/etisalat_money",
+          "type": "official_site",
+          "checked_at": "2026-11-25"
         }
       ],
       "pdf_pages": [
@@ -1005,6 +1086,12 @@
           "name": "البنك نوت — قائمة أكواد *777*X# وأرقام التواصل",
           "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
           "type": "other"
+        },
+        {
+          "name": "الموقع الرسمي — e& money (تم التحقق 2026-11-25)",
+          "url": "https://www.eand.com.eg/portal/etisalat_money/etisalat_money",
+          "type": "official_site",
+          "checked_at": "2026-11-25"
         }
       ],
       "pdf_pages": [
@@ -1065,6 +1152,12 @@
         {
           "name": "صناع المال (almaal.org)",
           "type": "other"
+        },
+        {
+          "name": "الموقع الرسمي — e& money (تم التحقق 2026-11-25)",
+          "url": "https://www.eand.com.eg/portal/etisalat_money/etisalat_money",
+          "type": "official_site",
+          "checked_at": "2026-11-25"
         }
       ],
       "pdf_pages": [
@@ -1177,11 +1270,56 @@
           "name": "البنك نوت — قائمة أكواد *777*X# وأرقام التواصل",
           "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
           "type": "other"
+        },
+        {
+          "name": "الموقع الرسمي — e& money (تم التحقق 2026-11-25)",
+          "url": "https://www.eand.com.eg/portal/etisalat_money/etisalat_money",
+          "type": "official_site",
+          "checked_at": "2026-11-25"
         }
       ],
       "pdf_pages": [
         43
       ]
+    },
+    {
+      "id": "wal-code-777-15",
+      "type": "code",
+      "category_ar": "أكواد *777#",
+      "title_ar": "*777*15# — إلغاء المحفظة",
+      "summary_ar": "*777*15#: إلغاء المحفظة من الموبايل.",
+      "facts": [
+        {
+          "label_ar": "الكود المباشر",
+          "value": "*777*15#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "الخدمة",
+          "value": "إلغاء المحفظة",
+          "kind": "text"
+        }
+      ],
+      "codes": [
+        "*777*15#"
+      ],
+      "tags": [
+        "الغاء المحفظة",
+        "قفل المحفظة",
+        "deactivate",
+        "محفظة",
+        "كاش"
+      ],
+      "sources": [
+        {
+          "name": "الموقع الرسمي — e& money (تم التحقق 2026-11-25)",
+          "url": "https://www.eand.com.eg/portal/etisalat_money/etisalat_money",
+          "type": "official_site",
+          "checked_at": "2026-11-25"
+        }
+      ],
+      "phones": [],
+      "status": "confirmed"
     },
     {
       "id": "wal-fee-withdraw",
@@ -1249,12 +1387,18 @@
       "type": "fee",
       "category_ar": "الرسوم",
       "title_ar": "رسوم فتح المحفظة",
-      "summary_ar": "مجاني.",
+      "summary_ar": "فتح المحفظة مجاني، وعليه 3.31 ج رسم تنمية موارد الدولة.",
       "facts": [
         {
           "label_ar": "الرسوم",
           "value": "مجاني",
           "kind": "text"
+        },
+        {
+          "label_ar": "رسم تنمية موارد الدولة",
+          "value": "3.31",
+          "kind": "price",
+          "unit": "ج"
         }
       ],
       "codes": [],
@@ -1275,201 +1419,16 @@
         {
           "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
           "type": "pdf_guide"
+        },
+        {
+          "name": "الموقع الرسمي — e& money (تم التحقق 2026-11-25)",
+          "url": "https://www.eand.com.eg/portal/etisalat_money/etisalat_money",
+          "type": "official_site",
+          "checked_at": "2026-11-25"
         }
       ],
       "pdf_pages": [
         45
-      ]
-    },
-    {
-      "id": "wal-fee-instapay-bank",
-      "type": "fee",
-      "category_ar": "الرسوم",
-      "title_ar": "رسوم التحويل من بنك للمحفظة عبر إنستاباي",
-      "summary_ar": "0.1% بحد أدنى 0.50 جنيه وأقصى 20 جنيه، ويدفعها المرسل لبنكه.",
-      "facts": [
-        {
-          "label_ar": "النسبة",
-          "value": "0.1%",
-          "kind": "percent"
-        },
-        {
-          "label_ar": "الحد الأدنى",
-          "value": "0.50",
-          "kind": "price",
-          "unit": "جنيه"
-        },
-        {
-          "label_ar": "الحد الأقصى",
-          "value": "20",
-          "kind": "price",
-          "unit": "جنيه"
-        }
-      ],
-      "codes": [],
-      "phones": [],
-      "tags": [
-        "محفظة",
-        "كاش",
-        "اتصالات كاش",
-        "e& cash",
-        "e& money",
-        "etisalat cash",
-        "wallet",
-        "رسوم",
-        "انستاباي",
-        "instapay",
-        "بنك"
-      ],
-      "status": "confirmed",
-      "sources": [
-        {
-          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
-          "type": "pdf_guide"
-        },
-        {
-          "name": "بانكر نيوز — حدود ورسوم إنستاباي الحالية (10 نوفمبر 2026)",
-          "url": "https://www.banker.news/160011",
-          "type": "press"
-        }
-      ],
-      "pdf_pages": [
-        45
-      ]
-    },
-    {
-      "id": "wal-limit-daily",
-      "type": "limit",
-      "category_ar": "الحدود",
-      "title_ar": "الحد اليومي للمعاملات",
-      "summary_ar": "الحد اليومي للمعاملات: 60,000 جنيه.",
-      "facts": [
-        {
-          "label_ar": "الحد اليومي للمعاملات",
-          "value": "60,000",
-          "kind": "price",
-          "unit": "جنيه"
-        }
-      ],
-      "codes": [],
-      "phones": [],
-      "tags": [
-        "محفظة",
-        "كاش",
-        "اتصالات كاش",
-        "e& cash",
-        "e& money",
-        "etisalat cash",
-        "wallet",
-        "حدود",
-        "حد",
-        "limit"
-      ],
-      "status": "confirmed",
-      "status_note_ar": "آخر رقم منشور (فبراير 2025).",
-      "sources": [
-        {
-          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
-          "type": "pdf_guide"
-        },
-        {
-          "name": "Egypt Telegraph — الحدود 60 ألف و200 ألف و200 ألف رصيد (21 فبراير 2025)",
-          "url": "https://www.egypttelegraph.com/121906",
-          "type": "press"
-        }
-      ],
-      "pdf_pages": [
-        44
-      ]
-    },
-    {
-      "id": "wal-limit-monthly",
-      "type": "limit",
-      "category_ar": "الحدود",
-      "title_ar": "الحد الشهري للمعاملات",
-      "summary_ar": "الحد الشهري للمعاملات: 200,000 جنيه.",
-      "facts": [
-        {
-          "label_ar": "الحد الشهري للمعاملات",
-          "value": "200,000",
-          "kind": "price",
-          "unit": "جنيه"
-        }
-      ],
-      "codes": [],
-      "phones": [],
-      "tags": [
-        "محفظة",
-        "كاش",
-        "اتصالات كاش",
-        "e& cash",
-        "e& money",
-        "etisalat cash",
-        "wallet",
-        "حدود",
-        "حد",
-        "limit"
-      ],
-      "status": "confirmed",
-      "status_note_ar": "آخر رقم منشور (فبراير 2025).",
-      "sources": [
-        {
-          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
-          "type": "pdf_guide"
-        },
-        {
-          "name": "Egypt Telegraph — الحدود 60 ألف و200 ألف و200 ألف رصيد (21 فبراير 2025)",
-          "url": "https://www.egypttelegraph.com/121906",
-          "type": "press"
-        }
-      ],
-      "pdf_pages": [
-        44
-      ]
-    },
-    {
-      "id": "wal-limit-balance",
-      "type": "limit",
-      "category_ar": "الحدود",
-      "title_ar": "الحد الأقصى لرصيد المحفظة",
-      "summary_ar": "الحد الأقصى لرصيد المحفظة: 200,000 جنيه.",
-      "facts": [
-        {
-          "label_ar": "الحد الأقصى لرصيد المحفظة",
-          "value": "200,000",
-          "kind": "price",
-          "unit": "جنيه"
-        }
-      ],
-      "codes": [],
-      "phones": [],
-      "tags": [
-        "محفظة",
-        "كاش",
-        "اتصالات كاش",
-        "e& cash",
-        "e& money",
-        "etisalat cash",
-        "wallet",
-        "حدود",
-        "حد",
-        "limit"
-      ],
-      "status": "confirmed",
-      "status_note_ar": "آخر رقم منشور (فبراير 2025).",
-      "sources": [
-        {
-          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
-          "type": "pdf_guide"
-        },
-        {
-          "name": "Egypt Telegraph — الحدود 60 ألف و200 ألف و200 ألف رصيد (21 فبراير 2025)",
-          "url": "https://www.egypttelegraph.com/121906",
-          "type": "press"
-        }
-      ],
-      "pdf_pages": [
-        44
       ]
     },
     {
@@ -1477,7 +1436,7 @@
       "type": "limit",
       "category_ar": "الحدود",
       "title_ar": "عدد المحافظ",
-      "summary_ar": "محفظة واحدة لكل رقم، و3 محافظ بحد أقصى لكل رقم قومي.",
+      "summary_ar": "محفظة واحدة لكل رقم، و3 محافظ بحد أقصى لكل رقم قومي على 3 شرائح مختلفة.",
       "facts": [
         {
           "label_ar": "لكل رقم موبايل",
@@ -1512,6 +1471,12 @@
           "name": "أموال الغد — محفظة لكل رقم و3 محافظ لكل رقم قومي (مايو 2024)",
           "url": "https://amwalalghad.com/z8af",
           "type": "press"
+        },
+        {
+          "name": "الموقع الرسمي — حقوق وواجبات العميل (تم التحقق 2026-11-25)",
+          "url": "https://www.eand.com.eg/portal/rights-duties",
+          "type": "official_site",
+          "checked_at": "2026-11-25"
         }
       ],
       "pdf_pages": [
@@ -1519,60 +1484,77 @@
       ]
     },
     {
-      "id": "wal-limit-instapay",
+      "id": "wal-recharge-range",
       "type": "limit",
       "category_ar": "الحدود",
-      "title_ar": "حد إنستاباي (عند تحويل العميل من البنك للمحفظة)",
-      "summary_ar": "70,000 للمعاملة، و120,000 يوميًا، و400,000 شهريًا لكل بنك.",
+      "title_ar": "حد شحن الرصيد من المحفظة",
+      "summary_ar": "من 5 لـ 250 ج في عملية الشحن.",
       "facts": [
         {
-          "label_ar": "للمعاملة",
-          "value": "70,000",
-          "kind": "price",
-          "unit": "جنيه"
+          "label_ar": "أقل شحن",
+          "value": "5 ج",
+          "kind": "text"
         },
         {
-          "label_ar": "يوميًا",
-          "value": "120,000",
-          "kind": "price",
-          "unit": "جنيه"
-        },
+          "label_ar": "أعلى شحن",
+          "value": "250 ج",
+          "kind": "text"
+        }
+      ],
+      "tags": [
+        "شحن",
+        "رصيد",
+        "محفظة",
+        "كاش"
+      ],
+      "sources": [
         {
-          "label_ar": "شهريًا لكل بنك",
-          "value": "400,000",
-          "kind": "price",
-          "unit": "جنيه"
+          "name": "الموقع الرسمي — e& money (تم التحقق 2026-11-25)",
+          "url": "https://www.eand.com.eg/portal/etisalat_money/etisalat_money",
+          "type": "official_site",
+          "checked_at": "2026-11-25"
         }
       ],
       "codes": [],
       "phones": [],
-      "tags": [
-        "محفظة",
-        "كاش",
-        "اتصالات كاش",
-        "e& cash",
-        "e& money",
-        "etisalat cash",
-        "wallet",
-        "انستاباي",
-        "instapay",
-        "حدود"
-      ],
-      "status": "confirmed",
-      "sources": [
+      "status": "confirmed"
+    },
+    {
+      "id": "wal-rule-line-closed",
+      "type": "rule",
+      "category_ar": "الحدود",
+      "title_ar": "المحفظة بتتلغي مع الخط",
+      "summary_ar": "لو الخط اتلغى أو اتنقل لشبكة تانية المحفظة بتتلغي، والعميل بيسترد باقي فلوسها.",
+      "facts": [
         {
-          "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
-          "type": "pdf_guide"
+          "label_ar": "إلغاء الخط أو نقله",
+          "value": "المحفظة بتتلغي",
+          "kind": "text"
         },
         {
-          "name": "بانكر نيوز — حدود ورسوم إنستاباي الحالية (10 نوفمبر 2026)",
-          "url": "https://www.banker.news/160011",
-          "type": "press"
+          "label_ar": "باقي الرصيد",
+          "value": "بيترد للعميل عند القفل",
+          "kind": "text"
         }
       ],
-      "pdf_pages": [
-        45
-      ]
+      "tags": [
+        "الغاء المحفظة",
+        "نقل الرقم",
+        "استرداد",
+        "محفظة",
+        "كاش"
+      ],
+      "sources": [
+        {
+          "name": "الموقع الرسمي — حقوق وواجبات العميل (تم التحقق 2026-11-25)",
+          "url": "https://www.eand.com.eg/portal/rights-duties",
+          "type": "official_site",
+          "checked_at": "2026-11-25"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "status": "confirmed"
     },
     {
       "id": "wal-register-branch",

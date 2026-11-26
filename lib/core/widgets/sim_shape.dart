@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../theme/app_colors.dart';
+
 /// Rounded rectangle with one cut corner (top end), the silhouette of a SIM
 /// card. Used for the family tile of a package and the price panel only.
 class SimShape extends OutlinedBorder {
@@ -36,10 +38,7 @@ class SimShape extends OutlinedBorder {
   @override
   void paint(Canvas canvas, Rect rect, {TextDirection? textDirection}) {
     if (side.style == BorderStyle.none) return;
-    canvas.drawPath(
-      _path(rect, textDirection, side.width / 2),
-      side.toPaint(),
-    );
+    canvas.drawPath(_path(rect, textDirection, side.width / 2), side.toPaint());
   }
 
   @override
@@ -50,3 +49,32 @@ class SimShape extends OutlinedBorder {
   SimShape copyWith({BorderSide? side}) =>
       SimShape(side: side ?? this.side, radius: radius, cut: cut);
 }
+
+/// The SIM panel as deep navy glass: lit from the top-start corner, a thin
+/// bright rim and a soft navy glow under it.
+ShapeDecoration simGlassDecoration(AppColors c, {double cut = 34}) =>
+    ShapeDecoration(
+      gradient: LinearGradient(
+        begin: AlignmentDirectional.topStart,
+        end: AlignmentDirectional.bottomEnd,
+        colors: [
+          Color.alphaBlend(Colors.white.withValues(alpha: 0.12), c.masthead),
+          c.masthead,
+          Color.alphaBlend(c.aurora1.withValues(alpha: 0.18), c.masthead),
+        ],
+        stops: const [0, 0.55, 1],
+      ),
+      shape: SimShape(
+        radius: 20,
+        cut: cut,
+        side: BorderSide(color: Colors.white.withValues(alpha: 0.16)),
+      ),
+      shadows: [
+        BoxShadow(
+          color: c.masthead.withValues(alpha: c.isDark ? 0.6 : 0.35),
+          blurRadius: 28,
+          offset: const Offset(0, 12),
+          spreadRadius: -10,
+        ),
+      ],
+    );

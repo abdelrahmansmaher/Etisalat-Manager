@@ -10,17 +10,25 @@ class TabPagerScope extends InheritedWidget {
   const TabPagerScope({
     super.key,
     required this.controller,
+    this.swiping,
     required super.child,
   });
 
   final PageController controller;
 
+  /// Set while the user drags between tabs (the nav lens follows the
+  /// finger then, and glides on its own spring otherwise).
+  final ValueNotifier<bool>? swiping;
+
   static PageController? maybeOf(BuildContext context) =>
       context.dependOnInheritedWidgetOfExactType<TabPagerScope>()?.controller;
 
+  static ValueNotifier<bool>? swipingOf(BuildContext context) =>
+      context.dependOnInheritedWidgetOfExactType<TabPagerScope>()?.swiping;
+
   @override
   bool updateShouldNotify(TabPagerScope oldWidget) =>
-      controller != oldWidget.controller;
+      controller != oldWidget.controller || swiping != oldWidget.swiping;
 }
 
 /// Swipeable container for the tab branches (used as
@@ -80,7 +88,7 @@ class _TabPagerState extends State<TabPager> {
   Future<void> _animateTo(int index) async {
     final controller = _controller;
     if (!mounted || !controller.hasClients) return;
-    final duration = AppMotion.resolve(context, AppMotion.max);
+    final duration = AppMotion.resolve(context, AppMotion.page);
     final reduce = MediaQuery.maybeDisableAnimationsOf(context) ?? false;
     _programmatic = true;
     try {
@@ -97,7 +105,7 @@ class _TabPagerState extends State<TabPager> {
         await controller.animateToPage(
           index,
           duration: duration,
-          curve: AppMotion.enter,
+          curve: Curves.fastEaseInToSlowEaseOut,
         );
       }
     } finally {
@@ -121,12 +129,26 @@ class _TabPagerState extends State<TabPager> {
 
   @override
   Widget build(BuildContext context) {
-    return PageView(
-      controller: _controller,
-      onPageChanged: _onPageChanged,
-      // Snappy but smooth; no overscroll glow at the first/last tab.
-      physics: const PageScrollPhysics(parent: ClampingScrollPhysics()),
-      children: [for (final child in widget.children) _KeepAlive(child: child)],
+    final swiping = TabPagerScope.swipingOf(context);
+    return NotificationListener<ScrollNotification>(
+      onNotification: (n) {
+        if (swiping == null || n.depth != 0) return false;
+        if (n is ScrollStartNotification && n.dragDetails != null) {
+          swiping.value = true;
+        } else if (n is ScrollEndNotification) {
+          swiping.value = false;
+        }
+        return false;
+      },
+      child: PageView(
+        controller: _controller,
+        onPageChanged: _onPageChanged,
+        // Snappy but smooth; no overscroll glow at the first/last tab.
+        physics: const PageScrollPhysics(parent: ClampingScrollPhysics()),
+        children: [
+          for (final child in widget.children) _KeepAlive(child: child),
+        ],
+      ),
     );
   }
 }

@@ -112,6 +112,45 @@ class PackageFacts {
   final Fact? afterBundle;
   final List<Fact> others;
 
+  /// The internet quota fact, if the content states one.
+  Fact? get internetQuota {
+    for (final q in quotas) {
+      if (q.isBlank) continue;
+      final label = normalizeLabel(q.label);
+      if (label.contains('انترنت') || _dataUnit.hasMatch(q.display)) return q;
+    }
+    return null;
+  }
+
+  static final RegExp _dataUnit = RegExp(
+    r'(ميجا|جيجا|\bGB\b|\bMB\b)',
+    caseSensitive: false,
+  );
+
+  /// [internetQuota] in the content's own number and unit ("250 ميجا"), never
+  /// converted: the structured `quota_gb` is rounded and only for sorting.
+  String? get internetText {
+    final q = internetQuota;
+    return q == null
+        ? null
+        : PackageLine._noBrackets(q.display)
+              .replaceAll('GB', 'جيجا')
+              .replaceAll('MB', 'ميجا');
+  }
+
+  /// Facts not already shown in the price panel and the metric tiles.
+  List<Fact> detailsOf(ContentItem item) => [
+    if (item.status == ItemStatus.conflict)
+      ...item.facts
+    else
+      for (final f in item.facts)
+        if (!identical(f, price) &&
+            !identical(f, rechargePrice) &&
+            !identical(f, code) &&
+            !metrics.any((m) => identical(m.$2, f)))
+          f,
+  ];
+
   /// Metric tiles, in reading order: quotas, validity, renewal, after-bundle.
   /// Placeholder values (`–`) stay in the details table only.
   List<(PackageFactRole, Fact)> get metrics => [
@@ -223,6 +262,26 @@ class PackageFacts {
 
 /// Leading icon for any fact: by package role when given, else by kind,
 /// refined by label keywords (data vs minutes vs SMS, fees, limits…).
+/// Short label of a fact for tiles: `الحصة (إنترنت)` reads `إنترنت`.
+String shortFactLabel(String label) {
+  final m = RegExp(r'^الحصة\s*\(([^)]+)\)\s*$').firstMatch(label.trim());
+  return m == null ? label : m[1]!.trim();
+}
+
+/// The Arabic unit a quantity implies when the content gives none:
+/// minutes, messages, mixes, units.
+String? impliedUnit(Fact f) {
+  if (f.unit != null || !f.rendersLtr) return f.unit;
+  final l = PackageFacts.normalizeLabel(f.label);
+  if (l.contains('دقائق') || l.contains('دقيق')) return 'دقيقة';
+  if (l.contains('رسائل') || l.contains('رساله')) return 'رسالة';
+  if (l.contains('ميكس')) return 'ميكس';
+  if (l.contains('وحدات')) return 'وحدة';
+  if (l.contains('نقاط')) return 'نقطة';
+  if (l.contains('خطوط')) return 'خط';
+  return null;
+}
+
 abstract final class FactIcons {
   static IconData of(Fact f, [PackageFactRole? role]) {
     final l = PackageFacts.normalizeLabel('${f.label} ${f.unit ?? ''}');
@@ -361,9 +420,7 @@ class PackageLine {
     final quota = <String>[
       if (item.quotaMix case final q?) l10n.quotaMix(TrustFormat.amount(q)),
       if (item.quotaGb case final q?)
-        q < 1
-            ? l10n.quotaMb(TrustFormat.amount(q * 1000))
-            : l10n.quotaGb(TrustFormat.amount(q)),
+        facts.internetText ?? l10n.quotaGb(TrustFormat.amount(q)),
       if (item.quotaMinutes case final q?)
         l10n.quotaMinutes(TrustFormat.amount(q)),
     ];

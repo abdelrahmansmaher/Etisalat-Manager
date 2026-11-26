@@ -46,6 +46,8 @@ enum PackageSegment {
   ];
 
   static PackageSegment of(ContentItem i) {
+    // Listed next to the landline plans, but used on a mobile line.
+    if (i.family == 'ro2ya') return mobile;
     final text = ArabicNormalizer.normalize('${i.category} ${i.family ?? ''}');
     bool has(List<String> words) => words.any(text.contains);
     if (has(_homeWords)) return home;
@@ -57,11 +59,24 @@ enum PackageSegment {
   }
 }
 
-/// Family name of a package: the data's `family`, else its category without
-/// the bracketed English name.
+/// Families whose name differs from the group they are listed in.
+const Map<String, String> _familyNames = {
+  'landline': 'الخط الأرضي',
+  'ro2ya': 'رؤية',
+};
+
+final RegExp _slug = RegExp(r'^[a-z0-9-]+$');
+
+/// Family name of a package, always in readable words: a data slug
+/// (`super-connect`) becomes its Arabic name or the item's group; anything
+/// else is shown as written.
 String familyOf(ContentItem item) {
   final f = item.family;
-  if (f != null) return f;
+  if (f != null) {
+    final named = _familyNames[f];
+    if (named != null) return named;
+    if (!_slug.hasMatch(f)) return f;
+  }
   final c = item.category.replaceAll(RegExp(r'\s*\([^)]*\)'), '').trim();
   return c.isEmpty ? item.category : c;
 }
@@ -86,7 +101,7 @@ class FamilyStyle {
     (Color(0xFF0B6A94), Color(0xFF13719B)), // azure
     (Color(0xFF5A3DA6), Color(0xFF6A4DB8)), // violet
     (Color(0xFF8A2E66), Color(0xFF9A3F77)), // plum
-    (Color(0xFF455069), Color(0xFF55617D)), // slate
+    (Color(0xFF3F5E86), Color(0xFF4C6C96)), // steel
     (Color(0xFF0E7280), Color(0xFF137582)), // cyan
     (Color(0xFF7A4A5E), Color(0xFF87566B)), // mauve
     (Color(0xFF3B3F8F), Color(0xFF5155AB)), // indigo
@@ -95,10 +110,11 @@ class FamilyStyle {
   /// Known families first (specific before general), so they keep their
   /// colour whatever else the content holds.
   static const List<(List<String>, int, String)> _known = [
+    (['اضاف', 'booster'], 4, '+'),
     (['super connect', 'سوبر كونكت'], 5, 'سك'),
     (['super hours', 'sa3at', 'ساعات'], 2, 'سا'),
     (['super mega', 'سوبر ميجا', 'mbs', 'ميجابايتس'], 1, 'سم'),
-    (['emerald', 'ايميرالد'], 7, 'E'),
+    (['emerald', 'ايميرالد'], 7, 'إي'),
     (['ميني'], 6, 'مح'),
     (['حكايه انترنت'], 1, 'حن'),
     (['حكايه', 'hekaya'], 0, 'ح'),
@@ -110,7 +126,9 @@ class FamilyStyle {
     (['ارضي', 'dsl'], 0, 'DSL'),
     (['هوايي', 'لاسلكي', 'wireless', 'home'], 2, '4G'),
     (['فاتوره'], 7, 'ف'),
-    (['اضاف'], 4, '+'),
+    (['انظمه اليوم'], 6, 'يوم'),
+    (['تجوال'], 1, 'ت'),
+    (['زوار'], 5, 'ز'),
   ];
 
   static final Map<String, FamilyStyle> _cache = {};
@@ -160,9 +178,30 @@ class FamilyTile extends StatelessWidget {
         height: height,
         alignment: Alignment.center,
         padding: const EdgeInsets.all(3),
+        // A small glass SIM: lit from the top, with a bright rim and a
+        // glow in its own colour.
         decoration: ShapeDecoration(
-          color: fill,
-          shape: const SimShape(radius: 6, cut: 9),
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color.alphaBlend(Colors.white.withValues(alpha: 0.22), fill),
+              fill,
+            ],
+          ),
+          shape: SimShape(
+            radius: 6,
+            cut: 9,
+            side: BorderSide(color: Colors.white.withValues(alpha: 0.28)),
+          ),
+          shadows: [
+            BoxShadow(
+              color: fill.withValues(alpha: 0.35),
+              blurRadius: 8,
+              offset: const Offset(0, 3),
+              spreadRadius: -2,
+            ),
+          ],
         ),
         child: FittedBox(
           fit: BoxFit.scaleDown,

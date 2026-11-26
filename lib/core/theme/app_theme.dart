@@ -19,10 +19,11 @@ abstract final class AppTheme {
     onPrimary: c.onPrimary,
     primaryContainer: c.primaryContainer,
     onPrimaryContainer: c.onPrimaryContainer,
-    secondary: c.accentText,
-    onSecondary: c.surface,
-    secondaryContainer: c.accentContainer,
-    onSecondaryContainer: c.onAccentContainer,
+    // Gold is for prices only, so no Material widget picks it by default.
+    secondary: c.primaryUi,
+    onSecondary: c.onPrimary,
+    secondaryContainer: c.primaryContainer,
+    onSecondaryContainer: c.onPrimaryContainer,
     tertiary: c.info,
     onTertiary: c.surface,
     error: c.error,
@@ -74,7 +75,7 @@ abstract final class AppTheme {
       materialTapTargetSize: MaterialTapTargetSize.padded,
       splashFactory: InkRipple.splashFactory,
       appBarTheme: AppBarTheme(
-        backgroundColor: c.background,
+        backgroundColor: Colors.transparent,
         surfaceTintColor: Colors.transparent,
         foregroundColor: c.textPrimary,
         elevation: 0,
@@ -115,7 +116,7 @@ abstract final class AppTheme {
       ),
       progressIndicatorTheme: ProgressIndicatorThemeData(color: c.primaryUi),
       cardTheme: CardThemeData(
-        color: c.surface,
+        color: c.glassFill,
         elevation: 0,
         margin: EdgeInsets.zero,
         shape: RoundedRectangleBorder(
@@ -126,7 +127,7 @@ abstract final class AppTheme {
       dividerTheme: DividerThemeData(color: c.hairline, thickness: 1, space: 1),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: c.surfaceVariant,
+        fillColor: c.headerField,
         hintStyle: text.bodyLarge?.copyWith(color: c.textTertiary),
         contentPadding: const EdgeInsetsDirectional.symmetric(
           horizontal: AppSpacing.md,
@@ -166,7 +167,7 @@ abstract final class AppTheme {
         ),
       ),
       navigationRailTheme: NavigationRailThemeData(
-        backgroundColor: c.surface,
+        backgroundColor: Colors.transparent,
         indicatorColor: c.capsuleSelected,
         indicatorShape: const StadiumBorder(),
         selectedIconTheme: IconThemeData(color: c.onCapsuleSelected),
@@ -186,19 +187,40 @@ abstract final class AppTheme {
         minVerticalPadding: AppSpacing.xs,
       ),
       filledButtonTheme: FilledButtonThemeData(
-        style: FilledButton.styleFrom(
-          minimumSize: const Size(AppSpacing.minTouchTarget, 48),
-          textStyle: AppTypography.labelL,
-          shape: const RoundedRectangleBorder(borderRadius: AppRadius.smAll),
-        ),
+        style:
+            FilledButton.styleFrom(
+              minimumSize: const Size(AppSpacing.minTouchTarget, 48),
+              textStyle: AppTypography.labelL.copyWith(
+                fontWeight: FontWeight.w700,
+              ),
+              shape: const StadiumBorder(),
+              elevation: 0,
+              shadowColor: c.capsuleSelected.withValues(alpha: 0.5),
+            ).copyWith(
+              elevation: WidgetStateProperty.resolveWith(
+                (s) => s.contains(WidgetState.pressed) ? 0 : 3,
+              ),
+            ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
           minimumSize: const Size(AppSpacing.minTouchTarget, 48),
           textStyle: AppTypography.labelL,
+          backgroundColor: c.headerField,
           side: BorderSide(color: c.borderStrong),
-          shape: const RoundedRectangleBorder(borderRadius: AppRadius.smAll),
+          shape: const StadiumBorder(),
         ),
+      ),
+      popupMenuTheme: PopupMenuThemeData(
+        color: Color.alphaBlend(c.glassChrome, c.surface),
+        surfaceTintColor: Colors.transparent,
+        elevation: 12,
+        shadowColor: c.shadow.withValues(alpha: 0.4),
+        shape: RoundedRectangleBorder(
+          borderRadius: AppRadius.mdAll,
+          side: BorderSide(color: c.glassEdge),
+        ),
+        textStyle: AppTypography.bodyM.copyWith(color: c.textPrimary),
       ),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
@@ -208,20 +230,24 @@ abstract final class AppTheme {
       ),
       snackBarTheme: SnackBarThemeData(
         behavior: SnackBarBehavior.floating,
-        backgroundColor: c.textPrimary,
-        contentTextStyle: AppTypography.bodyM.copyWith(color: c.surface),
-        shape: const RoundedRectangleBorder(borderRadius: AppRadius.smAll),
+        backgroundColor: c.masthead,
+        contentTextStyle: AppTypography.bodyM.copyWith(color: c.onMasthead),
+        actionTextColor: c.mastheadPrice,
+        shape: const StadiumBorder(),
         insetPadding: const EdgeInsets.fromLTRB(16, 0, 16, 88),
       ),
       tooltipTheme: TooltipThemeData(
         decoration: BoxDecoration(
-          color: c.textPrimary,
-          borderRadius: AppRadius.xsAll,
+          color: c.masthead,
+          borderRadius: AppRadius.fullAll,
+          border: Border.all(color: Colors.white.withValues(alpha: 0.14)),
         ),
-        textStyle: AppTypography.labelS.copyWith(color: c.surface),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+        textStyle: AppTypography.labelS.copyWith(color: c.onMasthead),
       ),
       bottomSheetTheme: BottomSheetThemeData(
         backgroundColor: c.surface,
+        surfaceTintColor: Colors.transparent,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
             top: Radius.circular(AppRadius.l),
@@ -229,7 +255,8 @@ abstract final class AppTheme {
         ),
       ),
       dialogTheme: DialogThemeData(
-        backgroundColor: c.surface,
+        backgroundColor: c.surfaceElevated,
+        surfaceTintColor: Colors.transparent,
         shape: const RoundedRectangleBorder(borderRadius: AppRadius.lgAll),
       ),
       pageTransitionsTheme: PageTransitionsTheme(

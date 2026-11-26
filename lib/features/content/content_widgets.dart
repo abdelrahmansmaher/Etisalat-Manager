@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/content/content.dart';
 import '../../core/router/app_routes.dart';
 import '../../core/theme/theme.dart';
+import '../../core/user/user.dart';
+import '../../core/widgets/app_card.dart';
+import '../../core/widgets/badges.dart';
 import '../../core/widgets/ltr_text.dart';
 import '../../core/widgets/page_scaffold.dart';
 import '../../core/widgets/prose_text.dart';
 import '../../core/widgets/trust/trust.dart';
 import '../../l10n/app_localizations.dart';
 import '../tools/dial.dart';
+import '../tools/whats_new.dart' show freshItemIdsProvider;
+import 'item_peek.dart';
 import 'package_facts.dart';
 import 'package_family.dart';
 import 'section_ui.dart';
@@ -17,31 +23,57 @@ import 'section_ui.dart';
 /// Tiny mark after a title in lists: a check for confirmed items, "edited by
 /// you" for the owner's own changes, nothing otherwise (an unknown status
 /// never looks confirmed).
-class ItemMark extends StatelessWidget {
+///
+/// An item checked on the official site gets a green seal, and an item the
+/// latest update added gets a "جديد" badge.
+class ItemMark extends ConsumerWidget {
   const ItemMark(this.item, {super.key});
 
   final ContentItem item;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context);
     final c = context.colors;
+    final fresh = ref.watch(
+      freshItemIdsProvider.select((ids) => ids.contains(item.id)),
+    );
+    final Widget mark;
     if (item.userEdited) {
-      return Text(
+      mark = Text(
         l10n.editedByYou,
         key: ValueKey('edited-${item.id}'),
         style: AppTypography.labelS.copyWith(color: c.primary),
       );
+    } else if (item.status != ItemStatus.confirmed) {
+      mark = const SizedBox.shrink();
+    } else if (item.officiallyVerified) {
+      mark = VerifiedSeal(
+        key: ValueKey('confirmed-${item.id}'),
+        size: 16,
+        semanticLabel: l10n.statusConfirmedOfficial,
+      );
+    } else {
+      mark = Icon(
+        AppIcons.confirmed,
+        key: ValueKey('confirmed-${item.id}'),
+        size: 14,
+        color: c.verified,
+        semanticLabel: l10n.statusConfirmedGuide,
+      );
     }
-    if (item.status != ItemStatus.confirmed) return const SizedBox.shrink();
-    return Icon(
-      AppIcons.confirmed,
-      key: ValueKey('confirmed-${item.id}'),
-      size: 14,
-      color: c.verified,
-      semanticLabel: item.officiallyVerified
-          ? l10n.statusConfirmedOfficial
-          : l10n.statusConfirmedGuide,
+    if (!fresh) return mark;
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        mark,
+        const SizedBox(width: AppSpacing.xxs),
+        AppBadge(
+          key: ValueKey('fresh-${item.id}'),
+          label: l10n.badgeNew,
+          tone: BadgeTone.fresh,
+        ),
+      ],
     );
   }
 }
@@ -92,10 +124,7 @@ class TrustLine extends StatelessWidget {
         ),
         const SizedBox(width: AppSpacing.xxs + 2),
         Expanded(
-          child: Text(
-            text,
-            style: AppTypography.labelL.copyWith(color: color),
-          ),
+          child: Text(text, style: AppTypography.labelL.copyWith(color: color)),
         ),
       ],
     );
@@ -154,15 +183,46 @@ String clipWords(String text, {int max = 72}) {
   if (out.isEmpty) out.add(words.first);
   // Never end on a bare preposition before a dropped number.
   while (out.length > 1 &&
-      const {'بـ', 'ب', 'من', 'كل', 'حتى', 'و', '-', '–', '—'}.contains(
-        out.last,
-      )) {
+      const {
+        'بـ',
+        'ب',
+        'من',
+        'كل',
+        'حتى',
+        'و',
+        '-',
+        '–',
+        '—',
+      }.contains(out.last)) {
     out.removeLast();
   }
   return '${out.join(' ').replaceAll(RegExp(r'[،,:؛.\-–—]+$'), '')}…';
 }
 
 const double _rowMinHeight = 60;
+
+/// Small heart after the title of a favourite.
+class _FavoriteMark extends ConsumerWidget {
+  const _FavoriteMark(this.id);
+
+  final String id;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final on = ref.watch(favoritesProvider.select((s) => s.contains(id)));
+    if (!on) return const SizedBox.shrink();
+    return Padding(
+      padding: const EdgeInsetsDirectional.only(start: AppSpacing.xxs),
+      child: Icon(
+        AppIcons.toolFavorite,
+        key: ValueKey('favorite-mark-$id'),
+        size: 14,
+        color: context.colors.primary,
+        semanticLabel: AppLocalizations.of(context).toolsFavorite,
+      ),
+    );
+  }
+}
 
 /// Shared frame of every dense row.
 class _RowFrame extends StatelessWidget {
@@ -184,6 +244,7 @@ class _RowFrame extends StatelessWidget {
     return InkWell(
       key: ValueKey('item-row-${item.id}'),
       onTap: () => context.push(ContentRoutes.item(item.id)),
+      onLongPress: () => showItemPeek(context, item),
       child: ConstrainedBox(
         constraints: const BoxConstraints(minHeight: _rowMinHeight),
         child: Padding(padding: padding, child: child),
@@ -192,7 +253,8 @@ class _RowFrame extends StatelessWidget {
   }
 }
 
-/// Title with its mark flowing right after the last word.
+/// Title with its marks beside it: a long title wraps, the marks never drop
+/// to a line of their own.
 class _RowTitle extends StatelessWidget {
   const _RowTitle(this.item, {this.title});
 
@@ -202,19 +264,22 @@ class _RowTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final c = context.colors;
-    return Wrap(
-      spacing: AppSpacing.xxs,
-      crossAxisAlignment: WrapCrossAlignment.center,
+    return Row(
+      mainAxisSize: MainAxisSize.min,
       children: [
-        ProseText(
-          title ?? item.title,
-          style: AppTypography.titleS.copyWith(
-            color: c.textPrimary,
-            fontSize: 15,
-            height: 22 / 15,
+        Flexible(
+          child: ProseText(
+            title ?? item.title,
+            style: AppTypography.titleS.copyWith(
+              color: c.textPrimary,
+              fontSize: 15,
+              height: 22 / 15,
+            ),
           ),
         ),
+        const SizedBox(width: AppSpacing.xxs),
         ItemMark(item),
+        _FavoriteMark(item.id),
       ],
     );
   }
@@ -234,36 +299,58 @@ class PriceText extends StatelessWidget {
     return Semantics(
       label: '$amount ${l10n.currencyEgp}',
       excludeSemantics: true,
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.baseline,
-        textBaseline: TextBaseline.alphabetic,
-        children: [
-          LtrText(
-            amount,
-            style: AppTypography.price.copyWith(
-              color: c.accentText,
-              fontSize: size,
-              height: 24 / size,
+      child: FittedBox(
+        fit: BoxFit.scaleDown,
+        alignment: AlignmentDirectional.centerEnd,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.baseline,
+          textBaseline: TextBaseline.alphabetic,
+          children: [
+            LtrText(
+              amount,
+              style: AppTypography.price.copyWith(
+                color: c.accentText,
+                fontSize: size,
+                height: 24 / size,
+              ),
             ),
-          ),
-          const SizedBox(width: 3),
-          Text(
-            l10n.currencyShort,
-            style: AppTypography.labelS.copyWith(color: c.accentText),
-          ),
-        ],
+            const SizedBox(width: 3),
+            Text(
+              l10n.currencyShort,
+              style: AppTypography.labelS.copyWith(color: c.accentText),
+            ),
+          ],
+        ),
       ),
     );
   }
 }
 
-/// Dense package row: family tile, name, "quota · validity", and the price
-/// column with the subscription code under it.
+/// Package card row: family SIM, name with its marks, what it gives as
+/// small chips (internet, minutes, mixes, duration), and the price with the
+/// subscription code on the end side.
 class PackageRow extends StatelessWidget {
   const PackageRow({super.key, required this.item});
 
   final ContentItem item;
+
+  /// One chip per part of the quota, then the duration.
+  static List<(IconData, String)> chipsOf(PackageLine line) => [
+    for (final part in (line.quota ?? '').split('، '))
+      if (part.trim().isNotEmpty) (_iconFor(part), part.trim()),
+    if (line.validity != null) (AppIcons.validity, line.validity!),
+  ];
+
+  static IconData _iconFor(String text) {
+    if (text.contains('جيجا') || text.contains('ميجا')) {
+      return AppIcons.quotaData;
+    }
+    if (text.contains('دقيق')) return AppIcons.quotaMinutes;
+    if (text.contains('ميكس')) return AppIcons.quotaMixes;
+    if (text.contains('رسال')) return AppIcons.quotaSms;
+    return AppIcons.quota;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -271,20 +358,24 @@ class PackageRow extends StatelessWidget {
     final c = context.colors;
     final line = PackageLine.of(item, l10n);
     final large = MediaQuery.textScalerOf(context).scale(1) > 1.35;
+    final chips = chipsOf(line);
 
     final name = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         _RowTitle(item),
-        if (line.details.isNotEmpty)
-          ProseText(
-            line.details,
-            style: AppTypography.bodyS.copyWith(
-              color: c.textSecondary,
-              fontFeatures: AppTypography.tabular,
-            ),
+        if (chips.isNotEmpty) ...[
+          const SizedBox(height: AppSpacing.xxs + 2),
+          Wrap(
+            spacing: AppSpacing.xxs + 2,
+            runSpacing: AppSpacing.xxs,
+            children: [
+              for (final (icon, text) in chips)
+                _InfoChip(icon: icon, text: text),
+            ],
           ),
+        ],
       ],
     );
 
@@ -292,28 +383,25 @@ class PackageRow extends StatelessWidget {
     final code = line.code;
     final end = [
       if (price != null)
-        PriceText(price, key: ValueKey('price-${item.id}'))
+        PriceText(price, key: ValueKey('price-${item.id}'), size: 22)
       else
         Text(
           l10n.packageNoPriceShort,
           style: AppTypography.labelS.copyWith(color: c.textTertiary),
         ),
-      if (code != null)
-        CodeValue(
-          code,
-          key: ValueKey('code-${item.id}'),
-          style: AppTypography.code.copyWith(
-            color: c.textSecondary,
-            fontSize: 12,
-            height: 16 / 12,
-            letterSpacing: 0,
-          ),
-        ),
+      if (code != null) _RowCode(item.id, code),
     ];
 
     return _RowFrame(
       item: item,
+      padding: const EdgeInsetsDirectional.fromSTEB(
+        AppSpacing.sm,
+        AppSpacing.sm,
+        AppSpacing.sm,
+        AppSpacing.sm,
+      ),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           FamilyTile(familyOf(item)),
           const SizedBox(width: AppSpacing.sm),
@@ -324,6 +412,7 @@ class PackageRow extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   name,
+                  const SizedBox(height: AppSpacing.xxs),
                   Wrap(
                     spacing: AppSpacing.sm,
                     crossAxisAlignment: WrapCrossAlignment.center,
@@ -345,6 +434,91 @@ class PackageRow extends StatelessWidget {
             ),
           ],
         ],
+      ),
+    );
+  }
+}
+
+/// Small rounded label with an icon: "13 جيجا", "28 يوم".
+class _InfoChip extends StatelessWidget {
+  const _InfoChip({required this.icon, required this.text});
+
+  final IconData icon;
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    final c = context.colors;
+    return Container(
+      padding: const EdgeInsetsDirectional.fromSTEB(6, 2, 8, 2),
+      decoration: BoxDecoration(
+        color: c.glassTint,
+        borderRadius: AppRadius.fullAll,
+        border: Border.all(color: c.hairline),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon, size: 13, color: c.primaryUi),
+          const SizedBox(width: 4),
+          Flexible(
+            child: ProseText(
+              text,
+              style: AppTypography.labelS.copyWith(
+                color: c.textSecondary,
+                fontWeight: FontWeight.w600,
+                fontFeatures: AppTypography.tabular,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Subscription code of a package row; one tap copies it.
+class _RowCode extends StatelessWidget {
+  const _RowCode(this.itemId, this.code);
+
+  final String itemId;
+  final String code;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final c = context.colors;
+    return Semantics(
+      button: true,
+      label: l10n.copyValueSemantics(code),
+      excludeSemantics: true,
+      child: InkWell(
+        key: ValueKey('copy-code-$itemId'),
+        borderRadius: AppRadius.xsAll,
+        onTap: () => CodeText.copyToClipboard(context, code),
+        child: Padding(
+          // A taller target than the text, without a taller row.
+          padding: const EdgeInsets.symmetric(vertical: AppSpacing.xxs + 2),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Flexible(
+                child: CodeValue(
+                  code,
+                  key: ValueKey('code-$itemId'),
+                  style: AppTypography.code.copyWith(
+                    color: c.primary,
+                    fontSize: 13,
+                    height: 18 / 13,
+                    letterSpacing: 0,
+                  ),
+                ),
+              ),
+              const SizedBox(width: AppSpacing.xxs),
+              Icon(AppIcons.copy, size: 14, color: c.primary),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -374,6 +548,13 @@ class CodeRow extends StatelessWidget {
         : i.title;
   }
 
+  /// Hotline, wallet code or network code at a glance.
+  static IconData iconOf(ContentItem i) => i.type == ItemType.contact
+      ? AppIcons.catHotline
+      : i.section == ContentSection.wallet
+      ? AppIcons.catWalletCodes
+      : AppIcons.catGsm;
+
   @override
   Widget build(BuildContext context) {
     final c = context.colors;
@@ -387,6 +568,8 @@ class CodeRow extends StatelessWidget {
       ),
       child: Row(
         children: [
+          TintedIcon(iconOf(item), tile: IconTile.sm),
+          const SizedBox(width: AppSpacing.sm),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -455,15 +638,17 @@ class ArticleRow extends StatelessWidget {
               children: [
                 _RowTitle(item),
                 if (snippet != null)
-                  HighlightedText(snippet!, highlights: highlights, style: style)
+                  HighlightedText(
+                    snippet!,
+                    highlights: highlights,
+                    style: style,
+                  )
                 else if (item.summary.isNotEmpty)
                   ProseText(clipWords(item.summary), style: style),
                 if (sectionLabel != null)
                   Text(
                     sectionLabel!,
-                    style: AppTypography.labelS.copyWith(
-                      color: c.textTertiary,
-                    ),
+                    style: AppTypography.labelS.copyWith(color: c.textTertiary),
                   ),
               ],
             ),
@@ -535,11 +720,20 @@ class ContentLoading extends StatelessWidget {
 
 /// Header of a group of rows: name and count on one line.
 class GroupHeader extends StatelessWidget {
-  const GroupHeader(this.title, {super.key, this.count, this.trailing});
+  const GroupHeader(
+    this.title, {
+    super.key,
+    this.count,
+    this.trailing,
+    this.icon,
+  });
 
   final String title;
   final int? count;
   final Widget? trailing;
+
+  /// Small tinted icon before the title.
+  final IconData? icon;
 
   @override
   Widget build(BuildContext context) {
@@ -551,31 +745,38 @@ class GroupHeader extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Flexible(
-            child: Semantics(
-              header: true,
-              child: Text(
-                title,
-                key: ValueKey('group-$title'),
-                style: AppTypography.titleM.copyWith(
-                  color: c.textPrimary,
-                  fontWeight: FontWeight.w700,
+          // Takes all the room left, so a trailing link sits on the edge.
+          Expanded(
+            child: Row(
+              children: [
+                if (icon != null) ...[
+                  TintedIcon(icon!, tile: IconTile.xs),
+                  const SizedBox(width: AppSpacing.xs),
+                ],
+                Flexible(
+                  child: Semantics(
+                    header: true,
+                    child: Text(
+                      title,
+                      key: ValueKey('group-$title'),
+                      style: AppTypography.titleM.copyWith(
+                        color: c.textPrimary,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
                 ),
-              ),
+                if (count != null) ...[
+                  const SizedBox(width: AppSpacing.xs),
+                  AppBadge(
+                    key: ValueKey('group-count-$title'),
+                    label: '$count',
+                  ),
+                ],
+              ],
             ),
           ),
-          if (count != null) ...[
-            const SizedBox(width: AppSpacing.xs),
-            Text(
-              '$count',
-              key: ValueKey('group-count-$title'),
-              style: AppTypography.labelL.copyWith(
-                color: c.textTertiary,
-                fontFeatures: AppTypography.tabular,
-              ),
-            ),
-          ],
-          if (trailing != null) ...[const Spacer(), trailing!],
+          ?trailing,
         ],
       ),
     );

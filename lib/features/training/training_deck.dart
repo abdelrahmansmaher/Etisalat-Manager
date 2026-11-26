@@ -154,9 +154,8 @@ class TrainingDeck {
       final digits = toAsciiDigits(f.value).replaceAll(',', '').trim();
       // The title already gives the answer away.
       if (RegExp(r'^[\d.]+$').hasMatch(digits) &&
-          RegExp(
-            '(^|[^\\d.])${RegExp.escape(digits)}(\$|[^\\d.])',
-          ).hasMatch(toAsciiDigits(item.title).replaceAll(',', ''))) {
+          RegExp('(^|[^\\d.])${RegExp.escape(digits)}(\$|[^\\d.])')
+              .hasMatch(toAsciiDigits(item.title).replaceAll(',', ''))) {
         return;
       }
       add(kind, f.label, f.display);
@@ -204,9 +203,7 @@ class TrainingDeck {
     }
     if (_isCase(item)) {
       final answer = item.steps.isNotEmpty
-          ? [
-              for (final (i, s) in item.steps.indexed) '${i + 1}. $s',
-            ].join('\n')
+          ? [for (final (i, s) in item.steps.indexed) '${i + 1}. $s'].join('\n')
           : item.summary;
       if (_clean(answer)) add(CardKind.scenario, '', answer);
     }
@@ -249,10 +246,7 @@ class TrainingDeck {
       ...section.values.toList()..shuffle(random),
     ];
     if (pool.length < 3) return null;
-    return QuizQuestion(
-      card,
-      [card.answer, ...pool.take(3)]..shuffle(random),
-    );
+    return QuizQuestion(card, [card.answer, ...pool.take(3)]..shuffle(random));
   }
 
   /// Up to [count] questions on different cards.
@@ -280,9 +274,10 @@ class TrainingDeck {
     return null;
   }
 
-  static String _key(String v) => toAsciiDigits(v)
-      .replaceAll(RegExp(r'[\s,\u200E\u200F]'), '')
-      .replaceAll('جنيه', 'ج');
+  static String _key(String v) =>
+      toAsciiDigits(v)
+          .replaceAll(RegExp(r'[\s,\u200E\u200F]'), '')
+          .replaceAll('جنيه', 'ج');
 }
 
 int epochDay(DateTime d) =>
@@ -295,4 +290,3 @@ final trainingDeckProvider = Provider<TrainingDeck>((ref) {
 
 /// Source of randomness; fixed in tests.
 final trainingRandomProvider = Provider<Random>((ref) => Random());
-

@@ -9,10 +9,10 @@ abstract final class AppShadows {
   /// Resting card.
   static List<BoxShadow> card(AppColors c) => [
     BoxShadow(
-      color: c.shadow.withValues(alpha: c.isDark ? 0.30 : 0.07),
-      offset: const Offset(0, 4),
-      blurRadius: 14,
-      spreadRadius: -4,
+      color: c.shadow.withValues(alpha: c.isDark ? 0.34 : 0.08),
+      offset: const Offset(0, 8),
+      blurRadius: 24,
+      spreadRadius: -8,
     ),
     BoxShadow(
       color: c.shadow.withValues(alpha: c.isDark ? 0.18 : 0.04),

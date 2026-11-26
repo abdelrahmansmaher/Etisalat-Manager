@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
-import 'package:knowledge_hub/core/router/app_routes.dart';
 import 'package:knowledge_hub/features/home/home_screen.dart';
+import 'package:knowledge_hub/features/tools/tool_routes.dart';
 
 import 'helpers/pump_app.dart';
 
@@ -20,24 +20,29 @@ void main() {
     '/item/proc-test-replace-sim',
     '/item/num-test-hotline',
     '/item/missing',
-    ContentRoutes.review,
+    ToolRoutes.compare,
+    '/tools/compare?id=pkg-test-alpha',
+    ToolRoutes.recommend,
+    ToolRoutes.calculator,
+    ToolRoutes.favorites,
+    ToolRoutes.notes,
+    ToolRoutes.editor,
+    ToolRoutes.newItem,
+    '/tools/editor/item?id=pkg-test-alpha',
+    ToolRoutes.whatsNew,
+    ToolRoutes.training,
   ];
 
   // Pushed routes cover the shell (offstage), so the last vertical list
-  // is the page's; in the tab shell, only the visible tab is hit-testable.
+  // is the page's.
   Finder vertical() => find.byWidgetPredicate(
     (w) => w is Scrollable && w.axisDirection == AxisDirection.down,
   );
 
-  Future<void> scrollThrough(
-    WidgetTester tester,
-    String reason, {
-    bool inShell = false,
-  }) async {
+  Future<void> scrollThrough(WidgetTester tester, String reason) async {
     if (vertical().evaluate().isEmpty) return; // e.g. not-found page
     for (var i = 0; i < 8; i++) {
-      final target = inShell ? vertical().hitTestable().first : vertical().last;
-      await tester.drag(target, const Offset(0, -500));
+      await tester.drag(vertical().last, const Offset(0, -500));
       await tester.pumpAndSettle();
       expect(tester.takeException(), isNull, reason: '$reason step $i');
     }
@@ -73,7 +78,9 @@ void main() {
             themeMode: mode,
             textScale: scale,
           );
-          await tester.tap(find.byKey(const ValueKey('nav-2')));
+          await tester.tap(
+            find.byKey(const ValueKey('search-pill')).hitTestable(),
+          );
           await tester.pumpAndSettle();
           for (final q in ['باقة', '*999#', 'زززز']) {
             await tester.enterText(
@@ -83,11 +90,8 @@ void main() {
             await tester.pump(const Duration(milliseconds: 150));
             await tester.pumpAndSettle();
             expect(tester.takeException(), isNull, reason: q);
-            await scrollThrough(tester, q, inShell: true);
-            await tester.drag(
-              vertical().hitTestable().first,
-              const Offset(0, 6000),
-            );
+            await scrollThrough(tester, q);
+            await tester.drag(vertical().last, const Offset(0, 6000));
             await tester.pumpAndSettle();
           }
         });

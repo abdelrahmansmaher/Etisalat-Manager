@@ -4,12 +4,12 @@ import '../theme/app_colors.dart';
 import '../theme/app_radius.dart';
 import '../theme/app_shadows.dart';
 import '../theme/app_spacing.dart';
+import 'liquid_glass.dart';
 
-BoxDecoration _decoration(AppColors c) => BoxDecoration(
-  color: c.surfaceElevated,
+Decoration _decoration(AppColors c) => GlassDecoration(
+  colors: c,
   borderRadius: AppRadius.rowAll,
-  border: Border.all(color: c.hairline),
-  boxShadow: AppShadows.card(c),
+  shadows: AppShadows.card(c),
 );
 
 /// Hairline between two rows of a surface.

@@ -6,6 +6,7 @@ import '../../core/content/content.dart';
 import '../../core/settings/history.dart';
 import '../../core/theme/theme.dart';
 import '../../core/widgets/app_card.dart';
+import '../../core/widgets/capsules.dart';
 import '../../core/widgets/list_surface.dart';
 import '../../core/widgets/ltr_text.dart';
 import '../../core/widgets/page_scaffold.dart';
@@ -15,7 +16,9 @@ import '../../l10n/app_localizations.dart';
 import '../tools/dial.dart';
 import '../tools/item_actions.dart';
 import 'content_widgets.dart';
+import 'package_family.dart';
 import 'package_facts.dart';
+import 'steps_progress.dart';
 
 /// Full item page.
 ///
@@ -33,6 +36,9 @@ class ItemDetailScreen extends ConsumerStatefulWidget {
 
 class _ItemDetailScreenState extends ConsumerState<ItemDetailScreen> {
   bool _recorded = false;
+
+  /// Screen turned to the customer: price, code and terms only.
+  bool _customer = false;
 
   void _record() {
     if (_recorded) return;
@@ -69,35 +75,53 @@ class _ItemDetailScreenState extends ConsumerState<ItemDetailScreen> {
     }
     _record();
 
+    final customer = _customer && item.type == ItemType.package;
     final related = [for (final id in item.related) ?library!.byId(id)];
     final isPackage = item.type == ItemType.package;
 
     final header = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (item.titleEn != null)
+        // The English name only when the app itself is in English.
+        if (item.titleEn != null &&
+            Localizations.localeOf(context).languageCode != 'ar')
           LtrText(
             item.titleEn!,
             style: AppTypography.bodyM.copyWith(color: c.textTertiary),
           ),
-        const SizedBox(height: AppSpacing.xxs),
-        TrustLine(item),
+        if (!customer) ...[
+          const SizedBox(height: AppSpacing.xxs),
+          TrustLine(item),
+        ],
       ],
     );
 
     final tail = <Widget>[
-      if (item.sources.isNotEmpty || item.pdfPages.isNotEmpty) ...[
-        GroupHeader(l10n.detailSourcesTitle),
-        _Sources(item: item),
-      ],
-      if (related.isNotEmpty) ...[
-        GroupHeader(l10n.detailRelatedTitle),
-        ListSurface(
-          children: [
-            for (final r in related)
-              ContentItemRow(item: r, showSection: r.section != item.section),
-          ],
+      if (customer) ...[
+        const SizedBox(height: AppSpacing.md),
+        Align(
+          alignment: AlignmentDirectional.centerStart,
+          child: Capsule(
+            key: const ValueKey('customer-view-exit'),
+            icon: AppIcons.customerViewOff,
+            label: l10n.customerViewOff,
+            onTap: () => setState(() => _customer = false),
+          ),
         ),
+      ] else ...[
+        if (item.sources.isNotEmpty || item.pdfPages.isNotEmpty) ...[
+          GroupHeader(l10n.detailSourcesTitle, icon: AppIcons.link),
+          _Sources(item: item),
+        ],
+        if (related.isNotEmpty) ...[
+          GroupHeader(l10n.detailRelatedTitle, icon: AppIcons.layers),
+          ListSurface(
+            children: [
+              for (final r in related)
+                ContentItemRow(item: r, showSection: r.section != item.section),
+            ],
+          ),
+        ],
       ],
     ];
 
@@ -106,22 +130,41 @@ class _ItemDetailScreenState extends ConsumerState<ItemDetailScreen> {
       title: item.title,
       titleIsProse: true,
       header: header,
-      actions: [FavoriteButton(item.id)],
+      actions: [
+        if (isPackage)
+          IconButton(
+            key: const ValueKey('customer-view'),
+            isSelected: customer,
+            tooltip: customer ? l10n.customerViewOff : l10n.customerView,
+            icon: Icon(
+              customer ? AppIcons.customerViewOff : AppIcons.customerView,
+            ),
+            color: c.primary,
+            onPressed: () => setState(() => _customer = !_customer),
+          ),
+        FavoriteButton(item.id),
+      ],
       children: [
         if (item.status != ItemStatus.confirmed && !item.userEdited)
           _ReviewNote(item: item),
         ...(isPackage
-            ? _packageBody(context, item)
+            ? _packageBody(context, item, customer: customer)
             : _genericBody(context, item)),
         ...tail,
       ],
     );
   }
 
-  List<Widget> _packageBody(BuildContext context, ContentItem item) {
+  List<Widget> _packageBody(
+    BuildContext context,
+    ContentItem item, {
+    bool customer = false,
+  }) {
     final l10n = AppLocalizations.of(context);
     final pf = PackageFacts.of(item);
     final metrics = pf.metrics;
+    // Values already in the price panel and the tiles are not repeated.
+    final details = pf.detailsOf(item);
     final code =
         pf.code?.value ?? (item.codes.isNotEmpty ? item.codes.first : null);
     return [
@@ -132,15 +175,17 @@ class _ItemDetailScreenState extends ConsumerState<ItemDetailScreen> {
         code: code,
         codeLabel: pf.code?.label ?? l10n.packageCodeTitle,
       ),
-      if (metrics.isNotEmpty) ...[
+      if (!customer) ...[
         const SizedBox(height: AppSpacing.sm),
+        ItemActions(item),
+      ],
+      if (metrics.isNotEmpty) ...[
+        GroupHeader(l10n.packageIncludesTitle, icon: AppIcons.layers),
         PackageMetrics(metrics: metrics),
       ],
-      const SizedBox(height: AppSpacing.sm),
-      ItemActions(item),
-      if (item.facts.length > 1) ...[
-        GroupHeader(l10n.packageDetailsTitle),
-        _FactsTable(facts: item.facts),
+      if (details.isNotEmpty) ...[
+        GroupHeader(l10n.packageDetailsTitle, icon: AppIcons.info),
+        _FactsTable(facts: details),
       ],
       ..._bodyAndSteps(context, item, l10n.packageNotesTitle),
     ];
@@ -153,7 +198,7 @@ class _ItemDetailScreenState extends ConsumerState<ItemDetailScreen> {
       const SizedBox(height: AppSpacing.sm),
       ItemActions(item),
       if (item.facts.length > 4) ...[
-        GroupHeader(l10n.detailFactsTitle),
+        GroupHeader(l10n.detailFactsTitle, icon: AppIcons.info),
         _FactsTable(facts: item.facts),
       ],
       ..._bodyAndSteps(context, item, l10n.detailOverviewTitle),
@@ -165,14 +210,13 @@ class _ItemDetailScreenState extends ConsumerState<ItemDetailScreen> {
     ContentItem item,
     String bodyTitle,
   ) {
-    final l10n = AppLocalizations.of(context);
     return [
       if (item.steps.isNotEmpty) ...[
-        GroupHeader(l10n.detailStepsTitle),
-        _StepsChecklist(steps: item.steps),
+        _StepsHeader(item: item),
+        _StepsChecklist(item: item),
       ],
       if (item.body != null) ...[
-        GroupHeader(bodyTitle),
+        GroupHeader(bodyTitle, icon: AppIcons.note),
         AppCard(
           role: CardRole.flat,
           child: _Body(text: item.body!),
@@ -243,6 +287,7 @@ class PackagePriceHero extends StatelessWidget {
     final price = facts.price;
     final recharge = facts.rechargePrice;
     final conflict = item.status == ItemStatus.conflict;
+    final family = familyOf(item);
 
     final Widget priceBlock;
     if (conflict) {
@@ -277,9 +322,7 @@ class PackagePriceHero extends StatelessWidget {
             children: [
               LtrText(
                 price.value,
-                style: AppTypography.priceHero.copyWith(
-                  color: c.mastheadPrice,
-                ),
+                style: AppTypography.priceHero.copyWith(color: c.mastheadPrice),
               ),
               const SizedBox(width: AppSpacing.xs),
               Text(
@@ -295,27 +338,39 @@ class PackagePriceHero extends StatelessWidget {
     return Container(
       key: const ValueKey('package-hero'),
       padding: const EdgeInsetsDirectional.all(AppSpacing.md),
-      decoration: ShapeDecoration(
-        color: c.masthead,
-        shape: SimShape(
-          radius: AppRadius.m,
-          cut: 34,
-          side: c.isDark ? BorderSide(color: c.border) : BorderSide.none,
-        ),
-      ),
+      decoration: simGlassDecoration(c, cut: 34),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          // Family and trust, like the brand line printed on a SIM.
           Padding(
-            // Clear of the cut corner.
             padding: const EdgeInsetsDirectional.only(end: AppSpacing.xl),
-            child: Text(
-              price?.label ?? l10n.packagePriceLabel,
-              style: AppTypography.labelL.copyWith(color: c.onMastheadMuted),
+            child: Row(
+              children: [
+                FamilyTile(family),
+                const SizedBox(width: AppSpacing.sm),
+                Expanded(
+                  child: Text(
+                    family,
+                    style: AppTypography.titleS.copyWith(
+                      color: c.onMasthead,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
+          const SizedBox(height: AppSpacing.md),
+          Text(
+            price?.label ?? l10n.packagePriceLabel,
+            style: AppTypography.labelL.copyWith(color: c.onMastheadMuted),
+          ),
           priceBlock,
-          if (recharge != null && !conflict) _TaxLine(fact: recharge),
+          if (recharge != null && !conflict) ...[
+            const SizedBox(height: AppSpacing.sm),
+            _TaxLine(fact: recharge),
+          ],
           if (code != null) ...[
             const SizedBox(height: AppSpacing.sm),
             SubscriptionCodeRow(
@@ -323,7 +378,7 @@ class PackagePriceHero extends StatelessWidget {
               label: codeLabel ?? l10n.packageCodeTitle,
             ),
           ],
-          if (item.summary.isNotEmpty) ...[
+          if (facts.metrics.isEmpty && item.summary.isNotEmpty) ...[
             const SizedBox(height: AppSpacing.sm),
             ProseText(
               item.summary,
@@ -336,6 +391,8 @@ class PackagePriceHero extends StatelessWidget {
   }
 }
 
+/// The second price (what the customer recharges / pays with taxes), in
+/// its own glass cell under the main price.
 class _TaxLine extends StatelessWidget {
   const _TaxLine({required this.fact});
 
@@ -344,23 +401,42 @@ class _TaxLine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final c = context.colors;
-    return Wrap(
+    return Container(
       key: const ValueKey('package-tax-line'),
-      spacing: AppSpacing.xs,
-      crossAxisAlignment: WrapCrossAlignment.center,
-      children: [
-        Text(
-          fact.label,
-          style: AppTypography.bodyM.copyWith(color: c.onMastheadMuted),
-        ),
-        _InlineValue(
-          fact: fact,
-          style: AppTypography.titleM.copyWith(
+      padding: const EdgeInsetsDirectional.symmetric(
+        horizontal: AppSpacing.sm,
+        vertical: AppSpacing.xs,
+      ),
+      decoration: BoxDecoration(
+        color: Colors.white.withValues(alpha: 0.08),
+        borderRadius: AppRadius.smAll,
+        border: Border.all(color: Colors.white.withValues(alpha: 0.12)),
+      ),
+      child: Row(
+        children: [
+          Icon(
+            AppIcons.recharge,
+            size: AppIconSize.chip,
             color: c.mastheadPrice,
-            fontFeatures: AppTypography.tabular,
           ),
-        ),
-      ],
+          const SizedBox(width: AppSpacing.xs),
+          Expanded(
+            child: Text(
+              fact.label,
+              style: AppTypography.bodyM.copyWith(color: c.onMastheadMuted),
+            ),
+          ),
+          const SizedBox(width: AppSpacing.xs),
+          _InlineValue(
+            fact: fact,
+            style: AppTypography.titleL.copyWith(
+              color: c.mastheadPrice,
+              fontFeatures: AppTypography.tabular,
+              fontWeight: FontWeight.w800,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -394,8 +470,8 @@ class _InlineValue extends StatelessWidget {
   }
 }
 
-/// Key metrics (quota, validity, renewal, after-bundle) as a 2-column grid of
-/// tiles that grow with text scale.
+/// What the package gives (quota, validity, renewal, after-bundle) as a
+/// 2-column grid of tiles that grow with text scale.
 class PackageMetrics extends StatelessWidget {
   const PackageMetrics({super.key, required this.metrics});
 
@@ -433,6 +509,8 @@ class PackageMetrics extends StatelessWidget {
   }
 }
 
+/// One feature: a tinted icon, a short label and the value with its unit in
+/// Arabic.
 class _MetricTile extends StatelessWidget {
   const _MetricTile({required this.role, required this.fact});
 
@@ -443,53 +521,55 @@ class _MetricTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final c = context.colors;
     final icon = PackageMetrics.iconFor(role, fact);
+    final unit = impliedUnit(fact);
     return AppCard(
       role: CardRole.flat,
       key: ValueKey('metric-${role.name}'),
-      padding: const EdgeInsetsDirectional.symmetric(
-        horizontal: AppSpacing.sm,
-        vertical: AppSpacing.xs + 2,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      padding: const EdgeInsetsDirectional.all(AppSpacing.sm),
+      child: Row(
+        crossAxisAlignment: fact.rendersLtr
+            ? CrossAxisAlignment.center
+            : CrossAxisAlignment.start,
         children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Icon(icon, size: AppIconSize.inline, color: c.primaryUi),
-              const SizedBox(width: AppSpacing.xxs + 2),
-              Expanded(
-                child: Text(
-                  fact.label,
+          TintedIcon(icon, tile: IconTile.sm),
+          const SizedBox(width: AppSpacing.sm),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  shortFactLabel(fact.label),
                   style: AppTypography.labelS.copyWith(color: c.textTertiary),
                 ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 2),
-          if (fact.rendersLtr)
-            Wrap(
-              spacing: 3,
-              crossAxisAlignment: WrapCrossAlignment.end,
-              children: [
-                LtrText(
-                  fact.value,
-                  style: AppTypography.metric.copyWith(color: c.textPrimary),
-                ),
-                if (fact.unit != null)
-                  Text(
-                    fact.unit!,
-                    style: AppTypography.labelL.copyWith(
-                      color: c.textSecondary,
-                    ),
+                const SizedBox(height: 2),
+                if (fact.rendersLtr)
+                  Wrap(
+                    spacing: 4,
+                    crossAxisAlignment: WrapCrossAlignment.end,
+                    children: [
+                      LtrText(
+                        fact.value,
+                        style: AppTypography.metric.copyWith(
+                          color: c.textPrimary,
+                        ),
+                      ),
+                      if (unit != null)
+                        Text(
+                          unit,
+                          style: AppTypography.labelL.copyWith(
+                            color: c.textSecondary,
+                          ),
+                        ),
+                    ],
+                  )
+                else
+                  ProseText(
+                    fact.display,
+                    style: AppTypography.titleS.copyWith(color: c.textPrimary),
                   ),
               ],
-            )
-          else
-            ProseText(
-              fact.display,
-              style: AppTypography.titleS.copyWith(color: c.textPrimary),
             ),
+          ),
         ],
       ),
     );
@@ -525,6 +605,7 @@ class SubscriptionCodeRow extends StatelessWidget {
       decoration: BoxDecoration(
         color: c.mastheadField,
         borderRadius: AppRadius.smAll,
+        border: Border.all(color: c.glassEdge),
       ),
       child: Row(
         children: [
@@ -533,10 +614,7 @@ class SubscriptionCodeRow extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(label, style: AppTypography.labelS.copyWith(color: muted)),
-                CodeValue(
-                  code,
-                  style: AppTypography.codeL.copyWith(color: fg),
-                ),
+                CodeValue(code, style: AppTypography.codeL.copyWith(color: fg)),
               ],
             ),
           ),
@@ -636,10 +714,7 @@ class _FactValue extends StatelessWidget {
     final c = context.colors;
     switch (fact.kind) {
       case FactKind.code || FactKind.phone:
-        return CodeText(
-          fact.value,
-          onCall: (v) => launchDial(context, v),
-        );
+        return CodeText(fact.value, onCall: (v) => launchDial(context, v));
       case _ when !fact.rendersLtr:
         return ProseText(
           fact.display,
@@ -673,7 +748,8 @@ class _FactValue extends StatelessWidget {
   }
 }
 
-/// Label / value table with hairline separators.
+/// Details as a list: each fact on its own row, a tinted icon, the label
+/// above and the value under it (long Arabic values read naturally).
 class _FactsTable extends StatelessWidget {
   const _FactsTable({required this.facts});
 
@@ -688,41 +764,43 @@ class _FactsTable extends StatelessWidget {
       padding: EdgeInsetsDirectional.zero,
       child: Column(
         children: [
-          for (var i = 0; i < facts.length; i++)
-            Container(
+          for (var i = 0; i < facts.length; i++) ...[
+            if (i > 0)
+              Divider(
+                height: 1,
+                indent: AppSpacing.md + IconTile.xs.box + AppSpacing.sm,
+                endIndent: AppSpacing.md,
+                color: c.hairline,
+              ),
+            Padding(
               padding: const EdgeInsetsDirectional.symmetric(
                 horizontal: AppSpacing.md,
                 vertical: AppSpacing.sm,
               ),
-              decoration: BoxDecoration(
-                border: i == 0
-                    ? null
-                    : Border(top: BorderSide(color: c.hairline)),
-              ),
               child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Leading icon by fact kind / meaning.
-                  Icon(
-                    FactIcons.of(facts[i]),
-                    size: AppIconSize.action,
-                    color: c.primaryUi,
-                  ),
+                  TintedIcon(FactIcons.of(facts[i]), tile: IconTile.xs),
                   const SizedBox(width: AppSpacing.sm),
                   Expanded(
-                    flex: 5,
-                    child: Text(
-                      facts[i].label,
-                      style: AppTypography.bodyM.copyWith(
-                        color: c.textSecondary,
-                      ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          facts[i].label,
+                          style: AppTypography.labelL.copyWith(
+                            color: c.textTertiary,
+                          ),
+                        ),
+                        const SizedBox(height: 2),
+                        _FactValue(fact: facts[i]),
+                      ],
                     ),
                   ),
-                  const SizedBox(width: AppSpacing.sm),
-                  Expanded(flex: 6, child: _FactValue(fact: facts[i])),
                 ],
               ),
             ),
+          ],
         ],
       ),
     );
@@ -796,39 +874,78 @@ class _Body extends StatelessWidget {
   }
 }
 
-class _StepsChecklist extends StatefulWidget {
-  const _StepsChecklist({required this.steps});
+/// "Steps", how many are done and, once started, a reset.
+class _StepsHeader extends ConsumerWidget {
+  const _StepsHeader({required this.item});
 
-  final List<String> steps;
+  final ContentItem item;
 
   @override
-  State<_StepsChecklist> createState() => _StepsChecklistState();
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context);
+    final c = context.colors;
+    final done = ref.watch(
+      stepsProgressProvider.select((s) => s[item.id]?.length ?? 0),
+    );
+    return GroupHeader(
+      l10n.detailStepsTitle,
+      trailing: done == 0
+          ? null
+          : Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  l10n.detailStepsProgress(done, item.steps.length),
+                  key: const ValueKey('steps-progress'),
+                  style: AppTypography.labelL.copyWith(
+                    color: done == item.steps.length
+                        ? c.verified
+                        : c.textSecondary,
+                    fontFeatures: AppTypography.tabular,
+                  ),
+                ),
+                TextButton(
+                  key: const ValueKey('steps-reset'),
+                  onPressed: () =>
+                      ref.read(stepsProgressProvider.notifier).reset(item.id),
+                  child: Text(l10n.detailStepsReset),
+                ),
+              ],
+            ),
+    );
+  }
 }
 
-class _StepsChecklistState extends State<_StepsChecklist> {
-  final Set<int> _done = {};
+class _StepsChecklist extends ConsumerWidget {
+  const _StepsChecklist({required this.item});
+
+  final ContentItem item;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final c = context.colors;
+    final steps = item.steps;
+    final done =
+        ref.watch(stepsProgressProvider.select((s) => s[item.id])) ??
+        const <int>{};
     return AppCard(
       role: CardRole.flat,
       padding: const EdgeInsetsDirectional.symmetric(vertical: AppSpacing.xs),
       child: Column(
         children: [
-          for (var i = 0; i < widget.steps.length; i++)
+          for (var i = 0; i < steps.length; i++)
             CheckboxListTile(
               key: ValueKey('step-$i'),
-              value: _done.contains(i),
+              value: done.contains(i),
               controlAffinity: ListTileControlAffinity.leading,
-              onChanged: (v) =>
-                  setState(() => v == true ? _done.add(i) : _done.remove(i)),
+              onChanged: (_) =>
+                  ref.read(stepsProgressProvider.notifier).toggle(item.id, i),
               title: ProseText(
-                '${i + 1}. ${widget.steps[i]}',
+                '${i + 1}. ${steps[i]}',
                 style: theme.textTheme.bodyLarge?.copyWith(
-                  color: _done.contains(i) ? c.textTertiary : null,
-                  decoration: _done.contains(i)
+                  color: done.contains(i) ? c.textTertiary : null,
+                  decoration: done.contains(i)
                       ? TextDecoration.lineThrough
                       : null,
                 ),

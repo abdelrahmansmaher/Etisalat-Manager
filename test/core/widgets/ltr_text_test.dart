@@ -31,16 +31,18 @@ void main() {
     // Inherited outer direction is RTL (Arabic)...
     expect(Directionality.of(tester.element(code)), TextDirection.rtl);
 
-    // ...but the paragraph itself is LTR.
-    final rich = tester.widget<RichText>(
-      find.descendant(of: code, matching: find.byType(RichText)).first,
-    );
-    expect(rich.textDirection, TextDirection.ltr);
+    // ...but the code itself is laid out LTR.
+    final runs = find.byKey(const ValueKey('code-runs-*999#'));
+    expect(Directionality.of(tester.element(runs)), TextDirection.ltr);
 
-    // Visual order: '*' (index 0) left of '#' (index 4).
-    final star = charLeft(tester, code, 0);
-    final hash = charLeft(tester, code, 4);
-    expect(star, lessThan(hash), reason: '"*" must render before "#"');
+    // Visual order: '*' left of '#', whatever the outer direction.
+    final star = tester.getRect(
+      find.descendant(of: code, matching: find.text('*')),
+    );
+    final hash = tester.getRect(
+      find.descendant(of: code, matching: find.text('#')),
+    );
+    expect(star.left, lessThan(hash.left), reason: '"*" before "#"');
   });
 
   testWidgets('control: bare Text("*999#") in RTL renders reversed', (
@@ -105,21 +107,15 @@ void main() {
       ),
     );
 
-    String? copied;
     String? called;
     await pumpLocalized(
       tester,
-      CodeText(
-        '01000000000',
-        onCopied: (v) => copied = v,
-        onCall: (v) => called = v,
-      ),
+      CodeText('01000000000', onCall: (v) => called = v),
     );
 
     await tester.tap(find.byIcon(AppIcons.copy));
     await tester.pump();
     expect(clipboard, '01000000000');
-    expect(copied, '01000000000');
     expect(find.text('تم النسخ'), findsOneWidget);
 
     await tester.tap(find.byIcon(AppIcons.call));

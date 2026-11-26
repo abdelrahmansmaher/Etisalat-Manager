@@ -1,210 +1,213 @@
 import 'package:flutter/material.dart';
+import 'package:lucide_icons_flutter/lucide_icons.dart';
+import 'package:lucide_icons_flutter/lucide_icons_500.dart';
 
 /// The app's single icon vocabulary.
 ///
 /// ## Rules
-/// * **One family:** Material Icons **Rounded** (bundled with Flutter, no
-///   extra package). Never the Sharp family, never mixed styles in one view.
-/// * **Filled rounded is the default** for every glyph: tiles, chips, facts,
-///   actions, status.
-/// * **Outlined only for an inactive toggle** whose active state is the
-///   filled glyph (navigation tabs). Selected = filled, unselected =
-///   outlined, nothing else uses outlined.
-/// * **Directional** glyphs ([back], [forward], [chevron], [arrowForward])
-///   carry `matchTextDirection`, so they mirror automatically in Arabic.
-///   Never pick left/right manually.
+/// * **One family:** Lucide: clean, even 2px strokes with round caps, the
+///   same weight everywhere. The only exception is the filled heart of an
+///   active favourite.
+/// * **Navigation tabs:** the selected tab uses the heavier 2.5px stroke
+///   (`LucideIcons500`); the others use the 2px stroke.
+/// * **Directional** glyphs ([back], [arrowForward], [chevron]) use the
+///   `Dir` variants, so they mirror automatically in Arabic. Never pick
+///   left/right manually.
 /// * **Sizes** come from [AppIconSize]; icons inside tiles from [IconTile].
 ///
-/// Widgets never use `Icons.*` directly — add a semantic name here instead.
+/// Widgets never use `Icons.*` or `LucideIcons.*` directly: add a semantic
+/// name here instead.
 abstract final class AppIcons {
   // ---- Tools and training -------------------------------------------------
   static const IconData toolFavorite = Icons.favorite_rounded;
-  static const IconData toolFavoriteOff = Icons.favorite_border_rounded;
-  static const IconData toolCompare = Icons.compare_arrows_rounded;
-  static const IconData toolRecommend = Icons.tips_and_updates_rounded;
-  static const IconData toolCalculator = Icons.calculate_rounded;
-  static const IconData toolEdits = Icons.edit_note_rounded;
-  static const IconData toolNotes = Icons.sticky_note_2_rounded;
-  static const IconData toolWhatsNew = Icons.new_releases_rounded;
-  static const IconData toolAdd = Icons.add_rounded;
-  static const IconData toolRemove = Icons.close_rounded;
-  static const IconData toolDelete = Icons.delete_rounded;
-  static const IconData toolRestore = Icons.restore_rounded;
-  static const IconData toolImport = Icons.content_paste_rounded;
-  static const IconData toolExport = Icons.ios_share_rounded;
-  static const IconData toolHide = Icons.visibility_off_rounded;
-  static const IconData toolBest = Icons.arrow_circle_up_rounded;
-  static const IconData toolMeets = Icons.check_circle_rounded;
-  static const IconData toolMisses = Icons.remove_circle_rounded;
-  static const IconData toolUnknown = Icons.help_rounded;
-  static const IconData toolDrag = Icons.drag_handle_rounded;
-  static const IconData toolSwap = Icons.swap_vert_rounded;
-  static const IconData trainCards = Icons.style_rounded;
-  static const IconData trainDaily = Icons.today_rounded;
-  static const IconData trainQuiz = Icons.quiz_rounded;
-  static const IconData trainScenario = Icons.storefront_rounded;
+  static const IconData toolFavoriteOff = LucideIcons.heart;
+  static const IconData toolCompare = LucideIcons.gitCompareArrows;
+  static const IconData toolRecommend = LucideIcons.sparkles;
+  static const IconData toolCalculator = LucideIcons.calculator;
+  static const IconData toolEdits = LucideIcons.squarePen;
+  static const IconData toolNotes = LucideIcons.stickyNote;
+  static const IconData toolWhatsNew = LucideIcons.sparkle;
+  static const IconData toolAdd = LucideIcons.plus;
+  static const IconData toolRemove = LucideIcons.x;
+  static const IconData toolDelete = LucideIcons.trash2;
+  static const IconData toolRestore = LucideIcons.undo2;
+  static const IconData toolImport = LucideIcons.clipboardPaste;
+  static const IconData share = LucideIcons.share2;
+  static const IconData customerView = LucideIcons.eye;
+  static const IconData customerViewOff = LucideIcons.eyeOff;
+  static const IconData toolExport = LucideIcons.share;
+  static const IconData toolHide = LucideIcons.eyeOff;
+  static const IconData toolBest = LucideIcons.circleArrowUp;
+  static const IconData toolMeets = LucideIcons.circleCheck;
+  static const IconData toolMisses = LucideIcons.circleMinus;
+  static const IconData toolUnknown = LucideIcons.circleHelp;
+  static const IconData toolDrag = LucideIcons.gripHorizontal;
+  static const IconData toolSwap = LucideIcons.arrowUpDown;
+  static const IconData trainCards = LucideIcons.layers;
+  static const IconData trainDaily = LucideIcons.calendarDays;
+  static const IconData trainQuiz = LucideIcons.messageCircleQuestion;
+  static const IconData trainScenario = LucideIcons.store;
 
   // ---- Navigation tabs (outlined = inactive, filled = active) -------------
-  static const IconData navHome = Icons.home_outlined;
-  static const IconData navHomeActive = Icons.home_rounded;
-  static const IconData navPackages = Icons.sim_card_outlined;
-  static const IconData navPackagesActive = Icons.sim_card_rounded;
-  static const IconData navCodes = Icons.dialpad_outlined;
-  static const IconData navCodesActive = Icons.dialpad_rounded;
-  static const IconData navMore = Icons.more_horiz_outlined;
-  static const IconData navMoreActive = Icons.more_horiz_rounded;
+  static const IconData navHome = LucideIcons.house;
+  static const IconData navHomeActive = LucideIcons500.house;
+  static const IconData navPackages = LucideIcons.cardSim;
+  static const IconData navPackagesActive = LucideIcons500.cardSim;
+  static const IconData navCodes = LucideIcons.grip;
+  static const IconData navCodesActive = LucideIcons500.grip;
+  static const IconData navMore = LucideIcons.layoutGrid;
+  static const IconData navMoreActive = LucideIcons500.layoutGrid;
 
   // ---- Directional (auto-mirrored in RTL) -------------------------------
-  static const IconData back = Icons.arrow_back_rounded;
-  static const IconData arrowForward = Icons.arrow_forward_rounded;
+  static const IconData back = LucideIcons.arrowLeftDir;
+  static const IconData arrowForward = LucideIcons.arrowRightDir;
 
   /// Trailing "opens" chevron of list rows / cards.
-  static const IconData chevron = Icons.chevron_right_rounded;
+  static const IconData chevron = LucideIcons.chevronRightDir;
 
   // ---- Actions ------------------------------------------------------------
-  static const IconData search = Icons.search_rounded;
-  static const IconData clear = Icons.cancel_rounded;
-  static const IconData copy = Icons.content_copy_rounded;
-  static const IconData call = Icons.call_rounded;
-  static const IconData share = Icons.share_rounded;
-  static const IconData filter = Icons.tune_rounded;
-  static const IconData history = Icons.history_rounded;
-  static const IconData link = Icons.link_rounded;
-  static const IconData pdf = Icons.picture_as_pdf_rounded;
-  static const IconData document = Icons.description_rounded;
-  static const IconData info = Icons.info_rounded;
-  static const IconData lock = Icons.lock_rounded;
-  static const IconData edit = Icons.edit_note_rounded;
-  static const IconData quickAnswer = Icons.bolt_rounded;
-  static const IconData offline = Icons.offline_bolt_rounded;
-  static const IconData layers = Icons.layers_rounded;
-  static const IconData calculator = Icons.calculate_rounded;
-  static const IconData sort = Icons.swap_vert_rounded;
-  static const IconData selected = Icons.check_rounded;
-  static const IconData training = Icons.school_rounded;
-  static const IconData brand = Icons.auto_stories_rounded;
+  static const IconData search = LucideIcons.search;
+  static const IconData clear = LucideIcons.circleX;
+  static const IconData copy = LucideIcons.copy;
+  static const IconData call = LucideIcons.phone;
+  static const IconData filter = LucideIcons.slidersHorizontal;
+  static const IconData history = LucideIcons.history;
+  static const IconData link = LucideIcons.link;
+  static const IconData pdf = LucideIcons.fileText;
+  static const IconData document = LucideIcons.fileText;
+  static const IconData info = LucideIcons.info;
+  static const IconData lock = LucideIcons.lock;
+  static const IconData edit = LucideIcons.squarePen;
+  static const IconData quickAnswer = LucideIcons.zap;
+  static const IconData offline = LucideIcons.cloudOff;
+  static const IconData layers = LucideIcons.layers;
+  static const IconData calculator = LucideIcons.calculator;
+  static const IconData sort = LucideIcons.arrowUpDown;
+  static const IconData selected = LucideIcons.check;
+  static const IconData training = LucideIcons.graduationCap;
+  static const IconData brand = LucideIcons.bookOpen;
 
   // ---- Settings -----------------------------------------------------------
-  static const IconData appearance = Icons.palette_rounded;
-  static const IconData themeSystem = Icons.brightness_auto_rounded;
-  static const IconData themeLight = Icons.light_mode_rounded;
-  static const IconData themeDark = Icons.dark_mode_rounded;
-  static const IconData language = Icons.translate_rounded;
+  static const IconData appearance = LucideIcons.palette;
+  static const IconData themeSystem = LucideIcons.sunMoon;
+  static const IconData themeLight = LucideIcons.sun;
+  static const IconData themeDark = LucideIcons.moon;
+  static const IconData language = LucideIcons.languages;
 
   // ---- Status / trust -----------------------------------------------------
-  static const IconData confirmed = Icons.verified_rounded;
-  static const IconData unconfirmed = Icons.help_rounded;
-  static const IconData conflict = Icons.report_rounded;
-  static const IconData needsReview = Icons.history_rounded;
-  static const IconData expired = Icons.event_busy_rounded;
-  static const IconData privateNote = Icons.lock_rounded;
-  static const IconData lastVerified = Icons.schedule_rounded;
-  static const IconData review = Icons.fact_check_rounded;
+  static const IconData confirmed = LucideIcons.badgeCheck;
+  static const IconData unconfirmed = LucideIcons.circleHelp;
+  static const IconData conflict = LucideIcons.triangleAlert;
+  static const IconData needsReview = LucideIcons.history;
+  static const IconData expired = LucideIcons.calendarX;
+  static const IconData privateNote = LucideIcons.lock;
+  static const IconData lastVerified = LucideIcons.clock;
+  static const IconData review = LucideIcons.listChecks;
 
   // ---- Empty states (shown large in a tile) -------------------------------
-  static const IconData emptySearch = Icons.search_off_rounded;
-  static const IconData emptySection = Icons.inbox_rounded;
-  static const IconData notFound = Icons.find_in_page_rounded;
-  static const IconData comingSoon = Icons.school_rounded;
-  static const IconData allReviewed = Icons.task_alt_rounded;
+  static const IconData emptySearch = LucideIcons.searchX;
+  static const IconData emptySection = LucideIcons.inbox;
+  static const IconData notFound = LucideIcons.fileSearch;
+  static const IconData comingSoon = LucideIcons.graduationCap;
+  static const IconData allReviewed = LucideIcons.circleCheckBig;
 
   // ---- Sections -----------------------------------------------------------
-  static const IconData sectionPackages = Icons.sell_rounded;
-  static const IconData sectionInternet = Icons.wifi_rounded;
-  static const IconData sectionProcedures = Icons.assignment_rounded;
-  static const IconData sectionNumbers = Icons.dialpad_rounded;
-  static const IconData sectionWallet = Icons.account_balance_wallet_rounded;
-  static const IconData sectionGlossary = Icons.menu_book_rounded;
-  static const IconData sectionCompany = Icons.apartment_rounded;
+  static const IconData sectionPackages = LucideIcons.tag;
+  static const IconData sectionInternet = LucideIcons.wifi;
+  static const IconData sectionProcedures = LucideIcons.clipboardList;
+  static const IconData sectionNumbers = LucideIcons.hash;
+  static const IconData sectionWallet = LucideIcons.wallet;
+  static const IconData sectionGlossary = LucideIcons.bookOpen;
+  static const IconData sectionCompany = LucideIcons.building2;
 
   // ---- Facts (by meaning) -------------------------------------------------
-  static const IconData price = Icons.sell_rounded;
-  static const IconData recharge = Icons.receipt_long_rounded;
-  static const IconData code = Icons.dialpad_rounded;
-  static const IconData phone = Icons.call_rounded;
-  static const IconData validity = Icons.event_available_rounded;
-  static const IconData renewal = Icons.autorenew_rounded;
-  static const IconData afterBundle = Icons.more_time_rounded;
-  static const IconData quota = Icons.donut_large_rounded;
-  static const IconData quotaData = Icons.data_usage_rounded;
-  static const IconData quotaMinutes = Icons.call_rounded;
-  static const IconData quotaSms = Icons.sms_rounded;
-  static const IconData quotaMixes = Icons.all_inclusive_rounded;
-  static const IconData quotaLines = Icons.group_rounded;
-  static const IconData quotaApps = Icons.apps_rounded;
-  static const IconData speed = Icons.speed_rounded;
-  static const IconData roaming = Icons.public_rounded;
-  static const IconData fee = Icons.request_quote_rounded;
-  static const IconData limit = Icons.data_thresholding_rounded;
-  static const IconData percent = Icons.percent_rounded;
-  static const IconData date = Icons.calendar_month_rounded;
-  static const IconData note = Icons.notes_rounded;
+  static const IconData price = LucideIcons.tag;
+  static const IconData recharge = LucideIcons.receipt;
+  static const IconData code = LucideIcons.hash;
+  static const IconData phone = LucideIcons.phone;
+  static const IconData validity = LucideIcons.calendarCheck;
+  static const IconData renewal = LucideIcons.refreshCw;
+  static const IconData afterBundle = LucideIcons.hourglass;
+  static const IconData quota = LucideIcons.chartPie;
+  static const IconData quotaData = LucideIcons.arrowDownUp;
+  static const IconData quotaMinutes = LucideIcons.phone;
+  static const IconData quotaSms = LucideIcons.messageSquare;
+  static const IconData quotaMixes = LucideIcons.infinity;
+  static const IconData quotaLines = LucideIcons.users;
+  static const IconData quotaApps = LucideIcons.layoutGrid;
+  static const IconData speed = LucideIcons.gauge;
+  static const IconData roaming = LucideIcons.globe;
+  static const IconData fee = LucideIcons.receipt;
+  static const IconData limit = LucideIcons.gauge;
+  static const IconData percent = LucideIcons.percent;
+  static const IconData date = LucideIcons.calendar;
+  static const IconData note = LucideIcons.notebookText;
 
   // ---- Categories (content sub-groups) ------------------------------------
-  static const IconData catMixes = Icons.all_inclusive_rounded;
-  static const IconData catPostpaid = Icons.workspace_premium_rounded;
-  static const IconData catSuperConnect = Icons.hub_rounded;
-  static const IconData catMegabytes = Icons.data_usage_rounded;
-  static const IconData catHours = Icons.timer_rounded;
-  static const IconData catDailyCard = Icons.sim_card_rounded;
-  static const IconData catDsl = Icons.router_rounded;
-  static const IconData catHomeWireless = Icons.wifi_rounded;
-  static const IconData cat5g = Icons.five_g_rounded;
-  static const IconData catEsim = Icons.sim_card_download_rounded;
-  static const IconData catDataLine = Icons.cell_tower_rounded;
-  static const IconData catLandline = Icons.phone_in_talk_rounded;
-  static const IconData catRoaming = Icons.flight_takeoff_rounded;
-  static const IconData catHotline = Icons.support_agent_rounded;
-  static const IconData catRegulator = Icons.gavel_rounded;
-  static const IconData catBalanceCodes = Icons.payments_rounded;
-  static const IconData catInternetCodes = Icons.signal_cellular_alt_rounded;
-  static const IconData catCancelServices = Icons.block_rounded;
-  static const IconData catCallServices = Icons.phone_forwarded_rounded;
-  static const IconData catOffers = Icons.redeem_rounded;
-  static const IconData catApp = Icons.smartphone_rounded;
-  static const IconData catIdentity = Icons.badge_rounded;
-  static const IconData catGsm = Icons.dialpad_rounded;
-  static const IconData catPrefixes = Icons.tag_rounded;
-  static const IconData catWalletCodes = Icons.account_balance_wallet_rounded;
-  static const IconData catWalletOpen = Icons.person_add_rounded;
-  static const IconData catWalletServices = Icons.apps_rounded;
-  static const IconData catFees = Icons.request_quote_rounded;
-  static const IconData catLimits = Icons.data_thresholding_rounded;
-  static const IconData catSecurity = Icons.pin_rounded;
-  static const IconData catLost = Icons.phonelink_erase_rounded;
-  static const IconData catClose = Icons.no_accounts_rounded;
-  static const IconData catRefund = Icons.currency_exchange_rounded;
-  static const IconData catComplaints = Icons.forum_rounded;
-  static const IconData catBranchCases = Icons.storefront_rounded;
-  static const IconData catNewLine = Icons.add_card_rounded;
-  static const IconData catReplaceSim = Icons.sim_card_alert_rounded;
-  static const IconData catOwnership = Icons.swap_horiz_rounded;
-  static const IconData catPortability = Icons.sync_alt_rounded;
-  static const IconData catSuspend = Icons.phonelink_lock_rounded;
-  static const IconData catUpdateData = Icons.manage_accounts_rounded;
-  static const IconData catSystemChange = Icons.swap_vert_rounded;
-  static const IconData catImported = Icons.luggage_rounded;
-  static const IconData catDevices = Icons.devices_rounded;
-  static const IconData catCustomers = Icons.sentiment_satisfied_rounded;
-  static const IconData catRules = Icons.rule_rounded;
-  static const IconData catRecharge = Icons.battery_charging_full_rounded;
-  static const IconData catTariff = Icons.price_change_rounded;
-  static const IconData catAddOns = Icons.extension_rounded;
-  static const IconData catFaq = Icons.quiz_rounded;
-  static const IconData catPriceHistory = Icons.trending_up_rounded;
-  static const IconData catSummary = Icons.summarize_rounded;
-  static const IconData catSources = Icons.source_rounded;
-  static const IconData catUnconfirmed = Icons.help_rounded;
-  static const IconData catAbout = Icons.info_rounded;
-  static const IconData catBrand = Icons.storefront_rounded;
-  static const IconData catNetwork = Icons.cell_tower_rounded;
-  static const IconData catLoyalty = Icons.loyalty_rounded;
-  static const IconData catCallerTune = Icons.music_note_rounded;
-  static const IconData catEntertainment = Icons.movie_rounded;
-  static const IconData catSpecialNumbers = Icons.stars_rounded;
-  static const IconData catBusiness = Icons.business_center_rounded;
-  static const IconData catCompetitors = Icons.compare_arrows_rounded;
-  static const IconData catTerms = Icons.abc_rounded;
+  static const IconData catMixes = LucideIcons.infinity;
+  static const IconData catPostpaid = LucideIcons.crown;
+  static const IconData catSuperConnect = LucideIcons.zap;
+  static const IconData catMegabytes = LucideIcons.arrowDownUp;
+  static const IconData catHours = LucideIcons.timer;
+  static const IconData catDailyCard = LucideIcons.creditCard;
+  static const IconData catDsl = LucideIcons.router;
+  static const IconData catHomeWireless = LucideIcons.wifi;
+  static const IconData cat5g = LucideIcons.radioTower;
+  static const IconData catEsim = LucideIcons.scanLine;
+  static const IconData catDataLine = LucideIcons.signal;
+  static const IconData catLandline = LucideIcons.phoneCall;
+  static const IconData catRoaming = LucideIcons.plane;
+  static const IconData catHotline = LucideIcons.headset;
+  static const IconData catRegulator = LucideIcons.gavel;
+  static const IconData catBalanceCodes = LucideIcons.coins;
+  static const IconData catInternetCodes = LucideIcons.signal;
+  static const IconData catCancelServices = LucideIcons.ban;
+  static const IconData catCallServices = LucideIcons.phoneForwarded;
+  static const IconData catOffers = LucideIcons.gift;
+  static const IconData catApp = LucideIcons.smartphone;
+  static const IconData catIdentity = LucideIcons.idCard;
+  static const IconData catGsm = LucideIcons.hash;
+  static const IconData catPrefixes = LucideIcons.listOrdered;
+  static const IconData catWalletCodes = LucideIcons.wallet;
+  static const IconData catWalletOpen = LucideIcons.userPlus;
+  static const IconData catWalletServices = LucideIcons.layoutGrid;
+  static const IconData catFees = LucideIcons.receipt;
+  static const IconData catLimits = LucideIcons.gauge;
+  static const IconData catSecurity = LucideIcons.keyRound;
+  static const IconData catLost = LucideIcons.phoneOff;
+  static const IconData catClose = LucideIcons.userX;
+  static const IconData catRefund = LucideIcons.refreshCcw;
+  static const IconData catComplaints = LucideIcons.messagesSquare;
+  static const IconData catBranchCases = LucideIcons.store;
+  static const IconData catNewLine = LucideIcons.circlePlus;
+  static const IconData catReplaceSim = LucideIcons.repeat;
+  static const IconData catOwnership = LucideIcons.arrowLeftRight;
+  static const IconData catPortability = LucideIcons.arrowRightLeft;
+  static const IconData catSuspend = LucideIcons.lockKeyhole;
+  static const IconData catUpdateData = LucideIcons.userCog;
+  static const IconData catSystemChange = LucideIcons.arrowUpDown;
+  static const IconData catImported = LucideIcons.luggage;
+  static const IconData catDevices = LucideIcons.monitorSmartphone;
+  static const IconData catCustomers = LucideIcons.smile;
+  static const IconData catRules = LucideIcons.listChecks;
+  static const IconData catRecharge = LucideIcons.batteryCharging;
+  static const IconData catTariff = LucideIcons.badgePercent;
+  static const IconData catAddOns = LucideIcons.puzzle;
+  static const IconData catFaq = LucideIcons.messageCircleQuestion;
+  static const IconData catPriceHistory = LucideIcons.trendingUp;
+  static const IconData catSummary = LucideIcons.fileText;
+  static const IconData catSources = LucideIcons.libraryBig;
+  static const IconData catUnconfirmed = LucideIcons.circleHelp;
+  static const IconData catAbout = LucideIcons.info;
+  static const IconData catBrand = LucideIcons.store;
+  static const IconData catNetwork = LucideIcons.radioTower;
+  static const IconData catLoyalty = LucideIcons.star;
+  static const IconData catCallerTune = LucideIcons.music;
+  static const IconData catEntertainment = LucideIcons.clapperboard;
+  static const IconData catSpecialNumbers = LucideIcons.sparkles;
+  static const IconData catBusiness = LucideIcons.briefcase;
+  static const IconData catCompetitors = LucideIcons.swords;
+  static const IconData catTerms = LucideIcons.type;
 }
 
 /// Icon sizes (logical px).

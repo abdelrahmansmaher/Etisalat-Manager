@@ -150,11 +150,6 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String quotaMb(String n) {
-    return '$n MB';
-  }
-
-  @override
   String quotaMix(String n) {
     return '$n mix';
   }
@@ -521,10 +516,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get toolsRecommendSubtitle =>
-      'Enter what the customer needs and leave the rest empty';
+      'Pick what the customer needs and leave the rest empty';
 
   @override
-  String get toolsRecommendBudget => 'Budget (EGP)';
+  String get toolsRecommendBudget =>
+      'What will the customer pay? (EGP incl. tax)';
 
   @override
   String get toolsRecommendGb => 'Internet (GB)';
@@ -539,10 +535,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get toolsUseHome => 'Home';
 
   @override
-  String get toolsRecommendStart => 'Enter a budget, GB or minutes';
+  String get toolsRecommendStart =>
+      'Pick a budget, GB, minutes or a duration; results show at once';
 
   @override
-  String get toolsRecommendFits => 'Covers everything asked';
+  String get toolsRecommendFits => 'Covers every need';
 
   @override
   String get toolsRecommendNone =>
@@ -561,7 +558,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String toolsBudgetMissed(String value) {
-    return '$value EGP, over budget';
+    return 'Costs $value EGP, over budget';
   }
 
   @override
@@ -574,12 +571,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String toolsGbMet(String value) {
-    return '$value GB, enough';
+    return '$value, enough';
   }
 
   @override
   String toolsGbMissed(String value) {
-    return '$value GB, less than needed';
+    return '$value, less than needed';
   }
 
   @override
@@ -1140,4 +1137,165 @@ class AppLocalizationsEn extends AppLocalizations {
   String trainingAskScenario(String title) {
     return '$title. What do you do?';
   }
+
+  @override
+  String get searchQuickTitle => 'Quick search';
+
+  @override
+  String get searchAllSections => 'Search all sections';
+
+  @override
+  String get detailStepsReset => 'Start over';
+
+  @override
+  String get toolsShareSummary => 'Share';
+
+  @override
+  String get toolsSummaryCopied =>
+      'Sharing is not available; the summary was copied';
+
+  @override
+  String get customerView => 'Show to customer';
+
+  @override
+  String get customerViewOff => 'Leave customer view';
+
+  @override
+  String get moreContentTitle => 'Knowledge base';
+
+  @override
+  String get moreStatItems => 'All items';
+
+  @override
+  String get moreStatOfficial => 'Official site';
+
+  @override
+  String get moreClearHistory => 'Clear search and reading history';
+
+  @override
+  String get moreHistoryCleared => 'History cleared';
+
+  @override
+  String get editorFieldBody => 'Explanation';
+
+  @override
+  String get editorFieldSteps => 'Steps, one per line';
+
+  @override
+  String detailStepsProgress(int done, int total) {
+    return '$done of $total';
+  }
+
+  @override
+  String get badgeNew => 'New';
+
+  @override
+  String get peekOpen => 'Open details';
+
+  @override
+  String get peekHint => 'Long-press any item for a quick look';
+
+  @override
+  String get navNewContent => 'New update';
+
+  @override
+  String get toolsCalcModePostpaid => 'Postpaid';
+
+  @override
+  String get toolsCalcPostpaidLabel => 'Monthly fee before tax (EGP)';
+
+  @override
+  String get toolsCalcPostpaidResult => 'Monthly total incl. taxes and fees';
+
+  @override
+  String toolsCalcPostpaidParts(String table, String vat, String fees) {
+    return 'Table tax 8%: $table · VAT 14%: $vat · Fees: $fees';
+  }
+
+  @override
+  String get toolsCalcPostpaidRule =>
+      'Fee × 1.08 × 1.14 + 10 development + 1.34 stamp';
+
+  @override
+  String get toolsRecommendValidity => 'Duration';
+
+  @override
+  String get toolsValidityAny => 'Any';
+
+  @override
+  String get toolsValidityMonthly => 'Monthly';
+
+  @override
+  String get toolsValidityShort => 'Under a month';
+
+  @override
+  String get toolsRecommendBest => 'Top pick';
+
+  @override
+  String get toolsRecommendBestBudget => 'The most this budget buys';
+
+  @override
+  String get toolsRecommendBestCheapest => 'Cheapest that covers it';
+
+  @override
+  String get toolsRecommendReset => 'Clear';
+
+  @override
+  String get toolsRecommendOpen => 'Open package';
+
+  @override
+  String get toolsRecommendComputed => 'computed';
+
+  @override
+  String get toolsRecommendPays => 'Customer pays';
+
+  @override
+  String toolsRecommendDeducted(String value) {
+    return '$value EGP taken from balance';
+  }
+
+  @override
+  String toolsBudgetComputed(String value) {
+    return 'Recharge $value EGP (computed from the deducted price), within budget';
+  }
+
+  @override
+  String toolsMinutesEandOnly(String value) {
+    return '$value units: enough if calls are to e&';
+  }
+
+  @override
+  String toolsMinutesAnyNetwork(String value) {
+    return '$value units: enough even to other networks';
+  }
+
+  @override
+  String toolsMinutesUnitsShort(String value) {
+    return '$value units: less than needed';
+  }
+
+  @override
+  String toolsValidityMet(String value) {
+    return '$value days, suits';
+  }
+
+  @override
+  String toolsValidityMissed(String value) {
+    return '$value days, does not suit';
+  }
+
+  @override
+  String get toolsValidityNotStated => 'Duration not stated';
+
+  @override
+  String get toolsRecommendPrice => 'Stated price';
+
+  @override
+  String get toolsRecommendBeforeTax => 'before tax';
+
+  @override
+  String get packageIncludesTitle => 'What\'s included';
+
+  @override
+  String get badgeOfficial => 'Official';
 }

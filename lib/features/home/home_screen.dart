@@ -169,7 +169,7 @@ class _Greeting extends StatelessWidget {
             dateText,
             key: const ValueKey('home-date'),
             style: AppTypography.labelL.copyWith(
-              color: context.colors.onMastheadMuted,
+              color: context.colors.onHeaderMuted,
             ),
           ),
         ],
@@ -260,7 +260,7 @@ class _MustKnow extends ConsumerWidget {
 
   /// Codes the branch dials most; shown in this order when the content has
   /// them, then whatever confirmed code comes next.
-  static const _preferredCodes = ['*888#', '*838#', '*566#', '*947#'];
+  static const _preferredCodes = ['*838#', '*566#', '*947#', '*911#'];
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -289,9 +289,13 @@ class _MustKnow extends ConsumerWidget {
         final r = rank(a.$2).compareTo(rank(b.$2));
         return r != 0 ? r : a.$1.compareTo(b.$1);
       });
+    // One row per code: items that share a code do not repeat it.
+    final seen = <String>{};
     final rows = [
       for (final i in contacts) (i, i.phones.first),
-      for (final (_, i) in ordered.take(4)) (i, i.codes.first),
+      for (final (_, i)
+          in ordered.where((e) => seen.add(e.$2.codes.first)).take(4))
+        (i, i.codes.first),
     ];
     if (rows.isEmpty) return const SizedBox.shrink();
     return Column(

@@ -1,7 +1,7 @@
 {
   "section": "numbers",
   "source_document": "pdf_guide_2026_11",
-  "as_of": "2026-11-23",
+  "as_of": "2026-11-26",
   "items": [
     {
       "id": "num-cs-333",
@@ -24,6 +24,16 @@
           "label_ar": "الشكاوى العامة",
           "value": "نفس الرقم",
           "kind": "text"
+        },
+        {
+          "label_ar": "تكلفة المكالمة",
+          "value": "سعر ثابت للمكالمة مهما كانت مدتها",
+          "kind": "text"
+        },
+        {
+          "label_ar": "المواعيد",
+          "value": "24 ساعة طوال الأسبوع",
+          "kind": "text"
         }
       ],
       "codes": [],
@@ -38,21 +48,21 @@
         "333"
       ],
       "status": "confirmed",
-      "status_note_ar": "مؤكد من الموقع الرسمي (22 نوفمبر 2026).",
+      "status_note_ar": "مؤكد من الموقع الرسمي (25 نوفمبر 2026).",
       "sources": [
         {
           "name": "الدليل الشامل لموظف فرع اتصالات مصر (نوفمبر 2026)",
           "type": "pdf_guide"
         },
         {
-          "name": "الموقع الرسمي — صفحة العقود ونافذة Call Us (تم التحقق 2026-11-22)",
-          "url": "https://www.eand.com.eg/portal/contracts",
-          "type": "official_site",
-          "checked_at": "2026-11-22"
-        },
-        {
           "name": "الوطن: أكواد شركات المحمول الأربعة نقلًا عن الجهاز (نوفمبر 2020)",
           "type": "press"
+        },
+        {
+          "name": "الموقع الرسمي — صفحة العقود ونافذة Call Us (تم التحقق 2026-11-25)",
+          "url": "https://www.eand.com.eg/portal/contracts",
+          "type": "official_site",
+          "checked_at": "2026-11-25"
         }
       ],
       "pdf_pages": [
@@ -177,6 +187,12 @@
           "name": "البنك نوت",
           "url": "https://invest.albanknote.com/all-etisalat-cash-codes",
           "type": "other"
+        },
+        {
+          "name": "الموقع الرسمي — نافذة Call Us (تم التحقق 2026-11-25)",
+          "url": "https://www.eand.com.eg/portal/home",
+          "type": "official_site",
+          "checked_at": "2026-11-25"
         }
       ],
       "pdf_pages": [
@@ -247,6 +263,93 @@
       "pdf_pages": [
         51,
         70
+      ]
+    },
+    {
+      "id": "num-cs-cash-778",
+      "type": "contact",
+      "category_ar": "أرقام خدمة العملاء",
+      "title_ar": "خدمة عملاء المحفظة (e& money)",
+      "summary_ar": "778 من خط اتصالات، و+201111234778 من خارج مصر.",
+      "facts": [
+        {
+          "label_ar": "من خط اتصالات",
+          "value": "778",
+          "kind": "phone"
+        },
+        {
+          "label_ar": "من خارج مصر",
+          "value": "+201111234778",
+          "kind": "phone"
+        }
+      ],
+      "phones": [
+        "778",
+        "+201111234778"
+      ],
+      "tags": [
+        "محفظة",
+        "كاش",
+        "cash",
+        "e& money",
+        "اتصالات كاش",
+        "خدمة العملاء",
+        "من الخارج"
+      ],
+      "sources": [
+        {
+          "name": "الموقع الرسمي — نافذة Call Us (تم التحقق 2026-11-25)",
+          "url": "https://www.eand.com.eg/portal/home",
+          "type": "official_site",
+          "checked_at": "2026-11-25"
+        }
+      ],
+      "codes": [],
+      "status": "confirmed"
+    },
+    {
+      "id": "num-cs-emerald-800",
+      "type": "contact",
+      "category_ar": "أرقام خدمة العملاء",
+      "title_ar": "خدمة عملاء إيميرالد",
+      "summary_ar": "800 لعملاء إيميرالد.",
+      "facts": [
+        {
+          "label_ar": "الرقم",
+          "value": "800",
+          "kind": "phone"
+        },
+        {
+          "label_ar": "لمين",
+          "value": "عملاء إيميرالد",
+          "kind": "text"
+        }
+      ],
+      "phones": [
+        "800"
+      ],
+      "tags": [
+        "emerald",
+        "ايميرالد",
+        "خدمة العملاء",
+        "vip",
+        "إيميرالد",
+        "خدمة عملاء إيميرالد",
+        "فاتورة"
+      ],
+      "sources": [
+        {
+          "name": "الموقع الرسمي — نافذة Call Us (تم التحقق 2026-11-25)",
+          "url": "https://www.eand.com.eg/portal/home",
+          "type": "official_site",
+          "checked_at": "2026-11-25"
+        }
+      ],
+      "codes": [],
+      "status": "confirmed",
+      "related": [
+        "pkg-emerald-460",
+        "pkg-postpaid-tax-rule"
       ]
     },
     {
@@ -396,13 +499,70 @@
       "id": "num-salefny-911",
       "type": "code",
       "category_ar": "أكواد الرصيد والباقات",
-      "title_ar": "سلفني / رصيد الطوارئ",
-      "summary_ar": "*911# — القيمة والرسوم بتتخصم مع أول شحن.",
+      "title_ar": "سوبر سلفني (رصيد الطوارئ)",
+      "summary_ar": "*911# لو الرصيد أقل من 1.5 ج: سلفة من 5 لـ 70 ج، والقيمة والرسوم بتتخصم مع أول شحن.",
       "facts": [
         {
           "label_ar": "الكود",
           "value": "*911#",
           "kind": "code"
+        },
+        {
+          "label_ar": "لمبلغ السلفة الكامل",
+          "value": "*911*1#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "الاستعلام عن السلفة",
+          "value": "*240#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "الشرط",
+          "value": "الرصيد أقل من 1.5 ج",
+          "kind": "text"
+        },
+        {
+          "label_ar": "رسوم سلفة 5 ج",
+          "value": "1.5",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "رسوم سلفة 10 ج",
+          "value": "3",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "رسوم سلفة 20 ج",
+          "value": "6",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "رسوم سلفة 30 ج",
+          "value": "9",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "رسوم سلفة 40 ج",
+          "value": "10",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "رسوم سلفة 50 ج",
+          "value": "12.5",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "رسوم سلفة 70 ج",
+          "value": "14",
+          "kind": "price",
+          "unit": "ج"
         },
         {
           "label_ar": "الخصم",
@@ -411,17 +571,21 @@
         }
       ],
       "codes": [
-        "*911#"
+        "*911#",
+        "*911*1#",
+        "*240#"
       ],
       "phones": [],
       "tags": [
-        "سلفني",
-        "سلفة",
-        "رصيد طوارئ",
-        "loan",
         "emergency credit",
-        "مفيش رصيد",
-        "salefny"
+        "loan",
+        "salefny",
+        "رسوم السلفة",
+        "رصيد طوارئ",
+        "سلفة",
+        "سلفني",
+        "طوارئ",
+        "مفيش رصيد"
       ],
       "status": "confirmed",
       "sources": [
@@ -430,26 +594,10 @@
           "type": "pdf_guide"
         },
         {
-          "name": "pricesworld",
-          "type": "other"
-        },
-        {
-          "name": "aboutmsr",
-          "type": "other"
-        },
-        {
-          "name": "mobilemasr",
-          "type": "other"
-        },
-        {
-          "name": "pricesworld – كود كلمني شكرًا وسلفني",
-          "url": "https://www.pricesworld.net/?p=61248",
-          "type": "other"
-        },
-        {
-          "name": "prices2day – باقات مكالمات اتصالات 2026",
-          "url": "https://www.prices2day.net/2019/03/etisalat-call-packages-egypt.html",
-          "type": "other"
+          "name": "الموقع الرسمي — Super Salefny (تم التحقق 2026-11-25)",
+          "url": "https://www.eand.com.eg/portal/Mobile/super-salefni",
+          "type": "official_site",
+          "checked_at": "2026-11-25"
         }
       ],
       "pdf_pages": [
@@ -458,7 +606,134 @@
         52,
         56,
         70
-      ]
+      ],
+      "status_note_ar": "مؤكد من الموقع الرسمي (25 نوفمبر 2026)."
+    },
+    {
+      "id": "num-balance-transfer-rules",
+      "type": "service",
+      "category_ar": "أكواد الرصيد والباقات",
+      "title_ar": "تحويل الرصيد: الرسوم والحدود",
+      "summary_ar": "من 1 لـ 50 ج في العملية، والرسوم 2% للكارت (بحد أدنى 0.3 ج).",
+      "facts": [
+        {
+          "label_ar": "قيمة العملية",
+          "value": "من 1 لـ 50 ج",
+          "kind": "text"
+        },
+        {
+          "label_ar": "رسوم الكارت",
+          "value": "2% (بحد أدنى 0.3 ج)",
+          "kind": "percent"
+        },
+        {
+          "label_ar": "حد الكارت",
+          "value": "500 ج في اليوم",
+          "kind": "text"
+        },
+        {
+          "label_ar": "حد الفاتورة",
+          "value": "500 ج في الشهر",
+          "kind": "text"
+        },
+        {
+          "label_ar": "لازم يفضل في الرصيد",
+          "value": "1.5 ج",
+          "kind": "text"
+        },
+        {
+          "label_ar": "شرط الكارت",
+          "value": "استهلاك 10 ج على الأقل",
+          "kind": "text"
+        },
+        {
+          "label_ar": "شرط الفاتورة",
+          "value": "مرور 3 شهور على الخط",
+          "kind": "text"
+        },
+        {
+          "label_ar": "حد Emerald 460",
+          "value": "100 ج",
+          "kind": "text"
+        },
+        {
+          "label_ar": "حد Emerald 820",
+          "value": "200 ج",
+          "kind": "text"
+        },
+        {
+          "label_ar": "حد Emerald 1170",
+          "value": "300 ج",
+          "kind": "text"
+        },
+        {
+          "label_ar": "حد Emerald 1725",
+          "value": "500 ج",
+          "kind": "text"
+        }
+      ],
+      "tags": [
+        "تحويل رصيد",
+        "تحويل الرصيد",
+        "حول رصيد",
+        "balance transfer",
+        "رسوم التحويل"
+      ],
+      "sources": [
+        {
+          "name": "الموقع الرسمي — Balance Transfer (تم التحقق 2026-11-25)",
+          "url": "https://www.eand.com.eg/portal/Mobile/balance-transfer",
+          "type": "official_site",
+          "checked_at": "2026-11-25"
+        }
+      ],
+      "codes": [],
+      "phones": [],
+      "status": "confirmed"
+    },
+    {
+      "id": "num-raseedy-80",
+      "type": "code",
+      "category_ar": "أكواد الرصيد والباقات",
+      "title_ar": "رصيدي: آخر المعاملات",
+      "summary_ar": "*80# لآخر 5 معاملات وملخص 24 ساعة ونظام الخط (عائلة أهلاً).",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*80#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "بيعرض",
+          "value": "آخر 5 معاملات، ملخص 24 ساعة، ونظام الخط",
+          "kind": "text"
+        },
+        {
+          "label_ar": "لمين",
+          "value": "خطوط عائلة أهلاً",
+          "kind": "text"
+        }
+      ],
+      "codes": [
+        "*80#"
+      ],
+      "tags": [
+        "رصيدي",
+        "raseedy",
+        "آخر معاملات",
+        "خصم الرصيد",
+        "رصيدي بيتسحب"
+      ],
+      "sources": [
+        {
+          "name": "الموقع الرسمي — Raseedy (تم التحقق 2026-11-25)",
+          "url": "https://www.eand.com.eg/portal/Mobile/raseedy",
+          "type": "official_site",
+          "checked_at": "2026-11-25"
+        }
+      ],
+      "phones": [],
+      "status": "confirmed"
     },
     {
       "id": "num-kallemny-111",
@@ -1454,6 +1729,108 @@
       ]
     },
     {
+      "id": "num-international-calls",
+      "type": "fee",
+      "category_ar": "المكالمات الدولية",
+      "title_ar": "أسعار المكالمات الدولية من مصر",
+      "summary_ar": "15 ج للدقيقة (المناطق 1-3)، و12 ج مع كل الدنيا.",
+      "facts": [
+        {
+          "label_ar": "المناطق 1 إلى 3",
+          "value": "15",
+          "kind": "price",
+          "unit": "ج/دقيقة"
+        },
+        {
+          "label_ar": "مناطق صعبة الوصول 1",
+          "value": "30",
+          "kind": "price",
+          "unit": "ج/دقيقة"
+        },
+        {
+          "label_ar": "مناطق صعبة الوصول 2",
+          "value": "45",
+          "kind": "price",
+          "unit": "ج/دقيقة"
+        },
+        {
+          "label_ar": "رسالة SMS دولية",
+          "value": "5",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "رسالة MMS دولية",
+          "value": "7",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "الثريا",
+          "value": "80",
+          "kind": "price",
+          "unit": "ج/دقيقة"
+        },
+        {
+          "label_ar": "إنمارسات / إيريديوم / الطائرات",
+          "value": "200",
+          "kind": "price",
+          "unit": "ج/دقيقة"
+        },
+        {
+          "label_ar": "أرقام Premium",
+          "value": "100",
+          "kind": "price",
+          "unit": "ج/دقيقة"
+        },
+        {
+          "label_ar": "كل الدنيا: سعر الدقيقة",
+          "value": "12",
+          "kind": "price",
+          "unit": "ج/دقيقة"
+        },
+        {
+          "label_ar": "كل الدنيا: فتح الخط للمكالمة (SMS إلى 1919)",
+          "value": "4.5",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "كل الدنيا: اشتراك شهري (SMS إلى 1999)",
+          "value": "30",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "كل الدنيا غير متاحة لـ",
+          "value": "سوبر رصيد وإيميرالد",
+          "kind": "text"
+        }
+      ],
+      "phones": [
+        "1919",
+        "1999"
+      ],
+      "tags": [
+        "دولي",
+        "مكالمات دولية",
+        "international",
+        "كل الدنيا",
+        "السعودية",
+        "بره مصر"
+      ],
+      "sources": [
+        {
+          "name": "الموقع الرسمي — International Calls (تم التحقق 2026-11-25)",
+          "url": "https://www.eand.com.eg/portal/Mobile/international-calls",
+          "type": "official_site",
+          "checked_at": "2026-11-25"
+        }
+      ],
+      "codes": [],
+      "status": "confirmed"
+    },
+    {
       "id": "num-phone-off-787",
       "type": "code",
       "category_ar": "خدمات المكالمات",
@@ -1499,6 +1876,260 @@
       "pdf_pages": [
         53
       ]
+    },
+    {
+      "id": "num-call-keeper-5665",
+      "type": "code",
+      "category_ar": "خدمات المكالمات",
+      "title_ar": "Call Keeper (مين اتصل وأنا مقفول)",
+      "summary_ar": "*5665# — 15 قرش يوميًا أو 105 قرش أسبوعيًا أو 210 قرش كل أسبوعين.",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*5665#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "يوميًا",
+          "value": "15 قرش",
+          "kind": "text"
+        },
+        {
+          "label_ar": "أسبوعيًا",
+          "value": "105 قرش",
+          "kind": "text"
+        },
+        {
+          "label_ar": "كل أسبوعين",
+          "value": "210 قرش",
+          "kind": "text"
+        },
+        {
+          "label_ar": "الفاتورة وإيميرالد (أفراد)",
+          "value": "مجانًا",
+          "kind": "text"
+        },
+        {
+          "label_ar": "حكاية من غير رصيد",
+          "value": "3 ميكس في اليوم",
+          "kind": "text"
+        }
+      ],
+      "codes": [
+        "*5665#"
+      ],
+      "tags": [
+        "call keeper",
+        "كول كيبر",
+        "مكالمات فائتة",
+        "missed call"
+      ],
+      "sources": [
+        {
+          "name": "الموقع الرسمي — Call Keeper (تم التحقق 2026-11-25)",
+          "url": "https://www.eand.com.eg/portal/Mobile/call-keeper",
+          "type": "official_site",
+          "checked_at": "2026-11-25"
+        }
+      ],
+      "phones": [],
+      "status": "confirmed"
+    },
+    {
+      "id": "num-call-filter-6161",
+      "type": "code",
+      "category_ar": "خدمات المكالمات",
+      "title_ar": "Call Filter (حظر المكالمات)",
+      "summary_ar": "*6161# — 5 ج شهريًا، بتتخصم 1.25 ج كل أسبوع.",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*6161#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "الاشتراك الشهري",
+          "value": "5",
+          "kind": "price",
+          "unit": "ج"
+        },
+        {
+          "label_ar": "الخصم الأسبوعي",
+          "value": "1.25",
+          "kind": "price",
+          "unit": "ج"
+        }
+      ],
+      "codes": [
+        "*6161#"
+      ],
+      "tags": [
+        "call filter",
+        "كول فلتر",
+        "حظر رقم",
+        "بلوك",
+        "block"
+      ],
+      "sources": [
+        {
+          "name": "الموقع الرسمي — Call Filter (تم التحقق 2026-11-25)",
+          "url": "https://www.eand.com.eg/portal/Mobile/call-filter",
+          "type": "official_site",
+          "checked_at": "2026-11-25"
+        }
+      ],
+      "phones": [],
+      "status": "confirmed"
+    },
+    {
+      "id": "num-voice-mail-4448",
+      "type": "code",
+      "category_ar": "خدمات المكالمات",
+      "title_ar": "البريد الصوتي (Voice Mail)",
+      "summary_ar": "تفعيل *21*4448#، والاستماع على 4448 بـ 19 قرش للدقيقة.",
+      "facts": [
+        {
+          "label_ar": "التفعيل",
+          "value": "*21*4448#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "الاستماع",
+          "value": "4448",
+          "kind": "phone"
+        },
+        {
+          "label_ar": "سعر دقيقة الاستماع",
+          "value": "19 قرش",
+          "kind": "text"
+        },
+        {
+          "label_ar": "الاشتراك",
+          "value": "من غير رسوم",
+          "kind": "text"
+        },
+        {
+          "label_ar": "السعة",
+          "value": "20 رسالة، كل رسالة 60 ثانية",
+          "kind": "text"
+        },
+        {
+          "label_ar": "حفظ الرسائل",
+          "value": "60 يوم",
+          "kind": "text"
+        },
+        {
+          "label_ar": "شرط",
+          "value": "اتصال واحد على الأقل كل 25 يوم",
+          "kind": "text"
+        }
+      ],
+      "codes": [
+        "*21*4448#"
+      ],
+      "phones": [
+        "4448"
+      ],
+      "tags": [
+        "voice mail",
+        "بريد صوتي",
+        "رسالة صوتية"
+      ],
+      "sources": [
+        {
+          "name": "الموقع الرسمي — Voice Mail (تم التحقق 2026-11-25)",
+          "url": "https://www.eand.com.eg/portal/Mobile/voice-mail",
+          "type": "official_site",
+          "checked_at": "2026-11-25"
+        }
+      ],
+      "status": "confirmed"
+    },
+    {
+      "id": "num-wifi-calling-2175",
+      "type": "code",
+      "category_ar": "خدمات المكالمات",
+      "title_ar": "WiFi Calling (المكالمات على الواي فاي)",
+      "summary_ar": "*2175# — بتتحاسب من الباقة، على راوتر ADSL / VDSL، ومش أثناء التجوال.",
+      "facts": [
+        {
+          "label_ar": "الكود",
+          "value": "*2175#",
+          "kind": "code"
+        },
+        {
+          "label_ar": "الحساب",
+          "value": "من الباقة",
+          "kind": "text"
+        },
+        {
+          "label_ar": "الراوتر",
+          "value": "ADSL / VDSL بس، ومش Home 4G",
+          "kind": "text"
+        },
+        {
+          "label_ar": "التجوال",
+          "value": "مش متاحة",
+          "kind": "text"
+        }
+      ],
+      "codes": [
+        "*2175#"
+      ],
+      "tags": [
+        "wifi calling",
+        "واي فاي كولينج",
+        "شبكة ضعيفة",
+        "مفيش شبكة"
+      ],
+      "sources": [
+        {
+          "name": "الموقع الرسمي — WiFi Calling (تم التحقق 2026-11-25)",
+          "url": "https://www.eand.com.eg/portal/Mobile/WIFI-calling",
+          "type": "official_site",
+          "checked_at": "2026-11-25"
+        }
+      ],
+      "phones": [],
+      "status": "confirmed"
+    },
+    {
+      "id": "num-khatein-9006",
+      "type": "service",
+      "category_ar": "خدمات المكالمات",
+      "title_ar": "خطين على شريحة واحدة (Khattein)",
+      "summary_ar": "رسالة SMS لـ 9006 (30 قرش).",
+      "facts": [
+        {
+          "label_ar": "رسالة SMS إلى",
+          "value": "9006",
+          "kind": "phone"
+        },
+        {
+          "label_ar": "سعر الرسالة",
+          "value": "30 قرش",
+          "kind": "text"
+        }
+      ],
+      "phones": [
+        "9006"
+      ],
+      "tags": [
+        "خطين",
+        "khatein",
+        "رقمين",
+        "شريحة واحدة"
+      ],
+      "sources": [
+        {
+          "name": "الموقع الرسمي — Khattein (تم التحقق 2026-11-25)",
+          "url": "https://www.eand.com.eg/portal/Mobile/khatein-services",
+          "type": "official_site",
+          "checked_at": "2026-11-25"
+        }
+      ],
+      "codes": [],
+      "status": "confirmed"
     },
     {
       "id": "num-gsm-cf-cancel-all",

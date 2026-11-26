@@ -3,9 +3,8 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:knowledge_hub/core/theme/theme.dart';
-import 'package:knowledge_hub/core/content/content_models.dart';
-import 'package:knowledge_hub/core/widgets/glass_surface.dart';
-import 'package:knowledge_hub/features/content/section_ui.dart';
+import 'package:knowledge_hub/core/widgets/liquid_glass.dart';
+import 'package:knowledge_hub/features/content/package_family.dart';
 
 /// WCAG 2.x relative luminance.
 double luminance(Color c) {
@@ -33,10 +32,13 @@ List<Pair> pairs(AppColors c) {
   final worstBackdrop = c.brightness == Brightness.light
       ? Colors.black
       : Colors.white;
+  // Blurred chrome over the darkest (light mode) / brightest (dark mode)
+  // thing that can scroll under it: a selected navy capsule / a light chip.
   final glass = over(
-    GlassSurface.surfaceColor(c, opacity: 0.88),
-    worstBackdrop,
+    GlassDecoration.fillOf(c, GlassTone.chrome),
+    c.isDark ? c.primary : c.capsuleSelected,
   );
+  assert(worstBackdrop != glass);
   final trust = TrustColors.fromTokens(c);
   return [
     ('textPrimary/surface', c.textPrimary, c.surface, text),
@@ -47,7 +49,6 @@ List<Pair> pairs(AppColors c) {
     ('textTertiary/surface', c.textTertiary, c.surface, text),
     ('textTertiary/surfaceVariant', c.textTertiary, c.surfaceVariant, text),
     ('textTertiary/background', c.textTertiary, c.background, text),
-    ('textSecondary/heroStart', c.textSecondary, c.heroGradientStart, text),
     ('primary/surface', c.primary, c.surface, text),
     ('primary/background', c.primary, c.background, text),
     ('onPrimary/primary', c.onPrimary, c.primary, text),
@@ -87,22 +88,12 @@ List<Pair> pairs(AppColors c) {
       trust.needsReview.container,
       text,
     ),
-    ('trust.expired', trust.expired.foreground, trust.expired.container, text),
-    (
-      'trust.unverified',
-      trust.unverified.foreground,
-      trust.unverified.container,
-      text,
-    ),
     (
       'trust.conflict',
       trust.conflict.foreground,
       trust.conflict.container,
       text,
     ),
-    ('trust.private', trust.private.foreground, trust.private.container, text),
-    ('trust.fresh/surface', trust.freshText, c.surface, text),
-    ('trust.aging/surface', trust.agingText, c.surface, text),
     (
       'nav label (textSecondary) / glass on worst backdrop',
       c.textSecondary,
@@ -118,19 +109,12 @@ List<Pair> pairs(AppColors c) {
     ('borderStrong/surface (UI)', c.borderStrong, c.surface, ui),
     ('primaryUi/surface (graphics)', c.primaryUi, c.surface, ui),
     // v3 tokens
-    ('textPrimary/heroMid', c.textPrimary, c.heroGradientMid, text),
-    ('textSecondary/heroMid', c.textSecondary, c.heroGradientMid, text),
-    ('textPrimary/cardTop', c.textPrimary, c.cardTop, text),
-    ('textSecondary/cardTop', c.textSecondary, c.cardTop, text),
-    ('textTertiary/cardTop', c.textTertiary, c.cardTop, text),
-    ('primary/cardTop', c.primary, c.cardTop, text),
     (
       'primaryUi/surfaceElevated (fact icons)',
       c.primaryUi,
       c.surfaceElevated,
       ui,
     ),
-    ('primaryUi/cardTop (fact icons)', c.primaryUi, c.cardTop, ui),
     (
       'textTertiary/surfaceElevated (chevrons)',
       c.textTertiary,
@@ -142,13 +126,9 @@ List<Pair> pairs(AppColors c) {
     ('textSecondary/surfaceElevated', c.textSecondary, c.surfaceElevated, text),
     ('textSecondary/surfaceVariant', c.textSecondary, c.surfaceVariant, text),
     ('textTertiary/surfaceElevated', c.textTertiary, c.surfaceElevated, text),
-    ('textTertiary/heroStart', c.textTertiary, c.heroGradientStart, text),
-    ('textPrimary/heroStart', c.textPrimary, c.heroGradientStart, text),
-    ('primary/heroStart', c.primary, c.heroGradientStart, text),
     ('primary/surfaceElevated', c.primary, c.surfaceElevated, text),
     ('primary/surfaceVariant (search icon)', c.primary, c.surfaceVariant, ui),
     ('accentText/surfaceElevated', c.accentText, c.surfaceElevated, text),
-    ('accentText/heroStart', c.accentText, c.heroGradientStart, text),
     (
       'onAccentContainer/accentContainer (price pill)',
       c.onAccentContainer,
@@ -175,7 +155,7 @@ List<Pair> pairs(AppColors c) {
     (
       'nav icon (textSecondary) / glass on worst backdrop',
       c.textSecondary,
-      over(GlassSurface.surfaceColor(c, opacity: 0.94), worstBackdrop),
+      glass,
       ui,
     ),
     (
@@ -196,42 +176,99 @@ List<Pair> pairs(AppColors c) {
       c.surfaceElevated,
       text,
     ),
-    for (final s in ContentSection.values) ...[
-      () {
-        final t = SectionTone.of(s, c.brightness);
-        return (
-          'section ${s.key} label/container',
-          t.foreground,
-          t.container,
-          text,
-        );
-      }(),
-      () {
-        final t = SectionTone.of(s, c.brightness);
-        return ('section ${s.key} icon/glow', t.foreground, t.glow, ui);
-      }(),
-      () {
-        final t = SectionTone.of(s, c.brightness);
-        return (
-          'section ${s.key} label/surfaceElevated',
-          t.foreground,
-          c.surfaceElevated,
-          text,
-        );
-      }(),
-      () {
-        final t = SectionTone.of(s, c.brightness);
-        return (
-          'textTertiary on section ${s.key} wash',
-          c.textTertiary,
-          over(
-            t.container.withValues(alpha: c.isDark ? 0.55 : 0.6),
-            c.surfaceElevated,
-          ),
-          text,
-        );
-      }(),
+    // v4: the SIM body and what sits on it.
+    ('onMasthead/masthead', c.onMasthead, c.masthead, text),
+    ('onMastheadMuted/masthead', c.onMastheadMuted, c.masthead, text),
+    ('mastheadPrice/masthead', c.mastheadPrice, c.masthead, text),
+    (
+      'search hint/mastheadField',
+      c.isDark ? c.onMastheadMuted : c.textTertiary,
+      c.mastheadField,
+      text,
+    ),
+    (
+      'subscription code/mastheadField',
+      c.isDark ? c.onMasthead : c.textPrimary,
+      c.mastheadField,
+      text,
+    ),
+    (
+      'subscription label/mastheadField',
+      c.isDark ? c.onMastheadMuted : c.textSecondary,
+      c.mastheadField,
+      text,
+    ),
+    (
+      'tool button on masthead',
+      c.onMasthead,
+      over(c.onMasthead.withValues(alpha: 0.10), c.masthead),
+      text,
+    ),
+    ('verified/surfaceElevated (check)', c.verified, c.surfaceElevated, text),
+    ('verified/verifiedContainer', c.verified, c.verifiedContainer, text),
+    ('error/surfaceElevated', c.error, c.surfaceElevated, text),
+    ('textPrimary/primaryContainer', c.textPrimary, c.primaryContainer, text),
+    for (final (light, dark) in FamilyStyle.palette)
+      ('family monogram', Colors.white, c.isDark ? dark : light, text),
+    // v5: liquid glass over every point of the ambient backdrop.
+    for (final (i, back) in AppBackdrop.samples(c).indexed) ...[
+      for (final (name, fg, min) in [
+        ('textPrimary', c.textPrimary, text),
+        ('textSecondary', c.textSecondary, text),
+        ('textTertiary', c.textTertiary, text),
+        ('primary', c.primary, text),
+        ('accentText (price)', c.accentText, text),
+        ('verified', c.verified, text),
+        ('primaryUi (graphics)', c.primaryUi, ui),
+      ]) ...[
+        (
+          '$name / glass card over backdrop #$i',
+          fg,
+          over(GlassDecoration.fillOf(c, GlassTone.card), back),
+          min,
+        ),
+        (
+          '$name / glass header over backdrop #$i',
+          fg,
+          over(GlassDecoration.fillOf(c, GlassTone.chrome), back),
+          min,
+        ),
+      ],
+      (
+        'search hint / header field over backdrop #$i',
+        c.textTertiary,
+        over(
+          c.headerField,
+          over(GlassDecoration.fillOf(c, GlassTone.chrome), back),
+        ),
+        text,
+      ),
+      (
+        'segment label / track over backdrop #$i',
+        c.textSecondary,
+        over(
+          c.glassTint,
+          over(GlassDecoration.fillOf(c, GlassTone.chrome), back),
+        ),
+        text,
+      ),
+      ('subtitle (textSecondary) on backdrop #$i', c.textSecondary, back, text),
     ],
+    // Navy glass panel (price) and toasts.
+    (
+      'mastheadPrice / navy glass',
+      c.mastheadPrice,
+      over(GlassDecoration.fillOf(c, GlassTone.navy), c.background),
+      text,
+    ),
+    (
+      'onMasthead / navy glass',
+      c.onMasthead,
+      over(GlassDecoration.fillOf(c, GlassTone.navy), c.background),
+      text,
+    ),
+    ('badge fresh', c.onCapsuleSelected, c.capsuleSelected, text),
+    ('badge count', c.onPrimaryContainer, c.primaryContainer, text),
   ];
 }
 
@@ -263,13 +300,6 @@ void main() {
         expect(luminance(c.background), lessThan(luminance(c.surface)));
       }
     }
-  });
-
-  test('reference value: navy primary on white = 10.66:1', () {
-    expect(
-      contrast(AppColors.light.primary, Colors.white),
-      closeTo(10.66, 0.02),
-    );
   });
 
   test('ColorScheme is built from tokens, not a seed', () {

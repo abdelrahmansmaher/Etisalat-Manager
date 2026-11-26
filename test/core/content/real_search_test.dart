@@ -95,11 +95,13 @@ void main() {
     final r = search('نت البيت');
     expect(r, isNotEmpty);
     expect(
-      r.take(5).every(
-        (i) => RegExp(
-          'منزلي|المنزلي|هوائي|أرضي|eHome|Home|البيت',
-        ).hasMatch('${i.title} ${i.category} ${i.summary}'),
-      ),
+      r
+          .take(5)
+          .every(
+            (i) =>
+                RegExp('منزلي|المنزلي|هوائي|أرضي|eHome|Home|البيت')
+                    .hasMatch('${i.title} ${i.category} ${i.summary}'),
+          ),
       isTrue,
       reason: describe(r),
     );
@@ -108,7 +110,7 @@ void main() {
   test('"رصيدي" finds the balance code', () {
     final r = search('رصيدي');
     expect(
-      r.take(5).any((i) => i.codes.contains('*888#')),
+      r.take(5).any((i) => i.codes.contains('*838#')),
       isTrue,
       reason: describe(r),
     );

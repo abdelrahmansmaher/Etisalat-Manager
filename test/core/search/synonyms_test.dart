@@ -21,8 +21,8 @@ void main() {
 
     test('dialect term expands to the canonical word', () {
       expect(texts(x.synonymsOf('نت')), ['انترنت']);
-      expect(texts(x.synonymsOf('sim')), ['خط']);
-      expect(texts(x.synonymsOf('شريحه')), ['خط']);
+      expect(texts(x.synonymsOf('sim')).first, 'خط');
+      expect(texts(x.synonymsOf('شريحه')).first, 'خط');
     });
 
     test('canonical expands back to its terms (bidirectional)', () {

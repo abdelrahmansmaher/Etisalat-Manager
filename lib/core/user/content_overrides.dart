@@ -46,9 +46,11 @@ class ContentOverride {
   static const Set<String> editableKeys = {
     'title_ar',
     'summary_ar',
+    'body_ar',
     'category_ar',
     'type',
     'facts',
+    'steps_ar',
     'codes',
     'phones',
     'status_note_ar',
@@ -155,7 +157,7 @@ class ContentOverride {
             else
               bad(),
         ];
-      case 'codes' || 'phones':
+      case 'codes' || 'phones' || 'steps_ar':
         if (v is! List || v.length > _maxList) bad();
         return [for (final s in v) text(s)];
       default:
@@ -197,7 +199,8 @@ class ContentOverride {
     out['id'] = id;
     if (out['status'] != 'conflict') out['status'] = 'unconfirmed';
     final stamp = '$kEditedByOwner – ${isoDate(editedAt)}';
-    final note = out['status_note_ar'];
+    // Only the owner's own note: the bundled one may claim a check.
+    final note = fields['status_note_ar'];
     out['status_note_ar'] = note is String && note.trim().isNotEmpty
         ? '$stamp. ${note.trim()}'
         : stamp;

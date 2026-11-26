@@ -199,6 +199,16 @@ final whatsNewUnseenProvider = Provider<bool>(
   (ref) => (ref.watch(whatsNewProvider).value ?? const []).any((u) => !u.seen),
 );
 
+/// Items the latest content update added, for two weeks after it ("جديد").
+final freshItemIdsProvider = Provider<Set<String>>((ref) {
+  final updates = ref.watch(whatsNewProvider).value ?? const [];
+  if (updates.isEmpty) return const {};
+  final latest = updates.first;
+  final age = ref.watch(clockProvider)().difference(latest.at);
+  if (age > const Duration(days: 14)) return const {};
+  return {for (final (id, _) in latest.added) id};
+});
+
 class WhatsNewNotifier extends AsyncNotifier<List<ContentUpdate>> {
   static const int keep = 5;
 

@@ -51,9 +51,7 @@ class _WhatsNewScreenState extends ConsumerState<WhatsNewScreen> {
           )
         else
           for (final u in updates) ...[
-            GroupHeader(
-              l10n.toolsWhatsNewOn(TrustFormat.date(u.at, locale)),
-            ),
+            GroupHeader(l10n.toolsWhatsNewOn(TrustFormat.date(u.at, locale))),
             if (u.added.isNotEmpty || u.removed > 0) ...[
               AppCard(
                 role: CardRole.flat,
