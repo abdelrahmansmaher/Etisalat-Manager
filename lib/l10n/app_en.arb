@@ -500,5 +500,7 @@
   "valuePriceTotal": "At what the customer pays, tax included",
   "valuePriceBefore": "At every package's price before tax",
   "valueBadge": "Best value",
-  "valueOpen": "Open the package"
+  "valueOpen": "Open the package",
+  "contentUpdated": "Prices updated from the official site",
+  "toolsBudgetPostpaid": "Bill {value} EGP with taxes and fees, within budget"
 }

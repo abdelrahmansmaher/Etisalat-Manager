@@ -298,7 +298,9 @@ String needText(AppLocalizations l10n, NeedResult r, PackageInfo p) {
   return switch (r.need) {
     NeedKind.budget => switch (r.verdict) {
       Verdict.met =>
-        r.reason == VerdictReason.computed
+        r.reason == VerdictReason.postpaidComputed
+            ? l10n.toolsBudgetPostpaid(val)
+            : r.reason == VerdictReason.computed
             ? l10n.toolsBudgetComputed(val)
             : l10n.toolsBudgetMet(val),
       Verdict.missed => l10n.toolsBudgetMissed(val),

@@ -150,6 +150,12 @@ class PackageInfo {
     return l.contains('خصم') || l.contains('من الرصيد');
   }
 
+  /// A monthly bill (فاتورة): Emerald, Primo...
+  bool get postpaid =>
+      item.summary.contains('فاتورة') ||
+      item.category.contains('فاتورة') ||
+      item.facts.any((f) => f.label.contains('شامل الضرائب والرسوم'));
+
   /// Confirmed and not edited by the owner.
   bool get confirmed => item.status == ItemStatus.confirmed && !item.userEdited;
 

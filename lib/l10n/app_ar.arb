@@ -1067,5 +1067,15 @@
   "valueBadge": "أفضل قيمة",
   "@valueBadge": {},
   "valueOpen": "افتح الباقة",
-  "@valueOpen": {}
+  "@valueOpen": {},
+  "contentUpdated": "الأسعار اتحدّثت من الموقع الرسمي",
+  "@contentUpdated": {},
+  "toolsBudgetPostpaid": "الفاتورة {value} جنيه شامل الضرائب والرسوم، في حدود الميزانية",
+  "@toolsBudgetPostpaid": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  }
 }

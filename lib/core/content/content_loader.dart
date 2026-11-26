@@ -42,10 +42,26 @@ class MemoryContentSource extends ContentSource {
 /// Loads and parses every section. Never throws: a missing or unreadable
 /// file is an empty section, a malformed item is skipped (debugPrint).
 abstract final class ContentLoader {
+  /// Parse on a background isolate so the first frames stay smooth (the
+  /// files are ~600 KB of JSON). Turned on by `main.dart`; tests parse
+  /// in place.
+  static bool parseInBackground = false;
+
   static Future<ContentLibrary> load(ContentSource source) async {
     final raws = await Future.wait([
       for (final s in ContentSection.values) source.read(s),
     ]);
+    if (parseInBackground) {
+      try {
+        return await compute(_build, raws);
+      } catch (e) {
+        debugPrint('content: background parse failed ($e), parsing here');
+      }
+    }
+    return _build(raws);
+  }
+
+  static ContentLibrary _build(List<String?> raws) {
     final map = <ContentSection, SectionContent>{};
     final seen = <String>{};
     for (var i = 0; i < ContentSection.values.length; i++) {

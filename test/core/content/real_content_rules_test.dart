@@ -116,26 +116,26 @@ void main() {
   });
 
   test('postpaid packages state the total with taxes and fees', () {
-    const expected = {
-      'pkg-emerald-460': '577.69',
-      'pkg-emerald-820': '1,020.92',
-      'pkg-emerald-1170': '1,451.84',
-      'pkg-emerald-1725': '2,135.16',
-      'pkg-emerald-3450': '4,258.98',
-    };
-    for (final MapEntry(key: id, value: total) in expected.entries) {
-      final item = items.firstWhere((i) => i.id == id);
-      final fee = double.parse(id.split('-').last);
+    // Whatever the fee (the daily sync may change it), the stated total is
+    // the fee with taxes and fees, and the customer-service number is there.
+    final postpaid = [
+      for (final i in items)
+        if (i.facts.any((f) => f.label == 'السعر شامل الضرائب والرسوم')) i,
+    ];
+    expect(postpaid.length, greaterThanOrEqualTo(5));
+    for (final item in postpaid) {
       final fact = item.facts.firstWhere(
         (f) => f.label == 'السعر شامل الضرائب والرسوم',
       );
-      expect(fact.value, total, reason: id);
+      final fee = item.priceEgp!.toDouble();
       expect(
+        double.parse(fact.value.replaceAll(',', '')),
         PostpaidTax(fee).total,
-        double.parse(total.replaceAll(',', '')),
-        reason: id,
+        reason: item.id,
       );
-      expect(item.phones, contains('800'), reason: id);
+      if (item.id.startsWith('pkg-emerald-')) {
+        expect(item.phones, contains('800'), reason: item.id);
+      }
     }
     expect(items.any((i) => i.id == PostpaidTax.itemId), isTrue);
   });

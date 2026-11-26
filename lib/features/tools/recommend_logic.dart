@@ -1,4 +1,5 @@
 import 'package_info.dart';
+import 'postpaid_tax.dart';
 import 'recharge_rule.dart';
 
 /// How long the package should last.
@@ -49,6 +50,10 @@ enum VerdictReason {
   /// The card was worked out from the price deducted from balance with the
   /// recharge ratio of the official prices.
   computed,
+
+  /// The bill was worked out from the monthly fee with the official taxes
+  /// and fees.
+  postpaidComputed,
 
   /// Only the price before tax is stated and it fits; the full cost is not.
   totalNotStated,
@@ -128,10 +133,20 @@ class RecommendResult {
 
 /// What the customer pays for [p]: the stated total, else (for a price
 /// deducted from balance) the card worked out with [rule].
+///
+/// Mobile packages state the price deducted from balance (prepaid) or the
+/// monthly fee (postpaid). The customer pays, for prepaid, the card that
+/// leaves that balance (official card ratio), and for postpaid, the fee
+/// with taxes and fees ([PostpaidTax]). Home packages are left as stated.
 (double?, bool) paymentOf(PackageInfo p, RechargeRule? rule) {
   if (p.total != null) return (p.total, false);
   final price = p.price;
-  if (price != null && rule != null && p.priceIsDeducted) {
+  if (price == null) return (null, false);
+  if (p.use == PackageUse.mobile && p.postpaid) {
+    return (PostpaidTax(price).total, true);
+  }
+  if (rule != null &&
+      (p.priceIsDeducted || (p.use == PackageUse.mobile && !p.postpaid))) {
     return (rule.cardFor(price), true);
   }
   return (null, false);
@@ -220,7 +235,11 @@ NeedResult _budget(PackageInfo p, double budget, RechargeRule? rule) {
   if (pays != null) {
     return r(
       pays <= budget + 0.005 ? Verdict.met : Verdict.missed,
-      computed ? VerdictReason.computed : VerdictReason.stated,
+      !computed
+          ? VerdictReason.stated
+          : p.postpaid
+          ? VerdictReason.postpaidComputed
+          : VerdictReason.computed,
       pays,
     );
   }

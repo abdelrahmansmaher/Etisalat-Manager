@@ -2749,6 +2749,18 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'افتح الباقة'**
   String get valueOpen;
+
+  /// No description provided for @contentUpdated.
+  ///
+  /// In ar, this message translates to:
+  /// **'الأسعار اتحدّثت من الموقع الرسمي'**
+  String get contentUpdated;
+
+  /// No description provided for @toolsBudgetPostpaid.
+  ///
+  /// In ar, this message translates to:
+  /// **'الفاتورة {value} جنيه شامل الضرائب والرسوم، في حدود الميزانية'**
+  String toolsBudgetPostpaid(String value);
 }
 
 class _AppLocalizationsDelegate

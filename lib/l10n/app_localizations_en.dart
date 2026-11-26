@@ -1530,4 +1530,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get valueOpen => 'Open the package';
+
+  @override
+  String get contentUpdated => 'Prices updated from the official site';
+
+  @override
+  String toolsBudgetPostpaid(String value) {
+    return 'Bill $value EGP with taxes and fees, within budget';
+  }
 }

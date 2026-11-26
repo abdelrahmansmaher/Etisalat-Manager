@@ -429,7 +429,9 @@ class LiquidGlass extends StatelessWidget {
           ? RefractiveBackdrop(
               optics: optics,
               radius: stadium ? null : borderRadius.topLeft.x,
-              child: content,
+              // While a page slides in, only the lens moves: what sits on
+              // the glass is drawn once and reused.
+              child: RepaintBoundary(child: content),
             )
           : BackdropFilter(
               filter: tone == GlassTone.chrome

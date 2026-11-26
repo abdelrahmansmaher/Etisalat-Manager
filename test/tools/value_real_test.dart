@@ -33,8 +33,10 @@ void main() {
   void show(ValueRanking r) {
     for (final s in r.scores) {
       // ignore: avoid_print
-      print('  ${r.basis.name} ${s.package.item.id}: pays ${s.pays} '
-          'units ${s.units} -> ${unitCostText(r, s)}');
+      print(
+        '  ${r.basis.name} ${s.package.item.id}: pays ${s.pays} '
+        'units ${s.units} -> ${unitCostText(r, s)}',
+      );
     }
   }
 
@@ -81,10 +83,18 @@ void main() {
   });
 
   test('packages that share no unit are not weighed', () {
-    final mix = infos.firstWhere((p) => p.mix != null && p.gb == null &&
-        unitsOf(p, ValueBasis.minute) == null);
-    final gb = infos.firstWhere((p) => p.gb != null && p.mix == null &&
-        unitsOf(p, ValueBasis.minute) == null);
+    final mix = infos.firstWhere(
+      (p) =>
+          p.mix != null &&
+          p.gb == null &&
+          unitsOf(p, ValueBasis.minute) == null,
+    );
+    final gb = infos.firstWhere(
+      (p) =>
+          p.gb != null &&
+          p.mix == null &&
+          unitsOf(p, ValueBasis.minute) == null,
+    );
     expect(compareValue([mix, gb], rule: rule), isNull);
   });
 }

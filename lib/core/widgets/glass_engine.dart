@@ -181,43 +181,61 @@ class RenderRefractive extends RenderProxyBox {
     final o = _optics;
     final d = _dpr;
     final origin = localToGlobal(Offset.zero) * d;
-    final w = size.width * d;
-    final h = size.height * d;
-    final r = (_radius ?? size.shortestSide / 2) * d;
-    final shader = program.fragmentShader()
-      // 0-1: texture size, set by the engine.
-      ..setFloat(2, origin.dx)
-      ..setFloat(3, origin.dy)
-      ..setFloat(4, w)
-      ..setFloat(5, h)
-      ..setFloat(6, r)
-      ..setFloat(7, o.bezel * d)
-      ..setFloat(8, o.bend * d)
-      ..setFloat(9, o.dispersion)
-      ..setFloat(10, o.magnify)
-      ..setFloat(11, 0)
-      ..setFloat(12, 0)
-      ..setFloat(13, 0);
-    ui.ImageFilter filter = ui.ImageFilter.shader(shader);
-    if (o.frost > 0) {
-      filter = ui.ImageFilter.compose(
-        outer: ui.ImageFilter.blur(
-          sigmaX: o.frost,
-          sigmaY: o.frost,
-          tileMode: TileMode.mirror,
-        ),
-        inner: filter,
-      );
-    }
-    if (o.saturation.length == 20) {
-      filter = ui.ImageFilter.compose(
-        outer: ColorFilter.matrix(o.saturation),
-        inner: filter,
-      );
+    final key = (
+      origin.dx,
+      origin.dy,
+      size.width,
+      size.height,
+      _radius,
+      d,
+      identityHashCode(o),
+    );
+    // Same place, size and optics as last frame: keep the filter as it is
+    // (no new shader, no new filter chain).
+    if (key != _lastKey || _filter == null) {
+      _lastKey = key;
+      final r = (_radius ?? size.shortestSide / 2) * d;
+      // A fresh shader per change: one the engine may still be drawing
+      // with is never edited.
+      final shader = program.fragmentShader()
+        // 0-1: texture size, set by the engine.
+        ..setFloat(2, origin.dx)
+        ..setFloat(3, origin.dy)
+        ..setFloat(4, size.width * d)
+        ..setFloat(5, size.height * d)
+        ..setFloat(6, r)
+        ..setFloat(7, o.bezel * d)
+        ..setFloat(8, o.bend * d)
+        ..setFloat(9, o.dispersion)
+        ..setFloat(10, o.magnify)
+        ..setFloat(11, 0)
+        ..setFloat(12, 0)
+        ..setFloat(13, 0);
+      ui.ImageFilter filter = ui.ImageFilter.shader(shader);
+      if (o.frost > 0) {
+        filter = ui.ImageFilter.compose(
+          outer: ui.ImageFilter.blur(
+            sigmaX: o.frost,
+            sigmaY: o.frost,
+            tileMode: TileMode.mirror,
+          ),
+          inner: filter,
+        );
+      }
+      if (o.saturation.length == 20) {
+        filter = ui.ImageFilter.compose(
+          outer: ColorFilter.matrix(o.saturation),
+          inner: filter,
+        );
+      }
+      _filter = filter;
     }
     final l = layer ?? BackdropFilterLayer();
-    l.filter = filter;
+    if (!identical(l.filter, _filter)) l.filter = _filter;
     layer = l;
     context.pushLayer(l, super.paint, offset);
   }
+
+  ui.ImageFilter? _filter;
+  Object? _lastKey;
 }

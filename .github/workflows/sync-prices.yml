@@ -1,0 +1,113 @@
+name: Sync official prices
+
+# Every morning: read e& Egypt's official bundle files, update the app's
+# content (changed prices, new packages, withdrawn ones), check it with the
+# full test suite, and publish it. The app downloads it by itself.
+#
+# Nothing doubtful is published: a price that jumps more than 60 %, a
+# changed subscription code, many packages vanishing at once, a new package
+# without a clear price, or a failed test opens an issue for a person.
+
+on:
+  schedule:
+    - cron: '17 3 * * *' # 05:17 Cairo time, every day
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: sync-prices
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.47.5'
+          channel: stable
+          cache: true
+      - run: flutter pub get
+
+      - name: Read the official site and update the content
+        run: dart run tool/sync_official.dart --report sync-report.json
+
+      - name: Check the updated content with every test
+        run: flutter test
+
+      - name: Publish
+        run: |
+          git config user.name "N-Core content sync"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/content tool/sync/official_map.json
+          if git diff --cached --quiet; then
+            echo "Nothing changed on the official site."
+            exit 0
+          fi
+          msg=$(python3 - <<'EOF'
+          import json
+          r = json.load(open('sync-report.json', encoding='utf-8'))
+          parts = []
+          if r['changed']: parts.append(f"{len(r['changed'])} price/quota changes")
+          if r['added']: parts.append(f"{len(r['added'])} new packages")
+          if r['removed']: parts.append(f"{len(r['removed'])} withdrawn")
+          head = 'Content: ' + (', '.join(parts) or 'checked against the official site')
+          lines = [head, '']
+          for c in r['changed']:
+              lines.append(f"- {c['title']}: {c['field']} {c['before']} -> {c['after']}")
+          for a in r['added']:
+              lines.append(f"- new: {a['title']}")
+          for d in r['removed']:
+              lines.append(f"- withdrawn: {d['title']}")
+          print('\n'.join(lines))
+          EOF
+          )
+          git commit -m "$msg"
+          for attempt in 1 2 3; do
+            if git pull --rebase origin main && git push origin HEAD:main; then
+              exit 0
+            fi
+            sleep 10
+          done
+          exit 1
+
+      - name: Ask a person about held changes
+        if: success()
+        run: |
+          held=$(python3 -c "import json; print(len(json.load(open('sync-report.json', encoding='utf-8'))['held']))")
+          if [ "$held" = "0" ]; then exit 0; fi
+          python3 - > issue.md <<'EOF'
+          import json
+          r = json.load(open('sync-report.json', encoding='utf-8'))
+          print('The daily sync found changes on the official site that need a person to look before they are published.\n')
+          for h in r['held']:
+              print('- ' + ' | '.join(f'{k}: {v}' for k, v in h.items()))
+          EOF
+          gh label create content-sync --color FBCA04 2>/dev/null || true
+          existing=$(gh issue list --label content-sync --state open --json number --jq '.[0].number')
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body-file issue.md
+          else
+            gh issue create --title "Price sync: changes to check" --label content-sync --body-file issue.md
+          fi
+
+      - name: Report a failure
+        if: failure()
+        run: |
+          gh label create content-sync --color FBCA04 2>/dev/null || true
+          body="The daily price sync stopped (the official file may have changed shape, or a content test failed). Nothing was published; the app keeps the last good prices. Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          existing=$(gh issue list --label content-sync --state open --json number --jq '.[0].number')
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body "$body"
+          else
+            gh issue create --title "Price sync stopped" --label content-sync --body "$body"
+          fi

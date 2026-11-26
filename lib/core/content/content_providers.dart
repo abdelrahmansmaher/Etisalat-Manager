@@ -1,14 +1,21 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../settings/preferences.dart';
 import '../user/content_overlay.dart';
+import 'content_updates.dart';
 import 'content_loader.dart';
 import 'content_models.dart';
 import 'content_search.dart';
 
 /// Override in tests with a [MemoryContentSource].
-final contentSourceProvider = Provider<ContentSource>(
-  (ref) => const AssetContentSource(),
-);
+/// The app's copy, or a newer verified copy downloaded from the published
+/// content (see `content_updates.dart`).
+final contentSourceProvider = Provider<ContentSource>((ref) {
+  final prefs = ref.watch(preferencesProvider);
+  return prefs == null
+      ? const AssetContentSource()
+      : UpdatableContentSource(prefs);
+});
 
 /// All content (the bundle plus edits made on the device); reloads after an edit.
 final contentProvider = FutureProvider<ContentLibrary>(

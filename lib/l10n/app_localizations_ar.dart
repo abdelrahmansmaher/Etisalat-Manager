@@ -1527,4 +1527,12 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get valueOpen => 'افتح الباقة';
+
+  @override
+  String get contentUpdated => 'الأسعار اتحدّثت من الموقع الرسمي';
+
+  @override
+  String toolsBudgetPostpaid(String value) {
+    return 'الفاتورة $value جنيه شامل الضرائب والرسوم، في حدود الميزانية';
+  }
 }
